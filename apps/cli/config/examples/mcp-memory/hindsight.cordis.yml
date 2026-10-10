@@ -1,0 +1,24 @@
+# Connect to an independently running Hindsight MCP server.
+# Set HINDSIGHT_MCP_URL to its full endpoint, including /mcp/<bank_id>/.
+# Set HINDSIGHT_MCP_TOKEN only when the server requires Bearer authentication.
+# Start from this repository with:
+# pnpm dsh web --patch "$PWD/apps/cli/config/examples/mcp-memory/hindsight.cordis.yml"
+# Tools are model-invoked; this overlay does not enforce per-turn recall/retain.
+# Hindsight retains ownership of its storage; this does not configure RAGFlow.
+- insert:
+    - id: memory-hindsight
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: hindsight
+        transport: streamable-http
+        url: !!js |
+          (() => {
+            const url = process.env.HINDSIGHT_MCP_URL
+            if (!url) throw new Error('Set HINDSIGHT_MCP_URL to the Hindsight MCP endpoint')
+            return url
+          })()
+        headers: !!js |
+          process.env.HINDSIGHT_MCP_TOKEN
+            ? { Authorization: 'Bearer ' + process.env.HINDSIGHT_MCP_TOKEN }
+            : {}
+        failOnStartupError: true
