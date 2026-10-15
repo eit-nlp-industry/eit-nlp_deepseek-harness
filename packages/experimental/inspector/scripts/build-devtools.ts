@@ -8,6 +8,30 @@ import { DEVTOOLS_NPM_VERSION, DEVTOOLS_SOURCE_REVISION } from './devtools/sourc
 
 let pending: Promise<{ files: number; bytes: number }> | undefined
 
+const WINDOWS_TRANSIENT_RENAME_ERRORS = new Set(['EACCES', 'EBUSY', 'EPERM'])
+
+/**
+ * Publish the built frontend directory, retrying transient Windows rename interference.
+ * @param temporary - complete build output directory to publish.
+ * @param output - final `lib/devtools` path.
+ */
+async function renamePublishedDirectory(temporary: string, output: string): Promise<void> {
+  let delay = 50
+  for (let retries = 0;; retries += 1) {
+    try {
+      await rename(temporary, output)
+      return
+    } catch (error) {
+      const code = (error as NodeJS.ErrnoException | null)?.code ?? ''
+      if (process.platform !== 'win32' || !WINDOWS_TRANSIENT_RENAME_ERRORS.has(code)) throw error
+      if (retries >= 20) throw error
+      await rm(output, { recursive: true, force: true })
+      await new Promise(resolve => setTimeout(resolve, delay))
+      delay = Math.min(delay * 2, 1000)
+    }
+  }
+}
+
 /**
  * Build lib/devtools without network access, retaining relative Worker and asset URLs.
  * @returns Published file count and bytes, excluding the distribution manifest.
@@ -43,7 +67,7 @@ async function compile(): Promise<{ files: number; bytes: number }> {
     }, null, 2)}\n`)
     const output = join(lib, 'devtools')
     await rm(output, { recursive: true, force: true })
-    await rename(temporary, output)
+    await renamePublishedDirectory(temporary, output)
     console.log(`DevTools npm ${DEVTOOLS_NPM_VERSION}: ${files.length} files, ${bytes} bytes`)
     return { files: files.length, bytes }
   } finally {
