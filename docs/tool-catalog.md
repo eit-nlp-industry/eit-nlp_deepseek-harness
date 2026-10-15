@@ -47,6 +47,7 @@ This table connects model-visible tool names to the plugin package and service s
 | `@deepseek-ai/dsh-tool-workflow` | `workflow` | `ctx.tools`, `ctx.workflowEngine`, `ctx.systemPrompt`, `a calling Agent (exec.agent parents the script children)` | `tool/call`, `tool/result` | - | - |
 | `@deepseek-ai/dsh-tool-workspace-dependencies` | `load_workspace_dependencies` | `ctx.tools` | `tool/call`, `tool/result` | - | - |
 | `@deepseek-ai/dsh-tool-web` | `web_fetch`, `web_search` | `ctx.tools`, `ctx.web`, `ctx.systemPrompt` | `tool/call`, `tool/result` | - | web_search and web_fetch keep provider selection behind ctx.web so model-visible schemas stay stable across backend swaps. |
+| `@deepseek-ai/dsh-tool-json-render` | `render_ui` | `ctx.tools` | `tool/call`, `tool/result` | - | render_ui asks a separate json-render server for a display or form payload. The model sees a short sentence; the layout is persisted as result metadata. |
 
 <a id="deepseek-aidsh-plugin-manager"></a>
 
@@ -2771,3 +2772,54 @@ Search the web for current information. Returns an optional summary answer and a
 Source: [`packages/web/tool-web/src/index.ts`](../packages/web/tool-web/src/index.ts)
 
 web_search and web_fetch keep provider selection behind ctx.web so model-visible schemas stay stable across backend swaps.
+
+<a id="deepseek-aidsh-tool-json-render"></a>
+
+## `@deepseek-ai/dsh-tool-json-render`
+
+### `render_ui`
+
+Render a json-render interface when a card, table, steps, or form would help the user. Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters. For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Then continue the written answer. Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit. If the request is ambiguous or a choice is missing, call ask_user_question instead. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "description": "display renders a read-only layout. form renders generic_filters or generic_pick_one and ends the turn on success.",
+      "enum": [
+        "display",
+        "form"
+      ]
+    },
+    "user_query": {
+      "type": "string",
+      "description": "Layout instruction in the user language, at most 2000 characters. Put facts in business_data, not here."
+    },
+    "intent": {
+      "type": "string",
+      "description": "Required for form: generic_filters or generic_pick_one."
+    },
+    "scene": {
+      "type": "string",
+      "description": "Optional scene hint passed through to the renderer, such as kb."
+    },
+    "locale": {
+      "type": "string",
+      "description": "Optional locale hint, such as zh-CN."
+    },
+    "business_data": {
+      "description": "Structured facts the card must show. Required for display and form. Include every item, step description, comparison field, number, citation, and warning. Do not send only a title."
+    }
+  },
+  "required": [
+    "mode",
+    "user_query"
+  ]
+}
+```
+
+Source: [`packages/json-render/tool-json-render/src/index.ts`](../packages/json-render/tool-json-render/src/index.ts)
+
+render_ui asks a separate json-render server for a display or form payload. The model sees a short sentence; the layout is persisted as result metadata.

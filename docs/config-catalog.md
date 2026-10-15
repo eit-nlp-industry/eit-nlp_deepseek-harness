@@ -3799,6 +3799,28 @@ export type CompletionDelivery = 'quiet' | 'wakeup'
 ```
 <!-- END GENERATED config-catalog:@deepseek-ai/dsh-tool-jobs -->
 
+<!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-tool-json-render -->
+<a id="deepseek-aidsh-tool-json-render"></a>
+
+## `@deepseek-ai/dsh-tool-json-render`
+
+- `inject`: `tools`
+- `source`: [`packages/json-render/tool-json-render/src/index.ts:30`](../packages/json-render/tool-json-render/src/index.ts)
+
+```ts config-catalog
+export interface Config {
+  /** Register `render_ui`. Defaults to true. */
+  enabled?: boolean
+  /** json-render server origin. Defaults to JSON_RENDER_BASE_URL or http://127.0.0.1:3001. */
+  baseUrl?: string
+  /** Per-attempt timeout in milliseconds. Defaults to 60000. */
+  timeoutMs?: number
+  /** Model-facing description that decides when the tool is called. */
+  description?: string
+}
+```
+<!-- END GENERATED config-catalog:@deepseek-ai/dsh-tool-json-render -->
+
 <!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-tool-lsp -->
 <a id="deepseek-aidsh-tool-lsp"></a>
 
@@ -4521,6 +4543,7 @@ These load from a `cordis.yml` entry with no `config:` block; they declare no co
 | `@deepseek-ai/dsh-client-ui-goal` | — | [`packages/client/ui-goal/src/index.ts`](../packages/client/ui-goal/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-input-trigger` | — | [`packages/client/ui-input-trigger/src/index.ts`](../packages/client/ui-input-trigger/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-jobs` | — | [`packages/client/ui-jobs/src/index.ts`](../packages/client/ui-jobs/src/index.ts) |
+| `@deepseek-ai/dsh-client-ui-json-render` | — | [`packages/client/ui-json-render/src/index.ts`](../packages/client/ui-json-render/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-layout` | — | [`packages/client/ui-layout/src/index.ts`](../packages/client/ui-layout/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-message-feedback` | — | [`packages/client/ui-message-feedback/src/index.ts`](../packages/client/ui-message-feedback/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-model-selection` | — | [`packages/client/ui-model-selection/src/index.ts`](../packages/client/ui-model-selection/src/index.ts) |

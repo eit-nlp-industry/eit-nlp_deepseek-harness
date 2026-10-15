@@ -477,6 +477,11 @@
         fetch: true
         searchTimeoutMs: 60000
 
+    # Host-plane tool. Web does not disable this row, so every agent preset
+    # inherits render_ui. Change `description` to change when the model calls it.
+    - id: tool-json-render
+      name: '@deepseek-ai/dsh-tool-json-render'
+
     - id: mcp-resources
       name: '@deepseek-ai/dsh-mcp-resources'
 

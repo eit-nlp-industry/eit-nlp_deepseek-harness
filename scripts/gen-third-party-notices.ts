@@ -63,6 +63,13 @@ const LIBREOFFICE_PACKAGES = new Set([
   '@deepseek-ai/libreoffice-kit-win32-arm64',
   '@deepseek-ai/libreoffice-kit-win32-x64',
 ])
+/** Direct Git dependencies whose published manifests declare UNLICENSED and omit repository. */
+const JSON_RENDER_GIT_PACKAGES = new Set([
+  '@eit/json-render-antd',
+  '@eit/json-render-protocol',
+  '@eit/json-render-react',
+])
+const JSON_RENDER_GIT_REPO = 'https://github.com/eit-nlp-industry/eit-json-render'
 
 /**
  * Whether a non-permissive runtime declaration has an identity-scoped owner
@@ -88,6 +95,10 @@ const OVERRIDES: Record<string, { license?: string; repo?: string }> = {
   '@modelcontextprotocol/server-filesystem': { license: 'MIT / Apache-2.0', repo: 'https://github.com/modelcontextprotocol/servers' },
   // No repository field in the published manifest.
   'node-addon-require-builtin': { repo: 'https://www.npmjs.com/package/node-addon-require-builtin' },
+  // Git-pinned packages whose manifests omit `repository`.
+  '@eit/json-render-antd': { repo: JSON_RENDER_GIT_REPO },
+  '@eit/json-render-protocol': { repo: JSON_RENDER_GIT_REPO },
+  '@eit/json-render-react': { repo: JSON_RENDER_GIT_REPO },
   // No `license` field in the published manifest; the tarball's LICENSE.txt is the MIT text.
 }
 
@@ -692,7 +703,8 @@ export function isPermissive(license: string): boolean {
 export function assertRuntimeLicenses(dependencies: readonly { name: string; license: string }[]): void {
   const rejected = dependencies.filter(dep => !isPermissive(dep.license)
     && !isOwnerAuthorizedRuntime(dep.name)
-    && !(LIBREOFFICE_PACKAGES.has(dep.name) && dep.license === 'MPL-2.0'))
+    && !(LIBREOFFICE_PACKAGES.has(dep.name) && dep.license === 'MPL-2.0')
+    && !(JSON_RENDER_GIT_PACKAGES.has(dep.name) && dep.license === 'UNLICENSED'))
   if (rejected.length > 0) {
     throw new Error(`gen-third-party-notices: runtime ${rejected.map(dep => `${dep.name} (${dep.license})`).join(', ')} is not a permissive license; review the distribution terms and record the decision before regenerating.`)
   }
@@ -754,6 +766,7 @@ export async function render(): Promise<string> {
   const runtimeDeps = npm.filter(dep => dep.runtime)
   const devDeps = npm.filter(dep => !dep.runtime)
   const kitRuntime = runtimeDeps.some(dep => dep.name === LIBREOFFICE_KIT_PACKAGE)
+  const jsonRenderRuntime = runtimeDeps.some(dep => JSON_RENDER_GIT_PACKAGES.has(dep.name))
   const vendored = collectVendored()
   const python = collectPython()
   const bundledPython = collectBundledPythonDependencies(primaryRuntimeLock.pythonPackages)
@@ -792,7 +805,9 @@ ${vendored.map(row => `| \`${row.npmName}\` | \`${row.upstreamName}\` | [${row.s
 External packages installed for runtime use or distributed inside the prebuilt browser artifacts. Browser inputs are resolved through the shipping tsdown and Vite configurations, independently of npm dependency sections. The tier covers every plugin a user can mount from \`cordis.yml\` — not only what the \`dsh\` CLI, Web UI, and Python SDK runtime load by default.
 
 ${renderNpmTable(runtimeDeps)}
-
+${jsonRenderRuntime ? `
+${[...JSON_RENDER_GIT_PACKAGES].map(name => `\`${name}\``).join(', ')} declare UNLICENSED and are installed from [eit-json-render](${JSON_RENDER_GIT_REPO}). The notices check accepts only these package identities at that declared license.
+` : ''}
 pnpm applies local patches to the following packages at install time, so shipped artifacts carry modified copies; each patch file is the complete record of the modification:
 
 ${patchedLines.join('\n')}

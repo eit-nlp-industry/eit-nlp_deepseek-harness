@@ -38,6 +38,9 @@ External packages installed for runtime use or distributed inside the prebuilt b
 | [`@browserbasehq/stagehand`](https://github.com/browserbase/stagehand) | MIT |
 | [`@deepseek-ai/libreoffice-kit`](https://github.com/deepseek-ai/dsh-libreoffice-kit) | MPL-2.0 |
 | [`@earendil-works/pi-ai`](https://github.com/earendil-works/pi) | MIT |
+| [`@eit/json-render-antd`](https://github.com/eit-nlp-industry/eit-json-render) | UNLICENSED |
+| [`@eit/json-render-protocol`](https://github.com/eit-nlp-industry/eit-json-render) | UNLICENSED |
+| [`@eit/json-render-react`](https://github.com/eit-nlp-industry/eit-json-render) | UNLICENSED |
 | [`@eslint-community/regexpp`](https://github.com/eslint-community/regexpp) | MIT |
 | [`@fortune-sheet/core`](https://github.com/ruilisi/fortune-sheet) | MIT |
 | [`@fortune-sheet/react`](https://github.com/ruilisi/fortune-sheet) | MIT |
@@ -75,6 +78,7 @@ External packages installed for runtime use or distributed inside the prebuilt b
 | [`acorn`](https://github.com/acornjs/acorn) | MIT |
 | [`ajv`](https://github.com/ajv-validator/ajv) | MIT |
 | [`anser`](https://github.com/IonicaBizau/anser) | MIT |
+| [`antd`](https://github.com/ant-design/ant-design) | MIT |
 | [`big.js`](https://github.com/MikeMcl/big.js) | MIT |
 | [`buffer`](https://github.com/feross/buffer) | MIT |
 | [`chokidar`](https://github.com/paulmillr/chokidar) | MIT |
@@ -138,6 +142,8 @@ External packages installed for runtime use or distributed inside the prebuilt b
 | [`yaml`](https://github.com/eemeli/yaml) | ISC |
 | [`zod`](https://github.com/colinhacks/zod) | MIT |
 | [`zustand`](https://github.com/pmndrs/zustand) | MIT |
+
+`@eit/json-render-antd`, `@eit/json-render-protocol`, `@eit/json-render-react` declare UNLICENSED and are installed from [eit-json-render](https://github.com/eit-nlp-industry/eit-json-render). The notices check accepts only these package identities at that declared license.
 
 pnpm applies local patches to the following packages at install time, so shipped artifacts carry modified copies; each patch file is the complete record of the modification:
 

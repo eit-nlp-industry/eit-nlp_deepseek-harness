@@ -1,0 +1,11 @@
+.pending,
+.fallback,
+.notice {
+  padding: 8px 0;
+  line-height: 1.5;
+}
+
+.panel {
+  min-width: 0;
+  overflow: auto;
+}

@@ -14,7 +14,16 @@ packages:
   # closure is what the exe bundles and what the Python runtime distributes.
   - python/sdk-runtime
 
+# These SDK packages are not on npm. Git subdependencies of one another are
+# exotic, so the workspace must allow them through the same pinned tag.
+blockExoticSubdeps: false
+
 overrides:
+  '@eit/json-render-protocol': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/protocol'
+  '@eit/json-render-runtime-core': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/runtime-core'
+  '@eit/json-render-catalog': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/catalog'
+  '@eit/json-render-react': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/react'
+  '@eit/json-render-antd': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/antd'
   'extract-zip>yauzl': '3.4.0'
   '@deepseek-ai/cosmokit': 'link:vendor/cosmokit'
   '@deepseek-ai/schemastery': 'link:vendor/schemastery'
@@ -31,6 +40,13 @@ peerDependencyRules:
 allowBuilds:
   esbuild: true
   lefthook: true
+  # json-render packages build from the pinned Git tag during install.
+  # pnpm matches allowBuilds against the tag resolved to its commit.
+  '@eit/json-render-protocol@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#c214cf4ab0b107d24800651671c97c23a3bb2faa&path:packages/protocol': true
+  '@eit/json-render-runtime-core@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#c214cf4ab0b107d24800651671c97c23a3bb2faa&path:packages/runtime-core': true
+  '@eit/json-render-catalog@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#c214cf4ab0b107d24800651671c97c23a3bb2faa&path:packages/catalog': true
+  '@eit/json-render-react@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#c214cf4ab0b107d24800651671c97c23a3bb2faa&path:packages/react': true
+  '@eit/json-render-antd@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#c214cf4ab0b107d24800651671c97c23a3bb2faa&path:packages/antd': true
   # Cross-platform boundary for the persistent PTY backend, including ConPTY on Windows.
   node-pty: true
   # Pulled in by @earendil-works/pi-ai (optional LLM API backend). pnpm lists

@@ -372,6 +372,9 @@
     - id: ui-skill
       name: '@deepseek-ai/dsh-client-ui-skill'
 
+    - id: ui-json-render
+      name: '@deepseek-ai/dsh-client-ui-json-render'
+
     - id: ui-subagent
       name: '@deepseek-ai/dsh-client-ui-subagent'
 

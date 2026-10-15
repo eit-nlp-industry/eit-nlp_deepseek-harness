@@ -74,6 +74,19 @@ describe('tierExternalDeps', () => {
     expect(isPermissive('MPL-2.0')).toBe(false)
   })
 
+  it('limits the json-render Git exception to its reviewed package identity and UNLICENSED terms', () => {
+    for (const name of ['@eit/json-render-antd', '@eit/json-render-protocol', '@eit/json-render-react']) {
+      expect(() => { assertRuntimeLicenses([{ name, license: 'UNLICENSED' }]) }).not.toThrow()
+      expect(() => { assertRuntimeLicenses([{ name, license: 'GPL-3.0-only' }]) }).toThrow(name)
+    }
+    for (const dependency of [
+      { name: '@eit/json-render-catalog', license: 'UNLICENSED' },
+      { name: '@eit/json-render-antd', license: 'UNKNOWN' },
+    ]) {
+      expect(() => { assertRuntimeLicenses([dependency]) }).toThrow(`${dependency.name} (${dependency.license})`)
+    }
+  })
+
   it('keeps license rejection active when a browser library is declared for development', () => {
     const { manifests, names } = workspace({
       'packages/client/ui/package.json': { devDependencies: { 'browser-lib': '^1', 'test-tool': '^1' } },
