@@ -1,6 +1,6 @@
 /** Compile the fixed npm DevTools sources locally and publish the complete static frontend. */
 import { createHash } from 'node:crypto'
-import { mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises'
+import { cp, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildFrontend } from './devtools/vite.ts'
@@ -11,25 +11,23 @@ let pending: Promise<{ files: number; bytes: number }> | undefined
 const WINDOWS_TRANSIENT_RENAME_ERRORS = new Set(['EACCES', 'EBUSY', 'EPERM'])
 
 /**
- * Publish the built frontend directory, retrying transient Windows rename interference.
+ * Publish the built frontend directory.
+ * Windows antivirus and indexers often refuse directory rename after a large write,
+ * so a failed rename falls back to recursive copy then removal of the temp tree.
  * @param temporary - complete build output directory to publish.
  * @param output - final `lib/devtools` path.
  */
-async function renamePublishedDirectory(temporary: string, output: string): Promise<void> {
-  let delay = 50
-  for (let retries = 0;; retries += 1) {
-    try {
-      await rename(temporary, output)
-      return
-    } catch (error) {
-      const code = (error as NodeJS.ErrnoException | null)?.code ?? ''
-      if (process.platform !== 'win32' || !WINDOWS_TRANSIENT_RENAME_ERRORS.has(code)) throw error
-      if (retries >= 20) throw error
-      await rm(output, { recursive: true, force: true })
-      await new Promise(resolve => setTimeout(resolve, delay))
-      delay = Math.min(delay * 2, 1000)
-    }
+async function publishDirectory(temporary: string, output: string): Promise<void> {
+  await rm(output, { recursive: true, force: true })
+  try {
+    await rename(temporary, output)
+    return
+  } catch (error) {
+    const code = (error as NodeJS.ErrnoException | null)?.code ?? ''
+    if (process.platform !== 'win32' || !WINDOWS_TRANSIENT_RENAME_ERRORS.has(code)) throw error
   }
+  await cp(temporary, output, { recursive: true, force: true })
+  await rm(temporary, { recursive: true, force: true })
 }
 
 /**
@@ -66,8 +64,7 @@ async function compile(): Promise<{ files: number; bytes: number }> {
       files: files.sort((left, right) => left.path.localeCompare(right.path)),
     }, null, 2)}\n`)
     const output = join(lib, 'devtools')
-    await rm(output, { recursive: true, force: true })
-    await renamePublishedDirectory(temporary, output)
+    await publishDirectory(temporary, output)
     console.log(`DevTools npm ${DEVTOOLS_NPM_VERSION}: ${files.length} files, ${bytes} bytes`)
     return { files: files.length, bytes }
   } finally {
