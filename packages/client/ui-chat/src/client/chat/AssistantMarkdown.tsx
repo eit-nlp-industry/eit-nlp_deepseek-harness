@@ -4,7 +4,7 @@ import type { PropsRenderSlots } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ReactNode } from 'react'
 import { JsonBlock, MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { MarkdownFileMentions, MarkdownPathImages } from '@deepseek-ai/dsh-client-ui-primitives'
-import type { ChatNodeOwnerProps, ChatViewSlotProps, UseDisclosure, UsePresentation, UseGroupAction } from '../contract/slots.ts'
+import type { ChatNodeOwnerProps, ChatViewSlotProps, UseDisclosure, UsePresentation, UseGroupAction, TurnTailOwnerProps } from '../contract/slots.ts'
 import type { AssistantBlock } from '../contract/snapshot.ts'
 import { markdownLabels } from '../markdown-labels.ts'
 import { ReasoningRow } from './ReasoningRow.tsx'
@@ -28,6 +28,9 @@ export function localPathMediaUrl(base: string, value: string): string | undefin
 }
 
 export interface AssistantMarkdownProps extends Pick<PropsRenderSlots<'conversation.chat.reasoning.body'>, 'renderSlot'> {
+  /** Completed, text-only response offered to answer replacements. */
+  answer?: TurnTailOwnerProps | undefined
+  renderSlotChain?: PropsRenderSlots<'conversation.chat.answer'>['renderSlotChain'] | undefined
   /** Render only the requested business portion, preserving original block indexes. */
   groupPart?: string | undefined
   /** Stable Hook forwarded to each independently expandable reasoning block. */
@@ -55,7 +58,7 @@ export interface AssistantMarkdownProps extends Pick<PropsRenderSlots<'conversat
 /** Reasoning block as the Think variant summary row (figma 39:28304). */
 export const AssistantMarkdown = memo(function AssistantMarkdown({
   blocks, streaming, interrupted, renderMessageImages, groupPart, useDisclosure,
-  reasoningHidden = false, usePresentation, revealProcess, mentions, renderSlot, useGroupAction, t,
+  reasoningHidden = false, usePresentation, revealProcess, mentions, renderSlot, renderSlotChain, answer, useGroupAction, t,
 }: AssistantMarkdownProps) {
   // Stable per locale revision (t identity changes on switch): a fresh object
   // per render would rebuild MarkdownText's component table every chunk.
@@ -79,8 +82,8 @@ export const AssistantMarkdown = memo(function AssistantMarkdown({
     if (groupPart === 'reasoning' && block.kind !== 'reasoning') continue
     if (groupPart === 'response' && block.kind === 'reasoning') continue
     switch (block.kind) {
-      case 'text':
-        rendered.push(
+      case 'text': {
+        const prose = (
           <MarkdownText
             key={i}
             text={block.text}
@@ -88,9 +91,15 @@ export const AssistantMarkdown = memo(function AssistantMarkdown({
             labels={labels}
             fileMentions={mentions}
             pathImages={pathImages}
-          />,
+          />
         )
+        rendered.push(answer !== undefined && renderSlotChain !== undefined
+          ? <Fragment key={i}>{renderSlotChain('conversation.chat.answer', {
+            ...answer, text: block.text, labels, fileMentions: mentions, pathImages,
+          }, { fallback: prose })}</Fragment>
+          : prose)
         break
+      }
       case 'reasoning':
         rendered.push(
           <ProcessReasoning

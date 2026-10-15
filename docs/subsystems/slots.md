@@ -148,6 +148,7 @@ root
 │     │     ├─ conversation.chat.flow
 │     │     │  ├─ conversation.chat.node
 │     │     │  │  ├─ conversation.chat.assistant-actions
+│     │     │  │  ├─ conversation.chat.answer
 │     │     │  │  ├─ conversation.chat.reasoning.body
 │     │     │  │  ├─ conversation.chat.commandview
 │     │     │  │  ├─ conversation.chat.turnTail

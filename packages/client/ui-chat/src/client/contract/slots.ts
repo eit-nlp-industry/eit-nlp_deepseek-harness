@@ -14,7 +14,7 @@ import type {
   PropsStore, SlotHookFactory, SnapshotSelectorHook,
 } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ObservableSnapshot } from '@deepseek-ai/dsh-client-store'
-import type { MarkdownFileMentions, MarkdownLabels } from '@deepseek-ai/dsh-client-ui-primitives'
+import type { MarkdownFileMentions, MarkdownLabels, MarkdownPathImages } from '@deepseek-ai/dsh-client-ui-primitives'
 import type {} from '@deepseek-ai/dsh-client-ui-layout/client'
 import type { createChatStore } from '../stores.ts'
 import type { ChatPresentationPolicy } from '../presentation-policy.ts'
@@ -54,6 +54,16 @@ export interface TurnTailOwnerProps {
   turn: TurnLocation
   seq: number
   openFile: (path: string) => void
+  /** Whether the closing response is offered to the answer replacement slot. */
+  canReplaceAnswer?: boolean
+}
+
+/** Original closing prose and its Markdown affordances, retained for rendering failures. */
+export interface AnswerOwnerProps extends TurnTailOwnerProps {
+  text: string
+  labels: MarkdownLabels
+  fileMentions?: MarkdownFileMentions | undefined
+  pathImages: MarkdownPathImages
 }
 
 /** Owner currency of finalized-assistant actions. */
@@ -406,6 +416,8 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
      * adds an entry; entries without content return null.
      */
     'conversation.chat.turnTail': { kind: 'list'; scope: 'session'; owner: TurnTailOwnerProps }
+    /** Complete closing-answer replacements. Declining entries preserve the original Markdown. */
+    'conversation.chat.answer': { kind: 'chain'; scope: 'session'; owner: AnswerOwnerProps }
     /**
      * Ordered actions for one finalized assistant message. Each entry receives
      * the durable message id; a fresh `id` adds an action and reusing one replaces

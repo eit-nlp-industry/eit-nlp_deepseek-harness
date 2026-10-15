@@ -34,6 +34,8 @@ Mount the plugin on the host, not inside one agent preset. Agents inherit the to
 
 The json-render server must already be running. This package only calls `POST /v1/render`.
 
+Display calls default to `answer_presentation: replace`: the interface must contain the complete answer. Use `supplement` when necessary explanations remain in the written answer. The model still writes a complete fallback, while the browser selects the visible answer from persisted result metadata. Forms always remain supplementary. Failed calls never declare a replacement.
+
 <a id="model-experience"></a>
 ## Model Experience
 

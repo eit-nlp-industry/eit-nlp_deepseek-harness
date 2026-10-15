@@ -8,7 +8,7 @@
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { defineTool } from '@deepseek-ai/dsh-tools'
-import { requestJsonRender, type RenderUiArgs, type RenderUiResult } from './request.ts'
+import { requestJsonRender, type RenderUiResult } from './request.ts'
 
 export const name = 'tool-json-render'
 
@@ -22,7 +22,8 @@ export const DEFAULT_RENDER_TIMEOUT_MS = 60_000
 export const DEFAULT_RENDER_UI_DESCRIPTION = [
   'Render a json-render interface when a card, table, steps, or form would help the user.',
   'Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters.',
-  'For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Then continue the written answer.',
+  'For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request.',
+  'answer_presentation defaults to "replace" for display: the interface must fully answer the request. Use "supplement" when the written answer contains necessary explanations or caveats absent from the interface.',
   'Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit.',
   'If the request is ambiguous or a choice is missing, call ask_user_question instead.',
   'Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.',
@@ -80,6 +81,11 @@ export function apply(ctx: Context, config: Config): void {
         required: true,
         description: 'Layout instruction in the user language, at most 2000 characters. Put facts in business_data, not here.',
       },
+      answer_presentation: {
+        type: 'string',
+        enum: ['replace', 'supplement'],
+        description: 'Display only: replace (default) shows the complete interface instead of closing prose. supplement keeps necessary written explanations alongside it. Always write a complete fallback answer.',
+      },
       intent: {
         type: 'string',
         description: 'Required for form: generic_filters or generic_pick_one.',
@@ -109,14 +115,16 @@ export function apply(ctx: Context, config: Config): void {
         },
       },
       render: (_args, value) => [{ type: 'text', text: value.message }],
-      presentationMeta: (_args, value) => value.ok && value.payload !== undefined ? { payload: value.payload } : null,
+      presentationMeta: (args, value) => value.ok && value.payload !== undefined
+        ? { payload: value.payload, answerPresentation: value.mode === 'display' ? (args.answer_presentation ?? 'replace') : 'supplement' }
+        : null,
     },
     isConcurrencySafe: () => false,
     async execute(args, exec): Promise<RenderUiResult> {
       const result = await requestJsonRender({
         baseUrl,
         timeoutMs,
-        args: args as RenderUiArgs,
+        args,
         signal: exec.signal,
       })
       if (result.ok && result.mode === 'form') exec.concludeTurn()

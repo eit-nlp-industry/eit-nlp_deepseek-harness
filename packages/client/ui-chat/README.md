@@ -69,6 +69,8 @@ Preference menus restore focus to their trigger without scrolling before publish
 <a id="completed-turn-footer"></a>
 ## Completed-turn footer
 
+The `conversation.chat.answer` chain offers completed closing prose with one text block and optional reasoning to answer renderers. The first selector that claims it replaces the prose; all entries declining keeps the original Markdown. Entries receive the original text, Markdown labels, file mentions, and image resolver for failure recovery. Other content blocks retain their standard rendering. The footer continues to copy the recorded written answer.
+
 Artifact extensions can subscribe to one Turn and Node kind through `ChatNodeStore.turnDataSource`. The source includes hidden Nodes and exposes their business data in anchor order. Membership updates incrementally; only observed collections materialize ordered arrays, and unrelated Turns or kinds do not notify them.
 
 The completed-turn action footer follows the recorded Turn end. Its action row starts 20px below preceding prose or extension content. Actions remain visible only on the latest Turn when its final visible content is a reply; other endings and historical Turns reveal actions on hover or keyboard focus. Devices without hover keep actions visible.

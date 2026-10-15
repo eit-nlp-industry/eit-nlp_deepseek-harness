@@ -4,12 +4,12 @@ import type { ChatNodeViewProps, PresentationInjected, TurnTailOwnerProps } from
 import { AssistantMarkdown } from './AssistantMarkdown.tsx'
 
 type AssistantNodeViewProps = ChatNodeViewProps<'assistant-step'> & InjectFace<PresentationInjected>
-  & PropsRenderSlots<'conversation.chat.reasoning.body'>
+  & PropsRenderSlots<'conversation.chat.reasoning.body' | 'conversation.chat.answer'>
 
 /** Streaming, settled, and interrupted Assistant states share one keyed renderer instance. */
 export const AssistantNodeView = memo(function AssistantNodeView({
   node, groupPart, useDisclosure, useGroupAction, useTurnData, turnProcess, openFile, renderMessageImages, fileMentions,
-  usePresentation, renderSlot, t,
+  usePresentation, renderSlot, renderSlotChain, t,
 }: AssistantNodeViewProps) {
   const data = node.data
   const turn = node.location.kind === 'turn' || node.location.kind === 'step'
@@ -19,8 +19,11 @@ export const AssistantNodeView = memo(function AssistantNodeView({
   const owner = useMemo<TurnTailOwnerProps | undefined>(() => {
     if (turn?.status !== 'closed' || data.finalNode === undefined) return undefined
     if (tail?.closing?.finalNode.seq !== data.finalNode.seq) return undefined
-    return { turn, seq: data.finalNode.seq, openFile }
-  }, [data.finalNode, openFile, tail, turn])
+    return { turn, seq: data.finalNode.seq, openFile,
+      canReplaceAnswer: turn.end?.data.reason.kind === 'completed' && data.status === 'settled'
+        && data.blocks.filter(block => block.kind === 'text').length === 1
+        && data.blocks.every(block => block.kind === 'text' || block.kind === 'reasoning') }
+  }, [data.blocks, data.finalNode, openFile, tail, turn])
   const mentions = useMemo(
     () => owner === undefined ? undefined : fileMentions(owner),
     [fileMentions, owner],
@@ -43,6 +46,8 @@ export const AssistantNodeView = memo(function AssistantNodeView({
       useGroupAction={useGroupAction}
       usePresentation={usePresentation}
       renderSlot={renderSlot}
+      renderSlotChain={renderSlotChain}
+      answer={owner?.canReplaceAnswer === true ? owner : undefined}
       revealProcess={revealProcess}
       mentions={mentions}
       t={t}

@@ -14,6 +14,8 @@ export type FormIntent = (typeof FORM_INTENTS)[number]
 
 export interface RenderUiArgs {
   mode: RenderUiMode
+  /** Whether the display fully answers the request or accompanies the written answer. */
+  answer_presentation?: 'replace' | 'supplement'
   user_query: string
   intent?: string
   scene?: string
@@ -174,6 +176,7 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
       }
       return { ok: true, mode: options.args.mode, message: successMessage(options.args.mode), payload: json }
     } catch (error) {
+      // oxlint-disable-next-line typescript/no-unnecessary-condition -- AbortSignal.aborted can change while fetch is pending.
       if (options.signal.aborted) return { ok: false, mode: options.args.mode, message: '界面生成已取消。请用文字继续回答。' }
       last = error instanceof Error ? clip(error.message) : '界面生成失败'
     }

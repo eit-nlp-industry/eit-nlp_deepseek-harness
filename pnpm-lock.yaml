@@ -4093,7 +4093,7 @@ importers:
         version: 18.3.1(react@18.3.1)
 
   packages/client/ui-json-render:
-    dependencies:
+    devDependencies:
       '@eit/json-render-antd':
         specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/antd
         version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#c214cf4ab0b107d24800651671c97c23a3bb2faa&path:packages/antd(antd@5.29.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(zod@4.4.3)
@@ -4106,7 +4106,6 @@ importers:
       antd:
         specifier: ^5.24.0
         version: 5.29.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-    devDependencies:
       '@deepseek-ai/cordis':
         specifier: workspace:~
         version: link:../../../vendor/cordis
@@ -4119,6 +4118,12 @@ importers:
       '@deepseek-ai/dsh-client-ui-conversation':
         specifier: workspace:*
         version: link:../ui-conversation
+      '@deepseek-ai/dsh-client-test-runtime':
+        specifier: workspace:*
+        version: link:../../test-support/client-runtime
+      '@deepseek-ai/dsh-client-ui-primitives':
+        specifier: workspace:*
+        version: link:../ui-primitives
       '@deepseek-ai/dsh-client-ui-renderer':
         specifier: workspace:*
         version: link:../ui-renderer

@@ -1,0 +1,70 @@
+/** Ant Design geometry; the scoped stylesheet maps its color variables to live DSH tokens. */
+import type { ThemeConfig } from 'antd'
+
+/** Local geometry and interaction tokens for stable base and form components. */
+export const renderTheme: ThemeConfig = {
+  cssVar: { key: 'dsh-json-render' },
+  token: {
+    fontFamily: 'var(--dsw-font-family)',
+    fontWeightStrong: 500,
+    borderRadius: 12,
+    borderRadiusLG: 16,
+    borderRadiusSM: 8,
+    controlHeight: 36,
+    controlHeightLG: 44,
+    controlHeightSM: 28,
+  },
+  components: {
+    Card: { headerFontSizeSM: 14, bodyPaddingSM: 20, headerPaddingSM: 20 },
+    Button: {
+      fontWeight: 500,
+      primaryShadow: 'none',
+      defaultShadow: 'none',
+      defaultColor: 'var(--dsw-alias-label-primary)',
+      defaultBg: 'var(--dsw-alias-bg-layer-1)',
+      defaultBorderColor: 'var(--dsw-alias-border-l3)',
+      defaultHoverBg: 'var(--dsw-alias-interactive-bg-hover-solid)',
+      defaultHoverColor: 'var(--dsw-alias-link)',
+      defaultHoverBorderColor: 'var(--dsw-alias-link)',
+      defaultActiveBg: 'var(--dsw-alias-interactive-bg-hover-solid)',
+      defaultActiveColor: 'var(--dsw-alias-link)',
+      defaultActiveBorderColor: 'var(--dsw-alias-link)',
+      textTextColor: 'var(--dsw-alias-label-primary)',
+      textTextHoverColor: 'var(--dsw-alias-label-primary)',
+      textTextActiveColor: 'var(--dsw-alias-label-primary)',
+      textHoverBg: 'var(--dsw-alias-interactive-bg-hover)',
+    },
+    Select: {
+      selectorBg: 'var(--dsw-alias-bg-layer-1)',
+      clearBg: 'var(--dsw-alias-bg-layer-1)',
+      multipleItemBg: 'var(--dsw-alias-interactive-bg-hover)',
+      optionSelectedBg: 'var(--ant-color-primary-bg)',
+      optionSelectedColor: 'var(--dsw-alias-label-primary)',
+      optionActiveBg: 'var(--dsw-alias-interactive-bg-hover)',
+      hoverBorderColor: 'var(--dsw-alias-link)',
+      activeBorderColor: 'var(--dsw-alias-link)',
+      activeOutlineColor: 'var(--ant-control-outline)',
+    },
+    Input: {
+      activeBg: 'var(--dsw-alias-bg-layer-1)',
+      hoverBg: 'var(--dsw-alias-bg-layer-1)',
+      activeBorderColor: 'var(--dsw-alias-link)',
+      hoverBorderColor: 'var(--dsw-alias-link)',
+      activeShadow: '0 0 0 2px var(--ant-control-outline)',
+    },
+    InputNumber: {
+      activeBg: 'var(--dsw-alias-bg-layer-1)',
+      hoverBg: 'var(--dsw-alias-bg-layer-1)',
+      activeBorderColor: 'var(--dsw-alias-link)',
+      hoverBorderColor: 'var(--dsw-alias-link)',
+      activeShadow: '0 0 0 2px var(--ant-control-outline)',
+    },
+    Tag: { defaultBg: 'var(--dsw-alias-bg-module-platform)', defaultColor: 'var(--dsw-alias-label-secondary)' },
+    Typography: { titleMarginTop: 0, titleMarginBottom: 12 },
+    Form: { itemMarginBottom: 20, verticalLabelPadding: '0 0 8px', labelColor: 'var(--dsw-alias-label-primary)' },
+    Steps: {
+      titleLineHeight: 24,
+      descriptionMaxWidth: 240,
+    },
+  },
+}

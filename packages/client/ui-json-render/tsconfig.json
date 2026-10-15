@@ -10,6 +10,7 @@
     { "path": "../../api/session-controller/tsconfig.client.json" },
     { "path": "../../core/session" },
     { "path": "../ui-conversation/tsconfig.client.json" },
+    { "path": "../ui-primitives" },
     { "path": "../ui-chat/tsconfig.client.json" },
     { "path": "../ui-renderer" },
     { "path": "../ui-slots" },

@@ -44,7 +44,11 @@ export const TurnTailNodeView = memo(function TurnTailNodeView({
     : undefined
   if (turn === undefined) return null
   const closing = data.closing
-  const owner: TurnTailOwnerProps = { turn, seq: closing?.finalNode.seq ?? data.seq, openFile }
+  const owner: TurnTailOwnerProps = { turn, seq: closing?.finalNode.seq ?? data.seq, openFile,
+    canReplaceAnswer: turn.status === 'closed' && closing !== null
+      && turn.end?.data.reason.kind === 'completed'
+      && closing.blocks.filter(block => block.kind === 'text').length === 1
+      && closing.blocks.every(block => block.kind === 'text' || block.kind === 'reasoning') }
   const tail = renderSlot('conversation.chat.turnTail', owner)
   if (closing === null) return tail === null ? null : <div className={css.root} data-turn-tail={data.turn}>{tail}</div>
   // Interruption-frozen partials carry no messageId, so they address no

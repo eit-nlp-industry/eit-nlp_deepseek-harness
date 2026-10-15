@@ -1,6 +1,5 @@
 /**
- * Turn-scoped last successful `render_ui` payload. The answer tail reads it
- * so the card sits under the closing prose instead of inside the tool row.
+ * Turn-scoped latest `render_ui` result and its answer presentation.
  */
 import { isAppendSurfaceEvent } from '@deepseek-ai/dsh-session/surface'
 import type { ConversationMatch, ConversationNodeDefinition, TurnLocation } from '@deepseek-ai/dsh-client-ui-conversation/client'
@@ -15,11 +14,12 @@ export interface JsonRenderAnswerData {
   readonly callId: string
   readonly seq: number
   readonly payload: JsonRenderPayload
+  readonly answerPresentation: 'replace' | 'supplement'
 }
 
 declare module '@deepseek-ai/dsh-client-ui-conversation/client' {
   interface ConversationTurnDataMap {
-    /** Last successful `render_ui` payload in this turn. */
+    /** Latest `render_ui` payload, cleared when a later render fails. */
     'json-render-answer': JsonRenderAnswerData
   }
 }
@@ -52,15 +52,25 @@ export function selectJsonRenderAnswer(owner: JsonRenderAnswerOwner): JsonRender
   return card.seq <= end ? card : null
 }
 
+/**
+ * Read the tool's explicit answer declaration; historical metadata remains supplementary.
+ * @param meta - persisted tool-result metadata.
+ * @returns replacement only when explicitly declared.
+ */
+export function answerPresentationFromMeta(meta: unknown): 'replace' | 'supplement' {
+  return typeof meta === 'object' && meta !== null && 'answerPresentation' in meta
+    && meta.answerPresentation === 'replace' ? 'replace' : 'supplement'
+}
+
 function settledCard(match: ConversationMatch, callId: string): JsonRenderAnswerData | undefined {
   if (match.event.type !== 'tool/result') return undefined
   if (match.event.data.message.isError === true) return undefined
   const payload = payloadFromMeta(match.event.data.meta)
   if (payload === null) return undefined
-  return { callId, seq: match.event.seq, payload }
+  return { callId, seq: match.event.seq, payload, answerPresentation: answerPresentationFromMeta(match.event.data.meta) }
 }
 
-/** Records the last successful `render_ui` result on its turn. It publishes no view node. */
+/** Records the latest `render_ui` result on its turn. It publishes no view node. */
 export const jsonRenderAnswerDefinition: ConversationNodeDefinition<AnswerState> = {
   kind: 'json-render-answer',
   match: (event) => {
@@ -86,7 +96,7 @@ export const jsonRenderAnswerDefinition: ConversationNodeDefinition<AnswerState>
     const call = context.state.calls.get(callId)
     if (call?.name !== RENDER_UI_TOOL) return context.state
     const card = settledCard(match, callId)
-    return card === undefined ? context.state : { ...context.state, card }
+    return { ...context.state, card }
   },
   buildLocationData: (context, scope, previous) => {
     if (scope !== 'turn' || context.state === undefined || context.state.card === undefined) return null
