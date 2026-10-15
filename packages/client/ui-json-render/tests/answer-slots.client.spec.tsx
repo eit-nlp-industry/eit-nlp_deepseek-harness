@@ -6,7 +6,7 @@ import { SlotTestRuntime } from '@deepseek-ai/dsh-client-test-runtime'
 import { MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import { SessionId, type SessionEvent } from '@deepseek-ai/dsh-session/types'
 import type { SessionEventLikeEntry } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { PropsRenderSlots, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import type { PropsRenderSlots } from '@deepseek-ai/dsh-client-ui-slots'
 import {
   ConversationNodeAssembler, UiConversation,
   type ConversationTimelineSnapshot,
@@ -29,7 +29,6 @@ async function fixture(meta: unknown, isError = false, laterError = false) {
   onTestFinished(() => runtime.dispose())
   const conversation = new UiConversation(runtime.ctx, runtime.ctx.sessions)
   type Seats = PropsRenderSlots<'conversation.chat.answer' | 'conversation.chat.turnTail'>
-    & Pick<PropsRuntime<'root'>, 'SessionProvider'>
   const captured: { seats?: Seats; setContent?: (content: ReactNode) => void } = {}
   await runtime.root.declare({
     'conversation.chat.answer': { kind: 'chain', scope: 'session' },
@@ -73,13 +72,14 @@ async function fixture(meta: unknown, isError = false, laterError = false) {
   const { SessionProvider } = seats
   const owner = { turn, seq: turn.end!.seq, openFile: () => {}, canReplaceAnswer: true }
   const text = '保留的最终文字'
+  const labels = { footnotes: 'References', code: {
+    copyLabel: 'Copy', copiedLabel: 'Copied',
+    toolbarLabels: { codeLabel: 'Code', wrapLabel: 'Wrap', unwrapLabel: 'Unwrap' },
+  } }
   act(() => { setContent(<SessionProvider session={session}>
     {seats.renderSlotChain('conversation.chat.answer', {
-      ...owner, text, labels: { footnotes: 'References', code: {
-        copyLabel: 'Copy', copiedLabel: 'Copied',
-        toolbarLabels: { codeLabel: 'Code', wrapLabel: 'Wrap', unwrapLabel: 'Unwrap' },
-      } }, pathImages: { resolve: () => undefined },
-    }, { fallback: <MarkdownText text={text} /> })}
+      ...owner, text, labels, pathImages: { resolve: () => undefined },
+    }, { fallback: <MarkdownText text={text} labels={labels} /> })}
     {seats.renderSlot('conversation.chat.turnTail', owner)}
   </SessionProvider>) })
   return view

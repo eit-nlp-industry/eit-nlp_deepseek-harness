@@ -34,6 +34,10 @@ describe('closing answer replacement eligibility', () => {
       renderSlotChain,
       fileMentions: () => undefined,
       openFile: () => {},
+      openSkill: () => {},
+      inspectCall: undefined,
+      forkAt: () => {},
+      loadImage: () => Promise.reject(new Error('not used')),
       t: () => 'label',
     } as ComponentProps<typeof AssistantNodeView>
     render(<AssistantNodeView {...props} />)

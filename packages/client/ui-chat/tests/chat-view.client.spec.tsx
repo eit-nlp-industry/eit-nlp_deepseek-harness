@@ -270,8 +270,9 @@ type ToolOwner = Pick<ChatNodeOwnerProps, 'openFile' | 'inspectCall'> & {
 const renderCommandSlot: React.ComponentProps<typeof CommandNodeView>['renderSlot'] =
   (_key, _owner, opts) => opts?.fallback ?? null
 const renderTurnTailSlot: React.ComponentProps<typeof TurnTailNodeView>['renderSlot'] = () => null
-const assistantSlots: Pick<React.ComponentProps<typeof AssistantNodeView>, 'renderSlot'> = {
+const assistantSlots: Pick<React.ComponentProps<typeof AssistantNodeView>, 'renderSlot' | 'renderSlotChain'> = {
   renderSlot: renderReasoningSlot,
+  renderSlotChain: (_key, _owner, opts) => opts?.fallback ?? null,
 }
 
 function HarnessChatFlow({ standard, owner, hookContext, renderSlot }: {
