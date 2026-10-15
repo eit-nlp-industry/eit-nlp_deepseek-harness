@@ -15,7 +15,7 @@ function jsonResponse(status: number, body: unknown): Response {
 
 describe('requestJsonRender', () => {
   it('returns a display payload on the first success', async () => {
-    const fetchImpl = vi.fn(async () => jsonResponse(200, payload))
+    const fetchImpl = vi.fn<typeof fetch>(async () => jsonResponse(200, payload))
     const result = await requestJsonRender({
       baseUrl: 'http://127.0.0.1:3001/',
       timeoutMs: 1000,
