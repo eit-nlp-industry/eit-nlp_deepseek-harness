@@ -3813,7 +3813,7 @@ export type CompletionDelivery = 'quiet' | 'wakeup'
 export interface Config {
   /** Register `render_ui`. Defaults to true. */
   enabled?: boolean
-  /** json-render server origin. Defaults to JSON_RENDER_BASE_URL or http://127.0.0.1:3001. */
+  /** json-render server origin. Defaults to JSON_RENDER_BASE_URL or http://10.37.0.21:3001. */
   baseUrl?: string
   /** Per-attempt timeout in milliseconds. Defaults to 60000. */
   timeoutMs?: number

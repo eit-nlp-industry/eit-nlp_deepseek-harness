@@ -26,7 +26,7 @@ Mount the plugin on the host, not inside one agent preset. Agents inherit the to
 - id: tool-json-render
   name: '@deepseek-ai/dsh-tool-json-render'
   config:
-    baseUrl: http://127.0.0.1:3001
+    baseUrl: http://10.37.0.21:3001
     description: Call render_ui only for comparison tables.
 ```
 
