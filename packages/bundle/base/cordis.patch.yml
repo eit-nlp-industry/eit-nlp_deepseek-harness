@@ -488,15 +488,14 @@
     - id: mcp-resources
       name: '@deepseek-ai/dsh-mcp-resources'
 
-    # Optional Hindsight memory MCP. Off by default so n8n-spawned agents start
-    # without a running server. Enable with a later patch (profile or this row):
+    # Hindsight memory MCP. On by default; set HINDSIGHT_MCP_URL if the
+    # server is not at the local default. Set HINDSIGHT_MCP_TOKEN when the
+    # server requires Bearer auth. Disable with a later patch:
     #   - id: memory-hindsight
-    #     disabled: false
-    # URL comes from HINDSIGHT_MCP_URL, else the local default. Set
-    # HINDSIGHT_MCP_TOKEN when the server requires Bearer auth.
+    #     disabled: true
     - id: memory-hindsight
       name: '@deepseek-ai/dsh-mcp-client'
-      disabled: true
+      disabled: false
       config:
         serverName: hindsight
         transport: streamable-http
