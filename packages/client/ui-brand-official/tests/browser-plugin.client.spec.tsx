@@ -84,8 +84,10 @@ describe('official browser-brand plugin', () => {
     name.unmount()
 
     const mark = render(<OfficialBrandMark size={34} />)
-    expect(mark.container.querySelector('svg')?.getAttribute('width')).toBe('34')
+    const node = mark.container.querySelector<HTMLElement>('[data-eit-logo]')
+    expect(node?.dataset.eitLogo).toBe('mark')
+    expect(node?.style.height).toBe('34px')
     mark.rerender(<OfficialBrandMark size={24} />)
-    expect(mark.container.querySelector('svg')?.getAttribute('width')).toBe('24')
+    expect(mark.container.querySelector<HTMLElement>('[data-eit-logo]')?.style.height).toBe('24px')
   })
 })

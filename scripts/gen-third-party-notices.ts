@@ -15,6 +15,7 @@ import { parse as parseToml, type TomlTableWithoutBigInt, type TomlValueWithoutB
 import parseSpdx from 'spdx-expression-parse'
 import primaryRuntimeLock from './primary-runtime/lock.json' with { type: 'json' }
 import { browserBundledExternals } from './browser-bundled-externals.ts'
+import { DEVTOOLS_NPM_VERSION, DEVTOOLS_SOURCE_REVISION } from '../packages/experimental/inspector/scripts/devtools/source.ts'
 
 const root = resolve(import.meta.dirname, '..')
 const OUT = 'THIRD_PARTY_NOTICES.md'
@@ -62,6 +63,13 @@ const LIBREOFFICE_PACKAGES = new Set([
   '@deepseek-ai/libreoffice-kit-win32-arm64',
   '@deepseek-ai/libreoffice-kit-win32-x64',
 ])
+/** Direct Git dependencies whose published manifests declare UNLICENSED and omit repository. */
+const JSON_RENDER_GIT_PACKAGES = new Set([
+  '@eit/json-render-antd',
+  '@eit/json-render-protocol',
+  '@eit/json-render-react',
+])
+const JSON_RENDER_GIT_REPO = 'https://github.com/eit-nlp-industry/eit-json-render'
 
 /**
  * Whether a non-permissive runtime declaration has an identity-scoped owner
@@ -87,6 +95,10 @@ const OVERRIDES: Record<string, { license?: string; repo?: string }> = {
   '@modelcontextprotocol/server-filesystem': { license: 'MIT / Apache-2.0', repo: 'https://github.com/modelcontextprotocol/servers' },
   // No repository field in the published manifest.
   'node-addon-require-builtin': { repo: 'https://www.npmjs.com/package/node-addon-require-builtin' },
+  // Git-pinned packages whose manifests omit `repository`.
+  '@eit/json-render-antd': { repo: JSON_RENDER_GIT_REPO },
+  '@eit/json-render-protocol': { repo: JSON_RENDER_GIT_REPO },
+  '@eit/json-render-react': { repo: JSON_RENDER_GIT_REPO },
   // No `license` field in the published manifest; the tarball's LICENSE.txt is the MIT text.
 }
 
@@ -691,7 +703,8 @@ export function isPermissive(license: string): boolean {
 export function assertRuntimeLicenses(dependencies: readonly { name: string; license: string }[]): void {
   const rejected = dependencies.filter(dep => !isPermissive(dep.license)
     && !isOwnerAuthorizedRuntime(dep.name)
-    && !(LIBREOFFICE_PACKAGES.has(dep.name) && dep.license === 'MPL-2.0'))
+    && !(LIBREOFFICE_PACKAGES.has(dep.name) && dep.license === 'MPL-2.0')
+    && !(JSON_RENDER_GIT_PACKAGES.has(dep.name) && dep.license === 'UNLICENSED'))
   if (rejected.length > 0) {
     throw new Error(`gen-third-party-notices: runtime ${rejected.map(dep => `${dep.name} (${dep.license})`).join(', ')} is not a permissive license; review the distribution terms and record the decision before regenerating.`)
   }
@@ -743,6 +756,8 @@ ${rows.join('\n')}
  */
 export async function render(): Promise<string> {
   const browser = await browserBundledExternals(root)
+  // The Inspector's Host build hook compiles this standalone frontend outside the Client bundle graph.
+  browser.add('chrome-devtools-frontend')
   // The linked-manifest cache is keyed by name only, so it must not outlive
   // the manifests map it was resolved from; render() owns that single load.
   workspaceLinkedManifestCache.clear()
@@ -751,6 +766,7 @@ export async function render(): Promise<string> {
   const runtimeDeps = npm.filter(dep => dep.runtime)
   const devDeps = npm.filter(dep => !dep.runtime)
   const kitRuntime = runtimeDeps.some(dep => dep.name === LIBREOFFICE_KIT_PACKAGE)
+  const jsonRenderRuntime = runtimeDeps.some(dep => JSON_RENDER_GIT_PACKAGES.has(dep.name))
   const vendored = collectVendored()
   const python = collectPython()
   const bundledPython = collectBundledPythonDependencies(primaryRuntimeLock.pythonPackages)
@@ -789,17 +805,24 @@ ${vendored.map(row => `| \`${row.npmName}\` | \`${row.upstreamName}\` | [${row.s
 External packages installed for runtime use or distributed inside the prebuilt browser artifacts. Browser inputs are resolved through the shipping tsdown and Vite configurations, independently of npm dependency sections. The tier covers every plugin a user can mount from \`cordis.yml\` — not only what the \`dsh\` CLI, Web UI, and Python SDK runtime load by default.
 
 ${renderNpmTable(runtimeDeps)}
-
+${jsonRenderRuntime ? `
+${[...JSON_RENDER_GIT_PACKAGES].map(name => `\`${name}\``).join(', ')} declare UNLICENSED and are installed from [eit-json-render](${JSON_RENDER_GIT_REPO}). The notices check accepts only these package identities at that declared license.
+` : ''}
 pnpm applies local patches to the following packages at install time, so shipped artifacts carry modified copies; each patch file is the complete record of the modification:
 
 ${patchedLines.join('\n')}
+
+## Chrome DevTools frontend
+
+The optional experimental Inspector distributes a locally compiled copy of [chrome-devtools-frontend ${DEVTOOLS_NPM_VERSION}](https://www.npmjs.com/package/chrome-devtools-frontend/v/${DEVTOOLS_NPM_VERSION}), from upstream revision [${DEVTOOLS_SOURCE_REVISION}](https://chromium.googlesource.com/devtools/devtools-frontend/+/${DEVTOOLS_SOURCE_REVISION}). The build includes the Chromium [BSD-3-Clause license](packages/experimental/inspector/assets/devtools/LICENSE) and the third-party license and notice files supplied by the npm source. The Chromium root license does not replace those dependencies' licenses.
+
 ${renderClaudeDistribution(claudeDistribution)}
 ${kitRuntime ? `
 ## LibreOffice conversion kit
 
 ${[...LIBREOFFICE_PACKAGES].map(name => `\`${name}\``).join(', ')} declare MPL-2.0, which remains outside the permissive-license allowlist; the notices check accepts only these package identities at those terms. The [distribution decision](.agents/notes/implemented/architecture/2026-09-14-independent-libreoffice-kit.md) records the source obligations.
 
-The [kit repository](https://github.com/deepseek-harness/libreoffice-kit) supplies the corresponding LibreOffice source pin, modifications, build instructions, Node API, and artifact validation. Its engine packages retain their license and third-party notices; the Node API retains its MPL-2.0 declaration and NOTICE. Recipients must have access to those corresponding sources and notices.
+The [kit repository](https://github.com/deepseek-ai/dsh-libreoffice-kit) supplies the corresponding LibreOffice source pin, modifications, build instructions, Node API, and artifact validation. Its engine packages retain their license and third-party notices; the Node API retains its MPL-2.0 declaration and NOTICE. Recipients must have access to those corresponding sources and notices.
 ` : ''}
 
 ## Development-only npm dependencies

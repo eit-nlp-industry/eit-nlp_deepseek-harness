@@ -1,0 +1,8 @@
+version: 1
+scenario: json-render-fallback
+profile: headless
+composition: default
+recording: authored
+header:
+  class: json-render
+  pin: true
