@@ -145,6 +145,23 @@ describe('mcp-client plugin module exports', () => {
       reconnect: { maxAttempts: 0 },
     } as never)).toThrow()
   })
+
+  it('Config schema materializes clientInstructions as empty by default', () => {
+    const omitted = ConfigSchema({
+      transport: 'stdio',
+      serverName: 'srv',
+      command: 'echo',
+    } as never)
+    expect(omitted.clientInstructions).toBe('')
+
+    const enabled = ConfigSchema({
+      transport: 'streamable-http',
+      serverName: 'hindsight',
+      url: 'http://127.0.0.1:8888/mcp/default/',
+      clientInstructions: 'Call recall first.',
+    } as never)
+    expect(enabled.clientInstructions).toBe('Call recall first.')
+  })
 })
 
 describe('apply (plugin lifecycle)', () => {
@@ -163,6 +180,22 @@ describe('apply (plugin lifecycle)', () => {
     })
     mockCallTool.mockResolvedValue({ content: [{ type: 'text', text: 'ok' }] })
     ctx = await mountRegistry()
+  })
+
+  it('appends clientInstructions when the server has no instructions', async () => {
+    const spy = vi.spyOn(MockClient.prototype, 'getInstructions').mockReturnValue(undefined)
+    try {
+      await apply(ctx, {
+        ...stdioConfig, failOnStartupError: true, reconnect: { enabled: false },
+        clientInstructions: 'Call recall before answering.',
+      })
+      expect(renderPrompt(await ctx.systemPrompt.assemble())).toContain(
+        '### MCP client instructions: srv\n\nCall recall before answering.',
+      )
+    } finally {
+      spy.mockRestore()
+      await ctx.fiber.dispose()
+    }
   })
 
   it.each([undefined, '', ' \n\t'])(

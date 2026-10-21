@@ -222,6 +222,9 @@
     # Every shipped CLI mode starts with the same file-effect boundary.
     # The environment remains an explicit deployment override; otherwise fresh
     # sessions pin workspace-write + ask through the permission service below.
+    # Windows web/n8n overlays may default to danger-full-access when the ACL
+    # restricted-token runner cannot start; pin DSH_PERMISSION_MODE to keep
+    # workspace-write. Do not silently unconfine a requested confined mode.
     - id: sandbox
       name: '@deepseek-ai/dsh-sandbox-local'
 
@@ -509,6 +512,20 @@
             ? { Authorization: 'Bearer ' + process.env.HINDSIGHT_MCP_TOKEN }
             : {}
         failOnStartupError: true
+        # Recall is prompt-driven: 是什么 / 怎么样 / 怎么做 and equivalents
+        # must call the tool before answering. No automatic first-turn recall.
+        clientInstructions: |-
+          Call `recall` BEFORE answering whenever the user asks what something
+          is, how something is, or how to do something — including 是什么,
+          怎么样, 怎么做, what is, how does, how should, how to, preferences,
+          standing rules, identity, prior decisions, or "do we already…".
+
+          Pass a query that names the thing asked, not a generic "session
+          start" string. Do not answer those questions from general knowledge
+          or this chat alone.
+
+          Skip recall only for mechanical work that does not depend on stored
+          memory (run this command, read this file, edit this path).
 
     # ── rows every mode mounts, whose values each overlay may state ──────────────
 

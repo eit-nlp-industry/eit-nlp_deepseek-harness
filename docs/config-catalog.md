@@ -1966,6 +1966,8 @@ export interface StdioConfig {
   maxInstructionBytes?: number
   /** Automatic reconnect policy after a lost connection; omission uses the defaults. */
   reconnect?: ReconnectConfig
+  /** Extra prompt text attributed to this client, appended after server instructions. */
+  clientInstructions?: string
 }
 
 /** Config for connecting to an MCP server over Streamable HTTP (SSE). */
@@ -1990,6 +1992,8 @@ export interface StreamableHttpConfig {
   maxInstructionBytes?: number
   /** Automatic reconnect policy after a lost connection; omission uses the defaults. */
   reconnect?: ReconnectConfig
+  /** Extra prompt text attributed to this client, appended after server instructions. */
+  clientInstructions?: string
 }
 
 /** Automatic reconnect policy for one MCP server connection. */
@@ -2005,7 +2009,7 @@ export interface ReconnectConfig {
 }
 ```
 
-Source: [`packages/mcp/mcp-client/src/index.ts:104`](../packages/mcp/mcp-client/src/index.ts)
+Source: [`packages/mcp/mcp-client/src/index.ts:108`](../packages/mcp/mcp-client/src/index.ts)
 
 <a id="deepseek-aidsh-message-feedback"></a>
 

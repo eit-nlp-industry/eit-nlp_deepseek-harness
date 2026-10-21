@@ -316,7 +316,11 @@ export function startConnection(ctx: Context, config: Config, policy: ResolvedRe
         return
       }
       const serverText = generation.getInstructions()?.trimEnd() ?? ''
-      instructions = serverText ? `### MCP server: ${config.serverName}\n\n${serverText}` : ''
+      const clientText = config.clientInstructions?.trimEnd() ?? ''
+      const parts: string[] = []
+      if (serverText) parts.push(`### MCP server: ${config.serverName}\n\n${serverText}`)
+      if (clientText) parts.push(`### MCP client instructions: ${config.serverName}\n\n${clientText}`)
+      instructions = parts.join('\n\n')
       if (Buffer.byteLength(instructions) > maxInstructionBytes) {
         throw new Error(`${label}: server instructions exceed maxInstructionBytes (${maxInstructionBytes})`)
       }
