@@ -153,6 +153,7 @@ describe('mcp-client plugin module exports', () => {
       command: 'echo',
     } as never)
     expect(omitted.clientInstructions).toBe('')
+    expect(omitted.questionPrefix).toBe('')
 
     const enabled = ConfigSchema({
       transport: 'streamable-http',

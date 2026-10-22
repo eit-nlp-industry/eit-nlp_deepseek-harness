@@ -505,26 +505,10 @@
             ? { Authorization: 'Bearer ' + process.env.HINDSIGHT_MCP_TOKEN }
             : {}
         failOnStartupError: true
-        # Recall on ordinary questions, not only when the user says
-        # 「按照之前约定」. Users should not have to add that cue.
-        clientInstructions: |-
-          Call `recall` BEFORE answering ordinary questions — 是什么,
-          怎么样, 怎么做, what is, how does, how should, how to,
-          preferences, standing rules, identity, prior decisions, or
-          "do we already…".
-
-          Do not wait for cue words such as 按照之前约定, 按上次说的,
-          按约定, remember, as we discussed, or according to what we
-          agreed. Most questions will not include those phrases; still
-          recall. The user should never need to add them.
-
-          Pass a query that names the thing asked, not a generic
-          "session start" string. Do not answer from general knowledge
-          or this chat alone.
-
-          Skip recall only for mechanical work that does not depend on
-          stored memory (run this command, read this file, edit this
-          path).
+        # Plant the cue that already triggers Hindsight recall. Do not
+        # force a tool call — users should not have to type this themselves.
+        clientInstructions: 按照之前约定。
+        questionPrefix: 按照之前约定。
 
     # ── rows every mode mounts, whose values each overlay may state ──────────────
 

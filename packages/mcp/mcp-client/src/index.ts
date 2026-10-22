@@ -19,9 +19,12 @@ import { scopeOf } from '@deepseek-ai/dsh-scope'
 import { MAX_TIMER_DELAY_MS } from '@deepseek-ai/dsh-timeout'
 import { DEFAULT_MAX_INSTRUCTION_BYTES, RECONNECT_DEFAULTS, resolveReconnectPolicy, startConnection } from './connection.ts'
 import type { ReconnectConfig } from './connection.ts'
+import { installQuestionPrefix } from './question-prefix.ts'
 import { registerServerContext } from './server-context.ts'
 // Side-effect type import: declaration-merges `ctx.tools` onto Context.
 import type {} from '@deepseek-ai/dsh-tools'
+// Side-effect type import: declaration-merges `agent/pre-step` onto Context.
+import type {} from '@deepseek-ai/dsh-agent'
 
 export { createMcpToolDefinition } from './tools.ts'
 export type { McpResult, McpToolDefinitionOptions } from './tools.ts'
@@ -76,6 +79,8 @@ export interface StdioConfig {
   reconnect?: ReconnectConfig
   /** Extra prompt text attributed to this client, appended after server instructions. */
   clientInstructions?: string
+  /** Literal cue inserted before each user question. Empty string disables it. */
+  questionPrefix?: string
 }
 
 /** Config for connecting to an MCP server over Streamable HTTP (SSE). */
@@ -102,6 +107,8 @@ export interface StreamableHttpConfig {
   reconnect?: ReconnectConfig
   /** Extra prompt text attributed to this client, appended after server instructions. */
   clientInstructions?: string
+  /** Literal cue inserted before each user question. Empty string disables it. */
+  questionPrefix?: string
 }
 
 /** Configuration for one stdio or Streamable HTTP MCP server. */
@@ -133,6 +140,7 @@ export const Config = z.union([
     maxInstructionBytes: z.number().step(1).min(1).default(DEFAULT_MAX_INSTRUCTION_BYTES),
     reconnect: Reconnect,
     clientInstructions: z.string().default(''),
+    questionPrefix: z.string().default(''),
   }),
   z.object({
     transport: z.const('streamable-http'),
@@ -144,6 +152,7 @@ export const Config = z.union([
     maxInstructionBytes: z.number().step(1).min(1).default(DEFAULT_MAX_INSTRUCTION_BYTES),
     reconnect: Reconnect,
     clientInstructions: z.string().default(''),
+    questionPrefix: z.string().default(''),
   }),
 ]) as z<ConfigInput, Config>
 
@@ -186,6 +195,7 @@ export async function apply(ctx: Context, config: Config): Promise<void> {
   // quiesces in-flight work, and unregisters the current generation.
   const connection = startConnection(ctx, config, reconnect)
   registerServerContext(ctx, config.serverName, connection)
+  installQuestionPrefix(ctx, config.serverName, config.questionPrefix ?? '')
   let stopping: Promise<void> | undefined
   const dispose = (): Promise<void> => stopping ??= connection.dispose()
   // Cordis announces unload before awaiting an unfinished apply(). Closing

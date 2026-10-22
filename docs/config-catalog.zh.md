@@ -2191,6 +2191,8 @@ export interface StdioConfig {
   reconnect?: ReconnectConfig
   /** Extra prompt text attributed to this client, appended after server instructions. */
   clientInstructions?: string
+  /** Literal cue inserted before each user question. Empty string disables it. */
+  questionPrefix?: string
 }
 
 /** Config for connecting to an MCP server over Streamable HTTP (SSE). */
@@ -2217,6 +2219,8 @@ export interface StreamableHttpConfig {
   reconnect?: ReconnectConfig
   /** Extra prompt text attributed to this client, appended after server instructions. */
   clientInstructions?: string
+  /** Literal cue inserted before each user question. Empty string disables it. */
+  questionPrefix?: string
 }
 
 /** Automatic reconnect policy for one MCP server connection. */

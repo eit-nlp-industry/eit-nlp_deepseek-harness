@@ -62,6 +62,7 @@ kind: "package-reference"
 | `maxInstructionBytes` | `32,768` | 包括服务器归属信息在内的服务器指令 UTF-8 字节上限；超出时连接失败 |
 | `failOnStartupError` | `false` | 初始连接或工具同步失败时拒绝插件激活 |
 | `clientInstructions` | `''` | 归属于本客户端的额外提示词，接在服务器指令之后 |
+| `questionPrefix` | `''` | 插在每条用户问题前的字面提示；空字符串表示关闭 |
 | `reconnect.enabled` | `true` | 连接丢失后自动重新连接 |
 | `reconnect.initialDelayMs` | `500` | 首次重连延迟；每次连续失败尝试翻倍 |
 | `reconnect.maxDelayMs` | `30,000` | 退避上限；同时是重置尝试预算所需的正常运行时长 |
