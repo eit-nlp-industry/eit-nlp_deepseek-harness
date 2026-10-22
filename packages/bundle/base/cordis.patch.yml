@@ -507,7 +507,7 @@
         failOnStartupError: true
         # Keep the English system prompt clean. The Chinese cue sits only
         # in front of the user question, which is how recall already fires.
-        questionPrefix: 按照之前约定。
+        questionPrefix: "按照之前约定。"
 
     # ── rows every mode mounts, whose values each overlay may state ──────────────
 
