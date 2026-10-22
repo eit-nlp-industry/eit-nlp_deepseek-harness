@@ -505,9 +505,8 @@
             ? { Authorization: 'Bearer ' + process.env.HINDSIGHT_MCP_TOKEN }
             : {}
         failOnStartupError: true
-        # Plant the cue that already triggers Hindsight recall. Do not
-        # force a tool call — users should not have to type this themselves.
-        clientInstructions: 按照之前约定。
+        # Keep the English system prompt clean. The Chinese cue sits only
+        # in front of the user question, which is how recall already fires.
         questionPrefix: 按照之前约定。
 
     # ── rows every mode mounts, whose values each overlay may state ──────────────
