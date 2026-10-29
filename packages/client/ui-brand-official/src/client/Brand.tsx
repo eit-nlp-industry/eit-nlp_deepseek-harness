@@ -1,5 +1,4 @@
-import { BrandWordmark } from '@deepseek-ai/dsh-client-ui-primitives'
-import { EitNlpLogo } from '../../../ui-primitives/src/EitNlpLogo.tsx'
+import { BrandWordmark, EitNlpLogo } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { SidebarBrandMarkOwnerProps } from '@deepseek-ai/dsh-client-ui-sidebar/client'
 
 /**

@@ -3,9 +3,8 @@
 
 import type { ReactNode, RefObject } from 'react'
 import {
-  IconChevronDownOutlineRegular, IconFolderCloseRegular, IconFolderOpenRegular,
+  EitNlpLogo, IconChevronDownOutlineRegular, IconFolderCloseRegular, IconFolderOpenRegular,
 } from '@deepseek-ai/dsh-client-ui-primitives'
-import { EitNlpLogo } from '../../../../ui-primitives/src/EitNlpLogo.tsx'
 import { workspaceTitleOf } from '@deepseek-ai/dsh-util-workspace-path'
 import type { ConversationContentProps } from '../contract/slots.ts'
 import css from './HeroShell.module.css'

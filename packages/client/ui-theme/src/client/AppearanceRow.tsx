@@ -8,6 +8,7 @@
 import clsx from 'clsx'
 import {
   IconDarkOutlineMedium, IconFollowsystemOutlineMedium, IconLightOutlineMedium,
+  type IconProps,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { PropsLocale, PropsRuntime, PropsStore } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ThemePreference } from '../theme-settings.ts'
@@ -28,7 +29,7 @@ export type AppearanceRowComponentProps =
   & PropsLocale<'settings.theme'> & AppearanceRowInjected
 
 /** Product-local robot-dog glyph for the Appearance cube (not a shared primitive). */
-function IconRobotDogOutlineMedium({ size = 16, className }: { size?: number; className?: string }) {
+function IconRobotDogOutlineMedium({ size = 16, className }: IconProps) {
   return (
     <svg width={size} height={size} className={className} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M3.5 10.5V7.5C3.5 6.11929 4.61929 5 6 5H9.5C10.3284 5 11 5.67157 11 6.5V7" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />

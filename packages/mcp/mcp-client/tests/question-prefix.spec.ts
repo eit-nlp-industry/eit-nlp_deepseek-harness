@@ -9,7 +9,7 @@ function fakeAgent(): Agent {
 }
 
 function user(text: string) {
-  return createUserMessage({ content: [{ type: 'text', text }] })
+  return createUserMessage({ content: [{ type: 'text', text }], source: { kind: 'user' } })
 }
 
 async function enter(ctx: Context, agent: Agent, messages: ReturnType<typeof user>[]) {
