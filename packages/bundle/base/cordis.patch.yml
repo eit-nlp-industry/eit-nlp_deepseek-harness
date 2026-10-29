@@ -495,11 +495,11 @@
     #     disabled: true
     - id: memory-hindsight
       name: '@deepseek-ai/dsh-mcp-client'
-      disabled: false
+      disabled: true
       config:
         serverName: hindsight
         transport: streamable-http
-        url: !!js process.env.HINDSIGHT_MCP_URL || 'http://127.0.0.1:8888/mcp/default/'
+        url: !!js process.env.HINDSIGHT_MCP_URL || 'http://10.37.0.21:8889/mcp/default/'
         headers: !!js |
           process.env.HINDSIGHT_MCP_TOKEN
             ? { Authorization: 'Bearer ' + process.env.HINDSIGHT_MCP_TOKEN }
@@ -507,7 +507,6 @@
         failOnStartupError: true
         # Keep the English system prompt clean. The Chinese cue sits only
         # in front of the user question, which is how recall already fires.
-        questionPrefix: "按照之前约定。"
 
     # ── rows every mode mounts, whose values each overlay may state ──────────────
 
