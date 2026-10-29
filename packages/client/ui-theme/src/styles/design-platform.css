@@ -80,6 +80,24 @@ body {
   --dsw-static-red-600: rgb(236, 19, 19);
   --dsw-static-red-600-a08: rgb(236 19 19 / 8%);
   --dsw-static-red-900: rgb(87, 12, 12);
+  /* Campus palette: warm paper grounds, grey-green tints, and the deep pine
+     green that carries primary actions and the business accent. */
+  --dsw-static-campus-00: rgb(255, 255, 255);
+  --dsw-static-campus-50: rgb(247, 248, 245);
+  --dsw-static-campus-60: rgb(243, 245, 241);
+  --dsw-static-campus-75: rgb(238, 242, 237);
+  --dsw-static-campus-100: rgb(231, 238, 232);
+  --dsw-static-campus-200: rgb(212, 226, 217);
+  --dsw-static-campus-300: rgb(176, 204, 189);
+  --dsw-static-campus-400: rgb(110, 176, 148);
+  --dsw-static-campus-500: rgb(56, 128, 100);
+  --dsw-static-campus-600: rgb(45, 94, 78);
+  --dsw-static-campus-700: rgb(35, 76, 63);
+  --dsw-static-campus-800: rgb(38, 52, 46);
+  --dsw-static-campus-900: rgb(28, 38, 34);
+  --dsw-static-campus-ink-secondary: rgb(86, 98, 93);
+  --dsw-static-campus-ink-tertiary: rgb(126, 137, 132);
+  --dsw-static-campus-ink-caption: rgb(166, 175, 170);
 }
 
 body[data-ds-dark-theme] {
@@ -281,6 +299,55 @@ body {
   background-color: var(--dsw-alias-bg-base);
 }
 
+/* Robot-dog product palette: warm paper grounds and pine-green accents.
+   Selected via body[data-dsh-palette='robot-dog'] when preference is robotDog. */
+body[data-dsh-palette='robot-dog'] {
+  --dsw-alias-bg-base: var(--dsw-static-campus-50);
+  --dsw-alias-bg-module-platform: var(--dsw-static-campus-60);
+  --dsw-alias-bg-multi-select: var(--dsw-static-campus-60);
+  --dsw-alias-bg-overlay: var(--dsw-static-campus-100);
+  --dsw-alias-bg-skeleton: rgba(30, 58, 47, 0.05);
+  --dsw-alias-border-l1: rgba(30, 58, 47, 0.05);
+  --dsw-alias-border-l2-darkmode-thin: rgba(30, 58, 47, 0.1);
+  --dsw-alias-border-l2: rgba(30, 58, 47, 0.1);
+  --dsw-alias-border-l3: rgba(30, 58, 47, 0.13);
+  --dsw-alias-border-l4: rgba(30, 58, 47, 0.18);
+  --dsw-alias-button-info-fill: var(--dsw-static-campus-600);
+  --dsw-alias-button-info-hover: var(--dsw-static-campus-700);
+  --dsw-alias-button-primary-dimmed: var(--dsw-static-campus-100);
+  --dsw-alias-button-primary-fill: var(--dsw-static-campus-600);
+  --dsw-alias-button-primary-hover: var(--dsw-static-campus-700);
+  --dsw-alias-interactive-bg-active: rgba(45, 94, 78, 0.1);
+  --dsw-alias-interactive-bg-hover-accent: rgba(45, 94, 78, 0.14);
+  --dsw-alias-interactive-bg-hover-solid: var(--dsw-static-campus-75);
+  --dsw-alias-interactive-bg-hover: rgba(45, 94, 78, 0.06);
+  --dsw-alias-label-caption: var(--dsw-static-campus-ink-caption);
+  --dsw-alias-label-deep-diving: color-mix(in srgb, var(--dsw-static-campus-500) 70%, var(--dsw-static-campus-900));
+  --dsw-alias-label-deep-diving-shimmer: color-mix(in srgb, var(--dsw-static-campus-500) 30%, var(--dsw-static-campus-900));
+  --dsw-alias-label-dimmed: var(--dsw-static-campus-200);
+  --dsw-alias-label-primary-bluish: var(--dsw-static-campus-700);
+  --dsw-alias-label-primary-dimmed: var(--dsw-static-campus-800);
+  --dsw-alias-label-primary: var(--dsw-static-campus-900);
+  --dsw-alias-label-secondary: var(--dsw-static-campus-ink-secondary);
+  --dsw-alias-label-shimmer: color-mix(in srgb, var(--dsw-static-campus-900) 30%, transparent);
+  --dsw-alias-label-tertiary: var(--dsw-static-campus-ink-tertiary);
+  --dsw-alias-menu-icon: var(--dsw-static-campus-800);
+  --dsw-alias-link: var(--dsw-static-campus-600);
+  --dsw-alias-state-business-primary: var(--dsw-static-campus-600);
+  --dsw-alias-state-business-tertiary: var(--dsw-static-campus-100);
+  --dsw-specific-bubble-highlight: var(--dsw-static-campus-200);
+  --dsw-specific-bubble: var(--dsw-static-campus-75);
+  --dsw-specific-input-major: var(--dsw-static-campus-00);
+  --dsw-specific-login-input: var(--dsw-static-campus-50);
+  --dsw-specific-selector: var(--dsw-static-campus-75);
+  --dsw-specific-sidebar-fill: var(--dsw-static-campus-60);
+  --dsw-specific-sidebar-nav-item-active-accent: var(--dsw-static-campus-100);
+  --dsw-specific-sidebar-nav-item-active: var(--dsw-static-campus-100);
+  --dsw-specific-sidebar-nav-item-hover: var(--dsw-static-campus-75);
+  --dsw-specific-tip: var(--dsw-static-campus-60);
+}
+
+
 body[data-ds-dark-theme] {
   --dsw-alias-bg-base: var(--dsw-static-neutral-bluish-950);
   --dsw-alias-bg-document-preview: var(--dsw-static-neutral-bluish-950);
@@ -395,6 +462,10 @@ body[data-ds-dark-theme] {
   --dsw-specific-sidebar-nav-item-active: var(--dsw-static-neutral-bluish-750);
   --dsw-specific-sidebar-nav-item-hover: var(--dsw-static-neutral-bluish-850);
   --dsw-specific-tip: var(--dsw-static-neutral-bluish-800);
+}
+
+html[data-platform='darwin'] body[data-dsh-palette='robot-dog'] {
+  --dsw-specific-menu: rgba(250, 251, 248, 0.94);
 }
 
 /* Overlays without MenuSurface's opaque backing cannot blur page content over

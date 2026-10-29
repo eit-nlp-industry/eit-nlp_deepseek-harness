@@ -398,6 +398,18 @@ button.crumb:hover {
   --dsh-composer-dock-inset: 8px;
 }
 
+/* Phone widths: the transcript and composer reclaim the side gutters, and the
+   header drops to the mobile inset. */
+@media (max-width: 600px) {
+  .body {
+    --dsh-composer-side-clearance: 4px;
+  }
+
+  .header {
+    padding-inline: 12px;
+  }
+}
+
 .scrollBody {
   display: flex;
   flex: 1;

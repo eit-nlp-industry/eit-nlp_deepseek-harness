@@ -37,6 +37,7 @@ export type { AppearanceRowState, FontRowState } from './settings-store.ts'
 export type { ThemeKey } from './locales.ts'
 export type { FontFamilies, FontRole, FontSizes, ThemePreference, ThemeSettings } from '../theme-settings.ts'
 
+
 /** Namespace owning this feature's settings-row copy. */
 export const SETTINGS_NS = 'settings.theme'
 
@@ -130,6 +131,8 @@ declare module '@deepseek-ai/cordis' {
 const BUILTIN_THEMES: readonly ThemeDefinition[] = Object.freeze([
   Object.freeze({ id: 'light', colorScheme: 'light' as const, tokens: Object.freeze({}) }),
   Object.freeze({ id: 'dark', colorScheme: 'dark' as const, tokens: Object.freeze({}) }),
+  // Campus green product palette; the token sheet selects it through data-dsh-palette.
+  Object.freeze({ id: 'robotDog', colorScheme: 'light' as const, tokens: Object.freeze({}) }),
 ])
 
 const BUILTIN_INSPECT_TOKENS: readonly ThemeTokenInspection[] = Object.freeze([

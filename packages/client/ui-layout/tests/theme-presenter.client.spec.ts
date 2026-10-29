@@ -3,7 +3,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import type { FontFamilies, ThemePreference, ThemeSnapshot } from '@deepseek-ai/dsh-client-ui-theme/client'
 import { fontFamilyVariable } from '@deepseek-ai/dsh-client-ui-theme/src/theme-settings.ts'
-import { DARK_ATTRIBUTE, THEME_SOURCE_ATTRIBUTE, ThemePresenter } from '@deepseek-ai/dsh-client-ui-layout/src/client/theme-presenter.ts'
+import { DARK_ATTRIBUTE, PALETTE_ATTRIBUTE, THEME_SOURCE_ATTRIBUTE, ThemePresenter } from '@deepseek-ai/dsh-client-ui-layout/src/client/theme-presenter.ts'
 
 const LIGHT_THEME_COLOR = 'rgb(255, 255, 255)'
 const DARK_THEME_COLOR = 'rgb(21, 21, 23)'
@@ -33,6 +33,7 @@ beforeEach(() => {
   document.documentElement.style.removeProperty('color-scheme')
   document.documentElement.removeAttribute(THEME_SOURCE_ATTRIBUTE)
   document.body.removeAttribute(DARK_ATTRIBUTE)
+  document.body.removeAttribute(PALETTE_ATTRIBUTE)
   document.body.removeAttribute('style')
   const style = document.createElement('style')
   style.dataset.themePresenterTest = ''
@@ -117,6 +118,22 @@ describe('ThemePresenter', () => {
     expect(document.documentElement.getAttribute(THEME_SOURCE_ATTRIBUTE)).toBe('dark')
     presenter.dispose()
     expect(document.documentElement.hasAttribute(THEME_SOURCE_ATTRIBUTE)).toBe(false)
+  })
+
+  it('sets the robot-dog palette attribute for the robotDog preference and clears it otherwise', () => {
+    const presenter = new ThemePresenter()
+    presenter.apply({
+      preference: 'robotDog',
+      fontSizes: { text: 14, code: 11, terminal: 13 },
+      fontFamilies: { text: '', code: '', terminal: '' },
+      active: { id: 'robotDog', colorScheme: 'light', tokens: {} },
+      themes: [],
+      revision: 1,
+    })
+    expect(document.body.getAttribute(PALETTE_ATTRIBUTE)).toBe('robot-dog')
+    presenter.apply(snapshot('light'))
+    expect(document.body.hasAttribute(PALETTE_ATTRIBUTE)).toBe(false)
+    presenter.dispose()
   })
 
   it('dispose removes color-scheme, the attribute, the font-size axis, and every applied variable, sparing foreign inline styles', () => {

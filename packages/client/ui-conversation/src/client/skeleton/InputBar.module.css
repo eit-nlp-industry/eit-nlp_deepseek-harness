@@ -410,6 +410,17 @@
   cursor: pointer;
 }
 
+/* Phone widths: a tighter capsule so the composer reads as a bottom input bar. */
+@media (max-width: 600px) {
+  .card {
+    border-radius: var(--dsw-radius-xl);
+  }
+
+  .cardWorkspaceTrigger::after {
+    border-radius: var(--dsw-radius-xl);
+  }
+}
+
 .standardControls { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .tools[hidden], .standardControls[hidden] { display: none; }
 .trailingActive { flex: 1; margin-left: 0; }

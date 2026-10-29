@@ -16,6 +16,12 @@ import type { FontRole, ThemeSnapshot } from '@deepseek-ai/dsh-client-ui-theme/c
 /** Body attribute selecting the dark base palette in the token stylesheets. */
 export const DARK_ATTRIBUTE = 'data-ds-dark-theme'
 
+/** Body attribute selecting a product palette overlay in the token stylesheets. */
+export const PALETTE_ATTRIBUTE = 'data-dsh-palette'
+
+/** Matches `ROBOT_DOG_PALETTE` in ui-theme's token sheet and boot script. */
+const ROBOT_DOG_PALETTE = 'robot-dog'
+
 /**
  * Root attribute publishing the theme source (`light`, `dark`, or `system`)
  * for host shells that mirror it into the native theme (the Electron preload
@@ -74,6 +80,11 @@ export class ThemePresenter {
     const body = document.body
     if (scheme === 'dark') body.setAttribute(DARK_ATTRIBUTE, '')
     else body.removeAttribute(DARK_ATTRIBUTE)
+    if (snapshot.preference === 'robotDog' || snapshot.active.id === 'robotDog') {
+      body.setAttribute(PALETTE_ATTRIBUTE, ROBOT_DOG_PALETTE)
+    } else {
+      body.removeAttribute(PALETTE_ATTRIBUTE)
+    }
     for (const [role, name] of Object.entries(FONT_SIZE_VARIABLES)) {
       body.style.setProperty(name, `${snapshot.fontSizes[role as FontRole]}px`)
     }
@@ -101,6 +112,7 @@ export class ThemePresenter {
     document.documentElement.removeAttribute(THEME_SOURCE_ATTRIBUTE)
     const body = document.body
     body.removeAttribute(DARK_ATTRIBUTE)
+    body.removeAttribute(PALETTE_ATTRIBUTE)
     for (const name of Object.values(FONT_SIZE_VARIABLES)) body.style.removeProperty(name)
     for (const name of Object.values(FONT_FAMILY_VARIABLES)) body.style.removeProperty(name)
     for (const name of this.appliedTokens) body.style.removeProperty(name)

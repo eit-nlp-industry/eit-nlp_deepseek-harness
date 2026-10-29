@@ -56,9 +56,9 @@
     "@deepseek-ai/dsh-client-ui-slots": "workspace:*",
     "@deepseek-ai/dsh-client-ui-tool": "workspace:*",
     "@deepseek-ai/dsh-session": "workspace:*",
-    "@eit/json-render-antd": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/antd",
-    "@eit/json-render-protocol": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/protocol",
-    "@eit/json-render-react": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0&path:packages/react",
+    "@eit/json-render-antd": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0-rc.5&path:packages/antd",
+    "@eit/json-render-protocol": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0-rc.5&path:packages/protocol",
+    "@eit/json-render-react": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0-rc.5&path:packages/react",
     "@types/react": "~18.3.1",
     "antd": "^5.24.0",
     "react": "^18.2.0"

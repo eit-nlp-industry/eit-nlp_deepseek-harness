@@ -22,6 +22,7 @@ const COPY: Record<string, string> = {
   'appearance.light': 'Light',
   'appearance.dark': 'Dark',
   'appearance.system': 'System',
+  'appearance.robotDog': 'Robot dog',
 }
 
 function emptySessions() {
@@ -63,12 +64,21 @@ const pressed = (name: RegExp): string | null =>
   screen.getByRole('button', { name }).getAttribute('aria-pressed')
 
 describe('AppearanceRow', () => {
-  it('renders the title and three cubes with the preference cube selected', () => {
+  it('renders the title and preference cubes with the preference cube selected', () => {
     mount('dark')
     expect(screen.getByText('Appearance')).toBeDefined()
     expect(pressed(/Dark/)).toBe('true')
     expect(pressed(/Light/)).toBe('false')
     expect(pressed(/System/)).toBe('false')
+    expect(pressed(/Robot dog/)).toBe('false')
+  })
+
+  it('selects the robot-dog cube', () => {
+    const b = mount('system')
+    fireEvent.click(screen.getByRole('button', { name: /Robot dog/ }))
+    expect(b.setTheme).toHaveBeenCalledWith('robotDog')
+    act(() => { b.store.actions.sync('robotDog', 1) })
+    expect(pressed(/Robot dog/)).toBe('true')
   })
 
   it('click drives setTheme; selection follows the store mirror, not the click echo', () => {

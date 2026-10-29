@@ -6,6 +6,7 @@ import { bootThemeInjections } from '../src/boot-theme.ts'
 import type { FontSizes, ThemePreference } from '../src/theme-settings.ts'
 
 const DARK_ATTRIBUTE = 'data-ds-dark-theme'
+const PALETTE_ATTRIBUTE = 'data-dsh-palette'
 
 function mockSystemDark(matches: boolean): void {
   vi.stubGlobal('matchMedia', vi.fn(() => ({ matches }) as MediaQueryList))
@@ -22,6 +23,7 @@ afterEach(() => {
   vi.unstubAllGlobals()
   delete document.documentElement.dataset.dsThemeSource
   document.body.removeAttribute(DARK_ATTRIBUTE)
+  document.body.removeAttribute(PALETTE_ATTRIBUTE)
   for (const name of ['--dsh-content-font-size', '--dsh-code-font-size', '--dsh-terminal-font-size']) document.body.style.removeProperty(name)
   for (const kind of ['text', 'code', 'terminal']) document.body.style.removeProperty(`--dsh-font-family-${kind}`)
 })
@@ -39,6 +41,17 @@ describe('theme bootstrap row', () => {
     runInNewContext(body.text, { document, matchMedia: globalThis.matchMedia })
     expect(document.documentElement.dataset.dsThemeSource).toBe('dark')
     expect(document.body.hasAttribute(DARK_ATTRIBUTE)).toBe(true)
+  })
+
+  it('selects the robot-dog light canvas and palette attribute', () => {
+    mockSystemDark(true)
+    const [head] = bootThemeInjections('robotDog')
+    if (head?.kind !== 'style') throw new Error('theme head bootstrap row is not a style')
+    expect(head.text).toBe(':root{color-scheme:light}body{background-color:#f7f8f5;--dsh-boot-bg:#f7f8f5}')
+    executeBootstrap('robotDog')
+    expect(document.documentElement.dataset.dsThemeSource).toBe('light')
+    expect(document.body.hasAttribute(DARK_ATTRIBUTE)).toBe(false)
+    expect(document.body.getAttribute(PALETTE_ATTRIBUTE)).toBe('robot-dog')
   })
 
   it('lets durable light override a dark OS and clears stale dark state', () => {

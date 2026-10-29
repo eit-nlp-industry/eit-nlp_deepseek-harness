@@ -3,7 +3,10 @@
 import z from '@deepseek-ai/schemastery'
 
 /** Built-in preferences accepted at the registry and settings boundaries. */
-export const THEME_PREFERENCES = ['light', 'dark', 'system'] as const
+export const THEME_PREFERENCES = ['light', 'dark', 'system', 'robotDog'] as const
+
+/** Body attribute value selecting the robot-dog product palette in the token sheet. */
+export const ROBOT_DOG_PALETTE = 'robot-dog'
 
 /** Settings namespace owned by the theme plugin. */
 export const THEME_SETTINGS_NAMESPACE = 'ui-theme'

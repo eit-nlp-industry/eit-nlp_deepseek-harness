@@ -25,7 +25,7 @@
 # win32 unless the operator pins DSH_PERMISSION_MODE. Linux/macOS unchanged.
 - id: sandbox-policy
   config:
-    mode: !!js process.env.DSH_PERMISSION_MODE ?? (process.platform === 'win32' ? 'danger-full-access' : 'workspace-write')
+    mode: !!js "(process.env.DSH_PERMISSION_MODE ?? (process.platform === 'win32' ? 'danger-full-access' : 'workspace-write'))"
     workspaceRoot: !!js process.cwd()
 
 - id: approval
