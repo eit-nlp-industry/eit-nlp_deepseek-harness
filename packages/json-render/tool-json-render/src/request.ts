@@ -272,11 +272,14 @@ function errorRecord(body: unknown): { message?: string; code?: string; requestI
   if (root === undefined) return {}
   const error = asObject(own(root, 'error')) ?? root
   const message = typeof error.message === 'string' && error.message.trim() !== '' ? clip(error.message) : undefined
+  const code = safeToken(error.code)
+  const requestId = safeToken(error.requestId) ?? safeToken(own(root, 'requestId'))
+  const diagnostics = safeDiagnostics(error.diagnostics) ?? safeDiagnostics(own(root, 'diagnostics'))
   return {
-    message,
-    code: safeToken(error.code),
-    requestId: safeToken(error.requestId) ?? safeToken(own(root, 'requestId')),
-    diagnostics: safeDiagnostics(error.diagnostics) ?? safeDiagnostics(own(root, 'diagnostics')),
+    ...message !== undefined ? { message } : {},
+    ...code !== undefined ? { code } : {},
+    ...requestId !== undefined ? { requestId } : {},
+    ...diagnostics !== undefined ? { diagnostics } : {},
   }
 }
 

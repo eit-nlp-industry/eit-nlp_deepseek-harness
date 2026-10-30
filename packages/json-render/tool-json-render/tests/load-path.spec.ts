@@ -81,7 +81,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
   it('honors host config and ends the turn only after a successful form', async () => {
     const previous = process.env.JSON_RENDER_BASE_URL
     const payload = { format: 'json-render-v1', spec: { root: 'card', elements: { card: { type: 'Card', props: { title: 'A' } } } } }
-    const respond = (status: number) => vi.fn(async () => new Response(JSON.stringify(status === 200 ? payload : { error: { message: '拒绝' } }), {
+    const respond = (status: number) => vi.fn<typeof fetch>(async () => new Response(JSON.stringify(status === 200 ? payload : { error: { message: '拒绝' } }), {
       status,
       headers: { 'content-type': 'application/json' },
     }))
