@@ -8,7 +8,7 @@
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { defineTool } from '@deepseek-ai/dsh-tools'
-import { requestJsonRender, type RenderUiResult } from './request.ts'
+import { requestJsonRender, resolvedRenderProfile, selectRenderRoute, type RenderUiResult } from './request.ts'
 
 export const name = 'tool-json-render'
 
@@ -24,9 +24,9 @@ export const DEFAULT_RENDER_UI_DESCRIPTION = [
   'Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters.',
   'For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request.',
   'answer_presentation defaults to "replace" for display: the interface must fully answer the request. Use "supplement" when the written answer contains necessary explanations or caveats absent from the interface.',
-  'Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit.',
-  'If the request is ambiguous or a choice is missing, call ask_user_question instead.',
-  'Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.',
+  'mode does not select the component catalog. Omit intent for an ordinary display so the server uses base. Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit.',
+  'When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, or CodeBlock, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead.',
+  'For an image, business_data carries the resource address as a string for Image src and a string alt. Do not add a domain, re-encode the address, pass the image object as src, or copy component or type into props. ImageUpload only names uploadTarget; do not invent an endpoint or credential. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.',
 ].join(' ')
 
 export interface Config {
@@ -74,7 +74,7 @@ export function apply(ctx: Context, config: Config): void {
         type: 'string',
         required: true,
         enum: ['display', 'form'],
-        description: 'display renders a read-only layout. form renders generic_filters or generic_pick_one and ends the turn on success.',
+        description: 'display renders a read-only layout and continues the turn. form renders a form and ends the turn on success. mode does not select the catalog.',
       },
       user_query: {
         type: 'string',
@@ -88,7 +88,20 @@ export function apply(ctx: Context, config: Config): void {
       },
       intent: {
         type: 'string',
-        description: 'Required for form: generic_filters or generic_pick_one.',
+        description: 'generic_filters or generic_pick_one for those forms. rich_content when the layout needs the rich catalog and components is omitted. Omit for ordinary display.',
+      },
+      components: {
+        type: 'array',
+        items: {
+          type: 'string',
+          enum: ['Image', 'ImageUpload', 'Tabs', 'MapPreview', 'SortableSequence', 'Collapsible', 'CodeBlock'],
+        },
+        description: 'Rich component names this layout needs. Any one selects rich_content for the whole page, including a mix with base or form components.',
+      },
+      prompt_mode: {
+        type: 'string',
+        enum: ['full', 'progressive'],
+        description: 'Optional server prompt mode. Only full or progressive.',
       },
       scene: {
         type: 'string',
@@ -115,9 +128,14 @@ export function apply(ctx: Context, config: Config): void {
         },
       },
       render: (_args, value) => [{ type: 'text', text: value.message }],
-      presentationMeta: (args, value) => value.ok && value.payload !== undefined
-        ? { payload: value.payload, answerPresentation: value.mode === 'display' ? (args.answer_presentation ?? 'replace') : 'supplement' }
-        : null,
+      presentationMeta: (args, value) => {
+        if (!value.ok || value.payload === undefined) return null
+        return {
+          payload: value.payload,
+          profile: resolvedRenderProfile(selectRenderRoute(args).profile, value.payload),
+          answerPresentation: value.mode === 'display' ? (args.answer_presentation ?? 'replace') : 'supplement',
+        }
+      },
     },
     isConcurrencySafe: () => false,
     async execute(args, exec): Promise<RenderUiResult> {

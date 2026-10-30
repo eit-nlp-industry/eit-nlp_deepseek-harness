@@ -15,6 +15,7 @@ export interface JsonRenderAnswerData {
   readonly seq: number
   readonly payload: JsonRenderPayload
   readonly answerPresentation: 'replace' | 'supplement'
+  readonly profile?: 'base' | 'forms' | 'rich'
 }
 
 declare module '@deepseek-ai/dsh-client-ui-conversation/client' {
@@ -62,12 +63,31 @@ export function answerPresentationFromMeta(meta: unknown): 'replace' | 'suppleme
     && meta.answerPresentation === 'replace' ? 'replace' : 'supplement'
 }
 
+/**
+ * Profile diagnostic persisted beside the payload.
+ * @param meta - persisted tool-result metadata.
+ * @returns the server profile when it is base, forms, or rich.
+ */
+export function profileFromMeta(meta: unknown): 'base' | 'forms' | 'rich' | undefined {
+  if (typeof meta !== 'object' || meta === null || !('profile' in meta)) return undefined
+  const profile = meta.profile
+  if (profile === 'base' || profile === 'forms' || profile === 'rich') return profile
+  return undefined
+}
+
 function settledCard(match: ConversationMatch, callId: string): JsonRenderAnswerData | undefined {
-  if (match.event.type !== 'tool/result') return undefined
+  if (match.event.type !== 'tool/result' || !isAppendSurfaceEvent(match.event)) return undefined
   if (match.event.data.message.isError === true) return undefined
   const payload = payloadFromMeta(match.event.data.meta)
   if (payload === null) return undefined
-  return { callId, seq: match.event.seq, payload, answerPresentation: answerPresentationFromMeta(match.event.data.meta) }
+  const profile = profileFromMeta(match.event.data.meta)
+  return {
+    callId,
+    seq: match.event.seq,
+    payload,
+    answerPresentation: answerPresentationFromMeta(match.event.data.meta),
+    ...profile !== undefined ? { profile } : {},
+  }
 }
 
 /** Records the latest `render_ui` result on its turn. It publishes no view node. */
@@ -105,7 +125,8 @@ export const jsonRenderAnswerDefinition: ConversationNodeDefinition<AnswerState>
       && previous.turn === context.state.turn
       && previous.key === 'json-render-answer'
       && previous.value.callId === card.callId
-      && previous.value.seq === card.seq) return previous
+      && previous.value.seq === card.seq
+      && previous.value.profile === card.profile) return previous
     return {
       kind: 'turn',
       turn: context.state.turn,

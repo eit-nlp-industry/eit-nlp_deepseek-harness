@@ -10643,6 +10643,9 @@ importers:
       '@deepseek-ai/schemastery':
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
+      '@eit/json-render-catalog':
+        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0-rc.5&path:packages/catalog
+        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#f0adc14da5ccc628dca0c369a00c075d5016c51e&path:packages/catalog
     devDependencies:
       '@deepseek-ai/cordis':
         specifier: workspace:~
