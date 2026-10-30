@@ -1,13 +1,91 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import type { JsonRenderPayload } from '@eit/json-render-protocol'
+import type { ConversationContextReader, ConversationMatch, ConversationTurnDataMap, InputActions, TurnLocation } from '@deepseek-ai/dsh-client-ui-conversation/client'
+import { SessionId, SessionSeq, type SessionEvent } from '@deepseek-ai/dsh-session/types'
+import type { JsonRenderEvent, JsonRenderPayload } from '@eit/json-render-protocol'
 import { formValues, JsonRenderCard, jsonRenderPopupContainer } from '../src/client/JsonRenderCard.tsx'
 import { JsonRenderReplacement } from '../src/client/JsonRenderAnswer.tsx'
-import { jsonRenderAnswerDefinition, answerPresentationFromMeta, profileFromMeta, selectJsonRenderAnswer, type JsonRenderAnswerOwner } from '../src/client/answer.ts'
+import { jsonRenderAnswerDefinition, answerPresentationFromMeta, profileFromMeta, selectJsonRenderAnswer, type JsonRenderAnswerData } from '../src/client/answer.ts'
 import { payloadFromMeta } from '../src/client/payload.ts'
 
 afterEach(() => { cleanup(); vi.restoreAllMocks() })
+
+function submitEvent(payload?: JsonRenderEvent['payload']): JsonRenderEvent {
+  return {
+    protocol: 'json-render-event',
+    version: '1.0',
+    id: 'event-1',
+    instanceId: 'instance-1',
+    event: { name: 'form.submit', type: 'submit' },
+    ...payload !== undefined ? { payload } : {},
+  }
+}
+
+function unusedHook(): never {
+  throw new Error('unused')
+}
+
+const inputActions: InputActions = {
+  captureInsertion: unusedHook,
+  insertText: unusedHook,
+  setDraft: unusedHook,
+  persistDraft: unusedHook,
+  addAttachments: unusedHook,
+  removeAttachment: unusedHook,
+  pruneAttachments: unusedHook,
+  submit: unusedHook,
+}
+
+const answerSeats = {
+  useSession: unusedHook,
+  useProjection: unusedHook,
+  useConversation: unusedHook,
+  useInput: unusedHook,
+  useChat: unusedHook,
+  useTrajectory: unusedHook,
+  inputActions,
+  useWorkspaces: unusedHook,
+  useResource: unusedHook,
+  usePanelInfo: unusedHook,
+  useSessions: unusedHook,
+  useSessionStatus: unusedHook,
+  useSessionRetainInfo: unusedHook,
+}
+
+function turnOf(card: JsonRenderAnswerData | undefined, endSeq: number | undefined): TurnLocation {
+  const values: Partial<ConversationTurnDataMap> = card === undefined ? {} : { 'json-render-answer': card }
+  return {
+    turn: 1,
+    start: undefined,
+    end: endSeq === undefined ? undefined : {
+      seq: SessionSeq(endSeq),
+      time: endSeq,
+      type: 'turn/end',
+      data: { turn: 1, reason: { kind: 'completed' } },
+    },
+    status: endSeq === undefined ? 'open' : 'closed',
+    steps: [],
+    data: {
+      get: key => values[key],
+      source: key => ({ getSnapshot: () => values[key], subscribe: () => () => {} }),
+    },
+  }
+}
+
+function sessionEvent(seq: number, type: string, data: unknown, surfaceOp?: 'append'): SessionEvent {
+  return {
+    seq,
+    time: seq,
+    type,
+    data,
+    ...surfaceOp === undefined ? {} : { surfaceOp },
+  } as SessionEvent
+}
+
+function updateMatch(event: SessionEvent, location: ConversationMatch['location']): ConversationMatch {
+  return { event, role: 'update', location }
+}
 
 describe('json-render answer presentation', () => {
   it('requires an explicit replacement declaration and keeps historical results supplementary', () => {
@@ -29,9 +107,9 @@ describe('json-render answer presentation', () => {
     expect(payloadFromMeta({ payload: { format: 'json-render-v1', spec: {} } })).toBeNull()
     expect(payloadFromMeta('no')).toBeNull()
     expect(payloadFromMeta([])).toBeNull()
-    expect(formValues({ protocol: 'json-render-event', version: '1', event: { type: 'action', name: 'form.submit' } })).toEqual({})
-    expect(formValues({ protocol: 'json-render-event', version: '1', event: { type: 'action', name: 'form.submit' }, payload: { value: 1 } })).toEqual({ value: 1 })
-    expect(formValues({ protocol: 'json-render-event', version: '1', event: { type: 'action', name: 'form.submit' }, payload: { form: { a: 1 } } })).toEqual({ a: 1 })
+    expect(formValues(submitEvent())).toEqual({})
+    expect(formValues(submitEvent({ value: 1 }))).toEqual({ value: 1 })
+    expect(formValues(submitEvent({ form: { a: 1 } }))).toEqual({ a: 1 })
     expect(jsonRenderPopupContainer(undefined, 'missing-panel')).toBe(document.body)
     const host = document.createElement('div')
     host.className = 'panel'
@@ -156,8 +234,10 @@ describe('json-render answer presentation', () => {
     const published = build(context, 'turn', null)
     expect(published).toMatchObject({ key: 'json-render-answer', value: card })
     expect(build(context, 'turn', published)).toBe(published)
-    const changed = build(context, 'turn', published === null ? null : {
-      ...published,
+    const changed = build(context, 'turn', {
+      kind: 'turn',
+      turn: 1,
+      key: 'json-render-answer',
       value: { ...card, profile: 'base' },
     })
     expect(changed).not.toBe(published)
@@ -170,34 +250,35 @@ describe('json-render answer presentation', () => {
       spec: { root: 'card', elements: { card: { type: 'Card', props: { title: '卡片' } } } },
     }
     const card = { callId: 'c', seq: 9, payload, answerPresentation: 'replace' as const }
-    const late = selectJsonRenderAnswer({
-      turn: { data: { get: () => card }, end: { seq: 3 } },
-      seq: 3,
-    } as JsonRenderAnswerOwner)
+    const late = selectJsonRenderAnswer({ turn: turnOf(card, 3), seq: 3 })
     expect(late).toBeNull()
-    const open = selectJsonRenderAnswer({
-      turn: { data: { get: () => card }, end: undefined },
-      seq: 9,
-    } as JsonRenderAnswerOwner)
+    const open = selectJsonRenderAnswer({ turn: turnOf(card, undefined), seq: 9 })
     expect(open?.callId).toBe('c')
 
     const state = { turn: 1, calls: new Map(), card: undefined }
     const context = {
       key: '1', kind: 'json-render-answer', id: '1', matches: [], start: undefined, state, current: new Map(),
     }
-    expect(jsonRenderAnswerDefinition.update(context, {
-      id: '1', role: 'update', event: { seq: 1, time: 1, type: 'step/end', data: { turn: 1, step: 1 }, surfaceOp: 'append' },
-    })).toBe(state)
-    expect(jsonRenderAnswerDefinition.update(context, {
-      id: '1', role: 'update',
-      event: {
-        seq: 2, time: 2, type: 'tool/result', surfaceOp: 'append',
-        data: { turn: 1, step: 1, meta: null, message: { source: { callId: 'missing' }, content: [], isError: false } },
-      },
-    })).toBe(state)
+    const location = { kind: 'session' } as const
+    const reader: ConversationContextReader = { previous: () => undefined }
+    expect(jsonRenderAnswerDefinition.update(context, updateMatch(
+      sessionEvent(1, 'step/end', { turn: 1, step: 1 }),
+      location,
+    ))).toBe(state)
+    expect(jsonRenderAnswerDefinition.update(context, updateMatch(
+      sessionEvent(2, 'tool/result', {
+        turn: 1, step: 1, meta: null,
+        message: { source: { callId: 'missing' }, content: [], isError: false },
+      }, 'append'),
+      location,
+    ))).toBe(state)
     expect(() => jsonRenderAnswerDefinition.start(context, {
-      id: '1', role: 'start', event: { seq: 1, time: 1, type: 'tool/call', data: { turn: 1, step: 1, callId: 'x', name: 'bash', arguments: '{}' }, surfaceOp: 'append' },
-    })).toThrow(/turn\/start/)
+      event: sessionEvent(1, 'tool/call', {
+        turn: 1, step: 1, callId: 'x', name: 'bash', arguments: '{}',
+      }, 'append'),
+      role: 'start',
+      location,
+    }, reader)).toThrow(/turn\/start/)
 
     const labels = { footnotes: 'References', code: {
       copyLabel: 'Copy', copiedLabel: 'Copied',
@@ -205,14 +286,15 @@ describe('json-render answer presentation', () => {
     } }
     const submitForm = vi.fn<(sessionId: string, text: string) => Promise<void>>().mockResolvedValue(undefined)
     const empty = render(<JsonRenderReplacement
-      turn={{ data: { get: () => undefined }, end: { seq: 1 } } as JsonRenderAnswerOwner['turn']}
+      {...answerSeats}
+      turn={turnOf(undefined, 1)}
       seq={1}
       openFile={() => {}}
       canReplaceAnswer={true}
       text="没有卡片"
       labels={labels}
       pathImages={{ resolve: () => undefined }}
-      sessionId="s"
+      sessionId={SessionId('s')}
       submitForm={submitForm}
     />)
     expect(screen.getByText('没有卡片')).toBeTruthy()
@@ -229,14 +311,15 @@ describe('json-render answer presentation', () => {
       },
     }
     render(<JsonRenderReplacement
-      turn={{ data: { get: () => ({ callId: 'c', seq: 1, payload: button, answerPresentation: 'replace' }) }, end: { seq: 2 } } as JsonRenderAnswerOwner['turn']}
+      {...answerSeats}
+      turn={turnOf({ callId: 'c', seq: 1, payload: button, answerPresentation: 'replace' }, 2)}
       seq={2}
       openFile={() => {}}
       canReplaceAnswer={true}
       text="替换文字"
       labels={labels}
       pathImages={{ resolve: () => undefined }}
-      sessionId="session-1"
+      sessionId={SessionId('session-1')}
       submitForm={submitForm}
     />)
     fireEvent.click(screen.getByRole('button', { name: '确认发送' }))

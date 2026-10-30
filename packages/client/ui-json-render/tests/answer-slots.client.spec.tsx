@@ -3,6 +3,7 @@ import { useState, type ReactNode } from 'react'
 import { act, cleanup, fireEvent, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, onTestFinished, vi } from 'vitest'
 import { SlotTestRuntime } from '@deepseek-ai/dsh-client-test-runtime'
+import { RemoteError } from '@deepseek-ai/dsh-typert-protocol'
 import { MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import { SessionId, type SessionEvent } from '@deepseek-ai/dsh-session/types'
 import type { SessionEventLikeEntry } from '@deepseek-ai/dsh-api-session-controller/client'
@@ -133,7 +134,9 @@ describe('answer slots over replayed tool events', () => {
     accepted.view.unmount()
 
     const rejected = await fixture({ payload: formPayload, answerPresentation: 'supplement', profile: 'rich' })
-    vi.spyOn(rejected.reference.binding.session, 'prompt').mockResolvedValue({ ok: false, error: { message: '拒绝提交' } })
+    vi.spyOn(rejected.reference.binding.session, 'prompt').mockResolvedValue({
+      ok: false, error: new RemoteError('gateway/internal', '拒绝提交', {}),
+    })
     fireEvent.click(screen.getByRole('button', { name: '提交表单' }))
     expect(await screen.findByText('拒绝提交')).toBeTruthy()
     rejected.view.unmount()
