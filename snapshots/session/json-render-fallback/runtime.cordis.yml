@@ -1,6 +1,9 @@
 - id: tool-json-render
   name: '@deepseek-ai/dsh-tool-json-render'
 
+- id: memory-hindsight
+  disabled: true
+
 - id: tool-bash
   disabled: true
 
