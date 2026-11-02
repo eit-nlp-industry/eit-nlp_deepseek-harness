@@ -53,6 +53,10 @@ const answerSeats = {
   useSessionStatus: unusedHook,
   useSessionRetainInfo: unusedHook,
   useAccess: () => true,
+  useRemoteAccess: unusedHook,
+  useSessionAccess: unusedHook,
+  useContextMenu: unusedHook,
+  useWorkspaceAccess: unusedHook,
 }
 
 function turnOf(card: JsonRenderAnswerData | undefined, endSeq: number | undefined): TurnLocation {
