@@ -27,6 +27,7 @@ function unusedHook(): never {
 }
 
 const inputActions: InputActions = {
+  insertQuote: unusedHook,
   captureInsertion: unusedHook,
   insertText: unusedHook,
   setDraft: unusedHook,
@@ -51,6 +52,7 @@ const answerSeats = {
   useSessions: unusedHook,
   useSessionStatus: unusedHook,
   useSessionRetainInfo: unusedHook,
+  useAccess: () => true,
 }
 
 function turnOf(card: JsonRenderAnswerData | undefined, endSeq: number | undefined): TurnLocation {

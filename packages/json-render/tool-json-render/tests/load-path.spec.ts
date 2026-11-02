@@ -20,6 +20,25 @@ function requestTarget(input: RequestInfo | URL | undefined): string {
   return ''
 }
 
+async function callRenderUi(
+  tools: Context['tools'],
+  callId: string,
+  args: Record<string, unknown>,
+) {
+  const batch = await tools.execute({
+    signal: new AbortController().signal,
+    calls: [{
+      type: 'tool-call' as const,
+      id: ToolCallId(callId),
+      name: 'render_ui',
+      arguments: JSON.stringify(args),
+    }],
+  })
+  const result = batch.results[0]?.result
+  if (result === undefined) throw new Error(`missing result for ${callId}`)
+  return result
+}
+
 describe('dsh-tool-json-render real-load-path guard', () => {
   it('has no default export and keeps name and inject through unwrapExports', () => {
     expect('default' in toolJsonRender).toBe(false)
@@ -109,12 +128,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       expect(configured.tools.get('render_ui')?.description).toBe('only tables')
       const configuredFetch = respond(200)
       vi.stubGlobal('fetch', configuredFetch)
-      const display = await configured.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('display'),
-        name: 'render_ui',
-        arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
-      })
+      const display = await callRenderUi(configured.tools, 'display', { mode: 'display', user_query: '展示', business_data: { name: 'A' } })
       expect(configuredFetch.mock.calls[0]?.[0]).toBe('http://configured.test/v1/render')
       expect(display.isError).toBe(false)
       if (!display.isError) expect(display.concludesTurn).toBeUndefined()
@@ -126,12 +140,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       apply(fallback, {})
       const fallbackFetch = respond(200)
       vi.stubGlobal('fetch', fallbackFetch)
-      await fallback.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('fallback'),
-        name: 'render_ui',
-        arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
-      })
+      await callRenderUi(fallback.tools, 'fallback', { mode: 'display', user_query: '展示', business_data: { name: 'A' } })
       expect(requestTarget(fallbackFetch.mock.calls[0]?.[0])).toBe('http://10.37.0.21:3001/v1/render')
 
       process.env.JSON_RENDER_BASE_URL = 'http://env.test/'
@@ -141,12 +150,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       apply(fromEnv, { baseUrl: '  ' })
       const envFetch = respond(400)
       vi.stubGlobal('fetch', envFetch)
-      const failed = await fromEnv.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('failed'),
-        name: 'render_ui',
-        arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
-      })
+      const failed = await callRenderUi(fromEnv.tools, 'failed', { mode: 'display', user_query: '展示', business_data: { name: 'A' } })
       expect(requestTarget(envFetch.mock.calls[0]?.[0])).toBe('http://env.test/v1/render')
       expect(failed.isError).toBe(false)
       if (!failed.isError) expect(JSON.stringify(failed.content)).toContain('拒绝')
@@ -156,12 +160,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       await formHost.plugin(ToolRuntime)
       apply(formHost, { baseUrl: 'http://configured.test' })
       vi.stubGlobal('fetch', respond(200))
-      const form = await formHost.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('form'),
-        name: 'render_ui',
-        arguments: { mode: 'form', user_query: '选择', intent: 'generic_pick_one', business_data: { models: ['A'] } },
-      })
+      const form = await callRenderUi(formHost.tools, 'form', { mode: 'form', user_query: '选择', intent: 'generic_pick_one', business_data: { models: ['A'] } })
       expect(form.isError).toBe(false)
       if (!form.isError) expect(form.concludesTurn).toBe(true)
     } finally {

@@ -15,7 +15,7 @@ function user(text: string) {
 async function enter(ctx: Context, agent: Agent, messages: ReturnType<typeof user>[]) {
   return agentEvents(ctx, agent).waterfall(
     'agent/pre-step',
-    { messages, turn: 1, step: 1, signal: new AbortController().signal },
+    { messages, turn: 1, step: 1, signal: new AbortController().signal, modelSelection: { provider: 'test', model: 'm' } },
     () => Promise.resolve({ kind: 'enter' as const, messages }),
   )
 }

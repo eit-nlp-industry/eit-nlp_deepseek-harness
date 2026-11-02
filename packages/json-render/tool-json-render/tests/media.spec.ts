@@ -66,6 +66,26 @@ async function textOf(response: Response): Promise<string> {
   return await response.text()
 }
 
+
+async function callRenderUi(
+  tools: Context['tools'],
+  callId: string,
+  args: Record<string, unknown>,
+) {
+  const batch = await tools.execute({
+    signal: new AbortController().signal,
+    calls: [{
+      type: 'tool-call' as const,
+      id: ToolCallId(callId),
+      name: 'render_ui',
+      arguments: JSON.stringify(args),
+    }],
+  })
+  const result = batch.results[0]?.result
+  if (result === undefined) throw new Error(`missing result for ${callId}`)
+  return result
+}
+
 describe('json-render media catalog', () => {
   it('publishes only src, alt, and caption for a catalog row', () => {
     const asset = row({ id: 'ref-photo', file: 'ref-photo.png', caption: '已登记', owner: 'library' })
@@ -483,25 +503,20 @@ describe('render_ui media mount', () => {
       diagnostics: { profile: 'rich' },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', sent)
-    const rendered = await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('image'),
-      name: 'render_ui',
-      arguments: {
-        mode: 'display',
-        user_query: '展示参考照片',
-        locale: 'en-US',
-        scene: 'kb',
-        prompt_mode: 'progressive',
-        business_data: {
-          title: '概览',
-          image: {
-            assetId: 'ref-photo',
-            file: 'C:\\fixture\\mock.png',
-            component: 'Image',
-            type: 'Image',
-            token: 'sk-test',
-          },
+    const rendered = await callRenderUi(ctx.tools, 'image', {
+      mode: 'display',
+      user_query: '展示参考照片',
+      locale: 'en-US',
+      scene: 'kb',
+      prompt_mode: 'progressive',
+      business_data: {
+        title: '概览',
+        image: {
+          assetId: 'ref-photo',
+          file: 'C:\\fixture\\mock.png',
+          component: 'Image',
+          type: 'Image',
+          token: 'sk-test',
         },
       },
     })
@@ -530,15 +545,10 @@ describe('render_ui media mount', () => {
     )).toMatchObject({ profile: 'rich' })
 
     sent.mockClear()
-    const foreign = await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('foreign'),
-      name: 'render_ui',
-      arguments: {
-        mode: 'display',
-        user_query: '展示',
-        business_data: { image: { assetId: 'foreign' } },
-      },
+    const foreign = await callRenderUi(ctx.tools, 'foreign', {
+      mode: 'display',
+      user_query: '展示',
+      business_data: { image: { assetId: 'foreign' } },
     })
     expect(sent).not.toHaveBeenCalled()
     expect(JSON.stringify(foreign.content)).toContain('不在媒体目录')
@@ -548,12 +558,7 @@ describe('render_ui media mount', () => {
       spec: { root: 'card', elements: {} },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', plain)
-    await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('plain'),
-      name: 'render_ui',
-      arguments: { mode: 'display', user_query: '展示', business_data: { title: '概览' } },
-    })
+    await callRenderUi(ctx.tools, 'plain', { mode: 'display', user_query: '展示', business_data: { title: '概览' } })
     const plainBody = JSON.parse(requestText(plain.mock.calls[0]?.[1]?.body)) as { context?: { intent?: string } }
     expect(plainBody.context?.intent).toBeUndefined()
 
@@ -573,20 +578,10 @@ describe('render_ui media mount', () => {
       format: 'json-render-v1', spec: { root: 'card', elements: {} },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', sent)
-    const image = await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('broken'),
-      name: 'render_ui',
-      arguments: { mode: 'display', user_query: '展示', business_data: { image: { assetId: 'ref-photo' } } },
-    })
+    const image = await callRenderUi(ctx.tools, 'broken', { mode: 'display', user_query: '展示', business_data: { image: { assetId: 'ref-photo' } } })
     expect(sent).not.toHaveBeenCalled()
     expect(JSON.stringify(image.content)).toContain('无法读取')
-    await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('table'),
-      name: 'render_ui',
-      arguments: { mode: 'display', user_query: '展示', business_data: { title: '概览' } },
-    })
+    await callRenderUi(ctx.tools, 'table', { mode: 'display', user_query: '展示', business_data: { title: '概览' } })
     expect(sent).toHaveBeenCalledOnce()
     await fiber.dispose()
   })
@@ -606,12 +601,7 @@ describe('render_ui media mount', () => {
       format: 'json-render-v1', spec: { root: 'image', elements: {} },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', sent)
-    await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('env'),
-      name: 'render_ui',
-      arguments: { mode: 'form', user_query: '确认', intent: 'generic_pick_one', business_data: { image: { assetId: 'ref-photo' } } },
-    })
+    await callRenderUi(ctx.tools, 'env', { mode: 'form', user_query: '确认', intent: 'generic_pick_one', business_data: { image: { assetId: 'ref-photo' } } })
     const body = JSON.parse(requestText(sent.mock.calls[0]?.[1]?.body)) as { context: { intent: string; locale: string } }
     expect(body.context).toEqual({ intent: 'rich_content', locale: 'zh-CN' })
     await fiber.dispose()
