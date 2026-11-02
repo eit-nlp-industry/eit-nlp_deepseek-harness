@@ -27,7 +27,9 @@ export function localPathMediaUrl(base: string, value: string): string | undefin
   return fileMediaUrl(base, path)
 }
 
-export interface AssistantMarkdownProps extends Pick<PropsRenderSlots<'conversation.chat.reasoning.body'>, 'renderSlot'> {
+export interface AssistantMarkdownProps extends
+  Pick<PropsRenderSlots<'conversation.chat.reasoning.body' | 'conversation.chat.message.images'>, 'renderSlot'>,
+  Pick<ChatNodeOwnerProps, 'loadImage'> {
   /** Completed, text-only response offered to answer replacements. */
   answer?: TurnTailOwnerProps | undefined
   renderSlotChain?: PropsRenderSlots<'conversation.chat.answer'>['renderSlotChain'] | undefined
@@ -37,10 +39,10 @@ export interface AssistantMarkdownProps extends Pick<PropsRenderSlots<'conversat
   useDisclosure: UseDisclosure
   blocks: readonly AssistantBlock[]
   streaming: boolean
+  /** Only finalized durable Assistant messages supply selection sources. */
+  textInteractionSource?: boolean
   /** Frozen partial of an aborted turn: rendered with a stopped marker. */
   interrupted?: boolean | undefined
-  /** Render consecutive image blocks through the attachment slot. */
-  renderMessageImages: ChatNodeOwnerProps['renderMessageImages']
   /** Hide reasoning that belongs to the Turn-level process disclosure. */
   reasoningHidden?: boolean | undefined
   /** Process hiding bound by the node slot to its current viewport. */
@@ -55,9 +57,9 @@ export interface AssistantMarkdownProps extends Pick<PropsRenderSlots<'conversat
   t: ChatViewSlotProps['t']
 }
 
-/** Reasoning block as the Think variant summary row (figma 39:28304). */
+/** Renders non-blank reasoning blocks as independent disclosures alongside the response. */
 export const AssistantMarkdown = memo(function AssistantMarkdown({
-  blocks, streaming, interrupted, renderMessageImages, groupPart, useDisclosure,
+  blocks, streaming, textInteractionSource = false, interrupted, loadImage, groupPart, useDisclosure,
   reasoningHidden = false, usePresentation, revealProcess, mentions, renderSlot, renderSlotChain, answer, useGroupAction, t,
 }: AssistantMarkdownProps) {
   // Stable per locale revision (t identity changes on switch): a fresh object
@@ -91,6 +93,7 @@ export const AssistantMarkdown = memo(function AssistantMarkdown({
             labels={labels}
             fileMentions={mentions}
             pathImages={pathImages}
+            textInteractionSource={textInteractionSource}
           />
         )
         rendered.push(answer !== undefined && renderSlotChain !== undefined
@@ -101,6 +104,7 @@ export const AssistantMarkdown = memo(function AssistantMarkdown({
         break
       }
       case 'reasoning':
+        if (block.text.trim() === '') break
         rendered.push(
           <ProcessReasoning
             key={i}
@@ -109,7 +113,7 @@ export const AssistantMarkdown = memo(function AssistantMarkdown({
             useGroupAction={useGroupAction}
           >
             <ReasoningRow text={block.text} running={streaming && i === last} usePresentation={usePresentation}
-              useDisclosure={useDisclosure} renderSlot={renderSlot} t={t} />
+              useDisclosure={useDisclosure} renderSlot={renderSlot} textInteractionSource={textInteractionSource} t={t} />
           </ProcessReasoning>,
         )
         break
@@ -129,9 +133,8 @@ export const AssistantMarkdown = memo(function AssistantMarkdown({
         }
         rendered.push(
           <Fragment key={start}>
-            {renderMessageImages({
-              images: group.map(({ attachment }) => ({ attachment })),
-              align: 'start',
+            {renderSlot('conversation.chat.message.images', {
+              images: group.map(({ attachment }) => ({ attachment })), loadImage, align: 'start',
             })}
           </Fragment>,
         )
