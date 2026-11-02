@@ -6,6 +6,7 @@
  */
 
 import { isJsonValue, type JsonValue } from '@deepseek-ai/dsh-util-values'
+import { canonicalImageSrc, normalizeImageBusinessData, referencesImage, type MediaAssetRecord } from './media.ts'
 
 export const RENDER_UI_MAX_ATTEMPTS = 3
 
@@ -100,6 +101,8 @@ export interface RequestJsonRenderOptions {
   /** Emit safe diagnostics. Also on when JSON_RENDER_DEBUG=1 or NODE_ENV=development. */
   debug?: boolean
   onDebug?: (record: RenderDebugRecord) => void
+  /** Catalog rows this call may show. Absent when no media root is configured. */
+  assets?: readonly MediaAssetRecord[]
 }
 
 const DISPLAY_MESSAGE = '界面已附上。请继续用文字回答，不要复述或改写界面 JSON。'
@@ -129,7 +132,7 @@ const DISPLAY_DETAIL_HINT = '请逐项展示 business_data，保留步骤说明�
  */
 export function selectRenderRoute(args: RenderUiArgs): RenderRoute {
   const promptMode: PromptMode = args.prompt_mode === 'progressive' ? 'progressive' : 'full'
-  const listed = Array.isArray(args.components) ? args.components : []
+  const listed = args.components ?? []
   const needsRich = args.intent === 'rich_content' || listed.some(name => RICH_COMPONENT_NAMES.has(name))
   if (needsRich) return { profile: 'rich', intent: 'rich_content', promptMode }
   if (args.mode === 'form' && (args.intent === 'generic_filters' || args.intent === 'generic_pick_one')) {
@@ -267,7 +270,12 @@ function safeDiagnostics(value: unknown): RenderDebugRecord['diagnostics'] | und
   return Object.keys(diagnostics).length > 0 ? diagnostics : undefined
 }
 
-function errorRecord(body: unknown): { message?: string; code?: string; requestId?: string; diagnostics?: RenderDebugRecord['diagnostics'] } {
+function errorRecord(body: unknown): {
+  message?: string
+  code?: string
+  requestId?: string
+  diagnostics?: RenderDebugRecord['diagnostics']
+} {
   const root = asObject(body)
   if (root === undefined) return {}
   const error = asObject(own(root, 'error')) ?? root
@@ -281,6 +289,12 @@ function errorRecord(body: unknown): { message?: string; code?: string; requestI
     ...requestId !== undefined ? { requestId } : {},
     ...diagnostics !== undefined ? { diagnostics } : {},
   }
+}
+
+/** The flag can change while fetch is pending. */
+function callAborted(signal: AbortSignal): boolean {
+  const aborted: boolean = signal.aborted
+  return aborted
 }
 
 function debugEnabled(options: RequestJsonRenderOptions): boolean {
@@ -331,22 +345,37 @@ function requestBody(args: RenderUiArgs, route: RenderRoute): Record<string, unk
  * @param options - server origin, arguments, and the attempt signal.
  * @returns the payload, or a short failure the model can continue from.
  */
-export async function requestJsonRender(options: RequestJsonRenderOptions): Promise<RenderUiResult> {
-  const localError = formRequestError(options.args)
-  if (localError !== undefined) return { ok: false, mode: options.args.mode, message: localError }
+function prepareRenderArgs(
+  args: RenderUiArgs,
+  assets: readonly MediaAssetRecord[] | undefined,
+): { ok: true; args: RenderUiArgs } | { ok: false; message: string } {
+  if (assets === undefined || !referencesImage(args.business_data)) return { ok: true, args }
+  const businessData = normalizeImageBusinessData(args.business_data, assets)
+  if (canonicalImageSrc(businessData) === undefined) {
+    return { ok: false, message: '图片资源不在媒体目录中。请改用文字回答，不要猜测地址。' }
+  }
+  return { ok: true, args: { ...args, business_data: businessData, intent: 'rich_content', locale: 'zh-CN' } }
+}
 
-  const route = selectRenderRoute(options.args)
+export async function requestJsonRender(options: RequestJsonRenderOptions): Promise<RenderUiResult> {
+  const prepared = prepareRenderArgs(options.args, options.assets)
+  if (!prepared.ok) return { ok: false, mode: options.args.mode, message: prepared.message }
+  const args = prepared.args
+  const localError = formRequestError(args)
+  if (localError !== undefined) return { ok: false, mode: args.mode, message: localError }
+
+  const route = selectRenderRoute(args)
   emitDebug(options, requestRecord(route))
   const fetchImpl = options.fetchImpl ?? fetch
   const url = `${options.baseUrl.replace(/\/$/, '')}/v1/render`
   let last = '界面生成失败'
   for (let attempt = 1; attempt <= RENDER_UI_MAX_ATTEMPTS; attempt += 1) {
-    if (options.signal.aborted) return { ok: false, mode: options.args.mode, message: '界面生成已取消。请用文字继续回答。' }
+    if (options.signal.aborted) return { ok: false, mode: args.mode, message: '界面生成已取消。请用文字继续回答。' }
     try {
       const response = await fetchImpl(url, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(requestBody(options.args, route)),
+        body: JSON.stringify(requestBody(args, route)),
         signal: AbortSignal.any([options.signal, AbortSignal.timeout(options.timeoutMs)]),
       })
       if (response.status === 400) {
@@ -364,10 +393,11 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
           ...parsed.diagnostics !== undefined ? { diagnostics: parsed.diagnostics } : {},
         })
         const detail = parsed.message ?? `HTTP ${response.status}`
+        const labeled = parsed.code === undefined ? detail : `${parsed.code}: ${detail}`
         return {
           ok: false,
-          mode: options.args.mode,
-          message: `界面生成被拒绝：${detail}。请用文字回答，或在缺信息时调用 ask_user_question。不要把错误 JSON 展示给用户。`,
+          mode: args.mode,
+          message: `界面生成被拒绝：${labeled}。请用文字回答，或在缺信息时调用 ask_user_question。不要把错误 JSON 展示给用户。`,
         }
       }
       if (!response.ok) {
@@ -384,7 +414,8 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
           ...parsed.requestId !== undefined ? { requestId: parsed.requestId } : {},
           ...parsed.diagnostics !== undefined ? { diagnostics: parsed.diagnostics } : {},
         })
-        last = parsed.message ?? `HTTP ${response.status}`
+        const detail = parsed.message ?? `HTTP ${response.status}`
+        last = parsed.code === undefined ? detail : `${parsed.code}: ${detail}`
         continue
       }
       let json: unknown
@@ -403,16 +434,16 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
         ...requestRecord(route),
         ...reported !== undefined ? { diagnostics: { profile: reported } } : {},
       })
-      return { ok: true, mode: options.args.mode, message: successMessage(options.args.mode), payload: json }
+      return { ok: true, mode: args.mode, message: successMessage(args.mode), payload: json }
     } catch (error) {
-      if (options.signal.aborted) return { ok: false, mode: options.args.mode, message: '界面生成已取消。请用文字继续回答。' }
+      if (callAborted(options.signal)) return { ok: false, mode: args.mode, message: '界面生成已取消。请用文字继续回答。' }
       last = error instanceof Error ? clip(error.message) : '界面生成失败'
       emitDebug(options, requestRecord(route))
     }
   }
   return {
     ok: false,
-    mode: options.args.mode,
+    mode: args.mode,
     message: `界面生成失败，已尝试 ${RENDER_UI_MAX_ATTEMPTS} 次：${last}。请用文字继续回答。不要把错误 JSON 展示给用户。`,
   }
 }

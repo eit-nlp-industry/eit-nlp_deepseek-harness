@@ -13,6 +13,13 @@ import ToolRuntime from '@deepseek-ai/dsh-tools'
 import { apply, DEFAULT_RENDER_UI_DESCRIPTION } from '@deepseek-ai/dsh-tool-json-render'
 import * as toolJsonRender from '@deepseek-ai/dsh-tool-json-render'
 
+function requestTarget(input: RequestInfo | URL | undefined): string {
+  if (typeof input === 'string') return input
+  if (input instanceof URL) return input.href
+  if (input instanceof Request) return input.url
+  return ''
+}
+
 describe('dsh-tool-json-render real-load-path guard', () => {
   it('has no default export and keeps name and inject through unwrapExports', () => {
     expect('default' in toolJsonRender).toBe(false)
@@ -92,8 +99,8 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       await disabled.plugin(ToolRuntime)
       apply(disabled, { enabled: false })
       expect(disabled.tools.schemas().map(schema => schema.name)).not.toContain('render_ui')
-      expect(() => apply(disabled, { timeoutMs: 0 })).toThrow(/positive integer/)
-      expect(() => apply(disabled, { timeoutMs: 1.5 })).toThrow(/positive integer/)
+      expect(() => { apply(disabled, { timeoutMs: 0 }) }).toThrow(/positive integer/)
+      expect(() => { apply(disabled, { timeoutMs: 1.5 }) }).toThrow(/positive integer/)
 
       const configured = new Context()
       await configured.plugin(SystemPrompt)
@@ -125,7 +132,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
         name: 'render_ui',
         arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
       })
-      expect(String(fallbackFetch.mock.calls[0]?.[0])).toBe('http://10.37.0.21:3001/v1/render')
+      expect(requestTarget(fallbackFetch.mock.calls[0]?.[0])).toBe('http://10.37.0.21:3001/v1/render')
 
       process.env.JSON_RENDER_BASE_URL = 'http://env.test/'
       const fromEnv = new Context()
@@ -140,7 +147,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
         name: 'render_ui',
         arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
       })
-      expect(String(envFetch.mock.calls[0]?.[0])).toBe('http://env.test/v1/render')
+      expect(requestTarget(envFetch.mock.calls[0]?.[0])).toBe('http://env.test/v1/render')
       expect(failed.isError).toBe(false)
       if (!failed.isError) expect(JSON.stringify(failed.content)).toContain('拒绝')
 

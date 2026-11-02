@@ -17,6 +17,11 @@ const payload = {
   spec: { root: 'card', elements: { card: { type: 'Card', props: { title: '概览' } } } },
 }
 
+function requestText(body: BodyInit | null | undefined): string {
+  if (typeof body !== 'string') throw new Error('expected a string request body')
+  return body
+}
+
 function jsonResponse(status: number, body: unknown): Response {
   return new Response(JSON.stringify(body), {
     status,
@@ -37,9 +42,9 @@ describe('requestJsonRender', () => {
     expect(result.ok).toBe(true)
     expect(fetchImpl).toHaveBeenCalledTimes(1)
     const init = fetchImpl.mock.calls[0]?.[1]
-    expect(String(init?.body)).toContain('"format":"json-render-v1"')
-    expect(String(init?.body)).toContain('请逐项展示 business_data')
-    expect(String(init?.body)).not.toContain('"intent"')
+    expect(requestText(init?.body)).toContain('"format":"json-render-v1"')
+    expect(requestText(init?.body)).toContain('请逐项展示 business_data')
+    expect(requestText(init?.body)).not.toContain('"intent"')
   })
 
   it('rejects a display call that has no business data', async () => {
@@ -147,7 +152,7 @@ describe('requestJsonRender', () => {
       signal: new AbortController().signal,
       fetchImpl,
     })
-    const body = JSON.parse(String(fetchImpl.mock.calls[0]?.[1]?.body)) as Record<string, unknown>
+    const body = JSON.parse(requestText(fetchImpl.mock.calls[0]?.[1]?.body)) as Record<string, unknown>
     expect(body.format).toBe('json-render-v1')
     expect(body.prompt_mode).toBe('full')
     expect(body.context).toEqual({ locale: 'zh-CN', scene: 'kb' })
@@ -157,7 +162,11 @@ describe('requestJsonRender', () => {
     expect(body).not.toHaveProperty('catalog')
     expect(body).not.toHaveProperty('framework')
     expect(selectRenderRoute({ mode: 'display', user_query: '展示概览', business_data: { name: 'A' } }).profile).toBe('base')
-    expect(generationRenderProfile(selectRenderRoute({ mode: 'display', user_query: '展示概览', business_data: { name: 'A' } }))).toBe(baseRenderProfile)
+    expect(generationRenderProfile(selectRenderRoute({
+      mode: 'display',
+      user_query: '展示概览',
+      business_data: { name: 'A' },
+    }))).toBe(baseRenderProfile)
   })
 
   it('maps filter and single-choice forms onto the forms profile', async () => {
@@ -171,7 +180,7 @@ describe('requestJsonRender', () => {
         signal: new AbortController().signal,
         fetchImpl,
       })
-      const body = JSON.parse(String(fetchImpl.mock.calls[0]?.[1]?.body)) as { prompt_mode: string; context: { intent: string } }
+      const body = JSON.parse(requestText(fetchImpl.mock.calls[0]?.[1]?.body)) as { prompt_mode: string; context: { intent: string } }
       expect(body.prompt_mode).toBe('progressive')
       expect(body.context.intent).toBe(intent)
       const route = selectRenderRoute({ mode: 'form', user_query: '请选择', intent, business_data: { models: ['A'] } })
@@ -200,7 +209,7 @@ describe('requestJsonRender', () => {
       debug: true,
       onDebug,
     })
-    const imageBody = JSON.parse(String(fetchImpl.mock.calls[0]?.[1]?.body)) as { context: { intent: string }; user_query: string }
+    const imageBody = JSON.parse(requestText(fetchImpl.mock.calls[0]?.[1]?.body)) as { context: { intent: string }; user_query: string }
     expect(imageBody.context.intent).toBe('rich_content')
     expect(imageBody.user_query).not.toContain('component')
     const imageRoute = selectRenderRoute({
@@ -227,7 +236,7 @@ describe('requestJsonRender', () => {
       signal: new AbortController().signal,
       fetchImpl,
     })
-    const mixed = JSON.parse(String(fetchImpl.mock.calls[0]?.[1]?.body)) as { context: { intent: string } }
+    const mixed = JSON.parse(requestText(fetchImpl.mock.calls[0]?.[1]?.body)) as { context: { intent: string } }
     expect(mixed.context.intent).toBe('rich_content')
     expect(resolvedRenderProfile('base', { diagnostics: { profile: 'forms' } })).toBe('forms')
     expect(resolvedRenderProfile('base', { meta: { extensions: { profile: 'rich_content' } } })).toBe('rich')
@@ -385,7 +394,7 @@ describe('requestJsonRender', () => {
       signal: new AbortController().signal,
       fetchImpl: sent,
     })
-    const body = JSON.parse(String(sent.mock.calls[0]?.[1]?.body)) as {
+    const body = JSON.parse(requestText(sent.mock.calls[0]?.[1]?.body)) as {
       prompt_mode: string
       business_data: boolean
       context: { intent: string }
@@ -491,7 +500,10 @@ describe('requestJsonRender', () => {
     })
     expect(blankError.ok).toBe(false)
     if (!blankError.ok) expect(blankError.message).toContain('HTTP 400')
-    expect(resolvedRenderProfile('base', { diagnostics: { profile: { name: 'missing' } }, meta: { extensions: { profile: 'base' } } })).toBe('base')
+    expect(resolvedRenderProfile('base', {
+      diagnostics: { profile: { name: 'missing' } },
+      meta: { extensions: { profile: 'base' } },
+    })).toBe('base')
     expect(resolvedRenderProfile('forms', { diagnostics: { profile: 'nope' }, meta: {} })).toBe('forms')
     expect(resolvedRenderProfile('rich', [])).toBe('rich')
   })
@@ -563,5 +575,72 @@ describe('requestJsonRender', () => {
       if (previousNode === undefined) delete process.env.NODE_ENV
       else process.env.NODE_ENV = previousNode
     }
+  })
+
+  it('keeps a catalog image URL unchanged and does not retry generation for model or media failures', async () => {
+    const assets = [{
+      id: 'ref-photo', file: 'ref-photo.png', alt: '参考照片', caption: '已登记', owner: 'library',
+    }]
+    const onDebug = vi.fn()
+    const sent = vi.fn<typeof fetch>(async () => jsonResponse(400, {
+      error: { code: 'MODEL_OUTPUT_INVALID', message: 'spec failed', requestId: 'req-model' },
+    }))
+    const invalid = await requestJsonRender({
+      baseUrl: 'http://127.0.0.1:3001',
+      timeoutMs: 1000,
+      args: {
+        mode: 'display',
+        user_query: '展示参考照片',
+        business_data: {
+          image: { assetId: 'ref-photo', file: 'C:\\fixture\\mock.png', component: 'Image', token: 'sk-test' },
+        },
+      },
+      signal: new AbortController().signal,
+      fetchImpl: sent,
+      assets,
+      onDebug,
+    })
+    expect(sent).toHaveBeenCalledOnce()
+    const body = JSON.parse(requestText(sent.mock.calls[0]?.[1]?.body)) as {
+      format: string
+      business_data: { image: { src: string; alt: string; caption?: string; component?: string } }
+      context: { intent: string; locale: string }
+    }
+    expect(body.format).toBe('json-render-v1')
+    expect(body.context).toEqual({ intent: 'rich_content', locale: 'zh-CN' })
+    expect(body.business_data.image).toEqual({
+      src: '/api/media/ref-photo/content', alt: '参考照片', caption: '已登记',
+    })
+    expect(JSON.stringify(body)).not.toContain('mock.png')
+    expect(JSON.stringify(body)).not.toContain('sk-test')
+    expect(invalid.ok).toBe(false)
+    if (!invalid.ok) expect(invalid.message).toContain('MODEL_OUTPUT_INVALID')
+    expect(JSON.stringify(onDebug.mock.calls)).not.toContain('/api/media')
+    expect(JSON.stringify(onDebug.mock.calls)).not.toContain('mock.png')
+
+    const missed = vi.fn<typeof fetch>()
+    const unresolved = await requestJsonRender({
+      baseUrl: 'http://127.0.0.1:3001',
+      timeoutMs: 1000,
+      args: { mode: 'display', user_query: '展示', business_data: { image: { src: 'C:\\fixture\\mock.png' } } },
+      signal: new AbortController().signal,
+      fetchImpl: missed,
+      assets,
+    })
+    expect(missed).not.toHaveBeenCalled()
+    expect(unresolved.ok).toBe(false)
+    if (!unresolved.ok) expect(unresolved.message).toContain('不在媒体目录')
+
+    const plain = vi.fn<typeof fetch>(async () => jsonResponse(200, payload))
+    await requestJsonRender({
+      baseUrl: 'http://127.0.0.1:3001',
+      timeoutMs: 1000,
+      args: { mode: 'display', user_query: '展示', business_data: { title: '概览' } },
+      signal: new AbortController().signal,
+      fetchImpl: plain,
+      assets,
+    })
+    const plainBody = JSON.parse(requestText(plain.mock.calls[0]?.[1]?.body)) as { context?: { intent?: string } }
+    expect(plainBody.context).toBeUndefined()
   })
 })

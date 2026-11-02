@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { createServer, type Server } from 'node:http'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { antdRegistry } from '@eit/json-render-antd'
 import { antdRichRegistry } from '@eit/json-render-antd/experimental'
 import type { JsonRenderPayload } from '@eit/json-render-protocol'
@@ -56,21 +56,45 @@ describe('json-render image host route', () => {
     expect(reactRegistryForProfile('forms')).toBe(antdRegistry)
     expect(inferRenderProfile(imagePayload(src))).toBe('rich')
 
-    const payload = imagePayload(src)
+    const base = imagePayload(src)
+    const payload: JsonRenderPayload = {
+      ...base,
+      spec: {
+        ...base.spec,
+        elements: {
+          image: { type: 'Image', props: { src, alt: '样例图', caption: '已登记' } },
+        },
+      },
+    }
     const { server, origin } = await listen(src, PNG)
+    const submitForm = vi.fn()
     try {
-      render(<JsonRenderCard payload={payload} instanceId="image" submitForm={vi.fn()} />)
+      render(<JsonRenderCard payload={payload} instanceId="image" submitForm={submitForm} />)
       const img = screen.getByRole('img', { name: '样例图' })
       expect(img.getAttribute('src')).toBe(src)
+      expect(Object.keys(imageElement(src, '样例图').props)).toEqual(['src', 'alt'])
+      expect(screen.getByText('已登记')).toBeTruthy()
       expect(new URL(img.getAttribute('src')!, window.location.origin).pathname).toBe(src)
       expect(new URL(img.getAttribute('src')!, window.location.origin).origin).toBe(window.location.origin)
+      fireEvent.click(screen.getByRole('button', { name: '预览 样例图' }))
+      expect(screen.getByRole('button', { name: '关闭预览' })).toBeTruthy()
+      expect(document.querySelector('.eit-jr-preview img')?.getAttribute('src')).toBe(src)
+      fireEvent.error(img)
+      expect(screen.getByText('图片暂不可用')).toBeTruthy()
+      expect(submitForm).not.toHaveBeenCalled()
       const served = await fetch(`${origin}${src}`)
       expect(served.status).toBe(200)
+      expect(served.headers.get('content-type')).toBe('image/png')
       expect(new Uint8Array(await served.arrayBuffer())).toEqual(PNG)
-      const missing = await fetch(`${origin}/json-render/media/missing.webp`)
+      const missing = await fetch(`${origin}/api/media/missing/content`)
       expect(missing.status).toBe(404)
     } finally {
-      await new Promise<void>((resolve, reject) => { server.close(error => error ? reject(error) : resolve()) })
+      await new Promise<void>((resolve, reject) => {
+        server.close((error) => {
+          if (error) reject(error)
+          else resolve()
+        })
+      })
     }
   })
 

@@ -40,7 +40,7 @@ kind: "package-reference"
 
 <a id="known-limitations-and-deferred-work"></a>
 
-- 当前服务不会生成知识库业务组件。相对 Image `src` 会向 Web 宿主请求，并且必须已经是该宿主提供的路径。
+- 当前服务不会生成知识库业务组件。相对 Image `src` 使用页面源上的 `/api/media/<资源 ID>/content`。浏览器携带登录 cookie 加载该地址，不发送 Authorization。图片请求失败不会再次调用渲染服务。
 
 <a id="dev-note"></a>
 ## 开发备注

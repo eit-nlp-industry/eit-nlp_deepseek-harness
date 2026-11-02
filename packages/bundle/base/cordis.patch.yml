@@ -482,6 +482,10 @@
 
     # Host-plane tool. Web does not disable this row, so every agent preset
     # inherits render_ui. Change `description` to change when the model calls it.
+    # Image files stay in an absolute mediaRoot (or JSON_RENDER_MEDIA_ROOT).
+    # index.json maps each id to a file inside that directory. The browser then
+    # loads /api/media/<id>/content with the login cookie. Leave mediaRoot empty
+    # to keep the route unmounted.
     - id: tool-json-render
       name: '@deepseek-ai/dsh-tool-json-render'
 

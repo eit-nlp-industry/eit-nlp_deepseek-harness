@@ -2155,7 +2155,7 @@ export interface LspLocalServerConfig {
 ## `@deepseek-ai/dsh-mcp-client`
 
 - `inject`: `tools`
-- `source`: [`packages/mcp/mcp-client/src/index.ts:104`](../packages/mcp/mcp-client/src/index.ts)
+- `source`: [`packages/mcp/mcp-client/src/index.ts:115`](../packages/mcp/mcp-client/src/index.ts)
 
 ```ts config-catalog
 /** Configuration for one stdio or Streamable HTTP MCP server. */
@@ -3813,7 +3813,7 @@ export type CompletionDelivery = 'quiet' | 'wakeup'
 ## `@deepseek-ai/dsh-tool-json-render`
 
 - `inject`: `tools`
-- `source`: [`packages/json-render/tool-json-render/src/index.ts:30`](../packages/json-render/tool-json-render/src/index.ts)
+- `source`: [`packages/json-render/tool-json-render/src/index.ts:35`](../packages/json-render/tool-json-render/src/index.ts)
 
 ```ts config-catalog
 export interface Config {
@@ -3825,6 +3825,16 @@ export interface Config {
   timeoutMs?: number
   /** Model-facing description that decides when the tool is called. */
   description?: string
+  /**
+   * Absolute directory of `index.json` and image files.
+   * Empty uses `JSON_RENDER_MEDIA_ROOT`. Unset leaves the image route unmounted.
+   */
+  mediaRoot?: string
+  /**
+   * Owner accepted for catalog rows that set `owner`.
+   * Empty uses `JSON_RENDER_MEDIA_OWNER`. Rows without `owner` stay shared.
+   */
+  mediaOwner?: string
 }
 ```
 <!-- END GENERATED config-catalog:@deepseek-ai/dsh-tool-json-render -->

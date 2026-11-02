@@ -3,7 +3,7 @@
  * src is copied unchanged. Props do not carry component, type, or the image object.
  */
 
-export const JSON_RENDER_MEDIA_PREFIX = '/json-render/media/'
+export const JSON_RENDER_MEDIA_PREFIX = '/api/media/'
 
 /**
  * Image element whose src and alt are strings.
@@ -16,13 +16,15 @@ export function imageElement(src: string, alt: string): { type: 'Image'; props: 
 }
 
 /**
- * Root-relative path on the Web host for one media file name.
- * @param fileName - a single path segment, without a domain or encoding step.
+ * Root-relative content path for one catalog id.
+ * @param assetId - a single safe segment, without a domain or encoding step.
  * @returns the host route pathname.
  */
-export function hostImagePath(fileName: string): string {
-  if (!/^[A-Za-z0-9._-]+$/.test(fileName)) throw new Error('json-render media name must be a single safe segment')
-  return `${JSON_RENDER_MEDIA_PREFIX}${fileName}`
+export function hostImagePath(assetId: string): string {
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$/.test(assetId)) {
+    throw new Error('json-render media id must be a single safe segment')
+  }
+  return `/api/media/${assetId}/content`
 }
 
 /**
@@ -32,6 +34,6 @@ export function hostImagePath(fileName: string): string {
  * @returns the stored bytes when pathname is an exact media route.
  */
 export function readHostImage(pathname: string, files: ReadonlyMap<string, Uint8Array>): Uint8Array | undefined {
-  if (!pathname.startsWith(JSON_RENDER_MEDIA_PREFIX)) return undefined
+  if (!/^\/api\/media\/[A-Za-z0-9][A-Za-z0-9._-]{0,80}\/content$/.test(pathname)) return undefined
   return files.get(pathname)
 }
