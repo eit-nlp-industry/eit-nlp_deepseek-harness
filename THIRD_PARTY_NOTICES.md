@@ -39,7 +39,10 @@ External packages installed for runtime use or embedded in distributed Host or b
 | [`@browserbasehq/stagehand`](https://github.com/browserbase/stagehand) | MIT |
 | [`@deepseek-ai/libreoffice-kit`](https://github.com/deepseek-ai/dsh-libreoffice-kit) | MPL-2.0 |
 | [`@earendil-works/pi-ai`](https://github.com/earendil-works/pi) | MIT |
-| [`@earendil-works/pi-coding-agent`](https://github.com/earendil-works/pi) | MIT |
+| [`@eit/json-render-antd`](https://github.com/eit-nlp-industry/eit-json-render) | UNLICENSED |
+| [`@eit/json-render-catalog`](https://github.com/eit-nlp-industry/eit-json-render) | UNLICENSED |
+| [`@eit/json-render-protocol`](https://github.com/eit-nlp-industry/eit-json-render) | UNLICENSED |
+| [`@eit/json-render-react`](https://github.com/eit-nlp-industry/eit-json-render) | UNLICENSED |
 | [`@eslint-community/regexpp`](https://github.com/eslint-community/regexpp) | MIT |
 | [`@fortune-sheet/core`](https://github.com/ruilisi/fortune-sheet) | MIT |
 | [`@fortune-sheet/react`](https://github.com/ruilisi/fortune-sheet) | MIT |
@@ -155,6 +158,8 @@ External packages installed for runtime use or embedded in distributed Host or b
 | [`yaml`](https://github.com/eemeli/yaml) | ISC |
 | [`zod`](https://github.com/colinhacks/zod) | MIT |
 | [`zustand`](https://github.com/pmndrs/zustand) | MIT |
+
+`@eit/json-render-antd`, `@eit/json-render-catalog`, `@eit/json-render-protocol`, `@eit/json-render-react` declare UNLICENSED and are installed from [eit-json-render](https://github.com/eit-nlp-industry/eit-json-render). The notices check accepts only these package identities at that declared license.
 
 pnpm applies local patches to the following packages at install time, so shipped artifacts carry modified copies; each patch file is the complete record of the modification:
 

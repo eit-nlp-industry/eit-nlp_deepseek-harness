@@ -1,5 +1,5 @@
 /**
- * Generation SDK catalog selection for v0.2.0-rc.5.
+ * Generation SDK catalog selection for v0.2.0-rc.6.
  * Direct SDK callers pass the returned profile. HTTP calls do not send it.
  */
 

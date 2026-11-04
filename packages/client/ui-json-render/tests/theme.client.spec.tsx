@@ -15,6 +15,38 @@ afterEach(() => {
 })
 
 describe('themed json-render forms', () => {
+  it('leaves nested image previews unframed while retaining unrelated detail cards', () => {
+    const payload: JsonRenderPayload = {
+      format: 'json-render-v1',
+      spec: {
+        root: 'details',
+        elements: {
+          details: { type: 'Card', props: { title: '图片详情' }, children: ['preview', 'metadata'] },
+          preview: { type: 'Card', props: { title: '图片预览' }, children: ['image'] },
+          image: { type: 'Image', props: { src: '/sample.png', alt: '样例图' } },
+          metadata: { type: 'Card', props: { title: '文件信息' }, children: ['text'] },
+          text: { type: 'Text', props: { text: 'PNG' } },
+        },
+      },
+    }
+    const { container } = render(<JsonRenderCard payload={payload} instanceId="nested-image" submitForm={vi.fn()} />)
+    const sheet = transform({
+      filename: 'JsonRenderRow.module.css',
+      code: readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../src/client/JsonRenderRow.module.css')),
+      cssModules: true,
+    })
+    const style = document.createElement('style')
+    style.dataset.jsonRenderTestTheme = ''
+    style.textContent = sheet.code.toString().replaceAll(sheet.exports!.panel!.name, container.firstElementChild!.className)
+    document.head.append(style)
+    const preview = screen.getByText('图片预览').closest('.eit-jr-card')!
+    expect(getComputedStyle(container.firstElementChild!).paddingTop).toBe('0px')
+    expect(getComputedStyle(preview).borderTopWidth).toBe('0px')
+    expect(getComputedStyle(preview.querySelector('.ant-card-body')!).paddingInline).toBe('0px')
+    const metadata = screen.getByText('文件信息').closest('.eit-jr-card')!
+    expect(getComputedStyle(metadata.querySelector('.ant-card-body')!).paddingLeft).toBe('16px')
+  })
+
   it.each(['Card', 'Stack'] as const)('frames a %s root, keeps its picker themed, and submits its selection', async (rootType) => {
     vi.stubGlobal('matchMedia', (query: string) => ({
       matches: false, media: query, onchange: null,

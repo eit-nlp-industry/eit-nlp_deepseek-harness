@@ -30,6 +30,15 @@ function jsonResponse(status: number, body: unknown): Response {
 }
 
 describe('requestJsonRender', () => {
+  it('selects the rich catalog for Workflow without an explicit intent', () => {
+    const route = selectRenderRoute({
+      mode: 'display', user_query: '编辑取材料流程', components: ['Workflow'],
+      business_data: { steps: ['前往办公室'] },
+    })
+    expect(route).toEqual({ profile: 'rich', intent: 'rich_content', promptMode: 'full' })
+    expect(generationRenderProfile(route)).toBe(richRenderProfile)
+  })
+
   it('returns a display payload on the first success', async () => {
     const fetchImpl = vi.fn<typeof fetch>(async () => jsonResponse(200, payload))
     const result = await requestJsonRender({
