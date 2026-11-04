@@ -1,0 +1,25 @@
+# Bilingual-pair consistency record for deploying-json-render-images.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/cookbook/deploying-json-render-images.md
+/server-image-display-deployment-steps:
+  en: 3f02f4cbdfceec3e
+  zh: 46b4ccf4a9418f3c
+/server-image-display-deployment-steps/1-release-code:
+  en: 46499707f975e0ae
+  zh: 9af9e10795ccae5f
+/server-image-display-deployment-steps/2-configure-the-server:
+  en: 6d0973a2f5237d62
+  zh: 8b9712df0586cbac
+/server-image-display-deployment-steps/3-register-images-and-restart:
+  en: bcc090ae4de72726
+  zh: 6d42f607f371e87e
+/server-image-display-deployment-steps/4-tell-the-agent-how-to-select-images:
+  en: fe8ddae6b5315b81
+  zh: 1ff4bdfa0e5970f0
+/server-image-display-deployment-steps/5-verify-deployment:
+  en: 129d9f2c18affb3f
+  zh: 282c9ec5c4dd6748
+/server-image-display-deployment-steps/subsequent-images:
+  en: ad504777c2a59511
+  zh: 2e1784b6f91c28d5

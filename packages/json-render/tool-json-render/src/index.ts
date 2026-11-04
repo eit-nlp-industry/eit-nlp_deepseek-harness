@@ -8,7 +8,10 @@
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { defineTool } from '@deepseek-ai/dsh-tools'
-import { requestJsonRender, type RenderUiResult } from './request.ts'
+import {
+  mountMediaRoute, openMediaRoot, readMediaCatalog, referencesImage, visibleAssets, type MediaAssetRecord,
+} from './media.ts'
+import { requestJsonRender, resolvedRenderProfile, selectRenderRoute, type RenderUiResult } from './request.ts'
 
 export const name = 'tool-json-render'
 
@@ -24,9 +27,9 @@ export const DEFAULT_RENDER_UI_DESCRIPTION = [
   'Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters.',
   'For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request.',
   'answer_presentation defaults to "replace" for display: the interface must fully answer the request. Use "supplement" when the written answer contains necessary explanations or caveats absent from the interface.',
-  'Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit.',
-  'If the request is ambiguous or a choice is missing, call ask_user_question instead.',
-  'Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.',
+  'mode does not select the component catalog. Omit intent for an ordinary display so the server uses base. Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit.',
+  'When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, CodeBlock, or Workflow, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead.',
+  'For an image, set business_data.image.assetId to a catalog id. The host writes image.src, image.alt, and image.caption before the render call. Do not send a disk path, domain, credential, component, or type. ImageUpload only names uploadTarget; do not invent an endpoint or credential. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.',
 ].join(' ')
 
 export interface Config {
@@ -38,6 +41,16 @@ export interface Config {
   timeoutMs?: number
   /** Model-facing description that decides when the tool is called. */
   description?: string
+  /**
+   * Absolute directory of `index.json` and image files.
+   * Empty uses `JSON_RENDER_MEDIA_ROOT`. Unset leaves the image route unmounted.
+   */
+  mediaRoot?: string
+  /**
+   * Owner accepted for catalog rows that set `owner`.
+   * Empty uses `JSON_RENDER_MEDIA_OWNER`. Rows without `owner` stay shared.
+   */
+  mediaOwner?: string
 }
 
 export const Config: z<Config> = z.object({
@@ -45,10 +58,19 @@ export const Config: z<Config> = z.object({
   baseUrl: z.string().default(''),
   timeoutMs: z.number().default(DEFAULT_RENDER_TIMEOUT_MS),
   description: z.string().default(''),
+  mediaRoot: z.string().default(''),
+  mediaOwner: z.string().default(''),
 })
 
 function positiveInteger(value: number): boolean {
   return Number.isInteger(value) && value > 0
+}
+
+function openConfiguredMediaRoot(config: Config): string {
+  const configured = (config.mediaRoot ?? '').trim()
+  const fromEnv = process.env.JSON_RENDER_MEDIA_ROOT?.trim() ?? ''
+  const root = configured || fromEnv
+  return root === '' ? '' : openMediaRoot(root)
 }
 
 /**
@@ -64,6 +86,9 @@ export function apply(ctx: Context, config: Config): void {
   const fromEnv = process.env.JSON_RENDER_BASE_URL?.trim()
   const baseUrl = ((config.baseUrl ?? '').trim() || fromEnv || DEFAULT_RENDER_BASE_URL).replace(/\/$/, '')
   const description = (config.description ?? '').trim() || DEFAULT_RENDER_UI_DESCRIPTION
+  const mediaRoot = openConfiguredMediaRoot(config)
+  const mediaOwner = (config.mediaOwner ?? '').trim() || (process.env.JSON_RENDER_MEDIA_OWNER?.trim() ?? '')
+  mountMediaRoute(ctx, mediaRoot, mediaOwner)
 
   ctx.tools.register(defineTool({
     name: 'render_ui',
@@ -74,7 +99,7 @@ export function apply(ctx: Context, config: Config): void {
         type: 'string',
         required: true,
         enum: ['display', 'form'],
-        description: 'display renders a read-only layout. form renders generic_filters or generic_pick_one and ends the turn on success.',
+        description: 'display renders a read-only layout and continues the turn. form renders a form and ends the turn on success. mode does not select the catalog.',
       },
       user_query: {
         type: 'string',
@@ -88,7 +113,20 @@ export function apply(ctx: Context, config: Config): void {
       },
       intent: {
         type: 'string',
-        description: 'Required for form: generic_filters or generic_pick_one.',
+        description: 'generic_filters or generic_pick_one for those forms. rich_content when the layout needs the rich catalog and components is omitted. Omit for ordinary display.',
+      },
+      components: {
+        type: 'array',
+        items: {
+          type: 'string',
+          enum: ['Image', 'ImageUpload', 'Tabs', 'MapPreview', 'SortableSequence', 'Collapsible', 'CodeBlock', 'Workflow'],
+        },
+        description: 'Rich component names this layout needs. Any one selects rich_content for the whole page, including a mix with base or form components.',
+      },
+      prompt_mode: {
+        type: 'string',
+        enum: ['full', 'progressive'],
+        description: 'Optional server prompt mode. Only full or progressive.',
       },
       scene: {
         type: 'string',
@@ -115,17 +153,34 @@ export function apply(ctx: Context, config: Config): void {
         },
       },
       render: (_args, value) => [{ type: 'text', text: value.message }],
-      presentationMeta: (args, value) => value.ok && value.payload !== undefined
-        ? { payload: value.payload, answerPresentation: value.mode === 'display' ? (args.answer_presentation ?? 'replace') : 'supplement' }
-        : null,
+      presentationMeta: (args, value) => {
+        if (!value.ok || value.payload === undefined) return null
+        return {
+          payload: value.payload,
+          profile: resolvedRenderProfile(
+            referencesImage(args.business_data) ? 'rich' : selectRenderRoute(args).profile,
+            value.payload,
+          ),
+          answerPresentation: value.mode === 'display' ? (args.answer_presentation ?? 'replace') : 'supplement',
+        }
+      },
     },
     isConcurrencySafe: () => false,
     async execute(args, exec): Promise<RenderUiResult> {
+      let assets: readonly MediaAssetRecord[] | undefined
+      if (mediaRoot !== '' && referencesImage(args.business_data)) {
+        try {
+          assets = visibleAssets(await readMediaCatalog(mediaRoot), mediaOwner)
+        } catch {
+          return { ok: false, mode: args.mode, message: '图片资源目录无法读取。请用文字继续回答。' }
+        }
+      }
       const result = await requestJsonRender({
         baseUrl,
         timeoutMs,
         args,
         signal: exec.signal,
+        ...assets !== undefined ? { assets } : {},
       })
       if (result.ok && result.mode === 'form') exec.concludeTurn()
       return result.ok

@@ -170,6 +170,68 @@
   align-self: flex-start;
 }
 
+/* Image results use the conversation background, including on phones. */
+.panel:has(:global(.eit-jr-image)) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.panel :global(.eit-jr-card:has(> .ant-card-body > .eit-jr-image:only-child)),
+.panel :global(.eit-jr-section--bordered:has(> .eit-jr-section__content > .eit-jr-image:only-child)) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.panel :global(.eit-jr-card:has(> .ant-card-body > .eit-jr-image:only-child) > .ant-card-head),
+.panel :global(.eit-jr-card:has(> .ant-card-body > .eit-jr-image:only-child) > .ant-card-body) {
+  padding-inline: 0;
+}
+
+/* The tab already groups its immediate content; inner detail cards retain frames. */
+.panel :global(.eit-jr-tab-pane > .eit-jr-card),
+.panel :global(.eit-jr-tab-pane > .eit-jr-section--bordered) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.panel :global(.eit-jr-tab-pane > .eit-jr-card > .ant-card-head),
+.panel :global(.eit-jr-tab-pane > .eit-jr-card > .ant-card-body) {
+  padding-inline: 0;
+}
+
+.panel :global(.eit-jr-tabs__list) {
+  border-bottom-color: var(--dsw-alias-border-l2);
+  overflow-x: auto;
+}
+
+.panel :global(.eit-jr-tabs__list > button) {
+  flex-shrink: 0;
+}
+
+.panel :global(.eit-jr-tabs__list > button[aria-selected=true]) {
+  border-bottom-color: var(--json-render-accent);
+  color: var(--json-render-accent);
+  font-weight: 500;
+}
+
+/* Mixed prose and cards read sequentially without tall grid rows between paragraphs. */
+.panel :global(.eit-jr-tab-pane .eit-jr-grid:has(> .eit-jr-text):has(> .eit-jr-card, > .eit-jr-section--bordered)) {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.panel :global(.eit-jr-root .eit-jr-section__heading) {
+  margin-bottom: 4px;
+}
+
 .panel :global(.eit-jr-root .eit-jr-section__description),
 .panel :global(.eit-jr-root .eit-jr-control-description) {
   color: var(--dsw-alias-label-secondary);

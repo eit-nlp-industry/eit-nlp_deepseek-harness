@@ -66,6 +66,7 @@ const LIBREOFFICE_PACKAGES = new Set([
 /** Direct Git dependencies whose published manifests declare UNLICENSED and omit repository. */
 const JSON_RENDER_GIT_PACKAGES = new Set([
   '@eit/json-render-antd',
+  '@eit/json-render-catalog',
   '@eit/json-render-protocol',
   '@eit/json-render-react',
 ])
@@ -97,6 +98,7 @@ const OVERRIDES: Record<string, { license?: string; repo?: string }> = {
   'node-addon-require-builtin': { repo: 'https://www.npmjs.com/package/node-addon-require-builtin' },
   // Git-pinned packages whose manifests omit `repository`.
   '@eit/json-render-antd': { repo: JSON_RENDER_GIT_REPO },
+  '@eit/json-render-catalog': { repo: JSON_RENDER_GIT_REPO },
   '@eit/json-render-protocol': { repo: JSON_RENDER_GIT_REPO },
   '@eit/json-render-react': { repo: JSON_RENDER_GIT_REPO },
   // No `license` field in the published manifest; the tarball's LICENSE.txt is the MIT text.
