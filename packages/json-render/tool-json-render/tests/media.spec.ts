@@ -5,11 +5,12 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
+import * as NativeToolExecutor from '@deepseek-ai/dsh-tool-executor-native'
 import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
 import ToolRuntime from '@deepseek-ai/dsh-tools'
 import type { Config } from '../src/index.ts'
 import * as toolJsonRender from '../src/index.ts'
+import { executeRenderUi } from './execute-render.ts'
 import {
   canonicalImageSrc,
   imageBusinessData,
@@ -426,6 +427,7 @@ describe('render_ui media mount', () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
     await ctx.plugin(ToolRuntime)
+    await ctx.plugin(NativeToolExecutor)
     ctx.reflect.provide('webServer', {
       register(route: { kind: string; path: string; handler: (req: IncomingMessage, res: ServerResponse) => Promise<void> }) {
         routes.push(route)
@@ -483,25 +485,20 @@ describe('render_ui media mount', () => {
       diagnostics: { profile: 'rich' },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', sent)
-    const rendered = await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('image'),
-      name: 'render_ui',
-      arguments: {
-        mode: 'display',
-        user_query: '展示参考照片',
-        locale: 'en-US',
-        scene: 'kb',
-        prompt_mode: 'progressive',
-        business_data: {
-          title: '概览',
-          image: {
-            assetId: 'ref-photo',
-            file: 'C:\\fixture\\mock.png',
-            component: 'Image',
-            type: 'Image',
-            token: 'sk-test',
-          },
+    const rendered = await executeRenderUi(ctx.tools, 'image', {
+      mode: 'display',
+      user_query: '展示参考照片',
+      locale: 'en-US',
+      scene: 'kb',
+      prompt_mode: 'progressive',
+      business_data: {
+        title: '概览',
+        image: {
+          assetId: 'ref-photo',
+          file: 'C:\\fixture\\mock.png',
+          component: 'Image',
+          type: 'Image',
+          token: 'sk-test',
         },
       },
     })
@@ -530,15 +527,10 @@ describe('render_ui media mount', () => {
     )).toMatchObject({ profile: 'rich' })
 
     sent.mockClear()
-    const foreign = await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('foreign'),
-      name: 'render_ui',
-      arguments: {
-        mode: 'display',
-        user_query: '展示',
-        business_data: { image: { assetId: 'foreign' } },
-      },
+    const foreign = await executeRenderUi(ctx.tools, 'foreign', {
+      mode: 'display',
+      user_query: '展示',
+      business_data: { image: { assetId: 'foreign' } },
     })
     expect(sent).not.toHaveBeenCalled()
     expect(JSON.stringify(foreign.content)).toContain('不在媒体目录')
@@ -548,12 +540,7 @@ describe('render_ui media mount', () => {
       spec: { root: 'card', elements: {} },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', plain)
-    await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('plain'),
-      name: 'render_ui',
-      arguments: { mode: 'display', user_query: '展示', business_data: { title: '概览' } },
-    })
+    await executeRenderUi(ctx.tools, 'plain', { mode: 'display', user_query: '展示', business_data: { title: '概览' } })
     const plainBody = JSON.parse(requestText(plain.mock.calls[0]?.[1]?.body)) as { context?: { intent?: string } }
     expect(plainBody.context?.intent).toBeUndefined()
 
@@ -567,26 +554,17 @@ describe('render_ui media mount', () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
     await ctx.plugin(ToolRuntime)
+    await ctx.plugin(NativeToolExecutor)
     const fiber = ctx.plugin(toolJsonRender, { mediaRoot: root, baseUrl: 'http://render.test' } satisfies Config)
     await fiber
     const sent = vi.fn<typeof fetch>(async () => new Response(JSON.stringify({
       format: 'json-render-v1', spec: { root: 'card', elements: {} },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', sent)
-    const image = await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('broken'),
-      name: 'render_ui',
-      arguments: { mode: 'display', user_query: '展示', business_data: { image: { assetId: 'ref-photo' } } },
-    })
+    const image = await executeRenderUi(ctx.tools, 'broken', { mode: 'display', user_query: '展示', business_data: { image: { assetId: 'ref-photo' } } })
     expect(sent).not.toHaveBeenCalled()
     expect(JSON.stringify(image.content)).toContain('无法读取')
-    await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('table'),
-      name: 'render_ui',
-      arguments: { mode: 'display', user_query: '展示', business_data: { title: '概览' } },
-    })
+    await executeRenderUi(ctx.tools, 'table', { mode: 'display', user_query: '展示', business_data: { title: '概览' } })
     expect(sent).toHaveBeenCalledOnce()
     await fiber.dispose()
   })
@@ -600,18 +578,14 @@ describe('render_ui media mount', () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
     await ctx.plugin(ToolRuntime)
+    await ctx.plugin(NativeToolExecutor)
     const fiber = ctx.plugin(toolJsonRender, { baseUrl: 'http://render.test' } satisfies Config)
     await fiber
     const sent = vi.fn<typeof fetch>(async () => new Response(JSON.stringify({
       format: 'json-render-v1', spec: { root: 'image', elements: {} },
     }), { status: 200, headers: { 'content-type': 'application/json' } }))
     vi.stubGlobal('fetch', sent)
-    await ctx.tools.execute({
-      signal: new AbortController().signal,
-      callId: ToolCallId('env'),
-      name: 'render_ui',
-      arguments: { mode: 'form', user_query: '确认', intent: 'generic_pick_one', business_data: { image: { assetId: 'ref-photo' } } },
-    })
+    await executeRenderUi(ctx.tools, 'env', { mode: 'form', user_query: '确认', intent: 'generic_pick_one', business_data: { image: { assetId: 'ref-photo' } } })
     const body = JSON.parse(requestText(sent.mock.calls[0]?.[1]?.body)) as { context: { intent: string; locale: string } }
     expect(body.context).toEqual({ intent: 'rich_content', locale: 'zh-CN' })
     await fiber.dispose()

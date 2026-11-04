@@ -7,11 +7,12 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
+import * as NativeToolExecutor from '@deepseek-ai/dsh-tool-executor-native'
 import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
 import ToolRuntime from '@deepseek-ai/dsh-tools'
 import { apply, DEFAULT_RENDER_UI_DESCRIPTION } from '@deepseek-ai/dsh-tool-json-render'
 import * as toolJsonRender from '@deepseek-ai/dsh-tool-json-render'
+import { executeRenderUi } from './execute-render.ts'
 
 function requestTarget(input: RequestInfo | URL | undefined): string {
   if (typeof input === 'string') return input
@@ -35,6 +36,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
     await ctx.plugin(ToolRuntime)
+    await ctx.plugin(NativeToolExecutor)
     const loader = Object.create(Loader.prototype) as Loader
     const unwrapped = loader.unwrapExports(toolJsonRender) as Parameters<Context['plugin']>[0]
     const fiber = await ctx.plugin(unwrapped)
@@ -47,6 +49,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
     await ctx.plugin(ToolRuntime)
+    await ctx.plugin(NativeToolExecutor)
     const fiber = await ctx.plugin(toolJsonRender)
     try {
       const output = ctx.tools.get('render_ui')!.output
@@ -72,6 +75,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
     await ctx.plugin(ToolRuntime)
+    await ctx.plugin(NativeToolExecutor)
     const fiber = await ctx.plugin(toolJsonRender)
     try {
       const pinned = JSON.parse(readFileSync(new URL('../../../../snapshots/session/json-render-fallback/tool-schemas.expected.json', import.meta.url), 'utf8')) as {
@@ -97,6 +101,7 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       const disabled = new Context()
       await disabled.plugin(SystemPrompt)
       await disabled.plugin(ToolRuntime)
+      await disabled.plugin(NativeToolExecutor)
       apply(disabled, { enabled: false })
       expect(disabled.tools.schemas().map(schema => schema.name)).not.toContain('render_ui')
       expect(() => { apply(disabled, { timeoutMs: 0 }) }).toThrow(/positive integer/)
@@ -105,16 +110,12 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       const configured = new Context()
       await configured.plugin(SystemPrompt)
       await configured.plugin(ToolRuntime)
+      await configured.plugin(NativeToolExecutor)
       apply(configured, { baseUrl: 'http://configured.test/', description: '  only tables  ' })
       expect(configured.tools.get('render_ui')?.description).toBe('only tables')
       const configuredFetch = respond(200)
       vi.stubGlobal('fetch', configuredFetch)
-      const display = await configured.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('display'),
-        name: 'render_ui',
-        arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
-      })
+      const display = await executeRenderUi(configured.tools, 'display', { mode: 'display', user_query: '展示', business_data: { name: 'A' } })
       expect(configuredFetch.mock.calls[0]?.[0]).toBe('http://configured.test/v1/render')
       expect(display.isError).toBe(false)
       if (!display.isError) expect(display.concludesTurn).toBeUndefined()
@@ -123,30 +124,22 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       const fallback = new Context()
       await fallback.plugin(SystemPrompt)
       await fallback.plugin(ToolRuntime)
+      await fallback.plugin(NativeToolExecutor)
       apply(fallback, {})
       const fallbackFetch = respond(200)
       vi.stubGlobal('fetch', fallbackFetch)
-      await fallback.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('fallback'),
-        name: 'render_ui',
-        arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
-      })
+      await executeRenderUi(fallback.tools, 'fallback', { mode: 'display', user_query: '展示', business_data: { name: 'A' } })
       expect(requestTarget(fallbackFetch.mock.calls[0]?.[0])).toBe('http://10.37.0.21:3001/v1/render')
 
       process.env.JSON_RENDER_BASE_URL = 'http://env.test/'
       const fromEnv = new Context()
       await fromEnv.plugin(SystemPrompt)
       await fromEnv.plugin(ToolRuntime)
+      await fromEnv.plugin(NativeToolExecutor)
       apply(fromEnv, { baseUrl: '  ' })
       const envFetch = respond(400)
       vi.stubGlobal('fetch', envFetch)
-      const failed = await fromEnv.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('failed'),
-        name: 'render_ui',
-        arguments: { mode: 'display', user_query: '展示', business_data: { name: 'A' } },
-      })
+      const failed = await executeRenderUi(fromEnv.tools, 'failed', { mode: 'display', user_query: '展示', business_data: { name: 'A' } })
       expect(requestTarget(envFetch.mock.calls[0]?.[0])).toBe('http://env.test/v1/render')
       expect(failed.isError).toBe(false)
       if (!failed.isError) expect(JSON.stringify(failed.content)).toContain('拒绝')
@@ -154,14 +147,10 @@ describe('dsh-tool-json-render real-load-path guard', () => {
       const formHost = new Context()
       await formHost.plugin(SystemPrompt)
       await formHost.plugin(ToolRuntime)
+      await formHost.plugin(NativeToolExecutor)
       apply(formHost, { baseUrl: 'http://configured.test' })
       vi.stubGlobal('fetch', respond(200))
-      const form = await formHost.tools.execute({
-        signal: new AbortController().signal,
-        callId: ToolCallId('form'),
-        name: 'render_ui',
-        arguments: { mode: 'form', user_query: '选择', intent: 'generic_pick_one', business_data: { models: ['A'] } },
-      })
+      const form = await executeRenderUi(formHost.tools, 'form', { mode: 'form', user_query: '选择', intent: 'generic_pick_one', business_data: { models: ['A'] } })
       expect(form.isError).toBe(false)
       if (!form.isError) expect(form.concludesTurn).toBe(true)
     } finally {
