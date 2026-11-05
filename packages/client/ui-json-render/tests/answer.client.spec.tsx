@@ -55,7 +55,7 @@ describe('json-render answer presentation', () => {
   it('keeps business data from the render_ui call beside the payload', () => {
     const context = {
       key: 'answer', kind: 'json-render-answer', id: '1', matches: [], start: undefined, state: undefined, current: new Map(),
-    } as ConversationNodeContext
+    } as ConversationNodeContext<ReturnType<typeof jsonRenderAnswerDefinition.start>>
     const match = (type: string, data: unknown, seq: number): ConversationMatch => ({
       role: type === 'turn/start' ? 'start' : 'update',
       location: { kind: 'session' },
@@ -65,7 +65,7 @@ describe('json-render answer presentation', () => {
       format: 'json-render-v1',
       spec: { root: 'card', elements: { card: { type: 'Card', props: { title: 'A' } } } },
     }
-    let state = jsonRenderAnswerDefinition.start(context, match('turn/start', { turn: 1 }, 1), { previous: () => undefined })
+    let state = jsonRenderAnswerDefinition.start(context, { ...match('turn/start', { turn: 1 }, 1), role: 'start' }, { previous: () => undefined })
     expect(jsonRenderAnswerDefinition.buildLocationData?.({ ...context, state: undefined }, 'turn', null)).toBeNull()
     expect(jsonRenderAnswerDefinition.buildLocationData?.({ ...context, state }, 'turn', null)).toBeNull()
     expect(jsonRenderAnswerDefinition.buildLocationData?.({ ...context, state }, 'step', null)).toBeNull()
@@ -95,7 +95,7 @@ describe('json-render answer presentation', () => {
     }, 7))
     expect(state.card?.businessData).toEqual({ items: [{ id: 'a', title: '甲' }] })
     const published = jsonRenderAnswerDefinition.buildLocationData?.({ ...context, state }, 'turn', null)
-    expect(published?.value.businessData).toEqual({ items: [{ id: 'a', title: '甲' }] })
+    expect(published?.key === 'json-render-answer' ? published.value.businessData : undefined).toEqual({ items: [{ id: 'a', title: '甲' }] })
     expect(jsonRenderAnswerDefinition.buildLocationData?.({ ...context, state }, 'turn', published ?? null)).toBe(published)
   })
 })
