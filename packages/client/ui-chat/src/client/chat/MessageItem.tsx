@@ -205,12 +205,19 @@ function UserStyleBubble({
   facts?: Readonly<Partial<UserTextFacts>>
 } & Pick<ChatNodeOwnerProps, 'loadImage'> & Pick<UserContentInput, 'interactive'>): ReactNode {
   const parts = useMemo(() => contentParts(content), [content])
-  const prepared = useMemo<UserContentData>(() => ({
-    text: parts.text,
-    attachments: previewAttachments ?? parts.attachments,
-    extraBlocks: parts.rest,
-    ...(referenceLabels === undefined ? {} : { referenceLabels }),
-  }), [parts, previewAttachments, referenceLabels])
+  const prepared = useMemo<UserContentData>(() => {
+    // Workflow submissions retain their editable data in the session text.
+    const workflowReceipt = '我已提交编辑后的流程'
+    const text = parts.text.startsWith(`${workflowReceipt}\n<!-- dsh:workflow-submit -->\n`)
+      ? workflowReceipt
+      : parts.text
+    return {
+      text,
+      attachments: previewAttachments ?? parts.attachments,
+      extraBlocks: parts.rest,
+      ...(referenceLabels === undefined ? {} : { referenceLabels }),
+    }
+  }, [parts, previewAttachments, referenceLabels])
   const facts = useMemo<Readonly<Partial<UserTextFacts>>>(() => ({
     ...inputFacts,
     ...(referenceLabels === undefined ? {} : { sessionLabels: referenceLabels }),

@@ -5,6 +5,7 @@ import { isAppendSurfaceEvent } from '@deepseek-ai/dsh-session/surface'
 import type { ConversationMatch, ConversationNodeDefinition, TurnLocation } from '@deepseek-ai/dsh-client-ui-conversation/client'
 import type { JsonRenderPayload } from '@eit/json-render-protocol'
 import { payloadFromMeta } from './payload.ts'
+import { businessDataFromToolArguments } from './submit.ts'
 
 /** Wire name of the host tool. */
 export const RENDER_UI_TOOL = 'render_ui'
@@ -16,6 +17,8 @@ export interface JsonRenderAnswerData {
   readonly payload: JsonRenderPayload
   readonly answerPresentation: 'replace' | 'supplement'
   readonly profile?: 'base' | 'forms' | 'rich'
+  /** Facts from the render_ui call. Route-order items are read from here when the payload omits them. */
+  readonly businessData?: unknown
 }
 
 declare module '@deepseek-ai/dsh-client-ui-conversation/client' {
@@ -33,6 +36,7 @@ export interface JsonRenderAnswerOwner {
 
 interface RenderCall {
   readonly name: string
+  readonly businessData?: unknown
 }
 
 interface AnswerState {
@@ -75,7 +79,7 @@ export function profileFromMeta(meta: unknown): 'base' | 'forms' | 'rich' | unde
   return undefined
 }
 
-function settledCard(match: ConversationMatch, callId: string): JsonRenderAnswerData | undefined {
+function settledCard(match: ConversationMatch, callId: string, businessData: unknown): JsonRenderAnswerData | undefined {
   if (match.event.type !== 'tool/result' || !isAppendSurfaceEvent(match.event)) return undefined
   if (match.event.data.message.isError === true) return undefined
   const payload = payloadFromMeta(match.event.data.meta)
@@ -87,6 +91,7 @@ function settledCard(match: ConversationMatch, callId: string): JsonRenderAnswer
     payload,
     answerPresentation: answerPresentationFromMeta(match.event.data.meta),
     ...profile !== undefined ? { profile } : {},
+    ...businessData !== undefined ? { businessData } : {},
   }
 }
 
@@ -108,14 +113,19 @@ export const jsonRenderAnswerDefinition: ConversationNodeDefinition<AnswerState>
   update: (context, match) => {
     if (match.event.type === 'tool/call') {
       const calls = new Map(context.state.calls)
-      calls.set(String(match.event.data.callId), { name: match.event.data.name })
+      const name = match.event.data.name
+      const businessData = name === RENDER_UI_TOOL ? businessDataFromToolArguments(match.event.data.arguments) : undefined
+      calls.set(String(match.event.data.callId), {
+        name,
+        ...businessData !== undefined ? { businessData } : {},
+      })
       return { ...context.state, calls }
     }
     if (match.event.type !== 'tool/result') return context.state
     const callId = String(match.event.data.message.source.callId)
     const call = context.state.calls.get(callId)
     if (call?.name !== RENDER_UI_TOOL) return context.state
-    const card = settledCard(match, callId)
+    const card = settledCard(match, callId, call.businessData)
     return { ...context.state, card }
   },
   buildLocationData: (context, scope, previous) => {

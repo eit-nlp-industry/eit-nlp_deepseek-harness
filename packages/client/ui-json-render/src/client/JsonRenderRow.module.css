@@ -200,13 +200,35 @@
   margin-bottom: 4px;
 }
 
-/* Image results use the conversation background, including on phones. */
-.panel:has(:global(.eit-jr-image)) {
+/* Images and workflow editors use the conversation background, including on phones. */
+.panel:has(:global(.eit-jr-image)),
+.panel:has(:global(.eit-jr-workflow)) {
   padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+}
+
+.panel:has(:global(.eit-jr-workflow)) :global(.eit-jr-heading),
+.panel :global(.eit-jr-card:has(.eit-jr-workflow) > .ant-card-head),
+.panel :global(.eit-jr-section:has(.eit-jr-workflow) > .eit-jr-section__heading),
+.panel :global(.eit-jr-section:has(.eit-jr-workflow) > .eit-jr-section__description) {
+  display: none;
+}
+
+.panel :global(.eit-jr-card:has(.eit-jr-workflow)),
+.panel :global(.eit-jr-card:has(.eit-jr-workflow) > .ant-card-body),
+.panel :global(.eit-jr-section:has(.eit-jr-workflow)) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.panel :global(.eit-jr-workflow > header > h3) {
+  font: var(--dsw-font-s-strong-14);
 }
 
 .panel :global(.eit-jr-card:has(> .ant-card-body > .eit-jr-image:only-child)),

@@ -21,6 +21,7 @@ export function JsonRenderAnswer(props: PropsRuntime<'conversation.chat.turnTail
       payload={card.payload}
       instanceId={card.callId}
       profile={card.profile}
+      businessData={card.businessData}
       submitForm={text => props.submitForm(props.sessionId, text)}
     />
   )
@@ -37,5 +38,6 @@ export function JsonRenderReplacement(props: PropsRuntime<'conversation.chat.ans
     fileMentions={props.fileMentions} pathImages={props.pathImages} />
   if (card === null) return fallback()
   return <JsonRenderCard key={card.callId} payload={card.payload} instanceId={card.callId}
-    profile={card.profile} submitForm={text => props.submitForm(props.sessionId, text)} fallbackRender={fallback} />
+    profile={card.profile} businessData={card.businessData}
+    submitForm={text => props.submitForm(props.sessionId, text)} fallbackRender={fallback} />
 }
