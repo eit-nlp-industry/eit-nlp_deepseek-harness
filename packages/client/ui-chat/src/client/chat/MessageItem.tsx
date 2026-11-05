@@ -180,7 +180,10 @@ function UserStyleBubble({
   references?: Pick<ChatNodeOwnerProps, 'openFile' | 'openSkill'>
   t: ChatViewSlotProps['t']
 }): ReactNode {
-  const { text, attachments: contentAttachments, rest } = contentParts(content)
+  const { text: fullText, attachments: contentAttachments, rest } = contentParts(content)
+  // Workflow submissions retain their editable data in the session text.
+  const workflowReceipt = '我已提交编辑后的流程'
+  const text = fullText.startsWith(`${workflowReceipt}\n<!-- dsh:workflow-submit -->\n`) ? workflowReceipt : fullText
   const attachments = previewAttachments ?? contentAttachments
   const compactImages = attachments.length > 1
   const truncated = (total: number): string => t('json.truncated', { total })

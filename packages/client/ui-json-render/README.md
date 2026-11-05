@@ -1,5 +1,5 @@
 ---
-description: "Browser row that renders a render_ui payload and sends form submits back to the session."
+description: "Browser row that renders a render_ui payload and sends form, workflow, and route-order confirmations back to the session."
 kind: "package-reference"
 ---
 
@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-Show the latest successful `render_ui` result as the final answer or alongside its prose. A later failed render removes the earlier card and preserves the written answer. The tool row stays a short status. A form submit is queued as the next user message.
+Show the latest successful `render_ui` result as the final answer or alongside its prose. A later failed render removes the earlier card and preserves the written answer. The tool row stays a short status. A form submit, workflow save, or applied route order is queued as the next user message.
 
 ## Table of Contents
 
@@ -25,12 +25,12 @@ Show the latest successful `render_ui` result as the final answer or alongside i
 
 Add the package to the Web client composition. A successful display declared with `answer_presentation: replace` replaces a completed closing response containing one text block and optional reasoning. Missing, malformed, unsupported, or failed render results preserve the written answer. Rendering exceptions restore the original Markdown with its links and controls. The written answer remains in the Session for copying and export. Supplementary displays, forms, historical results without an explicit declaration, and responses with other block layouts render under the prose. The tool row only reports status.
 
-Base and forms results use the stable Ant Design registry. A rich profile diagnostic uses the public experimental registry, which includes Image, ImageUpload, and Workflow. Workflow supports local editing and undo/redo; workflow.save and workflow.execute events are not connected to business APIs, and edits are not persisted after reload. Upload targets come from host adapters; the payload only names `uploadTarget`. A Vue host uses the Vue adapter from the same v0.2.0-rc.6 release instead of these React components. The renderer maps Ant Design CSS variables to the host's semantic theme tokens. Payloads containing Image elements have no outer background, border, or padding. Cards and bordered Sections whose sole content child is an Image also omit their frame and horizontal padding, retaining their headings. Other payloads have a rounded, elevated surface; a root Card or bordered Section shares it without a second frame. Immediate Cards and bordered Sections in a TabContent also omit their frame. Within tabs, grids mixing direct Text children with Cards or bordered Sections use one column in payload order; card-only grids retain their columns. Cards, tables, metrics, steps, notices, and form controls follow the host's light/dark palette and font settings. Form labels sit above their controls; fields retain their natural height, and card content has explicit gaps. Dropdowns stay inside the themed surface, and wide tables scroll independently. Grids stack on narrow screens; reduced-motion preferences disable local animation. Styling is local to this renderer and requires no changes to stored payloads or the render server.
+Base and forms results use the stable Ant Design registry. A rich profile diagnostic uses the public experimental registry, which includes Image, ImageUpload, and Workflow. Workflow supports local editing and undo/redo. workflow.save queues a Chinese outline of the edited workflow and its parameters and asks the agent to render an updated editable Workflow in the next reply. The Chat bubble shows only the submission receipt. route.order.apply queues the submitted id order with the full items from the original payload or that call's business data. workflow.change, workflow.select, and route.order.change do not send. A save or apply already in flight ignores another click; failure leaves the edit in place for a retry. workflow.execute is not connected, and edits are not persisted after reload. Upload targets come from host adapters; the payload only names `uploadTarget`. A Vue host uses the Vue adapter from the same v0.2.0-rc.6 release instead of these React components. The renderer maps Ant Design CSS variables to the host's semantic theme tokens. Payloads containing Image or Workflow elements have no outer background, border, or padding. Cards and bordered Sections whose sole content child is an Image also omit their frame and horizontal padding, retaining their headings. Other payloads have a rounded, elevated surface; a root Card or bordered Section shares it without a second frame. Immediate Cards and bordered Sections in a TabContent also omit their frame. Within tabs, grids mixing direct Text children with Cards or bordered Sections use one column in payload order; card-only grids retain their columns. Cards, tables, metrics, steps, notices, and form controls follow the host's light/dark palette and font settings. Form labels sit above their controls; fields retain their natural height, and card content has explicit gaps. Dropdowns stay inside the themed surface, and wide tables scroll independently. Grids stack on narrow screens; reduced-motion preferences disable local animation. Styling is local to this renderer and requires no changes to stored payloads or the render server.
 
 <a id="model-experience"></a>
 ## Model Experience
 
-Indirectly, through the host `render_ui` tool, which owns the model-facing text.
+Indirectly, through the host `render_ui` tool. Confirmed forms, workflows, and route orders are queued as the next user message and are not system instructions.
 
 #### KV Cache effect
 

@@ -1873,6 +1873,18 @@ describe('ChatView', () => {
     expect(view.container.querySelectorAll('[data-pending-steering]')).toHaveLength(1)
   })
 
+  it('shows only the receipt for a workflow submission', () => {
+    const receipt = '我已提交编辑后的流程'
+    const details = '请生成更新后的流程卡片'
+    const h = makeHarness({ nodes: [{
+      kind: 'user', seq: 2, time: 2_000, source: null,
+      content: [{ type: 'text', text: `${receipt}\n<!-- dsh:workflow-submit -->\n${details}` }],
+    }] })
+    const view = render(<h.ChatView {...h.props} />)
+    expect(view.getByText(receipt)).toBeTruthy()
+    expect(view.queryByText(details, { exact: false })).toBeNull()
+  })
+
   it('renders local submission echoes at the flow tail and swaps atomically with the durable node', () => {
     const h = makeHarness(
       { nodes: [assistant(1, 'working')] },

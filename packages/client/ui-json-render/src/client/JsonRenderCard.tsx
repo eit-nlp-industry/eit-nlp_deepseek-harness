@@ -2,15 +2,18 @@ import { Component, useMemo, useRef, useState, type ComponentProps, type ReactNo
 import { ConfigProvider } from 'antd'
 import { JsonRenderPanel } from '@eit/json-render-react'
 import type { ExperimentalRegistryOptions } from '@eit/json-render-antd/experimental'
-import type { JsonRenderEvent, JsonRenderPayload } from '@eit/json-render-protocol'
+import type { JsonRenderPayload } from '@eit/json-render-protocol'
 import css from './JsonRenderRow.module.css'
 import { inferRenderProfile, reactRegistryForProfile, registryRecognizes, type RenderProfileKind } from './registry.ts'
+import { decideJsonRenderSubmit, formValues } from './submit.ts'
 import { renderTheme } from './theme.ts'
 
 export interface JsonRenderCardProps {
   payload: JsonRenderPayload
   instanceId: string
   submitForm: (text: string) => Promise<void>
+  /** `business_data` from the render_ui call. Item records are read from here when the payload does not include them. */
+  businessData?: unknown
   /** Server profile diagnostic. Element types are used only when this is omitted. */
   profile?: RenderProfileKind | undefined
   /** Host upload adapters keyed by uploadTarget. The payload must not carry endpoints or credentials. */
@@ -19,16 +22,7 @@ export interface JsonRenderCardProps {
   fallbackRender?: () => ReactNode
 }
 
-/**
- * Values carried by one form submit.
- * @param event - renderer event. A missing payload or a payload without `form` yields the payload or an empty object.
- * @returns the submitted values.
- */
-export function formValues(event: JsonRenderEvent): unknown {
-  const payload = event.payload
-  if (payload === undefined) return {}
-  return 'form' in payload ? payload.form : payload
-}
+export { formValues }
 
 /**
  * Popup parent for controls inside one json-render surface.
@@ -65,7 +59,7 @@ export function JsonRenderCard(props: JsonRenderCardProps) {
   return <JsonRenderSurface key={props.instanceId} {...props} />
 }
 
-function JsonRenderSurface({ payload, instanceId, submitForm, profile, imageUploads, fallbackRender }: JsonRenderCardProps) {
+function JsonRenderSurface({ payload, instanceId, submitForm, businessData, profile, imageUploads, fallbackRender }: JsonRenderCardProps) {
   const [notice, setNotice] = useState<string | null>(null)
   const [failure, setFailure] = useState<Error | null>(null)
   const pending = useRef(false)
@@ -100,14 +94,20 @@ function JsonRenderSurface({ payload, instanceId, submitForm, profile, imageUplo
             registry={registry}
             fallbackRender={renderFallback}
             onJsonRenderEvent={(event) => {
-              if (event.event.name !== 'form.submit' || pending.current) return
-              const body = [
-                '用户提交了 json-render 表单，请根据这些值继续，不要再次弹出同一张表：',
-                JSON.stringify(formValues(event)),
-              ].join('\n')
+              const decision = decideJsonRenderSubmit(event, { payload, businessData })
+              if (decision.action === 'ignore') return
+              if (decision.action === 'reject') {
+                if (!pending.current) setNotice(decision.notice)
+                return
+              }
+              if (pending.current) return
               pending.current = true
-              void submitForm(body).then(
-                () => { setNotice('已提交，等待继续回答') },
+              if (decision.releaseOnSuccess) setNotice('正在提交')
+              void submitForm(decision.text).then(
+                () => {
+                  if (decision.releaseOnSuccess) pending.current = false
+                  setNotice('已提交，等待继续回答')
+                },
                 (error: unknown) => {
                   pending.current = false
                   setNotice(error instanceof Error ? error.message : '提交失败')
