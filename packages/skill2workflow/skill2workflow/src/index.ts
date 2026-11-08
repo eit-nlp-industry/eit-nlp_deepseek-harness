@@ -9,6 +9,7 @@ import {
   resolveSkill2WorkflowConfig,
   resolveSkillDir,
   runSkill2Workflow,
+  withSessionCwd,
   type Skill2WorkflowConfig,
 } from './cli.ts'
 
@@ -17,7 +18,7 @@ export const inject = ['tools']
 
 export type Config = Skill2WorkflowConfig
 
-export { ensureSkill2WorkflowPython, resolveSkill2WorkflowConfig, resolveSkillDir } from './cli.ts'
+export { ensureSkill2WorkflowPython, resolveSkill2WorkflowConfig, resolveSkillDir, withSessionCwd } from './cli.ts'
 
 const jsonOut = {
   schema: { type: 'string' as const },
@@ -42,6 +43,8 @@ function skillDirProp() {
  */
 export function apply(ctx: Context, config: Config = {}): void {
   const resolved = resolveSkill2WorkflowConfig(config)
+  const workspace = (exec: { agent?: { session?: { header?: { cwd?: string } } } }) =>
+    withSessionCwd(resolved, exec)
 
   ctx.tools.register(defineTool({
     name: 's2w_evolve_report',
@@ -52,11 +55,12 @@ export function apply(ctx: Context, config: Config = {}): void {
     },
     output: jsonOut,
     timeoutMs: 60_000,
-    execute(args) {
-      return runSkill2Workflow(resolved, [
+    execute(args, exec) {
+      const ws = workspace(exec)
+      return runSkill2Workflow(ws, [
         'evolve-report',
         '--skill-dir',
-        resolveSkillDir(resolved, args.skill_dir),
+        resolveSkillDir(ws, args.skill_dir),
       ], 60_000)
     },
   }))
@@ -73,11 +77,12 @@ export function apply(ctx: Context, config: Config = {}): void {
     },
     output: jsonOut,
     timeoutMs: 300_000,
-    execute(args) {
+    execute(args, exec) {
+      const ws = workspace(exec)
       const argv = [
         'evolve-decide',
         '--skill-dir',
-        resolveSkillDir(resolved, args.skill_dir),
+        resolveSkillDir(ws, args.skill_dir),
         '--segment',
         args.segment ?? 'auto',
         '--no-ask',
@@ -89,7 +94,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       if (args.skip_n8n === true || args.apply !== true) {
         argv.push('--skip-n8n')
       }
-      return runSkill2Workflow(resolved, argv, args.apply === true ? 300_000 : 60_000)
+      return runSkill2Workflow(ws, argv, args.apply === true ? 300_000 : 60_000)
     },
   }))
 
@@ -104,11 +109,12 @@ export function apply(ctx: Context, config: Config = {}): void {
     },
     output: jsonOut,
     timeoutMs: 60_000,
-    execute(args) {
-      return runSkill2Workflow(resolved, [
+    execute(args, exec) {
+      const ws = workspace(exec)
+      return runSkill2Workflow(ws, [
         'evolve-retrieve',
         '--skill-dir',
-        resolveSkillDir(resolved, args.skill_dir),
+        resolveSkillDir(ws, args.skill_dir),
         '--segment',
         args.segment ?? 'auto',
         '--k',
@@ -126,11 +132,12 @@ export function apply(ctx: Context, config: Config = {}): void {
     },
     output: jsonOut,
     timeoutMs: 60_000,
-    execute(args) {
-      return runSkill2Workflow(resolved, [
+    execute(args, exec) {
+      const ws = workspace(exec)
+      return runSkill2Workflow(ws, [
         'evolve-ingest',
         '--skill-dir',
-        resolveSkillDir(resolved, args.skill_dir),
+        resolveSkillDir(ws, args.skill_dir),
       ], 60_000)
     },
   }))
@@ -145,12 +152,13 @@ export function apply(ctx: Context, config: Config = {}): void {
     },
     output: jsonOut,
     timeoutMs: 300_000,
-    execute(args) {
-      const argv = ['run-trajectory', '--skill-dir', resolveSkillDir(resolved, args.skill_dir)]
+    execute(args, exec) {
+      const ws = workspace(exec)
+      const argv = ['run-trajectory', '--skill-dir', resolveSkillDir(ws, args.skill_dir)]
       if (args.case_id !== undefined) {
         argv.push('--case-id', args.case_id)
       }
-      return runSkill2Workflow(resolved, argv, 300_000)
+      return runSkill2Workflow(ws, argv, 300_000)
     },
   }))
 
@@ -182,16 +190,17 @@ export function apply(ctx: Context, config: Config = {}): void {
     },
     output: jsonOut,
     timeoutMs: 360_000,
-    execute(args) {
+    execute(args, exec) {
+      const ws = workspace(exec)
       const argv = ['trace-to-skill']
       if (args.trajectory) {
-        argv.push('--trajectory', resolveSkillDir(resolved, args.trajectory))
+        argv.push('--trajectory', resolveSkillDir(ws, args.trajectory))
       }
       if (args.out_dir) {
-        argv.push('--out-dir', resolveSkillDir(resolved, args.out_dir))
+        argv.push('--out-dir', resolveSkillDir(ws, args.out_dir))
       }
       if (args.skill_dir) {
-        argv.push('--skill-dir', resolveSkillDir(resolved, args.skill_dir))
+        argv.push('--skill-dir', resolveSkillDir(ws, args.skill_dir))
       }
       if (args.hint) {
         argv.push('--hint', String(args.hint))
@@ -199,7 +208,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       if (args.allow_failed === true) {
         argv.push('--allow-failed')
       }
-      return runSkill2Workflow(resolved, argv, 360_000)
+      return runSkill2Workflow(ws, argv, 360_000)
     },
   }))
 
@@ -213,12 +222,13 @@ export function apply(ctx: Context, config: Config = {}): void {
       skip_n8n: { type: 'boolean', description: 'Skip n8n import. Defaults to true.' },
     },
     output: jsonOut,
-    timeoutMs: 300_000,
-    execute(args) {
+    timeoutMs: 1_200_000,
+    execute(args, exec) {
+      const ws = workspace(exec)
       const argv = [
         'compile',
         '--skill-dir',
-        resolveSkillDir(resolved, args.skill_dir),
+        resolveSkillDir(ws, args.skill_dir),
         '--no-ask',
         '--skip-user-input',
       ]
@@ -228,7 +238,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       if (args.skip_n8n !== false) {
         argv.push('--skip-n8n')
       }
-      return runSkill2Workflow(resolved, argv, 300_000)
+      return runSkill2Workflow(ws, argv, 1_200_000)
     },
   }))
 }

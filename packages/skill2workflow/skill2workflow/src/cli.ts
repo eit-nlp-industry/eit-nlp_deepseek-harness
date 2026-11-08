@@ -48,6 +48,18 @@ export function resolveSkill2WorkflowConfig(
   }
 }
 
+/**
+ * Bind the plugin to the session workspace (the folder dsh opened), not the
+ * Node process launch directory.
+ */
+export function withSessionCwd(
+  resolved: ResolvedSkill2WorkflowConfig,
+  exec?: { agent?: { session?: { header?: { cwd?: string } } } },
+): ResolvedSkill2WorkflowConfig {
+  const cwd = exec?.agent?.session?.header?.cwd?.trim()
+  return cwd ? { ...resolved, cwd } : resolved
+}
+
 function isCheckout(root: string): boolean {
   return existsSync(resolve(root, 'pyproject.toml'))
     && existsSync(resolve(root, 'skill2workflow', '__main__.py'))
