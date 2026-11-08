@@ -524,7 +524,7 @@
         # in front of the user question, which is how recall already fires.
 
     # skill2workflow compile + SkillClaw trace-to-skill. Same community plugin
-    # as `dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git#6bf439702cd6d2abd10337298d0b7b16a2e00edf`.
+    # as `dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git#f728e1f9b67170476fcb1cbacc0e582e6e17b1a0`.
     # First tool call installs the CLI into $DSH_HOME/skill2workflow/venv.
     # Disable with a later patch:
     #   - id: skill2workflow
