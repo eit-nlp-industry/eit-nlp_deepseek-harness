@@ -163,29 +163,28 @@ export function resolveSkillDir(resolved: ResolvedSkill2WorkflowConfig, skillDir
   if (resolved.repoRoot && isCheckout(resolved.repoRoot)) {
     bases.push(resolved.repoRoot)
   }
+  const rel = (base: string, name: string) => [
+    resolve(base, '.dsh/skills', name),
+    resolve(base, 'skills', name),
+  ]
   if (!skillDir) {
-    for (const base of bases) {
-      const fallback = resolve(base, 'skills/safety-interlocks')
-      if (existsSync(fallback)) {
-        return fallback
-      }
-    }
-    return resolve(resolved.cwd, 'skills/safety-interlocks')
+    return resolve(resolved.cwd, '.dsh/skills')
   }
   if (skillDir.startsWith('/')) {
     return skillDir
   }
   for (const base of bases) {
-    const underSkills = resolve(base, 'skills', skillDir)
-    if (existsSync(underSkills)) {
-      return underSkills
+    for (const candidate of rel(base, skillDir)) {
+      if (existsSync(candidate)) {
+        return candidate
+      }
     }
     const relative = resolve(base, skillDir)
     if (existsSync(relative)) {
       return relative
     }
   }
-  return resolve(resolved.cwd, skillDir)
+  return resolve(resolved.cwd, '.dsh/skills', skillDir)
 }
 
 function venvSitePackages(repoRoot: string): string[] {
