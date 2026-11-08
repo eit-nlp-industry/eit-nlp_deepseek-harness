@@ -36,6 +36,12 @@ describe('dsh-skill2workflow', () => {
     expect(src).toContain('trace-to-skill')
   })
 
+  it('imports to n8n unless skip_n8n is true', async () => {
+    const src = await readFile(new URL('../src/index.ts', import.meta.url), 'utf8')
+    expect(src).toContain('if (args.skip_n8n === true)')
+    expect(src).not.toContain('if (args.skip_n8n !== false)')
+  })
+
   it('binds python cwd to the session workspace, not process.cwd', () => {
     const resolved = resolveSkill2WorkflowConfig()
     const bound = withSessionCwd(resolved, {
