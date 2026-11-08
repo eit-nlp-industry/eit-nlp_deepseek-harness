@@ -17,7 +17,7 @@ export const inject = ['tools']
 
 export type Config = Skill2WorkflowConfig
 
-export { resolveSkill2WorkflowConfig, resolveSkillDir } from './cli.ts'
+export { ensureSkill2WorkflowPython, resolveSkill2WorkflowConfig, resolveSkillDir } from './cli.ts'
 
 const jsonOut = {
   schema: { type: 'string' as const },

@@ -35,4 +35,11 @@ describe('dsh-skill2workflow', () => {
     expect(src).toContain("name: 's2w_trace_to_skill'")
     expect(src).toContain('trace-to-skill')
   })
+
+  it('auto-installs the CLI into DSH_HOME on first use', async () => {
+    const src = await readFile(new URL('../src/cli.ts', import.meta.url), 'utf8')
+    expect(src).toContain('ensureSkill2WorkflowPython')
+    expect(src).toContain('skill2workflow')
+    expect(src).toContain('venv')
+  })
 })

@@ -20,15 +20,15 @@ kind: "package-reference"
 
 ## 使用本包
 
-基础 bundle 默认打开这一行。npm 里只有 JS：会话里模型调用工具时，本机执行 `python3 -m skill2workflow`。CLI 用 pip 装，不要 export 别人机器上的路径：
+基础 bundle 默认打开这一行。工具是进程内 Cordis 工具，和社区其它插件一样。第一次调用会把 CLI 装进 `$DSH_HOME/skill2workflow/venv`（和 `npx -y` 一样），不用自己 pip，也不用 export 路径。
+
+不在这个 fork 上的人用社区装法：
 
 ```bash
-pip install 'git+https://github.com/eit-nlp-industry/skill2workflow.git'
-python3 -c "import pathlib, shutil, skill2workflow; shutil.copy(pathlib.Path(skill2workflow.__file__).with_name('env.example'), '.env')"
-# 填自己的 LLM_API_KEY 和 N8N_* ，不要抄别人的家目录
+dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git
 ```
 
-`.env` 放在当前工作区，或 `~/.skill2workflow/.env`。n8n 也是各人自己的实例。开发者若在 git checkout 里改 CLI，可以设 `SKILL2WORKFLOW_ROOT`；其他人不必设。
+`.env` 放在当前工作区或 `~/.skill2workflow/.env`，填自己的 `LLM_API_KEY` 和 `N8N_*`。
 
 ## 模型体验
 
@@ -48,13 +48,13 @@ python3 -c "import pathlib, shutil, skill2workflow; shutil.copy(pathlib.Path(ski
 
 ## 已知限制与延期工作
 
-Python 不进 npm。本机 python 里没有 `skill2workflow` 时，工具会提示上面那条 pip 命令。n8n 地址写在各人自己的 `.env`。
+CLI 实现仍是 Python。插件负责在第一次调用时装进 DSH_HOME，本机需要能跑 `python3`。n8n 地址写在各人自己的 `.env`。
 
 ### 开发备注
 
 <details>
 <summary>给维护者的工作上下文 — 点击展开</summary>
 
-这一行写在 `packages/bundle/base/cordis.patch.yml` 里，紧挨 Hindsight。
+这一行写在 `packages/bundle/base/cordis.patch.yml` 里，紧挨 Hindsight。社区安装入口在 https://github.com/eit-nlp-industry/skill2workflow 仓库根的 `package.json`。
 
 </details>
