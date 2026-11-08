@@ -24,7 +24,7 @@ describe('dsh-skill2workflow', () => {
   it('ships the skill2workflow row in the base bundle without a machine path', async () => {
     const cordis = await readFile(new URL('../../../bundle/base/cordis.patch.yml', import.meta.url), 'utf8')
     expect(cordis).toMatch(
-      /- id: skill2workflow\n      name: '@eit-nlp\/dsh-skill2workflow'\n      disabled: false/,
+      /- id: skill2workflow\n      name: '@deepseek-ai\/dsh-skill2workflow'\n      disabled: false/,
     )
     expect(cordis).not.toMatch(/\/home\/liangyijuan/)
     expect(cordis).not.toMatch(/repoRoot:/)
