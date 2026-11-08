@@ -2697,6 +2697,9 @@ importers:
       '@deepseek-ai/dsh-working-directory':
         specifier: workspace:*
         version: link:../../session/working-directory
+      '@eit-nlp/dsh-skill2workflow':
+        specifier: git+https://github.com/eit-nlp-industry/skill2workflow.git#6bf439702cd6d2abd10337298d0b7b16a2e00edf
+        version: git+https://github.com/eit-nlp-industry/skill2workflow.git#6bf439702cd6d2abd10337298d0b7b16a2e00edf
     devDependencies:
       '@deepseek-ai/cordis':
         specifier: workspace:~
@@ -19275,6 +19278,10 @@ packages:
     version: 0.2.0
     engines: {node: '>=18'}
 
+  '@eit-nlp/dsh-skill2workflow@git+https://github.com/eit-nlp-industry/skill2workflow.git#6bf439702cd6d2abd10337298d0b7b16a2e00edf':
+    resolution: {commit: 6bf439702cd6d2abd10337298d0b7b16a2e00edf, repo: https://github.com/eit-nlp-industry/skill2workflow.git, type: git}
+    version: 0.1.0
+
   '@electron-internal/extract-zip@1.0.5':
     resolution: {integrity: sha512-+bqFCP98pLI0Tt0XQo1TmlXtwjWchISndDOxCkEcIuUgXWpBnLyRI+2DU+mesvnMMX6L1XDqYNA0lXNDHd/yiA==}
     engines: {node: '>=22.12.0'}
@@ -27673,6 +27680,8 @@ snapshots:
       '@json-render/core': 0.19.0(zod@4.4.3)
     transitivePeerDependencies:
       - zod
+
+  '@eit-nlp/dsh-skill2workflow@git+https://github.com/eit-nlp-industry/skill2workflow.git#6bf439702cd6d2abd10337298d0b7b16a2e00edf': {}
 
   '@electron-internal/extract-zip@1.0.5': {}
 
