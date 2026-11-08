@@ -523,6 +523,17 @@
         # Keep the English system prompt clean. The Chinese cue sits only
         # in front of the user question, which is how recall already fires.
 
+    # skill2workflow compile + SkillClaw trace-to-skill. The JS row only
+    # spawns `python3 -m skill2workflow`; install the CLI with pip
+    # (git+https://github.com/eit-nlp-industry/skill2workflow.git).
+    # Optional: SKILL2WORKFLOW_PYTHON, or SKILL2WORKFLOW_ROOT for a checkout.
+    # Disable with a later patch:
+    #   - id: skill2workflow
+    #     disabled: true
+    - id: skill2workflow
+      name: '@deepseek-ai/dsh-skill2workflow'
+      disabled: false
+
     # ── rows every mode mounts, whose values each overlay may state ──────────────
 
     # Shared tool definitions and the deployment’s native executor.
