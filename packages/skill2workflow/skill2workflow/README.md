@@ -20,15 +20,15 @@ This package adds one composition row. The Agent can call `s2w_evolve_report`, `
 
 ## Use this package
 
-The base bundle enables the row. The npm package is only JS: when the model calls a tool, this host runs `python3 -m skill2workflow`. Install the CLI with pip. Do not export another machine's path:
+The base bundle enables the row. The tools are in-process Cordis tools, same as other community plugins. The first call installs the CLI into `$DSH_HOME/skill2workflow/venv` (same idea as `npx -y`). No manual pip and no machine path.
+
+People not on this fork install it the community way:
 
 ```bash
-pip install 'git+https://github.com/eit-nlp-industry/skill2workflow.git'
-python3 -c "import pathlib, shutil, skill2workflow; shutil.copy(pathlib.Path(skill2workflow.__file__).with_name('env.example'), '.env')"
-# Fill in your own LLM_API_KEY and N8N_* values.
+dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git
 ```
 
-Put `.env` in the workspace, or at `~/.skill2workflow/.env`. Each person uses their own n8n. Contributors editing a git checkout may set `SKILL2WORKFLOW_ROOT`; nobody else should.
+Put `.env` in the workspace or at `~/.skill2workflow/.env`. Fill in your own `LLM_API_KEY` and `N8N_*`.
 
 ## Model Experience
 
@@ -48,13 +48,13 @@ The row does not insert a standing prompt block. Only a later tool result change
 
 ## Known Limitations and Deferred Work
 
-Python is not inside the npm package. If this python cannot import `skill2workflow`, the tool result tells you to pip-install. n8n stays in each user's `.env`.
+The CLI is still Python. The plugin installs it into DSH_HOME on first use. This host needs `python3`. n8n stays in each user's `.env`.
 
 ### Dev Note
 
 <details>
 <summary>Working context for maintainers — click to expand</summary>
 
-The row lives next to Hindsight in `packages/bundle/base/cordis.patch.yml`.
+The row lives next to Hindsight in `packages/bundle/base/cordis.patch.yml`. The community install entry is the `package.json` at the root of https://github.com/eit-nlp-industry/skill2workflow.
 
 </details>

@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-These rows call `python3 -m skill2workflow`. The base composition ships the row enabled. Install the CLI with pip; do not hard-code a machine path.
+These rows register in-process Cordis tools. The first call installs the CLI into `$DSH_HOME/skill2workflow/venv` (same idea as `npx -y`). People not on this fork can `dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git`.
 
 ## Table of Contents
 

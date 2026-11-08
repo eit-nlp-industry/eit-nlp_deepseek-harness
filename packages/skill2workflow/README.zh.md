@@ -9,7 +9,7 @@ kind: "package-group"
 
 ## 概述
 
-这些行调用 `python3 -m skill2workflow`。基础组合默认打开。CLI 用 pip 安装，不写某台机器的路径。
+这些行注册进程内 Cordis 工具。第一次调用会把 CLI 装进 `$DSH_HOME/skill2workflow/venv`（和 `npx -y` 一样）。不在这个 fork 上的人可以 `dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git`。
 
 ## 目录
 

@@ -1,36 +1,36 @@
 /**
- * Spawn the skill2workflow Python CLI from a DeepSeek Harness tool.
+ * Spawn the skill2workflow CLI. First call installs it into DSH_HOME, like npx -y.
  * @module @deepseek-ai/dsh-skill2workflow/cli
  */
 
-import { spawn } from 'node:child_process'
-import { existsSync, readdirSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
+import { spawn, spawnSync } from 'node:child_process'
+import { existsSync, mkdirSync, readdirSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 /** How the cordis row finds the Python CLI. */
 export interface Skill2WorkflowConfig {
-  /**
-   * Optional git checkout of skill2workflow. Empty means the CLI is already
-   * on PYTHONPATH (`pip install skill2workflow`) and paths are relative to cwd.
-   */
+  /** Optional git checkout. Empty means auto-install into DSH_HOME. */
   repoRoot?: string
-  /** Python executable. Defaults to `python3`. */
+  /** Python executable. Defaults to `python3`, then the managed venv. */
   python?: string
 }
 
 /** Resolved command plus the workspace used for relative Skill paths. */
 export interface ResolvedSkill2WorkflowConfig {
-  readonly repoRoot: string
+  repoRoot: string
   readonly cwd: string
-  readonly python: string
+  python: string
 }
 
 const pluginDir = dirname(fileURLToPath(import.meta.url))
 const dshPythonSdk = resolve(pluginDir, '../../../../python/sdk/src')
 
-const INSTALL_HINT =
-  "pip install 'git+https://github.com/eit-nlp-industry/skill2workflow.git'"
+export const SKILL2WORKFLOW_PIP_SPEC =
+  'git+https://github.com/eit-nlp-industry/skill2workflow.git'
+
+let ensureChain: Promise<string> | undefined
 
 /**
  * Fill the defaults used by the base-bundle row.
@@ -49,7 +49,107 @@ export function resolveSkill2WorkflowConfig(
 }
 
 function isCheckout(root: string): boolean {
-  return existsSync(resolve(root, 'skill2workflow', '__main__.py'))
+  return existsSync(resolve(root, 'pyproject.toml'))
+    && existsSync(resolve(root, 'skill2workflow', '__main__.py'))
+}
+
+function dshHome(): string {
+  const env = process.env.DSH_HOME?.trim()
+  return env ? resolve(env) : resolve(homedir(), '.dsh')
+}
+
+function venvDir(): string {
+  return resolve(dshHome(), 'skill2workflow', 'venv')
+}
+
+function venvPython(): string {
+  return process.platform === 'win32'
+    ? resolve(venvDir(), 'Scripts', 'python.exe')
+    : resolve(venvDir(), 'bin', 'python')
+}
+
+function importOk(python: string): boolean {
+  const probe = spawnSync(python, ['-c', 'import skill2workflow'], {
+    encoding: 'utf8',
+    timeout: 15_000,
+  })
+  return probe.status === 0
+}
+
+function runSync(python: string, args: readonly string[], timeoutMs: number): { status: number | null, stderr: string } {
+  const result = spawnSync(python, args, { encoding: 'utf8', timeout: timeoutMs })
+  return { status: result.status, stderr: `${result.stderr ?? ''}${result.error?.message ?? ''}` }
+}
+
+function pipInstallTarget(repoRoot: string): string[] {
+  if (repoRoot && isCheckout(repoRoot)) {
+    return ['-e', repoRoot]
+  }
+  return [SKILL2WORKFLOW_PIP_SPEC]
+}
+
+/**
+ * Return a python that can `import skill2workflow`, installing into DSH_HOME if needed.
+ * Same idea as `npx -y`: the plugin starts the dependency, the user does not pip.
+ * @param resolved - current python / optional checkout.
+ * @returns an executable path or `python3`.
+ */
+export async function ensureSkill2WorkflowPython(
+  resolved: ResolvedSkill2WorkflowConfig = resolveSkill2WorkflowConfig(),
+): Promise<string> {
+  if (ensureChain) {
+    return ensureChain
+  }
+  ensureChain = (async () => {
+    const candidates = [resolved.python, 'python3', venvPython()]
+    for (const python of candidates) {
+      if (python && importOk(python)) {
+        resolved.python = python
+        return python
+      }
+    }
+    const dir = venvDir()
+    mkdirSync(dir, { recursive: true })
+    const py = venvPython()
+    if (!existsSync(py)) {
+      const venv = runSync('python3', ['-m', 'venv', dir], 60_000)
+      if (venv.status !== 0 || !existsSync(py)) {
+        throw new Error(`Could not create ${dir}: ${venv.stderr.slice(-2000)}`)
+      }
+    }
+    const install = await new Promise<{ status: number | null, stderr: string }>((ok, err) => {
+      const child = spawn(py, ['-m', 'pip', 'install', ...pipInstallTarget(resolved.repoRoot)], {
+        env: { ...process.env, PIP_DISABLE_PIP_VERSION_CHECK: '1' },
+      })
+      let stderr = ''
+      const timer = setTimeout(() => {
+        child.kill('SIGTERM')
+        err(new Error('pip install skill2workflow timed out'))
+      }, 180_000)
+      child.stderr.on('data', chunk => {
+        stderr += chunk.toString()
+      })
+      child.on('error', error => {
+        clearTimeout(timer)
+        err(error)
+      })
+      child.on('close', status => {
+        clearTimeout(timer)
+        ok({ status, stderr })
+      })
+    })
+    if (install.status !== 0 || !importOk(py)) {
+      throw new Error(`Could not install skill2workflow into ${dir}: ${install.stderr.slice(-2000)}`)
+    }
+    resolved.python = py
+    return py
+  })()
+  try {
+    return await ensureChain
+  } catch (error) {
+    ensureChain = undefined
+    throw error
+  }
 }
 
 /**
@@ -103,7 +203,7 @@ function venvSitePackages(repoRoot: string): string[] {
 }
 
 /**
- * PYTHONPATH so a git checkout still imports; pip installs need none of this.
+ * PYTHONPATH so a git checkout still imports; a managed venv needs none of this.
  * @param repoRoot - optional skill2workflow checkout.
  * @returns a colon-separated path list, possibly empty.
  */
@@ -140,35 +240,36 @@ function extractJson(text: string): unknown {
   }
 }
 
-function installHint(stderr: string, code: number | null): string | undefined {
-  if (code === 0) {
-    return undefined
-  }
-  if (/No module named ['"]skill2workflow['"]/.test(stderr) || /ModuleNotFoundError: skill2workflow/.test(stderr)) {
-    return `skill2workflow is not installed for this python. ${INSTALL_HINT}`
-  }
-  return undefined
-}
-
 /**
- * Run `python3 -m skill2workflow …` and return a JSON string for the model.
+ * Run `python -m skill2workflow …` and return a JSON string for the model.
  * @param resolved - python and workspace.
  * @param argv - arguments after `-m skill2workflow`.
  * @param timeoutMs - kill the child after this many milliseconds.
  * @returns a JSON string with `ok`, stdout payload, and a stderr tail.
  */
-export function runSkill2Workflow(
+export async function runSkill2Workflow(
   resolved: ResolvedSkill2WorkflowConfig,
   argv: readonly string[],
   timeoutMs = 120_000,
 ): Promise<string> {
-  return new Promise((resolvePromise, reject) => {
+  let python: string
+  try {
+    python = await ensureSkill2WorkflowPython(resolved)
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    return JSON.stringify({
+      ok: false,
+      error: message,
+      hint: `The plugin installs ${SKILL2WORKFLOW_PIP_SPEC} into ${join(dshHome(), 'skill2workflow', 'venv')} on first use.`,
+    })
+  }
+  return new Promise(resolvePromise => {
     const env = { ...process.env }
     const extra = pythonPath(resolved.repoRoot)
     if (extra) {
       env.PYTHONPATH = extra
     }
-    const child = spawn(resolved.python, ['-m', 'skill2workflow', ...argv], {
+    const child = spawn(python, ['-m', 'skill2workflow', ...argv], {
       cwd: resolved.cwd,
       env,
     })
@@ -176,7 +277,10 @@ export function runSkill2Workflow(
     let stderr = ''
     const timer = setTimeout(() => {
       child.kill('SIGTERM')
-      reject(new Error(`skill2workflow timed out: ${argv.join(' ')}`))
+      resolvePromise(JSON.stringify({
+        ok: false,
+        error: `skill2workflow timed out: ${argv.join(' ')}`,
+      }))
     }, timeoutMs)
     child.stdout.on('data', chunk => {
       stdout += chunk.toString()
@@ -190,12 +294,10 @@ export function runSkill2Workflow(
       resolvePromise(JSON.stringify({
         ok: false,
         error: message,
-        hint: `Could not start ${resolved.python} -m skill2workflow. ${INSTALL_HINT}`,
       }))
     })
     child.on('close', code => {
       clearTimeout(timer)
-      const hint = installHint(stderr, code)
       resolvePromise(JSON.stringify({
         ok: code === 0,
         code,
@@ -203,7 +305,6 @@ export function runSkill2Workflow(
         result: extractJson(stdout),
         stdout: stdout.trim(),
         stderr: stderr.trim().slice(-4000),
-        ...hint ? { hint } : {},
       }))
     })
   })
