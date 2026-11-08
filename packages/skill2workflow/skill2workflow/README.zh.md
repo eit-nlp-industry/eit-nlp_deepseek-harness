@@ -20,22 +20,15 @@ kind: "package-reference"
 
 ## 使用本包
 
-基础 bundle 默认打开这一行。**npm 包里只有 JS 胶水**（spawn `python3 -m skill2workflow`）。真正的 CLI、SkillClaw、n8n 导入都在独立 Python 仓库里，每台机器自己 clone：
+基础 bundle 默认打开这一行。npm 里只有 JS：会话里模型调用工具时，本机执行 `python3 -m skill2workflow`。CLI 用 pip 装，不要 export 别人机器上的路径：
 
 ```bash
-git clone git@github.com:eit-nlp-industry/skill2workflow.git
-export SKILL2WORKFLOW_ROOT=/那台机器上的/skill2workflow
+pip install 'git+https://github.com/eit-nlp-industry/skill2workflow.git'
+python3 -c "import pathlib, shutil, skill2workflow; shutil.copy(pathlib.Path(skill2workflow.__file__).with_name('env.example'), '.env')"
+# 填自己的 LLM_API_KEY 和 N8N_* ，不要抄别人的家目录
 ```
 
-```yaml
-- id: skill2workflow
-  name: '@deepseek-ai/dsh-skill2workflow'
-  disabled: false
-  config:
-    repoRoot: !!js process.env.SKILL2WORKFLOW_ROOT || ''
-```
-
-未设置时工具会回 `SKILL2WORKFLOW_ROOT is empty`。该目录必须能跑 `python3 -m skill2workflow`。n8n 也是各人自己的实例（本机用 `.env` 里的 `N8N_BASE_URL`）。
+`.env` 放在当前工作区，或 `~/.skill2workflow/.env`。n8n 也是各人自己的实例。开发者若在 git checkout 里改 CLI，可以设 `SKILL2WORKFLOW_ROOT`；其他人不必设。
 
 ## 模型体验
 
@@ -55,7 +48,7 @@ export SKILL2WORKFLOW_ROOT=/那台机器上的/skill2workflow
 
 ## 已知限制与延期工作
 
-Python 仓库不在这个包里。n8n 容器必须挂上或拷进去，否则工具会回 `SKILL2WORKFLOW_ROOT is empty`。
+Python 不进 npm。本机 python 里没有 `skill2workflow` 时，工具会提示上面那条 pip 命令。n8n 地址写在各人自己的 `.env`。
 
 ### 开发备注
 

@@ -37,7 +37,7 @@ function skillDirProp() {
  * Register the s2w_* tools. Default is judge only; compile, live runs, and
  * trace-to-skill wait until the model sets apply / use_fixture / case_id.
  * @param ctx - host context carrying the tool registry.
- * @param config - Python repo and executable.
+ * @param config - optional checkout path and python executable.
  */
 export function apply(ctx: Context, config: Config = {}): void {
   const resolved = resolveSkill2WorkflowConfig(config)

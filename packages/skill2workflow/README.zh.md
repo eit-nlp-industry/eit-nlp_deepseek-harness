@@ -9,7 +9,7 @@ kind: "package-group"
 
 ## 概述
 
-这些行调用 `python3 -m skill2workflow`。基础组合默认打开，`repoRoot` 指向 `SKILL2WORKFLOW_ROOT`。
+这些行调用 `python3 -m skill2workflow`。基础组合默认打开。CLI 用 pip 安装，不写某台机器的路径。
 
 ## 目录
 

@@ -9,7 +9,7 @@ English | [中文](README.zh.md)
 
 ## Summary
 
-These rows call `python3 -m skill2workflow`. The base composition ships the row enabled and points `repoRoot` at `SKILL2WORKFLOW_ROOT`.
+These rows call `python3 -m skill2workflow`. The base composition ships the row enabled. Install the CLI with pip; do not hard-code a machine path.
 
 ## Table of Contents
 

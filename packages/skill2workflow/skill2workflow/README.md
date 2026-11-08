@@ -20,22 +20,15 @@ This package adds one composition row. The Agent can call `s2w_evolve_report`, `
 
 ## Use this package
 
-The base bundle enables the row. **The npm package is only JS glue** (it spawns `python3 -m skill2workflow`). Clone the Python repo on each machine:
+The base bundle enables the row. The npm package is only JS: when the model calls a tool, this host runs `python3 -m skill2workflow`. Install the CLI with pip. Do not export another machine's path:
 
 ```bash
-git clone git@github.com:eit-nlp-industry/skill2workflow.git
-export SKILL2WORKFLOW_ROOT=/path/on/this/machine/skill2workflow
+pip install 'git+https://github.com/eit-nlp-industry/skill2workflow.git'
+python3 -c "import pathlib, shutil, skill2workflow; shutil.copy(pathlib.Path(skill2workflow.__file__).with_name('env.example'), '.env')"
+# Fill in your own LLM_API_KEY and N8N_* values.
 ```
 
-```yaml
-- id: skill2workflow
-  name: '@deepseek-ai/dsh-skill2workflow'
-  disabled: false
-  config:
-    repoRoot: !!js process.env.SKILL2WORKFLOW_ROOT || ''
-```
-
-If unset, tools return `SKILL2WORKFLOW_ROOT is empty`. That directory must be able to run `python3 -m skill2workflow`. Each person uses their own n8n (`N8N_BASE_URL` in `.env`).
+Put `.env` in the workspace, or at `~/.skill2workflow/.env`. Each person uses their own n8n. Contributors editing a git checkout may set `SKILL2WORKFLOW_ROOT`; nobody else should.
 
 ## Model Experience
 
@@ -55,7 +48,7 @@ The row does not insert a standing prompt block. Only a later tool result change
 
 ## Known Limitations and Deferred Work
 
-The Python repo is not inside this package. n8n's container must mount or copy it, or the tools return `SKILL2WORKFLOW_ROOT is empty`.
+Python is not inside the npm package. If this python cannot import `skill2workflow`, the tool result tells you to pip-install. n8n stays in each user's `.env`.
 
 ### Dev Note
 
