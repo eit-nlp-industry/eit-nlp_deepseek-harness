@@ -165,7 +165,7 @@ export function apply(ctx: Context, config: Config = {}): void {
   ctx.tools.register(defineTool({
     name: 's2w_trace_to_skill',
     description:
-      'Turn one successful trajectory.json into SKILL.md via SkillClaw workflow. Calls a model. Pass the trajectory file path; do not invent a skill name. Use only when the user asked to distill a skill from a trace.',
+      'Distill a successful trajectory.json into a project skill. Call this when the user wants a skill from a trace/log (even if they do not name this tool). Pass the trajectory path; do not invent a skill name. Writes <workspace>/.dsh/skills/<name>/SKILL.md.',
     parameters: {
       trajectory: {
         type: 'string',
@@ -215,11 +215,11 @@ export function apply(ctx: Context, config: Config = {}): void {
   ctx.tools.register(defineTool({
     name: 's2w_compile',
     description:
-      'Compile Skill+trajectory to an n8n workflow. Calls a model unless use_fixture is true. Use only when the user asked to compile.',
+      'Compile a skill into an n8n workflow, write workflow.json, and import it to the user n8n canvas (folder = current project name, title [s2w-gate0]). Call this when they want to compile a skill or see a workflow in n8n, even if they do not name this tool. Takes several minutes. Set skip_n8n=true only if they asked not to import.',
     parameters: {
       skill_dir: skillDirProp(),
       use_fixture: { type: 'boolean', description: 'Use a recorded fixture instead of calling a model.' },
-      skip_n8n: { type: 'boolean', description: 'Skip n8n import. Defaults to true.' },
+      skip_n8n: { type: 'boolean', description: 'If true, only write JSON on disk. Default false: import to n8n.' },
     },
     output: jsonOut,
     timeoutMs: 1_200_000,
@@ -235,7 +235,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       if (args.use_fixture === true) {
         argv.push('--use-fixture')
       }
-      if (args.skip_n8n !== false) {
+      if (args.skip_n8n === true) {
         argv.push('--skip-n8n')
       }
       return runSkill2Workflow(ws, argv, 1_200_000)
