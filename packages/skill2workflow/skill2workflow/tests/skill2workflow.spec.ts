@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import { describe, expect, it } from 'vitest'
-import { resolveSkill2WorkflowConfig } from '@deepseek-ai/dsh-skill2workflow'
+import { resolveSkill2WorkflowConfig, resolveSkillDir, withSessionCwd } from '@deepseek-ai/dsh-skill2workflow'
 
 describe('dsh-skill2workflow', () => {
   it('defaults python3, cwd, and no checkout path', () => {
@@ -34,6 +34,15 @@ describe('dsh-skill2workflow', () => {
     const src = await readFile(new URL('../src/index.ts', import.meta.url), 'utf8')
     expect(src).toContain("name: 's2w_trace_to_skill'")
     expect(src).toContain('trace-to-skill')
+  })
+
+  it('binds python cwd to the session workspace, not process.cwd', () => {
+    const resolved = resolveSkill2WorkflowConfig()
+    const bound = withSessionCwd(resolved, {
+      agent: { session: { header: { cwd: '/tmp/opened-project' } } },
+    })
+    expect(bound.cwd).toBe('/tmp/opened-project')
+    expect(resolveSkillDir(bound, 'demo')).toBe('/tmp/opened-project/.dsh/skills/demo')
   })
 
   it('auto-installs the CLI into DSH_HOME on first use', async () => {
