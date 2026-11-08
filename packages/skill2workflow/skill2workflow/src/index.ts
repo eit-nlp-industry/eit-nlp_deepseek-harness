@@ -29,7 +29,8 @@ const jsonOut = {
 function skillDirProp() {
   return {
     type: 'string' as const,
-    description: 'Skill folder name under skills/ (e.g. safety-interlocks) or an absolute path',
+    description:
+      'Skill folder under the dsh project skills dir (.dsh/skills/<name>), or an absolute path',
   }
 }
 
