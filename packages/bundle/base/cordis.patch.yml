@@ -523,15 +523,14 @@
         # Keep the English system prompt clean. The Chinese cue sits only
         # in front of the user question, which is how recall already fires.
 
-    # skill2workflow compile + SkillClaw trace-to-skill. Native Cordis tools.
-    # First tool call installs the CLI into $DSH_HOME/skill2workflow/venv
-    # (same idea as `npx -y`). People not on this fork can instead:
-    #   dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git
+    # skill2workflow compile + SkillClaw trace-to-skill. Same community plugin
+    # as `dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git`.
+    # First tool call installs the CLI into $DSH_HOME/skill2workflow/venv.
     # Disable with a later patch:
     #   - id: skill2workflow
     #     disabled: true
     - id: skill2workflow
-      name: '@deepseek-ai/dsh-skill2workflow'
+      name: '@eit-nlp/dsh-skill2workflow'
       disabled: false
 
     # ── rows every mode mounts, whose values each overlay may state ──────────────

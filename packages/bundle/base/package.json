@@ -82,7 +82,7 @@
     "@deepseek-ai/dsh-session-title": "workspace:*",
     "@deepseek-ai/dsh-session-title-first-prompt-llm": "workspace:*",
     "@deepseek-ai/dsh-skill": "workspace:*",
-    "@deepseek-ai/dsh-skill2workflow": "workspace:*",
+    "@eit-nlp/dsh-skill2workflow": "git+https://github.com/eit-nlp-industry/skill2workflow.git",
     "@deepseek-ai/dsh-skill-filesystem": "workspace:*",
     "@deepseek-ai/dsh-spill-local": "workspace:*",
     "@deepseek-ai/dsh-spill-policy": "workspace:*",
