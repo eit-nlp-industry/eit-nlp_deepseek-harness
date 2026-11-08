@@ -4,7 +4,7 @@
  */
 
 import { spawn, spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, readdirSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -28,7 +28,8 @@ const pluginDir = dirname(fileURLToPath(import.meta.url))
 const dshPythonSdk = resolve(pluginDir, '../../../../python/sdk/src')
 
 export const SKILL2WORKFLOW_PIP_SPEC =
-  'git+https://github.com/eit-nlp-industry/skill2workflow.git'
+  'git+https://github.com/eit-nlp-industry/skill2workflow.git@f728e1f9b67170476fcb1cbacc0e582e6e17b1a0'
+const CLI_REV = '2026-11-09-drop-if-merge'
 
 let ensureChain: Promise<string> | undefined
 
@@ -80,6 +81,23 @@ function venvPython(): string {
     : resolve(venvDir(), 'bin', 'python')
 }
 
+function cliRevPath(): string {
+  return resolve(dshHome(), 'skill2workflow', 'cli-rev')
+}
+
+function installedCliRev(): string {
+  const path = cliRevPath()
+  if (!existsSync(path)) {
+    return ''
+  }
+  return readFileSync(path, 'utf8').trim()
+}
+
+function writeCliRev(): void {
+  mkdirSync(resolve(dshHome(), 'skill2workflow'), { recursive: true })
+  writeFileSync(cliRevPath(), `${CLI_REV}\n`)
+}
+
 function importOk(python: string): boolean {
   const probe = spawnSync(python, ['-c', 'import skill2workflow'], {
     encoding: 'utf8',
@@ -97,7 +115,7 @@ function pipInstallTarget(repoRoot: string): string[] {
   if (repoRoot && isCheckout(repoRoot)) {
     return ['-e', repoRoot]
   }
-  return [SKILL2WORKFLOW_PIP_SPEC]
+  return ['-U', SKILL2WORKFLOW_PIP_SPEC]
 }
 
 /**
@@ -113,11 +131,14 @@ export async function ensureSkill2WorkflowPython(
     return ensureChain
   }
   ensureChain = (async () => {
-    const candidates = [resolved.python, 'python3', venvPython()]
-    for (const python of candidates) {
-      if (python && importOk(python)) {
-        resolved.python = python
-        return python
+    const fresh = installedCliRev() === CLI_REV
+    if (fresh) {
+      const candidates = [resolved.python, 'python3', venvPython()]
+      for (const python of candidates) {
+        if (python && importOk(python)) {
+          resolved.python = python
+          return python
+        }
       }
     }
     const dir = venvDir()
@@ -153,6 +174,7 @@ export async function ensureSkill2WorkflowPython(
     if (install.status !== 0 || !importOk(py)) {
       throw new Error(`Could not install skill2workflow into ${dir}: ${install.stderr.slice(-2000)}`)
     }
+    writeCliRev()
     resolved.python = py
     return py
   })()
