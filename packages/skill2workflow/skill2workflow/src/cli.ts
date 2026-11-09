@@ -28,8 +28,8 @@ const pluginDir = dirname(fileURLToPath(import.meta.url))
 const dshPythonSdk = resolve(pluginDir, '../../../../python/sdk/src')
 
 export const SKILL2WORKFLOW_PIP_SPEC =
-  'git+https://github.com/eit-nlp-industry/skill2workflow.git@f728e1f9b67170476fcb1cbacc0e582e6e17b1a0'
-const CLI_REV = '2026-11-09-drop-if-merge'
+  'git+https://github.com/eit-nlp-industry/skill2workflow.git@4e54879028843a8dd65e606d7ff7ecfb89d2ec2e'
+const CLI_REV = '2026-11-09-form-defaults'
 
 let ensureChain: Promise<string> | undefined
 
