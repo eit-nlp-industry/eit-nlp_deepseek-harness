@@ -6,7 +6,7 @@
 
 ## 1. 发布代码
 
-合并到主分支后，后端按原有流程安装、构建并部署完整的 Host 和 Client 产物，不能只更新源码后继续使用旧的 lib/。json-render Server 需兼容当前 v0.2.0-rc.6 组件包并支持 rich Image。
+合并到主分支后，后端按原有流程安装、构建并部署完整的 Host 和 Client 产物，不能只更新源码后继续使用旧的 lib/。json-render Server 需兼容当前 v0.2.2 组件包并支持 rich Image。
 
 本指南和 `scripts/prepare-json-render-media.mjs` 随代码发布；不要使用 Git 忽略的 `.artifacts/` 本地测试配置或截图 ID。
 

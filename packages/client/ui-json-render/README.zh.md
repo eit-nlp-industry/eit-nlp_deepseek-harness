@@ -25,7 +25,7 @@ kind: "package-reference"
 
 将本包加入 Web 客户端组合。声明 `answer_presentation: replace` 的成功展示结果会替换已完成的收尾回答；该回答须包含一个文本块，并可附带推理块。结果缺失、格式无效、组件不受支持或调用失败时，保留文字回答。渲染异常时恢复原始 Markdown 及其链接和操作控件。文字回答仍保存在会话中，供复制和导出。补充展示、表单、未显式声明展示方式的历史结果，以及包含其他块布局的回答，显示在文字下方。工具行只报告状态。
 
-基础和表单结果使用稳定的 Ant Design registry。rich 的 profile diagnostic 使用公开的 experimental registry，其中包含 Image、ImageUpload 和 Workflow。Workflow 支持本地编辑和撤销/重做；workflow.save 和 workflow.execute 事件尚未接入业务 API，刷新后不保留编辑。上传目标来自宿主 adapter；payload 只写 `uploadTarget`。Vue 宿主使用同一 v0.2.0-rc.6 版本的 Vue adapter，而不是这些 React 组件。渲染器将 Ant Design CSS 变量映射到宿主的语义主题变量。包含 Image 元素的结果没有外层背景、边框或内边距。内容区仅含一个 Image 的 Card 和带边框的 Section 也不显示外框和水平内边距，并保留标题。其他结果使用圆角和轻阴影容器；根 Card 或带边框的 Section 共用该容器，不叠加第二层外框。TabContent 的直接子 Card 和带边框的 Section 也不显示外框。Tab 内的网格若将 Text 与 Card 或带边框的 Section 作为直接子项混排，则按数据顺序使用单列；纯卡片网格保留原有列数。卡片、表格、指标、步骤、提示和表单控件跟随宿主的明暗配色与字体设置。表单标签位于控件上方；字段保留自然高度，卡片内容有明确间距。下拉面板保留在主题容器内，宽表格独立滚动。窄屏下网格改为单列；减少动态效果的系统偏好会禁用局部动画。样式仅作用于本渲染器，无需修改已保存的界面数据或渲染服务。
+基础和表单结果使用稳定的 Ant Design registry。rich 的 profile diagnostic 使用公开的 experimental registry，其中包含 Image、ImageUpload 和 Workflow。Workflow 支持本地编辑和撤销/重做；workflow.save 和 workflow.execute 事件尚未接入业务 API，刷新后不保留编辑。上传目标来自宿主 adapter；payload 只写 `uploadTarget`。Vue 宿主使用同一 v0.2.2 版本的 Vue adapter，而不是这些 React 组件。渲染器将 Ant Design CSS 变量映射到宿主的语义主题变量。包含 Image 元素的结果没有外层背景、边框或内边距。内容区仅含一个 Image 的 Card 和带边框的 Section 也不显示外框和水平内边距，并保留标题。其他结果使用圆角和轻阴影容器；根 Card 或带边框的 Section 共用该容器，不叠加第二层外框。TabContent 的直接子 Card 和带边框的 Section 也不显示外框。Tab 内的网格若将 Text 与 Card 或带边框的 Section 作为直接子项混排，则按数据顺序使用单列；纯卡片网格保留原有列数。卡片、表格、指标、步骤、提示和表单控件跟随宿主的明暗配色与字体设置。表单标签位于控件上方；字段保留自然高度，卡片内容有明确间距。下拉面板保留在主题容器内，宽表格独立滚动。窄屏下网格改为单列；减少动态效果的系统偏好会禁用局部动画。样式仅作用于本渲染器，无需修改已保存的界面数据或渲染服务。
 
 <a id="model-experience"></a>
 ## 模型体验

@@ -1,5 +1,5 @@
 /**
- * React host registries for json-render v0.2.0-rc.6.
+ * React host registries for json-render v0.2.2.
  * base and forms use the stable Ant Design registry.
  * rich uses the public experimental registry from the same adapter.
  * A Vue host must use the Vue adapter from the same release, not these components.
@@ -22,6 +22,7 @@ export const RICH_COMPONENT_NAMES = [
   'Collapsible',
   'CodeBlock',
   'Workflow',
+  'Calendar',
 ] as const
 
 const RICH_COMPONENTS: ReadonlySet<string> = new Set(RICH_COMPONENT_NAMES)

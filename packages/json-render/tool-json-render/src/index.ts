@@ -28,7 +28,7 @@ export const DEFAULT_RENDER_UI_DESCRIPTION = [
   'For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request.',
   'answer_presentation defaults to "replace" for display: the interface must fully answer the request. Use "supplement" when the written answer contains necessary explanations or caveats absent from the interface.',
   'mode does not select the component catalog. Omit intent for an ordinary display so the server uses base. Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit.',
-  'When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, CodeBlock, or Workflow, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead.',
+  'When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, CodeBlock, Workflow, or Calendar, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead.',
   'For an image, set business_data.image.assetId to a catalog id. The host writes image.src, image.alt, and image.caption before the render call. Do not send a disk path, domain, credential, component, or type. ImageUpload only names uploadTarget; do not invent an endpoint or credential. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.',
 ].join(' ')
 
@@ -119,7 +119,7 @@ export function apply(ctx: Context, config: Config): void {
         type: 'array',
         items: {
           type: 'string',
-          enum: ['Image', 'ImageUpload', 'Tabs', 'MapPreview', 'SortableSequence', 'Collapsible', 'CodeBlock', 'Workflow'],
+          enum: ['Image', 'ImageUpload', 'Tabs', 'MapPreview', 'SortableSequence', 'Collapsible', 'CodeBlock', 'Workflow', 'Calendar'],
         },
         description: 'Rich component names this layout needs. Any one selects rich_content for the whole page, including a mix with base or form components.',
       },

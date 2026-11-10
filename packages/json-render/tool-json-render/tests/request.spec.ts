@@ -30,9 +30,9 @@ function jsonResponse(status: number, body: unknown): Response {
 }
 
 describe('requestJsonRender', () => {
-  it('selects the rich catalog for Workflow without an explicit intent', () => {
+  it.each(['Workflow', 'Calendar'] as const)('selects the rich catalog for %s without an explicit intent', (component) => {
     const route = selectRenderRoute({
-      mode: 'display', user_query: '编辑取材料流程', components: ['Workflow'],
+      mode: 'display', user_query: '展示项目计划', components: [component],
       business_data: { steps: ['前往办公室'] },
     })
     expect(route).toEqual({ profile: 'rich', intent: 'rich_content', promptMode: 'full' })
