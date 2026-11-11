@@ -1,0 +1,24 @@
+{
+  "name": "@local/dsh-robot-dog-test-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./vision/observation.js",
+    "./observation-tools.js": "./observation-tools.js",
+    "./observation.js": "./observation.js",
+    "./vision/observation.js": "./vision/observation.js",
+    "./observation-no-action.js": "./observation-no-action.js",
+    "./camera.js": "./camera.js",
+    "./frames.js": "./frames.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "cordis.patch.yml",
+    "observation-tools.js"
+  ]
+}

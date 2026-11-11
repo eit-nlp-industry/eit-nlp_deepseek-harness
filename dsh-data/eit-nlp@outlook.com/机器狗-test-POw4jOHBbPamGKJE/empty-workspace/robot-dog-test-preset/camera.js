@@ -1,0 +1,180 @@
+// Video source for the robot-dog-test preset.
+//
+// Deliberately independent from the robot-dog-job camera plugin: no HTTP
+// routes, no root-level service, no shared state. The decoder keeps exactly one
+// latest JPEG in memory; the observation dispatcher copies it when it samples.
+//
+// ffmpeg args mirror the proven pattern used elsewhere in this deployment:
+// `-re` throttles to realtime, `-stream_loop -1` loops the clip, and the output
+// is an MJPEG stream on stdout that we split on JPEG SOI/EOI markers.
+
+import { spawn } from 'node:child_process'
+
+const SOI = Buffer.from([0xff, 0xd8])
+const EOI = Buffer.from([0xff, 0xd9])
+const MAX_FRAME_BYTES = 16 * 1024 * 1024
+const MAX_PENDING_BYTES = 32 * 1024 * 1024
+const MIN_RESTART_MS = 1_000
+const MAX_RESTART_MS = 30_000
+
+/**
+ * @param {{ videoPath: string, ffmpegPath: string, captureFps: number, maxWidth: number, jpegQuality: number, loop: boolean }} config
+ * @param {{ warn?: (message: string) => void, info?: (message: string) => void } | undefined} logger
+ */
+export function createCamera(config, logger) {
+  let latest = null
+  let child = null
+  let pending = Buffer.alloc(0)
+  let running = false
+  let stoppedByCaller = true
+  let sequence = 0
+  let lastError = ''
+  let restartTimer = null
+  let restartDelay = MIN_RESTART_MS
+  let startedAt = null
+
+  function noteError(message) {
+    lastError = String(message ?? '').slice(0, 400)
+    logger?.warn?.(`[camera-test] ${lastError}`)
+  }
+
+  function args() {
+    return [
+      '-hide_banner', '-loglevel', 'error',
+      '-re',
+      ...(config.loop ? ['-stream_loop', '-1'] : []),
+      '-an',
+      '-i', config.videoPath,
+      '-vf', `fps=${config.captureFps},scale=${config.maxWidth}:-2`,
+      '-c:v', 'mjpeg',
+      '-q:v', String(config.jpegQuality),
+      '-f', 'image2pipe',
+      '-',
+    ]
+  }
+
+  function accept(chunk) {
+    pending = pending.length === 0 ? chunk : Buffer.concat([pending, chunk])
+    for (;;) {
+      const start = pending.indexOf(SOI)
+      if (start < 0) {
+        pending = Buffer.alloc(0)
+        return
+      }
+      if (start > 0) pending = pending.subarray(start)
+      const end = pending.indexOf(EOI, SOI.length)
+      if (end < 0) {
+        if (pending.length > MAX_PENDING_BYTES) pending = Buffer.alloc(0)
+        return
+      }
+      const frame = Buffer.from(pending.subarray(0, end + EOI.length))
+      pending = pending.subarray(end + EOI.length)
+      if (frame.length > MAX_FRAME_BYTES) {
+        noteError(`frame too large (${frame.length} bytes)`)
+        continue
+      }
+      sequence += 1
+      latest = { jpeg: frame, sequence, capturedAt: Date.now() }
+    }
+  }
+
+  function scheduleRestart() {
+    if (!running) return
+    if (restartTimer !== null) return
+    restartTimer = setTimeout(() => {
+      restartTimer = null
+      launch()
+    }, restartDelay)
+    restartTimer.unref?.()
+    restartDelay = Math.min(restartDelay * 2, MAX_RESTART_MS)
+  }
+
+  function launch() {
+    if (!running || child !== null) return
+    pending = Buffer.alloc(0)
+    const proc = spawn(config.ffmpegPath, args(), { stdio: ['ignore', 'pipe', 'pipe'] })
+    child = proc
+
+    // Frames from a superseded decoder must not settle the current one's state.
+    const stale = () => child !== proc
+
+    proc.stdout.on('data', chunk => {
+      if (stale()) return
+      try {
+        accept(chunk)
+      } catch (error) {
+        noteError(`frame parse failed: ${error instanceof Error ? error.message : String(error)}`)
+        pending = Buffer.alloc(0)
+      }
+    })
+
+    proc.stderr.on('data', chunk => {
+      if (stale()) return
+      const text = chunk.toString('utf8').trim()
+      if (text.length > 0) lastError = text.slice(0, 400)
+    })
+
+    proc.on('error', error => {
+      if (stale()) return
+      noteError(error?.code === 'ENOENT'
+        ? `ffmpeg not found: ${config.ffmpegPath}`
+        : `ffmpeg error: ${error instanceof Error ? error.message : String(error)}`)
+    })
+
+    proc.on('spawn', () => {
+      restartDelay = MIN_RESTART_MS
+      startedAt = Date.now()
+      lastError = ''
+    })
+
+    proc.on('exit', (code, signal) => {
+      if (stale()) return
+      child = null
+      if (!running) return
+      noteError(lastError || `ffmpeg exited (code=${code ?? 'null'}, signal=${signal ?? 'null'})`)
+      scheduleRestart()
+    })
+  }
+
+  function start() {
+    if (running) return
+    running = true
+    stoppedByCaller = false
+    launch()
+  }
+
+  function stop() {
+    running = false
+    stoppedByCaller = true
+    if (restartTimer !== null) {
+      clearTimeout(restartTimer)
+      restartTimer = null
+    }
+    if (child !== null) {
+      const proc = child
+      child = null
+      try {
+        proc.kill('SIGTERM')
+      } catch {
+        // already gone
+      }
+    }
+    latest = null
+    pending = Buffer.alloc(0)
+  }
+
+  return {
+    start,
+    stop,
+    latest: () => latest,
+    status: () => ({
+      running,
+      stoppedByCaller,
+      sequence,
+      lastFrameAt: latest?.capturedAt ?? null,
+      lastError,
+      startedAt,
+      videoPath: config.videoPath,
+    }),
+  }
+}

@@ -50,3 +50,56 @@ native/system/test/bin/
 
 # Generated company-signed CUA release record.
 /packages/experimental/cua-macos/cua-helper.json
+
+# ---------------------------------------------------------------------------
+# n8n-mounted DSH runtime home (dsh-data). Track preset/profile source only.
+# Container still mounts this tree at /data/dsh.
+# ---------------------------------------------------------------------------
+dsh-data/.pnpm-store/
+
+# Per-instance runtime / secrets
+dsh-data/**/.anonymous-user-id
+dsh-data/**/.credentials.yaml
+dsh-data/**/.env
+dsh-data/**/.env.*
+!dsh-data/**/.env.example
+dsh-data/**/attachments/
+dsh-data/**/cache/
+dsh-data/**/logs/
+dsh-data/**/sessions/
+dsh-data/**/storages/
+dsh-data/**/memos-plugin/data/
+dsh-data/**/memos-plugin/.auth.json
+dsh-data/**/settings.yaml.imported
+dsh-data/**/node_modules/
+dsh-data/**/dist/
+dsh-data/**/.cache/
+dsh-data/**/*.log
+dsh-data/**/*.jsonl
+dsh-data/**/*.mp4
+dsh-data/**/*.key
+dsh-data/**/*.pem
+dsh-data/**/.DS_Store
+dsh-data/**/.git.bak-pre-unify-*/
+dsh-data/**/.s2s-control-status.json
+dsh-data/**/*.bak
+dsh-data/**/*.bak-*
+
+# Business runtime artifacts (camera, media, feedback, caches, archives)
+dsh-data/**/runtime_data/
+# DeepSeek Files upload index under DSH home
+dsh-data/**/llm-deepseek/
+
+# Workspace local agent state and leftover process files
+dsh-data/**/empty-workspace/.dsh/
+dsh-data/**/empty-workspace/.corepack/
+dsh-data/**/empty-workspace/.tmp-*/
+dsh-data/**/empty-workspace/.lc-extract/
+dsh-data/**/empty-workspace/.musl-extract/
+dsh-data/**/empty-workspace/.lc.tgz
+dsh-data/**/empty-workspace/.musl.tgz
+dsh-data/**/empty-workspace/.gitconfig
+dsh-data/**/empty-workspace/.preset-staging/
+dsh-data/**/empty-workspace/**/config.local.json
+dsh-data/**/empty-workspace/**/*probe*.txt
+dsh-data/**/empty-workspace/**/.write-probe.txt

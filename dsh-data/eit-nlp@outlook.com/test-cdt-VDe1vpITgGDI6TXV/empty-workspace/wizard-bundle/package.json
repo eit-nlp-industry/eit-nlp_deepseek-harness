@@ -1,0 +1,36 @@
+{
+  "name": "@local/dsh-wizard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "In-place multi-step wizard view for a DSH session, backed by committed wizard_stage records.",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "state.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "scripts": {
+    "test": "node --test test/state.test.mjs test/client-wiring.test.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { apply, inject, name } from '../dsh-namespace-tools/preset-entry.js'

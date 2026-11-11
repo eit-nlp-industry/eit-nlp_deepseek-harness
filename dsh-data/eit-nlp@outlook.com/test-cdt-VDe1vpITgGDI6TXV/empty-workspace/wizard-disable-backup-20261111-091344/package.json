@@ -1,0 +1,20 @@
+{
+  "name": "dsh-profile-n8n-web",
+  "private": true,
+  "dependencies": {
+    "@local/dsh-campus-booking-preset": "link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/campus-booking-preset",
+    "@local/dsh-copy-review-preset": "link:/data/dsh/eit-nlp@outlook.com/DeepSeek Harness 3-VDe1vpITgGDI6TXV/empty-workspace/copy-review-preset",
+    "@local/dsh-wizard": "link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/wizard-bundle"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@local/dsh-copy-review-preset",
+        "@local/dsh-campus-booking-preset",
+        "@local/dsh-wizard"
+      ]
+    }
+  }
+}

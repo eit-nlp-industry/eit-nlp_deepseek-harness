@@ -1,0 +1,1 @@
+export { apply, inject, name } from '../dsh-ragflow-tools/preset-entry.js'

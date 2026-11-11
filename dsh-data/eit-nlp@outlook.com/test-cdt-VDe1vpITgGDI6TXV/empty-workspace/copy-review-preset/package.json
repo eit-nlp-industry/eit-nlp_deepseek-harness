@@ -1,0 +1,12 @@
+{
+  "name": "@local/dsh-copy-review-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "文案审稿助手：三版文案审阅、逐轮修改与最终采用。",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

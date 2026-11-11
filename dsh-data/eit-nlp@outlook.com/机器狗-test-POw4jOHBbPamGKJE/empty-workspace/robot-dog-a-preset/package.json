@@ -1,0 +1,59 @@
+{
+  "name": "@local/dsh-robot-dog-job-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./index.js": "./index.js",
+    "./client": "./client.js",
+    "./callback-server": "./callback-server.js",
+    "./callback-server.js": "./callback-server.js",
+    "./camera-provider.js": "./camera-provider.js",
+    "./camera-tools.js": "./camera-tools.js",
+    "./observation.js": "./observation.js",
+    "./observation-api.js": "./observation-api.js",
+    "./observation-hub.js": "./observation-hub.js",
+    "./person-tools.js": "./person-tools.js",
+    "./snapshot-look.js": "./snapshot-look.js",
+    "./job-bridge.js": "./job-bridge.js",
+    "./ragflow-tools.js": "./ragflow-tools.js",
+    "./ragflow-semantic-map.js": "./ragflow-semantic-map.js",
+    "./namespace-tools.js": "./namespace-tools.js"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "job-bridge.js",
+    "callback-server.js",
+    "camera-provider.js",
+    "camera-tools.js",
+    "observation.js",
+    "observation-api.js",
+    "observation-hub.js",
+    "identify.js",
+    "person-tools.js",
+    "snapshot-look.js",
+    "ffmpeg.js",
+    "views.js",
+    "cordis.patch.yml",
+    "ragflow-tools.js",
+    "ragflow-semantic-map.js"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

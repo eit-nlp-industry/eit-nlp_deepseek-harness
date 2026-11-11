@@ -1,0 +1,30 @@
+{
+  "name": "dsh-profile-n8n-web",
+  "private": true,
+  "dependencies": {
+    "@local/dsh-robot-dog-a-preset": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset",
+    "@local/dsh-robot-dog-job-preset": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset",
+    "@local/dsh-robot-dog-test-preset": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-test-preset",
+    "@local/dsh-robot-dog-v03-preset": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-preset",
+    "@local/dsh-robot-dog-v031-preset": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v031-preset",
+    "@local/dsh-robot-dog-vision-console": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-vision-console",
+    "@steven-stack-s/dsh-memos-local": "2.0.20-dsh.3",
+    "dsh-voice-mode": "^0.7.35",
+    "@local/dsh-robot-dog-v03-vision-console": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-vision-console"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@local/dsh-robot-dog-a-preset",
+        "@local/dsh-robot-dog-test-preset",
+        "@local/dsh-robot-dog-vision-console",
+        "@local/dsh-robot-dog-job-preset",
+        "@local/dsh-robot-dog-v03-vision-console",
+        "@local/dsh-robot-dog-v03-preset",
+        "@local/dsh-robot-dog-v031-preset"
+      ]
+    }
+  }
+}

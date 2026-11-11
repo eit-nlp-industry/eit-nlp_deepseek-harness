@@ -1,0 +1,17 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+- id: ui-settings-general
+  name: "@deepseek-ai/dsh-client-ui-settings-general"
+  config:
+    welcomeNoticeVersion: 2026-09-28.1
+- id: tool-json-render
+  config:
+    mediaRoot: !!js (delete process.env.JSON_RENDER_MEDIA_ROOT, '')
+# n8n-managed workspace directory
+- id: workspace-controller
+  name: "@deepseek-ai/dsh-api-workspace-controller"
+  config:
+    documentsDirectory: "/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV"
+- id: dsh-wizard
+  disabled: true

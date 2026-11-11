@@ -1,0 +1,19 @@
+# Vision console (RTMP ingest): host-only decoder + push loop.
+# No Web debug panel — use robot-dog-v03-vision-console for the mp4 UI.
+
+- insert:
+    - id: vision-console
+      name: '@local/dsh-robot-dog-vision-console'
+      config:
+        videoPath: 'rtmp://0.0.0.0:1935/live/phone1'
+        ffmpegPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset/node_modules/ffmpeg-static/ffmpeg
+        captureFps: 2
+        maxWidth: 960
+        jpegQuality: 3
+        loop: false
+        defaultIntervalMs: 1000
+        windowSize: 1
+        maxPushedWindows: 600
+        personStoreDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-test/person-store
+        boxColor: red
+        boxThickness: 6

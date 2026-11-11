@@ -15,7 +15,7 @@
 在 DSH 服务的运行环境设置：
 
 ```sh
-export JSON_RENDER_MEDIA_ROOT='/srv/apps/n8n/dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-preset/data/target-frames'
+export JSON_RENDER_MEDIA_ROOT='/srv/apps/n8n/deepseek-harness/dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/target-frames'
 export JSON_RENDER_BASE_URL='http://10.37.0.21:3001'
 ```
 
@@ -38,7 +38,7 @@ node scripts/prepare-json-render-media.mjs --root "$JSON_RENDER_MEDIA_ROOT"
 将以下规则追加到机器人已有指令或工作区 AGENTS.md，并允许 Agent 读取图片目录的 index.json：
 
 ```text
-图片目录：/srv/apps/n8n/dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-preset/data/target-frames
+图片目录：/srv/apps/n8n/deepseek-harness/dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/target-frames
 用户要求查看图片时，先读取该目录的 index.json，根据文件名或已有业务信息选择真实资源；无法确定时询问用户，不猜测 ID 或图片内容。
 调用 render_ui：mode="display"，components=["Image"]，intent="rich_content"，locale="zh-CN"。
 business_data={"image":{"assetId":"清单中的真实ID"}}。

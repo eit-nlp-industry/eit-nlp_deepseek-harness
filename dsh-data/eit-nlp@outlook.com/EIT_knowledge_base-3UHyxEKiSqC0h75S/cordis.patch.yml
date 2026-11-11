@@ -1,0 +1,8 @@
+
+- insert:
+    - id: s2s-harness-control
+      name: './s2s-harness-control.mjs'
+      config:
+        controlUrl: http://10.37.0.21:8787/v1/harness
+        keyFile: /opt/glibc-node/.s2s-control.key
+        statusFile: /data/dsh/eit-nlp@outlook.com/EIT_knowledge_base-3UHyxEKiSqC0h75S/.s2s-control-status.json

@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JSON 是什么 · 三句话说明白</title>
+<meta name="description" content="给非技术同事的 JSON 说明：一句话定义、六种基本类型、三个最常见的错误，以及一个自查小技巧。" />
+<style>
+  :root {
+    --bg: #e9e6de;
+    --sheet: #fffdf8;
+    --ink: #14161a;
+    --ink-2: #3a3d44;
+    --muted: #6f6d65;
+    --line: #e2ddd1;
+    --line-2: #cfc8b8;
+    --yellow: #ffe066;
+    --red: #b3261e;
+    --red-bg: #fdf1ef;
+    --green: #1e7a45;
+    --green-bg: #eff8f2;
+    --amber: #a35a00;
+    --amber-bg: #fff4d6;
+    --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+    --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, SimSun, serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    padding: 34px 20px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--yellow); }
+
+  a { color: inherit; }
+
+  code { font-family: var(--mono); }
+
+  .sheet {
+    max-width: 1060px;
+    margin: 0 auto;
+    background: var(--sheet);
+    border-top: 6px solid var(--ink);
+    box-shadow: 0 30px 80px rgba(45, 38, 24, .14);
+  }
+
+  .pad { padding-left: 64px; padding-right: 64px; }
+
+  /* ---------------- masthead ---------------- */
+  .mast {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 54px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .mast .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .mast .mark {
+    background: var(--ink);
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    letter-spacing: .06em;
+  }
+
+  /* ---------------- hero ---------------- */
+  .hero { padding: 58px 0 48px; }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 52px;
+    align-items: center;
+  }
+
+  .kicker {
+    margin: 0 0 18px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    margin: 0 0 20px;
+    font-family: var(--serif);
+    font-size: clamp(44px, 5.6vw, 68px);
+    line-height: 1.14;
+    font-weight: 800;
+    letter-spacing: -.02em;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(transparent 64%, var(--yellow) 64%);
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 29em;
+    font-size: 15.5px;
+    line-height: 1.9;
+    color: var(--ink-2);
+  }
+
+  .def {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--line-2);
+    padding: 26px 24px 20px;
+    box-shadow: 7px 7px 0 rgba(20, 22, 26, .05);
+  }
+  .def-top {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .def p {
+    margin: 0;
+  }
+  .def-text {
+    font-family: var(--serif);
+    font-size: 21px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+  .def-text mark {
+    background: linear-gradient(transparent 58%, var(--yellow) 58%);
+    color: inherit;
+    padding: 0 1px;
+  }
+  .def-sub {
+    margin-top: 10px !important;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .def-foot {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line-2);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .06em;
+    color: var(--muted);
+  }
+  .stamp {
+    position: absolute;
+    top: -18px;
+    right: -14px;
+    width: 54px;
+    height: 54px;
+    border: 1.5px solid var(--red);
+    border-radius: 50%;
+    color: var(--red);
+    font-family: var(--serif);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    line-height: 1.2;
+    transform: rotate(9deg);
+    background: rgba(255, 253, 248, .92);
+  }
+
+  /* ---------------- toc ---------------- */
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+  }
+  .toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 17px 0;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .toc a + a {
+    border-left: 1px solid var(--line);
+    padding-left: 26px;
+  }
+  .toc a:hover { color: var(--red); }
+  .toc b {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: .06em;
+  }
+  .toc .t-title { font-size: 14px; font-weight: 700; }
+  .toc small {
+    display: block;
+    margin-top: 1px;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: .02em;
+  }
+
+  /* ---------------- sections ---------------- */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section:last-of-type { border-bottom: 0; }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 30px;
+  }
+  .sec-no {
+    font-family: var(--serif);
+    font-size: 54px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    color: #e3ddcf;
+  }
+  .sec-head h2 {
+    margin: 0 0 8px;
+    font-family: var(--serif);
+    font-size: 30px;
+    line-height: 1.3;
+    font-weight: 800;
+    letter-spacing: -.01em;
+  }
+  .sec-lead {
+    margin: 0;
+    max-width: 44em;
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+
+  /* ---------------- analogy ---------------- */
+  .analogy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 22px 22px 18px;
+    min-width: 0;
+  }
+  .panel-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .panel-label .hint { color: var(--line-2); }
+
+  .mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .mini-table th {
+    text-align: left;
+    padding: 0 0 9px;
+    border-bottom: 1px solid var(--ink);
+    font-size: 9.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .mini-table td {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+    color: var(--ink-2);
+  }
+  .mini-table tr:last-child td { border-bottom: 0; }
+  .mini-table code.key {
+    background: #f3f0e8;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-size: 12px;
+    color: #1d4ed8;
+  }
+  .mini-table .lit { font-family: var(--mono); font-size: 12.5px; color: #9d174d; }
+
+  .code {
+    margin: 0;
+    background: #f7f4ed;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--ink);
+    border-radius: 3px;
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    color: #23262c;
+    overflow-x: auto;
+    tab-size: 2;
+  }
+  .tok-k { color: #1d4ed8; }
+  .tok-s { color: #1e7a45; }
+  .tok-n { color: #b45309; }
+  .tok-b { color: #9d174d; }
+  .tok-z { color: #6b7280; }
+  .tok-p { color: #6b7280; }
+
+  .panel-cap {
+    margin: 12px 0 0;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .note {
+    margin: 18px 0 0;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  .note code {
+    background: #f3f0e8;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 12px;
+    color: var(--ink);
+  }
+
+  /* ---------------- types table ---------------- */
+  .types-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .types-table th {
+    text-align: left;
+    padding: 0 14px 10px;
+    border-bottom: 1.5px solid var(--ink);
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .types-table td {
+    padding: 15px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .types-table tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  .types-table tbody tr:hover { background: #fbf9f2; }
+  .t-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+  .t-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--c);
+    flex: none;
+  }
+  .t-en {
+    display: block;
+    margin-left: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .04em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .types-table code {
+    display: inline-block;
+    background: #f7f4ed;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-size: 12.5px;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  .types-table .desc {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--ink-2);
+  }
+
+  /* ---------------- mistakes ---------------- */
+  .mistake {
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .mistake:first-of-type { border-top: 0; padding-top: 4px; }
+  .m-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .m-no {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: .08em;
+  }
+  .m-head h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .triple {
+    display: grid;
+    grid-template-columns: 1fr 1fr .9fr;
+    gap: 16px;
+  }
+  .col { min-width: 0; }
+  .col h4 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .col.bad h4 { color: var(--red); }
+  .col.good h4 { color: var(--green); }
+  .col.why h4 { color: var(--muted); }
+  .col .code { font-size: 12.5px; line-height: 1.75; }
+  .col.bad .code {
+    background: var(--red-bg);
+    border-color: #f0cfcb;
+    border-left-color: var(--red);
+  }
+  .col.good .code {
+    background: var(--green-bg);
+    border-color: #cfe8d6;
+    border-left-color: var(--green);
+  }
+  .why p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--ink-2);
+  }
+  .why code {
+    background: #f3f0e8;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 12px;
+  }
+  .bad-mark {
+    background: #ffc9c4;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  /* ---------------- tip ---------------- */
+  .tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 30px;
+    padding: 20px 22px;
+    background: var(--amber-bg);
+    border: 1px solid #efd49b;
+    border-left: 4px solid var(--amber);
+  }
+  .tip .ic {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .tip b {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 13.5px;
+    color: #5c3a05;
+  }
+  .tip p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: #6b4a12;
+  }
+
+  /* ---------------- footer ---------------- */
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 24px 64px;
+    background: var(--ink);
+    color: #f3efe4;
+  }
+  .foot .big {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .foot .small {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #a8a293;
+  }
+
+  /* ---------------- responsive ---------------- */
+  @media (max-width: 900px) {
+    .pad { padding-left: 40px; padding-right: 40px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+    .def { max-width: 430px; }
+    .triple { grid-template-columns: 1fr 1fr; }
+    .col.why { grid-column: 1 / -1; }
+    .foot { padding-left: 40px; padding-right: 40px; }
+  }
+
+  @media (max-width: 720px) {
+    body { padding: 0; }
+    .sheet { border-top-width: 4px; box-shadow: none; }
+    .pad { padding-left: 22px; padding-right: 22px; }
+    .mast { height: 48px; font-size: 9.5px; }
+    .mast .date { display: none; }
+    .hero { padding: 38px 0 32px; }
+    h1 { font-size: clamp(38px, 11.5vw, 50px); }
+    .section { padding: 40px 0; }
+    .sec-head { grid-template-columns: 1fr; gap: 2px; margin-bottom: 24px; }
+    .sec-no { font-size: 38px; }
+    .sec-head h2 { font-size: 25px; }
+    .toc { grid-template-columns: 1fr; }
+    .toc a + a {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      padding-left: 0;
+    }
+    .analogy { grid-template-columns: 1fr; gap: 16px; }
+    .triple { grid-template-columns: 1fr; gap: 14px; }
+    .col.why { grid-column: auto; }
+    .col.why p { padding-bottom: 4px; }
+    .tip { padding: 16px 18px; }
+    .foot { padding: 22px; }
+
+    /* stacked type table */
+    .types-table thead { display: none; }
+    .types-table,
+    .types-table tbody,
+    .types-table tr,
+    .types-table td { display: block; width: 100%; }
+    .types-table tr {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .types-table tbody tr:last-child { margin-bottom: 0; }
+    .types-table td {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 10px;
+      align-items: baseline;
+      padding: 5px 0;
+      border: 0;
+    }
+    .types-table td::before {
+      content: attr(data-label);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .types-table tbody tr:last-child td { border: 0; }
+    .types-table tbody tr:hover { background: #fff; }
+    .t-en { margin-left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .toc a { transition: none; }
+  }
+
+  @media print {
+    body { padding: 0; background: #fff; }
+    .sheet { box-shadow: none; border-top-width: 4px; max-width: 100%; }
+    .section { padding: 26px 0; }
+    .mistake, .panel, .type-row { break-inside: avoid; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- ================= MASTHEAD ================= -->
+  <div class="pad">
+    <div class="mast">
+      <span class="brand"><span class="mark">{ }</span>JSON / 非技术说明</span>
+      <span class="date">内部培训材料 · 2026.11</span>
+    </div>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero pad">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">写给非技术同事 · 阅读约 5 分钟</p>
+        <h1>JSON，<br /><em>三句话</em>说明白</h1>
+        <p class="lede">
+          它不是编程语言，只是一套书写规则。下面用一张表、六种类型和三个高频错误，
+          把这件事讲清楚。
+        </p>
+      </div>
+
+      <div class="def">
+        <div class="stamp">纯文本</div>
+        <div class="def-top">一句话定义</div>
+        <p class="def-text">一种用<mark>纯文本</mark>描述数据的通用格式。</p>
+        <p class="def-sub">不是编程语言，只是一套书写规则。</p>
+        <div class="def-foot">JSON · JavaScript Object Notation</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= TOC ================= -->
+  <nav class="toc pad" aria-label="页面目录">
+    <a href="#what">
+      <b>01</b>
+      <span class="t-title">是什么<small>定义与表格类比</small></span>
+    </a>
+    <a href="#types">
+      <b>02</b>
+      <span class="t-title">六种类型<small>一张表看完</small></span>
+    </a>
+    <a href="#mistakes">
+      <b>03</b>
+      <span class="t-title">三个错误<small>错误 · 正确 · 原因</small></span>
+    </a>
+  </nav>
+
+  <!-- ================= 01 WHAT ================= -->
+  <section class="section pad" id="what">
+    <div class="sec-head">
+      <div class="sec-no">01</div>
+      <div>
+        <h2>JSON 是什么</h2>
+        <p class="sec-lead">
+          一种用纯文本描述数据的通用格式，不是编程语言，只是一套书写规则。
+          可以把它想成一张“栏目名 + 填写内容”的规范表格：左边是键，右边是值，程序按栏目名取值。
+        </p>
+      </div>
+    </div>
+
+    <div class="analogy">
+      <div class="panel">
+        <div class="panel-label"><span>表格视角</span><span class="hint">人看的</span></div>
+        <table class="mini-table">
+          <thead>
+            <tr>
+              <th scope="col">栏目名（键）</th>
+              <th scope="col">填写内容（值）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="key">name</code></td>
+              <td>林小满</td>
+            </tr>
+            <tr>
+              <td><code class="key">age</code></td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td><code class="key">isMember</code></td>
+              <td><span class="lit">true</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="panel-cap">一张表，三行数据。每行都是“栏目名 + 内容”。</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label"><span>JSON 视角</span><span class="hint">程序读的</span></div>
+        <pre class="code"><code><span class="tok-p">{</span>
+  <span class="tok-k">"name"</span><span class="tok-p">:</span> <span class="tok-s">"林小满"</span><span class="tok-p">,</span>
+  <span class="tok-k">"age"</span><span class="tok-p">:</span> <span class="tok-n">20</span><span class="tok-p">,</span>
+  <span class="tok-k">"isMember"</span><span class="tok-p">:</span> <span class="tok-b">true</span>
+<span class="tok-p">}</span></code></pre>
+        <p class="panel-cap">同一份数据，换一种写法。大括号表示“这是一张表”。</p>
+      </div>
+    </div>
+
+    <p class="note">
+      程序要取姓名，就按栏目名 <code>name</code> 去找对应的值；要判断是不是会员，就看 <code>isMember</code>。
+      键名相当于地址，值才是内容。
+    </p>
+  </section>
+
+  <!-- ================= 02 TYPES ================= -->
+  <section class="section pad" id="types">
+    <div class="sec-head">
+      <div class="sec-no">02</div>
+      <div>
+        <h2>六种基本类型</h2>
+        <p class="sec-lead">
+          JSON 只有六种基本类型。记住这张表，日常见到的 JSON 基本都能读懂。
+        </p>
+      </div>
+    </div>
+
+    <table class="types-table">
+      <thead>
+        <tr>
+          <th scope="col" style="width:21%">类型</th>
+          <th scope="col" style="width:29%">示例</th>
+          <th scope="col" style="width:50%">说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="类型">
+            <div>
+              <span class="t-name"><i class="t-dot" style="--c:#1d4ed8"></i>字符串</span>
+              <span class="t-en">string</span>
+            </div>
+          </td>
+          <td data-label="示例"><div><code>"你好"</code></div></td>
+          <td data-label="说明"><div class="desc">双引号包住的文字。句子、名字、日期通常都写成字符串。</div></td>
+        </tr>
+        <tr>
+          <td data-label="类型">
+            <div>
+              <span class="t-name"><i class="t-dot" style="--c:#b45309"></i>数字</span>
+              <span class="t-en">number</span>
+            </div>
+          </td>
+          <td data-label="示例"><div><code>20</code></div></td>
+          <td data-label="说明"><div class="desc">直接写，不加引号。整数、小数、负数都可以。</div></td>
+        </tr>
+        <tr>
+          <td data-label="类型">
+            <div>
+              <span class="t-name"><i class="t-dot" style="--c:#9d174d"></i>布尔值</span>
+              <span class="t-en">boolean</span>
+            </div>
+          </td>
+          <td data-label="示例"><div><code>true</code></div></td>
+          <td data-label="说明"><div class="desc">只有 <code>true</code> 和 <code>false</code>，表示“是 / 否”“开 / 关”。</div></td>
+        </tr>
+        <tr>
+          <td data-label="类型">
+            <div>
+              <span class="t-name"><i class="t-dot" style="--c:#6b7280"></i>空值</span>
+              <span class="t-en">null</span>
+            </div>
+          </td>
+          <td data-label="示例"><div><code>null</code></div></td>
+          <td data-label="说明"><div class="desc">表示“这里没有内容”。它不等于 0，也不等于空字符串。</div></td>
+        </tr>
+        <tr>
+          <td data-label="类型">
+            <div>
+              <span class="t-name"><i class="t-dot" style="--c:#6741d9"></i>对象</span>
+              <span class="t-en">object</span>
+            </div>
+          </td>
+          <td data-label="示例"><div><code>{"name": "小明"}</code></div></td>
+          <td data-label="说明"><div class="desc">花括号里的键值对集合。可以嵌套，装下一张更小的表。</div></td>
+        </tr>
+        <tr>
+          <td data-label="类型">
+            <div>
+              <span class="t-name"><i class="t-dot" style="--c:#0f766e"></i>数组</span>
+              <span class="t-en">array</span>
+            </div>
+          </td>
+          <td data-label="示例"><div><code>["A", "B"]</code></div></td>
+          <td data-label="说明"><div class="desc">方括号里的有序列表。顺序有意义，可以放多个值。</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note">
+      日期没有单独的类型，通常写成字符串，例如 <code>"2026-11-14"</code>。
+    </p>
+  </section>
+
+  <!-- ================= 03 MISTAKES ================= -->
+  <section class="section pad" id="mistakes">
+    <div class="sec-head">
+      <div class="sec-no">03</div>
+      <div>
+        <h2>三个最常见的错误</h2>
+        <p class="sec-lead">
+          新手踩坑率最高的三处。每一组都给出错误写法、正确写法，以及为什么会错。
+        </p>
+      </div>
+    </div>
+
+    <article class="mistake">
+      <div class="m-head">
+        <span class="m-no">错误 01</span>
+        <h3>用单引号代替双引号</h3>
+      </div>
+      <div class="triple">
+        <div class="col bad">
+          <h4>✕ 错误写法</h4>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="bad-mark">'name'</span><span class="tok-p">:</span> <span class="bad-mark">'小明'</span>
+<span class="tok-p">}</span></code></pre>
+        </div>
+        <div class="col good">
+          <h4>✓ 正确写法</h4>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="tok-k">"name"</span><span class="tok-p">:</span> <span class="tok-s">"小明"</span>
+<span class="tok-p">}</span></code></pre>
+        </div>
+        <div class="col why">
+          <h4>原因</h4>
+          <p>JSON 只认双引号。单引号是 JavaScript 的写法，JSON 解析器会直接报错。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="mistake">
+      <div class="m-head">
+        <span class="m-no">错误 02</span>
+        <h3>最后一项多了一个逗号</h3>
+      </div>
+      <div class="triple">
+        <div class="col bad">
+          <h4>✕ 错误写法</h4>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="tok-k">"name"</span><span class="tok-p">:</span> <span class="tok-s">"小明"</span><span class="tok-p">,</span>
+  <span class="tok-k">"age"</span><span class="tok-p">:</span> <span class="tok-n">18</span><span class="bad-mark">,</span>
+<span class="tok-p">}</span></code></pre>
+        </div>
+        <div class="col good">
+          <h4>✓ 正确写法</h4>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="tok-k">"name"</span><span class="tok-p">:</span> <span class="tok-s">"小明"</span><span class="tok-p">,</span>
+  <span class="tok-k">"age"</span><span class="tok-p">:</span> <span class="tok-n">18</span>
+<span class="tok-p">}</span></code></pre>
+        </div>
+        <div class="col why">
+          <h4>原因</h4>
+          <p>JSON 不允许尾随逗号。逗号只用来分隔两项，不能用来结尾。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="mistake">
+      <div class="m-head">
+        <span class="m-no">错误 03</span>
+        <h3>键名不加引号，还顺手写注释</h3>
+      </div>
+      <div class="triple">
+        <div class="col bad">
+          <h4>✕ 错误写法</h4>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="bad-mark">name</span><span class="tok-p">:</span> <span class="tok-s">"小明"</span><span class="tok-p">,</span>   <span class="bad-mark">// 姓名</span>
+  <span class="bad-mark">age</span><span class="tok-p">:</span> <span class="tok-n">18</span>
+<span class="tok-p">}</span></code></pre>
+        </div>
+        <div class="col good">
+          <h4>✓ 正确写法</h4>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="tok-k">"name"</span><span class="tok-p">:</span> <span class="tok-s">"小明"</span><span class="tok-p">,</span>
+  <span class="tok-k">"age"</span><span class="tok-p">:</span> <span class="tok-n">18</span>
+<span class="tok-p">}</span></code></pre>
+        </div>
+        <div class="col why">
+          <h4>原因</h4>
+          <p>键名必须加双引号；JSON 标准不支持注释。要说明什么，就单独加一个字段，把话写进值里。</p>
+        </div>
+      </div>
+    </article>
+
+    <div class="tip">
+      <div class="ic">!</div>
+      <div>
+        <b>自查小技巧</b>
+        <p>
+          把文本粘进任意 JSON 校验器，它会直接指出第几行第几列出错，
+          比肉眼一行行找快得多。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="foot">
+    <div class="big">记住三件事：双引号 · 逗号 · 键名</div>
+    <div class="small">JSON 非技术说明 / 单页版</div>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Vision console (v0.3 / v0.3.1): frozen copy of the original mp4/loop console,
+# shared by robot-dog-v03 and robot-dog-v031. Independent of the live RTMP
+# robot-dog-vision-console package.
+
+- insert:
+    - id: vision-console-v03
+      name: '@local/dsh-robot-dog-v03-vision-console'
+      config:
+        videoPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/shared/media/test.mp4
+        ffmpegPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset/node_modules/ffmpeg-static/ffmpeg
+        captureFps: 2
+        maxWidth: 960
+        jpegQuality: 70
+        loop: true
+        defaultIntervalMs: 1000
+        maxPushedWindows: 600
+        targetPreset:
+          - robot-dog-v03
+          - robot-dog-v031
+        # Person records shared with the robot-dog-v03 runtime_data folder.
+        personStoreDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/person-store
+        boxColor: red
+        boxThickness: 6

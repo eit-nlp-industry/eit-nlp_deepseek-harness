@@ -1,0 +1,24 @@
+{
+  "name": "@local/dsh-robot-dog-v031-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./observation-tools.js": "./observation-tools.js",
+    "./annotate-media.js": "./annotate-media.js",
+    "./booking-mock.js": "./booking-mock.js",
+    "./person-media.js": "./person-media.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "cordis.patch.yml",
+    "observation-tools.js",
+    "annotate-media.js",
+    "booking-mock.js",
+    "person-media.js"
+  ]
+}

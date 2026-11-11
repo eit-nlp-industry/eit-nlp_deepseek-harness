@@ -1,0 +1,1 @@
+{"name":"probe","version":"1.0.0","dependencies":{"@eit/json-render-react":"git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#c6b8bbfcf88952258c2a1aa9d4ff81432d0b4cdd&path:packages/react"}}

@@ -1,0 +1,19 @@
+{
+  "name": "dsh-profile-n8n-web",
+  "private": true,
+  "dependencies": {
+    "@local/dsh-est-kb-preset": "link:/data/dsh/est_knowledge_base/autonomous_flows/configs/dsh/kb-agent-preset",
+    "@local/dsh-est-render-endpoint": "link:/data/dsh/est_knowledge_base/autonomous_flows/configs/dsh/render-endpoint",
+    "@wxg-prc-cpg/dsh-weknora": "0.1.0"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@local/dsh-est-kb-preset",
+        "@local/dsh-est-render-endpoint"
+      ]
+    }
+  }
+}

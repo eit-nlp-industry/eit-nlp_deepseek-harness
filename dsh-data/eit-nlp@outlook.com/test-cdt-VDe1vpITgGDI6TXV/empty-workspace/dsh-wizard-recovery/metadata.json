@@ -1,0 +1,112 @@
+{
+  "plugin": {
+    "name": "@local/dsh-wizard",
+    "version": "0.1.0"
+  },
+  "harness": {
+    "name": "@deepseek-ai/dsh",
+    "version": "0.2.2-alpha.2",
+    "commit": "a7e43d45fafe582d26a296610dfaaa04c2e48e33",
+    "describe": "dsh-v0.2.2-alpha.2-409-ga7e43d45fa",
+    "profile": "n8n-web"
+  },
+  "runtime": {
+    "node": "v26.7.0",
+    "engines": ">=24.9.0",
+    "pnpm": "11.28.5",
+    "browserReact": "platform static table"
+  },
+  "sdk": {
+    "jsonRender": "none (no @eit/* dependency)"
+  },
+  "build": {
+    "required": false,
+    "note": "client.js 为手写 ESM，由 __ModuleLoader__ 注册；index.js 由 Node 直接加载"
+  },
+  "workflowComponent": "临时自绘 WorkflowTree（复用 workflow-v1 数据模型），非 @eit/json-render-react 的 Workflow 组件",
+  "exportedAt": "2026-11-11T09:11:28.480Z",
+  "files": [
+    {
+      "path": "1-plugin/README.md",
+      "bytes": 5541,
+      "sha256": "436bafb0f73172a4c58995292aaafb3a42597e6c136c3e17d17ab28d648c2f3d"
+    },
+    {
+      "path": "1-plugin/client.js",
+      "bytes": 25822,
+      "sha256": "5fa93093ad03cae245fd4e1679a66c94226cb4f1e3add57312de30bb09632598"
+    },
+    {
+      "path": "1-plugin/cordis.patch.yml",
+      "bytes": 63,
+      "sha256": "1788f445e766ddb6e6ac7a9ebe6a4c31721564869e3179a5f78ce199ec100c48"
+    },
+    {
+      "path": "1-plugin/icon.svg",
+      "bytes": 468,
+      "sha256": "8461e08acbd56d9203c13608eb2fb8f9447186a70cc71ef518b04d2d14000fd3"
+    },
+    {
+      "path": "1-plugin/index.js",
+      "bytes": 3952,
+      "sha256": "6bde7d29a6e6c6d9312a88ff1be72e3b9d98fd6e5ce3352a073d2134c6ab7702"
+    },
+    {
+      "path": "1-plugin/locale/en.json",
+      "bytes": 168,
+      "sha256": "33bb8cc9cd24b396f10736b7c70528042d69ca3766cada26042153dccabb5064"
+    },
+    {
+      "path": "1-plugin/locale/zh.json",
+      "bytes": 173,
+      "sha256": "ddc63066470ce8c38f364c75d3e12f84b1054ed6e907d1ebbc9ad8154e6bb499"
+    },
+    {
+      "path": "1-plugin/package.json",
+      "bytes": 797,
+      "sha256": "8fa83b11497534779c2f9571b5f69761e7ea0a190f55c1e428602840c113773f"
+    },
+    {
+      "path": "1-plugin/state.js",
+      "bytes": 3678,
+      "sha256": "3bc3c3eb2036f8954efb8d4e572ac70764c83b198033f1dd28bf7b1a79ef32e5"
+    },
+    {
+      "path": "1-plugin/test/client-wiring.test.mjs",
+      "bytes": 1817,
+      "sha256": "08457d9d108f986f323349e44e2ddcca3d819783daa2c5d7509fb97119f3f11f"
+    },
+    {
+      "path": "1-plugin/test/state.test.mjs",
+      "bytes": 3622,
+      "sha256": "0f30ba827f70e99a3eb7d8d5fff9ed3fbea54e69203958db1bed96d6d9af824d"
+    },
+    {
+      "path": "2-profile/README.md",
+      "bytes": 1720,
+      "sha256": "1faf7d494836933101d641860a545f6be6442de8e4b6a43afcc0616f76405c92"
+    },
+    {
+      "path": "2-profile/profile-fragment.json",
+      "bytes": 321,
+      "sha256": "f2e93828c9a1d7b121374ea73e84f34c1ffe5d3edc328f0a4dc269cb7d047cb3"
+    },
+    {
+      "path": "3-data/restore-data.md",
+      "bytes": 2043,
+      "sha256": "01f4fcc530d0363a315386b61a8f56de5b0fddbc2e21fd29afcc1682d293ff1f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3833,
+      "sha256": "2b7ec4095d8b98c2613bb136d1a619facd7deb2e1efe80042a9c999874ad78cf"
+    }
+  ],
+  "excluded": [
+    "node_modules",
+    ".credentials.yaml",
+    ".anonymous-user-id",
+    "tokens/keys",
+    "session logs (see 3-data/)"
+  ]
+}

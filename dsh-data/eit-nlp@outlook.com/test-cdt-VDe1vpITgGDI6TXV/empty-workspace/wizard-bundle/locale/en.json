@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Campaign wizard",
+    "description": "An in-place multi-step wizard view for the current session, backed by committed stage records."
+  }
+}

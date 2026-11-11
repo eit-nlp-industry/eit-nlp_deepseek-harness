@@ -1,0 +1,29 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: false
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@local/dsh-est-kb-preset':
+        specifier: link:/data/dsh/est_knowledge_base/autonomous_flows/configs/dsh/kb-agent-preset
+        version: link:../../../../est_knowledge_base/autonomous_flows/configs/dsh/kb-agent-preset
+      '@local/dsh-est-render-endpoint':
+        specifier: link:/data/dsh/est_knowledge_base/autonomous_flows/configs/dsh/render-endpoint
+        version: link:../../../../est_knowledge_base/autonomous_flows/configs/dsh/render-endpoint
+      '@wxg-prc-cpg/dsh-weknora':
+        specifier: 0.1.0
+        version: 0.1.0
+
+packages:
+
+  '@wxg-prc-cpg/dsh-weknora@0.1.0':
+    resolution: {integrity: sha512-L6q32rNrDBU3Q8xE0SGYMlieC8sKswrp5GOslGka4UnH+f4boxLXLLMgkceE+Ub/c+C2tQ2rsaHXky9bO3pXlw==}
+    engines: {node: '>=20.11'}
+
+snapshots:
+
+  '@wxg-prc-cpg/dsh-weknora@0.1.0': {}

@@ -1,0 +1,12 @@
+{
+  "name": "@local/dsh-campus-booking-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "校园预约助手：可编辑表单、只读预览与最终确认卡片。",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

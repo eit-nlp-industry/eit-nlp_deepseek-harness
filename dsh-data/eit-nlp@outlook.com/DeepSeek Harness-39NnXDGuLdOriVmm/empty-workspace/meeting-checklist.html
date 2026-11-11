@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目评审会 · 结束检查清单</title>
+<style>
+  :root{
+    --ink:#1f2328;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --card:#ffffff;
+    --accent:#2f6f4f;
+    --accent-soft:#e8f3ec;
+    --bg:#f6f7f5;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    padding:48px 20px 72px;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:640px;margin:0 auto}
+  header{margin-bottom:28px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 10px;font-weight:600;
+  }
+  h1{font-size:26px;line-height:1.3;margin:0 0 10px;letter-spacing:-.01em}
+  .sub{font-size:14px;color:var(--muted);line-height:1.7;margin:0}
+
+  .progress{
+    margin:26px 0 22px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .bar{flex:1;height:8px;border-radius:99px;background:#eef0ec;overflow:hidden}
+  .bar > i{display:block;height:100%;width:0;border-radius:99px;background:var(--accent);transition:width .35s ease}
+  .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .count b{color:var(--accent);font-size:15px}
+
+  ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+
+  .item{
+    display:flex;align-items:flex-start;gap:14px;
+    width:100%;text-align:left;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px;
+    font:inherit;color:inherit;
+    cursor:pointer;
+    transition:border-color .2s,background .2s,transform .12s;
+  }
+  .item:hover{border-color:#cfd6d0}
+  .item:active{transform:scale(.995)}
+  .item:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .item[aria-pressed="true"]{background:var(--accent-soft);border-color:#bfdcc9}
+
+  .circle{
+    flex:none;
+    width:24px;height:24px;margin-top:1px;
+    border:1.8px solid #c3c9c4;
+    border-radius:50%;
+    display:grid;place-items:center;
+    background:#fff;
+    transition:border-color .2s,background .2s;
+  }
+  .item[aria-pressed="true"] .circle{background:var(--accent);border-color:var(--accent)}
+  .circle svg{width:14px;height:14px;overflow:visible}
+  .circle path{
+    fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:20;stroke-dashoffset:20;
+    transition:stroke-dashoffset .22s ease .04s;
+  }
+  .item[aria-pressed="true"] .circle path{stroke-dashoffset:0}
+
+  .text{flex:1;min-width:0}
+  .label{font-size:15px;line-height:1.55;display:block;transition:color .2s}
+  .item[aria-pressed="true"] .label{color:#3c5a49}
+  .hint{font-size:13px;color:var(--muted);line-height:1.6;margin:4px 0 0}
+
+  footer{margin-top:26px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  button.reset{
+    font:inherit;font-size:13px;color:var(--muted);
+    background:none;border:1px solid var(--line);border-radius:10px;
+    padding:9px 14px;cursor:pointer;transition:color .2s,border-color .2s;
+  }
+  button.reset:hover{color:var(--ink);border-color:#cfd6d0}
+  .note{font-size:12px;color:var(--muted)}
+  .done-msg{font-size:13px;color:var(--accent);font-weight:600;opacity:0;transition:opacity .3s}
+  .done-msg.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">项目评审会 · 45 分钟</p>
+    <h1>散会前检查清单</h1>
+    <p class="sub">点击圆圈逐项确认。勾选状态会自动保存在本机浏览器里，关掉页面再打开仍然保留。</p>
+  </header>
+
+  <div class="progress">
+    <div class="bar"><i id="barFill"></i></div>
+    <span class="count"><b id="doneCount">0</b> / <span id="total">0</span> 已确认</span>
+  </div>
+
+  <ul class="list" id="list"></ul>
+
+  <footer>
+    <button class="reset" id="reset" type="button">清空全部勾选</button>
+    <span class="done-msg" id="doneMsg">本轮检查已完成 ✓</span>
+    <span class="note" id="savedAt"></span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var KEY = "dsh-meeting-checklist-v1";
+
+  var items = [
+    { id:"decisions", label:"决议与待办已记录", hint:"每项都写清负责人和截止日期，没有“再议”这种模糊表述。" },
+    { id:"issues",    label:"演示中暴露的问题已登记", hint:"口头提到的坑也算，漏记的问题下次会以同样的方式再出现。" },
+    { id:"next",      label:"下次评审时间已约定", hint:"当场定日期并写进日历，别留到会后“再约”。" },
+    { id:"cross",     label:"跨团队协调事项已指定跟进人", hint:"依赖外部的事最容易被忘，至少要有一个人名。" },
+    { id:"minutes",   label:"会议纪要 24 小时内发出", hint:"附上决议、待办清单和负责人，抄送所有参会人。" }
+  ];
+
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
+  if (typeof state !== "object" || state === null) state = {};
+
+  var list = document.getElementById("list");
+  var barFill = document.getElementById("barFill");
+  var doneCount = document.getElementById("doneCount");
+  var totalEl = document.getElementById("total");
+  var doneMsg = document.getElementById("doneMsg");
+  var savedAt = document.getElementById("savedAt");
+  var resetBtn = document.getElementById("reset");
+
+  items.forEach(function(it){
+    var li = document.createElement("li");
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "item";
+    btn.setAttribute("data-id", it.id);
+    btn.setAttribute("aria-pressed", state[it.id] ? "true" : "false");
+    btn.setAttribute("aria-label", it.label);
+
+    var circle = document.createElement("span");
+    circle.className = "circle";
+    circle.setAttribute("aria-hidden", "true");
+    circle.innerHTML = '<svg viewBox="0 0 16 16"><path d="M3 8.5 L6.4 11.8 L13 4.6"/></svg>';
+
+    var text = document.createElement("span");
+    text.className = "text";
+    var lab = document.createElement("span");
+    lab.className = "label";
+    lab.textContent = it.label;
+    var hint = document.createElement("span");
+    hint.className = "hint";
+    hint.textContent = it.hint;
+    text.appendChild(lab);
+    text.appendChild(hint);
+
+    btn.appendChild(circle);
+    btn.appendChild(text);
+    li.appendChild(btn);
+    list.appendChild(li);
+
+    btn.addEventListener("click", function(){
+      var now = btn.getAttribute("aria-pressed") !== "true";
+      btn.setAttribute("aria-pressed", now ? "true" : "false");
+      state[it.id] = now;
+      save();
+      render();
+    });
+  });
+
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+  }
+
+  function render(){
+    var done = 0;
+    items.forEach(function(it){ if (state[it.id]) done++; });
+    var pct = items.length ? Math.round(done / items.length * 100) : 0;
+    barFill.style.width = pct + "%";
+    doneCount.textContent = done;
+    totalEl.textContent = items.length;
+    doneMsg.classList.toggle("show", done === items.length && items.length > 0);
+    savedAt.textContent = done ? "已自动保存" : "";
+  }
+
+  resetBtn.addEventListener("click", function(){
+    state = {};
+    document.querySelectorAll(".item").forEach(function(b){
+      b.setAttribute("aria-pressed", "false");
+    });
+    save();
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

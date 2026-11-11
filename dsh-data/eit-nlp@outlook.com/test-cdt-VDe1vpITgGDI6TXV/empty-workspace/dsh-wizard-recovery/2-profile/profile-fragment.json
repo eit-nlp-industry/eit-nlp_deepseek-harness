@@ -1,0 +1,13 @@
+{
+  "_comment": "合并进 <DSH_HOME>/profiles/<profile>/package.json，不要整体覆盖。把 <WIZARD_DIR> 换成 1-plugin 解压后的绝对路径。",
+  "dependencies": {
+    "@local/dsh-wizard": "link:<WIZARD_DIR>"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@local/dsh-wizard"
+      ]
+    }
+  }
+}

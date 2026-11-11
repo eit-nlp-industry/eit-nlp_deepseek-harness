@@ -1,0 +1,63 @@
+version: 1
+
+embedding:
+
+  provider: openai_compatible
+
+  endpoint: http://10.37.0.21:17000/v1
+
+  model: qwen3-emb-0_6b
+
+  apiKey: local
+
+  maxInputTokens: 1024
+
+  batchSize: 8
+
+  cache:
+
+    enabled: true
+
+    maxItems: 20000
+
+algorithm:
+
+  lightweightMemory:
+
+    enabled: false
+
+llm:
+
+  provider: openai_compatible
+
+  endpoint: https://api.deepseek.com
+
+  model: deepseek-flash
+
+  apiKey: ${LLM_API_KEY}
+
+  fallbackToHost: false
+
+  temperature: 0
+
+  timeoutMs: 60000
+
+  maxRetries: 3
+
+  maxTokens: 2048
+
+skillEvolver:
+
+  provider: openai_compatible
+
+  endpoint: https://api.deepseek.com
+
+  model: deepseek-flash
+
+  apiKey: ${SKILL_EVOLVER_API_KEY}
+
+  temperature: 0
+
+  timeoutMs: 90000
+
+  maxTokens: 4096

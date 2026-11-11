@@ -1,0 +1,21 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+- id: ui-settings-general
+  name: "@deepseek-ai/dsh-client-ui-settings-general"
+  config:
+    welcomeNoticeVersion: 2026-09-28.1
+# Hindsight MCP for test_lyj; keep before the n8n-managed workspace block.
+- insert:
+    - id: memory-hindsight
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: hindsight
+        transport: streamable-http
+        url: 'http://10.37.0.21:8889/mcp/default/'
+        failOnStartupError: true
+# n8n-managed workspace directory
+- id: workspace-controller
+  name: "@deepseek-ai/dsh-api-workspace-controller"
+  config:
+    documentsDirectory: "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo"

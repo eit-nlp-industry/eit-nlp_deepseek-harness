@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JSON 是什么？给非技术同学的 5 分钟入门</title>
+<meta name="description" content="用一张页面讲清楚 JSON：它是什么、六种基本数据类型、一个完整例子，以及新手最常犯的三个错误。" />
+<style>
+  :root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --ink: #171b26;
+    --ink-2: #3b4252;
+    --muted: #626b7e;
+    --line: #e2e6ef;
+    --brand: #3b5bdb;
+    --brand-deep: #2f49b0;
+    --brand-soft: #eef2ff;
+    --code-bg: #141824;
+    --red: #c92a2a;
+    --green: #2b8a3e;
+    --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+    --radius: 18px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: rgba(59, 91, 219, .18); }
+
+  a { color: inherit; }
+
+  code, pre { font-family: var(--mono); }
+
+  .wrap {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--brand);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 0 0 8px 0;
+    z-index: 100;
+  }
+  .skip:focus { left: 0; }
+
+  /* ---------------- nav ---------------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(245, 247, 251, .86);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-in {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .01em;
+  }
+  .logo-mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 8px;
+    padding: 3px 8px;
+    letter-spacing: .04em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .nav-links a {
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .nav-links a:hover {
+    color: var(--brand);
+    border-color: var(--brand);
+  }
+
+  /* ---------------- hero ---------------- */
+  .hero {
+    position: relative;
+    padding: 76px 0 84px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59, 91, 219, .055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 91, 219, .055) 1px, transparent 1px);
+    background-size: 34px 34px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 25% 0%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 70% at 25% 0%, #000 20%, transparent 75%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 540px;
+    right: -160px;
+    top: -220px;
+    background: radial-gradient(circle, rgba(59, 91, 219, .16), transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.02fr .98fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    color: var(--brand);
+    margin-bottom: 22px;
+  }
+  .kicker::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  h1 {
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -.025em;
+    font-weight: 800;
+    margin: 0 0 24px;
+  }
+  h1 .hl {
+    color: var(--brand);
+    white-space: nowrap;
+    background-image: linear-gradient(transparent 76%, rgba(59, 91, 219, .16) 76%);
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 31em;
+    font-size: 16.5px;
+    line-height: 1.85;
+    color: var(--ink-2);
+  }
+  .lede strong { color: var(--ink); }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .chip {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 13px;
+    white-space: nowrap;
+  }
+  .chip b { color: var(--brand); font-weight: 700; }
+
+  .hero-visual { position: relative; }
+  .window-wrap { position: relative; }
+
+  .window {
+    background: var(--code-bg);
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 26px 60px rgba(18, 24, 40, .3);
+  }
+  .win-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, .04);
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+  }
+  .dots { display: flex; gap: 6px; }
+  .dots i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #3f4759;
+  }
+  .dots i:nth-child(1) { background: #ff6b6b; }
+  .dots i:nth-child(2) { background: #ffd43b; }
+  .dots i:nth-child(3) { background: #51cf66; }
+  .win-name {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #98a1b3;
+  }
+  .win-tag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    color: #7f89a1;
+    border: 1px solid #333b4d;
+    border-radius: 999px;
+    padding: 2px 8px;
+  }
+
+  pre.code {
+    margin: 0;
+    padding: 24px 22px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.95;
+    color: #d7dce8;
+    tab-size: 2;
+  }
+
+  .tok-k { color: #a5b4fc; }
+  .tok-s { color: #86efac; }
+  .tok-n { color: #fcd34d; }
+  .tok-b { color: #f9a8d4; }
+  .tok-z { color: #94a3b8; }
+  .tok-p { color: #8b95a9; }
+
+  .float-badge {
+    position: absolute;
+    left: 22px;
+    bottom: -16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-2);
+    box-shadow: 0 10px 24px rgba(23, 27, 38, .12);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .float-badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #37b24d;
+    box-shadow: 0 0 0 4px rgba(55, 178, 77, .15);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 30px;
+    font-size: 11.5px;
+    color: var(--muted);
+    letter-spacing: .02em;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .lg-k { background: #a5b4fc; }
+  .lg-s { background: #86efac; }
+  .lg-n { background: #fcd34d; }
+  .lg-b { background: #f9a8d4; }
+
+  /* ---------------- sections ---------------- */
+  .section { padding: 84px 0; }
+  section[id] { scroll-margin-top: 80px; }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 18px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    margin-bottom: 42px;
+  }
+  .sec-no {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: .08em;
+    padding-top: 7px;
+  }
+  .sec-head h2 {
+    margin: 0 0 10px;
+    font-size: clamp(26px, 3.2vw, 36px);
+    line-height: 1.35;
+    letter-spacing: -.015em;
+    font-weight: 800;
+  }
+  .sec-head p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 40em;
+  }
+
+  /* tldr */
+  .tldr {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 52px;
+  }
+  .tldr-item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 22px 24px;
+  }
+  .tldr-item b {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: var(--brand);
+    margin-bottom: 10px;
+  }
+  .tldr-item p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--ink-2);
+  }
+  .tldr-item code {
+    font-size: 12.5px;
+    background: var(--brand-soft);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: var(--brand-deep);
+  }
+
+  /* anatomy */
+  .anatomy {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 36px;
+    overflow: hidden;
+  }
+  .anatomy::after {
+    content: "{ }";
+    position: absolute;
+    right: 26px;
+    top: 0;
+    font-family: var(--mono);
+    font-size: 130px;
+    line-height: 1;
+    color: rgba(59, 91, 219, .055);
+    pointer-events: none;
+  }
+  .subhead {
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 20px;
+    font-weight: 700;
+  }
+  .pair-demo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .pair-part {
+    background: var(--brand-soft);
+    border: 1px solid #dbe2ff;
+    border-radius: 12px;
+    padding: 14px 20px;
+    min-width: 150px;
+  }
+  .pair-part code {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--brand-deep);
+  }
+  .pair-part span {
+    display: block;
+    margin-top: 6px;
+    font-size: 11.5px;
+    letter-spacing: .05em;
+    color: var(--muted);
+  }
+  .pair-sep {
+    display: flex;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 28px;
+    color: #9aa3b5;
+  }
+  .pair-note {
+    position: relative;
+    z-index: 1;
+    margin: 20px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .rules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .rule {
+    display: flex;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .rule .n {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--brand);
+    padding-top: 2px;
+  }
+  .rule p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink-2);
+  }
+  .rule code {
+    font-size: 12.5px;
+    background: #f1f3f9;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 1px 5px;
+    white-space: nowrap;
+  }
+
+  .places-title {
+    margin: 44px 0 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .places {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .places span {
+    font-size: 13px;
+    color: var(--ink-2);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 15px;
+  }
+
+  /* ---------------- types ---------------- */
+  .types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .type {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 22px 20px;
+    overflow: hidden;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .type::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3px;
+    background: var(--tc);
+  }
+  .type:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(23, 27, 38, .07);
+    border-color: #cfd6e6;
+  }
+  .type-head {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .type-head h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .type-head .en {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .type-head .idx {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--tc);
+    opacity: .8;
+  }
+  .type .demo {
+    margin: 0 0 14px;
+    padding: 10px 12px;
+    background: #f7f8fc;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #2b3040;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .type p {
+    margin: 0 0 10px;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--ink-2);
+  }
+  .type .tip {
+    margin: 0;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .type .tip b { color: var(--tc); }
+
+  .t-string { --tc: #2b8a3e; }
+  .t-number { --tc: #c2410c; }
+  .t-bool { --tc: #a61e4d; }
+  .t-null { --tc: #5c6370; }
+  .t-array { --tc: #3b5bdb; }
+  .t-object { --tc: #6741d9; }
+
+  .note-line {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 22px;
+    padding: 16px 20px;
+    background: #fff9db;
+    border: 1px solid #ffe8a1;
+    border-radius: 12px;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: #6b5a1e;
+  }
+  .note-line b { flex: none; }
+  .note-line code {
+    background: #fff;
+    border: 1px solid #ffe8a1;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 12.5px;
+  }
+
+  /* ---------------- example band ---------------- */
+  .band {
+    padding: 84px 0;
+    background: linear-gradient(180deg, #eef2ff 0%, #f5f7fb 100%);
+    border-top: 1px solid #dfe5ff;
+    border-bottom: 1px solid #dfe5ff;
+  }
+  .example-grid {
+    display: grid;
+    grid-template-columns: 1.08fr .92fr;
+    gap: 30px;
+    align-items: start;
+  }
+  .example-grid .window { box-shadow: 0 20px 44px rgba(18, 24, 40, .22); }
+  .example-grid pre.code { font-size: 13px; line-height: 1.9; }
+
+  .trans {
+    list-style: none;
+    margin: 0;
+    padding: 8px 22px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+  .trans li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: baseline;
+    padding: 13px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .trans li:last-child { border-bottom: 0; }
+  .trans code {
+    font-size: 11.5px;
+    color: var(--brand-deep);
+    background: var(--brand-soft);
+    border-radius: 5px;
+    padding: 2px 7px;
+    white-space: nowrap;
+  }
+  .trans span {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .trans em {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 12px;
+    display: block;
+    margin-top: 1px;
+  }
+
+  /* ---------------- mistakes ---------------- */
+  .mistakes { display: grid; gap: 18px; }
+  .mistake {
+    display: grid;
+    grid-template-columns: 236px 1fr;
+    gap: 28px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--red);
+    background: #fff5f5;
+    border: 1px solid #ffc9c9;
+    border-radius: 999px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+  }
+  .mistake h3 {
+    margin: 0 0 10px;
+    font-size: 17.5px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+  .mistake-head p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    min-width: 0;
+  }
+  .snip {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .snip-bar {
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    border-bottom: 1px solid var(--line);
+  }
+  .snip pre {
+    margin: 0;
+    padding: 13px 14px;
+    font-size: 12px;
+    line-height: 1.85;
+    overflow-x: auto;
+    color: #343a46;
+  }
+  .snip.bad { background: #fff5f5; border-color: #ffc9c9; }
+  .snip.bad .snip-bar { color: var(--red); background: #ffe3e3; border-color: #ffc9c9; }
+  .snip.good { background: #f4fbf5; border-color: #c3e9c9; }
+  .snip.good .snip-bar { color: var(--green); background: #e6f7e9; border-color: #c3e9c9; }
+
+  .bad-mark {
+    background: #ffc9c9;
+    color: #a61e1e;
+    border-radius: 3px;
+    padding: 0 2px;
+  }
+  .good-mark {
+    background: #c3e9c9;
+    border-radius: 3px;
+    padding: 0 2px;
+  }
+  .snip .cm { color: #868e96; }
+  .snip .p { color: #7a8496; }
+
+  /* ---------------- checklist ---------------- */
+  .check-panel {
+    position: relative;
+    overflow: hidden;
+    background: #151a2b;
+    color: #eef1f8;
+    border-radius: 22px;
+    padding: 44px 46px 46px;
+  }
+  .check-panel::after {
+    content: "✓";
+    position: absolute;
+    right: 28px;
+    bottom: -40px;
+    font-size: 200px;
+    line-height: 1;
+    color: rgba(124, 141, 255, .08);
+    pointer-events: none;
+  }
+  .check-panel .subhead { color: #8d97ad; margin-bottom: 12px; }
+  .check-panel h2 {
+    margin: 0 0 10px;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .check-panel .lead {
+    margin: 0;
+    color: #aab3c6;
+    font-size: 14.5px;
+    max-width: 36em;
+  }
+  .check-list {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 36px;
+    position: relative;
+    z-index: 1;
+  }
+  .check-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    font-size: 14px;
+    color: #dfe4ef;
+  }
+  .check-list .box {
+    flex: none;
+    width: 17px;
+    height: 17px;
+    margin-top: 4px;
+    border: 1.5px solid #7c8dff;
+    border-radius: 4px;
+  }
+  .check-list code {
+    font-size: 12.5px;
+    background: rgba(255, 255, 255, .08);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: #c7d0ff;
+  }
+
+  /* ---------------- footer ---------------- */
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0 48px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer .f-lead {
+    font-size: 15px;
+    color: var(--ink-2);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .footer .f-note { font-size: 12px; color: var(--muted); }
+
+  /* ---------------- responsive ---------------- */
+  @media (max-width: 980px) {
+    .hero { padding: 56px 0 68px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-copy { max-width: 640px; }
+    .types { grid-template-columns: repeat(2, 1fr); }
+    .example-grid { grid-template-columns: 1fr; }
+    .mistake { grid-template-columns: 1fr; gap: 18px; }
+    .mistake-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 14px; }
+    .mistake-head .badge { margin-bottom: 0; }
+    .mistake-head h3 { margin: 0; }
+    .mistake-head p { flex-basis: 100%; }
+  }
+
+  @media (max-width: 700px) {
+    .wrap { padding: 0 20px; }
+    .nav-links { display: none; }
+    h1 { font-size: clamp(40px, 12vw, 56px); }
+    .section { padding: 64px 0; }
+    .band { padding: 64px 0; }
+    .sec-head { grid-template-columns: 1fr; gap: 4px; margin-bottom: 32px; }
+    .sec-no { padding-top: 0; }
+    .tldr { grid-template-columns: 1fr; gap: 12px; margin-bottom: 36px; }
+    .anatomy { padding: 26px 22px; }
+    .anatomy::after { font-size: 90px; right: 10px; }
+    .pair-demo { gap: 10px; }
+    .pair-part { padding: 12px 16px; min-width: 130px; }
+    .rules { grid-template-columns: 1fr; }
+    .types { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+    .check-panel { padding: 32px 24px 36px; }
+    .check-list { grid-template-columns: 1fr; }
+    .example-grid pre.code { font-size: 12px; }
+    .footer { padding: 28px 0 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .type { transition: none; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .nav, .skip, .float-badge { display: none; }
+    .hero, .band, .check-panel { border: none; }
+    .check-panel { background: #fff; color: #000; border: 1px solid #ddd; }
+    .check-panel .lead, .check-list li { color: #333; }
+    .check-list li { border-color: #ddd; }
+    .section, .band { padding: 28px 0; }
+    .type, .mistake, .window { break-inside: avoid; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top"><span class="logo-mark">{ }</span>JSON 入门</a>
+    <nav class="nav-links" aria-label="页面目录">
+      <a href="#what">是什么</a>
+      <a href="#types">六种类型</a>
+      <a href="#example">完整例子</a>
+      <a href="#mistakes">三个错误</a>
+      <a href="#check">自检清单</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="kicker">给非技术同学的 5 分钟入门</p>
+        <h1>JSON，<br />其实<span class="hl">很好懂</span></h1>
+        <p class="lede">
+          它不是编程语言，也不会“运行”。它只是一段<strong>把信息写清楚的纯文本</strong>——
+          像一张程序和你都能看懂的登记表。
+        </p>
+        <div class="chips">
+          <span class="chip"><b>6</b> 种数据类型</span>
+          <span class="chip"><b>1</b> 个完整例子</span>
+          <span class="chip"><b>3</b> 个常见错误</span>
+          <span class="chip">约 5 分钟读完</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="window-wrap">
+          <div class="window">
+          <div class="win-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="win-name">student.json</span>
+            <span class="win-tag">JSON</span>
+          </div>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="tok-k">"name"</span><span class="tok-p">:</span> <span class="tok-s">"林小满"</span><span class="tok-p">,</span>
+  <span class="tok-k">"age"</span><span class="tok-p">:</span> <span class="tok-n">20</span><span class="tok-p">,</span>
+  <span class="tok-k">"isMember"</span><span class="tok-p">:</span> <span class="tok-b">true</span>
+<span class="tok-p">}</span></code></pre>
+          </div>
+          <div class="float-badge">纯文本 · 人和机器都能读</div>
+        </div>
+        <div class="legend">
+          <span><i class="lg-k"></i>键</span>
+          <span><i class="lg-s"></i>字符串</span>
+          <span><i class="lg-n"></i>数字</span>
+          <span><i class="lg-b"></i>布尔值</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT ================= -->
+  <section class="section" id="what">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-no">01</div>
+        <div>
+          <h2>JSON 到底是什么？</h2>
+          <p>一句话：它是一种用纯文本描述信息的格式，让不同的程序都能读懂同一份数据。</p>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <div class="tldr-item">
+          <b>01 / 它不运行</b>
+          <p>它只是一段有格式的文字，本身不会做任何事。程序读到它，才知道该显示什么、保存什么。</p>
+        </div>
+        <div class="tldr-item">
+          <b>02 / 它很直白</b>
+          <p>用 <code>"键": 值</code> 的配对来描述信息，像一张栏目清楚的登记表，看一眼就知道每一项是什么。</p>
+        </div>
+        <div class="tldr-item">
+          <b>03 / 它会套娃</b>
+          <p><code>{ }</code> 是一张表，<code>[ ]</code> 是一串清单。表和清单可以互相嵌套，装下复杂的信息。</p>
+        </div>
+      </div>
+
+      <div class="anatomy">
+        <p class="subhead">一组键值对，就是一条信息</p>
+        <div class="pair-demo">
+          <div class="pair-part">
+            <code>"姓名"</code>
+            <span>键 · 栏目名</span>
+          </div>
+          <div class="pair-sep">:</div>
+          <div class="pair-part">
+            <code>"林小满"</code>
+            <span>值 · 填写内容</span>
+          </div>
+        </div>
+        <p class="pair-note">左边是“这项叫什么”，右边是“这项是什么”。多条信息之间，用逗号隔开。</p>
+      </div>
+
+      <div class="rules">
+        <div class="rule">
+          <span class="n">01</span>
+          <p>键必须是<strong>双引号</strong>包起来的文字，比如 <code>"姓名"</code>。不写引号、用单引号都不行。</p>
+        </div>
+        <div class="rule">
+          <span class="n">02</span>
+          <p>值可以是六种类型之一：字符串、数字、布尔值、null、数组、对象。</p>
+        </div>
+        <div class="rule">
+          <span class="n">03</span>
+          <p>键值对之间用逗号隔开，但<strong>最后一项后面不加逗号</strong>。</p>
+        </div>
+        <div class="rule">
+          <span class="n">04</span>
+          <p>最外层通常是一个对象 <code>{ }</code> 或数组 <code>[ ]</code>，整份数据只能有一个最外层。</p>
+        </div>
+      </div>
+
+      <p class="places-title">你其实天天在用它：</p>
+      <div class="places">
+        <span>手机 App 的配置</span>
+        <span>网站与服务器之间传数据</span>
+        <span>AI 接口的请求与返回</span>
+        <span>不同软件之间交换数据</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TYPES ================= -->
+  <section class="section" id="types" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-no">02</div>
+        <div>
+          <h2>只有六种基本类型</h2>
+          <p>记住这六种，你就能读懂绝大多数 JSON。每一种都配了最小示例和一句提醒。</p>
+        </div>
+      </div>
+
+      <div class="types">
+        <article class="type t-string">
+          <div class="type-head">
+            <h3>字符串</h3>
+            <span class="en">string</span>
+            <span class="idx">01</span>
+          </div>
+          <pre class="demo">"你好，世界"</pre>
+          <p>文字、句子、日期，甚至链接，都放进双引号里。</p>
+          <p class="tip"><b>注意：</b>单引号不是 JSON 的写法。</p>
+        </article>
+
+        <article class="type t-number">
+          <div class="type-head">
+            <h3>数字</h3>
+            <span class="en">number</span>
+            <span class="idx">02</span>
+          </div>
+          <pre class="demo">20
+3.14
+-5</pre>
+          <p>整数、小数、负数都直接写，不加引号。</p>
+          <p class="tip"><b>注意：</b><code>"20"</code> 是文字，不是数字。</p>
+        </article>
+
+        <article class="type t-bool">
+          <div class="type-head">
+            <h3>布尔值</h3>
+            <span class="en">boolean</span>
+            <span class="idx">03</span>
+          </div>
+          <pre class="demo">true
+false</pre>
+          <p>表示“是 / 否”“开 / 关”，只有这两个值。</p>
+          <p class="tip"><b>注意：</b>必须小写，不是 <code>True</code>。</p>
+        </article>
+
+        <article class="type t-null">
+          <div class="type-head">
+            <h3>空值</h3>
+            <span class="en">null</span>
+            <span class="idx">04</span>
+          </div>
+          <pre class="demo">null</pre>
+          <p>表示“这里暂时没有内容”，是一个明确的空。</p>
+          <p class="tip"><b>注意：</b>它不等于 <code>0</code>，也不等于 <code>""</code>。</p>
+        </article>
+
+        <article class="type t-array">
+          <div class="type-head">
+            <h3>数组</h3>
+            <span class="en">array</span>
+            <span class="idx">05</span>
+          </div>
+          <pre class="demo">["主题分享", "小组讨论", "自由交流"]</pre>
+          <p>一串有顺序的值，像一张清单，用中括号包起来。</p>
+          <p class="tip"><b>注意：</b>项与项之间用逗号，最后一项不加。</p>
+        </article>
+
+        <article class="type t-object">
+          <div class="type-head">
+            <h3>对象</h3>
+            <span class="en">object</span>
+            <span class="idx">06</span>
+          </div>
+          <pre class="demo">{
+  "楼": "图书馆",
+  "楼层": 3
+}</pre>
+          <p>一组键值对，像一张小表，可以嵌套在其他值里。</p>
+          <p class="tip"><b>注意：</b>用大括号，键必须加双引号。</p>
+        </article>
+      </div>
+
+      <div class="note-line">
+        <b>小提示</b>
+        <span>JSON 只有这六种类型。日期、颜色、文件、链接，通常都写成字符串，比如 <code>"2026-11-14"</code>。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXAMPLE ================= -->
+  <section class="band" id="example">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-no">03</div>
+        <div>
+          <h2>把它们拼起来：一个完整例子</h2>
+          <p>一份活动报名信息。左边是 JSON，右边是逐行翻译，对照着看一遍就懂了。</p>
+        </div>
+      </div>
+
+      <div class="example-grid">
+        <div class="window">
+          <div class="win-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="win-name">event.json</span>
+            <span class="win-tag">JSON</span>
+          </div>
+          <pre class="code"><code><span class="tok-p">{</span>
+  <span class="tok-k">"activity"</span><span class="tok-p">:</span> <span class="tok-s">"AI 如何改变学习"</span><span class="tok-p">,</span>
+  <span class="tok-k">"date"</span><span class="tok-p">:</span> <span class="tok-s">"2026-11-14"</span><span class="tok-p">,</span>
+  <span class="tok-k">"free"</span><span class="tok-p">:</span> <span class="tok-b">true</span><span class="tok-p">,</span>
+  <span class="tok-k">"capacity"</span><span class="tok-p">:</span> <span class="tok-n">30</span><span class="tok-p">,</span>
+  <span class="tok-k">"location"</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+    <span class="tok-k">"building"</span><span class="tok-p">:</span> <span class="tok-s">"图书馆"</span><span class="tok-p">,</span>
+    <span class="tok-k">"floor"</span><span class="tok-p">:</span> <span class="tok-n">3</span>
+  <span class="tok-p">}</span><span class="tok-p">,</span>
+  <span class="tok-k">"topics"</span><span class="tok-p">:</span> <span class="tok-p">[</span><span class="tok-s">"主题分享"</span><span class="tok-p">,</span> <span class="tok-s">"小组讨论"</span><span class="tok-p">,</span> <span class="tok-s">"自由交流"</span><span class="tok-p">]</span><span class="tok-p">,</span>
+  <span class="tok-k">"note"</span><span class="tok-p">:</span> <span class="tok-z">null</span>
+<span class="tok-p">}</span></code></pre>
+        </div>
+
+        <ul class="trans">
+          <li>
+            <code>activity</code>
+            <span>活动名称<em>字符串 · 用双引号包住文字</em></span>
+          </li>
+          <li>
+            <code>date</code>
+            <span>活动日期<em>字符串 · JSON 没有专门的“日期”类型</em></span>
+          </li>
+          <li>
+            <code>free</code>
+            <span>是否免费<em>布尔值 · true 表示“是”</em></span>
+          </li>
+          <li>
+            <code>capacity</code>
+            <span>名额上限<em>数字 · 不加引号</em></span>
+          </li>
+          <li>
+            <code>location</code>
+            <span>地点<em>对象 · 里面又套了两个字段</em></span>
+          </li>
+          <li>
+            <code>topics</code>
+            <span>活动环节<em>数组 · 三项，有先后顺序</em></span>
+          </li>
+          <li>
+            <code>note</code>
+            <span>备注<em>null · 暂时没有内容</em></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="section" id="mistakes">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-no">04</div>
+        <div>
+          <h2>三个最常见的错误</h2>
+          <p>它们占了新手报错的绝大多数。每一条都给出错误示范、正确写法和原因。</p>
+        </div>
+      </div>
+
+      <div class="mistakes">
+        <article class="mistake">
+          <div class="mistake-head">
+            <span class="badge">错误 01</span>
+            <h3>最后一项后面多了个逗号</h3>
+            <p>逗号只用来“分隔”两项，不是“结束”一项。最后一项后面再加逗号，程序就会报错。</p>
+          </div>
+          <div class="compare">
+            <div class="snip bad">
+              <div class="snip-bar">✕ 错误示范</div>
+              <pre>{
+  "name": "小明",
+  "age": 18<span class="bad-mark">,</span>
+}</pre>
+            </div>
+            <div class="snip good">
+              <div class="snip-bar">✓ 正确写法</div>
+              <pre>{
+  "name": "小明",
+  "age": 18
+}</pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="mistake">
+          <div class="mistake-head">
+            <span class="badge">错误 02</span>
+            <h3>键名没加引号，或用了单引号</h3>
+            <p>JSON 只认双引号，键和字符串都一样。单引号是 JavaScript 的写法，JSON 不接收。</p>
+          </div>
+          <div class="compare">
+            <div class="snip bad">
+              <div class="snip-bar">✕ 错误示范</div>
+              <pre>{
+  <span class="bad-mark">name</span>: <span class="bad-mark">'小明'</span>,
+  <span class="bad-mark">age</span>: 18
+}</pre>
+            </div>
+            <div class="snip good">
+              <div class="snip-bar">✓ 正确写法</div>
+              <pre>{
+  <span class="good-mark">"name"</span>: <span class="good-mark">"小明"</span>,
+  <span class="good-mark">"age"</span>: 18
+}</pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="mistake">
+          <div class="mistake-head">
+            <span class="badge">错误 03</span>
+            <h3>把注释写进了 JSON</h3>
+            <p>JSON 不支持 <code>//</code> 或 <code>/* */</code> 注释。想说明什么，就单独加一个字段，把话写进值里。</p>
+          </div>
+          <div class="compare">
+            <div class="snip bad">
+              <div class="snip-bar">✕ 错误示范</div>
+              <pre>{
+  "name": "小明" <span class="bad-mark">// 学生姓名</span>
+}</pre>
+            </div>
+            <div class="snip good">
+              <div class="snip-bar">✓ 正确写法</div>
+              <pre>{
+  "name": "小明",
+  <span class="good-mark">"note"</span>: <span class="good-mark">"学生姓名"</span>
+}</pre>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CHECK ================= -->
+  <section class="section" id="check" style="padding-top:0;">
+    <div class="wrap">
+      <div class="check-panel">
+        <p class="subhead">05 / 发出前自检</p>
+        <h2>花一分钟，对照这张清单</h2>
+        <p class="lead">不用记语法，只要逐条看一遍，大部分低级错误都能提前发现。</p>
+        <ul class="check-list">
+          <li><span class="box"></span><span>所有键都用双引号包起来了吗？</span></li>
+          <li><span class="box"></span><span>所有字符串都用双引号包起来了吗？</span></li>
+          <li><span class="box"></span><span>最后一项后面没有多余的逗号？</span></li>
+          <li><span class="box"></span><span>大括号 <code>{ }</code>、中括号 <code>[ ]</code> 都成对？</span></li>
+          <li><span class="box"></span><span>没有注释、没有 <code>undefined</code>、没有函数？</span></li>
+          <li><span class="box"></span><span>拿不准时，粘进任意 JSON 校验器看一眼？</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <div class="f-lead">JSON 不要求你聪明，只要求你把话说完整。</div>
+      <div class="f-note">给非技术同学的 JSON 入门 · 单页版</div>
+    </div>
+    <div class="f-note">HTML + CSS · 无外部依赖</div>
+  </div>
+</footer>
+
+</body>
+</html>

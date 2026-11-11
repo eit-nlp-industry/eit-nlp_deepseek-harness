@@ -1,0 +1,3 @@
+- insert:
+    - id: dsh-wizard
+      name: '@local/dsh-wizard'
