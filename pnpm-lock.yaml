@@ -2577,9 +2577,6 @@ importers:
       '@deepseek-ai/dsh-skill-filesystem':
         specifier: workspace:*
         version: link:../../skill/skill-filesystem
-      '@deepseek-ai/dsh-skill2workflow':
-        specifier: workspace:*
-        version: link:../../skill2workflow/skill2workflow
       '@deepseek-ai/dsh-spill-local':
         specifier: workspace:*
         version: link:../../spill/spill-local
