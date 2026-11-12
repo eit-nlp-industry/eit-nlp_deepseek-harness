@@ -1,6 +1,6 @@
 /**
  * HTTP client for one json-render server call, with a fixed attempt budget.
- * The server is the v0.2.0-rc.6 `POST /v1/render` contract: format, user_query,
+ * The server is the v0.2.3 `POST /v1/render` contract: format, user_query,
  * business_data, optional prompt_mode, and context.locale / context.intent.
  * Host mode is not a server field and does not select the catalog.
  */
@@ -13,7 +13,7 @@ export const RENDER_UI_MAX_ATTEMPTS = 3
 export const RENDER_UI_FORMAT = 'json-render-v1'
 
 /** Release of the json-render server and Generation SDK this host calls. */
-export const JSON_RENDER_RELEASE = 'v0.2.0-rc.6'
+export const JSON_RENDER_RELEASE = 'v0.2.3'
 
 export const FORM_INTENTS = ['generic_filters', 'generic_pick_one'] as const
 

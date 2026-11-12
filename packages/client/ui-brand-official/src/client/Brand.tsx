@@ -4,10 +4,10 @@ import type { SidebarBrandMarkOwnerProps } from '@deepseek-ai/dsh-client-ui-side
 /**
  * Render the official mark with the presentation requested by its host surface.
  * @param props - Host-supplied mark presentation.
- * @returns the EIT-NLP hexagon mark.
+ * @returns the EIT-NLP mark with its stacked wordmark.
  */
 export function OfficialBrandMark({ size }: SidebarBrandMarkOwnerProps) {
-  return <EitNlpLogo size={size} />
+  return <EitNlpLogo variant="lockup" size={size} />
 }
 
 /**

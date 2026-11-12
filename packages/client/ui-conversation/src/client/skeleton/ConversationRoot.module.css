@@ -2,9 +2,13 @@
   position: relative; /* positioning context for slot-owned absolute chrome */
   display: flex;
   flex-direction: column;
-  height: 100%;
+  box-sizing: border-box;
+  height: calc(100% - 12px);
   min-width: 0;
-  background: var(--dsw-alias-bg-base);
+  margin: 6px;
+  border: 0.5px solid var(--dsh-conversation-border, var(--dsw-alias-border-l2));
+  border-radius: var(--dsw-radius-panel);
+  background: var(--dsh-conversation-surface, var(--dsw-alias-bg-module-platform));
 }
 
 /* 76px with its rule: the height of the Sidebar's tab strip and header row
@@ -536,8 +540,8 @@
      fade from their own base. */
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--dsw-alias-bg-base) 0%, transparent) 0px,
-    var(--dsw-alias-bg-base) 36px
+    color-mix(in srgb, var(--dsh-conversation-surface, var(--dsw-alias-bg-module-platform)) 0%, transparent) 0px,
+    var(--dsh-conversation-surface, var(--dsw-alias-bg-module-platform)) 36px
   );
 }
 

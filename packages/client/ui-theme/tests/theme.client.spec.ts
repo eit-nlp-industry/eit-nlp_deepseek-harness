@@ -30,7 +30,7 @@ describe('ThemeRuntime', () => {
     // jsdom matchMedia is absent; system resolves to light.
     expect(snapshot.active.id).toBe('light')
     expect(snapshot.active.colorScheme).toBe('light')
-    expect(snapshot.themes.map(t => t.id)).toEqual(['light', 'dark', 'robotDog'])
+    expect(snapshot.themes.map(t => t.id)).toEqual(['light', 'dark', 'robotDog', 'warmSilver', 'burgundy', 'iceBlue', 'lavender', 'softPink', 'ultramarine'])
   })
 
   it('seeds the initial font size from the boot-script body variable, ignoring junk', () => {
@@ -144,6 +144,20 @@ describe('ThemeRuntime', () => {
     expect(host.set).toHaveBeenCalledOnce()
   })
 
+  it('publishes the accent and conversation surface before starting persistence', () => {
+    const { theme, events, host } = make()
+    host.set.mockImplementation(() => {
+      expect(events.at(-1)?.active.tokens).toMatchObject({
+        '--dsh-welcome-ink': '#315d75',
+        '--dsh-conversation-surface': expect.stringContaining('#eaf3f9'),
+      })
+      return Promise.resolve(true)
+    })
+    theme.setTheme('iceBlue')
+    expect(theme.getTheme().active.id).toBe('iceBlue')
+    expect(host.set).toHaveBeenCalledWith('preference', 'iceBlue')
+  })
+
   it('adopts a published Host section without writing it back', () => {
     const { theme, events, host } = make()
     host.publish({ status: 'ready', value: { preference: 'dark', fontSize: 14, codeFontSize: 11, terminalFontSize: 13, textFontFamily: '', codeFontFamily: '', terminalFontFamily: '' }, revision: 1, writable: true })
@@ -195,12 +209,12 @@ describe('ThemeRuntime', () => {
   it('registered themes join the snapshot; disposing the active one resets to default', () => {
     const { theme, events, host } = make()
     const dispose = theme.register({ id: 'sepia', colorScheme: 'light', tokens: { '--dsw-alias-bg-base': 'red' } })
-    expect(theme.getTheme().themes.map(t => t.id)).toEqual(['light', 'dark', 'robotDog', 'sepia'])
+    expect(theme.getTheme().themes.map(t => t.id)).toEqual(['light', 'dark', 'robotDog', 'warmSilver', 'burgundy', 'iceBlue', 'lavender', 'softPink', 'ultramarine', 'sepia'])
     theme.setTheme('sepia')
     expect(theme.getTheme().active.tokens['--dsw-alias-bg-base']).toBe('red')
     dispose()
     expect(theme.getTheme().preference).toBe('system')
-    expect(theme.getTheme().themes.map(t => t.id)).toEqual(['light', 'dark', 'robotDog'])
+    expect(theme.getTheme().themes.map(t => t.id)).toEqual(['light', 'dark', 'robotDog', 'warmSilver', 'burgundy', 'iceBlue', 'lavender', 'softPink', 'ultramarine'])
     // Custom ids are in-process extension themes; only the built-in product
     // preferences cross the Host settings schema.
     expect(host.set).not.toHaveBeenCalled()

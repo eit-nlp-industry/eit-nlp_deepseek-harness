@@ -54,7 +54,7 @@ The Session fixture resolves subagent addresses from explicitly supplied address
 
 ### Local DOM snapshots
 
-A registered snapshot serializer folds CSS-module class hashes (`_frame_a1b2c3` → `frame`) so `.snap` files stay structural, and collapses `<svg>` internals to a `data-content` fingerprint. Suites needing a custom page frame use `root.declare(children, Frame)` instead of the auto frame; `dispose()` tears down views, feature fibers, minted scopes, and persisted store state on one axis and is idempotent.
+A registered snapshot serializer folds CSS-module class hashes (`_frame_a1b2c3` → `frame`) so `.snap` files stay structural, collapses `<svg>` internals to a `data-content` fingerprint, and replaces inline `data:` URLs in `style` with `url(#fingerprint)`. Suites needing a custom page frame use `root.declare(children, Frame)` instead of the auto frame; `dispose()` tears down views, feature fibers, minted scopes, and persisted store state on one axis and is idempotent.
 
 ### Scripting Remote answers and failures
 

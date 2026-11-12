@@ -29,6 +29,7 @@ import { installIconSprite, type IconReplacements } from './icon-sprite.ts'
 import { installThemeStyles } from './styles.ts'
 import { en, ja, es, fr, de, ru, pt, zh, type ThemeKey } from './locales.ts'
 import {
+  COLOR_THEMES,
   DEFAULT_FONT_SIZES, DEFAULT_PREFERENCE, FONT_FAMILY_FIELDS, FONT_ROLES, FONT_SIZE_SPECS,
   fontFamilyVariable, isFontSize, isThemePreference, normalizeFontFamily, sectionFontSizes,
   THEME_PREFERENCE_FIELD, THEME_SETTINGS_NAMESPACE,
@@ -151,6 +152,24 @@ const BUILTIN_THEMES: readonly ThemeDefinition[] = Object.freeze([
   Object.freeze({ id: 'dark', colorScheme: 'dark' as const, tokens: Object.freeze({}) }),
   // Campus green product palette; the token sheet selects it through data-dsh-palette.
   Object.freeze({ id: 'robotDog', colorScheme: 'light' as const, tokens: Object.freeze({}) }),
+  ...Object.entries(COLOR_THEMES).map(([id, { tint, accent }]): ThemeDefinition => Object.freeze({
+    id, colorScheme: 'light', tokens: Object.freeze({
+      '--dsw-alias-bg-base': `color-mix(in srgb, ${tint} 35%, white)`,
+      '--dsw-specific-sidebar-fill': tint,
+      '--dsh-conversation-surface': `color-mix(in srgb, ${tint} 48%, white)`,
+      '--dsh-conversation-border': `color-mix(in srgb, ${accent} 19%, ${tint})`,
+      '--dsw-specific-bubble': tint,
+      '--dsw-alias-bg-module-platform': tint,
+      '--dsw-alias-state-business-primary': accent,
+      '--dsw-alias-state-business-tertiary': tint,
+      '--dsw-alias-interactive-bg-active': tint,
+      '--dsw-alias-brand-primary': accent,
+      '--dsh-welcome-ink': accent,
+      '--dsh-send-fill': accent,
+      '--dsh-send-hover': `color-mix(in srgb, ${accent} 88%, black)`,
+      '--dsh-composer-surface': `color-mix(in srgb, ${tint} 52%, white)`,
+    }),
+  })),
 ])
 
 const BUILTIN_INSPECT_TOKENS: readonly ThemeTokenInspection[] = Object.freeze([
@@ -264,8 +283,14 @@ export class ThemeRuntime {
     }
     if (this.preference === id) return
     this.preference = id as ThemePreference
-    if (isThemePreference(id)) this.write(() => this.host.set(THEME_PREFERENCE_FIELD, id))
-    this.publish()
+    if (isThemePreference(id)) {
+      this.write(() => {
+        this.publish()
+        return this.host.set(THEME_PREFERENCE_FIELD, id)
+      })
+    } else {
+      this.publish()
+    }
   }
 
   /**

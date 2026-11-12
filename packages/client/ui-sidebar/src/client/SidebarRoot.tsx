@@ -40,7 +40,7 @@ const COLLAPSE_SETTLE_MS = 150
  */
 const SCROLLBAR_LINGER_MS = 2000
 
-/** Format complete-build metadata for the local brand badge. */
+/** Format complete-build metadata copied from the local brand mark. */
 function localBuildVersion(): string | undefined {
   const version = process.env.DSH_CLIENT_VERSION
   if (version === undefined) return undefined
@@ -240,8 +240,8 @@ export function SidebarRoot({
   }, [pointerInside])
 
   const buildVersion = localBuildVersion()
-  // The local-build fallbacks copy the badge text; the brand button below
-  // skips New Session for clicks inside them. The click still bubbles, so
+  // A complete local build's mark copies its version; the brand button below
+  // skips New Session for clicks inside it. The click still bubbles, so
   // document-level outside-click listeners see it.
   // Each successful copy bumps the key so a repeated copy replays the toast.
   const [copiedToast, setCopiedToast] = useState<number | null>(null)
@@ -268,7 +268,7 @@ export function SidebarRoot({
       >
         {!wide && !windowsTitlebar && (
           <span className={css.railMark} aria-hidden="true">
-            {renderSlot('sidebar.brand.mark', { size: 24 }, { fallback: <EitNlpLogo size={24} /> })}
+            {renderSlot('sidebar.brand.mark', { size: 24 }, { fallback: <EitNlpLogo variant="lockup" size={24} /> })}
           </span>
         )}
         {/* Rail icons render at 18 (figma rail spec); expanded keeps the glyph-native sizes. */}
@@ -307,32 +307,23 @@ export function SidebarRoot({
             macOS, where it stays part of the logo row's window-drag surface
             (a button would subtract itself through the global no-drag rule);
             the collapsed rail's logo is the expand toggle below instead.
-            Mouse clicks on the local-build fallbacks copy the version instead. */}
+            Mouse clicks on a complete local build's mark copy the version instead. */}
         {wide && (() => {
           const identity = (
             <span className={css.brandIdentity} aria-hidden="true">
               <span className={css.brandMark}>
-                {renderSlot('sidebar.brand.mark', { size: 24 }, {
+                {renderSlot('sidebar.brand.mark', { size: 28 }, {
                   fallback: buildVersion === undefined
-                    ? <EitNlpLogo size={24} />
+                    ? <EitNlpLogo variant="lockup" size={28} />
                     : (
                       <span className={css.copyVersion} data-copy-version onClick={copyVersion(buildVersion)}>
-                        <EitNlpLogo size={24} />
+                        <EitNlpLogo variant="lockup" size={28} />
                       </span>
                     ),
                 })}
               </span>
               <span className={css.brandName}>
-                {renderSlot('sidebar.brand.name', {}, {
-                  fallback: buildVersion === undefined
-                    ? <span className={css.fallbackBrandName}>{t('brand.localBuild')}</span>
-                    : (
-                      <span className={clsx(css.localBuildBrand, css.copyVersion)} data-copy-version onClick={copyVersion(buildVersion)}>
-                        <span className={css.localBuildTitle}>{t('brand.localBuild')}</span>
-                        <span className={css.buildVersion}>{buildVersion}</span>
-                      </span>
-                    ),
-                })}
+                {renderSlot('sidebar.brand.name', {}, { fallback: null })}
               </span>
             </span>
           )

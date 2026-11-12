@@ -54,7 +54,7 @@ Session fixture 从显式提供的地址或已加载的父级投影解析子代�
 
 ### 局部 DOM 快照
 
-注册的快照序列化器把 CSS-module 哈希类名折回语义名（`_frame_a1b2c3` → `frame`），使 `.snap` 文件只含结构，并把 `<svg>` 内部折叠为 `data-content` 指纹。需要自定义页面 frame 的套件改用 `root.declare(children, Frame)` 而非自动 frame；`dispose()` 沿单一轴拆除视图、功能 fiber、已铸 scope 与持久化存储状态，且幂等。
+注册的快照序列化器把 CSS-module 哈希类名折回语义名（`_frame_a1b2c3` → `frame`），使 `.snap` 文件只含结构，把 `<svg>` 内部折叠为 `data-content` 指纹，并把 `style` 里的内联 `data:` URL 换成 `url(#fingerprint)`。需要自定义页面 frame 的套件改用 `root.declare(children, Frame)` 而非自动 frame；`dispose()` 沿单一轴拆除视图、功能 fiber、已铸 scope 与持久化存储状态，且幂等。
 
 ### 脚本化 Remote 应答与失败
 

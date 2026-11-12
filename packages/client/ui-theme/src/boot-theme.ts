@@ -9,11 +9,11 @@
 import type { IndexInjection } from '@deepseek-ai/dsh-host-webserver'
 import {
   DEFAULT_FONT_SIZES, DEFAULT_PREFERENCE, FONT_ROLES, FONT_SIZE_SPECS, fontFamilyVariable, normalizeFontFamily,
-  ROBOT_DOG_PALETTE,
+  COLOR_THEMES, ROBOT_DOG_PALETTE,
   type FontFamilies, type FontSizes, type ThemePreference,
 } from './theme-settings.ts'
 
-const LIGHT_BACKGROUND = '#fff'
+const LIGHT_BACKGROUND = '#f5f5f7'
 const DARK_BACKGROUND = '#151517'
 const ROBOT_DOG_BACKGROUND = '#f7f8f5'
 
@@ -25,6 +25,11 @@ function bootThemeStyle(preference: ThemePreference): string {
   if (preference === 'light') return light
   if (preference === 'dark') return dark
   if (preference === 'robotDog') return robotDog
+  if (preference in COLOR_THEMES) {
+    const { tint } = COLOR_THEMES[preference as keyof typeof COLOR_THEMES]
+    const background = `color-mix(in srgb, ${tint} 35%, white)`
+    return `:root{color-scheme:light}body{background-color:${background};--dsh-boot-bg:${background}}`
+  }
   return `${light}@media(prefers-color-scheme:dark){${dark}}`
 }
 
@@ -42,7 +47,7 @@ function bootThemeBodyScript(preference: ThemePreference, fontSizes: FontSizes, 
     && typeof matchMedia !== 'undefined'
     && matchMedia('(prefers-color-scheme: dark)').matches
   const dark = preference === 'dark' || systemDark
-  document.documentElement.dataset.dsThemeSource = preference === 'robotDog' ? 'light' : preference
+  document.documentElement.dataset.dsThemeSource = preference === 'system' ? 'system' : dark ? 'dark' : 'light'
   document.body.toggleAttribute('data-ds-dark-theme', dark)
   if (preference === 'robotDog') document.body.setAttribute('data-dsh-palette', ${JSON.stringify(ROBOT_DOG_PALETTE)})
   else document.body.removeAttribute('data-dsh-palette')${sizes}${families}

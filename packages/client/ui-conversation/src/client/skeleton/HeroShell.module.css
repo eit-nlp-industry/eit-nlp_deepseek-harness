@@ -32,16 +32,16 @@
      one centered line while they fit; squeezed, the fish takes its own line
      above the group. No breakpoint. */
   flex-wrap: wrap;
-  column-gap: 10px;
+  column-gap: 16px;
   /* Wrapped, the fish sits on its own line; more air than the 10px side gap
      keeps it reading as a mark above the title, not a squeezed inline glyph. */
   row-gap: 12px;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  line-height: 32px;
+  font-size: clamp(26px, 4vw, 40px);
+  line-height: 1.2;
   font-weight: 500;
-  color: var(--dsw-alias-label-primary);
+  color: var(--dsh-welcome-ink, var(--dsw-alias-label-primary));
 }
 
 /* Title text + badge as one wrap unit so the title never breaks mid-text with
@@ -57,6 +57,7 @@
   column-gap: 7px;
   row-gap: 4px;
   min-width: 0;
+  color: inherit;
 }
 
 .previewBadge {
@@ -82,6 +83,9 @@
   flex: none;
   align-items: center;
   justify-content: center;
+  /* Hexagon sits above the wordmark; this offset centers that stack on the headline. */
+  margin-left: 4px;
+  transform: translateY(12%);
 }
 
 /* The swim morph's curves poke slightly past the viewBox edges, so clipping
@@ -91,7 +95,7 @@
   display: block;
   overflow: visible;
   transform-origin: 50% 60%;
-  color: var(--dsw-alias-label-primary);
+  color: inherit;
 }
 
 /* Hover swim: a slow continuous sway about the body center — the head
