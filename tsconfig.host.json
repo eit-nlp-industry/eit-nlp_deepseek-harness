@@ -447,7 +447,6 @@
     { "path": "./packages/core/agent-tool-presentation" },
     { "path": "./packages/skill/skill" },
     { "path": "./packages/experimental/skill-badge" },
-    { "path": "./packages/skill2workflow/skill2workflow" },
     { "path": "./packages/skill/skill-filesystem" },
     { "path": "./packages/skill/tool-skill" },
     { "path": "./packages/interaction/tool-ask-user" },

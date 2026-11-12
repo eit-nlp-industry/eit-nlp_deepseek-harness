@@ -523,16 +523,6 @@
         # Keep the English system prompt clean. The Chinese cue sits only
         # in front of the user question, which is how recall already fires.
 
-    # skill2workflow distill + compile. In-tree like the other base rows.
-    # First tool call pip-installs the local checkout at SKILL2WORKFLOW_ROOT
-    # into $DSH_HOME/s2w-cli/venv. Does not download from GitHub.
-    # Disable with a later patch:
-    #   - id: skill2workflow
-    #     disabled: true
-    - id: skill2workflow
-      name: '@deepseek-ai/dsh-skill2workflow'
-      disabled: false
-
     # ── rows every mode mounts, whose values each overlay may state ──────────────
 
     # Shared tool definitions and the deployment’s native executor.
