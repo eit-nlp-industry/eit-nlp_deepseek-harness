@@ -20,13 +20,7 @@ This package adds one composition row. The Agent can call `s2w_evolve_report`, `
 
 ## Use this package
 
-The base bundle enables the row. The tools are in-process Cordis tools, same as other community plugins. The first call installs the CLI into `$DSH_HOME/skill2workflow/venv` (same idea as `npx -y`). No manual pip and no machine path.
-
-People not on this fork install it the community way:
-
-```bash
-dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git
-```
+The base bundle enables the row. The tools are in-process Cordis tools, same as the other plugins. Set `SKILL2WORKFLOW_ROOT` to a local skill2workflow checkout. The first call pip-installs that directory into `$DSH_HOME/s2w-cli/venv`. The plugin does not download from GitHub.
 
 Put `.env` in the workspace or at `~/.skill2workflow/.env`. Fill in your own `LLM_API_KEY` and `N8N_*`.
 
@@ -55,6 +49,6 @@ The CLI is still Python. The plugin installs it into DSH_HOME on first use. This
 <details>
 <summary>Working context for maintainers — click to expand</summary>
 
-The row lives next to Hindsight in `packages/bundle/base/cordis.patch.yml`. The community install entry is the `package.json` at the root of https://github.com/eit-nlp-industry/skill2workflow.
+The row lives next to Hindsight in `packages/bundle/base/cordis.patch.yml`. The Python CLI is the checkout at `SKILL2WORKFLOW_ROOT`.
 
 </details>

@@ -20,13 +20,7 @@ kind: "package-reference"
 
 ## 使用本包
 
-基础 bundle 默认打开这一行。工具是进程内 Cordis 工具，和社区其它插件一样。第一次调用会把 CLI 装进 `$DSH_HOME/skill2workflow/venv`（和 `npx -y` 一样），不用自己 pip，也不用 export 路径。
-
-不在这个 fork 上的人用社区装法：
-
-```bash
-dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git
-```
+基础 bundle 默认打开这一行。工具是进程内 Cordis 工具，和其它插件一样。把 `SKILL2WORKFLOW_ROOT` 指到本机 skill2workflow 目录。第一次调用会把该目录 pip 装进 `$DSH_HOME/s2w-cli/venv`。插件不会从 GitHub 下载。
 
 `.env` 放在当前工作区或 `~/.skill2workflow/.env`，填自己的 `LLM_API_KEY` 和 `N8N_*`。
 
@@ -55,6 +49,6 @@ CLI 实现仍是 Python。插件负责在第一次调用时装进 DSH_HOME，本
 <details>
 <summary>给维护者的工作上下文 — 点击展开</summary>
 
-这一行写在 `packages/bundle/base/cordis.patch.yml` 里，紧挨 Hindsight。社区安装入口在 https://github.com/eit-nlp-industry/skill2workflow 仓库根的 `package.json`。
+这一行写在 `packages/bundle/base/cordis.patch.yml` 里，紧挨 Hindsight。Python CLI 就是 `SKILL2WORKFLOW_ROOT` 指向的本机目录。
 
 </details>

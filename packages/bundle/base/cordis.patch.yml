@@ -523,9 +523,9 @@
         # Keep the English system prompt clean. The Chinese cue sits only
         # in front of the user question, which is how recall already fires.
 
-    # skill2workflow compile + SkillClaw trace-to-skill. In-tree like the other
-    # base rows: git pull updates the plugin. First tool call pip-installs the
-    # Python CLI into $DSH_HOME/skill2workflow/venv (no clone of that repo).
+    # skill2workflow distill + compile. In-tree like the other base rows.
+    # First tool call pip-installs the local checkout at SKILL2WORKFLOW_ROOT
+    # into $DSH_HOME/s2w-cli/venv. Does not download from GitHub.
     # Disable with a later patch:
     #   - id: skill2workflow
     #     disabled: true

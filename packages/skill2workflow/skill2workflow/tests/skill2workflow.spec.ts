@@ -56,5 +56,8 @@ describe('dsh-skill2workflow', () => {
     expect(src).toContain('ensureSkill2WorkflowPython')
     expect(src).toContain('skill2workflow')
     expect(src).toContain('venv')
+    expect(src).toContain('s2w-cli')
+    expect(src).not.toMatch(/git\+https:\/\/github\.com\/eit-nlp-industry\/skill2workflow/)
+    expect(src).toContain('does not download packages from GitHub')
   })
 })

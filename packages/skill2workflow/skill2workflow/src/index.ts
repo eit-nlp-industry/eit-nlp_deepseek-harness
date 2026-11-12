@@ -177,7 +177,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       },
       hint: {
         type: 'string',
-        description: 'Optional extraction hint for SkillClaw.',
+        description: 'Optional extraction hint for distill.',
       },
       skill_dir: {
         type: 'string',

@@ -9,7 +9,7 @@ kind: "package-group"
 
 ## 概述
 
-这些行注册进程内 Cordis 工具。第一次调用会把 CLI 装进 `$DSH_HOME/skill2workflow/venv`（和 `npx -y` 一样）。不在这个 fork 上的人可以 `dsh plugin add git+https://github.com/eit-nlp-industry/skill2workflow.git`。
+这些行注册进程内 Cordis 工具。把 `SKILL2WORKFLOW_ROOT` 指到本机 skill2workflow 目录。第一次调用会把该目录 pip 装进 `$DSH_HOME/s2w-cli/venv`。插件不会从 GitHub 下载。
 
 ## 目录
 
@@ -26,7 +26,7 @@ kind: "package-group"
 ## 相关文档
 
 - [Skill 子系统说明](../../docs/subsystems/skills.md) — 这些工具编译或保留的 Skill 文件。
-- Python CLI 在 https://github.com/eit-nlp-industry/skill2workflow。
+- Python CLI 就是 `SKILL2WORKFLOW_ROOT` 指向的本机目录。
 
 ## 开发备注
 

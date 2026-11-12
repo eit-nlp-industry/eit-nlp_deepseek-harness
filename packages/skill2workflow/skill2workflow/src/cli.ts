@@ -1,17 +1,17 @@
 /**
- * Spawn the skill2workflow CLI. First call installs it into DSH_HOME, like npx -y.
+ * Spawn the skill2workflow CLI. First call pip-installs SKILL2WORKFLOW_ROOT into DSH_HOME.
  * @module @deepseek-ai/dsh-skill2workflow/cli
  */
 
 import { spawn, spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
-import { dirname, join, resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 /** How the cordis row finds the Python CLI. */
 export interface Skill2WorkflowConfig {
-  /** Optional git checkout. Empty means auto-install into DSH_HOME. */
+  /** Local skill2workflow checkout. Required; set via SKILL2WORKFLOW_ROOT if omitted. */
   repoRoot?: string
   /** Python executable. Defaults to `python3`, then the managed venv. */
   python?: string
@@ -27,9 +27,7 @@ export interface ResolvedSkill2WorkflowConfig {
 const pluginDir = dirname(fileURLToPath(import.meta.url))
 const dshPythonSdk = resolve(pluginDir, '../../../../python/sdk/src')
 
-export const SKILL2WORKFLOW_PIP_SPEC =
-  'git+https://github.com/eit-nlp-industry/skill2workflow.git@4e54879028843a8dd65e606d7ff7ecfb89d2ec2e'
-const CLI_REV = '2026-11-09-form-defaults'
+const CLI_REV = '2026-11-12-local-only'
 
 let ensureChain: Promise<string> | undefined
 
@@ -72,7 +70,7 @@ function dshHome(): string {
 }
 
 function venvDir(): string {
-  return resolve(dshHome(), 'skill2workflow', 'venv')
+  return resolve(dshHome(), 's2w-cli', 'venv')
 }
 
 function venvPython(): string {
@@ -82,7 +80,7 @@ function venvPython(): string {
 }
 
 function cliRevPath(): string {
-  return resolve(dshHome(), 'skill2workflow', 'cli-rev')
+  return resolve(dshHome(), 's2w-cli', 'cli-rev')
 }
 
 function installedCliRev(): string {
@@ -94,7 +92,7 @@ function installedCliRev(): string {
 }
 
 function writeCliRev(): void {
-  mkdirSync(resolve(dshHome(), 'skill2workflow'), { recursive: true })
+  mkdirSync(resolve(dshHome(), 's2w-cli'), { recursive: true })
   writeFileSync(cliRevPath(), `${CLI_REV}\n`)
 }
 
@@ -115,12 +113,15 @@ function pipInstallTarget(repoRoot: string): string[] {
   if (repoRoot && isCheckout(repoRoot)) {
     return ['-e', repoRoot]
   }
-  return ['-U', SKILL2WORKFLOW_PIP_SPEC]
+  throw new Error(
+    'skill2workflow CLI is not on this machine. Set SKILL2WORKFLOW_ROOT to a local checkout '
+    + '(directory with pyproject.toml and skill2workflow/__main__.py). '
+    + 'This plugin does not download packages from GitHub.',
+  )
 }
 
 /**
- * Return a python that can `import skill2workflow`, installing into DSH_HOME if needed.
- * Same idea as `npx -y`: the plugin starts the dependency, the user does not pip.
+ * Return a python that can `import skill2workflow`, pip-installing the local checkout if needed.
  * @param resolved - current python / optional checkout.
  * @returns an executable path or `python3`.
  */
@@ -236,7 +237,7 @@ function venvSitePackages(repoRoot: string): string[] {
 }
 
 /**
- * PYTHONPATH so a git checkout still imports; a managed venv needs none of this.
+ * PYTHONPATH so a local checkout still imports; a managed venv needs none of this.
  * @param repoRoot - optional skill2workflow checkout.
  * @returns a colon-separated path list, possibly empty.
  */
@@ -293,7 +294,7 @@ export async function runSkill2Workflow(
     return JSON.stringify({
       ok: false,
       error: message,
-      hint: `The plugin installs ${SKILL2WORKFLOW_PIP_SPEC} into ${join(dshHome(), 'skill2workflow', 'venv')} on first use.`,
+      hint: 'Set SKILL2WORKFLOW_ROOT to a local skill2workflow checkout. The plugin only pip-installs that directory.',
     })
   }
   return new Promise(resolvePromise => {
