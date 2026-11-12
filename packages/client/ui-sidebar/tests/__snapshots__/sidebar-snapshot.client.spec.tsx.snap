@@ -119,13 +119,11 @@ exports[`sidebar shell snapshots > renders Windows caption controls in expanded 
                 class="copyVersion"
                 data-copy-version="true"
               >
-                <svg
-                  aria-hidden="true"
-                  data-content="965fe321"
-                  fill="none"
-                  height="17.6580310880829"
-                  viewBox="0 0 23.16 17.04"
-                  width="24"
+                <span
+                  aria-label="EIT-NLP"
+                  data-eit-logo="lockup"
+                  role="img"
+                  style="display: block; width: 24.799999999999997px; height: 28px; background-color: currentcolor; -webkit-mask-image: url(#cbad3392); mask-image: url(#cbad3392); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;"
                 />
               </span>
             </div>
@@ -136,23 +134,7 @@ exports[`sidebar shell snapshots > renders Windows caption controls in expanded 
             <div
               data-slot="sidebar.brand.name"
               style="display: contents;"
-            >
-              <span
-                class="localBuildBrand copyVersion"
-                data-copy-version="true"
-              >
-                <span
-                  class="localBuildTitle"
-                >
-                  DSH Local Build
-                </span>
-                <span
-                  class="buildVersion"
-                >
-                  1.2.3-rc.4-abc1234-dirty
-                </span>
-              </span>
-            </div>
+            />
           </span>
         </span>
       </button>
@@ -257,13 +239,11 @@ exports[`sidebar shell snapshots > renders the collapsed rail after the crossfad
             data-slot="sidebar.brand.mark"
             style="display: contents;"
           >
-            <svg
-              aria-hidden="true"
-              data-content="965fe321"
-              fill="none"
-              height="17.6580310880829"
-              viewBox="0 0 23.16 17.04"
-              width="24"
+            <span
+              aria-label="EIT-NLP"
+              data-eit-logo="lockup"
+              role="img"
+              style="display: block; width: 21.257142857142856px; height: 24px; background-color: currentcolor; -webkit-mask-image: url(#cbad3392); mask-image: url(#cbad3392); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;"
             />
           </div>
         </span>
@@ -367,13 +347,11 @@ exports[`sidebar shell snapshots > renders the expanded column (wordmark, capsul
                 class="copyVersion"
                 data-copy-version="true"
               >
-                <svg
-                  aria-hidden="true"
-                  data-content="965fe321"
-                  fill="none"
-                  height="17.6580310880829"
-                  viewBox="0 0 23.16 17.04"
-                  width="24"
+                <span
+                  aria-label="EIT-NLP"
+                  data-eit-logo="lockup"
+                  role="img"
+                  style="display: block; width: 24.799999999999997px; height: 28px; background-color: currentcolor; -webkit-mask-image: url(#cbad3392); mask-image: url(#cbad3392); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;"
                 />
               </span>
             </div>
@@ -384,23 +362,7 @@ exports[`sidebar shell snapshots > renders the expanded column (wordmark, capsul
             <div
               data-slot="sidebar.brand.name"
               style="display: contents;"
-            >
-              <span
-                class="localBuildBrand copyVersion"
-                data-copy-version="true"
-              >
-                <span
-                  class="localBuildTitle"
-                >
-                  DSH Local Build
-                </span>
-                <span
-                  class="buildVersion"
-                >
-                  1.2.3-rc.4-abc1234-dirty
-                </span>
-              </span>
-            </div>
+            />
           </span>
         </span>
       </button>
@@ -511,13 +473,11 @@ exports[`sidebar shell snapshots > renders the expanded column in the default lo
                 class="copyVersion"
                 data-copy-version="true"
               >
-                <svg
-                  aria-hidden="true"
-                  data-content="965fe321"
-                  fill="none"
-                  height="17.6580310880829"
-                  viewBox="0 0 23.16 17.04"
-                  width="24"
+                <span
+                  aria-label="EIT-NLP"
+                  data-eit-logo="lockup"
+                  role="img"
+                  style="display: block; width: 24.799999999999997px; height: 28px; background-color: currentcolor; -webkit-mask-image: url(#cbad3392); mask-image: url(#cbad3392); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;"
                 />
               </span>
             </div>
@@ -528,23 +488,7 @@ exports[`sidebar shell snapshots > renders the expanded column in the default lo
             <div
               data-slot="sidebar.brand.name"
               style="display: contents;"
-            >
-              <span
-                class="localBuildBrand copyVersion"
-                data-copy-version="true"
-              >
-                <span
-                  class="localBuildTitle"
-                >
-                  DSH 本地构建
-                </span>
-                <span
-                  class="buildVersion"
-                >
-                  1.2.3-rc.4-abc1234-dirty
-                </span>
-              </span>
-            </div>
+            />
           </span>
         </span>
       </button>

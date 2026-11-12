@@ -147,3 +147,5 @@ These limits define the theme extension surface and the color authority; they ar
 None.
 
 </details>
+
+The Appearance setting keeps Light, Dark, System, and Robot dog and adds six light palettes. Light uses a neutral light-gray shell, a white conversation surface, and monochrome welcome and send controls. Each palette colors the sidebar, conversation frame, composer, welcome mark and title, and send control. A choice takes effect locally before the Host confirms the settings write.

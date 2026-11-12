@@ -33,7 +33,7 @@
   "dependencies": {
     "@deepseek-ai/dsh-util-values": "workspace:*",
     "@deepseek-ai/schemastery": "workspace:~",
-    "@eit/json-render-catalog": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.0-rc.6&path:packages/catalog"
+    "@eit/json-render-catalog": "git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.3&path:packages/catalog"
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "workspace:~",

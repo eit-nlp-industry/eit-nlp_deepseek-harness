@@ -11,7 +11,7 @@ import {
   type IconProps,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { PropsLocale, PropsRuntime, PropsStore } from '@deepseek-ai/dsh-client-ui-slots'
-import type { ThemePreference } from '../theme-settings.ts'
+import { COLOR_THEMES, type ThemePreference } from '../theme-settings.ts'
 import type { ThemeKey } from './locales.ts'
 import type {} from '@deepseek-ai/dsh-client-ui-settings/client'
 import type { createAppearanceRowStore } from './settings-store.ts'
@@ -73,6 +73,16 @@ export function AppearanceRow({ t, setTheme, useStore }: AppearanceRowComponentP
             {t(labelKey)}
           </button>
         ))}
+        {Object.entries(COLOR_THEMES).map(([key, { tint }]) => {
+          const id = key as keyof typeof COLOR_THEMES
+          return (
+            <button key={id} type="button" className={clsx(css.themeCube, preference === id && css.selected)}
+              aria-pressed={preference === id} onClick={() => { setTheme(id) }}>
+              <span className={css.swatch} style={{ backgroundColor: tint }} aria-hidden="true" />
+              {t(`appearance.${id}`)}
+            </button>
+          )
+        })}
       </div>
     </div>
   )

@@ -85,7 +85,7 @@ describe('official browser-brand plugin', () => {
 
     const mark = render(<OfficialBrandMark size={34} />)
     const node = mark.container.querySelector<HTMLElement>('[data-eit-logo]')
-    expect(node?.dataset.eitLogo).toBe('mark')
+    expect(node?.dataset.eitLogo).toBe('lockup')
     expect(node?.style.height).toBe('34px')
     mark.rerender(<OfficialBrandMark size={24} />)
     expect(mark.container.querySelector<HTMLElement>('[data-eit-logo]')?.style.height).toBe('24px')

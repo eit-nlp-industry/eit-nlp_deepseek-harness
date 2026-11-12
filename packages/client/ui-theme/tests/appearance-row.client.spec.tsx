@@ -24,6 +24,7 @@ const COPY: Record<string, string> = {
   'appearance.dark': 'Dark',
   'appearance.system': 'System',
   'appearance.robotDog': 'Robot dog',
+  'appearance.iceBlue': 'Ice blue',
 }
 
 function emptySessions() {
@@ -74,6 +75,14 @@ describe('AppearanceRow', () => {
     expect(pressed(/Light/)).toBe('false')
     expect(pressed(/System/)).toBe('false')
     expect(pressed(/Robot dog/)).toBe('false')
+  })
+
+  it('selects the ice blue swatch', () => {
+    const b = mount('system')
+    fireEvent.click(screen.getByRole('button', { name: 'Ice blue' }))
+    expect(b.setTheme).toHaveBeenCalledWith('iceBlue')
+    act(() => { b.store.actions.sync('iceBlue', 1) })
+    expect(pressed(/Ice blue/)).toBe('true')
   })
 
   it('selects the robot-dog cube', () => {

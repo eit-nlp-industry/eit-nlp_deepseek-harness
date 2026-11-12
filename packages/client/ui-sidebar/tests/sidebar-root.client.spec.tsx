@@ -225,16 +225,18 @@ describe('SidebarRoot shell', () => {
         options?.fallback ?? null) as SidebarRootComponentProps['renderSlot']}
     />)
 
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
-    expect(screen.getByText('1.2.3-rc.4-0123456-dirty')).toBeTruthy()
-    expect(container.querySelector('svg')).not.toBeNull()
+    expect(screen.queryByText('DSH Local Build')).toBeNull()
+    expect(screen.queryByText('1.2.3-rc.4-0123456-dirty')).toBeNull()
+    expect(container.querySelector('[data-eit-logo="lockup"]')).not.toBeNull()
   })
 
   it.each([
     [{ DSH_CLIENT_VERSION: '1.2.3' }, '1.2.3'],
     [{ DSH_CLIENT_COMMIT_HASH: 'abcdef0', DSH_CLIENT_VERSION: '1.2.3' }, '1.2.3-abcdef0'],
-  ])('omits unavailable build-version suffixes from %j', (environment, expected) => {
+  ])('omits unavailable build-version suffixes from %j', async (environment, expected) => {
     for (const [name, value] of Object.entries(environment)) vi.stubEnv(name, value)
+    const writeText = vi.fn<(text: string) => Promise<void>>().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } })
     render(<SidebarRoot
       drawer={false}
       collapsed={false} width={300}
@@ -249,11 +251,15 @@ describe('SidebarRoot shell', () => {
         options?.fallback ?? null) as SidebarRootComponentProps['renderSlot']}
     />)
 
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
-    expect(screen.getByText(expected)).toBeTruthy()
+    expect(screen.queryByText('DSH Local Build')).toBeNull()
+    expect(screen.queryByText(expected)).toBeNull()
+    const mark = document.querySelector('[data-copy-version]')
+    if (mark === null) throw new Error('local-build mark must copy its version')
+    await act(async () => { fireEvent.click(mark) })
+    expect(writeText).toHaveBeenCalledWith(expected)
   })
 
-  it.each([false, true])('copies the local-build version from the fallback mark and name (darwin=%s)', async (darwin) => {
+  it.each([false, true])('copies the local-build version from the mark (darwin=%s)', async (darwin) => {
     if (darwin) document.documentElement.dataset.platform = 'darwin'
     vi.stubEnv('DSH_CLIENT_COMMIT_HASH', 'abcdef0')
     vi.stubEnv('DSH_CLIENT_VERSION', '1.2.3')
@@ -279,23 +285,22 @@ describe('SidebarRoot shell', () => {
     vi.useFakeTimers()
 
     const copiedToasts = () => screen.queryAllByRole('alert').map(toast => toast.textContent)
-    await act(async () => { fireEvent.click(screen.getByText('DSH Local Build')) })
+    const mark = document.querySelector('[data-eit-logo="lockup"]')
+    if (mark === null) throw new Error('local-build mark missing')
+    await act(async () => { fireEvent.click(mark) })
     expect(writeText).toHaveBeenLastCalledWith('1.2.3-abcdef0')
     expect(copiedToasts()).toEqual(['Version copied'])
-    // The brand itself keeps its title and version.
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
-    expect(screen.getByText('1.2.3-abcdef0')).toBeTruthy()
+    expect(screen.queryByText('DSH Local Build')).toBeNull()
     act(() => { vi.advanceTimersByTime(4000) })
     expect(copiedToasts()).toEqual([])
 
     // A refused write claims no success.
-    await act(async () => { fireEvent.click(screen.getByText('1.2.3-abcdef0')) })
+    await act(async () => { fireEvent.click(mark) })
     expect(copiedToasts()).toEqual([])
 
-    // The fallback mark copies too, and its click still reaches document.
+    // The mark copies too, and its click still reaches document.
     const documentClick = vi.fn()
     document.addEventListener('click', documentClick)
-    const mark = screen.getByText('DSH Local Build').closest('[aria-hidden]')!.querySelector('svg')!
     await act(async () => { fireEvent.click(mark) })
     document.removeEventListener('click', documentClick)
     expect(documentClick).toHaveBeenCalledOnce()
@@ -313,7 +318,7 @@ describe('SidebarRoot shell', () => {
     }
   })
 
-  it('retains the local-build fallback without complete build metadata', () => {
+  it('shows only the mark without complete build metadata', () => {
     render(<SidebarRoot
       drawer={false}
       collapsed={false} width={300}
@@ -328,7 +333,9 @@ describe('SidebarRoot shell', () => {
         options?.fallback ?? null) as SidebarRootComponentProps['renderSlot']}
     />)
 
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
+    expect(screen.queryByText('DSH Local Build')).toBeNull()
+    expect(document.querySelector('[data-copy-version]')).toBeNull()
+    expect(document.querySelector('[data-eit-logo="lockup"]')).not.toBeNull()
   })
 
   it('hands the region its wide flag and clamps expandSidebar to the collapsed state', () => {
