@@ -149,6 +149,12 @@
           - id: tool-plugin-market
             name: '@deepseek-ai/dsh-plugin-market/tools'
             disabled: true
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-official
+    model: deepseek-flash
+    reasoningEffort: low
 # n8n-managed workspace directory
 - id: workspace-controller
   name: "@deepseek-ai/dsh-api-workspace-controller"

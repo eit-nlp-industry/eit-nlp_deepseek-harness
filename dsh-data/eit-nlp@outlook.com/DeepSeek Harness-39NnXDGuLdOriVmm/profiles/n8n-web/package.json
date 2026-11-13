@@ -1,12 +1,15 @@
 {
   "name": "dsh-profile-n8n-web",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@eit-nlp/dsh-skill2workflow": "link:/opt/skill2workflow/dsh-plugins/skill2workflow"
+  },
   "dsh": {
     "profile": {
       "bundles": [
         "@deepseek-ai/dsh-base",
-        "@deepseek-ai/dsh-web-app"
+        "@deepseek-ai/dsh-web-app",
+        "@eit-nlp/dsh-skill2workflow"
       ]
     }
   }

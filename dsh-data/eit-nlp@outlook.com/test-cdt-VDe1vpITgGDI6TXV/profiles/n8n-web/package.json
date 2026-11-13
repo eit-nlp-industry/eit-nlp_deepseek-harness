@@ -2,6 +2,7 @@
   "name": "dsh-profile-n8n-web",
   "private": true,
   "dependencies": {
+    "@eit-nlp/dsh-skill2workflow": "link:/opt/skill2workflow/dsh-plugins/skill2workflow",
     "@local/dsh-campus-activity-preset": "link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/campus-activity-preset",
     "@local/dsh-campus-booking-preset": "link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/campus-booking-preset",
     "@local/dsh-copy-review-preset": "link:/data/dsh/eit-nlp@outlook.com/DeepSeek Harness 3-VDe1vpITgGDI6TXV/empty-workspace/copy-review-preset",
@@ -15,6 +16,7 @@
         "@local/dsh-copy-review-preset",
         "@local/dsh-campus-booking-preset",
         "@local/dsh-wizard",
+        "@eit-nlp/dsh-skill2workflow",
         "@local/dsh-campus-activity-preset"
       ]
     }

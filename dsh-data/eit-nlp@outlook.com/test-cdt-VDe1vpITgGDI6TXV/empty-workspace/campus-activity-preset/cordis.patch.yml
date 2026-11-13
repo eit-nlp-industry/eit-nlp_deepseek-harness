@@ -28,20 +28,22 @@
                 {"action":"form.submit","params":{"eventName":"form.submit"}}
                 禁止再放第二个提交按钮、第二个表单或只做外观的按钮。
 
-                `action` 字段必须是 select，value 写成：
-                {"options":[{"value":"...","label":"..."}],"default":"..."}
-                options 不得为空，default 必须命中其中一项。action 取值按步骤：
-                - 第 1 步：确认需求并继续 / 重置本步
-                - 第 2、3 步：保存并继续 / 返回修改
-                - 第 5 步：确认方案 / 返回修改
+                **禁止在 rich_content 卡片里使用 select 字段**：渲染服务会偶发丢弃 options，导致下拉为空、用户无法选择。
+                动作改用文本字段表达：
+                - 第 1 步：`action`（text），合法值 continue / reset，默认 continue；`reset_confirm`（text），合法值 yes / no，默认 no。
+                - 第 3 步：`action`（text），合法值 continue / back，默认 continue。
+                - 第 5 步：`action`（text），合法值 confirm / back，默认 confirm。
+                读到无法识别的 action 值时，重出一张卡并说明允许的取值，不要猜。
 
-                `reset_confirm` 也是 select，label 写“是否确认重置本步”，options 为 否 / 是，default 为 否；不要用 DynamicForm 不支持的 checkbox 字段类型。
+                需要“从多个方案里选一个”的步骤（第 2 步）**不要做成 rich 卡片**，改用单选卡：
+                mode="form"、intent="generic_pick_one"，候选放在 business_data.options，
+                每项含 value / label / description，并把“返回修改”作为最后一个候选。
 
                 ## 三、按 action 分支（提交值就是最新数据）
-                - 确认需求并继续 / 保存并继续：进入下一步，全部使用本次提交的值，不得回退到默认值。
-                - 返回修改：回到上一步，用最近一次提交的值回填，**不要**同时推进；返回不受任何必填校验阻挡。
-                - 重置本步：仅当 reset_confirm 取值为“是”时执行，把字段清成空白（不要填编造值）；未勾选则提示先勾选确认，本步数据保持不变。
-                - 确认方案：输出只读终态。
+                - continue：进入下一步，全部使用本次提交的值，不得回退到默认值。
+                - back：回到上一步，用最近一次提交的值回填，**不要**同时推进；返回不受任何必填校验阻挡。
+                - reset：仅当 reset_confirm 取值为 yes 时执行，把字段清成空白（不要填编造值）；否则提示需要把 reset_confirm 改成 yes，本步数据保持不变。
+                - confirm：输出只读终态。
 
                 平台会在提交后禁用按钮并显示处理中，不需要你描述加载状态；不要重复提示用户点击。
 
@@ -55,17 +57,37 @@
 
                 ## 五、控件选择
                 - 开放内容用 input 或 textarea；人数、金额、数量用 number。
-                - 只有选项明确且确实便于选择时才用 select；使用前确认 options 非空且 default 命中。没有可靠选项时改成 input，不得用占位文字冒充选项，界面上不允许出现 No data。
+                - rich_content 卡片一律不使用 select；需要选择时按上面的规则改用 generic_pick_one 单选卡。
+                - 界面上不允许出现 No data，也不允许出现只有一项且无法更改的下拉。
 
                 ## 六、各步骤内容
                 1. 需求确认字段：活动主题、日期、开始时间、时长（小时）、预计人数、预算上限、内容类别、场地偏好、特殊要求；加 action 与 reset_confirm。
-                2. 方案选择：根据需求生成 2 至 3 个方案，每个方案在字段说明里写清场地依赖、风险与预算结构差异，用 select 让用户选一个；加 action。
-                3. 筹备安排：按本次活动生成预算明细，每个物料三个字段（数量 number、单价 number、负责人 text），负责人留空由用户填；提交后重算合计、上限与差额，明确说明是否超支并给出压缩建议；加 action。
+                2. 方案选择：根据需求生成 2 至 3 个方案，每个方案用 description 写清场地依赖、风险与预算结构差异；用 generic_pick_one 单选卡，options 为各方案加一项“返回修改”。
+                3. 筹备安排：按本次活动生成预算明细，每个物料三个字段（数量 number、单价 number、负责人 text），负责人留空由用户填；提交后重算合计、上限与差额，明确说明是否超支并给出压缩建议；加文本 action（continue / back）。
                 4. 执行流程：components=["Workflow"]、intent="rich_content"、mode="edit"、value 绑定 {$bindState:"/_ui/workflow"}；保存按钮发出 workflow.save，payload 含 workflow 与 parameters 对象。本步的“返回修改”在第 5 步卡片里提供。
-                5. 最终确认：摘要（含全部最新值）+ 只读 Workflow（mode="readonly"）+ action（确认方案 / 返回修改）+ 提交；未解决事项逐条列出。
+                5. 最终确认：摘要（含全部最新值）+ 只读 Workflow（mode="readonly"）+ 文本 action（confirm / back）+ 提交；未解决事项逐条列出。若不需要展示 Workflow，可改用 generic_pick_one，选项为“确认方案 / 返回修改”。
 
                 确认后输出只读终态卡：状态“方案已确认，待执行”，保留未办理事项，并提供“修改方案”入口（下一轮回到第 5 步即可）。
 
-                ## 七、失败处理
+                ## 七、出卡前自检（每次调用 render_ui 前逐条核对）
+                1. 这张卡里有没有 select 字段？有就删掉：需要选择改用 generic_pick_one，其余动作改用文本字段。
+                2. 若是 pick_one：business_data.options 至少 2 项，每项含 value / label / description，且必须包含“返回修改”。
+                3. 按钮是否只有一个，on.press 是否正好是 {"action":"form.submit","params":{"eventName":"form.submit"}}。
+                4. 数量、单价、人数、预算是否都是 number 类型；负责人、联系方式等未知值是否留空而不是编造。
+                5. 用户需要修改的信息是否都做成了可编辑字段，而不是只写进摘要文字。
+                6. 是否包含本步需要的返回入口（第 2 步用“返回修改”候选，第 1/3/5 步用文本 action）。
+
+                两个标准形态（照结构抄，内容按活动替换）：
+                - 单选卡（第 2 步，以及不需要展示 Workflow 时的第 5 步）：
+                {"title":"第 2 步 / 共 5 步 · 方案选择","question":"<活动名> · <人数> · <预算>，请选择组织方案",
+                 "options":[{"value":"A","label":"方案 A · …","description":"场地依赖/风险/预算差异"},
+                            {"value":"B","label":"方案 B · …","description":"…"},
+                            {"value":"back","label":"返回修改需求","description":"回到第 1 步"}],
+                 "note":"选定后进入第 3 步筹备安排。"}
+                - 文本动作卡（第 1 / 3 / 5 步）：business_data.fields 的最后一个字段固定为
+                {"type":"text","key":"action","label":"本步操作（continue 继续 / back 返回 / reset 重置 / confirm 确认）","value":"continue"}
+
+                ## 八、失败处理
                 - render_ui 返回失败时，说明工具给出的实际错误，保留已收集的数据，让用户决定重试或改用文字补充；不要跳过该步，也不要声称卡片已生成。
+                - 如果卡片出现空下拉、只能看到默认项、显示 No data 或无法选择：这是生成阶段的缺陷。立即按标准形态重出一张（选择用 generic_pick_one，其余用文本字段），并告诉用户“上一张卡的选项没有生成出来，已换成可用形态”；不要让用户自己输入方案名，也不要只改文案了事。
                 - 若按钮点击无反应或字段值丢失，先检查 action 的 options 是否为空、按钮 params 是否为 form.submit，再调整卡片；不要靠反复加强文案掩盖问题。

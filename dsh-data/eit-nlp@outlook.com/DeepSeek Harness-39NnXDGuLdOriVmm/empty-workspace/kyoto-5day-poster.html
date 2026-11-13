@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>京都五日 · KYOTO 5 日游海报</title>
+<style>
+  :root { --paper:#EDE6D8; --ink:#22201D; --muted:#8A8074; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#E6DFD1; }
+  body {
+    font-family: "Noto Sans SC", "Source Han Sans SC", "Hiragino Sans", "PingFang SC", sans-serif;
+    color: var(--ink);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 28px 16px 40px;
+    min-height: 100vh;
+  }
+  .stage {
+    width: 100%; max-width: 1080px;
+    background: var(--paper);
+    box-shadow: 0 18px 50px rgba(70,55,35,.18), 0 2px 0 rgba(255,255,255,.6) inset;
+  }
+  .stage svg, .stage img { display:block; width:100%; height:auto; }
+  .meta {
+    width:100%; max-width:1080px; display:flex; justify-content:space-between;
+    gap:16px; margin-top:14px; font-size:12px; color:#7C7263; letter-spacing:.06em;
+  }
+  .meta a { color:#8A6A3A; text-decoration:none; border-bottom:1px solid rgba(138,106,58,.35); }
+  @media (max-width: 640px) {
+    body { padding: 10px 0 24px; }
+    .meta { padding: 0 14px; flex-direction: column; }
+  }
+  @page { size: 1080px 1660px; margin: 0; }
+  @media print {
+    html, body { background:#fff; padding:0; display:block; }
+    .stage { box-shadow:none; max-width:none; width:1080px; }
+    .meta { display:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <img src="kyoto-5day-poster.svg" width="1080" height="1660"
+         alt="京都五日游宣传海报：清水寺、伏见稻荷大社、岚山竹林、祇园，含每日活动、美食与花费">
+  </div>
+  <div class="meta">
+    <span>京都五日 · KYOTO 5 DAYS　1080 × 1660 px　矢量版可无损放大，直接打印 A3</span>
+    <span><a href="kyoto-5day-poster.svg" download>SVG 矢量</a>　·　<a href="kyoto-5day-poster.png" download>PNG 2×</a></span>
+  </div>
+</body>
+</html>

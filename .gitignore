@@ -87,6 +87,7 @@ dsh-data/**/*.bak-*
 
 # Business runtime artifacts (camera, media, feedback, caches, archives)
 dsh-data/**/runtime_data/
+dsh-data/**/skill2workflow/
 # DeepSeek Files upload index under DSH home
 dsh-data/**/llm-deepseek/
 

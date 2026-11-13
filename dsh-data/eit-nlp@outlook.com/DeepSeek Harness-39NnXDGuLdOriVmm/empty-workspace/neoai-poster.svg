@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440" role="img" aria-label="NeoAI 产品发布海报：让 AI 成为你的第二大脑">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06070F"/>
+      <stop offset="55%" stop-color="#0A0A1C"/>
+      <stop offset="100%" stop-color="#0B0718"/>
+    </linearGradient>
+
+    <radialGradient id="orbPurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C4DFF" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#5B2BD6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#5B2BD6" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="orbBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2E7BFF" stop-opacity="0.45"/>
+      <stop offset="65%" stop-color="#1B4BC9" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#1B4BC9" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="orbCyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0.2">
+      <stop offset="0%" stop-color="#C4B5FD"/>
+      <stop offset="45%" stop-color="#8AB4FF"/>
+      <stop offset="100%" stop-color="#67E8F9"/>
+    </linearGradient>
+
+    <linearGradient id="btnGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C4DFF"/>
+      <stop offset="55%" stop-color="#4F7CFF"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+
+    <linearGradient id="hairline" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C4DFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#8AB4FF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="cardStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7C4DFF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.25"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="btnGlow" x="-40%" y="-80%" width="180%" height="260%">
+      <feGaussianBlur stdDeviation="16" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#8B9DFF" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+
+    <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <mask id="gridMask">
+      <rect width="1080" height="1440" fill="url(#gridFade)"/>
+    </mask>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1440" fill="url(#bg)"/>
+  <rect width="1080" height="1440" fill="url(#grid)" mask="url(#gridMask)"/>
+
+  <circle cx="150" cy="140" r="560" fill="url(#orbPurple)"/>
+  <circle cx="980" cy="1120" r="620" fill="url(#orbBlue)"/>
+  <circle cx="880" cy="180" r="330" fill="url(#orbCyan)"/>
+
+  <!-- 右上角装饰环 -->
+  <g opacity="0.55">
+    <circle cx="930" cy="210" r="150" fill="none" stroke="#8AB4FF" stroke-opacity="0.16" stroke-width="1"/>
+    <circle cx="930" cy="210" r="200" fill="none" stroke="#8AB4FF" stroke-opacity="0.10" stroke-width="1"/>
+    <circle cx="930" cy="210" r="252" fill="none" stroke="#8AB4FF" stroke-opacity="0.06" stroke-width="1"/>
+    <circle cx="930" cy="60" r="4" fill="#22D3EE"/>
+    <circle cx="1080" cy="210" r="3" fill="#A78BFA"/>
+    <circle cx="782" cy="300" r="2.5" fill="#8AB4FF"/>
+  </g>
+
+  <!-- 顶部品牌栏 -->
+  <g>
+    <rect x="80" y="52" width="46" height="46" rx="13" fill="url(#btnGrad)"/>
+    <path d="M96 84V66l14 18V66" fill="none" stroke="#080A16" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="142" y="84" font-family="'Trebuchet MS','Noto Sans SC',sans-serif" font-size="27" font-weight="700" fill="#F5F7FF" letter-spacing="0.5">NeoAI</text>
+    <rect x="782" y="54" width="218" height="42" rx="21" fill="#FFFFFF" fill-opacity="0.05" stroke="#8AB4FF" stroke-opacity="0.35"/>
+    <circle cx="808" cy="75" r="4.5" fill="#22D3EE"/>
+    <text x="824" y="81" font-family="'Trebuchet MS','Noto Sans SC',sans-serif" font-size="15" fill="#C7D2FE" letter-spacing="1.2">2027.01.15 全球发布</text>
+  </g>
+
+  <line x1="80" y1="128" x2="1000" y2="128" stroke="#8AB4FF" stroke-opacity="0.18" stroke-width="1"/>
+
+  <!-- 眉标 -->
+  <text x="80" y="238" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="500" fill="#A78BFA" letter-spacing="6">NEOAI · 人工智能助手</text>
+
+  <!-- 主标题 -->
+  <g filter="url(#softGlow)">
+    <text x="76" y="366" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="108" font-weight="800" fill="url(#titleGrad)" letter-spacing="2">让 AI 成为</text>
+    <text x="76" y="486" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="108" font-weight="800" fill="url(#titleGrad)" letter-spacing="2">你的第二大脑</text>
+  </g>
+
+  <rect x="80" y="530" width="132" height="3" rx="1.5" fill="url(#hairline)"/>
+
+  <!-- 副标题 -->
+  <text x="80" y="592" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="27" font-weight="400" fill="#B9C4E6">记忆、理解、协作，一次打通</text>
+  <text x="80" y="636" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="21" font-weight="300" fill="#7C89AC">把散落各处的信息，变成随时可调用的判断力</text>
+
+  <!-- 三个核心卖点 -->
+  <g>
+    <rect x="80" y="700" width="920" height="96" rx="20" fill="#FFFFFF" fill-opacity="0.035" stroke="url(#cardStroke)" stroke-width="1.2"/>
+    <circle cx="136" cy="748" r="26" fill="#7C4DFF" fill-opacity="0.16" stroke="#A78BFA" stroke-opacity="0.5"/>
+    <g stroke="#C9B8FF" stroke-width="2" fill="none" stroke-linecap="round">
+      <circle cx="136" cy="748" r="9"/>
+      <circle cx="136" cy="748" r="2.4" fill="#C9B8FF"/>
+      <path d="M136 726v6M136 764v6M114 748h6M152 748h6"/>
+    </g>
+    <text x="188" y="738" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="25" font-weight="700" fill="#F2F5FF">全知记忆</text>
+    <text x="188" y="770" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="300" fill="#8C97B8">跨应用自动捕捉，见过的东西再也不会丢</text>
+    <text x="944" y="758" font-family="'Trebuchet MS',sans-serif" font-size="15" fill="#8AB4FF" fill-opacity="0.45" letter-spacing="1">01</text>
+
+    <rect x="80" y="812" width="920" height="96" rx="20" fill="#FFFFFF" fill-opacity="0.035" stroke="url(#cardStroke)" stroke-width="1.2"/>
+    <circle cx="136" cy="860" r="26" fill="#4F7CFF" fill-opacity="0.16" stroke="#7FB2FF" stroke-opacity="0.5"/>
+    <path d="M140 838l-14 24h10l-2 20 14-24h-10z" fill="#A9C6FF" stroke="#A9C6FF" stroke-width="1.5" stroke-linejoin="round"/>
+    <text x="188" y="850" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="25" font-weight="700" fill="#F2F5FF">秒级洞察</text>
+    <text x="188" y="882" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="300" fill="#8C97B8">百页文档一键提炼，随口一问就有答案</text>
+    <text x="944" y="870" font-family="'Trebuchet MS',sans-serif" font-size="15" fill="#8AB4FF" fill-opacity="0.45" letter-spacing="1">02</text>
+
+    <rect x="80" y="924" width="920" height="96" rx="20" fill="#FFFFFF" fill-opacity="0.035" stroke="url(#cardStroke)" stroke-width="1.2"/>
+    <circle cx="136" cy="972" r="26" fill="#22D3EE" fill-opacity="0.14" stroke="#67E8F9" stroke-opacity="0.45"/>
+    <g stroke="#A5F3FC" stroke-width="2" fill="none">
+      <circle cx="128" cy="972" r="12"/>
+      <circle cx="144" cy="972" r="12" stroke-opacity="0.7"/>
+    </g>
+    <text x="188" y="962" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="25" font-weight="700" fill="#F2F5FF">主动协作</text>
+    <text x="188" y="994" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="300" fill="#8C97B8">会议、邮件、代码，该跟进的事它先一步想到</text>
+    <text x="944" y="982" font-family="'Trebuchet MS',sans-serif" font-size="15" fill="#8AB4FF" fill-opacity="0.45" letter-spacing="1">03</text>
+  </g>
+
+  <!-- 日期 -->
+  <text x="540" y="1112" text-anchor="middle" font-family="'Trebuchet MS','Noto Sans SC',sans-serif" font-size="15" fill="#7C89AC" letter-spacing="7">GLOBAL LAUNCH</text>
+  <text x="540" y="1176" text-anchor="middle" font-family="'Trebuchet MS',sans-serif" font-size="54" font-weight="700" fill="url(#titleGrad)" letter-spacing="3">2027.01.15</text>
+
+  <!-- CTA 按钮 -->
+  <g filter="url(#btnGlow)">
+    <rect x="370" y="1226" width="340" height="70" rx="35" fill="url(#btnGrad)"/>
+  </g>
+  <rect x="370" y="1226" width="340" height="70" rx="35" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1"/>
+  <text x="516" y="1271" text-anchor="middle" font-family="'Noto Sans SC','Source Han Sans SC','PingFang SC','Microsoft YaHei',sans-serif" font-size="24" font-weight="700" fill="#080A16">立即体验</text>
+  <path d="M596 1261h16m-6-7l7 7-7 7" fill="none" stroke="#080A16" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 页脚 -->
+  <text x="540" y="1348" text-anchor="middle" font-family="'Trebuchet MS',sans-serif" font-size="15" fill="#5E6A8A" letter-spacing="1.5">neoai.example.com  ·  免费试用 14 天</text>
+
+  <!-- 底部光带 -->
+  <rect x="0" y="1436" width="1080" height="4" fill="url(#hairline)" opacity="0.7"/>
+</svg>

@@ -2,14 +2,16 @@
   "name": "dsh-profile-n8n-web",
   "private": true,
   "dependencies": {
-    "@local/dsh-campus-preset": "link:/data/dsh/eit-nlp@outlook.com/test_ln-uWmfvCwdQ4Im7Dr1/empty-workspace/campus-preset"
+    "@local/dsh-campus-preset": "link:/data/dsh/eit-nlp@outlook.com/test_ln-uWmfvCwdQ4Im7Dr1/empty-workspace/campus-preset",
+    "@eit-nlp/dsh-skill2workflow": "link:/opt/skill2workflow/dsh-plugins/skill2workflow"
   },
   "dsh": {
     "profile": {
       "bundles": [
         "@deepseek-ai/dsh-base",
         "@deepseek-ai/dsh-web-app",
-        "@local/dsh-campus-preset"
+        "@local/dsh-campus-preset",
+        "@eit-nlp/dsh-skill2workflow"
       ]
     }
   }

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440" role="img" aria-label="Morning Lab 精品咖啡促销海报：第二杯半价">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#FAF4E9"/>
+      <stop offset="55%" stop-color="#F6EDDF"/>
+      <stop offset="100%" stop-color="#F1E4D2"/>
+    </linearGradient>
+
+    <radialGradient id="warm" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D8B48A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#D8B48A" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="cardShadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#8C6A4A" flood-opacity="0.13"/>
+    </filter>
+
+    <style>
+      .cjk { font-family: "Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",sans-serif; }
+      .latin { font-family: "Trebuchet MS", "Helvetica Neue", Arial, sans-serif; }
+      .num { font-family: "Georgia", "Times New Roman", serif; }
+    </style>
+  </defs>
+
+  <!-- 纸感背景 -->
+  <rect width="1080" height="1440" fill="url(#paper)"/>
+  <circle cx="960" cy="200" r="430" fill="url(#warm)"/>
+  <circle cx="120" cy="1300" r="360" fill="url(#warm)" opacity="0.6"/>
+
+  <!-- 右上装饰圆环 -->
+  <g opacity="0.5">
+    <circle cx="988" cy="248" r="168" fill="none" stroke="#C9AE8C" stroke-opacity="0.35" stroke-width="1"/>
+    <circle cx="988" cy="248" r="208" fill="none" stroke="#C9AE8C" stroke-opacity="0.2" stroke-width="1"/>
+  </g>
+
+  <!-- 品牌栏 -->
+  <text x="88" y="116" class="latin" font-size="38" font-weight="700" fill="#2E211B" letter-spacing="11">MORNING LAB</text>
+  <text x="90" y="150" class="latin" font-size="12" fill="#A08972" letter-spacing="4.5">SPECIALTY COFFEE · 手作烘焙 · EST. 2021</text>
+
+  <g>
+    <circle cx="960" cy="112" r="34" fill="none" stroke="#2E211B" stroke-opacity="0.55"/>
+    <text x="960" y="121" text-anchor="middle" class="num" font-size="19" font-weight="700" fill="#2E211B" letter-spacing="1">ML</text>
+  </g>
+
+  <line x1="88" y1="192" x2="992" y2="192" stroke="#CBBA9F" stroke-width="1"/>
+
+  <!-- 主标题 -->
+  <text x="84" y="352" class="cjk" font-size="132" font-weight="800" fill="#2E211B" letter-spacing="4">第二杯</text>
+  <text x="84" y="500" class="cjk" font-size="132" font-weight="800" fill="#8C5A33" letter-spacing="4">半价</text>
+
+  <g>
+    <rect x="404" y="404" width="176" height="52" rx="26" fill="#8C5A33"/>
+    <text x="492" y="438" text-anchor="middle" class="latin" font-size="19" font-weight="700" fill="#FAF4E9" letter-spacing="2">50% OFF</text>
+  </g>
+
+  <!-- 活动说明 -->
+  <text x="88" y="574" class="cjk" font-size="27" font-weight="500" fill="#5B4736">任选两杯，第二杯仅需半价</text>
+  <text x="88" y="616" class="cjk" font-size="19" font-weight="300" fill="#9A8674">每周一至周五 08:00 – 11:00 · 堂食外带同享 · 不限次数</text>
+
+  <rect x="88" y="650" width="904" height="404" rx="6" fill="#FFFBF2" stroke="#E9DCC7" stroke-width="1" filter="url(#cardShadow)"/>
+
+  <!-- 菜单行 1 -->
+  <text x="132" y="738" class="cjk" font-size="34" font-weight="600" fill="#2E211B">美式咖啡</text>
+  <text x="132" y="766" class="latin" font-size="12" fill="#B3A18C" letter-spacing="3">AMERICANO</text>
+  <line x1="330" y1="742" x2="828" y2="742" stroke="#D8C7AE" stroke-width="1.4" stroke-dasharray="2 7"/>
+  <text x="948" y="752" text-anchor="end" class="num" font-size="46" font-weight="700" fill="#2E211B">¥18</text>
+
+  <line x1="132" y1="800" x2="948" y2="800" stroke="#EFE3D0" stroke-width="1"/>
+
+  <!-- 菜单行 2 -->
+  <text x="132" y="878" class="cjk" font-size="34" font-weight="600" fill="#2E211B">拿铁</text>
+  <text x="132" y="906" class="latin" font-size="12" fill="#B3A18C" letter-spacing="3">LATTE</text>
+  <line x1="240" y1="882" x2="828" y2="882" stroke="#D8C7AE" stroke-width="1.4" stroke-dasharray="2 7"/>
+  <text x="948" y="892" text-anchor="end" class="num" font-size="46" font-weight="700" fill="#2E211B">¥25</text>
+
+  <line x1="132" y1="940" x2="948" y2="940" stroke="#EFE3D0" stroke-width="1"/>
+
+  <!-- 菜单行 3 -->
+  <text x="132" y="1018" class="cjk" font-size="34" font-weight="600" fill="#2E211B">手冲咖啡</text>
+  <text x="132" y="1046" class="latin" font-size="12" fill="#B3A18C" letter-spacing="3">POUR OVER · 单一产区</text>
+  <line x1="352" y1="1022" x2="828" y2="1022" stroke="#D8C7AE" stroke-width="1.4" stroke-dasharray="2 7"/>
+  <text x="948" y="1032" text-anchor="end" class="num" font-size="46" font-weight="700" fill="#8C5A33">¥32</text>
+
+  <!-- 优惠券 -->
+  <g>
+    <rect x="88" y="1104" width="904" height="152" rx="8" fill="#2E211B"/>
+    <g opacity="0.9">
+      <circle cx="88" cy="1180" r="16" fill="#F6EDDF"/>
+      <circle cx="992" cy="1180" r="16" fill="#F6EDDF"/>
+    </g>
+    <text x="140" y="1150" class="latin" font-size="12" fill="#C9AE8C" letter-spacing="4">COUPON · 到店出示</text>
+    <text x="140" y="1204" class="cjk" font-size="38" font-weight="700" fill="#FAF4E9" letter-spacing="2">第二杯半价券</text>
+    <line x1="700" y1="1132" x2="700" y2="1228" stroke="#C9AE8C" stroke-opacity="0.45" stroke-dasharray="3 6"/>
+    <text x="736" y="1160" class="latin" font-size="11" fill="#C9AE8C" letter-spacing="3">VALID</text>
+    <text x="736" y="1190" class="cjk" font-size="17" fill="#EADCC8">周一至周五 08:00–11:00</text>
+    <text x="736" y="1218" class="cjk" font-size="15" fill="#C9AE8C">不可与其他优惠叠加</text>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="88" y1="1310" x2="992" y2="1310" stroke="#CBBA9F" stroke-width="1"/>
+  <text x="88" y="1350" class="cjk" font-size="15" fill="#8A7663">愚园路 88 号 · 07:30 – 20:00 · 自带杯再减 3 元</text>
+  <text x="992" y="1350" text-anchor="end" class="latin" font-size="15" fill="#8A7663" letter-spacing="2">@MORNINGLAB</text>
+
+  <!-- 右上圆环内：极简咖啡杯 -->
+  <g opacity="0.5" transform="translate(988,300)">
+    <path d="M-34 0h56v10a28 28 0 0 1-28 28h0A28 28 0 0 1-34 10z" fill="none" stroke="#8C5A33" stroke-width="1.6"/>
+    <path d="M22 6h8a10 10 0 0 1 0 20h-8" fill="none" stroke="#8C5A33" stroke-width="1.6"/>
+    <path d="M-22 -14c4-6-4-10 0-16M-6 -14c4-6-4-10 0-16M10 -14c4-6-4-10 0-16" fill="none" stroke="#8C5A33" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+</svg>

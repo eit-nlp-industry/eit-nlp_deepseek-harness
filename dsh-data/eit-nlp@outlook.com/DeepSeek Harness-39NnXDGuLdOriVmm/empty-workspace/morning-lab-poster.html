@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morning Lab · 第二杯半价</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #EFE3D2; }
+  body {
+    font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 32px 16px;
+  }
+  .poster {
+    width: min(1080px, 100%);
+    aspect-ratio: 1080 / 1440;
+    max-height: calc(100vh - 64px);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(94, 68, 43, .22);
+  }
+  .poster img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  @media print {
+    @page { size: 1080px 1440px; margin: 0; }
+    body { padding: 0; display: block; }
+    .poster { max-height: none; border-radius: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <img src="morning-lab-poster.svg" alt="Morning Lab 精品咖啡促销海报：第二杯半价，美式 18 元、拿铁 25 元、手冲 32 元">
+  </div>
+</body>
+</html>

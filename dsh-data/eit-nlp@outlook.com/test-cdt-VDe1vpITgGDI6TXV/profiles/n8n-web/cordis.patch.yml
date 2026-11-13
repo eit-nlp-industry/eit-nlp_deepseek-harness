@@ -8,10 +8,31 @@
 - id: tool-json-render
   config:
     mediaRoot: !!js (delete process.env.JSON_RENDER_MEDIA_ROOT, '')
+# WeKnora 知识库（EIT知识库）：只返回原始 chunk，过滤 summary / image_caption / image_vector
+# 桥接脚本：empty-workspace/tools/weknora-raw-mcp.mjs（stdio MCP，内部调用 WeKnora 内置 MCP 端点）
+# 工具：mcp__weknora__eit_kb_search / eit_kb_grep / eit_kb_read_document / eit_kb_list_documents / eit_kb_list_knowledge_bases
+- insert:
+    - id: mcp-weknora
+      name: "@deepseek-ai/dsh-mcp-client"
+      config:
+        serverName: weknora
+        transport: stdio
+        command: node
+        args:
+          - "/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-work\
+            space/tools/weknora-raw-mcp.mjs"
+        env:
+          WEKNORA_MCP_URL: "http://10.37.0.21:18081/mcp/0012f748-d647-441a-9c38-d2c6b23bb35d"
+          WEKNORA_MCP_TOKEN: "mcp_QQUNenvg4F2nvqYbnq7UUXup7sdei0bsGj7rksOfajk"
+        # 回答里的引用格式：给材料名与章节，不暴露内部片段口径
+        clientInstructions: |
+          引用知识库内容时，直接写出处材料与章节（例如「依据《…简章》的“五、时间安排”」），
+          不要出现「知识库中」「第N段」「片段」「chunk」或 chunk_id、score 等内部字段；
+          没有明确出处时正常回答，不必强行标注。
+        toolCallTimeoutMs: 180000
+        failOnStartupError: false
 # n8n-managed workspace directory
 - id: workspace-controller
   name: "@deepseek-ai/dsh-api-workspace-controller"
   config:
     documentsDirectory: "/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV"
-- id: dsh-wizard
-  disabled: true
