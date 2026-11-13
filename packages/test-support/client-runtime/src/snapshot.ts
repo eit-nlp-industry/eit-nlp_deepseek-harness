@@ -1,6 +1,6 @@
 /**
  * DOM snapshot hygiene: a vitest snapshot serializer that keeps `.snap`
- * files structural. Two normalizations, both on a clone (the live DOM is
+ * files structural. Three normalizations, all on a clone (the live DOM is
  * untouched, so class/tag queries keep working):
  *
  * - CSS-module scoped class names (`_frame_334d2d`, this repo's
@@ -9,6 +9,8 @@
  * - `<svg>` internals collapse to a `data-content` fingerprint on the svg
  *   element: path geometry is print noise, but the fingerprint still flips
  *   when an icon's artwork actually changes.
+ * - Inline `data:` URLs in `style` collapse to `url(#fingerprint)`, so a
+ *   mask or background image does not paste its bytes into the snapshot.
  */
 import { expect } from 'vitest'
 import type { SnapshotSerializer } from 'vitest'
@@ -42,19 +44,34 @@ function svgsOf(root: Element): Element[] {
   return svgs
 }
 
+/** `url("data:...")` (any quote style) inside a style attribute. */
+const DATA_URL_IN_STYLE = /url\((['"]?)data:[^)"']*\1\)/g
+
+/** Whether one style attribute embeds a data URL. */
+function styleEmbedsData(value: string | null): boolean {
+  return value !== null && value.includes('data:')
+}
+
+/** Replace embedded data URLs with a stable fingerprint. */
+function collapseDataUrls(style: string): string {
+  return style.replace(DATA_URL_IN_STYLE, match => `url(#${fingerprint(match)})`)
+}
+
 /** Whether serializing this subtree needs a normalized clone. */
 function needsNormalization(root: Element): boolean {
   const scoped = [root, ...root.querySelectorAll('[class]')].some((el) => {
     const value = el.getAttribute('class')
     return value !== null && value.split(/\s+/).some(token => SCOPED_CLASS.test(token))
   })
-  return scoped || svgsOf(root).some(svg => svg.childNodes.length > 0)
+  const embedded = [root, ...root.querySelectorAll('[style]')].some(el => styleEmbedsData(el.getAttribute('style')))
+  return scoped || embedded || svgsOf(root).some(svg => svg.childNodes.length > 0)
 }
 
 /**
  * The serializer plugin. Matches DOM elements whose subtree carries a scoped
- * class or svg internals; serializes a normalized clone, which no longer
- * matches, so printing falls through to the built-in DOM element serializer.
+ * class, an embedded data URL, or svg internals. It serializes a normalized
+ * clone, which no longer matches, so printing falls through to the built-in
+ * DOM element serializer.
  */
 export const domSnapshotSerializer: SnapshotSerializer = {
   test(value: unknown): boolean {
@@ -65,6 +82,11 @@ export const domSnapshotSerializer: SnapshotSerializer = {
     for (const el of [clone, ...clone.querySelectorAll('[class]')]) {
       const raw = el.getAttribute('class')
       if (raw !== null) el.setAttribute('class', normalizeClassValue(raw))
+    }
+    for (const el of [clone, ...clone.querySelectorAll('[style]')]) {
+      const raw = el.getAttribute('style')
+      if (raw === null || !raw.includes('data:')) continue
+      el.setAttribute('style', collapseDataUrls(raw))
     }
     for (const svg of svgsOf(clone)) {
       if (svg.childNodes.length === 0) continue

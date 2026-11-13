@@ -212,3 +212,5 @@ None; Conversation assembly and browser input state do not alter provider-side p
 None.
 
 </details>
+
+Chat and trajectory are available in the header’s views menu. Ctrl+Alt+L toggles between trajectory and Chat in a started Session. Ctrl+L also works when the browser or host delivers it to the page; browsers can reserve it for the address bar. Extension views retain their tabs.

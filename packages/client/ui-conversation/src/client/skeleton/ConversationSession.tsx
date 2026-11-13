@@ -1,14 +1,14 @@
 /** Strict per-session header/body content inserted into the resident conversation layout. */
 
-import { useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
-import { Button, IconEllipsisOutlineRegular, Menu, Tooltip } from '@deepseek-ai/dsh-client-ui-primitives'
+import { Button, IconCompareSplitOutlineRegular, Menu, Tooltip } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { SessionListState, SessionSummary } from '@deepseek-ai/dsh-api-session-controller/client'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import type {
   ConversationSessionHeaderSlotProps, ConversationSessionSlotProps, ConversationViewActionsOwnerProps,
 } from '../contract/slots.ts'
-import { resolveActiveView } from '../view-selection.ts'
+import { TRAJECTORY_VIEW_ID, resolveActiveView } from '../view-selection.ts'
 import { FIXED_VIEW_ID } from '../view-pins.ts'
 import { DefaultConversationViews } from './DefaultConversationViews.tsx'
 import css from './ConversationRoot.module.css'
@@ -34,7 +34,7 @@ function ViewsMoreMenu({ label, current, entries, onOpen, onPinnedChange, render
         <Tooltip label={label} portal>
           <Button size="sm" className={clsx(css.viewsMore, current && css.viewsMoreActive)} aria-label={label} aria-haspopup="menu" aria-expanded={open}
             onClick={() => { setOpen(value => !value) }}>
-            <IconEllipsisOutlineRegular size={13} />
+            <IconCompareSplitOutlineRegular size={13} />
           </Button>
         </Tooltip>
       )}>
@@ -116,7 +116,20 @@ export function ConversationSessionHeader({
   const ancestry = useSessions(s => deriveAncestry(s, sessionId), equalBreadcrumbs)
   const unpinned = useEntryPins(ids => ids)
   const hasEntryActions = useEntryActions(registered => registered)
-  const showTabs = !hideChrome && tabs.length > 1
+  const hasTrajectory = tabs.some(tab => tab.id === TRAJECTORY_VIEW_ID)
+  useEffect(() => {
+    if (hideChrome || !hasTrajectory) return
+    const onKeyDown = (event: KeyboardEvent): void => {
+      if (event.defaultPrevented || event.repeat || event.isComposing || event.code !== 'KeyL'
+        || !event.ctrlKey || event.metaKey || event.shiftKey) return
+      if (event.target instanceof Element && event.target.closest('[role="dialog"], dialog, .xterm, [inert]') !== null) return
+      event.preventDefault()
+      selectView(active?.id === TRAJECTORY_VIEW_ID ? FIXED_VIEW_ID : TRAJECTORY_VIEW_ID)
+    }
+    window.addEventListener('keydown', onKeyDown, true)
+    return () => { window.removeEventListener('keydown', onKeyDown, true) }
+  }, [active?.id, hasTrajectory, hideChrome, selectView])
+  const showTabs = !hideChrome && tabs.some(tab => tab.id !== FIXED_VIEW_ID && tab.id !== TRAJECTORY_VIEW_ID)
   const tabRow = useRef<HTMLDivElement>(null)
   const [visibleViewLimit, setVisibleViewLimit] = useState(1)
   // Observe only the available row width; individual tabs are not measured.
@@ -133,15 +146,13 @@ export function ConversationSessionHeader({
     return () => { observer.disconnect() }
   }, [showTabs, hasEntryActions])
   const { visibleTabs, moreTabs } = useMemo(() => {
-    const preferred = [
-      ...tabs.filter(tab => tab.id === FIXED_VIEW_ID),
-      ...tabs.filter(tab => tab.id !== FIXED_VIEW_ID && !unpinned.includes(tab.id)),
-    ]
+    const preferred = tabs.filter(tab => tab.id !== FIXED_VIEW_ID && tab.id !== TRAJECTORY_VIEW_ID && !unpinned.includes(tab.id))
     const visibleTabs = hasEntryActions ? preferred.slice(0, visibleViewLimit) : preferred
     const visibleIds = new Set(visibleTabs.map(tab => tab.id))
     return { visibleTabs, moreTabs: tabs.filter(tab => !visibleIds.has(tab.id)) }
   }, [tabs, unpinned, hasEntryActions, visibleViewLimit])
   const currentInMore = moreTabs.some(tab => tab.id === active?.id)
+  const showViewMenu = !hideChrome && hasEntryActions && tabs.length > 1
   return (
     <>
       <div className={css.titleRow}>
@@ -208,6 +219,19 @@ export function ConversationSessionHeader({
             </div>
             <div className={css.headerUtilities}>
               {renderSlot('conversation.session.header.utilities', {})}
+              {showViewMenu && (
+                <ViewsMoreMenu
+                  label={t('session.moreViews')}
+                  current={currentInMore}
+                  entries={moreTabs.map(viewTab => ({
+                    id: viewTab.id, label: viewTab.label,
+                    pinned: !unpinned.includes(viewTab.id), active: viewTab.id === active?.id,
+                  }))}
+                  onOpen={selectView}
+                  onPinnedChange={setPinned}
+                  renderSlot={renderSlot}
+                />
+              )}
             </div>
           </>
         )}
@@ -215,7 +239,7 @@ export function ConversationSessionHeader({
           {renderSlot('conversation.session.header.corner', {})}
         </div>
       </div>
-      {showTabs && (
+      {showTabs && visibleTabs.length > 0 && (
         // data-conversation-tabs: marks the tab strip, which the window-chrome
         // geometry and the browser coverage lane anchor on.
         <div ref={tabRow} className={css.tabs}>
@@ -233,19 +257,6 @@ export function ConversationSessionHeader({
               </button>
             ))}
           </div>
-          {hasEntryActions && (
-            <ViewsMoreMenu
-              label={t('session.moreViews')}
-              current={currentInMore}
-              entries={moreTabs.map(viewTab => ({
-                id: viewTab.id, label: viewTab.label,
-                pinned: !unpinned.includes(viewTab.id), active: viewTab.id === active?.id,
-              }))}
-              onOpen={selectView}
-              onPinnedChange={setPinned}
-              renderSlot={renderSlot}
-            />
-          )}
         </div>
       )}
     </>

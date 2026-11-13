@@ -1,5 +1,5 @@
 /**
- * React host registries for json-render v0.2.2.
+ * React host registries for json-render v0.2.3.
  * base and forms use the stable Ant Design registry.
  * rich uses the public experimental registry from the same adapter.
  * A Vue host must use the Vue adapter from the same release, not these components.

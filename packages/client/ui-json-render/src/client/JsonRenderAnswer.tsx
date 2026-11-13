@@ -2,6 +2,7 @@ import type { PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import { MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import { JsonRenderCard } from './JsonRenderCard.tsx'
 import { selectJsonRenderAnswer } from './answer.ts'
+import { liveMaps } from './map-tracking.ts'
 
 export interface JsonRenderAnswerInjected {
   submitForm(sessionId: string, text: string): Promise<void>
@@ -15,12 +16,13 @@ export interface JsonRenderAnswerInjected {
 export function JsonRenderAnswer(props: PropsRuntime<'conversation.chat.turnTail'> & JsonRenderAnswerInjected) {
   const card = selectJsonRenderAnswer(props)
   if (card === null) return null
-  if (card.answerPresentation === 'replace' && props.canReplaceAnswer === true) return null
+  if (card.answerPresentation === 'replace' && props.canReplaceAnswer === true && liveMaps(card.payload).length === 0) return null
   return (
     <JsonRenderCard
       payload={card.payload}
-      instanceId={card.callId}
+      instanceId={`${props.sessionId}:${card.callId}`}
       profile={card.profile}
+      businessData={card.businessData}
       submitForm={text => props.submitForm(props.sessionId, text)}
     />
   )
@@ -36,6 +38,7 @@ export function JsonRenderReplacement(props: PropsRuntime<'conversation.chat.ans
   const fallback = () => <MarkdownText text={props.text} labels={props.labels}
     fileMentions={props.fileMentions} pathImages={props.pathImages} />
   if (card === null) return fallback()
-  return <JsonRenderCard key={card.callId} payload={card.payload} instanceId={card.callId}
-    profile={card.profile} submitForm={text => props.submitForm(props.sessionId, text)} fallbackRender={fallback} />
+  return <JsonRenderCard key={card.callId} payload={card.payload} instanceId={`${props.sessionId}:${card.callId}`}
+    profile={card.profile} businessData={card.businessData}
+    submitForm={text => props.submitForm(props.sessionId, text)} fallbackRender={fallback} />
 }

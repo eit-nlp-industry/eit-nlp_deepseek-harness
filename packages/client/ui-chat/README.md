@@ -224,3 +224,5 @@ None; Chat presentation does not assemble or mutate provider requests.
 None.
 
 </details>
+
+The composer hides the activity and cache summary row. Per-turn usage remains available in detailed mode. A running reply displays three dots, with elapsed time on hover.

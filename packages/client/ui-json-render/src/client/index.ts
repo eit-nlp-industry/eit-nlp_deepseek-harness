@@ -13,6 +13,7 @@ import '@eit/json-render-antd/styles.css'
 import { jsonRenderAnswerDefinition, selectJsonRenderAnswer } from './answer.ts'
 import { JsonRenderAnswer, JsonRenderReplacement, type JsonRenderAnswerInjected } from './JsonRenderAnswer.tsx'
 import { JsonRenderRow } from './JsonRenderRow.tsx'
+import { liveMaps } from './map-tracking.ts'
 
 export const inject = ['sessions', 'slots', 'uiConversation']
 
@@ -34,6 +35,8 @@ export function apply(ctx: ClientContext): void {
     name: 'conversation.chat.answer',
     select: (owner) => {
       const card = selectJsonRenderAnswer(owner)
+      // Live panels stay in turnTail when prose finishes, retaining their store and subscription.
+      if (card !== null && liveMaps(card.payload).length > 0) return null
       return owner.canReplaceAnswer === true && card?.answerPresentation === 'replace' ? {} : null
     },
     inject: injectAnswer,

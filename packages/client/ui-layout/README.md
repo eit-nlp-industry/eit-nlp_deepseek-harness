@@ -111,3 +111,5 @@ These limits define the current layout behavior. They are current package constr
 None.
 
 </details>
+
+The sidebar and the space around the conversation frame share the sidebar background token, without a dividing border.

@@ -2,8 +2,18 @@
 
 import z from '@deepseek-ai/schemastery'
 
+/** Product palettes, each with a light canvas tint and readable accent. */
+export const COLOR_THEMES = {
+  warmSilver: { tint: '#f5f1eb', accent: '#6b5743' },
+  burgundy: { tint: '#f7edf0', accent: '#783545' },
+  iceBlue: { tint: '#eaf3f9', accent: '#315d75' },
+  lavender: { tint: '#f3edf9', accent: '#665385' },
+  softPink: { tint: '#faeef1', accent: '#88475c' },
+  ultramarine: { tint: '#edf0fc', accent: '#354799' },
+} as const
+
 /** Built-in preferences accepted at the registry and settings boundaries. */
-export const THEME_PREFERENCES = ['light', 'dark', 'system', 'robotDog'] as const
+export const THEME_PREFERENCES = ['light', 'dark', 'system', 'robotDog', 'warmSilver', 'burgundy', 'iceBlue', 'lavender', 'softPink', 'ultramarine'] as const
 
 /** Body attribute value selecting the robot-dog product palette in the token sheet. */
 export const ROBOT_DOG_PALETTE = 'robot-dog'

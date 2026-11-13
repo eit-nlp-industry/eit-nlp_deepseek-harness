@@ -13,6 +13,10 @@ exports[`single-slot mounting (declare + renderSlot) > folds class hashes and co
     >
       styled
     </span>
+    <span
+      data-eit-logo="lockup"
+      style="display: block; mask-image: url(#d2aba804);"
+    />
     <svg
       aria-hidden="true"
       data-content="2bfa09dc"

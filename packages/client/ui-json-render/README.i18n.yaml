@@ -3,23 +3,23 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/client/ui-json-render/README.md
 /:
-  en: 022cb8c0e6fb80ac
-  zh: eef170ea2c8514b7
+  en: 1a0c13edf0479546
+  zh: 58e67b2e3367ae58
 /deepseek-ai-dsh-client-ui-json-render:
   en: 8ef2d33806575816
   zh: 2153f1566c5d02dc
 /deepseek-ai-dsh-client-ui-json-render/summary:
-  en: a811d9e76dd67ec7
-  zh: 453ae9546810bbf8
+  en: 00e49305f2911fe8
+  zh: bb2a28b64e7cc82d
 /deepseek-ai-dsh-client-ui-json-render/table-of-contents:
   en: 4e53164159b5ce41
   zh: 1e7d2e37b6eba4ea
 /deepseek-ai-dsh-client-ui-json-render/use-this-package:
-  en: fc6242af2a7bd76d
-  zh: f19c2045011c6045
+  en: 7dd8e964aca7933f
+  zh: ba0aa6aaeaab3bb1
 /deepseek-ai-dsh-client-ui-json-render/model-experience:
-  en: bb217a5fa1847909
-  zh: 6859bd969bfe74e4
+  en: 39155e314462637d
+  zh: 1e75bb18fb091fd7
 /deepseek-ai-dsh-client-ui-json-render/model-experience/kv-cache-effect:
   en: 67349ba65ea69c70
   zh: 05d53cbfb64d8821

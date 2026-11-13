@@ -721,6 +721,10 @@ describe('single-slot mounting (declare + renderSlot)', () => {
     runtime.slots.register({ name: 'trt.panel' }, () => (
       <div className="_frame_a1b2c3 plain">
         <span className="_label_ff00aa">styled</span>
+        <span
+          data-eit-logo="lockup"
+          style={{ display: 'block', maskImage: 'url("data:image/png;base64,aaaa")' }}
+        />
         <svg viewBox="0 0 16 16" aria-hidden="true">
           <path d="M0 0L16 16" fill="currentColor" />
         </svg>
@@ -731,6 +735,7 @@ describe('single-slot mounting (declare + renderSlot)', () => {
     // The serializer works on a clone: the live DOM keeps hashes and paths.
     expect(slot.container.querySelector('div')!.className).toBe('_frame_a1b2c3 plain')
     expect(slot.container.querySelector('svg path')).not.toBeNull()
+    expect(slot.container.querySelector('[data-eit-logo]')?.getAttribute('style')).toContain('data:image/png;base64,aaaa')
     await runtime.dispose()
   })
 })

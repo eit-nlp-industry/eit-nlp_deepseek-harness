@@ -82,14 +82,13 @@ export function HeroShell({ t, renderSlot, children }: HeroShellProps) {
       <div className={css.stack}>
         <div className={css.headline}>
           <span className={css.fishHitbox}>
-            {renderSlot('conversation.hero.brand.mark', { size: 34, className: css.fish }, {
-              fallback: <EitNlpLogo variant="lockup" size={36} />,
+            {renderSlot('conversation.hero.brand.mark', { size: 44, className: css.fish }, {
+              fallback: <EitNlpLogo variant="lockup" size={44} />,
             })}
           </span>
           <span className={css.titleGroup}>
             {/* Own element: keeps the headline text addressable apart from the badge. */}
             <span>{t('hero.headline')}</span>
-            <span className={css.previewBadge}>{t('hero.preview')}</span>
           </span>
         </div>
         <div className={css.body}>
