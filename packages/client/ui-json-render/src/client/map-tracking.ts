@@ -7,6 +7,23 @@ export interface MapPositionUpdate {
   value: { x: number; y: number; status: 'idle' | 'moving' | 'arrived'; heading?: number }
 }
 
+/** Where a live map's position frames come from. */
+export type LiveMapSource = 'robot-live' | 'robot-demo'
+
+/** One map element whose position can move without rewriting the payload. */
+export interface LiveMap {
+  readonly elementId: string
+  readonly trackId: string
+  readonly source: LiveMapSource
+  /** Literal or state-resolved places, for the local campus demo. */
+  readonly places?: ReadonlyArray<{ id: string; x: number; y: number }>
+  /** Target place from the payload, for the local campus demo. */
+  readonly targetPlaceId?: string
+}
+
+/** Exact local demo track this host simulates in the browser. */
+export const CAMPUS_DEMO_TRACK_ID = 'campus-route'
+
 /** Browser transport subset used by each live map subscription. */
 export interface LocationStream {
   /** Register delivery of a named position event. */
@@ -34,16 +51,36 @@ function resolve(value: unknown, initial: unknown): unknown {
 /**
  * Resolve live tracking declarations without changing the payload.
  * @param payload - immutable message payload.
- * @returns map element identities and track ids.
+ * @returns map element identities, track ids, and local-demo route facts.
  */
-export function liveMaps(payload: JsonRenderPayload): Array<{ elementId: string; trackId: string }> {
+export function liveMaps(payload: JsonRenderPayload): LiveMap[] {
   return Object.entries(payload.spec.elements).flatMap(([elementId, element]) => {
     if (element.type !== 'MapPreview' || !record(element.props)) return []
     const tracking = resolve(element.props.tracking, payload.state?.initial)
     const position = element.props.position
     if (!record(position) || position.$state !== '/tracking/position') return []
-    if (!record(tracking) || tracking.source !== 'robot-live' || typeof tracking.trackId !== 'string' || tracking.trackId.trim() === '') return []
-    return [{ elementId, trackId: tracking.trackId }]
+    if (!record(tracking) || typeof tracking.trackId !== 'string' || tracking.trackId.trim() === '') return []
+    if (tracking.source === 'robot-live') {
+      return [{ elementId, trackId: tracking.trackId, source: 'robot-live' as const }]
+    }
+    if (tracking.source !== 'robot-demo' || tracking.trackId !== CAMPUS_DEMO_TRACK_ID) return []
+    const places = resolve(element.props.places, payload.state?.initial)
+    const demoPlaces = Array.isArray(places)
+      ? places.flatMap(place => record(place)
+        && typeof place.id === 'string'
+        && typeof place.x === 'number' && Number.isFinite(place.x)
+        && typeof place.y === 'number' && Number.isFinite(place.y)
+        ? [{ id: place.id, x: place.x, y: place.y }]
+        : [])
+      : []
+    const targetPlaceId = typeof element.props.targetPlaceId === 'string' ? element.props.targetPlaceId : undefined
+    return [{
+      elementId,
+      trackId: tracking.trackId,
+      source: 'robot-demo' as const,
+      ...demoPlaces.length > 0 ? { places: demoPlaces } : {},
+      ...targetPlaceId === undefined ? {} : { targetPlaceId },
+    }]
   })
 }
 

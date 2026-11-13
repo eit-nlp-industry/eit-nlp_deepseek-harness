@@ -6,7 +6,7 @@ Goal: when a user requests an image, the Agent selects a real server image and d
 
 ## 1. Release code
 
-After merging to master, use the existing release process to install, build, and deploy complete Host and Client artifacts, rather than retaining old lib/ after updating source. The json-render Server must support rich Image and be compatible with the current v0.2.3 packages.
+After merging to master, use the existing release process to install, build, and deploy complete Host and Client artifacts, rather than retaining old lib/ after updating source. The json-render Server must support rich Image and be compatible with the current v0.2.4 packages.
 
 Publish this guide and `scripts/prepare-json-render-media.mjs` with the code; do not deploy Git-ignored `.artifacts/` test configuration or screenshot IDs.
 
