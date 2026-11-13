@@ -54,7 +54,7 @@ function resolve(value: unknown, initial: unknown): unknown {
  * @returns map element identities, track ids, and local-demo route facts.
  */
 export function liveMaps(payload: JsonRenderPayload): LiveMap[] {
-  return Object.entries(payload.spec.elements).flatMap(([elementId, element]) => {
+  return Object.entries(payload.spec.elements).flatMap(([elementId, element]): LiveMap[] => {
     if (element.type !== 'MapPreview' || !record(element.props)) return []
     const tracking = resolve(element.props.tracking, payload.state?.initial)
     const position = element.props.position
