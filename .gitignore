@@ -93,6 +93,9 @@ dsh-data/**/llm-deepseek/
 
 # Workspace local agent state and leftover process files
 dsh-data/**/empty-workspace/.dsh/
+# Keep agent Skills under .dsh/ tracked (skills, skills-v03, skills-v031, …).
+!dsh-data/**/empty-workspace/.dsh/skills*/
+!dsh-data/**/empty-workspace/.dsh/skills*/**
 dsh-data/**/empty-workspace/.corepack/
 dsh-data/**/empty-workspace/.tmp-*/
 dsh-data/**/empty-workspace/.lc-extract/
