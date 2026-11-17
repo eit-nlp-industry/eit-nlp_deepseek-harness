@@ -24,6 +24,7 @@ export const DEFAULT_RENDER_TIMEOUT_MS = 60_000
 /** Default trigger text. Override `description` in the plugin config to change when agents call the tool. */
 export const DEFAULT_RENDER_UI_DESCRIPTION = [
   'Render a json-render interface when a card, table, steps, or form would help the user.',
+  'Forms must include a visible enabled Button with on.press action form.submit. Use the requested submit_label, otherwise 提交. Additional actions do not replace submit. Set submit_button=false only when the user explicitly requests no submit button or only other actions; otherwise omit it or set true.',
   'Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters.',
   'For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request.',
   'answer_presentation defaults to "replace" for display: the interface must fully answer the request. Use "supplement" when the written answer contains necessary explanations or caveats absent from the interface.',
@@ -105,6 +106,14 @@ export function apply(ctx: Context, config: Config): void {
         type: 'string',
         required: true,
         description: 'Layout instruction in the user language, at most 2000 characters. Put facts in business_data, not here.',
+      },
+      submit_button: {
+        type: 'boolean',
+        description: 'Form only. Defaults to true: add a missing submit button. Set false only when the user explicitly requests no submit button or only other actions.',
+      },
+      submit_label: {
+        type: 'string',
+        description: 'Form only. The submit button label requested by the user; defaults to 提交 for a host-added button.',
       },
       answer_presentation: {
         type: 'string',

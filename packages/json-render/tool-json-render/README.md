@@ -7,7 +7,7 @@ kind: "package-reference"
 
 ## Summary
 
-Register `render_ui` on the host tool layer so every agent can request a json-render layout from the v0.2.4 server. Display calls continue the turn. Display requests ask for user-relevant content; raw fields, coordinates, runtime parameters, and detail tables are shown only when the user asks for them. Component data remains available for rendering. A successful form ends the turn. Failures return text after at most three attempts and do not carry the server error body.
+Register `render_ui` on the host tool layer so every agent can request a json-render layout from the v0.2.4 server. Display calls continue the turn. Display requests ask for user-relevant content; raw fields, coordinates, runtime parameters, and detail tables are shown only when the user asks for them. Component data remains available for rendering. A successful form ends the turn. Form requests require a visible enabled submit button. After generation, the host preserves an existing reachable form.submit button or appends one with submit_label (default 提交). Set submit_button=false only when the user explicitly requests no submit action; it disables host insertion and instructs the renderer to omit the default button. These two host options are not sent as server API fields. Failures return text after at most three attempts and do not carry the server error body.
 
 ## Table of Contents
 

@@ -54,6 +54,10 @@ export interface RenderUiArgs {
   scene?: string
   locale?: string
   business_data?: unknown
+  /** Form only: false opts out of adding a missing submit button. */
+  submit_button?: boolean
+  /** Label for a submit button added by the host. */
+  submit_label?: string
 }
 
 export interface RenderRoute {
@@ -165,10 +169,60 @@ export function formRequestError(args: RenderUiArgs): string | undefined {
 /** Layout text plus a display hint, kept inside the server's 2000-character limit. */
 export function renderUserQuery(args: RenderUiArgs): string {
   const query = args.user_query.trim()
-  if (args.mode !== 'display') return query.slice(0, USER_QUERY_MAX_CHARS)
-  const room = USER_QUERY_MAX_CHARS - DISPLAY_DETAIL_HINT.length - 1
+  const hint = args.mode === 'display' ? DISPLAY_DETAIL_HINT : args.submit_button === false
+    ? '用户明确不需要默认提交按钮。请遵循用户指定的操作，不要额外添加提交按钮。'
+    : `表单必须包含一个可见且可用的提交 Button，通过 on.press 绑定 form.submit。${args.submit_label ? `提交按钮名称：${args.submit_label}。` : '用户指定按钮名称时使用该名称，否则使用“提交”。'}其他操作按钮不能代替提交按钮，除非用户明确要求不提供提交。`
+  const room = USER_QUERY_MAX_CHARS - hint.length - 1
   const head = query.length > room ? query.slice(0, room) : query
-  return `${head}\n${DISPLAY_DETAIL_HINT}`
+  return `${head}\n${hint}`.slice(0, USER_QUERY_MAX_CHARS)
+}
+
+type JsonObject = { [key: string]: JsonValue }
+
+function jsonObject(value: JsonValue | undefined): value is JsonObject {
+  return value !== undefined && value !== null && typeof value === 'object' && !Array.isArray(value)
+}
+
+function ensureFormSubmit(payload: JsonValue, args: RenderUiArgs): JsonValue {
+  if (args.mode !== 'form' || args.submit_button === false) return payload
+  if (!jsonObject(payload) || !jsonObject(payload.spec)) throw new Error('表单缺少 spec')
+  const spec = payload.spec
+  if (typeof spec.root !== 'string' || !jsonObject(spec.elements)) throw new Error('表单缺少根节点或元素表')
+  const elements = spec.elements
+  const visited = new Set<string>()
+  const visit = (key: string): boolean => {
+    if (visited.has(key)) return false
+    visited.add(key)
+    const element = elements[key]
+    if (!jsonObject(element)) throw new Error('表单引用了不存在的元素')
+    if (element.visible === false) return false
+    const props = jsonObject(element.props) ? element.props : {}
+    const on = jsonObject(element.on) ? element.on : {}
+    const press = jsonObject(on.press) ? on.press : {}
+    const params = jsonObject(press.params) ? press.params : {}
+    if (element.type === 'Button' && props.disabled !== true
+      && ((press.action === 'form.submit' && (params.eventName === undefined || params.eventName === 'form.submit'))
+        || (press.action === 'emit.event' && params.name === 'form.submit'))) return true
+    if (element.children === undefined) return false
+    if (!Array.isArray(element.children)) throw new Error('表单子节点必须是列表')
+    return element.children.some((child) => {
+      if (typeof child !== 'string') throw new Error('表单子节点引用必须是字符串')
+      return visit(child)
+    })
+  }
+  if (visit(spec.root)) return payload
+  const allocate = (name: string): string => {
+    let key = name
+    for (let index = 1; Object.hasOwn(elements, key); index++) key = `${name}-${index}`
+    return key
+  }
+  const button = allocate('host-form-submit')
+  const root = allocate('host-form-root')
+  return { ...payload, spec: { ...spec, root, elements: {
+    ...elements,
+    [button]: { type: 'Button', props: { label: args.submit_label?.trim() || '提交' }, on: { press: { action: 'form.submit' } } },
+    [root]: { type: 'Stack', props: { direction: 'vertical', gap: 'md' }, children: [spec.root, button] },
+  } } }
 }
 
 function successMessage(mode: RenderUiMode): string {
@@ -435,7 +489,7 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
         ...requestRecord(route),
         ...reported !== undefined ? { diagnostics: { profile: reported } } : {},
       })
-      return { ok: true, mode: args.mode, message: successMessage(args.mode), payload: json }
+      return { ok: true, mode: args.mode, message: successMessage(args.mode), payload: ensureFormSubmit(json, args) }
     } catch (error) {
       if (callAborted(options.signal)) return { ok: false, mode: args.mode, message: '界面生成已取消。请用文字继续回答。' }
       last = error instanceof Error ? clip(error.message) : '界面生成失败'

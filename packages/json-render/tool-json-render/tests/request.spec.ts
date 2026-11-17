@@ -30,6 +30,58 @@ function jsonResponse(status: number, body: unknown): Response {
 }
 
 describe('requestJsonRender', () => {
+  it.each([
+    ['missing', {}, true],
+    ['existing', { action: 'form.submit' }, false],
+    ['named event', { action: 'emit.event', params: { name: 'form.submit' } }, false],
+    ['other action', { action: 'form.cancel' }, true],
+  ] as const)('handles a %s submit action without dropping the original form', async (_name, press, added) => {
+    const original = { format: 'json-render-v1', spec: { root: 'form', elements: {
+      form: { type: 'Stack', children: ['fields', 'action'] },
+      fields: { type: 'DynamicForm', props: { fields: [] } },
+      action: { type: 'Button', props: { label: '操作' }, on: { press } },
+    } } }
+    const result = await requestJsonRender({
+      baseUrl: 'http://localhost', timeoutMs: 1000,
+      args: { mode: 'form', intent: 'generic_filters', user_query: '生成表单', business_data: { fields: [] }, submit_label: '提交预约' },
+      signal: new AbortController().signal, fetchImpl: async () => jsonResponse(200, original),
+    })
+    expect(result.ok).toBe(true)
+    if (!result.ok) throw new Error(result.message)
+    expect(result.payload).toMatchObject({ spec: { elements: original.spec.elements } })
+    if (added) expect(result.payload).toMatchObject({ spec: { root: 'host-form-root', elements: {
+      'host-form-submit': { type: 'Button', props: { label: '提交预约' }, on: { press: { action: 'form.submit' } } },
+      'host-form-root': { children: ['form', 'host-form-submit'] },
+    } } })
+    else expect(result.payload).toEqual(original)
+  })
+
+  it('honors an explicit submit opt-out and keeps it out of server wire fields', async () => {
+    const fetchImpl = vi.fn<typeof fetch>(async () => jsonResponse(200, payload))
+    const args = { mode: 'form' as const, intent: 'generic_filters', user_query: '只保留取消按钮', business_data: { fields: [] }, submit_button: false }
+    const result = await requestJsonRender({ baseUrl: 'http://localhost', timeoutMs: 1000, args,
+      signal: new AbortController().signal, fetchImpl })
+    expect(result).toMatchObject({ ok: true, payload })
+    expect(renderUserQuery(args)).toContain('不要额外添加提交按钮')
+    expect(requestText(fetchImpl.mock.calls[0]?.[1]?.body)).not.toContain('"submit_button"')
+  })
+
+  it('ignores unreachable and disabled submit buttons and avoids element key collisions', async () => {
+    const result = await requestJsonRender({ baseUrl: 'http://localhost', timeoutMs: 1000,
+      args: { mode: 'form', intent: 'generic_filters', user_query: '填写', business_data: { fields: [] } },
+      signal: new AbortController().signal,
+      fetchImpl: async () => jsonResponse(200, { format: 'json-render-v1', spec: { root: 'form', elements: {
+        form: { type: 'Stack', children: ['disabled'] },
+        disabled: { type: 'Button', props: { disabled: true }, on: { press: { action: 'form.submit' } } },
+        'host-form-submit': { type: 'Button', on: { press: { action: 'form.submit' } } },
+        'host-form-root': { type: 'Text', props: { text: '保留' } },
+      } } }),
+    })
+    expect(result).toMatchObject({ ok: true, payload: { spec: { root: 'host-form-root-1', elements: {
+      'host-form-submit-1': { props: { label: '提交' } }, 'host-form-root': { props: { text: '保留' } },
+    } } } })
+  })
+
   it('selects the rich catalog for Workflow without an explicit intent', () => {
     const route = selectRenderRoute({
       mode: 'display', user_query: '编辑取材料流程', components: ['Workflow'],
