@@ -42,17 +42,30 @@ function body(decision: JsonRenderSubmitDecision): { intro: string; data: Record
 }
 
 describe('json-render confirmation messages', () => {
-  it('keeps form.submit on the existing user message and ignores the event type', () => {
+  it('formats form values as readable user text and ignores the event type', () => {
     expect(formValues(event('form.submit'))).toEqual({})
     expect(formValues(event('form.submit', { city: '杭州' }))).toEqual({ city: '杭州' })
     const decision = decideJsonRenderSubmit(event('form.submit', { form: { document: 'kb-deploy' } }, 'submit'), {
       payload: payload({}),
     })
     expect(decision).toMatchObject({ action: 'send', releaseOnSuccess: false })
-    expect(body(decision)).toEqual({
-      intro: '用户提交了 json-render 表单，请根据这些值继续，不要再次弹出同一张表：',
-      data: { document: 'kb-deploy' },
+    expect(decision.action === 'send' && decision.text).toBe('用户已提交表单：\ndocument：kb-deploy')
+  })
+
+  it('uses the form title and labels and retains empty, nested, and false values', () => {
+    const source = payload({
+      main: { type: 'Card', props: { title: '参观预约' }, children: ['fields', 'field'] },
+      fields: { type: 'DynamicForm', props: { fields: [{ key: 'date', label: '参观日期' }, { key: 'name', label: '姓名' }] } },
+      field: { type: 'FormField', props: { label: '人数' }, children: ['people'] },
+      people: { type: 'InputNumber', props: { fieldKey: 'people' } },
     })
+    const decision = decideJsonRenderSubmit(event('form.submit', { form: {
+      date: '2026-11-21', name: '', people: 0, confirmed: false, options: ['下午'], extra: { note: '请勿安排图书馆' },
+    } }), { payload: source })
+    expect(decision.action === 'send' && decision.text).toBe([
+      '用户已提交参观预约：', '参观日期：2026-11-21', '姓名：未填写', '人数：0', 'confirmed：否',
+      'options：', '  第 1 项：下午', 'extra：', '  note：请勿安排图书馆',
+    ].join('\n'))
   })
 
   it('sends the edited workflow from the event instead of the initial document', () => {

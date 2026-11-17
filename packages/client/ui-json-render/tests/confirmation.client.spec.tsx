@@ -187,7 +187,7 @@ it('keeps a successful form submit one-shot and unchanged', async () => {
   fireEvent.click(screen.getByRole('button', { name: '确认选择' }))
   expect(screen.queryByText('正在提交')).toBeNull()
   expect(submitForm).toHaveBeenCalledOnce()
-  expect(submitForm.mock.calls[0]![0].startsWith('用户提交了 json-render 表单，请根据这些值继续，不要再次弹出同一张表：')).toBe(true)
+  expect(submitForm.mock.calls[0]![0].startsWith('用户已提交表单：')).toBe(true)
   fireEvent.click(screen.getByRole('button', { name: '确认选择' }))
   expect(submitForm).toHaveBeenCalledOnce()
   release?.()

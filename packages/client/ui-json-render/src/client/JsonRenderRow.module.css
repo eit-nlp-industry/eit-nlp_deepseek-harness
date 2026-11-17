@@ -245,6 +245,68 @@
   padding-inline: 0;
 }
 
+/* Image dimensions do not determine the size of the inline preview. */
+.panel :global(.eit-jr-image) {
+  width: 100%;
+  max-width: 640px;
+}
+
+.panel :global(.eit-jr-image__button),
+.panel :global(.eit-jr-image__fallback) {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.panel :global(.eit-jr-image__button > img) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain !important;
+  aspect-ratio: auto !important;
+}
+
+.panel :global(.eit-jr-preview > button) {
+  position: relative;
+  display: block;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dsw-radius-sm);
+  background: transparent;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 0;
+}
+
+/* Match the shared close-outline regular icon; retain the button's text name. */
+.panel :global(.eit-jr-preview > button)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1'%3E%3Cpath d='M2.5 2.5L13.5 13.5M13.5 2.5L2.5 13.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.panel :global(.eit-jr-preview > button:hover) {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.panel :global(.eit-jr-preview > button:focus-visible) {
+  outline: var(--dsw-focus-ring-width, 1.5px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));
+  outline-offset: 2px;
+}
+
 /* The tab already groups its immediate content; inner detail cards retain frames. */
 .panel :global(.eit-jr-tab-pane > .eit-jr-card),
 .panel :global(.eit-jr-tab-pane > .eit-jr-section--bordered) {

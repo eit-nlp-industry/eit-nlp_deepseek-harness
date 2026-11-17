@@ -43,6 +43,11 @@ describe('themed json-render forms', () => {
     expect(getComputedStyle(container.firstElementChild!).paddingTop).toBe('0px')
     expect(getComputedStyle(preview).borderTopWidth).toBe('0px')
     expect(getComputedStyle(preview.querySelector('.ant-card-body')!).paddingInline).toBe('0px')
+    const image = screen.getByRole('img', { name: '样例图' })
+    expect(getComputedStyle(image.closest('.eit-jr-image')!).maxWidth).toBe('640px')
+    expect(getComputedStyle(image.parentElement!).aspectRatio).toBe('16 / 9')
+    expect(getComputedStyle(image).objectFit).toBe('contain')
+    expect(getComputedStyle(image).height).toBe('100%')
     const metadata = screen.getByText('文件信息').closest('.eit-jr-card')!
     expect(getComputedStyle(metadata.querySelector('.ant-card-body')!).paddingLeft).toBe('16px')
   })
@@ -109,7 +114,7 @@ describe('themed json-render forms', () => {
     fireEvent.click(screen.getByRole('button', { name: '确认选择' }))
 
     await waitFor(() => { expect(submitForm).toHaveBeenCalledOnce() })
-    expect(submitForm.mock.calls[0]![0]).toContain('"document":"kb-deploy"')
+    expect(submitForm.mock.calls[0]![0]).toContain('选择文档：kb-deploy')
     expect(await screen.findByText('已提交，等待继续回答')).toBeTruthy()
   }, 20_000)
 })

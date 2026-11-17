@@ -138,7 +138,7 @@ export function apply(ctx: Context, config: Config): void {
       },
       business_data: {
         type: 'json',
-        description: 'Structured facts the card must show. Required for display and form. Include every item, step description, comparison field, number, citation, and warning. Do not send only a title.',
+        description: 'Structured facts and component data available to the interface. Required for display and form. Include the complete answer and data the components need. Show user-relevant facts; only show raw fields and technical details when the user requests them.',
       },
     },
     output: {

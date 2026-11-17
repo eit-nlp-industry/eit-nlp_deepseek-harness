@@ -52,7 +52,7 @@ describe('requestJsonRender', () => {
     expect(fetchImpl).toHaveBeenCalledTimes(1)
     const init = fetchImpl.mock.calls[0]?.[1]
     expect(requestText(init?.body)).toContain('"format":"json-render-v1"')
-    expect(requestText(init?.body)).toContain('请逐项展示 business_data')
+    expect(requestText(init?.body)).toContain('不要默认附加数据明细')
     expect(requestText(init?.body)).not.toContain('"intent"')
   })
 
@@ -384,7 +384,7 @@ describe('requestJsonRender', () => {
     const query = '项'.repeat(2000)
     const displayQuery = renderUserQuery({ mode: 'display', user_query: query, business_data: { name: 'A' } })
     expect(displayQuery.length).toBeLessThanOrEqual(2000)
-    expect(displayQuery).toContain('请逐项展示 business_data')
+    expect(displayQuery).toContain('不要默认附加数据明细')
     expect(renderUserQuery({ mode: 'form', user_query: query, business_data: { models: ['A'] } })).toHaveLength(2000)
 
     const sent = vi.fn<typeof fetch>(async () => jsonResponse(200, payload))

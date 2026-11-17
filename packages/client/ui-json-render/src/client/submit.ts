@@ -5,7 +5,6 @@
  */
 import type { JsonRenderEvent, JsonRenderPayload } from '@eit/json-render-protocol'
 
-const FORM_INTRO = '用户提交了 json-render 表单，请根据这些值继续，不要再次弹出同一张表：'
 const WORKFLOW_INTRO = '我确认提交以下编辑后的流程。请在下一条回复实际调用 render_ui，用 mode="display"、components=["Workflow"]、intent="rich_content" 和 answer_presentation="replace" 生成更新后的可编辑流程卡片。根据下文还原 workflow-v1 文档，保留流程 ID、步骤顺序、分支、说明和参数。把文档放入 business_data.workflow。将其初始化到 /_ui/workflow，Workflow 使用可编辑模式并通过 $bindState 绑定该路径。保留「保存流程」按钮，点击时发出 workflow.save，payload.workflow 从 /_ui/workflow 读取最新值，payload.parameters 使用下方参数。使用一个 Stack，只放 Workflow 和「保存流程」按钮。流程名称显示在编辑器内。'
 const ORDER_INTRO = '用户提交了 json-render 排序，请根据这些数据继续：'
 
@@ -76,7 +75,7 @@ export function businessDataFromToolArguments(raw: unknown): unknown {
 export function decideJsonRenderSubmit(event: JsonRenderEvent, sources: JsonRenderSubmitSources): JsonRenderSubmitDecision {
   const name = event.event.name
   if (name === 'form.submit') {
-    return { action: 'send', releaseOnSuccess: false, text: userBody(FORM_INTRO, formValues(event)) }
+    return { action: 'send', releaseOnSuccess: false, text: describeForm(formValues(event), sources.payload) }
   }
   if (name === 'workflow.save') return workflowDecision(event.payload)
   if (name === 'route.order.apply') return orderDecision(event.payload, sources)
@@ -107,6 +106,49 @@ function orderDecision(payload: JsonRenderEvent['payload'], sources: JsonRenderS
 
 function userBody(intro: string, data: unknown): string {
   return `${intro}\n${JSON.stringify(data)}`
+}
+
+function describeForm(value: unknown, payload: JsonRenderPayload): string {
+  const labels = new Map<string, string>()
+  for (const element of Object.values(payload.spec.elements)) {
+    const props = element.props
+    if (!isRecord(props)) continue
+    if (element.type === 'DynamicForm' && Array.isArray(props.fields)) {
+      for (const field of props.fields) {
+        if (isRecord(field) && typeof field.key === 'string' && typeof field.label === 'string') {
+          labels.set(field.key, field.label)
+        }
+      }
+    }
+    if (typeof props.fieldKey === 'string' && typeof props.label === 'string') labels.set(props.fieldKey, props.label)
+    if (element.type === 'FormField' && typeof props.label === 'string') {
+      for (const child of element.children ?? []) {
+        const childProps = payload.spec.elements[child]?.props
+        if (isRecord(childProps) && typeof childProps.fieldKey === 'string') labels.set(childProps.fieldKey, props.label)
+      }
+    }
+  }
+  const root = payload.spec.elements[payload.spec.root]?.props
+  const title = isRecord(root) && typeof root.title === 'string' && root.title.trim() !== '' ? root.title : '表单'
+  const lines = [`用户已提交${title}：`]
+  const describe = (item: unknown, label: string, indent: string): string[] => {
+    if (Array.isArray(item)) {
+      return item.length === 0 ? [`${indent}${label}：无选项`]
+        : [`${indent}${label}：`, ...item.flatMap((entry, index) => describe(entry, `第 ${index + 1} 项`, `${indent}  `))]
+    }
+    if (isRecord(item)) {
+      const entries = Object.entries(item)
+      return entries.length === 0 ? [`${indent}${label}：无内容`]
+        : [`${indent}${label}：`, ...entries.flatMap(([key, entry]) => describe(entry, key, `${indent}  `))]
+    }
+    const text = item === '' || item === undefined ? '未填写' : item === null ? '空值'
+      : typeof item === 'boolean' ? (item ? '是' : '否') : String(item)
+    return [`${indent}${label}：${text}`]
+  }
+  if (isRecord(value) && Object.keys(value).length > 0) {
+    for (const [key, item] of Object.entries(value)) lines.push(...describe(item, labels.get(key) || key, ''))
+  } else lines.push(...describe(value, '填写内容', ''))
+  return lines.join('\n')
 }
 
 function describeParameter(label: string, value: unknown, indent = ''): string[] {

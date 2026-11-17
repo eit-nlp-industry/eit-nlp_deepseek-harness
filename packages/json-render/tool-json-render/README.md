@@ -7,7 +7,7 @@ kind: "package-reference"
 
 ## Summary
 
-Register `render_ui` on the host tool layer so every agent can request a json-render layout from the v0.2.4 server. Display calls continue the turn. A successful form ends the turn. Failures return text after at most three attempts and do not carry the server error body.
+Register `render_ui` on the host tool layer so every agent can request a json-render layout from the v0.2.4 server. Display calls continue the turn. Display requests ask for user-relevant content; raw fields, coordinates, runtime parameters, and detail tables are shown only when the user asks for them. Component data remains available for rendering. A successful form ends the turn. Failures return text after at most three attempts and do not carry the server error body.
 
 ## Table of Contents
 

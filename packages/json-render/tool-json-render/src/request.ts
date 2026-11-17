@@ -123,7 +123,7 @@ export function hasBusinessData(value: unknown): boolean {
 
 const USER_QUERY_MAX_CHARS = 2000
 
-const DISPLAY_DETAIL_HINT = '请逐项展示 business_data，保留步骤说明、对比字段、数值和出处，不要收成一句摘要。'
+const DISPLAY_DETAIL_HINT = '只展示回答用户问题所需的内容；不要默认附加数据明细、原始字段、坐标或运行参数表，除非用户明确要求。组件仍可使用这些数据完成渲染。'
 
 /**
  * Choose the catalog from the business entry and explicit component names.
