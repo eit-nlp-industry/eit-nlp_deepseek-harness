@@ -5,11 +5,40 @@ import type { ConversationContextReader, ConversationMatch, ConversationNodeCont
 import { SessionId, SessionSeq, type SessionEvent } from '@deepseek-ai/dsh-session/types'
 import type { JsonRenderEvent, JsonRenderPayload } from '@eit/json-render-protocol'
 import { formValues, JsonRenderCard, jsonRenderPopupContainer } from '../src/client/JsonRenderCard.tsx'
-import { JsonRenderReplacement } from '../src/client/JsonRenderAnswer.tsx'
+import { JsonRenderAnswer, JsonRenderReplacement } from '../src/client/JsonRenderAnswer.tsx'
 import { jsonRenderAnswerDefinition, answerPresentationFromMeta, profileFromMeta, selectJsonRenderAnswer, type JsonRenderAnswerData } from '../src/client/answer.ts'
 import { payloadFromMeta } from '../src/client/payload.ts'
 
-afterEach(() => { cleanup(); vi.restoreAllMocks() })
+afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
+
+it('retains edits in the first form when a second result is appended', () => {
+  vi.stubGlobal('matchMedia', (query: string) => ({
+    matches: false, media: query, onchange: null,
+    addListener: () => {}, removeListener: () => {},
+    addEventListener: () => {}, removeEventListener: () => {}, dispatchEvent: () => false,
+  }))
+  const first: JsonRenderAnswerData = { callId: 'first', seq: 1, answerPresentation: 'supplement', payload: {
+    format: 'json-render-v1', spec: { root: 'form', elements: {
+      form: { type: 'DynamicForm', props: { fields: [{ key: 'name', label: '姓名', type: 'input' }] } },
+    } },
+  } }
+  const second: JsonRenderAnswerData = { callId: 'second', seq: 2, answerPresentation: 'supplement', payload: {
+    format: 'json-render-v1', spec: { root: 'text', elements: { text: { type: 'Card', props: { title: '第二张卡片' } } } },
+  } }
+  const values: Partial<ConversationTurnDataMap> = { 'json-render-answer': [first] }
+  const turn: TurnLocation = { ...turnOf(undefined, undefined), data: {
+    get: key => values[key], source: key => ({ getSnapshot: () => values[key], subscribe: () => () => {} }),
+  } }
+  const props = { ...answerSeats, turn, seq: 2, sessionId: SessionId('forms'), canReplaceAnswer: false, submitForm: vi.fn(), openFile: () => {} }
+  const view = render(<JsonRenderAnswer {...props} />)
+  const input = screen.getByRole('textbox')
+  fireEvent.change(input, { target: { value: '张三' } })
+  values['json-render-answer'] = [first, second]
+  view.rerender(<JsonRenderAnswer {...props} />)
+  expect(screen.getByRole('textbox')).toBe(input)
+  expect((input as HTMLInputElement).value).toBe('张三')
+  expect(screen.getByText('第二张卡片')).toBeTruthy()
+})
 
 function submitEvent(payload?: JsonRenderEvent['payload']): JsonRenderEvent {
   return {
@@ -60,7 +89,7 @@ const answerSeats = {
 }
 
 function turnOf(card: JsonRenderAnswerData | undefined, endSeq: number | undefined): TurnLocation {
-  const values: Partial<ConversationTurnDataMap> = card === undefined ? {} : { 'json-render-answer': card }
+  const values: Partial<ConversationTurnDataMap> = card === undefined ? {} : { 'json-render-answer': [card] }
   return {
     turn: 1,
     start: undefined,
@@ -231,23 +260,23 @@ describe('json-render answer presentation', () => {
       id: '1',
       matches: [],
       start: undefined,
-      state: { turn: 1, calls: new Map(), card },
+      state: { turn: 1, calls: new Map(), cards: [card] },
       current: new Map(),
     }
     expect(build(context, 'step', null)).toBeNull()
     expect(build({ ...context, state: undefined }, 'turn', null)).toBeNull()
-    expect(build({ ...context, state: { ...context.state, card: undefined } }, 'turn', null)).toBeNull()
+    expect(build({ ...context, state: { ...context.state, cards: [] } }, 'turn', null)).toBeNull()
     const published = build(context, 'turn', null)
-    expect(published).toMatchObject({ key: 'json-render-answer', value: card })
+    expect(published).toMatchObject({ key: 'json-render-answer', value: [card] })
     expect(build(context, 'turn', published)).toBe(published)
     const changed = build(context, 'turn', {
       kind: 'turn',
       turn: 1,
       key: 'json-render-answer',
-      value: { ...card, profile: 'base' },
+      value: [{ ...card, profile: 'base' }],
     })
     expect(changed).not.toBe(published)
-    expect(changed).toMatchObject({ value: card })
+    expect(changed).toMatchObject({ value: [card] })
   })
 
   it('hides a card that arrives after the turn ends and restores prose when no card exists', () => {
@@ -261,7 +290,7 @@ describe('json-render answer presentation', () => {
     const open = selectJsonRenderAnswer({ turn: turnOf(card, undefined), seq: 9 })
     expect(open?.callId).toBe('c')
 
-    const state = { turn: 1, calls: new Map(), card: undefined }
+    const state = { turn: 1, calls: new Map(), cards: [] }
     const context = {
       key: '1', kind: 'json-render-answer', id: '1', matches: [], start: undefined, state, current: new Map(),
     }
@@ -360,12 +389,12 @@ describe('json-render answer presentation', () => {
       turn: 1, step: 1, meta: { payload: cardPayload },
       message: { source: { callId: 'other' }, content: [], isError: false },
     }, 4))
-    expect(state.card).toBeUndefined()
+    expect(state.cards).toEqual([])
     state = jsonRenderAnswerDefinition.update({ ...context, state }, match('tool/result', {
       turn: 1, step: 1, meta: { payload: cardPayload },
       message: { source: { callId: 'render-1' }, content: [], isError: false },
     }, 5))
-    expect(state.card?.businessData).toBeUndefined()
+    expect(state.cards.at(-1)?.businessData).toBeUndefined()
     state = jsonRenderAnswerDefinition.update({ ...context, state }, match('tool/call', {
       turn: 1, step: 1, callId: 'render-2', name: 'render_ui',
       arguments: JSON.stringify({ business_data: { items: [{ id: 'a', title: '甲' }] } }),
@@ -374,9 +403,22 @@ describe('json-render answer presentation', () => {
       turn: 1, step: 1, meta: { payload: cardPayload },
       message: { source: { callId: 'render-2' }, content: [], isError: false },
     }, 7))
-    expect(state.card?.businessData).toEqual({ items: [{ id: 'a', title: '甲' }] })
+    expect(state.cards.at(-1)?.businessData).toEqual({ items: [{ id: 'a', title: '甲' }] })
+    expect(state.cards.map(card => card.callId)).toEqual(['render-1', 'render-2'])
+    state = jsonRenderAnswerDefinition.update({ ...context, state }, match('tool/result', {
+      turn: 1, step: 1, meta: { payload: cardPayload },
+      message: { source: { callId: 'render-1' }, content: [], isError: false },
+    }, 8))
+    expect(state.cards.map(card => card.callId)).toEqual(['render-1', 'render-2'])
+    expect(state.cards[0]?.seq).toBe(8)
+    const beforeFailure = state
+    state = jsonRenderAnswerDefinition.update({ ...context, state }, match('tool/result', {
+      turn: 1, step: 1, meta: null,
+      message: { source: { callId: 'render-2' }, content: [], isError: true },
+    }, 9))
+    expect(state).toBe(beforeFailure)
     const published = jsonRenderAnswerDefinition.buildLocationData?.({ ...context, state }, 'turn', null)
-    expect(published?.key === 'json-render-answer' ? published.value.businessData : undefined).toEqual({ items: [{ id: 'a', title: '甲' }] })
+    expect(published?.key === 'json-render-answer' ? published.value.at(-1)?.businessData : undefined).toEqual({ items: [{ id: 'a', title: '甲' }] })
     expect(jsonRenderAnswerDefinition.buildLocationData?.({ ...context, state }, 'turn', published ?? null)).toBe(published)
   })
 })

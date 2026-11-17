@@ -1,6 +1,6 @@
 /**
- * Browser half: keep `render_ui` as a short tool status and render its latest
- * successful result as an answer replacement or supplementary card.
+ * Browser half: retain successful `render_ui` results below the answer.
+ * A sole result may replace closing prose.
  */
 import type { Context as ClientContext } from '@deepseek-ai/cordis'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'

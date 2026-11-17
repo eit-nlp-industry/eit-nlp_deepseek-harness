@@ -1,7 +1,7 @@
 import type { PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import { MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import { JsonRenderCard } from './JsonRenderCard.tsx'
-import { selectJsonRenderAnswer } from './answer.ts'
+import { selectJsonRenderAnswer, selectJsonRenderAnswers } from './answer.ts'
 import { liveMaps } from './map-tracking.ts'
 
 export interface JsonRenderAnswerInjected {
@@ -11,21 +11,20 @@ export interface JsonRenderAnswerInjected {
 /**
  * Supplementary card under the closing answer.
  * @param props - turn identity, replacement eligibility, and form submission callback.
- * @returns the latest card, or null when absent or rendered by the answer slot.
+ * @returns retained cards, excluding a sole card rendered by the answer slot.
  */
 export function JsonRenderAnswer(props: PropsRuntime<'conversation.chat.turnTail'> & JsonRenderAnswerInjected) {
-  const card = selectJsonRenderAnswer(props)
-  if (card === null) return null
-  if (card.answerPresentation === 'replace' && props.canReplaceAnswer === true && liveMaps(card.payload).length === 0) return null
-  return (
-    <JsonRenderCard
+  const cards = selectJsonRenderAnswers(props)
+  return <>{cards.map((card) => {
+    if (cards.length === 1 && card.answerPresentation === 'replace' && props.canReplaceAnswer === true && liveMaps(card.payload).length === 0) return null
+    return <JsonRenderCard key={card.callId}
       payload={card.payload}
       instanceId={`${props.sessionId}:${card.callId}`}
       profile={card.profile}
       businessData={card.businessData}
       submitForm={text => props.submitForm(props.sessionId, text)}
     />
-  )
+  })}</>
 }
 
 /**

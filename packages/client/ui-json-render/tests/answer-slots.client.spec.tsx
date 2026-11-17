@@ -25,7 +25,7 @@ function event(seq: number, type: string, data: unknown): SessionEventLikeEntry 
   return { type: 'event', event: { seq, time: seq, type, data, surfaceOp: 'append' } as SessionEvent }
 }
 
-async function fixture(meta: unknown, isError = false, laterError = false) {
+async function fixture(meta: unknown, isError = false, laterError = false, laterMeta?: unknown) {
   const runtime = await SlotTestRuntime.create()
   onTestFinished(() => runtime.dispose())
   const conversation = new UiConversation(runtime.ctx, runtime.ctx.sessions)
@@ -56,13 +56,13 @@ async function fixture(meta: unknown, isError = false, laterError = false) {
     event(3, 'tool/call', { turn: 1, step: 1, callId: 'render-1', name: 'render_ui', arguments: '{}' }),
     event(4, 'tool/result', { turn: 1, step: 1, meta,
       message: { source: { callId: 'render-1' }, content: [], isError } }),
-    ...laterError ? [
+    ...laterError || laterMeta !== undefined ? [
       event(5, 'tool/call', { turn: 1, step: 1, callId: 'render-2', name: 'render_ui', arguments: '{}' }),
-      event(6, 'tool/result', { turn: 1, step: 1,
-        message: { source: { callId: 'render-2' }, content: [], isError: true } }),
+      event(6, 'tool/result', { turn: 1, step: 1, meta: laterMeta,
+        message: { source: { callId: 'render-2' }, content: [], isError: laterError } }),
     ] : [],
-    event(laterError ? 7 : 5, 'step/end', { turn: 1, step: 1 }),
-    event(laterError ? 8 : 6, 'turn/end', { turn: 1, reason: { kind: 'completed' } }),
+    event(laterError || laterMeta !== undefined ? 7 : 5, 'step/end', { turn: 1, step: 1 }),
+    event(laterError || laterMeta !== undefined ? 8 : 6, 'turn/end', { turn: 1, reason: { kind: 'completed' } }),
   ]
   assembler.replaceWindow(entries, false)
   assembler.activateTarget('answer-test')
@@ -109,10 +109,20 @@ describe('answer slots over replayed tool events', () => {
     expect(screen.getByText('保留的最终文字')).toBeTruthy()
   })
 
-  it('does not hide prose behind an earlier success when a later render fails', async () => {
+  it('retains an earlier successful card when a later render fails', async () => {
     await fixture({ payload, answerPresentation: 'replace' }, false, true)
+    expect(screen.getAllByText('完整的展示答案')).toHaveLength(1)
+  })
+
+  it('shows all successful calls once under the prose even when they request replacement', async () => {
+    const second = { ...payload, spec: { root: 'card', elements: {
+      card: { type: 'Card', props: { title: '第二次渲染结果' } },
+    } } }
+    await fixture({ payload, answerPresentation: 'replace' }, false, false, { payload: second, answerPresentation: 'replace' })
     expect(screen.getByText('保留的最终文字')).toBeTruthy()
-    expect(screen.queryByText('完整的展示答案')).toBeNull()
+    expect(screen.getAllByText('完整的展示答案')).toHaveLength(1)
+    expect(screen.getAllByText('第二次渲染结果')).toHaveLength(1)
+    expect(screen.getByText('完整的展示答案').compareDocumentPosition(screen.getByText('第二次渲染结果')) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
   })
 
   it('submits through the open session and surfaces a closed session or a rejected prompt', async () => {
