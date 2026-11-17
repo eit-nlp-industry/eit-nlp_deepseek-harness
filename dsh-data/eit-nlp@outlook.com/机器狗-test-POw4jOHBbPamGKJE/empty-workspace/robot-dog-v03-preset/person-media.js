@@ -1,13 +1,11 @@
-// Publish a saved person photo into the json-render media catalog.
+// Publish a saved person photo into the shared json-render media catalog.
 //
-// Recognition shows the person's stored picture with render_ui, whose Image
-// component can only load assets listed in the media root's index.json. This
-// tool copies the record's JPG next to that catalog, appends an entry, and
-// returns the asset id. It never writes to the person store itself.
+// Copies the record JPG into the preset target directory, then registers a
+// path relative to catalogRoot (the host mediaRoot) so render_ui can load it.
 
 import { randomUUID } from 'node:crypto'
 import { mkdir, readFile, readdir, rename, writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { join, relative, resolve } from 'node:path'
 
 export const name = 'person-media'
 export const inject = ['tools']
@@ -15,8 +13,9 @@ export const inject = ['tools']
 export function apply(ctx, config = {}) {
   const personStoreDir = typeof config.personStoreDir === 'string' ? config.personStoreDir.trim() : ''
   const targetDir = typeof config.targetDir === 'string' ? config.targetDir.trim() : ''
-  if (personStoreDir === '' || targetDir === '') {
-    throw new Error('person-media: personStoreDir and targetDir are required')
+  const catalogRoot = typeof config.catalogRoot === 'string' ? config.catalogRoot.trim() : ''
+  if (personStoreDir === '' || targetDir === '' || catalogRoot === '') {
+    throw new Error('person-media: personStoreDir, targetDir, and catalogRoot are required')
   }
 
   // One writer at a time so two publishes cannot lose each other's catalog entry.
@@ -64,11 +63,17 @@ export function apply(ctx, config = {}) {
       }
       const jpeg = await readFile(record.jpegPath)
       const id = `person-${randomUUID().slice(0, 8)}`
-      const file = `${id}.jpg`
+      const fileName = `${id}.jpg`
       await mkdir(targetDir, { recursive: true })
-      await writeFile(join(targetDir, file), jpeg)
+      const absolute = join(targetDir, fileName)
+      await writeFile(absolute, jpeg)
 
-      const indexPath = join(targetDir, 'index.json')
+      const file = relative(catalogRoot, resolve(absolute)).split('\\').join('/')
+      if (file === '' || file.startsWith('..')) {
+        throw new Error('person-media: published file is outside catalogRoot')
+      }
+
+      const indexPath = join(catalogRoot, 'index.json')
       let catalog = { assets: [] }
       try {
         const parsed = JSON.parse(await readFile(indexPath, 'utf8'))
@@ -77,9 +82,13 @@ export function apply(ctx, config = {}) {
         // A missing or malformed catalog starts a fresh one.
       }
       if (!catalog.assets.some(asset => asset !== null && typeof asset === 'object' && asset.id === id)) {
-        catalog.assets.push({ id, file, alt: typeof record.meta.name === 'string' && record.meta.name !== '' ? record.meta.name : '已登记人物' })
+        catalog.assets.push({
+          id,
+          file,
+          alt: typeof record.meta.name === 'string' && record.meta.name !== '' ? record.meta.name : '已登记人物',
+        })
         const temporary = `${indexPath}.${process.pid}.tmp`
-        await writeFile(temporary, JSON.stringify(catalog, null, 2))
+        await writeFile(temporary, JSON.stringify(catalog, null, 2) + '\n')
         await rename(temporary, indexPath)
       }
       return {
@@ -87,7 +96,7 @@ export function apply(ctx, config = {}) {
         asset_id: id,
         person_id: personId,
         name: typeof record.meta.name === 'string' ? record.meta.name : undefined,
-        path: join(targetDir, file),
+        path: absolute,
       }
     }
     queue = queue.then(run, run)

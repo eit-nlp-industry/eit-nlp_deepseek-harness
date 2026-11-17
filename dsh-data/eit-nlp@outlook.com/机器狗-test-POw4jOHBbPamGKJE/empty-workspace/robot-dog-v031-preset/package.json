@@ -7,7 +7,10 @@
     "./observation-tools.js": "./observation-tools.js",
     "./annotate-media.js": "./annotate-media.js",
     "./booking-mock.js": "./booking-mock.js",
-    "./person-media.js": "./person-media.js"
+    "./phone-location-mock.js": "./phone-location-mock.js",
+    "./motion-track-mock.js": "./motion-track-mock.js",
+    "./location-mock.js": "./location-mock.js",
+    "./speech-mock.js": "./speech-mock.js"
   },
   "dsh": {
     "bundle": {
@@ -19,6 +22,9 @@
     "observation-tools.js",
     "annotate-media.js",
     "booking-mock.js",
-    "person-media.js"
+    "phone-location-mock.js",
+    "motion-track-mock.js",
+    "location-mock.js",
+    "speech-mock.js"
   ]
 }

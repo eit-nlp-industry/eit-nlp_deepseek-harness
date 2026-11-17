@@ -25,7 +25,8 @@
         "@local/dsh-robot-dog-v03-vision-console",
         "@local/dsh-robot-dog-v03-preset",
         "@local/dsh-robot-dog-v031-preset",
-        "@eit-nlp/dsh-skill2workflow"
+        "@eit-nlp/dsh-skill2workflow",
+        "dsh-voice-mode"
       ]
     }
   }

@@ -1,9 +1,8 @@
 // Vision console — host half.
 //
-// Owns one video decoder and one push loop, both controlled from the Web page
-// instead of from an agent preset. That decoupling is the point: a session can be
-// chosen at runtime, the loop can be started and stopped live, and nothing here
-// depends on the robot-dog-test preset being mounted or healthy.
+// Owns one video decoder and one push loop. Real user input selects the latest
+// eligible main Agent; camera and other injected messages never select a target.
+// Starting/stopping the receiver remains explicit and independent of user input.
 //
 // Sampling and delivery are separate, mirroring the design:
 //   - every `intervalMs` (default 1 Hz) the newest decoded frame enters a ring
@@ -15,7 +14,7 @@
 //
 // Routes (same origin as the Web page):
 //   GET  /vision/state        -> decoder + push status, plus targetable sessions
-//   POST /vision/start        -> { sessionId, intervalMs, video } start pushing
+//   POST /vision/start        -> { sessionId?, intervalMs, video } start pushing
 //   POST /vision/stop         -> stop pushing and release the decoder
 //   POST /vision/select       -> { video } switch the decoded file by filename
 //   GET  /vision/frame.jpg    -> newest complete frame, for the preview <img>
@@ -47,7 +46,7 @@ const DEFAULTS = {
   windowSize: 3,
   maxPushedWindows: 600,
   frameViewTtlMs: 600000,
-  targetPreset: 'robot-dog-test',
+  targetPreset: 'robot-dog-v03',
   personStoreDir: '',
   boxColor: 'red',
   boxThickness: 6,
@@ -151,10 +150,12 @@ export function apply(ctx, rawConfig) {
   function selectVideo(name) {
     const value = typeof name === 'string' ? name.trim() : ''
     if (value.length > 0 && value === basename(config.videoPath)) {
+      targetRevision += 1
       buffer.length = 0
       return
     }
     camera.setVideoPath(resolveVideo(value))
+    targetRevision += 1
     buffer.length = 0
   }
 
@@ -172,6 +173,23 @@ export function apply(ctx, rawConfig) {
   }
 
   let timer = null
+  let targetAgent = null
+  let targetRevision = 0
+
+  function setTarget(agent) {
+    if (targetAgent === agent) return
+    targetAgent = agent
+    state.sessionId = agent === null ? null : String(agent.id)
+    targetRevision += 1
+    buffer.length = 0
+    state.lastError = ''
+  }
+
+  function isEligible(agent) {
+    if (!agent || ctx.get('agents')?.get?.(String(agent.id)) !== agent) return false
+    const header = agent.session?.header ?? {}
+    return header.origin !== 'subagent' && !(header.delegationDepth > 0) && usesThisPreset(agent)
+  }
   /** Tools are per-Agent and outlive a push session, so the catalog never churns mid-turn. */
   /** @type {Map<string, Array<() => void>>} */
   const agentTools = new Map()
@@ -355,7 +373,7 @@ export function apply(ctx, rawConfig) {
     }
   }
 
-  /** Observation tools belong to the robot-dog-test agents only. */
+  /** Select only the configured preset in this Harness instance. */
   function usesThisPreset(agent) {
     const presets = ctx.get('agentPresets')
     try {
@@ -409,6 +427,7 @@ export function apply(ctx, rawConfig) {
     return {
       running: state.running,
       sessionId: state.sessionId,
+      targetPreset: config.targetPreset,
       intervalMs: state.intervalMs,
       pushed: state.pushed,
       skipped: state.skipped,
@@ -490,14 +509,17 @@ export function apply(ctx, rawConfig) {
   /** Deliver the whole buffered window when (and only when) the Agent is idle. */
   async function tryPush() {
     if (!state.running || state.busy) return
-    if (buffer.length === 0) return
-
-    const agents = ctx.get('agents')
-    const agent = agents?.get?.(state.sessionId)
-    if (agent === undefined) {
-      state.lastError = `目标会话不存在：${state.sessionId ?? ''}`
+    if (!isEligible(targetAgent)) {
+      setTarget(null)
       return
     }
+    if (buffer.length === 0) return
+
+    const agent = targetAgent
+    const sessionId = state.sessionId
+    const revision = targetRevision
+    const isCurrent = () => state.running && targetRevision === revision &&
+      targetAgent === agent && isEligible(agent)
     if ((agent.inbox?.nextTurn?.length ?? 0) > 0 || (agent.inbox?.nextStep?.length ?? 0) > 0) {
       state.skipped += 1
       return
@@ -505,6 +527,7 @@ export function apply(ctx, rawConfig) {
 
     state.busy = true
     const window = buffer.splice(0, buffer.length)
+    let delivered = false
     try {
       const attachments = ctx.get('attachments')
       if (attachments === undefined) throw new Error('attachment store is not available')
@@ -513,57 +536,65 @@ export function apply(ctx, rawConfig) {
         mediaType: 'image/jpeg',
         name: `console-${frame.sequence}.jpg`,
       })))
-      // Register frame_id → attachment so later tools (remember_person) resolve
-      // exactly the bytes the model just saw.
-      for (let index = 0; index < window.length; index += 1) {
-        putFrame(state.sessionId, `frame_${window[index].sequence}`, refs[index], window[index].capturedAt, config.frameViewTtlMs)
-      }
-      sweep()
+      if (!isCurrent()) return
 
-      let delivered = false
-      try {
-        if (usesThisPreset(agent)) ensureTools(agent)
-        agent.runMaintenance(() => {
-          if ((agent.inbox?.nextTurn?.length ?? 0) > 0 || (agent.inbox?.nextStep?.length ?? 0) > 0) {
-            return Promise.resolve()
-          }
-          agent.steer(buildMessage(refs, window))
-          delivered = true
+      ensureTools(agent)
+      await agent.runMaintenance(() => {
+        if (!isCurrent() || (agent.inbox?.nextTurn?.length ?? 0) > 0 ||
+          (agent.inbox?.nextStep?.length ?? 0) > 0) {
           return Promise.resolve()
-        }).catch(error => { state.lastError = `maintenance failed: ${errorText(error)}` })
-      } catch (error) {
-        // A running Agent is the normal case between two model turns, not a
-        // failure: count it as a skip and keep the window for the next idle slot.
-        const message = errorText(error)
-        if (/not idle|active work|already/i.test(message)) state.skipped += 1
-        else state.lastError = message
-      }
+        }
+        // Use the frozen target, never the mutable state.sessionId, for both
+        // the frame registry and message delivery.
+        for (let index = 0; index < window.length; index += 1) {
+          putFrame(sessionId, `frame_${window[index].sequence}`, refs[index], window[index].capturedAt, config.frameViewTtlMs)
+        }
+        sweep()
+        agent.steer(buildMessage(refs, window))
+        delivered = true
+        return Promise.resolve()
+      })
 
+      if (!isCurrent()) return
       if (delivered) {
         state.pushed += 1
         state.lastPushAt = Date.now()
         state.lastError = ''
         if (state.pushed >= config.maxPushedWindows) stop()
       } else {
-        // The window is still worth showing: put it back, newest frames win.
-        buffer.unshift(...window.slice(-config.windowSize + buffer.length))
         state.skipped += 1
       }
     } catch (error) {
-      state.lastError = errorText(error)
-      buffer.unshift(...window)
-      while (buffer.length > config.windowSize) buffer.shift()
+      if (isCurrent()) {
+        const message = errorText(error)
+        if (/not idle|active work|already/i.test(message)) state.skipped += 1
+        else state.lastError = message
+      }
     } finally {
+      // A pending save/maintenance owns this lock even across stop/start.
+      // Restore only current, undelivered frames; newer samples always win.
+      if (!delivered && isCurrent()) {
+        buffer.unshift(...window)
+        while (buffer.length > config.windowSize) buffer.shift()
+      }
       state.busy = false
     }
   }
 
   function start(sessionId, intervalMs, video) {
-    if (typeof sessionId !== 'string' || sessionId.length === 0) {
-      throw new Error('sessionId is required')
+    let initialAgent = targetAgent
+    if (sessionId !== undefined) {
+      if (typeof sessionId !== 'string' || sessionId.trim().length === 0) {
+        throw new Error('sessionId must be a non-empty string')
+      }
+      initialAgent = ctx.get('agents')?.get?.(sessionId)
+      if (!isEligible(initialAgent)) throw new Error('目标会话不存在或不属于允许的主会话预设')
+    } else if (!isEligible(initialAgent)) {
+      initialAgent = null
     }
     if (typeof video === 'string' && video.trim().length > 0) selectVideo(video)
-    state.sessionId = sessionId
+    setTarget(initialAgent)
+    targetRevision += 1
     state.intervalMs = clampInterval(intervalMs ?? state.intervalMs)
     if (timer !== null) clearInterval(timer)
     camera.start()
@@ -572,14 +603,12 @@ export function apply(ctx, rawConfig) {
     state.skipped = 0
     state.sampled = 0
     state.dropped = 0
+    state.lastPushAt = null
     state.lastError = ''
     buffer.length = 0
     lastSequence = 0
     {
-      // The target is explicit: register here instead of guessing the preset at
-      // agent/created, where composedPreset may not be resolvable yet.
-      const agent = ctx.get('agents')?.get?.(sessionId)
-      if (agent !== undefined) ensureTools(agent)
+      if (targetAgent !== null) ensureTools(targetAgent)
     }
     timer = setInterval(() => {
       sample()
@@ -593,6 +622,7 @@ export function apply(ctx, rawConfig) {
 
   function stop() {
     state.running = false
+    targetRevision += 1
     if (timer !== null) {
       clearInterval(timer)
       timer = null
@@ -613,10 +643,18 @@ export function apply(ctx, rawConfig) {
     if (usesThisPreset(agent)) ensureTools(agent)
   }
 
+  ctx.on('agent/inbox/inserted', ({ agent, message }) => {
+    if (message?.source?.kind !== 'user' || !isEligible(agent)) return
+    setTarget(agent)
+  })
+
   // A disposed session can no longer resolve its frames or keep its tools.
   ctx.on('agent/disposed', payload => {
     const id = payload?.agent?.id
     if (id === undefined) return
+    if (payload.agent === targetAgent) setTarget(null)
+    const replacement = ctx.get('agents')?.get?.(String(id))
+    if (replacement !== undefined && replacement !== payload.agent) return
     releaseTools(String(id))
     clearSession(String(id))
   })

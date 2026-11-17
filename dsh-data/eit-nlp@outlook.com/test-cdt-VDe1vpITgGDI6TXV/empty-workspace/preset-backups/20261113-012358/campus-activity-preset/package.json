@@ -1,0 +1,12 @@
+{
+  "name": "@local/dsh-campus-activity-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "校园活动筹备助手：五步 JSON Render 卡片流程（需求 → 方案 → 筹备 → 流程 → 确认），执行流程复用 Workflow 组件。",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

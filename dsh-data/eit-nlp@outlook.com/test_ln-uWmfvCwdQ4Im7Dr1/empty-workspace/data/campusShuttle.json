@@ -1,0 +1,38 @@
+{
+  "campusShuttleSystem": {
+    "stations": [
+      { "id": "ST-01", "name": "教学实验楼" },
+      { "id": "ST-02", "name": "图书馆" },
+      { "id": "ST-03", "name": "食堂" },
+      { "id": "ST-04", "name": "宿舍楼" },
+      { "id": "ST-05", "name": "体育馆" }
+    ],
+    "route": {
+      "direction": "双向循环",
+      "path": "教学实验楼 → 图书馆 → 食堂 → 宿舍楼 → 体育馆 → 宿舍楼 → 食堂 → 图书馆 → 教学实验楼",
+      "maxSpeed": "30km/h"
+    },
+    "segments": [
+      { "from": "ST-01", "to": "ST-02", "distance": 420 },
+      { "from": "ST-02", "to": "ST-03", "distance": 350 },
+      { "from": "ST-03", "to": "ST-04", "distance": 280 },
+      { "from": "ST-04", "to": "ST-05", "distance": 500 }
+    ],
+    "vehicles": [
+      {
+        "id": "BUS-1",
+        "direction": "前往",
+        "currentSegment": { "startStation": "ST-03", "endStation": "ST-04" },
+        "distanceFromStart": 180,
+        "distanceToEnd": 100
+      },
+      {
+        "id": "BUS-2",
+        "direction": "返回",
+        "currentSegment": { "startStation": "ST-04", "endStation": "ST-03" },
+        "distanceFromStart": 210,
+        "distanceToEnd": 70
+      }
+    ]
+  }
+}

@@ -7,7 +7,11 @@
     "./observation-tools.js": "./observation-tools.js",
     "./annotate-media.js": "./annotate-media.js",
     "./booking-mock.js": "./booking-mock.js",
-    "./person-media.js": "./person-media.js"
+    "./location-mock.js": "./location-mock.js",
+    "./person-media.js": "./person-media.js",
+    "./inspection-task.js": "./inspection-task.js",
+    "./inspection-schema.js": "./inspection-schema.js",
+    "./inspection-store.js": "./inspection-store.js"
   },
   "dsh": {
     "bundle": {
@@ -19,6 +23,15 @@
     "observation-tools.js",
     "annotate-media.js",
     "booking-mock.js",
-    "person-media.js"
-  ]
+    "location-mock.js",
+    "person-media.js",
+    "inspection-task.js",
+    "inspection-schema.js",
+    "inspection-store.js",
+    "inspection-schema.test.js",
+    "campus-open-day.json"
+  ],
+  "scripts": {
+    "test": "node --test inspection-schema.test.js"
+  }
 }

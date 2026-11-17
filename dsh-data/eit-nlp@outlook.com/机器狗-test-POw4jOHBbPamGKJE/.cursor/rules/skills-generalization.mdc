@@ -1,0 +1,22 @@
+---
+description: 编写/改 Skill 时必读：走 skill-creator；通用 Skill 不写具体 demo 场景
+alwaysApply: true
+---
+
+# Skills 编写约定（本仓库）
+
+写、改、评审 `empty-workspace/.dsh/skills-v031/`（或其它 Skill）时：
+
+1. **先读并遵循**用户侧的 `skill-creator` Skill（创建/迭代 Skill 的流程与写法）。用户用 `/skill-creator` 或明确在改 Skill 时，按该 Skill 执行，不要只 vibe 改完就当验收完成；若只做文案迭代，需说明未跑评测环。
+2. **通用 Skill 只写跨 demo 仍成立的能力**（何时加载、通用流程、工具角色、边界）。  
+   **不要**把易删、易改的演示细节写进主干，例如：固定招呼话术、记人全流程、某次 demo 专属字段/成功概率、停留秒数等宿主才能保证的计时。
+3. **Demo 特例放哪**：可选 `references/` 配方、工具 description、persona / preset；可能下线的功能（如记人）默认 **不建** 独立 Skill，其它 Skill 只让路、不写规程。
+4. **分工**：`json-render` 管「怎么出界面」；业务 Skill 管「要不要出、出什么意图」。description 管触发，正文管加载后怎么做，避免两处重复说明书。
+
+```text
+✅ social-presence：空闲 + 像互动 → 认人（若有工具）→ 短开口
+❌ social-presence：写死「某某，需要帮忙吗」+ 记人确认出图步骤
+
+✅ physical-interaction：看帧闭环；握手在 references/handshake.md
+❌ physical-interaction 正文堆满仅握手 demo 的检查表
+```

@@ -210,14 +210,23 @@ export function apply(ctx, config = {}) {
         required: ['saved', 'path', 'width', 'height'],
         properties: {
           saved: { type: 'boolean' },
-          path: { type: 'string' },
+          path: { type: 'string', description: '磁盘路径，仅调试用；不要当作 asset_id' },
           width: { type: 'integer' },
           height: { type: 'integer' },
+          asset_id: {
+            type: 'string',
+            description: '媒体目录短 id；evidence_asset_id / render_ui 的 image.assetId 必须用这个，不要用 path',
+          },
+          assetId: { type: 'string', description: '同 asset_id' },
         },
       },
       render: (_args, value) => [{
         type: 'text',
-        text: value.saved ? `已暂存图片：${value.path}` : '未保存',
+        text: value.saved
+          ? (value.asset_id
+            ? `已暂存图片：${value.path}\nasset_id：${value.asset_id}\n证据与出图请用短 asset_id，不要用 path。`
+            : `已暂存图片：${value.path}`)
+          : '未保存',
       }],
     },
     async execute(args, exec) {

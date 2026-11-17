@@ -9,8 +9,9 @@
         videoPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/shared/media/test.mp4
         ffmpegPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset/node_modules/ffmpeg-static/ffmpeg
         captureFps: 2
-        maxWidth: 960
-        jpegQuality: 70
+        maxWidth: 1280
+        # ffmpeg MJPEG -q:v（2 最好 … 31 最差）；勿再填 70 这类百分制。
+        jpegQuality: 3
         loop: true
         defaultIntervalMs: 1000
         maxPushedWindows: 600

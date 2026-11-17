@@ -184,10 +184,11 @@
               serverName: robot
               stopTools:
                 - stop
-              # self_check only returns {status:"running"} with no payload; a job
-              # would never deliver battery data. observation-tools answers it.
+              # self_check / get_task_status are sync queries (also defaulted in
+              # robot-job-result). observation-tools may answer self_check locally.
               noJobTools:
                 - self_check
+                - get_task_status
               sectionOrder: 130
           - id: ragflow-tools
             name: '@local/dsh-robot-dog-a-preset/ragflow-tools.js'

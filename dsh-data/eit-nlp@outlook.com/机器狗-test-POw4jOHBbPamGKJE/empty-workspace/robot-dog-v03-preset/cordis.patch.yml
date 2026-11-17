@@ -72,6 +72,8 @@
 
                 - 用户要求记住某人（记人）时，先加载 `remember-person` 技能并按其中流程执行；记录内容以用户确认过的信息为准。
 
+                - 用户要求活动开场准备检查、现场检查、检查指示牌/签到台/入口通道或开场整改复核时，优先加载 `event-site-inspection` 技能，不要当成普通找物或导航任务。
+
 
 
 
@@ -95,6 +97,22 @@
                 - 只采用返回原文里写明的内容，用简短中文作答并带上文档名。没查到就说明没查到，不要改去导航。
 
                 - 同一轮问多项校园信息时，按技能用 `render_ui` 的 Tabs 展示，一项一个 tab；原文给出图片路径时，把图片放进对应 tab。只填检索里已有的条目，不要用这次渲染代替语义地图或电量警示。
+
+
+
+                【演示地点查询】
+
+
+
+                用户询问「自习室A」「自习室B」或泛指「自习室」在哪时，先调用 `query_place` 获取演示坐标，不要编造点位，也不要为此改走语义地图。
+
+                返回的 places（id/label/x/y）可直接用于 MapPreview；两点同属左下演示楼的西北角与东南角，起点在中间最左侧。其他地点仍按下方语义地图流程处理。
+
+
+
+                用户要「找个安静的地方」等泛化找地点时，先加载 `find-target`：按其中第五节第 0 步先 `query_place`（name=自习室），再把返回的 `render_ui_args` 原样传给 `render_ui`（禁止自己拼地图参数），然后仍按 skill 调真机导航。
+
+
 
 
 
@@ -318,9 +336,9 @@
 
 
 
-                图片目录：/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/target-frames
+                图片目录（媒体根）：/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data
 
-                用户要求查看图片时，先读取该目录的 index.json，根据文件名或已有业务信息选择真实资源；无法确定时询问用户，不猜测 ID 或图片内容。
+                用户要求查看图片时，先读取该目录的 index.json（file 为相对路径），根据文件名或业务信息选择真实资源；无法确定时询问用户，不猜测 ID 或图片内容。
 
                 调用 render_ui：mode="display"，answer_presentation="replace"，components=["Image"]，intent="rich_content"，locale="zh-CN"。
 
@@ -420,13 +438,15 @@
 
                 - stop
 
-              # self_check only returns {status:"running"} with no payload; a job
+              # self_check / get_task_status are sync queries (also defaulted in
 
-              # would never deliver battery data. observation-tools answers it.
+              # robot-job-result). observation-tools may answer self_check locally.
 
               noJobTools:
 
                 - self_check
+
+                - get_task_status
 
               sectionOrder: 130
 
@@ -730,9 +750,7 @@
 
               boxThickness: 6
 
-          # 把 annotate_target 生成的框选图登记到 json-render 的媒体清单，
-
-          # 这样记人技能可以用 render_ui 的 Image 直接显示，而不是文件卡。
+          # 把 annotate_target 生成的框选图登记到 runtime_data/index.json（相对路径）。
 
           - id: annotate-media
 
@@ -740,7 +758,19 @@
 
             config:
 
-              targetDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/target-frames
+              catalogRoot: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data
+
+          # 活动开场准备检查：宿主保存任务状态，Skill 只提交结构化观察。
+
+          - id: inspection-task
+
+            name: '@local/dsh-robot-dog-v03-preset/inspection-task.js'
+
+            config:
+
+              configPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-preset/campus-open-day.json
+
+              storeDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/inspection
 
           # 演示用的预约提交：默认成功并返回预约编号；四明书院的晚间时段固定失败。
 
@@ -748,7 +778,13 @@
 
             name: '@local/dsh-robot-dog-v03-preset/booking-mock.js'
 
-          # 认出人之后把人物库里保存的照片登记到媒体清单，供 render_ui 显示。
+          # 演示用的地点查询：起点中间最左；自习室A/B 为左下楼西北角与东南角。
+
+          - id: location-mock
+
+            name: '@local/dsh-robot-dog-v03-preset/location-mock.js'
+
+          # 认出人之后把人物库照片写入本预设 target-frames，并登记到共享清单。
 
           - id: person-media
 
@@ -759,6 +795,8 @@
               personStoreDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/person-store
 
               targetDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/target-frames
+
+              catalogRoot: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data
 
           # Removed for this copy: camera-tools (get_camera_frame / camera_look),
 
@@ -864,7 +902,7 @@
 
               transport: streamable-http
 
-              url: http://10.37.0.21:18081/mcp/80cf0fe8-128d-405b-8f5f-af0ccded2270
+              url: http://10.37.0.21:18081/mcp/6a6b5277-a6e4-41d2-ab31-1d6c1dace625
 
               headers:
 

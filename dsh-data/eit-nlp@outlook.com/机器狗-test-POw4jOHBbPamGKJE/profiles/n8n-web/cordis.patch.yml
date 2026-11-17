@@ -17,7 +17,7 @@
   name: "@deepseek-ai/dsh-agent-preset-registry"
   config:
     default: standard
-    selectedDefault: robot-dog-v03
+    selectedDefault: robot-dog-a
 - id: agent-default-model
   name: "@deepseek-ai/dsh-agent-default-model"
   config:

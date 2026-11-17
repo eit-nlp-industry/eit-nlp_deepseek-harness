@@ -13,6 +13,24 @@ const MAX_PENDING_BYTES = 32 * 1024 * 1024
 const MIN_RESTART_MS = 1_000
 const MAX_RESTART_MS = 30_000
 
+/**
+ * Map config.jpegQuality to ffmpeg MJPEG `-q:v` (2 best … 31 worst).
+ * Values 1–31 are treated as native q:v; values 32–100 are treated as a
+ * "higher is better" percent so legacy configs like 70 do not crush quality.
+ *
+ * @param {unknown} value
+ * @returns {number}
+ */
+export function toFfmpegMjpegQ(value) {
+  const n = Number(value)
+  if (!Number.isFinite(n)) return 3
+  if (n >= 1 && n <= 31) return Math.round(n)
+  if (n > 31 && n <= 100) {
+    return Math.max(2, Math.min(31, Math.round(31 - (n / 100) * 29)))
+  }
+  return 3
+}
+
 export function createCamera(config, logger) {
   let latest = null
   let child = null
@@ -34,6 +52,7 @@ export function createCamera(config, logger) {
   }
 
   function args() {
+    const q = toFfmpegMjpegQ(config.jpegQuality)
     return [
       '-hide_banner', '-loglevel', 'error',
       '-re',
@@ -42,7 +61,7 @@ export function createCamera(config, logger) {
       '-i', config.videoPath,
       '-vf', `fps=${config.captureFps},scale=${config.maxWidth}:-2`,
       '-c:v', 'mjpeg',
-      '-q:v', String(config.jpegQuality),
+      '-q:v', String(q),
       '-f', 'image2pipe',
       '-',
     ]

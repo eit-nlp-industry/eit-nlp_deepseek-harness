@@ -1,0 +1,53 @@
+{
+  "taskTemplateId": "campus-open-day",
+  "activityName": "校园开放日",
+  "location": "主楼一楼入口大厅",
+  "title": "开场准备检查",
+  "venueName": "图书馆",
+  "venueQuery": "图书馆",
+  "simulatedSite": true,
+  "uncertainLimit": 5,
+  "checkpoints": [
+    {
+      "id": "activity-sign",
+      "name": "活动指示牌",
+      "passCriteria": "活动名称、地点及箭头方向与任务要求一致",
+      "requiredReadableText": ["校园开放日", "主楼一楼入口大厅"],
+      "viewScope": "指示牌正面及箭头方向可读",
+      "moveHint": "活动入口指示牌前",
+      "demoClip": "test-检查.mp4",
+      "expectedInitial": "入口指示牌清晰可读后应通过"
+    },
+    {
+      "id": "checkin-desk",
+      "name": "签到台",
+      "passCriteria": "完整桌面画面中能看到「签到处」标牌和签到表",
+      "requiredItems": ["签到处标牌", "签到表"],
+      "viewScope": "签到桌完整桌面",
+      "evidenceKindHint": "absence",
+      "moveHint": "签到台前",
+      "demoClip": "test-检查.mp4",
+      "recheckClip": "test-复核.mp4",
+      "expectedInitial": "完整桌面可见但缺标牌与签到表 → 待整改",
+      "expectedRecheck": "完整桌面可见且用品齐全 → 复核通过"
+    },
+    {
+      "id": "entry-aisle",
+      "name": "入口通道",
+      "passCriteria": "指定通行检查区域内没有明显占道物品",
+      "forbiddenItems": ["纸箱", "堆放物"],
+      "viewScope": "任务指定的通行检查区域（不必拍完整条走廊）",
+      "evidenceKindHint": "clear_anomaly",
+      "moveHint": "入口通道检查区域",
+      "demoClip": "test-检查.mp4",
+      "recheckClip": "test-复核.mp4",
+      "expectedInitial": "检查区域内有占道物 → 待整改",
+      "expectedRecheck": "占道物已移除 → 复核通过"
+    }
+  ],
+  "demoClips": [
+    "test-检查.mp4",
+    "test-复核.mp4"
+  ],
+  "notes": "先语义地图+navigate 到图书馆；场内用 move_to 按 moveHint 逐点。操作员推流 test-检查/test-复核 仅作到场画面；聊天不点名文件名。整改用工单表单 mock。"
+}

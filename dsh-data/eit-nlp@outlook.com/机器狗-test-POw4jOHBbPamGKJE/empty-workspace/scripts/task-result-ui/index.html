@@ -100,10 +100,10 @@
 <body>
   <main>
     <h1>任务完成回调</h1>
-    <p class="hint">输入 task_id 后点确认：会调用 post-robot-task-result.sh（默认回调 http://10.37.0.21:13181/robot-task-results），并自动清空输入框。</p>
+    <p class="hint">输入或粘贴 task_id 后点确认：会调用 post-robot-task-result.sh（默认回调 http://10.37.0.21:13181/robot-task-results）。可直接粘贴 job 标签如「navigate · sbi_…」，服务端会去掉工具名前缀并取出 sbi_…。</p>
     <form id="form">
       <label for="taskId">task_id</label>
-      <input id="taskId" name="taskId" autocomplete="off" placeholder="sbi_..." required />
+      <input id="taskId" name="taskId" autocomplete="off" placeholder="sbi_… 或 navigate · sbi_…" required />
       <button type="submit" id="btn">确认</button>
     </form>
     <pre id="log">等待输入…</pre>
@@ -134,8 +134,18 @@
         });
         const data = await res.json().catch(() => ({}));
         const text = typeof data.output === "string" ? data.output : JSON.stringify(data, null, 2);
-        log.className = res.ok ? "ok" : "err";
-        log.textContent = (res.ok ? "成功\n" : "失败\n") + text;
+        const normalized = typeof data.task_id === "string" ? data.task_id : "";
+        const pending = /"outcome"\s*:\s*"pending"/.test(text);
+        const completed = /"outcome"\s*:\s*"completed"/.test(text)
+          || /"outcome"\s*:\s*"duplicate"/.test(text);
+        let title = "失败";
+        if (res.ok && completed) title = "成功";
+        else if (res.ok && pending) title = "已接收但未匹配进行中 Job（outcome=pending）";
+        else if (res.ok) title = "已发送";
+        log.className = res.ok && (completed || !pending) ? "ok" : "err";
+        if (res.ok && pending) log.className = "err";
+        const normLine = normalized ? `task_id: ${normalized}\n` : "";
+        log.textContent = title + "\n" + normLine + text;
       } catch (err) {
         log.className = "err";
         log.textContent = "请求失败: " + (err && err.message ? err.message : String(err));

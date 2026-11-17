@@ -10,8 +10,8 @@
       "bundles": [
         "@deepseek-ai/dsh-base",
         "@deepseek-ai/dsh-web-app",
-        "@local/dsh-campus-preset",
-        "@eit-nlp/dsh-skill2workflow"
+        "@eit-nlp/dsh-skill2workflow",
+        "@local/dsh-campus-preset"
       ]
     }
   }

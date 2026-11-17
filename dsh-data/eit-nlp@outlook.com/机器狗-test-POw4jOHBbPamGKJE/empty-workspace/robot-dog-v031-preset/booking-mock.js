@@ -1,64 +1,70 @@
-// Mock venue booking for the v0.3 demo.
+// Mock booking for the v0.3.1 demo.
 //
-// The reservation form only collects information; this tool turns the
-// submitted values into a fake booking result so the conversation can show a
-// confirmation number. Every venue succeeds except 四明书院 in the evening,
-// which always reports the slot as taken (the demo's failure case).
+// `campus_visit: true` → always success (校园访客预约).
+// Otherwise → 50% success / 50% failure with alternative start/end windows.
 
 export const name = 'booking-mock'
 export const inject = ['tools']
 
 let sequence = 0
 
-function eveningSlot(slot) {
-  const hours = (slot.match(/\d{1,2}/g) ?? []).map(Number)
-  return hours.some(hour => hour === 20 || hour === 21)
-    || (hours.includes(8) && hours.includes(9))
+/** Failure alternatives as start/end pairs (not single-hour slot strings). */
+const ALTERNATIVE_WINDOWS = Object.freeze([
+  { start: '14:00', end: '16:00' },
+  { start: '15:00', end: '17:00' },
+])
+
+/** Probability of success when not a campus-visit booking (0–1). */
+const SUCCESS_PROBABILITY = 0.5
+
+/**
+ * @param {unknown} value
+ * @returns {value is Record<string, unknown>}
+ */
+function isRecord(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
 }
 
 export function apply(ctx) {
   ctx.tools.register({
     name: 'submit_booking',
     description: [
-      '提交一条场地预约（演示用，不会真的占用场地）。',
-      '用户提交预约表单后调用；venue 填场地名，date 填日期，slot 填时段，people 填人数，note 填用途和备注。',
-      '成功时返回预约编号，失败时返回原因。',
+      '提交预约（演示用，不会真的占用场地）。',
+      '仅在用户确认预约草稿后调用。',
+      '入参 campus_visit：是否为访校 / 校园访客预约。',
+      'campus_visit 为 true 时一律预约成功；否则按概率成功或失败。',
+      '失败时 alternatives 为建议的开始/结束时间对（可跨多小时），不是单小时档。',
+      '访校预约（场地为校园访客等）传 campus_visit=true；其它场地预约传 false。',
+      '按工具返回原文转告，不要编造成功或失败。',
     ].join(''),
     parameters: {
       type: 'object',
       additionalProperties: false,
-      required: ['venue', 'date', 'slot'],
+      required: ['campus_visit'],
       properties: {
-        venue: { type: 'string', description: '场地名，例如「图书馆研讨室」「四明书院」' },
-        date: { type: 'string', description: '日期，例如 2026-11-05' },
-        slot: { type: 'string', description: '时段，例如 20:00-21:00' },
-        people: { type: 'number', description: '人数' },
-        note: { type: 'string', description: '用途和备注' },
-        name: { type: 'string', description: '预约人姓名' },
-        phone: { type: 'string', description: '联系电话' },
+        campus_visit: {
+          type: 'boolean',
+          description: '是否为访校 / 校园访客预约。true 一律成功；false 走随机成败。',
+        },
       },
     },
     output: {
       schema: {
         type: 'object',
         additionalProperties: false,
-        required: ['ok', 'venue', 'date', 'slot', 'message'],
+        required: ['ok', 'message'],
         properties: {
           ok: { type: 'boolean' },
           booking_id: { type: 'string' },
-          venue: { type: 'string' },
-          date: { type: 'string' },
-          slot: { type: 'string' },
-          people: { type: 'number' },
           alternatives: {
             type: 'array',
             items: {
               type: 'object',
               additionalProperties: false,
-              required: ['date', 'slot'],
+              required: ['start', 'end'],
               properties: {
-                date: { type: 'string' },
-                slot: { type: 'string' },
+                start: { type: 'string' },
+                end: { type: 'string' },
               },
             },
           },
@@ -68,47 +74,24 @@ export function apply(ctx) {
       render: (_args, value) => [{ type: 'text', text: value.message }],
     },
     async execute(args) {
-      const venue = String(args?.venue ?? '').trim()
-      const date = String(args?.date ?? '').trim()
-      const slot = String(args?.slot ?? '').trim()
-      const people = Number.isFinite(args?.people) ? Number(args.people) : undefined
-      const note = typeof args?.note === 'string' ? args.note.trim() : ''
-      if (venue === '' || date === '' || slot === '') {
-        throw new Error('提交预约需要场地、日期和时段')
-      }
-
-      if (venue.includes('四明书院') && eveningSlot(slot)) {
-        const alternatives = [
-          { date, slot: '14:00-15:00' },
-          { date, slot: '16:00-17:00' },
-        ]
-        const listed = alternatives.map(item => `${item.date} ${item.slot}`).join('；')
+      const campusVisit = isRecord(args) && args.campus_visit === true
+      if (campusVisit || Math.random() < SUCCESS_PROBABILITY) {
+        sequence += 1
+        const bookingId = `BK-DEMO-${String(sequence).padStart(3, '0')}`
+        const kind = campusVisit ? '访校预约' : '预约'
         return {
-          ok: false,
-          venue,
-          date,
-          slot,
-          people,
-          alternatives,
-          message: `预约失败：四明书院 ${slot} 已经约满。可改约：${listed}。请用这些时段重出同一场地的改约表单（已填的姓名、手机号、人数、备注沿用），不要自己换场地。`,
+          ok: true,
+          booking_id: bookingId,
+          message: `${kind}成功（演示）：${bookingId}。这是演示预约，不会真的占用场地。`,
         }
       }
 
-      sequence += 1
-      const stamp = date.replace(/\D/g, '') || '00000000'
-      const bookingId = `BK-${stamp}-${String(sequence).padStart(3, '0')}`
-      const parts = [`预约成功（演示）：${bookingId}`, `场地：${venue}`, `日期：${date}`, `时段：${slot}`]
-      if (people !== undefined) parts.push(`人数：${people}`)
-      if (note !== '') parts.push(`备注：${note}`)
-      parts.push('这是演示预约，不会真的占用场地。')
+      const alternatives = ALTERNATIVE_WINDOWS.map(window => ({ ...window }))
+      const listed = ALTERNATIVE_WINDOWS.map(window => `${window.start}-${window.end}`).join('、')
       return {
-        ok: true,
-        booking_id: bookingId,
-        venue,
-        date,
-        slot,
-        people,
-        message: parts.join('；'),
+        ok: false,
+        alternatives,
+        message: `预约失败：当前起止时间不可用。可选时段：${listed}。可改约到上述起止后再试。`,
       }
     },
   })

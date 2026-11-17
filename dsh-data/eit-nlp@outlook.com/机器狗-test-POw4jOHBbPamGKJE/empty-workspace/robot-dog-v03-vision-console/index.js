@@ -38,8 +38,9 @@ const DEFAULTS = {
   videoExtensions: ['mp4', 'm4v', 'mov', 'mkv', 'webm', 'avi', 'flv', 'ts', 'mpeg', 'mpg'],
   ffmpegPath: 'ffmpeg',
   captureFps: 2,
-  maxWidth: 960,
-  jpegQuality: 70,
+  maxWidth: 1280,
+  // ffmpeg MJPEG -q:v: 2 best … 31 worst (not a 0–100 percent).
+  jpegQuality: 3,
   loop: true,
   defaultIntervalMs: 1000,
   minIntervalMs: 500,
@@ -101,9 +102,18 @@ export function apply(ctx, rawConfig) {
   }
   const camera = createCamera(config, ctx.logger)
 
-  /** @type {Array<{ jpeg: Buffer, sequence: number, capturedAt: number }>} */
+  /** @type {Array<{ jpeg: Buffer, sequence: number, capturedAt: number, streamId: string, videoTimeMs: number }>} */
   const buffer = []
   let lastSequence = 0
+  /** Local push stream id; bumped on every video switch so old analysis can be discarded. */
+  let pushStreamId = `vision-${Date.now().toString(36)}`
+  let videoStartedAt = Date.now()
+
+  function bumpPushStream(reason = 'switch') {
+    pushStreamId = `${reason}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`
+    videoStartedAt = Date.now()
+    return pushStreamId
+  }
 
   const videoExtensions = new Set(
     (Array.isArray(config.videoExtensions) ? config.videoExtensions : [])
@@ -146,16 +156,22 @@ export function apply(ctx, rawConfig) {
 
   /**
    * Switch the decoder source. Frames captured from the previous file must not
-   * join the next pushed window, so the buffer is dropped.
+   * join the next pushed window, so the buffer is dropped. Also bumps streamId
+   * so in-flight inspection results from the previous clip are discarded.
    */
   function selectVideo(name) {
     const value = typeof name === 'string' ? name.trim() : ''
     if (value.length > 0 && value === basename(config.videoPath)) {
       buffer.length = 0
+      const streamId = bumpPushStream('reselect')
+      // Bind the same push streamId to the inspection task; do not mint a second id.
+      bindInspectionStream(streamId, 'video-reselect')
       return
     }
     camera.setVideoPath(resolveVideo(value))
     buffer.length = 0
+    const streamId = bumpPushStream('select')
+    bindInspectionStream(streamId, 'video-select')
   }
 
   const state = {
@@ -169,6 +185,34 @@ export function apply(ctx, rawConfig) {
     lastPushAt: null,
     lastError: '',
     busy: false,
+  }
+
+  function inspectionContext() {
+    try {
+      const hub = ctx.root.get?.('inspection-hub')
+      if (!hub || typeof hub.getFrameContext !== 'function') return null
+      if (typeof state.sessionId !== 'string' || state.sessionId.length === 0) return null
+      return hub.getFrameContext(state.sessionId)
+    } catch {
+      return null
+    }
+  }
+
+  function bindInspectionStream(streamId, reason) {
+    try {
+      const hub = ctx.root.get?.('inspection-hub')
+      if (!hub) return null
+      if (typeof state.sessionId !== 'string' || state.sessionId.length === 0) return null
+      if (typeof hub.bindStream === 'function') {
+        return hub.bindStream(state.sessionId, streamId, reason)
+      }
+      if (typeof hub.invalidateStream === 'function') {
+        return hub.invalidateStream(state.sessionId, reason)
+      }
+      return null
+    } catch {
+      return null
+    }
   }
 
   let timer = null
@@ -408,6 +452,7 @@ export function apply(ctx, rawConfig) {
 
   function snapshot() {
     const latest = camera.latest()
+    const insp = inspectionContext()
     return {
       running: state.running,
       sessionId: state.sessionId,
@@ -431,6 +476,9 @@ export function apply(ctx, rawConfig) {
       windowSize: config.windowSize,
       personStoreDir: config.personStoreDir,
       tools: agentTools.size,
+      streamId: insp?.streamId ?? pushStreamId,
+      pushStreamId,
+      inspection: insp,
     }
   }
 
@@ -438,51 +486,129 @@ export function apply(ctx, rawConfig) {
     const header = window.length === 1
       ? '本次窗口包含 1 张图片。'
       : `本次窗口包含 ${window.length} 张图片，按采集时间从早到晚排列。`
+    const insp = inspectionContext()
+    const effectiveStreamId = String(insp?.streamId || pushStreamId)
+    // Session events must be lossless JSON. Never put undefined keys into
+    // message.source — agent/inbox/spliced rejects them.
+    const inspectionSource = insp && typeof insp.taskId === 'string' && insp.taskId.length > 0
+      ? {
+        taskId: String(insp.taskId),
+        checkpointId: insp.checkpointId == null ? '' : String(insp.checkpointId),
+        inspectionRound: Number(insp.inspectionRound) || 1,
+        streamId: String(insp.streamId || effectiveStreamId),
+        phase: String(insp.phase || ''),
+      }
+      : null
+    const contextLines = inspectionSource
+      ? [
+        '【检查任务上下文】',
+        `taskId: ${inspectionSource.taskId}`,
+        `checkpointId: ${inspectionSource.checkpointId}`,
+        `inspectionRound: ${inspectionSource.inspectionRound}`,
+        `streamId: ${inspectionSource.streamId}`,
+        `phase: ${inspectionSource.phase}`,
+        'checkpointId 只是期望点位；仍须根据画面判断是否拍到该点。streamId 不一致的旧结论必须丢弃。',
+        '不要向用户点名推流文件名或说「请播放某某视频」。',
+      ]
+      : [
+        '【推流上下文】',
+        `streamId: ${effectiveStreamId}`,
+      ]
     const content = [{
       type: 'text',
       text: [
         '【环境观察】',
         '这是系统周期性采集的摄像头画面，不是用户的新指令。',
         header,
+        '',
+        ...contextLines,
       ].join('\n'),
     }]
     for (let index = 0; index < window.length; index += 1) {
-      content.push({
-        type: 'text',
-        text: [
-          '',
-          `frame_id: frame_${window[index].sequence}`,
-          `captured_at: ${clockOf(window[index].capturedAt)}`,
-          `[图片 ${index + 1}]`,
-        ].join('\n'),
-      })
+      const meta = [
+        '',
+        `frame_id: frame_${window[index].sequence}`,
+        `frameId: ${window[index].sequence}`,
+        `captured_at: ${clockOf(window[index].capturedAt)}`,
+        `capturedAt: ${new Date(window[index].capturedAt).toISOString()}`,
+        `streamId: ${window[index].streamId || effectiveStreamId}`,
+        `videoTimeMs: ${Number(window[index].videoTimeMs) || 0}`,
+      ]
+      if (inspectionSource) {
+        meta.push(
+          `taskId: ${inspectionSource.taskId}`,
+          `checkpointId: ${inspectionSource.checkpointId}`,
+          `inspectionRound: ${inspectionSource.inspectionRound}`,
+        )
+      }
+      meta.push(`imageRef: frame_${window[index].sequence}`, `[图片 ${index + 1}]`)
+      content.push({ type: 'text', text: meta.join('\n') })
       content.push({ type: 'image', attachment: refs[index] })
     }
+    const source = {
+      kind: 'camera-observation',
+      observationId: randomUUID(),
+      streamId: effectiveStreamId,
+      frames: window.map(frame => {
+        /** @type {Record<string, string | number>} */
+        const entry = {
+          frameId: `frame_${frame.sequence}`,
+          sequence: Number(frame.sequence),
+          capturedAt: Number(frame.capturedAt),
+          streamId: String(frame.streamId || effectiveStreamId),
+          videoTimeMs: Number(frame.videoTimeMs) || 0,
+        }
+        if (inspectionSource) {
+          entry.taskId = inspectionSource.taskId
+          entry.checkpointId = inspectionSource.checkpointId
+          entry.inspectionRound = inspectionSource.inspectionRound
+        }
+        return entry
+      }),
+    }
+    if (inspectionSource) source.inspection = inspectionSource
     return {
       id: randomUUID(),
       role: 'user',
       content,
-      source: {
-        kind: 'camera-observation',
-        observationId: randomUUID(),
-        frames: window.map(frame => ({
-          frameId: `frame_${frame.sequence}`,
-          sequence: frame.sequence,
-          capturedAt: frame.capturedAt,
-        })),
-      },
+      source,
     }
+  }
+
+  /**
+   * While the host waits for the work-order form (or remediation ack), do not
+   * steer new camera frames — otherwise the Agent stays busy and the form
+   * submit appears to do nothing.
+   */
+  function inspectionWaitingForUser() {
+    const phase = inspectionContext()?.phase
+    return phase === 'awaiting_remediation' || phase === 'recheck_pending'
   }
 
   /** 1 Hz sampling: newest frame in, oldest evicted. Never touches the Agent. */
   function sample() {
     if (!state.running) return
+    if (inspectionWaitingForUser()) {
+      // Drop backlog so resume does not dump pre-remediation frames.
+      if (buffer.length > 0) {
+        state.dropped += buffer.length
+        buffer.length = 0
+      }
+      return
+    }
     const frame = camera.latest()
     if (frame === null) return
     if (frame.sequence === lastSequence) return
     lastSequence = frame.sequence
     state.sampled += 1
-    buffer.push({ jpeg: frame.jpeg, sequence: frame.sequence, capturedAt: frame.capturedAt })
+    const insp = inspectionContext()
+    buffer.push({
+      jpeg: frame.jpeg,
+      sequence: frame.sequence,
+      capturedAt: frame.capturedAt,
+      streamId: insp?.streamId ?? pushStreamId,
+      videoTimeMs: Math.max(0, frame.capturedAt - videoStartedAt),
+    })
     while (buffer.length > config.windowSize) {
       buffer.shift()
       state.dropped += 1
@@ -492,6 +618,13 @@ export function apply(ctx, rawConfig) {
   /** Deliver the whole buffered window when (and only when) the Agent is idle. */
   async function tryPush() {
     if (!state.running || state.busy) return
+    if (inspectionWaitingForUser()) {
+      if (buffer.length > 0) {
+        state.dropped += buffer.length
+        buffer.length = 0
+      }
+      return
+    }
     if (buffer.length === 0) return
 
     const agents = ctx.get('agents')
@@ -565,6 +698,7 @@ export function apply(ctx, rawConfig) {
       throw new Error('sessionId is required')
     }
     if (typeof video === 'string' && video.trim().length > 0) selectVideo(video)
+    else bumpPushStream('start')
     state.sessionId = sessionId
     state.intervalMs = clampInterval(intervalMs ?? state.intervalMs)
     if (timer !== null) clearInterval(timer)
@@ -577,6 +711,7 @@ export function apply(ctx, rawConfig) {
     state.lastError = ''
     buffer.length = 0
     lastSequence = 0
+    videoStartedAt = Date.now()
     {
       // The target is explicit: register here instead of guessing the preset at
       // agent/created, where composedPreset may not be resolvable yet.

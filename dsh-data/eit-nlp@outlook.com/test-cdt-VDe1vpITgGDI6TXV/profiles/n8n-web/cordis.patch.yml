@@ -31,6 +31,12 @@
           没有明确出处时正常回答，不必强行标注。
         toolCallTimeoutMs: 180000
         failOnStartupError: false
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-official
+    model: deepseek-flash
+    reasoningEffort: low
 # n8n-managed workspace directory
 - id: workspace-controller
   name: "@deepseek-ai/dsh-api-workspace-controller"

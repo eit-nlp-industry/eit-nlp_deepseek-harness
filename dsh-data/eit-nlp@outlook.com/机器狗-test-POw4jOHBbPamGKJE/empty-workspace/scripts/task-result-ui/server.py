@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -14,6 +15,26 @@ SCRIPT = HERE.parent / "post-robot-task-result.sh"
 INDEX = HERE / "index.html"
 HOST = "127.0.0.1"
 PORT = 13801
+
+# Job labels may look like `navigate · sbi_…` or `mcp__robot__navigate · sbi_…`.
+_TASK_ID_RE = re.compile(r"sbi_[A-Za-z0-9]+")
+_MCP_TOOL_PREFIX_RE = re.compile(r"^mcp__[A-Za-z0-9]+__")
+
+
+def normalize_task_id(raw: str) -> str:
+    """Extract invocation id; drop tool name / MCP prefix from pasted job labels."""
+    text = (raw or "").strip()
+    if not text:
+        return ""
+    # Prefer an explicit sbi_… token anywhere in the paste.
+    match = _TASK_ID_RE.search(text)
+    if match:
+        return match.group(0)
+    # `tool · <id>` or `mcp__robot__tool · <id>` without sbi_ prefix.
+    if "·" in text:
+        text = text.split("·")[-1].strip()
+    text = _MCP_TOOL_PREFIX_RE.sub("", text).strip()
+    return text
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -49,7 +70,8 @@ class Handler(BaseHTTPRequestHandler):
             self._send(400, b'{"error":"invalid json"}\n', "application/json; charset=utf-8")
             return
 
-        task_id = str(payload.get("task_id") or "").strip()
+        raw_task_id = str(payload.get("task_id") or "")
+        task_id = normalize_task_id(raw_task_id)
         if not task_id:
             self._send(400, b'{"error":"task_id required"}\n', "application/json; charset=utf-8")
             return
@@ -77,6 +99,7 @@ class Handler(BaseHTTPRequestHandler):
                 "ok": proc.returncode == 0,
                 "exit_code": proc.returncode,
                 "task_id": task_id,
+                "input": raw_task_id.strip(),
                 "output": output.strip() or "(no output)",
             },
             ensure_ascii=False,

@@ -54,7 +54,7 @@ export function install(ctx, input, dependencies) {
   const client = createSearchClient(config, dependencies)
   ctx.tools.register({
     name: 'search_ragflow_semantic_map',
-    description: '只读RAGFlow语义地图工具。默认mode=search，传query检索候选及原始spatial米制坐标，不能当作完整地图。展示全部地图时传{mode:"all"}且不传query：分页读取配置Dataset中全部semantic_anchor__*.txt文档及Chunk，不按相关性或可导航性筛选；成功返回complete=true、去重candidates、数量、遗漏原因及可直接逐项传给render_ui的renders。all的similarity=null；不同scene_id或frame_id分图，局部XY已缩放至5–95并翻转Y，不要再次转换。缺少局部坐标的候选仍保留但不绘点。知识库可能保留旧导入记录，完整列表不保证是最新源地图快照。返回坐标不保证是导航停靠点，不执行机器人动作。',
+    description: '只读RAGFlow语义地图工具，供真机 navigate 取命名地点 anchor_id（米制spatial）；用户身边的 anchor_id 用 get_phone_location。MapPreview 示意坐标请用 query_place / get_phone_location 的平面 x,y。默认mode=search，传query检索候选及原始spatial米制坐标。mode=all（不传query）分页读取配置Dataset内全部semantic_anchor文档及Chunk，返回complete=true、去重candidates等；all的similarity=null；不同scene_id或frame_id分图。返回坐标不保证是导航停靠点，不执行机器人动作。',
     parameters: {
       type: 'object', additionalProperties: false,
       properties: {

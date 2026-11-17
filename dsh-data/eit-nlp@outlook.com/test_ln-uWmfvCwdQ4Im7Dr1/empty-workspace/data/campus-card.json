@@ -1,0 +1,48 @@
+{
+  "user": {
+    "id": "2610044",
+    "name": "李诺"
+  },
+  "card": {
+    "cardNo": "6217 **** **** 4412",
+    "balance": 212.4,
+    "currency": "CNY",
+    "status": "正常",
+    "lastUpdated": "2026-11-17T17:00:00+08:00",
+    "threshold": 20,
+    "topUpPresets": [
+      200,
+      100,
+      50
+    ],
+    "defaultTopUp": 200,
+    "notifyEmail": "linuo@easterntech.edu.cn",
+    "emailEnabled": true
+  },
+  "transactions": [
+    {
+      "time": "2026-11-16T21:45:04.180+08:00",
+      "place": "线上充值",
+      "amount": 200,
+      "balanceAfter": 212.4
+    },
+    {
+      "time": "2026-11-16T12:03:00+08:00",
+      "place": "第三食堂",
+      "amount": -14.5,
+      "balanceAfter": 12.4
+    },
+    {
+      "time": "2026-11-16T08:12:00+08:00",
+      "place": "校园超市",
+      "amount": -6.8,
+      "balanceAfter": 26.9
+    },
+    {
+      "time": "2026-11-15T19:40:00+08:00",
+      "place": "第二食堂",
+      "amount": -12,
+      "balanceAfter": 33.7
+    }
+  ]
+}

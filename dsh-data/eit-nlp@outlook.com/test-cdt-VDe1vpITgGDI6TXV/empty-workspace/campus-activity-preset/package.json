@@ -3,10 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "校园活动筹备助手：五步 JSON Render 卡片流程（需求 → 方案 → 筹备 → 流程 → 确认），执行流程复用 Workflow 组件。",
+  "description": "用 JSON Render 卡片分步筹备校园活动：步骤数按复杂度自适应（3–5 步），需要时用 Workflow 组件编排执行流程；不预约场地、不采购、不发通知。",
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
-  }
+  },
+  "exports": {
+    ".": "./index.js",
+    "./plan-store": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "runtime"
+  ]
 }

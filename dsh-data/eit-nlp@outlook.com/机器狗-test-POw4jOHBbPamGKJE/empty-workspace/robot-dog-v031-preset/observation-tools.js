@@ -79,11 +79,13 @@ export function apply(ctx, config = {}) {
     name: 'remember_person',
     description: [
       '记住当前观察画面里的一个人：保存整张画面，并在 bbox 区域画一个矩形框（不裁剪）。',
+      '调用前必须已让用户确认「记的是谁、叫什么」：通常先用 annotate_target 出示带框图，等用户用文字确认姓名/身份后再调用本工具；未确认不要写入。',
       'frame_id：原样照抄【环境观察】消息里的那一帧，不要自己拼。',
       'bbox：0~1 的比例坐标（相对整张图的宽高），不是像素。x/y 是左上角，w/h 是宽高。',
       '框法：以头高 H 为单位，框高约 1.5~1.7H、宽约 1.7~1.9H，头顶上方留约 0.1H 余量；框头部加部分肩膀，不要框全身、不要框手和腿。',
       '目标贴边时向画面内侧留一点余量；目标太小、背影、严重模糊时不要保存，等下一帧。',
       '只记录用户明确说过的姓名和事实，不编造、不推断；一次只记一个人，多人分别调用。',
+      '本工具只负责写入人物库，不做人物识别；识别请用参考图比对类工具，且拿不准时不要猜姓名。',
     ].join(''),
     parameters: {
       type: 'object',
@@ -189,10 +191,11 @@ export function apply(ctx, config = {}) {
   ctx.tools.register({
     name: 'annotate_target',
     description: [
-      '把当前观察画面暂存到本地：保存整帧，不裁剪。',
+      '把当前观察画面暂存到本地：保存整帧，不裁剪；成功后供 render_ui 给用户看或确认。',
       'frame_id 原样照抄【环境观察】消息里的那一帧。',
-      '带 bbox（0~1 比例，x/y 左上角、w/h 宽高）时在 bbox 区域画一个矩形框；不带 bbox 时只原样保存整帧、不画框，用于把画面给用户看。',
-      '一个框只框一个目标，不要框住多人或半个目标；只暂存图片，不写人物库。',
+      '带 bbox（0~1 比例，x/y 左上角、w/h 宽高）时在 bbox 区域画一个矩形框，用于「是不是这个人/物」的确认；不带 bbox 时只原样保存整帧、不画框，用于到场取证。',
+      '一个框只框一个目标，不要框住多人或半个目标；只暂存图片，不写人物库。写入人物库请在用户确认后调用 remember_person。',
+      '出图时只用返回里的 asset_id（短串）作为 render_ui 的 image.assetId；不要把 path 或绝对路径当作 assetId。',
     ].join(''),
     parameters: {
       type: 'object',
@@ -210,14 +213,22 @@ export function apply(ctx, config = {}) {
         required: ['saved', 'path', 'width', 'height'],
         properties: {
           saved: { type: 'boolean' },
-          path: { type: 'string' },
+          path: { type: 'string', description: '磁盘路径，仅供调试；render_ui 不要用 path' },
           width: { type: 'integer' },
           height: { type: 'integer' },
+          asset_id: {
+            type: 'string',
+            description: '媒体目录短 id；render_ui 的 image.assetId 只用这个，不要用 path',
+          },
         },
       },
       render: (_args, value) => [{
         type: 'text',
-        text: value.saved ? `已暂存图片：${value.path}` : '未保存',
+        text: value.saved
+          ? (typeof value.asset_id === 'string' && value.asset_id.length > 0
+            ? `已暂存图片，asset_id：${value.asset_id}`
+            : `已暂存图片：${value.path}`)
+          : '未保存',
       }],
     },
     async execute(args, exec) {
@@ -326,6 +337,7 @@ export function apply(ctx, config = {}) {
       '参考照片会作为图片附带在本轮之后，每张图前面标了 person_id，凭 person_id 与候选对应。',
       '只做保守判断：只有一个候选明确匹配时才认人；模糊、多人、背影或参考图不清晰时按陌生人或无法确定处理，不要猜名字。',
       '人物库为空时返回 count=0，此时不要凭空猜测身份。',
+      '本工具只用于识别，不能代替记人；用户要求记住某人时用 annotate_target 确认后再调用 remember_person。',
     ].join(''),
     parameters: {
       type: 'object',

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冬季荧光夜跑 · 执行看板</title>
+<style>
+:root{
+  --bg:#0a0f1e; --panel:#111a2e; --panel2:#0f1729; --line:#1e2a44;
+  --text:#e8edf7; --muted:#8b9bb8; --glow:#7df9ff; --mint:#5eead4; --amber:#f5c26b; --danger:#ff7a7a;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:20px 16px 60px;background:radial-gradient(1200px 600px at 50% -10%,#16233f 0%,var(--bg) 60%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:.5px}
+.sub{color:var(--muted);font-size:13px}
+.countdown{color:var(--amber);font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.tip{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:16px;font-size:13px;line-height:1.7;color:var(--muted)}
+.tip b{color:var(--glow)}
+.section{margin:22px 0 0}
+.section h2{font-size:14px;margin:0 0 8px;color:var(--mint);letter-spacing:.4px;display:flex;justify-content:space-between;align-items:center}
+.section h2 .meta{color:var(--muted);font-weight:400;font-size:12px}
+.tasks{background:var(--panel2);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.task{position:relative;display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none;transition:background .15s}
+.task:last-child{border-bottom:none}
+.task:hover{background:#121d33}
+.task input[type="checkbox"]{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.task .box{flex:0 0 20px;width:20px;height:20px;border:2px solid #3a4d76;border-radius:6px;margin-top:1px;display:grid;place-items:center;transition:all .15s;color:transparent;font-size:13px;line-height:1;background:transparent}
+.task .box::after{content:"✓"}
+.task input:checked ~ .box{background:linear-gradient(135deg,var(--glow),var(--mint));border-color:transparent;color:#0a0f1e}
+.task input:checked ~ .body .title{text-decoration:line-through;color:#6f7f9d}
+.task input:checked ~ .body .tags{opacity:.5}
+.task input:focus-visible ~ .box{outline:2px solid var(--glow);outline-offset:2px}
+.task .body{flex:1;min-width:0}
+.task .title{font-size:14px;line-height:1.5;word-break:break-word}
+.task .tags{margin-top:5px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid #2b3c60;color:var(--muted)}
+.tag.owner{color:#9fd3ff;border-color:#2d4a72}
+.tag.overdue{color:var(--danger);border-color:#5b2b36;background:#2a141b}
+.tag.day{color:var(--amber);border-color:#5a4720;background:#241c0e}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+button{font:inherit;font-size:13px;padding:8px 14px;border-radius:9px;border:1px solid #2c3f66;background:#16233c;color:var(--text);cursor:pointer;transition:all .15s}
+button:hover{background:#1b2b49;border-color:#3d5a8e}
+button.primary{border-color:transparent;background:linear-gradient(135deg,#2b6cb0,#1f9ea6);color:#fff;font-weight:600}
+button.danger{color:var(--danger);border-color:#5b2b36;background:#1d1116}
+.note{margin-top:18px;font-size:12px;color:var(--muted);line-height:1.8}
+.note b{color:var(--text)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(10px);background:#12203a;border:1px solid #2e4670;color:var(--text);padding:9px 16px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:all .25s;z-index:20;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>冬季荧光夜跑 · 执行看板</h1>
+      <div class="sub">2026-11-28（周六）19:00–21:00 · 校园环形道路 5 km · 300 人 · 仅校内 · 预算 20,000 元</div>
+    </div>
+    <div class="countdown"><span id="cd">—</span></div>
+  </header>
+  <div class="tip">
+    <b>怎么用：</b>点任意任务行的文字或方框即可勾选，再点取消。<b>勾选不需要脚本，任何浏览器都能用</b>；只有「导出 / 复制 / 重置」三个按钮需要脚本。<br>
+    要导出或复制，请用 Chrome / Edge / Safari <b>直接双击打开本文件</b>，不要用聊天窗口里的预览。
+  </div>
+  <div id="board"></div>
+  <div class="actions">
+    <button class="primary" id="btnExport">导出 Markdown 清单</button>
+    <button id="btnSummary">复制进度摘要</button>
+    <button class="danger" id="btnReset">重置全部勾选</button>
+  </div>
+  <div class="note">
+    <b>勾选记录在哪：</b>浏览器把勾选状态存在本地（localStorage）。换电脑、清缓存会丢失，建议定期点「导出 Markdown 清单」备份。<br>
+    <b>想同步回向导：</b>点「复制进度摘要」，把内容发给我，或直接贴进向导第 4 步。
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+  "use strict";
+  var STORE_KEY = "winter-glow-run-2026-checklist-v2";
+  var SECTIONS = [
+    { title:"① 场地与采购", meta:"负责人：总指挥 + 后勤", tasks:[
+      ["p1","11-07 场地报批、用电申请、预算定稿","总指挥",{overdue:true}],
+      ["p2","11-09 舞台音响灯光、对讲机 40 台询价下单","后勤",{overdue:true}],
+      ["p3","11-10 荧光手环 320、涂料、打卡点装置下单","后勤",{overdue:true}],
+      ["p4","11-12 号码布 300、指引牌 20、反光锥 40、雨衣 300 下单","后勤",{overdue:true}],
+      ["p5","11-25 全部物料到货验收、设备试机","后勤",{day:"11-25"}],
+      ["p6","11-26 500 元机动金备用确认","财务",{}]
+    ]},
+    { title:"② 宣传与报名", meta:"负责人：宣传组", tasks:[
+      ["m1","11-09 报名表单上线，仅限校内、收学号与紧急联系人","宣传",{overdue:true}],
+      ["m2","11-09 第一波宣传：公众号 + 班级群 + 海报","宣传",{overdue:true}],
+      ["m3","11-14 报名过半进度检查","宣传",{day:"11-14"}],
+      ["m4","11-16 如报名不足 200 人，启动二次宣传","宣传",{day:"11-16"}],
+      ["m5","11-21 报名截止，锁名单","宣传",{day:"11-21"}],
+      ["m6","11-24 全体确认短信发送完毕","宣传",{}]
+    ]},
+    { title:"③ 保险、医疗与培训", meta:"负责人：医疗组 + 志愿者组", tasks:[
+      ["l1","11-14 300 人意外险投保","医疗组",{day:"11-14"}],
+      ["l2","11-21 志愿者招募完成，定 40 人大名单","志愿者组",{day:"11-21"}],
+      ["l3","11-22 志愿者培训：岗位职责 + 对讲频道 + 应急流程","志愿者组",{}],
+      ["l4","11-23 急救包 4、AED 1、担架 1、保温毯 20 到位","医疗组",{}],
+      ["l5","11-24 就近医院路线踏勘、打印张贴","医疗组",{}],
+      ["l6","11-25 免责声明与参赛须知定稿","医疗组",{day:"11-25"}]
+    ]},
+    { title:"④ 路线、布场与乐队", meta:"负责人：舞台组 + 路线组", tasks:[
+      ["s1","11-21 环形路线踏勘，定 3 个打卡点与 2 个补给点位置","路线组",{day:"11-21"}],
+      ["s2","11-25 校内乐队确认曲目、调音台通道、电源，自带线材","舞台组",{day:"11-25"}],
+      ["s3","11-27 布场预演、发电机试机、灯光走位","舞台组",{day:"11-27"}],
+      ["s4","11-27 对讲机 40 台统一点名、频道测试","总指挥",{day:"11-27"}],
+      ["s5","11-27 应急演练：伤员送医、失联搜寻、临时顺延通知","医疗组",{day:"11-27"}]
+    ]},
+    { title:"⑤ 活动日执行", meta:"负责人：总指挥", tasks:[
+      ["e1","15:00 布场开始，17:30 前完成舞台与灯光调试","舞台组",{}],
+      ["e2","17:30 全体到岗、对讲机点名","总指挥",{}],
+      ["e3","18:00 签到开闸，发手环与涂料、签免责","签到组",{}],
+      ["e4","18:30 正式开场，18:40–18:50 热身","总指挥",{}],
+      ["e5","19:00 分三批发跑，每批 100 人、间隔 3 分钟","总指挥",{}],
+      ["e6","20:00 终点派对与抽奖，20:45 开始清场","舞台组",{}],
+      ["e7","21:30 撤场完毕，物料回收清单签字","后勤",{}]
+    ]},
+    { title:"⑥ 进阶项", meta:"A、C 已完成", tasks:[
+      ["a1","A. 五个节点设成定时提醒（11-14 / 11-21 / 11-25 / 11-27 已建）","已完成",{done:true}],
+      ["a2","B. 导出可勾选 Markdown 清单（点下方按钮）","可选",{}],
+      ["a3","C. 定稿方案同步为执行版快照","已完成",{done:true}]
+    ]}
+  ];
+  var state = {};
+  var hasStorage = true;
+  try {
+    state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+    localStorage.setItem(STORE_KEY + "-probe", "1");
+    localStorage.removeItem(STORE_KEY + "-probe");
+  } catch(e){ hasStorage = false; }
+  function esc(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function isChecked(id, opt){
+    var cb = document.getElementById("chk-" + id);
+    if (cb) return cb.checked;
+    return state[id] === true || !!(opt && opt.done);
+  }
+  function render(){
+    var board = document.getElementById("board");
+    var html = SECTIONS.map(function(sec){
+      var rows = sec.tasks.map(function(t){
+        var id = t[0], title = t[1], owner = t[2], opt = t[3] || {};
+        var checked = opt.done === true || state[id] === true;
+        var tags = "";
+        if (owner) tags += '<span class="tag owner">' + esc(owner) + '</span>';
+        if (opt.overdue) tags += '<span class="tag overdue">⚠ 已逾期</span>';
+        if (opt.day) tags += '<span class="tag day">🔔 ' + esc(opt.day) + '</span>';
+        return '<label class="task" for="chk-' + id + '">' +
+          '<input type="checkbox" id="chk-' + id + '" data-id="' + id + '"' + (checked ? ' checked' : '') + (opt.done ? ' disabled' : '') + '>' +
+          '<span class="box"></span>' +
+          '<span class="body"><span class="title">' + esc(title) + '</span>' +
+          (tags ? '<span class="tags">' + tags + '</span>' : '') +
+          '</span></label>';
+      }).join("");
+      return '<section class="section"><h2>' + esc(sec.title) + '<span class="meta">' + esc(sec.meta || '') + '</span></h2><div class="tasks">' + rows + '</div></section>';
+    }).join("");
+    board.innerHTML = html;
+    Array.prototype.forEach.call(board.querySelectorAll("input[type=checkbox]"), function(cb){
+      cb.addEventListener("change", function(){
+        state[cb.dataset.id] = cb.checked;
+        save();
+      });
+    });
+  }
+  function save(){
+    if (!hasStorage) return;
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+  function exportFile(){
+    var lines = ["# 冬季荧光夜跑 · 执行清单（导出 " + new Date().toLocaleString("zh-CN") + "）", ""];
+    SECTIONS.forEach(function(sec){
+      lines.push("## " + sec.title);
+      sec.tasks.forEach(function(t){
+        lines.push("- " + (isChecked(t[0], t[3]) ? "☑" : "☐") + " " + t[1] + (t[2] ? "（" + t[2] + "）" : ""));
+      });
+      lines.push("");
+    });
+    try {
+      var blob = new Blob([lines.join("\n")], {type:"text/markdown;charset=utf-8"});
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "冬季荧光夜跑-执行清单.md";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+      toast("已导出 Markdown");
+    } catch(e){
+      toast("导出失败，请直接双击文件用浏览器打开");
+    }
+  }
+  function copySummary(){
+    var done = [], pend = [];
+    SECTIONS.forEach(function(sec){
+      sec.tasks.forEach(function(t){
+        (isChecked(t[0], t[3]) ? done : pend).push(t[1] + (t[2] ? "（" + t[2] + "）" : ""));
+      });
+    });
+    var text = "【冬季荧光夜跑 · 进度回填】\n完成 " + done.length + "/" + (done.length + pend.length) +
+      "\n已完成：" + (done.length ? done.join("；") : "无") +
+      "\n未完成：" + (pend.length ? pend.join("；") : "无");
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); toast("已复制"); } catch(e){ toast("复制失败，请手动选择"); }
+      ta.remove();
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ toast("已复制"); }, fallback);
+    } else { fallback(); }
+  }
+  function resetAll(){
+    if (!confirm("确定清空所有勾选？")) return;
+    state = {};
+    try { localStorage.removeItem(STORE_KEY); } catch(e){}
+    render();
+    toast("已重置");
+  }
+  function toast(msg){
+    var el = document.getElementById("toast");
+    if (!el) return;
+    el.textContent = msg; el.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function(){ el.classList.remove("show"); }, 1900);
+  }
+  function countdown(){
+    var target = new Date("2026-11-28T19:00:00+08:00").getTime();
+    var diff = target - Date.now();
+    var el = document.getElementById("cd");
+    if (!el) return;
+    if (diff <= 0) { el.textContent = "已开跑"; return; }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    el.textContent = "距开跑 " + d + " 天 " + (h < 10 ? "0" : "") + h + " 时";
+  }
+  document.getElementById("btnExport").addEventListener("click", exportFile);
+  document.getElementById("btnSummary").addEventListener("click", copySummary);
+  document.getElementById("btnReset").addEventListener("click", resetAll);
+  countdown();
+  setInterval(countdown, 60000);
+  render();
+  if (!hasStorage) toast("浏览器禁止本地存储：勾选可用，但刷新后会丢");
+})();
+</script>
+</body>
+</html>

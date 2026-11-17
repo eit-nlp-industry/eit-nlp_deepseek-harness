@@ -121,7 +121,10 @@ export function apply(ctx, config = {}) {
   const serverName = config.serverName ?? 'robot'
   const toolPrefix = `mcp__${serverName}__`
   const stopTools = new Set(config.stopTools ?? ['stop'])
-  const noJobTools = new Set(config.noJobTools ?? [])
+  // Queries that report status/sync facts must not open a background job.
+  // get_task_status can return {invocation_id, status:"running"} for an
+  // already-running robot task; treating that like a fresh start double-books jobs.
+  const noJobTools = new Set(['self_check', 'get_task_status', ...(config.noJobTools ?? [])])
   const states = new WeakMap()
   const bridge = ctx.root?.get('robotJobResultBridge') ?? ctx.robotJobResultBridge
 
@@ -197,7 +200,8 @@ export function apply(ctx, config = {}) {
       const argumentsCopy = cloneArguments(exec.arguments)
       const jobId = ctx.jobs.start({
         kind: 'robot',
-        label: started.taskId,
+        // Notice text is `(robot: <label>)`; keep tool name + invocation id.
+        label: `${tool} · ${started.taskId}`,
         owner: exec.agent.id,
         outputLimitBytes: config.outputLimitBytes ?? 8_192,
         run() {
