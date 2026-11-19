@@ -1,0 +1,7 @@
+# 全局仅安装一次回调服务，工具结果监听由使用方在预设中挂载。
+- insert:
+    - id: robot-job-plugin-callback
+      name: '@local/dsh-robot-job-plugin/callback-server.js'
+      config:
+        path: /robot-task-results
+        token: !!js process.env.ROBOT_CALLBACK_TOKEN

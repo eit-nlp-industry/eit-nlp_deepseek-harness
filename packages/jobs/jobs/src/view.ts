@@ -78,6 +78,8 @@ export interface JobView {
   readonly outputLimitBytes?: number
   /** Current lifecycle state. */
   readonly status: JobStatus
+  /** 当前运行中的生产者支持人工完成时为 true；其他任务省略此字段。 */
+  readonly canComplete?: true
   /** The producer's live progress line (`3/10`, the current phase); cleared at settlement. */
   readonly progress?: string
   /** Terminal reason (`exit code: 3`); a recorded kill reason is merged in. */

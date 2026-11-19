@@ -23,7 +23,7 @@
   config:
     provider: deepseek-official
     model: deepseek-flash
-    reasoningEffort: low
+    reasoningEffort: high
 - id: memory-hindsight
   disabled: false
 - id: fs-observation-policy

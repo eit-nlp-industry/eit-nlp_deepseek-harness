@@ -5,6 +5,29 @@
   name: "@deepseek-ai/dsh-client-ui-settings-general"
   config:
     welcomeNoticeVersion: 2026-09-28.1
+# New blank sessions mount this preset, same knob the robot-dog profile uses.
+# The welcome chip and the video panel both read that mounted id.
+- id: agent-preset-registry
+  name: "@deepseek-ai/dsh-agent-preset-registry"
+  config:
+    default: standard
+    selectedDefault: campus
+- id: ui-conversation
+  name: "@deepseek-ai/dsh-client-ui-conversation"
+  config:
+    busyEnter: steer
+- id: memory-hindsight
+  disabled: false
+- id: ui-theme
+  name: "@deepseek-ai/dsh-client-ui-theme"
+  config:
+    preference: system
+# Same exemption as the robot-dog profile: a quiet observation loop calls this
+# tool every frame. Without the exemption the repeat guard tells the model to stop.
+- id: repeat-tool-reminder
+  config:
+    exclude:
+      - observation_no_action
 # n8n-managed workspace directory
 - id: workspace-controller
   name: "@deepseek-ai/dsh-api-workspace-controller"

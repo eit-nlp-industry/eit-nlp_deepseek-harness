@@ -268,3 +268,46 @@ describe('next-step input during a background result wait', () => {
     } finally { await h.dispose() }
   })
 })
+
+// 真实 AgentLoop 与 tool-jobs 链路：人工完成只触发一次模型通知，消息写入会话日志。
+it('manual completion wakes the owning model with the producer message once', async () => {
+  const ctx = new Context()
+  await ctx.plugin(LlmRuntime)
+  await ctx.plugin(SessionStore)
+  await ctx.plugin(SessionProjectionRegistry)
+  await ctx.plugin(SystemPrompt)
+  await ctx.plugin(ToolRuntime)
+  await ctx.plugin(NativeToolExecutor)
+  await ctx.plugin(AgentRegistry)
+  await ctx.plugin(AgentLoop, { agents: [] })
+  await ctx.plugin(LocalJobRegistry)
+  await ctx.plugin(ToolJobs, { completionDelivery: 'wakeup' })
+  const adapter = new ScriptedAdapter([textChunks('用户已手动确认任务完成。')])
+  ctx.llm.registerAdapter(['mock'], adapter)
+  const handle = await ctx.agents.create({ sessionId: SessionId('manual-completion'), agentOptions: { provider: 'mock', model: 'mock' } })
+  const done = Promise.withResolvers<JobOutcome>()
+  const id = ctx.jobs.start({ kind: 'bash', label: 'manual-fixture', owner: handle.agent.id, run: () => ({
+    cancel: () => done.resolve({ status: 'killed' }),
+    complete: () => done.resolve({ status: 'completed', result: '用户已手动确认任务完成。' }),
+    done: done.promise,
+  }) })
+  const settled = Promise.withResolvers<undefined>()
+  const unsubscribe = ctx.jobs.events.subscribe({ owner: handle.agent.id }, (event) => {
+    if (event.type === 'settled' && event.job.id === id) settled.resolve(undefined)
+  })
+  try {
+    expect(ctx.jobs.complete(id, handle.agent.id)).toBe('requested')
+    expect(ctx.jobs.complete(id, handle.agent.id)).toBe('requested')
+    await settled.promise
+    await handle.agent.whenIdle()
+    expect(adapter.requests).toHaveLength(1)
+    expect(JSON.stringify(adapter.requests[0]?.messages)).toContain('用户已手动确认任务完成。')
+    const events = handle.agent.session.snapshotEvents()
+    expect(events.filter(event => event.type === 'job/settled')).toHaveLength(1)
+    expect(events.filter(event => event.type === 'user/message' && JSON.stringify(event.data).includes('用户已手动确认任务完成。'))).toHaveLength(1)
+  } finally {
+    unsubscribe()
+    await handle.dispose()
+    await ctx.fiber.dispose()
+  }
+})

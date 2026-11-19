@@ -37,6 +37,8 @@ export interface JobListInjected {
    * state itself converges through the jobs control frames.
    */
   killJob: (sessionId: SessionId, jobId: string) => Promise<boolean>
+  /** 人工完成；sessionId 校验归属，jobId 为注册表 ID，返回请求是否被接纳。 */
+  completeJob: (sessionId: SessionId, jobId: string) => Promise<boolean>
 }
 
 /** Full props for the session-header job-list action. */
@@ -185,8 +187,55 @@ function ordered(jobs: readonly JobView[]): JobView[] {
  */
 type KillState = 'idle' | 'armed' | 'pending' | 'failed'
 
-/** One job row plus, when observable and expanded, its live output panel. */
-function JobItem({ job, view, expanded, now, onToggle, kill, t }: {
+/**
+ * 人工完成按钮：请求期间防止重复提交，接纳后等待任务流移除按钮。
+ * @param props label 为任务展示名，complete 发起完成请求，t 提供本地化文案。
+ */
+function CompleteButton({ label, complete, t }: {
+  label: string
+  complete: () => Promise<boolean>
+  t: TranslateNS<typeof NS>
+}) {
+  const [state, setState] = useState<'idle' | 'pending' | 'failed'>('idle')
+  const pending = useRef(false)
+  /** 同步上锁，防止 React 提交下一帧前的重复点击；失败后允许重试。 */
+  const press = async (): Promise<void> => {
+    if (pending.current) return
+    pending.current = true
+    setState('pending')
+    let accepted = false
+    try {
+      accepted = await complete()
+    } catch (error) {
+      // 网络异常的结果可能未知；人工完成入口幂等，保留任务原状态并允许重试。
+      void error
+    }
+    if (!accepted) {
+      pending.current = false
+      setState('failed')
+    }
+  }
+  const title = state === 'failed' ? t('complete.failed') : t('complete.task', { label })
+  return (
+    <button
+      type="button"
+      className={state === 'failed' ? `${css.complete} ${css.stopFailed}` : css.complete}
+      disabled={state === 'pending'}
+      aria-label={title}
+      title={title}
+      onClick={() => { void press() }}
+    >
+      {t(state === 'pending' ? 'complete.pending' : state === 'failed' ? 'complete.failed' : 'complete.action')}
+    </button>
+  )
+}
+
+/**
+ * 展示一个任务及输出面板，按生产者能力提供人工完成入口。
+ * @param props job 为任务快照，view 为观察输出，expanded 控制面板，now 计算时长；
+ * onToggle 切换面板，kill 提供停止状态与处理器，complete 发起人工完成，t 提供本地化文案。
+ */
+function JobItem({ job, view, expanded, now, onToggle, kill, complete, t }: {
   job: JobView
   view: ObservedJob | undefined
   expanded: boolean
@@ -195,6 +244,7 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }: {
   onToggle: () => void
   /** Present on running rows: the human-kill button state and press handler. */
   kill?: { state: KillState; onPress: () => void }
+  complete?: () => Promise<boolean>
   t: TranslateNS<typeof NS>
 }) {
   const live = isLive(job)
@@ -273,6 +323,7 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }: {
               {body}
             </span>
           )}
+        {complete !== undefined ? <CompleteButton label={job.label} complete={complete} t={t} /> : null}
         {kill !== undefined
           ? (
             <button
@@ -331,10 +382,10 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }: {
  * someone is watching. A running row carries a two-press stop button that
  * requests a human kill through the job controller.
  * @param props - runtime slot currency, the jobs snapshot hook, the roster,
- *   observation, and kill controls, and the namespace translator.
+ *   observation, kill and manual-completion controls, and the namespace translator.
  * @returns the trigger and its popover list, or null when there is nothing to show.
  */
-export function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }: JobListActionProps) {
+export function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, completeJob, t }: JobListActionProps) {
   const jobs = useJobs(state => state.rows[sessionId]) ?? NO_JOBS
   const observedViews = useJobs(state => state.observed)
   const [open, setOpen] = useState(false)
@@ -510,6 +561,9 @@ export function JobListAction({ sessionId, useJobs, watchRows, observe, killJob,
             onPress: () => { pressKill(job) },
           },
         }
+        : {}}
+      {...job.status === 'running' && job.canComplete === true
+        ? { complete: () => completeJob(sessionId, String(job.id)) }
         : {}}
       t={t}
     />

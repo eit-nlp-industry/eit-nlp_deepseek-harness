@@ -179,7 +179,7 @@
             config:
               mode: native
           - id: robot-job-result
-            name: '@local/dsh-robot-dog-a-preset/index.js'
+            name: '@local/dsh-robot-job-plugin/index.js'
             config:
               serverName: robot
               stopTools:

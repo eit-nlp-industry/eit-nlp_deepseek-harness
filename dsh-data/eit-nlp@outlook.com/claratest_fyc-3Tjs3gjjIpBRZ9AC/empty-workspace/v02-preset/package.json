@@ -1,0 +1,14 @@
+{
+  "name": "@local/dsh-v02-preset",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "cordis.patch.yml"
+  ]
+}

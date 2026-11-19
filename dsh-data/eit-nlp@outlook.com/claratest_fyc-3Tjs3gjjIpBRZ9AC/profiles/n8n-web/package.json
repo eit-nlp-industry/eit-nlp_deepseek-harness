@@ -1,12 +1,15 @@
 {
   "name": "dsh-profile-n8n-web",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@local/dsh-v02-preset": "link:/data/dsh/eit-nlp@outlook.com/claratest_fyc-3Tjs3gjjIpBRZ9AC/empty-workspace/v02-preset"
+  },
   "dsh": {
     "profile": {
       "bundles": [
         "@deepseek-ai/dsh-base",
-        "@deepseek-ai/dsh-web-app"
+        "@deepseek-ai/dsh-web-app",
+        "@local/dsh-v02-preset"
       ]
     }
   }

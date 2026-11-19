@@ -8,15 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@local/dsh-campus-activity-vision-console':
+        specifier: link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/campus-activity-vision-console
+        version: link:../../empty-workspace/campus-activity-vision-console
       '@local/dsh-campus-activity-preset':
         specifier: link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/campus-activity-preset
         version: link:../../empty-workspace/campus-activity-preset
-      '@local/dsh-campus-booking-preset':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/campus-booking-preset
-        version: link:../../empty-workspace/campus-booking-preset
-      '@local/dsh-copy-review-preset':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/DeepSeek Harness 3-VDe1vpITgGDI6TXV/empty-workspace/copy-review-preset
-        version: link:../../empty-workspace/copy-review-preset
       '@local/dsh-wizard':
         specifier: link:/data/dsh/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/empty-workspace/wizard-bundle
         version: link:../../empty-workspace/wizard-bundle

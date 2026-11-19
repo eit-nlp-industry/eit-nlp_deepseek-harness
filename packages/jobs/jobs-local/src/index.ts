@@ -83,6 +83,7 @@ interface TrackedJob {
   /** Exact lifecycle owner; session-id authorization is derived from it. */
   owner: Agent | undefined
   cancel: (reason?: string) => void
+  complete: (() => void) | undefined
   status: JobStatus
   ring: OutputRing
   /** The model's consuming cursor; {@link JobRegistry.readAt} never moves it. */
@@ -250,6 +251,7 @@ export class LocalJobRegistry extends JobRegistry {
       outputLimitBytes: spec.outputLimitBytes,
       owner,
       cancel: hooks.cancel.bind(hooks),
+      complete: hooks.complete?.bind(hooks),
       status: 'running',
       ring,
       modelCursor: 0,
@@ -333,6 +335,22 @@ export class LocalJobRegistry extends JobRegistry {
     return this.killJob(this.expect(id, caller), reason)
   }
 
+  /**
+   * 调用生产者的人工完成入口，保持原 done 结算与通知流程。
+   * @param id 要人工完成的注册表任务 ID。
+   * @param caller 发起操作的会话，用于校验任务所属关系。
+   * @returns 已接纳请求或任务已结束；不支持、停止中以及生产者异常会抛出。
+   */
+  override complete(id: JobId, caller?: SessionId): 'requested' | 'already-finished' {
+    const job = this.expect(id, caller)
+    if (isTerminal(job.status)) return 'already-finished'
+    if (job.status !== 'running') throw new Error(`job ${id} is ${job.status}`)
+    if (job.complete === undefined) throw new Error(`job ${id} does not support manual completion`)
+
+    job.complete()
+    return 'requested'
+  }
+
   async wait(id: JobId, timeoutMs: number, caller?: SessionId, signal?: AbortSignal): Promise<JobView> {
     return this.waitJob(this.expect(id, caller), timeoutMs, signal)
   }
@@ -413,7 +431,7 @@ export class LocalJobRegistry extends JobRegistry {
     }
   }
 
-  /** Project a fresh read-only view from the mutable record. */
+  /** 将 job 的内部记录投影为只读数据，人工完成能力仅在运行时公开。 */
   private view(job: TrackedJob): JobView {
     const owner = job.owner?.id
     const spillPaths = [...new Set(job.spillPaths.filter((path): path is string => path !== undefined))]
@@ -424,6 +442,7 @@ export class LocalJobRegistry extends JobRegistry {
       ...owner !== undefined ? { owner } : {},
       ...job.outputLimitBytes !== undefined ? { outputLimitBytes: job.outputLimitBytes } : {},
       status: job.status,
+      ...job.status === 'running' && job.complete !== undefined ? { canComplete: true as const } : {},
       ...job.state.progress !== undefined ? { progress: job.state.progress } : {},
       ...job.detail !== undefined ? { detail: job.detail } : {},
       startedAt: job.startedAt,

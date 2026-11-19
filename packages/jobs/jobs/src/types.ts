@@ -157,6 +157,11 @@ export interface JobHandle {
 /** Hooks through which the runtime controls and observes producer work. */
 export interface JobHooks {
   /**
+   * 由生产者选择支持人工完成；调用应同步、幂等，并最终通过 done 返回实际终态。
+   * 未提供时不展示完成按钮。抛错由调用方处理，注册表不伪造成功或终止资源。
+   */
+  complete?(): void
+  /**
    * Request termination. Must be synchronous, idempotent, and eventually settle
    * {@link done}; throws propagate. The optional reason is forwarded verbatim.
    */

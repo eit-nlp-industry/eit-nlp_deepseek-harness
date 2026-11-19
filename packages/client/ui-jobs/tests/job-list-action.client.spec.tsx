@@ -46,7 +46,7 @@ function props(
   function useJobs<T>(select: (value: JobsSnapshot) => T): T {
     return select(jobsState)
   }
-  return { sessionId: SESSION, useJobs, watchRows, observe, killJob, t } as JobListActionProps
+  return { sessionId: SESSION, useJobs, watchRows, observe, killJob, completeJob: async () => true, t } as JobListActionProps
 }
 
 function openList(): void {
@@ -598,4 +598,42 @@ it.each([1, 2, 5, 21])('renders count-independent Russian labels for %i jobs', (
   expect(screen.getByRole('button', { name: `Фоновые задачи выполняются: ${count}` })).toBeDefined()
   view.rerender(<JobListAction {...props(jobs.map(item => ({ ...item, status: 'completed', finishedAt: 1_700_000_003_000 })))} t={translate} />)
   expect(screen.getByRole('button', { name: `Фоновые задачи: ${count}` })).toBeDefined()
+})
+
+
+describe('JobListAction manual completion', () => {
+  it('only offers completion for an opted-in running job and blocks repeated presses', async () => {
+    let resolve!: (ok: boolean) => void
+    const completeJob = vi.fn(() => new Promise<boolean>((done) => { resolve = done }))
+    const rows = [job({ id: 'robot-1' as JobView['id'], kind: 'robot', label: 'sbi-1', canComplete: true }), job()]
+    const { rerender } = render(<JobListAction {...props(rows)} completeJob={completeJob} />)
+    openList()
+    const button = screen.getByRole('button', { name: '手动完成任务 sbi-1' })
+    fireEvent.click(button)
+    fireEvent.click(button)
+    expect(completeJob).toHaveBeenCalledTimes(1)
+    expect(completeJob).toHaveBeenCalledWith(SESSION, 'robot-1')
+    expect((button as HTMLButtonElement).disabled).toBe(true)
+    await act(async () => { resolve(true) })
+    expect((button as HTMLButtonElement).disabled).toBe(true)
+    rerender(<JobListAction {...props([job({ id: 'robot-1' as JobView['id'], kind: 'robot', label: 'sbi-1', status: 'completed' })])} completeJob={completeJob} />)
+    expect(screen.queryByRole('button', { name: '手动完成任务 sbi-1' })).toBeNull()
+  })
+
+  it.each([false, 'throw'])('shows a completion failure and permits retry (%s)', async (failure) => {
+    const completeJob = vi.fn(async () => { if (failure === 'throw') throw new Error('network'); return false })
+    render(<JobListAction {...props([job({ label: 'manual', canComplete: true })])} completeJob={completeJob} />)
+    openList()
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: '手动完成任务 manual' })) })
+    const retry = screen.getByRole('button', { name: '完成失败，请重试' })
+    expect((retry as HTMLButtonElement).disabled).toBe(false)
+    await act(async () => { fireEvent.click(retry) })
+    expect(completeJob).toHaveBeenCalledTimes(2)
+  })
+
+  it('does not offer completion for stopping jobs', () => {
+    render(<JobListAction {...props([job({ canComplete: true, status: 'stopping' })])} />)
+    openList()
+    expect(screen.queryByRole('button', { name: /手动完成任务/ })).toBeNull()
+  })
 })

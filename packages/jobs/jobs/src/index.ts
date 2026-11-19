@@ -163,6 +163,18 @@ export abstract class JobRegistry extends Service {
   abstract kill(id: JobId, caller?: SessionId, reason?: string): 'requested' | 'already-finished'
 
   /**
+   * 请求生产者人工完成任务，终态仍由其 done 承诺提交；默认实现拒绝未支持的能力。
+   * @param id 要人工完成的注册表任务 ID。
+   * @param caller 发起操作的会话，用于校验任务所属关系。
+   * @returns 已结束返回 already-finished，支持此能力的实现可返回 requested。
+   */
+  complete(id: JobId, caller?: SessionId): 'requested' | 'already-finished' {
+    const job = this.get(id, caller)
+    if (job.status !== 'running' && job.status !== 'stopping') return 'already-finished'
+    throw new Error(`job ${id} does not support manual completion`)
+  }
+
+  /**
    * Wait for settlement or timeout without cancelling the job. Caller abort
    * rejects only while the job is live; after settlement the terminal
    * projection wins. Rejects for an invalid timeout or an unknown or foreign

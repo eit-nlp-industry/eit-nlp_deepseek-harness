@@ -15,7 +15,7 @@
       "requiredReadableText": ["校园开放日", "主楼一楼入口大厅"],
       "viewScope": "指示牌正面及箭头方向可读",
       "moveHint": "活动入口指示牌前",
-      "demoClip": "test-检查.mp4",
+      "demoClip": "test-01-入口检查.mp4",
       "expectedInitial": "入口指示牌清晰可读后应通过"
     },
     {
@@ -26,8 +26,8 @@
       "viewScope": "签到桌完整桌面",
       "evidenceKindHint": "absence",
       "moveHint": "签到台前",
-      "demoClip": "test-检查.mp4",
-      "recheckClip": "test-复核.mp4",
+      "demoClip": "test-02-签到桌初检.mp4",
+      "recheckClip": "test-04-签到用品复核.mp4",
       "expectedInitial": "完整桌面可见但缺标牌与签到表 → 待整改",
       "expectedRecheck": "完整桌面可见且用品齐全 → 复核通过"
     },
@@ -39,15 +39,18 @@
       "viewScope": "任务指定的通行检查区域（不必拍完整条走廊）",
       "evidenceKindHint": "clear_anomaly",
       "moveHint": "入口通道检查区域",
-      "demoClip": "test-检查.mp4",
-      "recheckClip": "test-复核.mp4",
+      "demoClip": "test-03-通道初检.mp4",
+      "recheckClip": "test-05-通道复核.mp4",
       "expectedInitial": "检查区域内有占道物 → 待整改",
       "expectedRecheck": "占道物已移除 → 复核通过"
     }
   ],
   "demoClips": [
-    "test-检查.mp4",
-    "test-复核.mp4"
+    "test-01-入口检查.mp4",
+    "test-02-签到桌初检.mp4",
+    "test-03-通道初检.mp4",
+    "test-04-签到用品复核.mp4",
+    "test-05-通道复核.mp4"
   ],
-  "notes": "先语义地图+navigate 到图书馆；场内用 move_to 按 moveHint 逐点。操作员推流 test-检查/test-复核 仅作到场画面；聊天不点名文件名。整改用工单表单 mock。"
+  "notes": "先语义地图+navigate 到图书馆；场内每点 move_to mock 到达后再由操作员切换对应片段。初检：01指示牌→02签到台→03通道；复核：04签到台→05通道。聊天不点名文件名；整改用工单表单 mock。"
 }

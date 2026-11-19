@@ -35,6 +35,8 @@ A producer streams output by naming pull sources on its spec — non-consuming o
 
 The shipped provider also records owned-job lifecycle metadata in the Session. Producers attach `JobSpec.toolCall` when a tool creates the job, preserving nested and root call identity. See the [durable event fields](../../../docs/subsystems/jobs.md#session-lifecycle-records) for timing and restart semantics.
 
+A producer can opt in to human completion with `JobHooks.complete()`. While that job is running, its projection carries `canComplete: true`. `complete(id, caller)` applies the same owner check as cancellation, rejects unsupported or stopping jobs, and invokes the producer hook; only the existing `done` promise commits the terminal result and notification. The hook must be synchronous and idempotent. A terminal job returns `already-finished` without changing its result.
+
 ### The ownership boundary
 
 A job belongs to the agent session that started it: another agent cannot read or stop it. An id may appear in tool output; the registry authorizes every control operation using the owner. A job started without an owner is open to any caller and lasts until the service is disposed.

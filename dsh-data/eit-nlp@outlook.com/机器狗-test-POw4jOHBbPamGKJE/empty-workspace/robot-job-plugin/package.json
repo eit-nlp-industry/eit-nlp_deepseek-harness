@@ -1,0 +1,30 @@
+{
+  "name": "@local/dsh-robot-job-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./index.js": "./index.js",
+    "./callback-server": "./callback-server.js",
+    "./callback-server.js": "./callback-server.js",
+    "./job-bridge.js": "./job-bridge.js"
+  },
+  "files": [
+    "index.js",
+    "job-bridge.js",
+    "callback-server.js",
+    "cordis.patch.yml",
+    "README.md",
+    "integration/native-job-complete.patch"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

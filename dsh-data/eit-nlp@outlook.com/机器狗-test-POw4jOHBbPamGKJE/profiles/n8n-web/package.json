@@ -11,7 +11,8 @@
     "@steven-stack-s/dsh-memos-local": "2.0.20-dsh.3",
     "dsh-voice-mode": "^0.7.35",
     "@local/dsh-robot-dog-v03-vision-console": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-vision-console",
-    "@eit-nlp/dsh-skill2workflow": "link:/opt/skill2workflow/dsh-plugins/skill2workflow"
+    "@eit-nlp/dsh-skill2workflow": "link:/opt/skill2workflow/dsh-plugins/skill2workflow",
+    "@local/dsh-robot-job-plugin": "link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-job-plugin"
   },
   "dsh": {
     "profile": {

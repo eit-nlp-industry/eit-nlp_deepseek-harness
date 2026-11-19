@@ -30,6 +30,7 @@ const watched: string[] = []
 
 /** Job ids the stubbed bound session was asked to kill, and its scripted result. */
 const kills: [string, string][] = []
+const completions: [string, string][] = []
 let killResult: { ok: boolean } = { ok: true }
 
 /** Boot the browser half over a real slot tree that declares the header list. */
@@ -51,6 +52,10 @@ async function bench(): Promise<{ ctx: Context; fiber: ReturnType<Context['plugi
     observe: (sessionId: string | undefined, id: string) => {
       observed.push([sessionId, id])
       return () => {}
+    },
+    complete: async (sessionId: string, jobId: string) => {
+      completions.push([sessionId, jobId])
+      return killResult
     },
     kill: async (sessionId: string, jobId: string) => {
       kills.push([sessionId, jobId])
@@ -100,6 +105,11 @@ describe('ui-jobs browser half', () => {
     killResult = { ok: false }
     await expect(face.killJob(SessionId('sess-live'), 'bash-4')).resolves.toBe(false)
     expect(kills).toEqual([['sess-live', 'bash-3'], ['sess-live', 'bash-4']])
+    killResult = { ok: true }
+    await expect(face.completeJob(SessionId('sess-live'), 'robot-1')).resolves.toBe(true)
+    killResult = { ok: false }
+    await expect(face.completeJob(SessionId('sess-live'), 'robot-2')).resolves.toBe(false)
+    expect(completions).toEqual([['sess-live', 'robot-1'], ['sess-live', 'robot-2']])
   })
 
   it('registers the header action, and fiber teardown removes it (HMR safety)', async () => {

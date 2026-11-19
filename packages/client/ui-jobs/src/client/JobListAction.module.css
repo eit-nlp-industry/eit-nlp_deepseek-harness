@@ -197,7 +197,8 @@
 }
 
 /* Two-press kill affordance on running job rows: same persistent square. */
-.stop {
+.stop,
+.complete {
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -212,6 +213,16 @@
   color: var(--dsw-alias-label-secondary);
   cursor: pointer;
 }
+
+.complete {
+  width: auto;
+  padding: 0 7px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.complete:disabled { cursor: default; }
+.complete:focus-visible { outline: 2px solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary)); }
 
 .stop:focus-visible {
   border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);

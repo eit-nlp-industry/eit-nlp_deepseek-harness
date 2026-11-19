@@ -1,0 +1,18 @@
+# Video debug console for this home. The panel title does not use a version label.
+- insert:
+    - id: vision-console
+      name: '@local/dsh-campus-vision-console'
+      config:
+        videoPath: /data/dsh/eit-nlp@outlook.com/test_ln-uWmfvCwdQ4Im7Dr1/runtime_data/media/test.mp4
+        ffmpegPath: /data/dsh/eit-nlp@outlook.com/test_ln-uWmfvCwdQ4Im7Dr1/empty-workspace/campus-vision-console/node_modules/ffmpeg-static/ffmpeg
+        captureFps: 2
+        maxWidth: 1280
+        jpegQuality: 3
+        loop: true
+        defaultIntervalMs: 1000
+        maxPushedWindows: 600
+        targetPreset:
+          - campus
+        personStoreDir: /data/dsh/eit-nlp@outlook.com/test_ln-uWmfvCwdQ4Im7Dr1/runtime_data/person-store
+        boxColor: red
+        boxThickness: 6

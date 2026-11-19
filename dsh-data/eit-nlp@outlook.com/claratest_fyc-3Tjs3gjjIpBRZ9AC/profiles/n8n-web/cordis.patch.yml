@@ -5,6 +5,11 @@
   name: "@deepseek-ai/dsh-client-ui-settings-general"
   config:
     welcomeNoticeVersion: 2026-09-28.1
+- id: agent-preset-registry
+  name: "@deepseek-ai/dsh-agent-preset-registry"
+  config:
+    default: v02
+    selectedDefault: v02
 # n8n-managed workspace directory
 - id: workspace-controller
   name: "@deepseek-ai/dsh-api-workspace-controller"

@@ -46,7 +46,7 @@
 
     - id: robot-job-callback-server
 
-      name: '@local/dsh-robot-dog-a-preset/callback-server.js'
+      name: '@local/dsh-robot-job-plugin/callback-server.js'
 
       config:
 
@@ -94,7 +94,7 @@
 
         id: robot-dog-a
 
-        name: 机器狗-job
+        name: 机器狗
 
         description: 基于标准模式的机器狗预设，通过 DSH Job 接收最终结果。
 
@@ -196,7 +196,7 @@
 
           - id: robot-job-result
 
-            name: '@local/dsh-robot-dog-job-preset/index.js'
+            name: '@local/dsh-robot-job-plugin/index.js'
 
             config:
 

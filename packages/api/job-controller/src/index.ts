@@ -14,7 +14,7 @@ import type {} from '@deepseek-ai/dsh-jobs'
 import { Remote, RemoteError, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
 import { observeJobOutput } from './observe.ts'
 import { streamJobRows } from './rows.ts'
-import type { JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from './types.ts'
+import type { JobCompleteRequest, JobCompleteValue, JobView, JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from './types.ts'
 
 export type * from './types.ts'
 
@@ -125,6 +125,30 @@ export class JobController extends TypertRemoteService {
     const outcome = jobs.kill(request.jobId, request.sessionId, 'cancelled by the user')
     return { outcome }
   }
+
+  /**
+   * 请求生产者完成任务；通过同一所属会话校验，保留原终态通知与模型结果消费。
+   * @param request 要完成的任务 ID 及发起操作的会话 ID。
+   * @returns 请求已接纳或任务已结束；不支持此操作时返回结构化错误。
+   */
+  @Remote('complete')
+  complete(request: JobCompleteRequest): JobCompleteValue {
+    const jobs = this.ctx.jobs
+    let job: JobView
+    try {
+      job = jobs.get(request.jobId, request.sessionId)
+    } catch (error) {
+      throw new RemoteError('job/not-found', String(error), request)
+    }
+    if (job.status !== 'running' && job.status !== 'stopping') return { outcome: 'already-finished' }
+    if (job.status !== 'running' || job.canComplete !== true) {
+      throw new RemoteError('job/not-completable', 'Job cannot be completed manually', request)
+    }
+
+    // 生产者异常原样上抛，不能把不确定的执行结果呈现为成功。
+    return { outcome: jobs.complete(request.jobId, request.sessionId) }
+  }
+
 }
 
 export default JobController

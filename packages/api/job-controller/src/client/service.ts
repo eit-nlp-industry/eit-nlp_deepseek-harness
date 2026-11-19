@@ -12,7 +12,7 @@ import { RemoteStreamCarrierError, type ClientRemote } from '@deepseek-ai/dsh-ap
 import type { RemoteResult } from '@deepseek-ai/dsh-typert-protocol'
 import type { JobId } from '@deepseek-ai/dsh-jobs/brand'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import type { JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from '../types.ts'
+import type { JobCompleteRequest, JobCompleteValue, JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from '../types.ts'
 import type { ClientJobsModel, JobsSource } from './model.ts'
 
 /** The generated `job` namespace face the stream runners drive. */
@@ -37,6 +37,12 @@ export interface JobRemote {
    * @returns the registry's admission, or the business/transport failure.
    */
   kill(request: JobKillRequest): Promise<RemoteResult<JobKillValue>>
+  /**
+   * 请求人工完成，错误由界面展示，终态继续从任务流读取。
+   * @param request 任务 ID 及校验归属的会话 ID。
+   * @returns 接纳结果或业务/传输失败。
+   */
+  complete(request: JobCompleteRequest): Promise<RemoteResult<JobCompleteValue>>
 }
 
 /** Remote faces the runners drive: the Gateway stream factory and the `job` namespace. */
@@ -73,6 +79,13 @@ export interface IJobs {
    * @returns the registry's admission, or the business/transport failure.
    */
   kill(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobKillValue>>
+  /**
+   * 请求人工完成；界面只依据任务流更新终态。
+   * @param sessionId 发起操作的所属会话。
+   * @param id 要完成的注册表任务 ID。
+   * @returns 接纳结果或业务/传输失败。
+   */
+  complete(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobCompleteValue>>
 }
 
 /** One reference-counted stream. */
@@ -122,6 +135,11 @@ export class ClientJobs extends Service implements IJobs {
 
   kill(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobKillValue>> {
     return this.remote.job.kill({ sessionId, jobId: id })
+  }
+
+  /** 转发人工完成请求；sessionId 校验归属，id 选择任务。 */
+  complete(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobCompleteValue>> {
+    return this.remote.job.complete({ sessionId, jobId: id })
   }
 
   watchRows(sessionId: SessionId): () => void {

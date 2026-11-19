@@ -69,7 +69,7 @@
 
           - id: robot-job-result
 
-            name: '@local/dsh-robot-dog-a-preset/index.js'
+            name: '@local/dsh-robot-dog-plugin/index.js'
 
             config:
 

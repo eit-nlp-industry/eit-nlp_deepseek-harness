@@ -1667,3 +1667,43 @@ describe('owned job Session lifecycle records', () => {
     }
   })
 })
+
+
+describe('human completion', () => {
+  it('advertises opt-in completion and settles through the producer result', async () => {
+    const ctx = await harness()
+    const owner = await liveAgent(ctx, 'manual-owner')
+    const task = producer({ owner, complete: () => task.settle({ status: 'completed', result: '用户已手动确认任务完成。' }) })
+    const id = ctx.jobs.start(task.spec)
+    expect(ctx.jobs.get(id, owner.id).canComplete).toBe(true)
+    expect(ctx.jobs.complete(id, owner.id)).toBe('requested')
+    await tick()
+    expect(ctx.jobs.read(id, owner.id)).toMatchObject({ result: '用户已手动确认任务完成。', job: { status: 'completed' } })
+    expect(ctx.jobs.get(id, owner.id).canComplete).toBeUndefined()
+    expect(ctx.jobs.complete(id, owner.id)).toBe('already-finished')
+  })
+
+  it('rejects unsupported, foreign, and stopping jobs without completing them', async () => {
+    const ctx = await harness()
+    const owner = await liveAgent(ctx, 'manual-fenced')
+    const complete = vi.fn()
+    const task = producer({ owner, complete })
+    const id = ctx.jobs.start(task.spec)
+    expect(() => ctx.jobs.complete(id, SessionId('other'))).toThrow('belongs to another session')
+    expect(() => ctx.jobs.complete(JobId('missing'), owner.id)).toThrow('unknown job')
+    const unsupported = ctx.jobs.start(producer().spec)
+    expect(ctx.jobs.get(unsupported).canComplete).toBeUndefined()
+    expect(() => ctx.jobs.complete(unsupported)).toThrow('does not support manual completion')
+    ctx.jobs.kill(id, owner.id)
+    expect(ctx.jobs.get(id, owner.id).canComplete).toBeUndefined()
+    expect(() => ctx.jobs.complete(id, owner.id)).toThrow('is stopping')
+    expect(complete).not.toHaveBeenCalled()
+  })
+
+  it('propagates a completion hook failure and leaves the job running', async () => {
+    const ctx = await harness()
+    const id = ctx.jobs.start(producer({ complete: () => { throw new Error('complete boom') } }).spec)
+    expect(() => ctx.jobs.complete(id)).toThrow('complete boom')
+    expect(ctx.jobs.get(id).status).toBe('running')
+  })
+})

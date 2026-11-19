@@ -1,0 +1,13 @@
+{
+  "enabled": false,
+  "baseUrl": "http://RAGFLOW_HOST:9222",
+  "allowHttp": true,
+  "apiKeyEnv": "RAGFLOW_API_KEY",
+  "datasetId": "REPLACE_WITH_32_CHARACTER_DATASET_ID",
+  "topK": 5,
+  "candidateLimit": 5,
+  "minScore": 0.1,
+  "vectorWeight": 1,
+  "timeoutMs": 10000,
+  "maxResponseBytes": 1048576
+}

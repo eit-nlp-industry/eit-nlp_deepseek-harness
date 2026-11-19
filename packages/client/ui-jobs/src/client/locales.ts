@@ -5,6 +5,10 @@ export const NS = 'job'
 
 /** Simplified Chinese dictionary (the key-set source of truth). */
 export const zh = {
+  'complete.task': '手动完成任务 {label}',
+  'complete.action': '完成',
+  'complete.pending': '提交中…',
+  'complete.failed': '完成失败，请重试',
   'count.live.one': '{count} 个后台任务运行中',
   'count.live.other': '{count} 个后台任务运行中',
   'count.idle.one': '{count} 个后台任务',
@@ -49,6 +53,10 @@ export const zh = {
 
 /** English dictionary, key-identical to the Chinese source of truth. */
 export const en: Record<JobKey, string> = {
+  'complete.task': 'Manually complete task {label}',
+  'complete.action': 'Complete',
+  'complete.pending': 'Submitting…',
+  'complete.failed': 'Completion failed, retry',
   'count.live.one': '{count} background job running',
   'count.live.other': '{count} background jobs running',
   'count.idle.one': '{count} background job',
@@ -96,6 +104,10 @@ export type JobKey = keyof typeof zh
 
 /** Japanese copy, checked against the English keys. */
 export const ja = {
+  'complete.task': 'タスク {label} を手動で完了',
+  'complete.action': '完了',
+  'complete.pending': '送信中…',
+  'complete.failed': '完了に失敗しました。再試行',
   'count.live.one': 'バックグラウンドジョブ {count} 件が実行中',
   'count.live.other': 'バックグラウンドジョブ {count} 件が実行中',
   'count.idle.one': 'バックグラウンドジョブ {count} 件',
@@ -140,6 +152,10 @@ export const ja = {
 
 /** Spanish dictionary, checked against the English keys. */
 export const es = {
+  'complete.task': 'Completar manualmente {label}',
+  'complete.action': 'Completar',
+  'complete.pending': 'Enviando…',
+  'complete.failed': 'No se pudo completar. Reintentar',
   'count.live.one': 'Tareas en segundo plano en ejecución: {count}',
   'count.live.other': 'Tareas en segundo plano en ejecución: {count}',
   'count.idle.one': 'Tareas en segundo plano: {count}',
@@ -184,6 +200,10 @@ export const es = {
 
 /** French dictionary, checked against the English keys. */
 export const fr = {
+  'complete.task': 'Terminer manuellement {label}',
+  'complete.action': 'Terminer',
+  'complete.pending': 'Envoi…',
+  'complete.failed': 'Échec. Réessayer',
   'count.live.one': 'Tâches en arrière-plan en cours : {count}',
   'count.live.other': 'Tâches en arrière-plan en cours : {count}',
   'count.idle.one': 'Tâches en arrière-plan : {count}',
@@ -228,6 +248,10 @@ export const fr = {
 
 /** German dictionary, checked against the English keys. */
 export const de = {
+  'complete.task': 'Aufgabe {label} manuell abschließen',
+  'complete.action': 'Abschließen',
+  'complete.pending': 'Wird gesendet…',
+  'complete.failed': 'Fehlgeschlagen. Erneut versuchen',
   'count.live.one': 'Laufende Hintergrundaufgaben: {count}',
   'count.live.other': 'Laufende Hintergrundaufgaben: {count}',
   'count.idle.one': 'Hintergrundaufgaben: {count}',
@@ -272,6 +296,10 @@ export const de = {
 
 /** Russian dictionary, checked against the English keys. */
 export const ru = {
+  'complete.task': 'Вручную завершить задачу {label}',
+  'complete.action': 'Завершить',
+  'complete.pending': 'Отправка…',
+  'complete.failed': 'Не удалось завершить. Повторить',
   'count.live.one': 'Фоновые задачи выполняются: {count}',
   'count.live.other': 'Фоновые задачи выполняются: {count}',
   'count.idle.one': 'Фоновые задачи: {count}',
@@ -316,6 +344,10 @@ export const ru = {
 
 /** Portuguese dictionary, checked against the English keys. */
 export const pt = {
+  'complete.task': 'Concluir manualmente {label}',
+  'complete.action': 'Concluir',
+  'complete.pending': 'Enviando…',
+  'complete.failed': 'Falha ao concluir. Tentar novamente',
   'count.live.one': 'Tarefas em segundo plano em execução: {count}',
   'count.live.other': 'Tarefas em segundo plano em execução: {count}',
   'count.idle.one': 'Tarefas em segundo plano: {count}',

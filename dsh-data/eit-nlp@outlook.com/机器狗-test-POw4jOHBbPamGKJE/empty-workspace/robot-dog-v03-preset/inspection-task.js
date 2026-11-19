@@ -302,7 +302,7 @@ function buildWorkOrderArgs(task) {
     { name: 'location', label: '地点', type: 'text', value: task.location },
     ...issueFields,
     // Prefill so empty required checks do not block form.submit.
-    { name: 'handler', label: '处理人', type: 'text', value: '现场人员' },
+    { name: 'handler', label: '处理人', type: 'text', value: '小陈' },
     { name: 'note', label: '整改说明', type: 'text', value: '上述待处理事项均已完成整改，请开始复核。' },
   ]
 
@@ -737,6 +737,14 @@ export function apply(ctx, config = {}) {
         // streamId here or in-flight frames become stale mid-video.
         orderedNext.status = 'checking'
         task.currentCheckpointId = orderedNext.id
+        const dest = orderedNext.moveHint || orderedNext.name
+        notify.speak = true
+        notify.kind = 'checkpoint_advance'
+        notify.message = [
+          `「${item.name}」本项已记录。`,
+          `接下来前往「${orderedNext.name}」：请 move_to「${dest}」，并对用户说「现在前往${orderedNext.name}」。`,
+          `移动 Job 完成后说「已到达${orderedNext.name}，开始检查」，再观察画面。`,
+        ].join('')
       } else {
         const retryUncertain = task.checkpoints.find(candidate => (
           candidate.status === 'uncertain' && candidate.uncertainCount < task.uncertainLimit
@@ -754,11 +762,11 @@ export function apply(ctx, config = {}) {
         notify.kind = 'initial_summary'
         notify.message = openIssues(task).length > 0
           ? [
-            `巡逻初检完成：已检查 ${summary.checked}/${summary.total} 项，已满足 ${summary.met}，待处理 ${summary.needsFix}，无法确认 ${summary.uncertain}。`,
+            `初检完成：已检查 ${summary.checked}/${summary.total} 项，已满足 ${summary.met}，待处理 ${summary.needsFix}，无法确认 ${summary.uncertain}。`,
             '请展示待处理工单：事项按 1. 2. 3. 标号列出，每项尽量附一张证据图；等待现场确认整改后再复核。',
           ].join('\n')
           : [
-            `巡逻初检完成：已检查 ${summary.checked}/${summary.total} 项，全部满足。`,
+            `初检完成：已检查 ${summary.checked}/${summary.total} 项，全部满足。`,
             '可生成最终检查报告。',
           ].join('\n')
       }
@@ -786,6 +794,14 @@ export function apply(ctx, config = {}) {
         if (next) {
           next.status = 'rechecking'
           task.currentCheckpointId = next.id
+          const dest = next.moveHint || next.name
+          notify.speak = true
+          notify.kind = 'checkpoint_advance'
+          notify.message = [
+            `「${item.name}」复核通过。`,
+            `接下来前往「${next.name}」复核：请 move_to「${dest}」，并对用户说「现在前往${next.name}」。`,
+            `到达后说「已到达${next.name}，开始复核」，再观察。`,
+          ].join('')
         }
       } else if (item.status === 'needs_fix') {
         task.phase = 'awaiting_remediation'
@@ -1035,8 +1051,7 @@ export function apply(ctx, config = {}) {
       const result = applyObservation(task, parsed.value)
       if (result.ok && result.changed) await persist(task)
       const kind = result.notify?.kind || ''
-      // Only stage summaries may trigger UI. Mid-patrol issues stay silent so the
-      // continuous push can still cover later checkpoints.
+      // Only stage summaries may trigger UI. checkpoint_advance speaks but no card.
       const updateUi = Boolean(
         result.ok
         && result.changed

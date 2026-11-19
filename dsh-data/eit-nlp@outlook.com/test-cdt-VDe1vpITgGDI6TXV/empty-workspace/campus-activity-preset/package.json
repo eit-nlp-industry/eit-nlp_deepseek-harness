@@ -12,11 +12,37 @@
   "exports": {
     ".": "./index.js",
     "./plan-store": "./index.js",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./observation-tools.js": "./observation-tools.js",
+    "./annotate-media.js": "./annotate-media.js",
+    "./booking-mock.js": "./booking-mock.js",
+    "./location-mock.js": "./location-mock.js",
+    "./person-media.js": "./person-media.js",
+    "./inspection-task.js": "./inspection-task.js",
+    "./inspection-schema.js": "./inspection-schema.js",
+    "./inspection-store.js": "./inspection-store.js",
+    "./robot-job-result.js": "./robot-job-result.js",
+    "./callback-server.js": "./callback-server.js",
+    "./job-bridge.js": "./job-bridge.js",
+    "./ragflow-semantic-map.js": "./ragflow-semantic-map.js"
   },
   "files": [
     "index.js",
     "cordis.patch.yml",
-    "runtime"
+    "runtime",
+    "observation-tools.js",
+    "annotate-media.js",
+    "booking-mock.js",
+    "location-mock.js",
+    "person-media.js",
+    "inspection-task.js",
+    "inspection-schema.js",
+    "inspection-store.js",
+    "inspection-schema.test.js",
+    "robot-job-result.js",
+    "callback-server.js",
+    "job-bridge.js",
+    "ragflow-semantic-map.js",
+    "campus-open-day.json"
   ]
 }

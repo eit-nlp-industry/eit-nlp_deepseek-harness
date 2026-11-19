@@ -14,12 +14,19 @@ afterEach(async () => {
 })
 
 /** Mount the client half over a captured `remote.job` namespace and a real Gateway stream carrier. */
-async function mount(): Promise<{ ctx: Context; observeCalls: unknown[]; rowsCalls: unknown[]; killCalls: unknown[] }> {
+async function mount(): Promise<{
+  ctx: Context
+  observeCalls: unknown[]
+  rowsCalls: unknown[]
+  killCalls: unknown[]
+  completeCalls: unknown[]
+}> {
   const ctx = new Context()
   contexts.add(ctx)
   const observeCalls: unknown[] = []
   const rowsCalls: unknown[] = []
   const killCalls: unknown[] = []
+  const completeCalls: unknown[] = []
   const connection: ConnectionHandle = {
     interactions: 'answer',
     openWebSocket: () => { throw new Error('unexpected WebSocket') },
@@ -41,6 +48,10 @@ async function mount(): Promise<{ ctx: Context; observeCalls: unknown[]; rowsCal
       observeCalls.push(request)
       return (async function* (): AsyncGenerator<JobFollowFrame> {})()
     },
+    complete: async (request: unknown) => {
+      completeCalls.push(request)
+      return { ok: true as const, value: { outcome: 'requested' as const } }
+    },
     kill: async (request: unknown) => {
       killCalls.push(request)
       return { ok: true as const, value: { outcome: 'requested' as const } }
@@ -52,7 +63,7 @@ async function mount(): Promise<{ ctx: Context; observeCalls: unknown[]; rowsCal
   })
   ctx.reflect.provide('remote.job', job)
   await ctx.plugin(JobClient)
-  return { ctx, observeCalls, rowsCalls, killCalls }
+  return { ctx, observeCalls, rowsCalls, killCalls, completeCalls }
 }
 
 async function flush(): Promise<void> {
@@ -60,6 +71,12 @@ async function flush(): Promise<void> {
 }
 
 describe('Job Controller Client apply', () => {
+  it('forwards manual completion with the owning session and registry id', async () => {
+    const { ctx, completeCalls } = await mount()
+    await expect(ctx.jobs.complete('session-1' as SessionId, 'robot-1' as never))
+      .resolves.toEqual({ ok: true, value: { outcome: 'requested' } })
+    expect(completeCalls).toEqual([{ sessionId: 'session-1', jobId: 'robot-1' }])
+  })
   it('declares the Remote services it binds', () => {
     expect(JobClient.inject).toEqual(['remote', 'remote.job'])
   })

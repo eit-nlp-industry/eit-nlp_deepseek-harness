@@ -1,0 +1,885 @@
+--- a/packages/jobs/jobs/src/types.ts
++++ b/packages/jobs/jobs/src/types.ts
+@@ -156,6 +156,11 @@
+
+ /** Hooks through which the runtime controls and observes producer work. */
+ export interface JobHooks {
++  /**
++   * 由生产者选择支持人工完成；调用应同步、幂等，并最终通过 done 返回实际终态。
++   * 未提供时不展示完成按钮。抛错由调用方处理，注册表不伪造成功或终止资源。
++   */
++  complete?(): void
+   /**
+    * Request termination. Must be synchronous, idempotent, and eventually settle
+    * {@link done}; throws propagate. The optional reason is forwarded verbatim.
+--- a/packages/jobs/jobs/src/view.ts
++++ b/packages/jobs/jobs/src/view.ts
+@@ -78,6 +78,8 @@
+   readonly outputLimitBytes?: number
+   /** Current lifecycle state. */
+   readonly status: JobStatus
++  /** 当前运行中的生产者支持人工完成时为 true；其他任务省略此字段。 */
++  readonly canComplete?: true
+   /** The producer's live progress line (`3/10`, the current phase); cleared at settlement. */
+   readonly progress?: string
+   /** Terminal reason (`exit code: 3`); a recorded kill reason is merged in. */
+--- a/packages/jobs/jobs/src/index.ts
++++ b/packages/jobs/jobs/src/index.ts
+@@ -163,6 +163,18 @@
+   abstract kill(id: JobId, caller?: SessionId, reason?: string): 'requested' | 'already-finished'
+
+   /**
++   * 请求生产者人工完成任务，终态仍由其 done 承诺提交；默认实现拒绝未支持的能力。
++   * @param id 要人工完成的注册表任务 ID。
++   * @param caller 发起操作的会话，用于校验任务所属关系。
++   * @returns 已结束返回 already-finished，支持此能力的实现可返回 requested。
++   */
++  complete(id: JobId, caller?: SessionId): 'requested' | 'already-finished' {
++    const job = this.get(id, caller)
++    if (job.status !== 'running' && job.status !== 'stopping') return 'already-finished'
++    throw new Error(`job ${id} does not support manual completion`)
++  }
++
++  /**
+    * Wait for settlement or timeout without cancelling the job. Caller abort
+    * rejects only while the job is live; after settlement the terminal
+    * projection wins. Rejects for an invalid timeout or an unknown or foreign
+--- a/packages/jobs/jobs-local/src/index.ts
++++ b/packages/jobs/jobs-local/src/index.ts
+@@ -83,6 +83,7 @@
+   /** Exact lifecycle owner; session-id authorization is derived from it. */
+   owner: Agent | undefined
+   cancel: (reason?: string) => void
++  complete: (() => void) | undefined
+   status: JobStatus
+   ring: OutputRing
+   /** The model's consuming cursor; {@link JobRegistry.readAt} never moves it. */
+@@ -250,6 +251,7 @@
+       outputLimitBytes: spec.outputLimitBytes,
+       owner,
+       cancel: hooks.cancel.bind(hooks),
++      complete: hooks.complete?.bind(hooks),
+       status: 'running',
+       ring,
+       modelCursor: 0,
+@@ -333,6 +335,22 @@
+     return this.killJob(this.expect(id, caller), reason)
+   }
+
++  /**
++   * 调用生产者的人工完成入口，保持原 done 结算与通知流程。
++   * @param id 要人工完成的注册表任务 ID。
++   * @param caller 发起操作的会话，用于校验任务所属关系。
++   * @returns 已接纳请求或任务已结束；不支持、停止中以及生产者异常会抛出。
++   */
++  override complete(id: JobId, caller?: SessionId): 'requested' | 'already-finished' {
++    const job = this.expect(id, caller)
++    if (isTerminal(job.status)) return 'already-finished'
++    if (job.status !== 'running') throw new Error(`job ${id} is ${job.status}`)
++    if (job.complete === undefined) throw new Error(`job ${id} does not support manual completion`)
++
++    job.complete()
++    return 'requested'
++  }
++
+   async wait(id: JobId, timeoutMs: number, caller?: SessionId, signal?: AbortSignal): Promise<JobView> {
+     return this.waitJob(this.expect(id, caller), timeoutMs, signal)
+   }
+@@ -413,7 +431,7 @@
+     }
+   }
+
+-  /** Project a fresh read-only view from the mutable record. */
++  /** 将 job 的内部记录投影为只读数据，人工完成能力仅在运行时公开。 */
+   private view(job: TrackedJob): JobView {
+     const owner = job.owner?.id
+     const spillPaths = [...new Set(job.spillPaths.filter((path): path is string => path !== undefined))]
+@@ -424,6 +442,7 @@
+       ...owner !== undefined ? { owner } : {},
+       ...job.outputLimitBytes !== undefined ? { outputLimitBytes: job.outputLimitBytes } : {},
+       status: job.status,
++      ...job.status === 'running' && job.complete !== undefined ? { canComplete: true as const } : {},
+       ...job.state.progress !== undefined ? { progress: job.state.progress } : {},
+       ...job.detail !== undefined ? { detail: job.detail } : {},
+       startedAt: job.startedAt,
+--- a/packages/jobs/jobs-local/tests/jobs.spec.ts
++++ b/packages/jobs/jobs-local/tests/jobs.spec.ts
+@@ -1667,3 +1667,43 @@
+     }
+   })
+ })
++
++
++describe('human completion', () => {
++  it('advertises opt-in completion and settles through the producer result', async () => {
++    const ctx = await harness()
++    const owner = await liveAgent(ctx, 'manual-owner')
++    const task = producer({ owner, complete: () => task.settle({ status: 'completed', result: '用户已手动确认任务完成。' }) })
++    const id = ctx.jobs.start(task.spec)
++    expect(ctx.jobs.get(id, owner.id).canComplete).toBe(true)
++    expect(ctx.jobs.complete(id, owner.id)).toBe('requested')
++    await tick()
++    expect(ctx.jobs.read(id, owner.id)).toMatchObject({ result: '用户已手动确认任务完成。', job: { status: 'completed' } })
++    expect(ctx.jobs.get(id, owner.id).canComplete).toBeUndefined()
++    expect(ctx.jobs.complete(id, owner.id)).toBe('already-finished')
++  })
++
++  it('rejects unsupported, foreign, and stopping jobs without completing them', async () => {
++    const ctx = await harness()
++    const owner = await liveAgent(ctx, 'manual-fenced')
++    const complete = vi.fn()
++    const task = producer({ owner, complete })
++    const id = ctx.jobs.start(task.spec)
++    expect(() => ctx.jobs.complete(id, SessionId('other'))).toThrow('belongs to another session')
++    expect(() => ctx.jobs.complete(JobId('missing'), owner.id)).toThrow('unknown job')
++    const unsupported = ctx.jobs.start(producer().spec)
++    expect(ctx.jobs.get(unsupported).canComplete).toBeUndefined()
++    expect(() => ctx.jobs.complete(unsupported)).toThrow('does not support manual completion')
++    ctx.jobs.kill(id, owner.id)
++    expect(ctx.jobs.get(id, owner.id).canComplete).toBeUndefined()
++    expect(() => ctx.jobs.complete(id, owner.id)).toThrow('is stopping')
++    expect(complete).not.toHaveBeenCalled()
++  })
++
++  it('propagates a completion hook failure and leaves the job running', async () => {
++    const ctx = await harness()
++    const id = ctx.jobs.start(producer({ complete: () => { throw new Error('complete boom') } }).spec)
++    expect(() => ctx.jobs.complete(id)).toThrow('complete boom')
++    expect(ctx.jobs.get(id).status).toBe('running')
++  })
++})
+--- a/packages/api/job-controller/src/types.ts
++++ b/packages/api/job-controller/src/types.ts
+@@ -33,6 +33,17 @@
+   readonly jobId: JobId
+ }
+
++/** 人工完成请求；sessionId 校验归属，jobId 选择已注册任务。 */
++export interface JobCompleteRequest {
++  readonly sessionId: SessionId
++  readonly jobId: JobId
++}
++
++/** 人工完成请求的接纳结果；终态通过现有任务流发布。 */
++export interface JobCompleteValue {
++  readonly outcome: 'requested' | 'already-finished'
++}
++
+ /** Receipt after the registry accepted the human kill request. */
+ export interface JobKillValue {
+   readonly outcome: 'requested' | 'already-finished'
+@@ -42,6 +53,8 @@
+   interface RemoteErrorDetailsMap {
+     /** The session's job list no longer carries a killable row under that id. */
+     'job/not-found': { readonly sessionId: SessionId; readonly jobId: JobId }
++    /** 生产者未开放人工完成，或任务正停止；调用方应保留当前状态。 */
++    'job/not-completable': { readonly sessionId: SessionId; readonly jobId: JobId }
+   }
+ }
+
+--- a/packages/api/job-controller/src/index.ts
++++ b/packages/api/job-controller/src/index.ts
+@@ -14,7 +14,7 @@
+ import { Remote, RemoteError, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
+ import { observeJobOutput } from './observe.ts'
+ import { streamJobRows } from './rows.ts'
+-import type { JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from './types.ts'
++import type { JobCompleteRequest, JobCompleteValue, JobView, JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from './types.ts'
+
+ export type * from './types.ts'
+
+@@ -125,6 +125,30 @@
+     const outcome = jobs.kill(request.jobId, request.sessionId, 'cancelled by the user')
+     return { outcome }
+   }
++
++  /**
++   * 请求生产者完成任务；通过同一所属会话校验，保留原终态通知与模型结果消费。
++   * @param request 要完成的任务 ID 及发起操作的会话 ID。
++   * @returns 请求已接纳或任务已结束；不支持此操作时返回结构化错误。
++   */
++  @Remote('complete')
++  complete(request: JobCompleteRequest): JobCompleteValue {
++    const jobs = this.ctx.jobs
++    let job: JobView
++    try {
++      job = jobs.get(request.jobId, request.sessionId)
++    } catch (error) {
++      throw new RemoteError('job/not-found', String(error), request)
++    }
++    if (job.status !== 'running' && job.status !== 'stopping') return { outcome: 'already-finished' }
++    if (job.status !== 'running' || job.canComplete !== true) {
++      throw new RemoteError('job/not-completable', 'Job cannot be completed manually', request)
++    }
++
++    // 生产者异常原样上抛，不能把不确定的执行结果呈现为成功。
++    return { outcome: jobs.complete(request.jobId, request.sessionId) }
++  }
++
+ }
+
+ export default JobController
+--- a/packages/api/job-controller/src/client/service.ts
++++ b/packages/api/job-controller/src/client/service.ts
+@@ -12,7 +12,7 @@
+ import type { RemoteResult } from '@deepseek-ai/dsh-typert-protocol'
+ import type { JobId } from '@deepseek-ai/dsh-jobs/brand'
+ import type { SessionId } from '@deepseek-ai/dsh-session/types'
+-import type { JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from '../types.ts'
++import type { JobCompleteRequest, JobCompleteValue, JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest } from '../types.ts'
+ import type { ClientJobsModel, JobsSource } from './model.ts'
+
+ /** The generated `job` namespace face the stream runners drive. */
+@@ -37,6 +37,12 @@
+    * @returns the registry's admission, or the business/transport failure.
+    */
+   kill(request: JobKillRequest): Promise<RemoteResult<JobKillValue>>
++  /**
++   * 请求人工完成，错误由界面展示，终态继续从任务流读取。
++   * @param request 任务 ID 及校验归属的会话 ID。
++   * @returns 接纳结果或业务/传输失败。
++   */
++  complete(request: JobCompleteRequest): Promise<RemoteResult<JobCompleteValue>>
+ }
+
+ /** Remote faces the runners drive: the Gateway stream factory and the `job` namespace. */
+@@ -73,6 +79,13 @@
+    * @returns the registry's admission, or the business/transport failure.
+    */
+   kill(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobKillValue>>
++  /**
++   * 请求人工完成；界面只依据任务流更新终态。
++   * @param sessionId 发起操作的所属会话。
++   * @param id 要完成的注册表任务 ID。
++   * @returns 接纳结果或业务/传输失败。
++   */
++  complete(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobCompleteValue>>
+ }
+
+ /** One reference-counted stream. */
+@@ -122,6 +135,11 @@
+
+   kill(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobKillValue>> {
+     return this.remote.job.kill({ sessionId, jobId: id })
++  }
++
++  /** 转发人工完成请求；sessionId 校验归属，id 选择任务。 */
++  complete(sessionId: SessionId, id: JobId): Promise<RemoteResult<JobCompleteValue>> {
++    return this.remote.job.complete({ sessionId, jobId: id })
+   }
+
+   watchRows(sessionId: SessionId): () => void {
+--- a/packages/api/job-controller/src/client/index.ts
++++ b/packages/api/job-controller/src/client/index.ts
+@@ -18,7 +18,7 @@
+ // declaration emit drops the value import above.
+ export type { IJobs } from './service.ts'
+ export type {
+-  JobChunk, JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest, JobView,
++  JobChunk, JobCompleteRequest, JobCompleteValue, JobKillRequest, JobKillValue, JobFollowFrame, JobFollowRequest, JobListFrame, JobListRequest, JobView,
+ } from '../types.ts'
+
+ /** Required Client Remote services. */
+--- /dev/null
++++ b/packages/api/job-controller/tests/complete.host.spec.ts
+@@ -0,0 +1,59 @@
++import { describe, expect, it, vi } from 'vitest'
++import TypertRegistry from '@deepseek-ai/dsh-typert-registry'
++import { remoteErrorOf } from '@deepseek-ai/dsh-typert-protocol'
++import type { JobId, JobOutcome } from '@deepseek-ai/dsh-jobs'
++import { JobController } from '../src/index.ts'
++import { harness, registerAgent, wait } from './host-harness.ts'
++
++/** 建立真实 Job 注册表与 Remote 控制器，提供所属会话。 */
++async function setup() {
++  const ctx = await harness()
++  await ctx.plugin(TypertRegistry)
++  await ctx.plugin(JobController, {})
++  const agent = await registerAgent(ctx, 'complete-owner')
++  return { ctx, agent, controller: ctx.jobController }
++}
++
++/** 读取操作抛出的 Remote 业务错误码；run 为待拒绝的请求。 */
++function failureCode(run: () => unknown): string | undefined {
++  try { run() } catch (error) { return remoteErrorOf(error)?.code }
++  throw new Error('expected RemoteError')
++}
++
++describe('JobController.complete', () => {
++  it('completes through the producer and retains its model-facing result', async () => {
++    const { ctx, agent, controller } = await setup()
++    let settle!: (outcome: JobOutcome) => void
++    const id = ctx.jobs.start({ kind: 'bash', label: 'opted in', owner: agent.id, run: () => ({
++      cancel() {}, complete: () => settle({ status: 'completed', result: '用户已手动确认任务完成。' }),
++      done: new Promise<JobOutcome>(resolve => { settle = resolve }),
++    }) })
++    expect(controller.complete({ sessionId: agent.id, jobId: id })).toEqual({ outcome: 'requested' })
++    await wait(0)
++    expect(ctx.jobs.read(id, agent.id).result).toBe('用户已手动确认任务完成。')
++    expect(controller.complete({ sessionId: agent.id, jobId: id })).toEqual({ outcome: 'already-finished' })
++  })
++
++  it('rejects foreign, unknown, unsupported and stopping jobs', async () => {
++    const { ctx, agent, controller } = await setup()
++    const other = await registerAgent(ctx, 'other-owner')
++    const complete = vi.fn()
++    const id = ctx.jobs.start({ kind: 'bash', label: 'opted in', owner: agent.id, run: () => ({ cancel() {}, complete, done: new Promise(() => {}) }) })
++    expect(failureCode(() => controller.complete({ sessionId: other.id, jobId: id }))).toBe('job/not-found')
++    expect(failureCode(() => controller.complete({ sessionId: agent.id, jobId: 'missing' as JobId }))).toBe('job/not-found')
++    const unsupported = ctx.jobs.start({ kind: 'bash', label: 'unsupported', run: () => ({ cancel() {}, done: new Promise(() => {}) }) })
++    expect(failureCode(() => controller.complete({ sessionId: agent.id, jobId: unsupported }))).toBe('job/not-completable')
++    ctx.jobs.kill(id, agent.id)
++    expect(failureCode(() => controller.complete({ sessionId: agent.id, jobId: id }))).toBe('job/not-completable')
++    expect(complete).not.toHaveBeenCalled()
++  })
++
++  it('propagates a producer failure without reporting a successful completion', async () => {
++    const { ctx, agent, controller } = await setup()
++    const id = ctx.jobs.start({ kind: 'bash', label: 'broken', owner: agent.id, run: () => ({
++      cancel() {}, complete() { throw new Error('complete boom') }, done: new Promise(() => {}),
++    }) })
++    expect(() => controller.complete({ sessionId: agent.id, jobId: id })).toThrow('complete boom')
++    expect(ctx.jobs.get(id, agent.id).status).toBe('running')
++  })
++})
+--- a/packages/api/job-controller/tests/client-apply.client.spec.ts
++++ b/packages/api/job-controller/tests/client-apply.client.spec.ts
+@@ -14,12 +14,13 @@
+ })
+
+ /** Mount the client half over a captured `remote.job` namespace and a real Gateway stream carrier. */
+-async function mount(): Promise<{ ctx: Context; observeCalls: unknown[]; rowsCalls: unknown[]; killCalls: unknown[] }> {
++async function mount(): Promise<{ ctx: Context; observeCalls: unknown[]; rowsCalls: unknown[]; killCalls: unknown[]; completeCalls: unknown[] }> {
+   const ctx = new Context()
+   contexts.add(ctx)
+   const observeCalls: unknown[] = []
+   const rowsCalls: unknown[] = []
+   const killCalls: unknown[] = []
++  const completeCalls: unknown[] = []
+   const connection: ConnectionHandle = {
+     interactions: 'answer',
+     openWebSocket: () => { throw new Error('unexpected WebSocket') },
+@@ -41,6 +42,10 @@
+       observeCalls.push(request)
+       return (async function* (): AsyncGenerator<JobFollowFrame> {})()
+     },
++    complete: async (request: unknown) => {
++      completeCalls.push(request)
++      return { ok: true as const, value: { outcome: 'requested' as const } }
++    },
+     kill: async (request: unknown) => {
+       killCalls.push(request)
+       return { ok: true as const, value: { outcome: 'requested' as const } }
+@@ -52,7 +57,7 @@
+   })
+   ctx.reflect.provide('remote.job', job)
+   await ctx.plugin(JobClient)
+-  return { ctx, observeCalls, rowsCalls, killCalls }
++  return { ctx, observeCalls, rowsCalls, killCalls, completeCalls }
+ }
+
+ async function flush(): Promise<void> {
+@@ -60,6 +65,12 @@
+ }
+
+ describe('Job Controller Client apply', () => {
++  it('forwards manual completion with the owning session and registry id', async () => {
++    const { ctx, completeCalls } = await mount()
++    await expect(ctx.jobs.complete('session-1' as SessionId, 'robot-1' as never))
++      .resolves.toEqual({ ok: true, value: { outcome: 'requested' } })
++    expect(completeCalls).toEqual([{ sessionId: 'session-1', jobId: 'robot-1' }])
++  })
+   it('declares the Remote services it binds', () => {
+     expect(JobClient.inject).toEqual(['remote', 'remote.job'])
+   })
+--- a/packages/client/ui-jobs/src/client/JobListAction.tsx
++++ b/packages/client/ui-jobs/src/client/JobListAction.tsx
+@@ -37,6 +37,8 @@
+    * state itself converges through the jobs control frames.
+    */
+   killJob: (sessionId: SessionId, jobId: string) => Promise<boolean>
++  /** 人工完成；sessionId 校验归属，jobId 为注册表 ID，返回请求是否被接纳。 */
++  completeJob: (sessionId: SessionId, jobId: string) => Promise<boolean>
+ }
+
+ /** Full props for the session-header job-list action. */
+@@ -185,8 +187,55 @@
+  */
+ type KillState = 'idle' | 'armed' | 'pending' | 'failed'
+
+-/** One job row plus, when observable and expanded, its live output panel. */
+-function JobItem({ job, view, expanded, now, onToggle, kill, t }: {
++/**
++ * 人工完成按钮：请求期间防止重复提交，接纳后等待任务流移除按钮。
++ * @param props label 为任务展示名，complete 发起完成请求，t 提供本地化文案。
++ */
++function CompleteButton({ label, complete, t }: {
++  label: string
++  complete: () => Promise<boolean>
++  t: TranslateNS<typeof NS>
++}) {
++  const [state, setState] = useState<'idle' | 'pending' | 'failed'>('idle')
++  const pending = useRef(false)
++  /** 同步上锁，防止 React 提交下一帧前的重复点击；失败后允许重试。 */
++  const press = async (): Promise<void> => {
++    if (pending.current) return
++    pending.current = true
++    setState('pending')
++    let accepted = false
++    try {
++      accepted = await complete()
++    } catch (error) {
++      // 网络异常的结果可能未知；人工完成入口幂等，保留任务原状态并允许重试。
++      void error
++    }
++    if (!accepted) {
++      pending.current = false
++      setState('failed')
++    }
++  }
++  const title = state === 'failed' ? t('complete.failed') : t('complete.task', { label })
++  return (
++    <button
++      type="button"
++      className={state === 'failed' ? `${css.complete} ${css.stopFailed}` : css.complete}
++      disabled={state === 'pending'}
++      aria-label={title}
++      title={title}
++      onClick={() => { void press() }}
++    >
++      {t(state === 'pending' ? 'complete.pending' : state === 'failed' ? 'complete.failed' : 'complete.action')}
++    </button>
++  )
++}
++
++/**
++ * 展示一个任务及输出面板，按生产者能力提供人工完成入口。
++ * @param props job 为任务快照，view 为观察输出，expanded 控制面板，now 计算时长；
++ * onToggle 切换面板，kill 提供停止状态与处理器，complete 发起人工完成，t 提供本地化文案。
++ */
++function JobItem({ job, view, expanded, now, onToggle, kill, complete, t }: {
+   job: JobView
+   view: ObservedJob | undefined
+   expanded: boolean
+@@ -195,6 +244,7 @@
+   onToggle: () => void
+   /** Present on running rows: the human-kill button state and press handler. */
+   kill?: { state: KillState; onPress: () => void }
++  complete?: () => Promise<boolean>
+   t: TranslateNS<typeof NS>
+ }) {
+   const live = isLive(job)
+@@ -273,6 +323,7 @@
+               {body}
+             </span>
+           )}
++        {complete !== undefined ? <CompleteButton label={job.label} complete={complete} t={t} /> : null}
+         {kill !== undefined
+           ? (
+             <button
+@@ -331,10 +382,10 @@
+  * someone is watching. A running row carries a two-press stop button that
+  * requests a human kill through the job controller.
+  * @param props - runtime slot currency, the jobs snapshot hook, the roster,
+- *   observation, and kill controls, and the namespace translator.
++ *   observation, kill and manual-completion controls, and the namespace translator.
+  * @returns the trigger and its popover list, or null when there is nothing to show.
+  */
+-export function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }: JobListActionProps) {
++export function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, completeJob, t }: JobListActionProps) {
+   const jobs = useJobs(state => state.rows[sessionId]) ?? NO_JOBS
+   const observedViews = useJobs(state => state.observed)
+   const [open, setOpen] = useState(false)
+@@ -510,6 +561,9 @@
+             onPress: () => { pressKill(job) },
+           },
+         }
++        : {}}
++      {...job.status === 'running' && job.canComplete === true
++        ? { complete: () => completeJob(sessionId, String(job.id)) }
+         : {}}
+       t={t}
+     />
+--- a/packages/client/ui-jobs/src/client/JobListAction.module.css
++++ b/packages/client/ui-jobs/src/client/JobListAction.module.css
+@@ -197,7 +197,8 @@
+ }
+
+ /* Two-press kill affordance on running job rows: same persistent square. */
+-.stop {
++.stop,
++.complete {
+   display: inline-flex;
+   flex: none;
+   align-items: center;
+@@ -212,6 +213,16 @@
+   color: var(--dsw-alias-label-secondary);
+   cursor: pointer;
+ }
++
++.complete {
++  width: auto;
++  padding: 0 7px;
++  font-size: 11px;
++  white-space: nowrap;
++}
++
++.complete:disabled { cursor: default; }
++.complete:focus-visible { outline: 2px solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary)); }
+
+ .stop:focus-visible {
+   border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);
+--- a/packages/client/ui-jobs/src/client/index.ts
++++ b/packages/client/ui-jobs/src/client/index.ts
+@@ -47,6 +47,7 @@
+         // The brand is nominal typing only; the row key is the registry id the
+         // roster stream delivered, so the wire boundary stamps it back here.
+         killJob: async (sessionId, jobId) => (await ctx.jobs.kill(sessionId, jobId as JobId)).ok,
++        completeJob: async (sessionId, jobId) => (await ctx.jobs.complete(sessionId, jobId as JobId)).ok,
+       }),
+     }, JobListAction),
+   )
+--- a/packages/client/ui-jobs/src/client/locales.ts
++++ b/packages/client/ui-jobs/src/client/locales.ts
+@@ -5,6 +5,10 @@
+
+ /** Simplified Chinese dictionary (the key-set source of truth). */
+ export const zh = {
++  'complete.task': '手动完成任务 {label}',
++  'complete.action': '完成',
++  'complete.pending': '提交中…',
++  'complete.failed': '完成失败，请重试',
+   'count.live.one': '{count} 个后台任务运行中',
+   'count.live.other': '{count} 个后台任务运行中',
+   'count.idle.one': '{count} 个后台任务',
+@@ -49,6 +53,10 @@
+
+ /** English dictionary, key-identical to the Chinese source of truth. */
+ export const en: Record<JobKey, string> = {
++  'complete.task': 'Manually complete task {label}',
++  'complete.action': 'Complete',
++  'complete.pending': 'Submitting…',
++  'complete.failed': 'Completion failed, retry',
+   'count.live.one': '{count} background job running',
+   'count.live.other': '{count} background jobs running',
+   'count.idle.one': '{count} background job',
+@@ -96,6 +104,10 @@
+
+ /** Japanese copy, checked against the English keys. */
+ export const ja = {
++  'complete.task': 'タスク {label} を手動で完了',
++  'complete.action': '完了',
++  'complete.pending': '送信中…',
++  'complete.failed': '完了に失敗しました。再試行',
+   'count.live.one': 'バックグラウンドジョブ {count} 件が実行中',
+   'count.live.other': 'バックグラウンドジョブ {count} 件が実行中',
+   'count.idle.one': 'バックグラウンドジョブ {count} 件',
+@@ -140,6 +152,10 @@
+
+ /** Spanish dictionary, checked against the English keys. */
+ export const es = {
++  'complete.task': 'Completar manualmente {label}',
++  'complete.action': 'Completar',
++  'complete.pending': 'Enviando…',
++  'complete.failed': 'No se pudo completar. Reintentar',
+   'count.live.one': 'Tareas en segundo plano en ejecución: {count}',
+   'count.live.other': 'Tareas en segundo plano en ejecución: {count}',
+   'count.idle.one': 'Tareas en segundo plano: {count}',
+@@ -184,6 +200,10 @@
+
+ /** French dictionary, checked against the English keys. */
+ export const fr = {
++  'complete.task': 'Terminer manuellement {label}',
++  'complete.action': 'Terminer',
++  'complete.pending': 'Envoi…',
++  'complete.failed': 'Échec. Réessayer',
+   'count.live.one': 'Tâches en arrière-plan en cours : {count}',
+   'count.live.other': 'Tâches en arrière-plan en cours : {count}',
+   'count.idle.one': 'Tâches en arrière-plan : {count}',
+@@ -228,6 +248,10 @@
+
+ /** German dictionary, checked against the English keys. */
+ export const de = {
++  'complete.task': 'Aufgabe {label} manuell abschließen',
++  'complete.action': 'Abschließen',
++  'complete.pending': 'Wird gesendet…',
++  'complete.failed': 'Fehlgeschlagen. Erneut versuchen',
+   'count.live.one': 'Laufende Hintergrundaufgaben: {count}',
+   'count.live.other': 'Laufende Hintergrundaufgaben: {count}',
+   'count.idle.one': 'Hintergrundaufgaben: {count}',
+@@ -272,6 +296,10 @@
+
+ /** Russian dictionary, checked against the English keys. */
+ export const ru = {
++  'complete.task': 'Вручную завершить задачу {label}',
++  'complete.action': 'Завершить',
++  'complete.pending': 'Отправка…',
++  'complete.failed': 'Не удалось завершить. Повторить',
+   'count.live.one': 'Фоновые задачи выполняются: {count}',
+   'count.live.other': 'Фоновые задачи выполняются: {count}',
+   'count.idle.one': 'Фоновые задачи: {count}',
+@@ -316,6 +344,10 @@
+
+ /** Portuguese dictionary, checked against the English keys. */
+ export const pt = {
++  'complete.task': 'Concluir manualmente {label}',
++  'complete.action': 'Concluir',
++  'complete.pending': 'Enviando…',
++  'complete.failed': 'Falha ao concluir. Tentar novamente',
+   'count.live.one': 'Tarefas em segundo plano em execução: {count}',
+   'count.live.other': 'Tarefas em segundo plano em execução: {count}',
+   'count.idle.one': 'Tarefas em segundo plano: {count}',
+--- a/packages/client/ui-jobs/tests/job-list-action.client.spec.tsx
++++ b/packages/client/ui-jobs/tests/job-list-action.client.spec.tsx
+@@ -46,7 +46,7 @@
+   function useJobs<T>(select: (value: JobsSnapshot) => T): T {
+     return select(jobsState)
+   }
+-  return { sessionId: SESSION, useJobs, watchRows, observe, killJob, t } as JobListActionProps
++  return { sessionId: SESSION, useJobs, watchRows, observe, killJob, completeJob: async () => true, t } as JobListActionProps
+ }
+
+ function openList(): void {
+@@ -599,3 +599,41 @@
+   view.rerender(<JobListAction {...props(jobs.map(item => ({ ...item, status: 'completed', finishedAt: 1_700_000_003_000 })))} t={translate} />)
+   expect(screen.getByRole('button', { name: `Фоновые задачи: ${count}` })).toBeDefined()
+ })
++
++
++describe('JobListAction manual completion', () => {
++  it('only offers completion for an opted-in running job and blocks repeated presses', async () => {
++    let resolve!: (ok: boolean) => void
++    const completeJob = vi.fn(() => new Promise<boolean>(done => { resolve = done }))
++    const rows = [job({ id: 'robot-1' as JobView['id'], kind: 'robot', label: 'sbi-1', canComplete: true }), job()]
++    const { rerender } = render(<JobListAction {...props(rows)} completeJob={completeJob} />)
++    openList()
++    const button = screen.getByRole('button', { name: '手动完成任务 sbi-1' })
++    fireEvent.click(button)
++    fireEvent.click(button)
++    expect(completeJob).toHaveBeenCalledTimes(1)
++    expect(completeJob).toHaveBeenCalledWith(SESSION, 'robot-1')
++    expect((button as HTMLButtonElement).disabled).toBe(true)
++    await act(async () => { resolve(true) })
++    expect((button as HTMLButtonElement).disabled).toBe(true)
++    rerender(<JobListAction {...props([job({ id: 'robot-1' as JobView['id'], kind: 'robot', label: 'sbi-1', status: 'completed' })])} completeJob={completeJob} />)
++    expect(screen.queryByRole('button', { name: '手动完成任务 sbi-1' })).toBeNull()
++  })
++
++  it.each([false, 'throw'])('shows a completion failure and permits retry (%s)', async (failure) => {
++    const completeJob = vi.fn(async () => { if (failure === 'throw') throw new Error('network'); return false })
++    render(<JobListAction {...props([job({ label: 'manual', canComplete: true })])} completeJob={completeJob} />)
++    openList()
++    await act(async () => { fireEvent.click(screen.getByRole('button', { name: '手动完成任务 manual' })) })
++    const retry = screen.getByRole('button', { name: '完成失败，请重试' })
++    expect((retry as HTMLButtonElement).disabled).toBe(false)
++    await act(async () => { fireEvent.click(retry) })
++    expect(completeJob).toHaveBeenCalledTimes(2)
++  })
++
++  it('does not offer completion for stopping jobs', () => {
++    render(<JobListAction {...props([job({ canComplete: true, status: 'stopping' })])} />)
++    openList()
++    expect(screen.queryByRole('button', { name: /手动完成任务/ })).toBeNull()
++  })
++})
+--- a/packages/client/ui-jobs/tests/browser-plugin.client.spec.ts
++++ b/packages/client/ui-jobs/tests/browser-plugin.client.spec.ts
+@@ -30,6 +30,7 @@
+
+ /** Job ids the stubbed bound session was asked to kill, and its scripted result. */
+ const kills: [string, string][] = []
++const completions: [string, string][] = []
+ let killResult: { ok: boolean } = { ok: true }
+
+ /** Boot the browser half over a real slot tree that declares the header list. */
+@@ -51,6 +52,10 @@
+     observe: (sessionId: string | undefined, id: string) => {
+       observed.push([sessionId, id])
+       return () => {}
++    },
++    complete: async (sessionId: string, jobId: string) => {
++      completions.push([sessionId, jobId])
++      return killResult
+     },
+     kill: async (sessionId: string, jobId: string) => {
+       kills.push([sessionId, jobId])
+@@ -100,6 +105,11 @@
+     killResult = { ok: false }
+     await expect(face.killJob(SessionId('sess-live'), 'bash-4')).resolves.toBe(false)
+     expect(kills).toEqual([['sess-live', 'bash-3'], ['sess-live', 'bash-4']])
++    killResult = { ok: true }
++    await expect(face.completeJob(SessionId('sess-live'), 'robot-1')).resolves.toBe(true)
++    killResult = { ok: false }
++    await expect(face.completeJob(SessionId('sess-live'), 'robot-2')).resolves.toBe(false)
++    expect(completions).toEqual([['sess-live', 'robot-1'], ['sess-live', 'robot-2']])
+   })
+
+   it('registers the header action, and fiber teardown removes it (HMR safety)', async () => {
+--- a/packages/jobs/tool-jobs/tests/steer-wait.spec.ts
++++ b/packages/jobs/tool-jobs/tests/steer-wait.spec.ts
+@@ -268,3 +268,46 @@
+     } finally { await h.dispose() }
+   })
+ })
++
++// 真实 AgentLoop 与 tool-jobs 链路：人工完成只触发一次模型通知，消息写入会话日志。
++it('manual completion wakes the owning model with the producer message once', async () => {
++  const ctx = new Context()
++  await ctx.plugin(LlmRuntime)
++  await ctx.plugin(SessionStore)
++  await ctx.plugin(SessionProjectionRegistry)
++  await ctx.plugin(SystemPrompt)
++  await ctx.plugin(ToolRuntime)
++  await ctx.plugin(NativeToolExecutor)
++  await ctx.plugin(AgentRegistry)
++  await ctx.plugin(AgentLoop, { agents: [] })
++  await ctx.plugin(LocalJobRegistry)
++  await ctx.plugin(ToolJobs, { completionDelivery: 'wakeup' })
++  const adapter = new ScriptedAdapter([textChunks('用户已手动确认任务完成。')])
++  ctx.llm.registerAdapter(['mock'], adapter)
++  const handle = await ctx.agents.create({ sessionId: SessionId('manual-completion'), agentOptions: { provider: 'mock', model: 'mock' } })
++  const done = Promise.withResolvers<JobOutcome>()
++  const id = ctx.jobs.start({ kind: 'bash', label: 'manual-fixture', owner: handle.agent.id, run: () => ({
++    cancel: () => done.resolve({ status: 'killed' }),
++    complete: () => done.resolve({ status: 'completed', result: '用户已手动确认任务完成。' }),
++    done: done.promise,
++  }) })
++  const settled = Promise.withResolvers<void>()
++  const unsubscribe = ctx.jobs.events.subscribe({ owner: handle.agent.id }, event => {
++    if (event.type === 'settled' && event.job.id === id) settled.resolve()
++  })
++  try {
++    expect(ctx.jobs.complete(id, handle.agent.id)).toBe('requested')
++    expect(ctx.jobs.complete(id, handle.agent.id)).toBe('requested')
++    await settled.promise
++    await handle.agent.whenIdle()
++    expect(adapter.requests).toHaveLength(1)
++    expect(JSON.stringify(adapter.requests[0]?.messages)).toContain('用户已手动确认任务完成。')
++    const events = handle.agent.session.snapshotEvents()
++    expect(events.filter(event => event.type === 'job/settled')).toHaveLength(1)
++    expect(events.filter(event => event.type === 'user/message' && JSON.stringify(event.data).includes('用户已手动确认任务完成。'))).toHaveLength(1)
++  } finally {
++    unsubscribe()
++    await handle.dispose()
++    await ctx.fiber.dispose()
++  }
++})
+--- a/packages/api/job-controller/tests/built-lib.e2e.ts
++++ b/packages/api/job-controller/tests/built-lib.e2e.ts
+@@ -13,9 +13,14 @@
+
+ const artifact = join(fileURLToPath(new URL('..', import.meta.url)), 'lib/typert.host.js')
+
++interface BuiltCodec {
++  create(): { safeParse(value: unknown): { success: boolean; data?: unknown } }
++}
++
+ interface BuiltInvocation {
+   readonly method: string
+-  readonly result: { create(): { safeParse(value: unknown): { success: boolean } } }
++  readonly parameters: readonly { readonly codec: BuiltCodec }[]
++  readonly result: BuiltCodec
+ }
+
+ const row = {
+@@ -40,3 +45,35 @@
+     expect(schemaOf('follow').safeParse({ type: 'status', job: { ...row, status: 'paused' } }).success).toBe(false)
+   })
+ })
++
++
++describe.skipIf(!existsSync(artifact))('manual completion built codecs', () => {
++  it('exposes complete and validates its request and admission response', async () => {
++    const { TYPERT } = await import(pathToFileURL(artifact).href) as { TYPERT: { invocations: readonly BuiltInvocation[] } }
++    const invocation = TYPERT.invocations.find(candidate => candidate.method === 'complete')
++    expect(invocation).toBeDefined()
++    if (invocation === undefined) throw new Error('no generated job.complete invocation')
++    const request = invocation.parameters[0]!.codec.create()
++    expect(request.safeParse({ sessionId: 'session-1', jobId: 'robot-1' })).toMatchObject({
++      success: true, data: { sessionId: 'session-1', jobId: 'robot-1' },
++    })
++    expect(request.safeParse({ jobId: 'robot-1' }).success).toBe(false)
++    expect(request.safeParse({ sessionId: 'session-1', jobId: 1 }).success).toBe(false)
++    expect(invocation.result.create().safeParse({ outcome: 'requested' }).success).toBe(true)
++    expect(invocation.result.create().safeParse({ outcome: 'already-finished' }).success).toBe(true)
++  })
++
++  it('retains the opt-in capability through list and follow result codecs', async () => {
++    const { TYPERT } = await import(pathToFileURL(artifact).href) as { TYPERT: { invocations: readonly BuiltInvocation[] } }
++    const enabled = { ...row, kind: 'robot', canComplete: true }
++    for (const [method, value] of [
++      ['list', { type: 'rows', jobs: [enabled] }],
++      ['follow', { type: 'opened', job: enabled, from: 0 }],
++    ] as const) {
++      const invocation = TYPERT.invocations.find(candidate => candidate.method === method)
++      if (invocation === undefined) throw new Error(`no generated job.${method} invocation`)
++      // 检查解析后的 data，防止旧 codec 接受响应却剥除 canComplete。
++      expect(invocation.result.create().safeParse(value)).toMatchObject({ success: true, data: value })
++    }
++  })
++})
+--- a/packages/jobs/jobs/README.zh.md
++++ b/packages/jobs/jobs/README.zh.md
+@@ -34,6 +34,8 @@
+ 生产方通过在 spec 上声明拉取源——由注册表按自己的节奏泵送的非消耗偏移读取器——或经 starter 收到的 `JobHandle` 推送块来流式输出；二者都落入该 job 的有界环，其中 `stdout` 与 `stderr` 块到达模型，`log` 块只到达观察者。观察者按绝对字节偏移读取保留块并在推进时收到信号；结束 job 的结算同时封流，在此之前 `updateProgress` 把实时进度行发布进每个投影。观测对模型不可见：`readAt` 不消耗任何东西，也从不触碰通知状态。
+
+ 随附提供方还会在 Session 中记录有所有者 job 的生命周期元数据。工具创建 job 时，生产方附加 `JobSpec.toolCall`，保留嵌套调用与根调用标识。时间与重启语义见[持久化事件字段](../../../docs/subsystems/jobs.zh.md#session-lifecycle-records)。
++
++生产方可通过 `JobHooks.complete()` 开放人工完成。任务运行期间的投影包含 `canComplete: true`。`complete(id, caller)` 与取消操作使用相同的归属校验，拒绝未支持此能力或正在停止的任务，然后调用生产方入口；终态结果与通知仍由原有 `done` 承诺提交。该入口必须同步且幂等。已结束的任务返回 `already-finished`，保留原结果。
+
+ ### 归属边界
+
+--- a/packages/api/job-controller/README.md
++++ b/packages/api/job-controller/README.md
+@@ -27,6 +27,8 @@
+ `job.kill({ sessionId, jobId })` cancels one job the session can see with the reason `cancelled by the user`, which the registry merges into the killed job's detail. It is not a kill the model requested — `dsh-tool-jobs` withholds a notice only for the model's own `job_kill` and for settlements a live wait collected — so the owning agent's completion notice stays due, reason included, and a shell tool still waiting on that job reads the reason as `[stopped: cancelled by the user]` in its own result. It answers `{ outcome: 'requested' }` or `{ outcome: 'already-finished' }` and rejects an id the session cannot see as `job/not-found`; the registry's owner fence is the only access rule, so a child session's own jobs are killable from its list like any other.
+
+ The Client entry installs `ctx.jobs` (`IJobs`), backed by the package-internal `ClientJobsModel`. `kill(sessionId, jobId)` forwards to `job.kill` and returns the Remote result for the caller's admission verdict. `watchRows(sessionId)` keeps one roster stream open per watched session however many viewers hold it and drops the rows after the last release; a reconnect's first frame is already the whole truth. `observe(sessionId, jobId)` opens one Gateway stream per job however many viewers expand it, keeps a bounded render tail per job with `gapBefore` marking eviction or resume gaps, closes the view on the terminal frame or records a stream failure on it, and drops the view after the last viewer releases. The plugin resolves the Gateway stream factory and the `job` namespace while its own context is current, because stream (re)opens run on caller stacks whose dynamic context has not declared `remote.job`.
++
++`job.complete({ sessionId, jobId })` requests human completion only for a running job whose producer exposes `canComplete`. The client service forwards it as `complete(sessionId, jobId)`. Unknown or foreign jobs return `job/not-found`; unsupported or stopping jobs return `job/not-completable`. A successful admission does not itself claim physical completion: the producer supplies the terminal result through the normal job notification flow. Repeating the request after settlement returns `already-finished` without replacing that result.
+
+ ### Config
+
+--- a/packages/api/job-controller/README.zh.md
++++ b/packages/api/job-controller/README.zh.md
+@@ -27,6 +27,8 @@
+ `job.kill({ sessionId, jobId })` 以 `cancelled by the user` 为原因取消一个该会话看得到的 job，注册表把该原因合并进被杀 job 的 detail。它不是模型请求的杀停——`dsh-tool-jobs` 只对模型自己的 `job_kill` 与存活等待收走的结算不发通知——因此拥有者 agent 的完成通知照常送达，并带上原因；仍在等待该 job 的 shell 工具则在自己的结果里以 `[stopped: cancelled by the user]` 读到原因。它回答 `{ outcome: 'requested' }` 或 `{ outcome: 'already-finished' }`，对该会话看不到的 id 以 `job/not-found` 拒绝；注册表的所有者围栏是唯一的访问规则，因此子会话自己的 job 也能像其他 job 一样从它的列表里被杀停。
+
+ Client 入口安装 `ctx.jobs`（`IJobs`），由包内部的 `ClientJobsModel` 支撑。`kill(sessionId, jobId)` 转发到 `job.kill` 并把 Remote 结果交给调用方判定准入。`watchRows(sessionId)` 不论多少查看器持有都只为每个被关注的会话开一条名册流，最后一个释放后丢弃行；重连后的首帧已经是完整事实。`observe(sessionId, jobId)` 不论多少查看器展开同一 job 都只开一条 Gateway 流，按 job 保留有界的渲染尾部并用 `gapBefore` 标记淘汰或续读缺口，在终态帧上关闭视图或把流失败记到视图上，最后一个查看器释放后丢弃视图。插件在自己的上下文仍是当前上下文时解析 Gateway 流工厂与 `job` namespace，因为流的（重）开启跑在未声明 `remote.job` 的调用栈上。
++
++`job.complete({ sessionId, jobId })` 仅允许人工完成由生产方开放 `canComplete` 能力的运行中任务，客户端服务通过 `complete(sessionId, jobId)` 转发。未知或属于其他会话的任务返回 `job/not-found`；不支持此能力或正在停止的任务返回 `job/not-completable`。请求被接纳本身不代表物理动作已完成，终态结果由生产方经原有任务通知流程提交。任务结算后重复请求返回 `already-finished`，不会覆盖原结果。
+
+ ### 配置
+
+--- a/packages/client/ui-jobs/README.md
++++ b/packages/client/ui-jobs/README.md
+@@ -32,6 +32,8 @@
+ The `job.list` stream `ctx.jobs` mirrors is the single roster: each `JobView` row carries lifecycle, duration, the live `progress` line or the terminal `detail`, and its retained byte count — a live job, or a settled one with retained output, is what makes a row expandable. There is no second roster to join.
+
+ Running job rows also carry a two-press stop control: the first press arms it, the confirming press within three seconds calls `ctx.jobs.kill`, and the row converges through the roster stream (`stopping`, then the settled section, whose detail carries `cancelled by the user`). The kill claims nothing in the model's notice ledger, so the owning agent still receives the standard completion notice — the model is told the user stopped its task rather than left to infer it ([reference](../../jobs/tool-jobs/README.md)). The settled section folds behind its count while live work exists and can be cleared client-side.
++
++A running row with `canComplete: true` also offers a Complete button. One press requests completion through `ctx.jobs.complete`; the button remains disabled until the authoritative roster reports settlement. A failed request keeps the row visible and offers retry. This capability is supplied by the producer, so ordinary jobs do not acquire a completion button. The owning agent receives the producer’s completion message through the existing job notice flow.
+
+ ### The expanded panel
+
+--- a/packages/client/ui-jobs/README.zh.md
++++ b/packages/client/ui-jobs/README.zh.md
+@@ -32,6 +32,8 @@
+ `ctx.jobs` 镜像的 `job.list` 流是唯一名册：每个 `JobView` 行携带生命周期、时长、实时 `progress` 行或终态 `detail`，以及其保留字节数——进行中的 job，或留有保留输出的已结束 job，就是行可展开的依据。不存在需要 join 的第二份名册。
+
+ 运行中的 job 行还带一个两击式停止控件：首击武装，三秒内的确认击调用 `ctx.jobs.kill`，行状态经名册流收敛（先 `stopping`，再入已结束分组，其 detail 携带 `cancelled by the user`）。该 kill 不在模型的播报台账里认领任何东西，任务的 owner agent 因此照常收到标准完成通知——模型被明确告知用户停止了它的任务，而不是留给它去猜（[参考](../../jobs/tool-jobs/README.zh.md)）。已结束分组在有进行中工作时折叠在其计数之后，并可在客户端清空。
++
++带有 `canComplete: true` 的运行中任务还显示“完成”按钮。点击后通过 `ctx.jobs.complete` 请求完成，按钮保持禁用，直到权威任务列表报告结算。请求失败时保留任务行并允许重试。此能力由生产方提供，普通任务不会额外显示完成按钮。所属 agent 通过原有任务通知流程接收生产方提供的完成消息。
+
+ ### 展开的面板
+
+--- a/packages/jobs/jobs/README.md
++++ b/packages/jobs/jobs/README.md
+@@ -34,6 +34,8 @@
+ A producer streams output by naming pull sources on its spec — non-consuming offset readers the registry pumps at its own cadence — or by pushing chunks through the `JobHandle` its starter receives; both land in the job's bounded ring, where `stdout` and `stderr` chunks reach the model and `log` chunks reach observers only. Observers read retained chunks at absolute byte offsets and are signaled on advancement; the settlement that ends the job also ends the stream, and `updateProgress` publishes a live progress line into every projection until then. Observation is invisible to the model: `readAt` consumes nothing and never touches notice state.
+
+ The shipped provider also records owned-job lifecycle metadata in the Session. Producers attach `JobSpec.toolCall` when a tool creates the job, preserving nested and root call identity. See the [durable event fields](../../../docs/subsystems/jobs.md#session-lifecycle-records) for timing and restart semantics.
++
++A producer can opt in to human completion with `JobHooks.complete()`. While that job is running, its projection carries `canComplete: true`. `complete(id, caller)` applies the same owner check as cancellation, rejects unsupported or stopping jobs, and invokes the producer hook; only the existing `done` promise commits the terminal result and notification. The hook must be synchronous and idempotent. A terminal job returns `already-finished` without changing its result.
+
+ ### The ownership boundary

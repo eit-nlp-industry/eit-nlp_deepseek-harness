@@ -33,6 +33,17 @@ export interface JobKillRequest {
   readonly jobId: JobId
 }
 
+/** 人工完成请求；sessionId 校验归属，jobId 选择已注册任务。 */
+export interface JobCompleteRequest {
+  readonly sessionId: SessionId
+  readonly jobId: JobId
+}
+
+/** 人工完成请求的接纳结果；终态通过现有任务流发布。 */
+export interface JobCompleteValue {
+  readonly outcome: 'requested' | 'already-finished'
+}
+
 /** Receipt after the registry accepted the human kill request. */
 export interface JobKillValue {
   readonly outcome: 'requested' | 'already-finished'
@@ -42,6 +53,8 @@ declare module '@deepseek-ai/dsh-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The session's job list no longer carries a killable row under that id. */
     'job/not-found': { readonly sessionId: SessionId; readonly jobId: JobId }
+    /** 生产者未开放人工完成，或任务正停止；调用方应保留当前状态。 */
+    'job/not-completable': { readonly sessionId: SessionId; readonly jobId: JobId }
   }
 }
 

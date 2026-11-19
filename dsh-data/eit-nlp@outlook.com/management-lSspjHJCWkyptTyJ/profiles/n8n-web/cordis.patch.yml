@@ -1,0 +1,37 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+- id: ui-settings-general
+  name: "@deepseek-ai/dsh-client-ui-settings-general"
+  config:
+    welcomeNoticeVersion: 2026-09-28.1
+# 必须放在 n8n 托管的 workspace-controller 之前。启动时会从那段标记起删到下一个顶层 id，写在后面的插件会被清掉。
+- insert:
+    - id: mcp-feishu-bitable
+      name: "@deepseek-ai/dsh-mcp-client"
+      config:
+        serverName: feishu
+        transport: stdio
+        command: node
+        args:
+          - "/opt/feishu-mcp/node_modules/@larksuiteoapi/lark-mcp/dist/cli.js"
+          - mcp
+          - "-l"
+          - zh
+        env:
+          APP_ID: !!js process.env.FEISHU_APP_ID
+          APP_SECRET: !!js process.env.FEISHU_APP_SECRET
+          LARK_TOOLS: preset.base.default
+          LARK_TOKEN_MODE: tenant_access_token
+        clientInstructions: |
+          默认数据库是这一份飞书多维表格，不是其中的某一张数据表。
+          链接 https://my.feishu.cn/base/Mq94brAS9azjrzsoh9kcU7p5nwc ，app_token 是 Mq94brAS9azjrzsoh9kcU7p5nwc。
+          用户没给链接、也没说另一份表时，就用这个 app_token。先列出里面的数据表和字段；用户没点名数据表时，先说明有哪些表，再查用户指的那张。不要编造 table_id 或 record_id。
+          只能操作已经把本应用加为协作者的表格。单次写入是一条记录；需要批量时说明当前工具做不到。
+        toolCallTimeoutMs: 60000
+        failOnStartupError: false
+# n8n-managed workspace directory
+- id: workspace-controller
+  name: "@deepseek-ai/dsh-api-workspace-controller"
+  config:
+    documentsDirectory: "/data/dsh/eit-nlp@outlook.com/management-lSspjHJCWkyptTyJ"

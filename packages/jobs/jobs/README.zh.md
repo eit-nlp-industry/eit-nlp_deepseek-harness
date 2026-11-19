@@ -35,6 +35,8 @@ kind: "package-reference"
 
 随附提供方还会在 Session 中记录有所有者 job 的生命周期元数据。工具创建 job 时，生产方附加 `JobSpec.toolCall`，保留嵌套调用与根调用标识。时间与重启语义见[持久化事件字段](../../../docs/subsystems/jobs.zh.md#session-lifecycle-records)。
 
+生产方可通过 `JobHooks.complete()` 开放人工完成。任务运行期间的投影包含 `canComplete: true`。`complete(id, caller)` 与取消操作使用相同的归属校验，拒绝未支持此能力或正在停止的任务，然后调用生产方入口；终态结果与通知仍由原有 `done` 承诺提交。该入口必须同步且幂等。已结束的任务返回 `already-finished`，保留原结果。
+
 ### 归属边界
 
 任务属于启动它的 agent 会话：其他 agent 无法读取或停止它。id 可能出现在工具输出中；注册表按所有者校验每次控制操作。没有所有者启动的任务对任何调用方开放，并持续到服务被释放为止。
