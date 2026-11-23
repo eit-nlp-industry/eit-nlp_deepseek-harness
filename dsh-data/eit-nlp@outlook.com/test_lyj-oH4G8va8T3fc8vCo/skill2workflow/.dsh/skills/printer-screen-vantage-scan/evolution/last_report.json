@@ -1,0 +1,61 @@
+{
+  "K": 2,
+  "S": 1.0,
+  "Var": 0.0,
+  "C": 8.0,
+  "Sim": 0.875,
+  "Cov": 1.0,
+  "successes": [
+    1.0,
+    1.0
+  ],
+  "observed_branches": [
+    "readable",
+    "unreadable"
+  ],
+  "heldout_branches": [
+    "readable",
+    "unreadable"
+  ],
+  "nodes": {
+    "Front readable?": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Front-closer readable?": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Oblique-front readable?": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Report no readable vantage": {
+      "U": 0.5,
+      "S": 1.0
+    },
+    "Report readable result": {
+      "U": 0.5,
+      "S": 1.0
+    },
+    "Start Case": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Wait arrived at front": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Wait arrived at front-closer": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Wait arrived at oblique-front": {
+      "U": 1.0,
+      "S": 1.0
+    }
+  },
+  "skill": "printer-screen-vantage-scan",
+  "kind": "n8n",
+  "n_heldout": 2
+}

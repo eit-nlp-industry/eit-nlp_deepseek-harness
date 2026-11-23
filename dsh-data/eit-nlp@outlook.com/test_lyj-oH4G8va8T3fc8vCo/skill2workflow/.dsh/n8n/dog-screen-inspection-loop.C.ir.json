@@ -1,0 +1,484 @@
+{
+  "name": "dog-screen-inspection-loop",
+  "skill_id": "dog-screen-inspection-loop",
+  "notes": [
+    "Vantage escalation ladder front -> front-closer -> oblique-front, each rung a move/wait/capture triple.",
+    "Each readable check is an exclusive If; true arm reports DONE, false arm continues to the next rung.",
+    "Final rung false arm reports FAILED (ladder exhausted).",
+    "dog_* tool calls are HTTP requests to a robot-dog bridge; URL/credential needs user input.",
+    "inline_io"
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Start Inspection",
+      "n8n_type": "n8n-nodes-base.manualTrigger",
+      "slots": {},
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "9",
+        "quote": "Inspect a physical screen/panel with the robot dog and report a condition (e.g. paper out) backed by an actual readable capture."
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Move To Front Vantage",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "body": "={{ $json.body }}",
+          "target": "={{ $json.area_id }}-front",
+          "goal": "reach the printer in the print area"
+        }
+      },
+      "tool": "dog_move",
+      "source": {
+        "kind": "skill_line",
+        "locator": "14",
+        "quote": "dog_move({body, target: <vantage>, goal: <why>})  -> job_id"
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Wait Arrived Front",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "job_id": "={{ $json.job_id }}"
+        }
+      },
+      "tool": "dog_wait_arrived",
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "dog_wait_arrived({job_id})                         -> must return arrived"
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Capture Front",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "target": "={{ $json.target }}",
+          "pose": "={{ $json.area_id }}-front"
+        }
+      },
+      "tool": "dog_capture",
+      "source": {
+        "kind": "skill_line",
+        "locator": "16",
+        "quote": "dog_capture({target: <screen>, pose: <vantage>})   -> {readable, reason?, screen_text?}"
+      }
+    },
+    {
+      "id": "n5",
+      "name": "Front Readable?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.readable }}",
+        "op": "eq",
+        "right": true,
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "35",
+        "quote": "A condition may only be reported if a `dog_capture` call in this session returned `readable=true` with the `screen_text` that supports it."
+      }
+    },
+    {
+      "id": "n6",
+      "name": "Report DONE",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "include_other_fields": true,
+        "assignments": {
+          "report": "=DONE case={{ $json.case_id }} paper_out={{ $json.paper_out }} vantage={{ $json.pose }}",
+          "screen_text": "={{ $json.screen_text }}",
+          "vantage": "={{ $json.pose }}"
+        }
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "44",
+        "quote": "DONE case=<case_id> paper_out=<true|false> vantage=<vantage_that_produced_readable_true>"
+      }
+    },
+    {
+      "id": "n7",
+      "name": "Move To Front-Closer",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "body": "={{ $json.body }}",
+          "target": "={{ $json.area_id }}-front-closer",
+          "goal": "get closer so the screen text is larger"
+        }
+      },
+      "tool": "dog_move",
+      "source": {
+        "kind": "skill_line",
+        "locator": "27",
+        "quote": "| text too small / illegible size | `<area>-front-closer` | \"get closer so the screen text is larger\" |"
+      }
+    },
+    {
+      "id": "n8",
+      "name": "Wait Arrived Front-Closer",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "job_id": "={{ $json.job_id }}"
+        }
+      },
+      "tool": "dog_wait_arrived",
+      "source": {
+        "kind": "skill_line",
+        "locator": "19",
+        "quote": "Never call `dog_capture` before `dog_wait_arrived` confirms arrival for that move."
+      }
+    },
+    {
+      "id": "n9",
+      "name": "Capture Front-Closer",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "target": "={{ $json.target }}",
+          "pose": "={{ $json.area_id }}-front-closer"
+        }
+      },
+      "tool": "dog_capture",
+      "source": {
+        "kind": "skill_line",
+        "locator": "31",
+        "quote": "Do not skip rungs: front → front-closer → oblique-front. Each rung must have its own move/wait/capture triple in the log."
+      }
+    },
+    {
+      "id": "n10",
+      "name": "Front-Closer Readable?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.readable }}",
+        "op": "eq",
+        "right": true,
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "36",
+        "quote": "If the last logged capture is `readable=false`, you have NOT finished — either run the next rung or report failure."
+      }
+    },
+    {
+      "id": "n11",
+      "name": "Move To Oblique-Front",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "body": "={{ $json.body }}",
+          "target": "={{ $json.area_id }}-oblique-front",
+          "goal": "side-front vantage that can still see the screen"
+        }
+      },
+      "tool": "dog_move",
+      "source": {
+        "kind": "skill_line",
+        "locator": "28",
+        "quote": "| glare / reflection on screen | `<area>-oblique-front` | \"side-front vantage that can still see the screen\" |"
+      }
+    },
+    {
+      "id": "n12",
+      "name": "Wait Arrived Oblique-Front",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "job_id": "={{ $json.job_id }}"
+        }
+      },
+      "tool": "dog_wait_arrived",
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e15",
+        "quote": "dog_wait_arrived"
+      }
+    },
+    {
+      "id": "n13",
+      "name": "Capture Oblique-Front",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "mode": "set",
+        "assignments": {
+          "target": "={{ $json.target }}",
+          "pose": "={{ $json.area_id }}-oblique-front"
+        }
+      },
+      "tool": "dog_capture",
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e17",
+        "quote": "dog_capture"
+      }
+    },
+    {
+      "id": "n14",
+      "name": "Oblique-Front Readable?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.readable }}",
+        "op": "eq",
+        "right": true,
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e18",
+        "quote": "readable"
+      }
+    },
+    {
+      "id": "n15",
+      "name": "Report FAILED",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "include_other_fields": true,
+        "assignments": {
+          "report": "=FAILED case={{ $json.case_id }} reason={{ $json.reason }} vantages_tried={{ $json.area_id }}-front,{{ $json.area_id }}-front-closer,{{ $json.area_id }}-oblique-front"
+        }
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "50",
+        "quote": "FAILED case=<case_id> reason=<last readable=false reason> vantages_tried=<comma-separated>"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "src": "n1",
+      "dst": "n2",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "14",
+        "quote": "dog_move({body, target: <vantage>, goal: <why>})  -> job_id"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e2",
+      "src": "n2",
+      "dst": "n3",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "19",
+        "quote": "Pair every move with its own wait and capture; do not batch moves."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e3",
+      "src": "n3",
+      "dst": "n4",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "19",
+        "quote": "Never call `dog_capture` before `dog_wait_arrived` confirms arrival for that move."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e4",
+      "src": "n4",
+      "dst": "n5",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "35",
+        "quote": "A condition may only be reported if a `dog_capture` call in this session returned `readable=true`"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e5",
+      "src": "n5",
+      "dst": "n6",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "44",
+        "quote": "DONE case=<case_id> paper_out=<true|false> vantage=<vantage_that_produced_readable_true>"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e6",
+      "src": "n5",
+      "dst": "n7",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "27",
+        "quote": "| text too small / illegible size | `<area>-front-closer` | \"get closer so the screen text is larger\" |"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e7",
+      "src": "n7",
+      "dst": "n8",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "19",
+        "quote": "Pair every move with its own wait and capture; do not batch moves."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e8",
+      "src": "n8",
+      "dst": "n9",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "19",
+        "quote": "Never call `dog_capture` before `dog_wait_arrived` confirms arrival for that move."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e9",
+      "src": "n9",
+      "dst": "n10",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "36",
+        "quote": "If the last logged capture is `readable=false`, you have NOT finished — either run the next rung or report failure."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e10",
+      "src": "n10",
+      "dst": "n6",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "44",
+        "quote": "DONE case=<case_id> paper_out=<true|false> vantage=<vantage_that_produced_readable_true>"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e11",
+      "src": "n10",
+      "dst": "n11",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "28",
+        "quote": "| glare / reflection on screen | `<area>-oblique-front` | \"side-front vantage that can still see the screen\" |"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e12",
+      "src": "n11",
+      "dst": "n12",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "19",
+        "quote": "Pair every move with its own wait and capture; do not batch moves."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e13",
+      "src": "n12",
+      "dst": "n13",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "19",
+        "quote": "Never call `dog_capture` before `dog_wait_arrived` confirms arrival for that move."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e14",
+      "src": "n13",
+      "dst": "n14",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e18",
+        "quote": "readable"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e15",
+      "src": "n14",
+      "dst": "n6",
+      "predicate": "true",
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e18",
+        "quote": "screen_text"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e16",
+      "src": "n14",
+      "dst": "n15",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "29",
+        "quote": "| still unreadable after both | stop and report failure | — |"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    }
+  ]
+}

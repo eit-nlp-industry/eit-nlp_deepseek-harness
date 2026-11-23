@@ -1,0 +1,49 @@
+{
+  "case_id": "paper-out-1",
+  "finish_reason": "completed",
+  "parsed_done": {
+    "case_id": "paper-out-1",
+    "paper_out": true,
+    "screen_text": "缺纸",
+    "vantage": "print-area-oblique-front"
+  },
+  "events": [
+    {
+      "type": "tool/call",
+      "tool": "dog_move"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_wait_arrived"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_capture"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_move"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_wait_arrived"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_capture"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_move"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_wait_arrived"
+    },
+    {
+      "type": "tool/call",
+      "tool": "dog_capture"
+    }
+  ],
+  "source": "trajectory"
+}

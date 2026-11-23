@@ -1,0 +1,657 @@
+{
+  "name": "[s2w-gate0] printer-screen-vantage-scan",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "id": "n-n1",
+      "name": "Start Case",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "formTitle": "printer-screen-vantage-scan",
+        "formDescription": "Capture results per vantage (readable_*) plus the screen reading.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "id",
+              "fieldType": "text",
+              "requiredField": true,
+              "defaultValue": "paper-out-1"
+            },
+            {
+              "fieldLabel": "job_id",
+              "fieldType": "text",
+              "requiredField": true,
+              "defaultValue": "job-move-3"
+            },
+            {
+              "fieldLabel": "readable_front",
+              "fieldType": "checkbox",
+              "requiredField": false,
+              "defaultValue": "false"
+            },
+            {
+              "fieldLabel": "readable_front_closer",
+              "fieldType": "checkbox",
+              "requiredField": false,
+              "defaultValue": "false"
+            },
+            {
+              "fieldLabel": "readable_oblique",
+              "fieldType": "checkbox",
+              "requiredField": false,
+              "defaultValue": "true"
+            },
+            {
+              "fieldLabel": "screen_text",
+              "fieldType": "text",
+              "requiredField": true,
+              "defaultValue": "缺纸"
+            },
+            {
+              "fieldLabel": "paper_out",
+              "fieldType": "checkbox",
+              "requiredField": false,
+              "defaultValue": "true"
+            },
+            {
+              "fieldLabel": "reason",
+              "fieldType": "text",
+              "requiredField": false,
+              "defaultValue": "glare on the front of the screen"
+            }
+          ]
+        },
+        "options": {},
+        "responseMode": "onReceived",
+        "defineForm": "fields"
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.formTrigger",
+      "webhookId": "form-n1"
+    },
+    {
+      "id": "n-n3",
+      "name": "Wait arrived at front",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-job_id",
+              "name": "job_id",
+              "value": "={{ $json.job_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-vantage-print-area-front",
+              "name": "vantage",
+              "value": "print-area-front",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n5",
+      "name": "Front readable?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n5",
+              "leftValue": "={{ $json.readable_front }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n7",
+      "name": "Wait arrived at front-closer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-job_id",
+              "name": "job_id",
+              "value": "={{ $json.job_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-vantage-print-area-front-closer",
+              "name": "vantage",
+              "value": "print-area-front-closer",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n9",
+      "name": "Front-closer readable?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n9",
+              "leftValue": "={{ $json.readable_front_closer }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n11",
+      "name": "Wait arrived at oblique-front",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-job_id",
+              "name": "job_id",
+              "value": "={{ $json.job_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-vantage-print-area-oblique-front",
+              "name": "vantage",
+              "value": "print-area-oblique-front",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n13",
+      "name": "Oblique-front readable?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1560,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n13",
+              "leftValue": "={{ $json.readable_oblique }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n14",
+      "name": "Report readable result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-screen_text",
+              "name": "screen_text",
+              "value": "={{ $json.screen_text }}",
+              "type": "string"
+            },
+            {
+              "id": "a-paper_out",
+              "name": "paper_out",
+              "value": "={{ $json.paper_out }}",
+              "type": "string"
+            },
+            {
+              "id": "a-vantage",
+              "name": "vantage",
+              "value": "={{ $json.vantage }}",
+              "type": "string"
+            },
+            {
+              "id": "a-report",
+              "name": "report",
+              "value": "=这台打印机显示{{ $json.screen_text }}。有效观察位是 {{ $json.vantage }}。\nDONE case={{ $json.id }} paper_out={{ $json.paper_out }} vantage={{ $json.vantage }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n15",
+      "name": "Report no readable vantage",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2000,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-readable",
+              "name": "readable",
+              "value": "={{ $json.readable_oblique }}",
+              "type": "string"
+            },
+            {
+              "id": "a-failure_reason",
+              "name": "failure_reason",
+              "value": "={{ $json.reason }}",
+              "type": "string"
+            },
+            {
+              "id": "a-report",
+              "name": "report",
+              "value": "=没有可读的观察位；最后一个观察位失败原因：{{ $json.reason }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    }
+  ],
+  "connections": {
+    "Start Case": {
+      "main": [
+        [
+          {
+            "node": "Wait arrived at front",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait arrived at front": {
+      "main": [
+        [
+          {
+            "node": "Front readable?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Front readable?": {
+      "main": [
+        [
+          {
+            "node": "Report readable result",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait arrived at front-closer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait arrived at front-closer": {
+      "main": [
+        [
+          {
+            "node": "Front-closer readable?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Front-closer readable?": {
+      "main": [
+        [
+          {
+            "node": "Report readable result",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait arrived at oblique-front",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait arrived at oblique-front": {
+      "main": [
+        [
+          {
+            "node": "Oblique-front readable?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Oblique-front readable?": {
+      "main": [
+        [
+          {
+            "node": "Report readable result",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Report no readable vantage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Report readable result": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "meta": {
+    "skill2workflow": true,
+    "skill_id": "printer-screen-vantage-scan",
+    "mapping": {
+      "structured_nodes": [
+        "Wait arrived at front",
+        "Front readable?",
+        "Wait arrived at front-closer",
+        "Front-closer readable?",
+        "Wait arrived at oblique-front",
+        "Oblique-front readable?",
+        "Report readable result",
+        "Report no readable vantage"
+      ],
+      "agent_fallback_nodes": [],
+      "structured_count": 8,
+      "agent_fallback_count": 0,
+      "all_agent_fallback": false
+    },
+    "fieldflow": [
+      {
+        "id": "n1",
+        "name": "Start Case",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n3",
+        "name": "Wait arrived at front",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n5",
+        "name": "Front readable?",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n7",
+        "name": "Wait arrived at front-closer",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n9",
+        "name": "Front-closer readable?",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n11",
+        "name": "Wait arrived at oblique-front",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n13",
+        "name": "Oblique-front readable?",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n14",
+        "name": "Report readable result",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "report",
+          "screen_text",
+          "vantage"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n15",
+        "name": "Report no readable vantage",
+        "in": [
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "screen_text"
+        ],
+        "out": [
+          "failure_reason",
+          "id",
+          "job_id",
+          "paper_out",
+          "readable",
+          "reason",
+          "report",
+          "screen_text"
+        ],
+        "missing": []
+      }
+    ]
+  }
+}

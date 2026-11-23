@@ -1,0 +1,13 @@
+{
+  "cases": [
+    {
+      "id": "smoke-auto",
+      "_smoke": true,
+      "command": 1,
+      "max_limit": 1,
+      "max_output": 1,
+      "measurement": 1,
+      "min_output": 1
+    }
+  ]
+}

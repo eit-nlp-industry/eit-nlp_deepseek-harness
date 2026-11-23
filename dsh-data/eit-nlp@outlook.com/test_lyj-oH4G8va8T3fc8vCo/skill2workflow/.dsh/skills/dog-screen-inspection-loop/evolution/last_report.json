@@ -1,0 +1,88 @@
+{
+  "K": 3,
+  "S": 1.0,
+  "Var": 0.0,
+  "C": 11.333333333333334,
+  "Sim": 0.5714285714285715,
+  "Cov": 1.0,
+  "successes": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "observed_branches": [
+    "front",
+    "none",
+    "oblique"
+  ],
+  "heldout_branches": [
+    "front",
+    "none",
+    "oblique"
+  ],
+  "nodes": {
+    "Capture Front": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Capture Front-Closer": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Capture Oblique-Front": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Front Readable?": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Front-Closer Readable?": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Move To Front Vantage": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Move To Front-Closer": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Move To Oblique-Front": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Oblique-Front Readable?": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Report DONE": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Report FAILED": {
+      "U": 0.3333333333333333,
+      "S": 1.0
+    },
+    "Start Inspection": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Wait Arrived Front": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Wait Arrived Front-Closer": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    },
+    "Wait Arrived Oblique-Front": {
+      "U": 0.6666666666666666,
+      "S": 1.0
+    }
+  },
+  "skill": "dog-screen-inspection-loop",
+  "kind": "n8n",
+  "n_heldout": 3
+}

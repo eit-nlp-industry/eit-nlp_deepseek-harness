@@ -6,6 +6,7 @@ const root = fileURLToPath(new URL('..', import.meta.url))
 const skillName = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const requiredSkills = [
   'development-orchestrator',
+  'flow-acceptance-handoff',
   'software-requirements',
   'test-driven-development',
   'systematic-debugging',
@@ -47,6 +48,15 @@ if (!patch.includes('allowParallelInProgress: false')) fail('todo progress must 
 const orchestrator = await readFile(join(root, 'skills/development-orchestrator/SKILL.md'), 'utf8')
 if (!orchestrator.includes('todo_write') || !orchestrator.includes('passed` → `completed')) {
   fail('orchestrator does not mirror tasks.json into todo_write')
+}
+if (!orchestrator.includes('ACCEPTANCE_GATE') || !orchestrator.includes('AWAITING_ACCEPTANCE')) {
+  fail('orchestrator missing ACCEPTANCE_GATE / AWAITING_ACCEPTANCE')
+}
+if (!orchestrator.includes('flow-acceptance-handoff')) {
+  fail('orchestrator does not load flow-acceptance-handoff')
+}
+if (!patch.includes('AWAITING_ACCEPTANCE') || !patch.includes('ACCEPTANCE_GATE')) {
+  fail('persona missing acceptance gate rules')
 }
 for (const name of requiredPlugins) {
   if (!patch.includes(name)) fail(`missing plugin ${name}`)

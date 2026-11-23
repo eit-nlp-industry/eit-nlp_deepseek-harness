@@ -1,0 +1,17 @@
+{
+  "K": 1,
+  "S": 1.0,
+  "Var": 0.0,
+  "C": 9.0,
+  "Sim": 1.0,
+  "Cov": 1.0,
+  "successes": [
+    1.0
+  ],
+  "observed_branches": [],
+  "heldout_branches": [],
+  "nodes": {},
+  "skill": "screen-read-glare-recovery",
+  "kind": "skill",
+  "n_heldout": 0
+}

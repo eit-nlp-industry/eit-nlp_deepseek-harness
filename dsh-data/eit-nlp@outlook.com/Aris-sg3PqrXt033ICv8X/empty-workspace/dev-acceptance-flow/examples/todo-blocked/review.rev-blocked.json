@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "review_id": "rev-blocked-001",
+  "event_id": "evt-rev-blocked-001",
+  "project_id": "todo-demo",
+  "submission_id": "sub-001",
+  "reviewed_revision": "abc1234",
+  "prd_revision": "prd-sha-aaaa1111",
+  "verdict": "blocked",
+  "summary": "artifact_manifest 指向的测试日志缺失，无法判定 REQ-4。",
+  "findings": [
+    {
+      "finding_id": "FIND-ENV-001",
+      "requirement_id": "REQ-4",
+      "category": "missing_evidence",
+      "blocking": true,
+      "description": "证据文件 artifacts/ui-persistence.log 不存在或不可读。",
+      "evidence_refs": [
+        {
+          "kind": "artifact_file",
+          "ref": "artifacts/ui-persistence.log",
+          "note": "manifest 已声明但只读树中缺失"
+        }
+      ],
+      "acceptance_condition": "补齐可读的持久化验证日志或等价执行记录后重新送验。",
+      "status": "blocked_insufficient_evidence"
+    }
+  ],
+  "out_of_scope_suggestions": [],
+  "ledger_refs": [],
+  "reviewed_at": "2026-11-23T02:05:00.000Z"
+}

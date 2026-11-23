@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {
+      "id": "smoke-auto",
+      "_smoke": true,
+      "job_id": "job-move-3",
+      "readable_front": false,
+      "readable_front_closer": false,
+      "readable_oblique": true,
+      "screen_text": "缺纸",
+      "paper_out": true,
+      "reason": "glare on the front of the screen"
+    }
+  ]
+}

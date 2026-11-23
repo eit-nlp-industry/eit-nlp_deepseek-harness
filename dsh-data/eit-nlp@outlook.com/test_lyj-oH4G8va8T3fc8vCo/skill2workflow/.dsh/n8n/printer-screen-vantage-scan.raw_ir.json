@@ -1,0 +1,531 @@
+{
+  "name": "printer-screen-vantage-scan",
+  "skill_id": "printer-screen-vantage-scan",
+  "notes": [
+    "Catalog search returned no results; node types chosen from the standard n8n core set referenced by the skill's tool calls (dog_move / dog_wait_arrived / dog_capture).",
+    "Each vantage is a move → wait → capture sequence; the If after each capture checks readable and routes to the next vantage on false.",
+    "Vantage order and failure reasons come from skill lines 25-29; the trajectory confirms front (too small) → closer (glare) → oblique (readable).",
+    "dog_* tool endpoints are not specified in the skill, so HTTP nodes carry needs_user_input for url/credential."
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Start Case",
+      "n8n_type": "n8n-nodes-base.manualTrigger",
+      "slots": {},
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "For each candidate vantage in order, run exactly this sequence:"
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Move to print-area-front",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "body": "dog-01",
+          "target": "print-area-front",
+          "goal": "reach the printer in the print area"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_move",
+      "source": {
+        "kind": "skill_line",
+        "locator": "16",
+        "quote": "dog_move({\"body\": \"dog-01\", \"target\": \"<vantage>\", \"goal\": \"<why this vantage>\"})"
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Wait arrived at front",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "job_id": "={{ $json.job_id }}"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_wait_arrived",
+      "source": {
+        "kind": "skill_line",
+        "locator": "17",
+        "quote": "dog_wait_arrived({\"job_id\": \"<job_id from dog_move>\"})"
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Capture printer-screen at front",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "target": "printer-screen",
+          "pose": "print-area-front"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_capture",
+      "source": {
+        "kind": "skill_line",
+        "locator": "18",
+        "quote": "dog_capture({\"target\": \"printer-screen\", \"pose\": \"<vantage>\"})"
+      }
+    },
+    {
+      "id": "n5",
+      "name": "Front readable?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.readable }}",
+        "op": "equal",
+        "right": "true",
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "25",
+        "quote": "`print-area-front` — baseline. If `readable: false` with reason `screen text too small`, move closer."
+      }
+    },
+    {
+      "id": "n6",
+      "name": "Move to print-area-front-closer",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "body": "dog-01",
+          "target": "print-area-front-closer",
+          "goal": "get closer so the screen text is larger"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_move",
+      "source": {
+        "kind": "skill_line",
+        "locator": "26",
+        "quote": "`print-area-front-closer` — fixes small text."
+      }
+    },
+    {
+      "id": "n7",
+      "name": "Wait arrived at front-closer",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "job_id": "={{ $json.job_id }}"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_wait_arrived",
+      "source": {
+        "kind": "skill_line",
+        "locator": "17",
+        "quote": "dog_wait_arrived({\"job_id\": \"<job_id from dog_move>\"})"
+      }
+    },
+    {
+      "id": "n8",
+      "name": "Capture printer-screen at front-closer",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "target": "printer-screen",
+          "pose": "print-area-front-closer"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_capture",
+      "source": {
+        "kind": "skill_line",
+        "locator": "18",
+        "quote": "dog_capture({\"target\": \"printer-screen\", \"pose\": \"<vantage>\"})"
+      }
+    },
+    {
+      "id": "n9",
+      "name": "Front-closer readable?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.readable }}",
+        "op": "equal",
+        "right": "true",
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "26",
+        "quote": "If `readable: false` with reason `glare` (reflection on the front of the screen), the front is unusable; switch to an oblique angle."
+      }
+    },
+    {
+      "id": "n10",
+      "name": "Move to print-area-oblique-front",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "body": "dog-01",
+          "target": "print-area-oblique-front",
+          "goal": "side-front vantage that can still see the screen"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_move",
+      "source": {
+        "kind": "skill_line",
+        "locator": "27",
+        "quote": "`print-area-oblique-front` — side-front angle that avoids front glare while still seeing the screen."
+      }
+    },
+    {
+      "id": "n11",
+      "name": "Wait arrived at oblique-front",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "job_id": "={{ $json.job_id }}"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_wait_arrived",
+      "source": {
+        "kind": "skill_line",
+        "locator": "17",
+        "quote": "dog_wait_arrived({\"job_id\": \"<job_id from dog_move>\"})"
+      }
+    },
+    {
+      "id": "n12",
+      "name": "Capture printer-screen at oblique-front",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "target": "printer-screen",
+          "pose": "print-area-oblique-front"
+        },
+        "needs_user_input": [
+          "url",
+          "credential_name"
+        ]
+      },
+      "tool": "dog_capture",
+      "source": {
+        "kind": "skill_line",
+        "locator": "18",
+        "quote": "dog_capture({\"target\": \"printer-screen\", \"pose\": \"<vantage>\"})"
+      }
+    },
+    {
+      "id": "n13",
+      "name": "Oblique-front readable?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.readable }}",
+        "op": "equal",
+        "right": "true",
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "21",
+        "quote": "Only report a result after a `dog_capture` returns `readable: true`."
+      }
+    },
+    {
+      "id": "n14",
+      "name": "Report readable result",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "assignments": {
+          "screen_text": "={{ $json.screen_text }}",
+          "paper_out": "={{ $json.paper_out }}",
+          "vantage": "print-area-oblique-front",
+          "report": "=这台打印机显示{{ $json.screen_text }}。有效观察位是 print-area-oblique-front（正面反光、靠近后仍看不清）。\nDONE case={{ $json.id }} paper_out={{ $json.paper_out }} vantage=print-area-oblique-front"
+        },
+        "include_other_fields": true
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "36",
+        "quote": "这台打印机显示<screen text>。有效观察位是 <vantage>（<brief reason earlier vantages failed>）。"
+      }
+    },
+    {
+      "id": "n15",
+      "name": "Report no readable vantage",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "assignments": {
+          "readable": "={{ $json.readable }}",
+          "failure_reason": "={{ $json.reason }}",
+          "report": "=没有可读的观察位；print-area-oblique-front 失败原因：{{ $json.reason }}"
+        },
+        "include_other_fields": true
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "40",
+        "quote": "If no candidate vantage yields `readable: true`, say so explicitly and list the failure reasons per vantage instead of guessing the screen content."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "src": "n1",
+      "dst": "n2",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "For each candidate vantage in order, run exactly this sequence:"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e2",
+      "src": "n2",
+      "dst": "n3",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e2",
+        "quote": "job_id"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e3",
+      "src": "n3",
+      "dst": "n4",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e4",
+        "quote": "arrived"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e4",
+      "src": "n4",
+      "dst": "n5",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e6",
+        "quote": "readable"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e5",
+      "src": "n5",
+      "dst": "n14",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "21",
+        "quote": "Only report a result after a `dog_capture` returns `readable: true`."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e6",
+      "src": "n5",
+      "dst": "n6",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "25",
+        "quote": "If `readable: false` with reason `screen text too small`, move closer."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e7",
+      "src": "n6",
+      "dst": "n7",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e8",
+        "quote": "job_id"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e8",
+      "src": "n7",
+      "dst": "n8",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e10",
+        "quote": "arrived"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e9",
+      "src": "n8",
+      "dst": "n9",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e12",
+        "quote": "readable"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e10",
+      "src": "n9",
+      "dst": "n14",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "21",
+        "quote": "Only report a result after a `dog_capture` returns `readable: true`."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e11",
+      "src": "n9",
+      "dst": "n10",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "26",
+        "quote": "the front is unusable; switch to an oblique angle."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e12",
+      "src": "n10",
+      "dst": "n11",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e14",
+        "quote": "job_id"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e13",
+      "src": "n11",
+      "dst": "n12",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e16",
+        "quote": "arrived"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e14",
+      "src": "n12",
+      "dst": "n13",
+      "predicate": null,
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e18",
+        "quote": "readable"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e15",
+      "src": "n13",
+      "dst": "n14",
+      "predicate": "true",
+      "source": {
+        "kind": "trajectory_event",
+        "locator": "e18",
+        "quote": "readable"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e16",
+      "src": "n13",
+      "dst": "n15",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "40",
+        "quote": "If no candidate vantage yields `readable: true`, say so explicitly and list the failure reasons per vantage instead of guessing the screen content."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    }
+  ]
+}

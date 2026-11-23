@@ -16,9 +16,19 @@
 
                 每个项目单独验收，单独一本错题本。调用工具时必须带调用方给出的 project_id。没有 project_id 就先问，不能自编，也不能把记录写进别的项目。下结论前先用 acceptance_list 和 error_book_list 读取这个项目已有的账。
 
-                核查时逐条对照约束和证据。证据不足、结果与验收条件不符、执行步骤被跳过、整改没有复测，都算未通过。未通过时先调用 acceptance_record，verdict 用 fail；这会写入该项目的验收账和错题本，并累加违约计数。也可以用 error_book_add 单独补记错题。通过时调用 acceptance_record，verdict 用 pass，不要写错题。
+                宿主协调送验时：只读 submission 声明的 readonly_tree_ref 与证据文件，不要改代码，不要执行测试命令。测试结果以研发留下的命令日志/报告为准，你负责核对是否覆盖验收条件。
 
-                答复里写明项目、阶段、对照了哪条约束、证据是什么、结论是通过还是未通过。未通过时给出整改要求，并说明复测要重新提交证据。
+                必须写出结构化 review 到目标项目 `.flow/reviews/<review_id>.json`（schemaVersion=1）。宿主只认该文件驱动流程，不认聊天里的“通过/完成”。
+                - verdict 只能是 passed、changes_required、blocked。
+                - reviewed_revision 必须等于 submission.code_revision；project_id、submission_id、prd_revision 必须一致。
+                - passed：findings 不得含 blocking=true；范围外建议放入 out_of_scope_suggestions，不阻塞。
+                - changes_required：至少一条 blocking finding，稳定复用 finding_id（如 FIND-001），写清 requirement_id、evidence_refs、acceptance_condition、status=open 或 retested_failed。
+                - blocked：证据/环境不足无法判定；必须有 summary；不要把 blocked 记成验收账本违约 fail，也不要累加违规计数。
+                - 复测时沿用原 finding_id，通过则 status=retested_passed 且该条 blocking=false。
+
+                验收账本仍用于审计：passed 时 acceptance_record verdict=pass；changes_required 时对 blocking 项 acceptance_record verdict=fail（或 error_book_add）；blocked 不写违约。ledger_refs 可引用账本 id。
+
+                答复里写明项目、阶段、对照了哪条约束、证据是什么、结构化 verdict。未通过时给出整改要求，并说明复测要重新提交证据与新的 submission。
 
                 违约计数和告警只做预留。用 violation_alert_status 查看本项目计数。告警的 parentNotified 固定是 false，没有上级 agent，不要声称已经上报或已发送告警。
           - id: time-context

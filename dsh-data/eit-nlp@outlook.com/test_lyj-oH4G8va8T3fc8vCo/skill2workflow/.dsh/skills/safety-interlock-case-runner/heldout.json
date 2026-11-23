@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "id": "ok-80",
+      "measurement": 80,
+      "command": 40,
+      "max_limit": 100,
+      "min_output": 0,
+      "max_output": 100,
+      "expect_safety": false,
+      "branch": "false"
+    },
+    {
+      "id": "trip-120",
+      "measurement": 120,
+      "command": 40,
+      "max_limit": 100,
+      "min_output": 0,
+      "max_output": 100,
+      "expect_safety": true,
+      "branch": "true"
+    },
+    {
+      "id": "eq-100",
+      "measurement": 100,
+      "command": 40,
+      "max_limit": 100,
+      "min_output": 0,
+      "max_output": 100,
+      "expect_safety": true,
+      "branch": "true"
+    }
+  ]
+}

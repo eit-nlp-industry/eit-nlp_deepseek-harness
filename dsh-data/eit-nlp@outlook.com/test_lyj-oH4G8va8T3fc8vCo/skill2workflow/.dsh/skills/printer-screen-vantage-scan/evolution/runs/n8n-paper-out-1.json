@@ -1,0 +1,31 @@
+{
+  "case_id": "paper-out-1",
+  "finish_reason": "completed",
+  "branch": "readable",
+  "executed_nodes": [
+    "Start Case",
+    "Wait arrived at front",
+    "Front readable?",
+    "Wait arrived at front-closer",
+    "Front-closer readable?",
+    "Wait arrived at oblique-front",
+    "Oblique-front readable?",
+    "Report readable result"
+  ],
+  "node_ok": {
+    "Start Case": true,
+    "Wait arrived at front": true,
+    "Front readable?": true,
+    "Wait arrived at front-closer": true,
+    "Front-closer readable?": true,
+    "Wait arrived at oblique-front": true,
+    "Oblique-front readable?": true,
+    "Report readable result": true
+  },
+  "cost": 8,
+  "source": "n8n",
+  "status": "success",
+  "branch_ok": true,
+  "output_ok": true,
+  "events": []
+}

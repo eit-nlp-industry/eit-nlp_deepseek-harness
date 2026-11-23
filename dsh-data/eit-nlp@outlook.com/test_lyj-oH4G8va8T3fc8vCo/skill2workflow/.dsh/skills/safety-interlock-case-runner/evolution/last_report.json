@@ -1,0 +1,37 @@
+{
+  "K": 1,
+  "S": 1.0,
+  "Var": 0.0,
+  "C": 4.0,
+  "Sim": 1.0,
+  "Cov": 0.0,
+  "successes": [
+    1.0
+  ],
+  "observed_branches": [],
+  "heldout_branches": [
+    "false",
+    "true"
+  ],
+  "nodes": {
+    "Case Input": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Emit Result Lines": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Over Limit Check": {
+      "U": 1.0,
+      "S": 1.0
+    },
+    "Safety Triggered Output": {
+      "U": 1.0,
+      "S": 1.0
+    }
+  },
+  "skill": "safety-interlock-case-runner",
+  "kind": "n8n",
+  "n_heldout": 3
+}

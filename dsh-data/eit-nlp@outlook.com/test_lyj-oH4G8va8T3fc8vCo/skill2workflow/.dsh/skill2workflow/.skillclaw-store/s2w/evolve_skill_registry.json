@@ -1,0 +1,134 @@
+{
+  "safety-interlock-case-runner": {
+    "skill_id": "75146dc5288e",
+    "version": 1,
+    "content_sha": "16fe3ba3949d9b41cd8facdbd169501cea1e4179fb4e618a58b351ad403fb75d",
+    "history": [
+      {
+        "version": 1,
+        "content_sha": "16fe3ba3949d9b41cd8facdbd169501cea1e4179fb4e618a58b351ad403fb75d",
+        "timestamp": "2026-11-12T08:59:57.337667+00:00",
+        "action": "create_skill",
+        "format": "bundle_v1",
+        "entrypoint": "SKILL.md",
+        "tree_sha256": "332f7e3236d1926a91ac47f7368dbe51e64a271e92e8f7071f3a0e157768c81e",
+        "files": [
+          {
+            "path": "SKILL.md",
+            "sha256": "16fe3ba3949d9b41cd8facdbd169501cea1e4179fb4e618a58b351ad403fb75d",
+            "size": 2759
+          }
+        ]
+      }
+    ],
+    "format": "bundle_v1",
+    "entrypoint": "SKILL.md",
+    "tree_sha256": "332f7e3236d1926a91ac47f7368dbe51e64a271e92e8f7071f3a0e157768c81e",
+    "files": [
+      {
+        "path": "SKILL.md",
+        "sha256": "16fe3ba3949d9b41cd8facdbd169501cea1e4179fb4e618a58b351ad403fb75d",
+        "size": 2759
+      }
+    ]
+  },
+  "printer-screen-vantage-scan": {
+    "skill_id": "4db37532e127",
+    "version": 1,
+    "content_sha": "e3fbd9e5c6d3bdf62c7efdb293fcdfdc1e62ab0b0cef33d8d902eeff4412a829",
+    "history": [
+      {
+        "version": 1,
+        "content_sha": "e3fbd9e5c6d3bdf62c7efdb293fcdfdc1e62ab0b0cef33d8d902eeff4412a829",
+        "timestamp": "2026-11-12T09:39:09.462093+00:00",
+        "action": "create_skill",
+        "format": "bundle_v1",
+        "entrypoint": "SKILL.md",
+        "tree_sha256": "9066eb0e928a9cf069b54a6d747e0769807a84c9a5aec3e61942395ad8d71fd0",
+        "files": [
+          {
+            "path": "SKILL.md",
+            "sha256": "e3fbd9e5c6d3bdf62c7efdb293fcdfdc1e62ab0b0cef33d8d902eeff4412a829",
+            "size": 2231
+          }
+        ]
+      }
+    ],
+    "format": "bundle_v1",
+    "entrypoint": "SKILL.md",
+    "tree_sha256": "9066eb0e928a9cf069b54a6d747e0769807a84c9a5aec3e61942395ad8d71fd0",
+    "files": [
+      {
+        "path": "SKILL.md",
+        "sha256": "e3fbd9e5c6d3bdf62c7efdb293fcdfdc1e62ab0b0cef33d8d902eeff4412a829",
+        "size": 2231
+      }
+    ]
+  },
+  "screen-read-glare-recovery": {
+    "skill_id": "b0709a45304d",
+    "version": 1,
+    "content_sha": "1656d28b335975cdfb0495ae2e505acd136e796d5befab0861ad4ec8bdf27011",
+    "history": [
+      {
+        "version": 1,
+        "content_sha": "1656d28b335975cdfb0495ae2e505acd136e796d5befab0861ad4ec8bdf27011",
+        "timestamp": "2026-11-12T10:16:47.317495+00:00",
+        "action": "create_skill",
+        "format": "bundle_v1",
+        "entrypoint": "SKILL.md",
+        "tree_sha256": "274075d82242c45e16c5ae887185b55b64b1f11dc5d6f006cdcadc33f538985a",
+        "files": [
+          {
+            "path": "SKILL.md",
+            "sha256": "1656d28b335975cdfb0495ae2e505acd136e796d5befab0861ad4ec8bdf27011",
+            "size": 2501
+          }
+        ]
+      }
+    ],
+    "format": "bundle_v1",
+    "entrypoint": "SKILL.md",
+    "tree_sha256": "274075d82242c45e16c5ae887185b55b64b1f11dc5d6f006cdcadc33f538985a",
+    "files": [
+      {
+        "path": "SKILL.md",
+        "sha256": "1656d28b335975cdfb0495ae2e505acd136e796d5befab0861ad4ec8bdf27011",
+        "size": 2501
+      }
+    ]
+  },
+  "dog-screen-inspection-loop": {
+    "skill_id": "e43895488ecb",
+    "version": 1,
+    "content_sha": "f4dcce3d5af577fc08f68b578b0cddbff9386c0930be3ce3a643af8a22b73b38",
+    "history": [
+      {
+        "version": 1,
+        "content_sha": "f4dcce3d5af577fc08f68b578b0cddbff9386c0930be3ce3a643af8a22b73b38",
+        "timestamp": "2026-11-12T10:30:51.647458+00:00",
+        "action": "create_skill",
+        "format": "bundle_v1",
+        "entrypoint": "SKILL.md",
+        "tree_sha256": "66aec01a0647905fc0215735e896b9c4f97bbf5095048eff17ece7dc094b8210",
+        "files": [
+          {
+            "path": "SKILL.md",
+            "sha256": "f4dcce3d5af577fc08f68b578b0cddbff9386c0930be3ce3a643af8a22b73b38",
+            "size": 2905
+          }
+        ]
+      }
+    ],
+    "format": "bundle_v1",
+    "entrypoint": "SKILL.md",
+    "tree_sha256": "66aec01a0647905fc0215735e896b9c4f97bbf5095048eff17ece7dc094b8210",
+    "files": [
+      {
+        "path": "SKILL.md",
+        "sha256": "f4dcce3d5af577fc08f68b578b0cddbff9386c0930be3ce3a643af8a22b73b38",
+        "size": 2905
+      }
+    ]
+  }
+}

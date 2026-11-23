@@ -3,9 +3,9 @@ import { prepare, accept, compile, publish } from './workflow.js'
 
 const help = `工具目录自动分类（Node.js 20+）
 
-node automation/cli.js prepare --config config.local.json --state-dir /绝对路径/state [--url http://10.37.0.21:8040/ui/api/registrations]
+node automation/cli.js prepare --config config.json --state-dir /绝对路径/state [--url http://10.37.0.21:8040/ui/api/registrations]
 node automation/cli.js accept --run /绝对路径/state/runs/运行ID --assignments /绝对路径/assignments.json
-node automation/cli.js compile --catalog /绝对路径/state/catalog.json --config config.local.json --tool-map /绝对路径/tool-map.json --output /绝对路径/candidate.json
+node automation/cli.js compile --catalog /绝对路径/state/catalog.json --config config.json --tool-map /绝对路径/tool-map.json --output /绝对路径/candidate.json
 node automation/cli.js publish --catalog /绝对路径/state/catalog.json --config /实际配置.json --tool-map /绝对路径/tool-map.json
 
 prepare 仅准备模型输入；DSH Agent 读取 task.json 后写分类 JSON，再 accept。

@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "engine": "workflow",
+  "trajectory": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skills/screen-read-glare-recovery/trajectory.json",
+  "session": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skill2workflow/.skillclaw-store/s2w/sessions/s2w-traj-printer-screen-check-paper-out-1.json",
+  "skill_md": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skills/screen-read-glare-recovery/SKILL.md",
+  "skill_dir": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skills/screen-read-glare-recovery",
+  "upserted_count": 3,
+  "skills": [
+    {
+      "name": "printer-screen-vantage-scan",
+      "path": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skill2workflow/.skillclaw-store/s2w/skills/printer-screen-vantage-scan/SKILL.md"
+    },
+    {
+      "name": "safety-interlock-case-runner",
+      "path": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skill2workflow/.skillclaw-store/s2w/skills/safety-interlock-case-runner/SKILL.md"
+    },
+    {
+      "name": "screen-read-glare-recovery",
+      "path": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skill2workflow/.skillclaw-store/s2w/skills/screen-read-glare-recovery/SKILL.md"
+    }
+  ],
+  "cycle": {
+    "sessions": 1,
+    "uploaded_skills": 1,
+    "no_skill_sessions": 1,
+    "evolutions": [
+      {
+        "action": "create_skill",
+        "skill_name": "screen-read-glare-recovery",
+        "skill_id": "b0709a45304d",
+        "version": 1,
+        "session_ids": [
+          "s2w-traj-printer-screen-check-paper-out-1"
+        ],
+        "rationale": "The session reveals a recurring, environment-specific failure mode in robot screen-reading tasks: when a frontal capture returns readable=false due to glare or distance, the agent must reposition laterally/obliquely and re-capture rather than answering from case metadata. An existing skill 'printer-screen-vantage-scan' is listed but the session shows it was not applied and the specific glare\u2192oblique recovery plus anti-metadata-leakage rules are worth encoding as a focused skill.",
+        "source": "no_skill",
+        "edit_summary": null,
+        "uploaded": true,
+        "verification": {
+          "enabled": false
+        }
+      }
+    ]
+  }
+}

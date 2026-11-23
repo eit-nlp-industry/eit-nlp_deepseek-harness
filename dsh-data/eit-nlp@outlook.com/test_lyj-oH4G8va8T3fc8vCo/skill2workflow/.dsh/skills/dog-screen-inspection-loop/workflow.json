@@ -1,0 +1,1200 @@
+{
+  "name": "[s2w-gate0] dog-screen-inspection-loop",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "id": "n-n1",
+      "name": "Start Inspection",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "formTitle": "dog-screen-inspection-loop",
+        "formDescription": "Fields inferred from workflow expressions ($json.*).",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "area_id",
+              "fieldType": "text",
+              "requiredField": true,
+              "defaultValue": "print-area"
+            },
+            {
+              "fieldLabel": "body",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "case_id",
+              "fieldType": "text",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "job_id",
+              "fieldType": "text",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "paper_out",
+              "fieldType": "checkbox",
+              "requiredField": true,
+              "defaultValue": "true"
+            },
+            {
+              "fieldLabel": "pose",
+              "fieldType": "text",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "reason",
+              "fieldType": "text",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "screen_text",
+              "fieldType": "text",
+              "requiredField": true,
+              "defaultValue": "缺纸"
+            },
+            {
+              "fieldLabel": "target",
+              "fieldType": "text",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "readable_front",
+              "fieldType": "checkbox",
+              "requiredField": true,
+              "defaultValue": "false"
+            },
+            {
+              "fieldLabel": "readable_front_closer",
+              "fieldType": "checkbox",
+              "requiredField": true,
+              "defaultValue": "false"
+            },
+            {
+              "fieldLabel": "readable_oblique",
+              "fieldType": "checkbox",
+              "requiredField": true,
+              "defaultValue": "false"
+            }
+          ]
+        },
+        "options": {},
+        "responseMode": "onReceived",
+        "defineForm": "fields"
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.formTrigger",
+      "webhookId": "form-n1"
+    },
+    {
+      "id": "n-n2",
+      "name": "Move To Front Vantage",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-body",
+              "name": "body",
+              "value": "={{ $json.body }}",
+              "type": "string"
+            },
+            {
+              "id": "a-target",
+              "name": "target",
+              "value": "={{ $json.area_id }}-front",
+              "type": "string"
+            },
+            {
+              "id": "a-goal",
+              "name": "goal",
+              "value": "reach the printer in the print area",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n3",
+      "name": "Wait Arrived Front",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-job_id",
+              "name": "job_id",
+              "value": "={{ $json.job_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n4",
+      "name": "Capture Front",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-target",
+              "name": "target",
+              "value": "={{ $json.target }}",
+              "type": "string"
+            },
+            {
+              "id": "a-pose",
+              "name": "pose",
+              "value": "={{ $json.area_id }}-front",
+              "type": "string"
+            },
+            {
+              "id": "a-readable-readable-front",
+              "name": "readable",
+              "value": "={{ $json.readable_front }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n5",
+      "name": "Front Readable?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n5",
+              "leftValue": "={{ $json.readable }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n6",
+      "name": "Report DONE",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-report",
+              "name": "report",
+              "value": "=DONE case={{ $json.case_id }} paper_out={{ $json.paper_out }} vantage={{ $json.pose }}",
+              "type": "string"
+            },
+            {
+              "id": "a-screen_text",
+              "name": "screen_text",
+              "value": "={{ $json.screen_text }}",
+              "type": "string"
+            },
+            {
+              "id": "a-vantage",
+              "name": "vantage",
+              "value": "={{ $json.pose }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n7",
+      "name": "Move To Front-Closer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1560,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-body",
+              "name": "body",
+              "value": "={{ $json.body }}",
+              "type": "string"
+            },
+            {
+              "id": "a-target",
+              "name": "target",
+              "value": "={{ $json.area_id }}-front-closer",
+              "type": "string"
+            },
+            {
+              "id": "a-goal",
+              "name": "goal",
+              "value": "get closer so the screen text is larger",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n8",
+      "name": "Wait Arrived Front-Closer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-job_id",
+              "name": "job_id",
+              "value": "={{ $json.job_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n9",
+      "name": "Capture Front-Closer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2000,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-target",
+              "name": "target",
+              "value": "={{ $json.target }}",
+              "type": "string"
+            },
+            {
+              "id": "a-pose",
+              "name": "pose",
+              "value": "={{ $json.area_id }}-front-closer",
+              "type": "string"
+            },
+            {
+              "id": "a-readable-readable-front-closer",
+              "name": "readable",
+              "value": "={{ $json.readable_front_closer }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n10",
+      "name": "Front-Closer Readable?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2220,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n10",
+              "leftValue": "={{ $json.readable }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n11",
+      "name": "Move To Oblique-Front",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2440,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-body",
+              "name": "body",
+              "value": "={{ $json.body }}",
+              "type": "string"
+            },
+            {
+              "id": "a-target",
+              "name": "target",
+              "value": "={{ $json.area_id }}-oblique-front",
+              "type": "string"
+            },
+            {
+              "id": "a-goal",
+              "name": "goal",
+              "value": "side-front vantage that can still see the screen",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n12",
+      "name": "Wait Arrived Oblique-Front",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2660,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-job_id",
+              "name": "job_id",
+              "value": "={{ $json.job_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n13",
+      "name": "Capture Oblique-Front",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2880,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-target",
+              "name": "target",
+              "value": "={{ $json.target }}",
+              "type": "string"
+            },
+            {
+              "id": "a-pose",
+              "name": "pose",
+              "value": "={{ $json.area_id }}-oblique-front",
+              "type": "string"
+            },
+            {
+              "id": "a-readable-readable-oblique",
+              "name": "readable",
+              "value": "={{ $json.readable_oblique }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n14",
+      "name": "Oblique-Front Readable?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3100,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n14",
+              "leftValue": "={{ $json.readable }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n15",
+      "name": "Report FAILED",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3320,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-report",
+              "name": "report",
+              "value": "=FAILED case={{ $json.case_id }} reason={{ $json.reason }} vantages_tried={{ $json.area_id }}-front,{{ $json.area_id }}-front-closer,{{ $json.area_id }}-oblique-front",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    }
+  ],
+  "connections": {
+    "Start Inspection": {
+      "main": [
+        [
+          {
+            "node": "Move To Front Vantage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move To Front Vantage": {
+      "main": [
+        [
+          {
+            "node": "Wait Arrived Front",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait Arrived Front": {
+      "main": [
+        [
+          {
+            "node": "Capture Front",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture Front": {
+      "main": [
+        [
+          {
+            "node": "Front Readable?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Front Readable?": {
+      "main": [
+        [
+          {
+            "node": "Report DONE",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Move To Front-Closer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move To Front-Closer": {
+      "main": [
+        [
+          {
+            "node": "Wait Arrived Front-Closer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait Arrived Front-Closer": {
+      "main": [
+        [
+          {
+            "node": "Capture Front-Closer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture Front-Closer": {
+      "main": [
+        [
+          {
+            "node": "Front-Closer Readable?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Front-Closer Readable?": {
+      "main": [
+        [
+          {
+            "node": "Report DONE",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Move To Oblique-Front",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move To Oblique-Front": {
+      "main": [
+        [
+          {
+            "node": "Wait Arrived Oblique-Front",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait Arrived Oblique-Front": {
+      "main": [
+        [
+          {
+            "node": "Capture Oblique-Front",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture Oblique-Front": {
+      "main": [
+        [
+          {
+            "node": "Oblique-Front Readable?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Oblique-Front Readable?": {
+      "main": [
+        [
+          {
+            "node": "Report DONE",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Report FAILED",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "skill2workflow": true,
+    "skill_id": "dog-screen-inspection-loop",
+    "mapping": {
+      "structured_nodes": [
+        "Move To Front Vantage",
+        "Wait Arrived Front",
+        "Capture Front",
+        "Front Readable?",
+        "Report DONE",
+        "Move To Front-Closer",
+        "Wait Arrived Front-Closer",
+        "Capture Front-Closer",
+        "Front-Closer Readable?",
+        "Move To Oblique-Front",
+        "Wait Arrived Oblique-Front",
+        "Capture Oblique-Front",
+        "Oblique-Front Readable?",
+        "Report FAILED"
+      ],
+      "agent_fallback_nodes": [],
+      "structured_count": 14,
+      "agent_fallback_count": 0,
+      "all_agent_fallback": false
+    },
+    "fieldflow": [
+      {
+        "id": "n1",
+        "name": "Start Inspection",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n2",
+        "name": "Move To Front Vantage",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n3",
+        "name": "Wait Arrived Front",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n4",
+        "name": "Capture Front",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n5",
+        "name": "Front Readable?",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n6",
+        "name": "Report DONE",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "report",
+          "screen_text",
+          "target",
+          "vantage"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n7",
+        "name": "Move To Front-Closer",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n8",
+        "name": "Wait Arrived Front-Closer",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n9",
+        "name": "Capture Front-Closer",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n10",
+        "name": "Front-Closer Readable?",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n11",
+        "name": "Move To Oblique-Front",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n12",
+        "name": "Wait Arrived Oblique-Front",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n13",
+        "name": "Capture Oblique-Front",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n14",
+        "name": "Oblique-Front Readable?",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n15",
+        "name": "Report FAILED",
+        "in": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "screen_text",
+          "target"
+        ],
+        "out": [
+          "area_id",
+          "body",
+          "case_id",
+          "goal",
+          "job_id",
+          "paper_out",
+          "pose",
+          "readable",
+          "reason",
+          "report",
+          "screen_text",
+          "target"
+        ],
+        "missing": []
+      }
+    ]
+  }
+}

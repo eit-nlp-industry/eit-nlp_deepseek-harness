@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "review_id": "rev-001",
+  "event_id": "evt-rev-001",
+  "project_id": "todo-demo",
+  "submission_id": "sub-001",
+  "reviewed_revision": "abc1234",
+  "prd_revision": "prd-sha-aaaa1111",
+  "verdict": "changes_required",
+  "summary": "刷新后完成状态丢失，不满足持久化验收条件。",
+  "findings": [
+    {
+      "finding_id": "FIND-001",
+      "requirement_id": "REQ-4",
+      "category": "behavior_defect",
+      "blocking": true,
+      "description": "标记完成后刷新页面，任务回到未完成。",
+      "evidence_refs": [
+        {
+          "kind": "test_report",
+          "ref": "artifacts/ui-persistence.log",
+          "note": "刷新前后 completed 字段不一致"
+        },
+        {
+          "kind": "source_path",
+          "ref": "src/storage.js"
+        }
+      ],
+      "acceptance_condition": "刷新后任务内容与 completed 状态与刷新前一致。",
+      "status": "open"
+    }
+  ],
+  "out_of_scope_suggestions": [],
+  "ledger_refs": [
+    {
+      "kind": "acceptance_record",
+      "id": "00000000-0000-4000-8000-000000000011"
+    },
+    {
+      "kind": "error_book",
+      "id": "00000000-0000-4000-8000-000000000012"
+    }
+  ],
+  "reviewed_at": "2026-11-23T02:10:00.000Z"
+}

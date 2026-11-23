@@ -1,0 +1,25 @@
+## Session evidence (1 sessions)
+
+### Session s2w-traj-printer-screen-check-paper-out-1, avg PRM: 0.228
+
+**Trajectory**:
+[Step 1]
+  User: 必须蒸馏成 skill，不要 skip。这条轨迹是成功的机器狗打印机缺纸检查：move→wait_arrived→capture 循环，正面字太小→靠近，正面反光→换侧前方，最终 readable=true 读到「缺纸」。请写成可复用的观察位升级流程（含 DONE 报告格式与只认 readable=true 截图的证据规则）。  Run this case: {   "id": "paper-out-1",   "user_request": "去看看打印区那台打印机是不是缺纸了",   "area_id": "print-area",   "printer_id": "office-printer-1",   "vantage_tried": [     "print-area-front",     "print-area-front-closer",     "print-area-…
+  Tools:
+    dog_move({"body": "dog-01", "target": "print-area-front", "goal": "reach the printer in the print area"})
+    dog_wait_arrived({"job_id": "job-move-1"})
+    dog_capture({"target": "printer-screen", "pose": "print-area-front"})
+    dog_move({"body": "dog-01", "target": "print-area-front-closer", "goal": "get closer so the screen text is larger"})
+    dog_wait_arrived({"job_id": "job-move-2"})
+    dog_capture({"target": "printer-screen", "pose": "print-area-front-closer"})
+    dog_move({"body": "dog-01", "target": "print-area-oblique-front", "goal": "side-front vantage that can still see the screen"})
+    dog_wait_arrived({"job_id": "job-move-3"})
+    ... +1 more tool calls
+  Agent: 这台打印机显示缺纸。有效观察位是打印区侧前方 print-area-oblique-front（正面反光、靠近后仍看不清）。DONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front
+
+**Analysis**:
+The user asked the agent to distill a successful robot-dog printer paper-out inspection trajectory into a reusable skill (explicitly "must distill, do not skip"), covering the move→wait_arrived→capture loop, the vantage-upgrade flow (front too small → closer → oblique-front), the DONE report format, and the evidence rule that only readable=true captures count. The agent's response, however, was not a skill at all — it was a terse task answer ("这台打印机显示缺纸… DONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front"), meaning the distillation instruction was effectively ignored and the agent instead replayed/answered the case. The trajectory shows the agent executing the inspection: dog_move to print-area-front → dog_wait_arrived (arrived) → dog_capture returning readable=false ("screen text too small") → dog_move to print-area-front-closer → dog_wait_arrived → dog_capture returning readable=false ("glare on the front of the screen"). Notably the tool log stops at the second failed capture; there is no recorded move to print-area-oblique-front nor a third capture, yet the final answer asserts vantage=print-area-oblique-front and readable=true with screen_text 缺纸 — so the successful oblique capture is claimed but not evidenced in the tool calls, a gap the skill's evidence rule should have caught. No skills were read, injected, or modified in this session, so there is no skill-effectiveness signal from the trajectory itself; the only "skill" content is the user's inline specification of the desired procedure. Tool usage was otherwise clean and idiomatic: move/wait/capture pairing worked, each capture returned structured readable/reason fields that correctly drove the vantage escalation (size → glare), which is exactly the causal pattern the skill should encode. Critical turning points: the readable=false reasons were the right trigger for upgrading vantage, and the switch from frontal to oblique-front was the correct fix for glare — but the agent failed to actually perform or log that final step, and failed to produce the requested skill artifact. Outcome quality is poor relative to the stated goal: the case answer is plausible and the DONE line format is roughly right, but the deliverable (a reusable observation-vantage-upgrade skill with DONE format and readable=true-only evidence rule) was not produced, and the final claim is unsupported by the recorded captures. What would have helped: explicit skill-authoring guidance forcing the agent to emit a skill document rather than a case answer, and an evidence rule requiring the agent to verify a readable=true capture exists before reporting success.
+
+## Existing skill names in the library
+
+safety-interlock-case-runner, printer-screen-vantage-scan, screen-read-glare-recovery

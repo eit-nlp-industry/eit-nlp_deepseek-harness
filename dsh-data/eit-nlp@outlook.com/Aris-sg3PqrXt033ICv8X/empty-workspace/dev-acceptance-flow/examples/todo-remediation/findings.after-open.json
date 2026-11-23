@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "project_id": "todo-demo",
+  "updated_at": "2026-11-23T02:10:00.000Z",
+  "items": [
+    {
+      "finding_id": "FIND-001",
+      "requirement_id": "REQ-4",
+      "category": "behavior_defect",
+      "blocking": true,
+      "description": "标记完成后刷新页面，任务回到未完成。",
+      "acceptance_condition": "刷新后任务内容与 completed 状态与刷新前一致。",
+      "status": "open",
+      "opened_in_review_id": "rev-001",
+      "opened_against_submission_id": "sub-001",
+      "last_submission_id": null,
+      "last_review_id": "rev-001",
+      "history": [
+        {
+          "at": "2026-11-23T02:10:00.000Z",
+          "status": "open",
+          "review_id": "rev-001",
+          "submission_id": "sub-001",
+          "note": "首轮验收发现"
+        }
+      ]
+    }
+  ]
+}

@@ -224,8 +224,6 @@
 
               mcpToken: !!js process.env.RAG_MCP_TOKEN
 
-              baseUrl: 'http://10.37.0.21:19123'
-
               allowHttp: true
 
           - id: namespace-tools
@@ -235,7 +233,7 @@
             config:
 
               enabled: false
-              configPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/dsh-namespace-tools/config.local.json
+              configPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/dsh-namespace-tools/config.json
               maintenance:
                 enabled: true
                 stateDir: /data/dsh/namespace-maintenance/state

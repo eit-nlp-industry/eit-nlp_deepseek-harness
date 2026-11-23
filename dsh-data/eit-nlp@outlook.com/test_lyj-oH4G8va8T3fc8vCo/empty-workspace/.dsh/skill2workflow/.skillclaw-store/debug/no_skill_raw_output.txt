@@ -1,0 +1,4 @@
+{
+  "action": "skip",
+  "rationale": "Only one session is provided, and it completed successfully with a high PRM score (0.895) using a pre-existing SKILL.md that already covered the safety-interlock procedure. The trajectory is short, clean, and domain-specific (a single safety-interlock evaluation), with no recurring challenge or missing knowledge to generalize. There is insufficient evidence across sessions to justify a new reusable skill."
+}

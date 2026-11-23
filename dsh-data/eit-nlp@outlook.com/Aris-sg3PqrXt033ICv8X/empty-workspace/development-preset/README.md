@@ -19,3 +19,9 @@ persona、time-context、tool-bash、tool-pwsh、tool-fs、tool-fs-search、skil
 没有 ask_user、审批、子 Agent、插件管理器。Skill 只从本目录 `skills/` 加载（`includeDefaultRoots: false`）。Git 通过 shell。这个 profile 没有 Playwright MCP；Web 验证使用目标项目自己的 Playwright，否则把缺口写入最终报告。
 
 PRD 是唯一规格。预设不安装 OpenSpec，也不在目标项目创建 `openspec/`。任务和追踪写在 `.development/`，审查和验证结果写在 `artifacts/`。界面进度是 `tasks.json` 的全量 `todo_write` 镜像，同时只有一项 `in_progress`。
+
+## 验收闸门
+
+`FINAL_VERIFICATION` 之后进入 `ACCEPTANCE_GATE`（`status=AWAITING_ACCEPTANCE`），写出 `.flow/submissions/` 后停止；**未获宿主验收放行前不得 `PACKAGE`**。
+交接细节见 skill `flow-acceptance-handoff`。宿主协调协议见 `../dev-acceptance-flow/`。
+`AWAITING_ACCEPTANCE` 不是人工审批，与禁止的 `WAITING_FOR_APPROVAL` 不同。

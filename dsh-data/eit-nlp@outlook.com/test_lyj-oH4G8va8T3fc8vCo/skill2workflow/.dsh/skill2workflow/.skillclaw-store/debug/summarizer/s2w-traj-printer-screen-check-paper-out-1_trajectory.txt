@@ -1,0 +1,13 @@
+[Step 1]
+  User: 必须蒸馏成 skill，不要 skip。这条轨迹是成功的机器狗打印机缺纸检查：move→wait_arrived→capture 循环，正面字太小→靠近，正面反光→换侧前方，最终 readable=true 读到「缺纸」。请写成可复用的观察位升级流程（含 DONE 报告格式与只认 readable=true 截图的证据规则）。  Run this case: {   "id": "paper-out-1",   "user_request": "去看看打印区那台打印机是不是缺纸了",   "area_id": "print-area",   "printer_id": "office-printer-1",   "vantage_tried": [     "print-area-front",     "print-area-front-closer",     "print-area-…
+  Tools:
+    dog_move({"body": "dog-01", "target": "print-area-front", "goal": "reach the printer in the print area"})
+    dog_wait_arrived({"job_id": "job-move-1"})
+    dog_capture({"target": "printer-screen", "pose": "print-area-front"})
+    dog_move({"body": "dog-01", "target": "print-area-front-closer", "goal": "get closer so the screen text is larger"})
+    dog_wait_arrived({"job_id": "job-move-2"})
+    dog_capture({"target": "printer-screen", "pose": "print-area-front-closer"})
+    dog_move({"body": "dog-01", "target": "print-area-oblique-front", "goal": "side-front vantage that can still see the screen"})
+    dog_wait_arrived({"job_id": "job-move-3"})
+    ... +1 more tool calls
+  Agent: 这台打印机显示缺纸。有效观察位是打印区侧前方 print-area-oblique-front（正面反光、靠近后仍看不清）。DONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front

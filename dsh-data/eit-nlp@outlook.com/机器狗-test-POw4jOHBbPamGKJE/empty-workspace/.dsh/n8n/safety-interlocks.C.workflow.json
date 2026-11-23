@@ -1,0 +1,333 @@
+{
+  "name": "[s2w-gate0] safety-interlocks",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "id": "n-n1",
+      "name": "Case Input Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "formTitle": "safety-interlocks",
+        "formDescription": "Fields inferred from workflow expressions ($json.*).",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "command",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "max_limit",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "max_output",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "measurement",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "min_output",
+              "fieldType": "number",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {},
+        "responseMode": "onReceived",
+        "defineForm": "fields"
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.formTrigger",
+      "webhookId": "form-n1"
+    },
+    {
+      "id": "n-n2",
+      "name": "Over-Limit Check (measurement >= max_limit)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n2",
+              "leftValue": "={{ Number($json.measurement) }}",
+              "rightValue": "={{ Number($json.max_limit) }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n3",
+      "name": "Emergency Cutoff Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-safety_triggered",
+              "name": "safety_triggered",
+              "value": "={{ true }}",
+              "type": "boolean"
+            },
+            {
+              "id": "a-output",
+              "name": "output",
+              "value": "={{ Math.max($json.min_output, Math.min($json.max_output, $json.min_output)) }}",
+              "type": "number"
+            },
+            {
+              "id": "a-command_before",
+              "name": "command_before",
+              "value": "={{ $json.command }}",
+              "type": "string"
+            },
+            {
+              "id": "a-event_type",
+              "name": "event_type",
+              "value": "limit_exceeded",
+              "type": "string"
+            },
+            {
+              "id": "a-limit",
+              "name": "limit",
+              "value": "={{ $json.max_limit }}",
+              "type": "number"
+            },
+            {
+              "id": "a-measurement",
+              "name": "measurement",
+              "value": "={{ $json.measurement }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n4",
+      "name": "Normal Path Clamp Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-safety_triggered",
+              "name": "safety_triggered",
+              "value": "={{ false }}",
+              "type": "boolean"
+            },
+            {
+              "id": "a-output",
+              "name": "output",
+              "value": "={{ Math.max($json.min_output, Math.min($json.max_output, $json.command)) }}",
+              "type": "number"
+            },
+            {
+              "id": "a-command_before",
+              "name": "command_before",
+              "value": "={{ $json.command }}",
+              "type": "string"
+            },
+            {
+              "id": "a-limit",
+              "name": "limit",
+              "value": "={{ $json.max_limit }}",
+              "type": "number"
+            },
+            {
+              "id": "a-measurement",
+              "name": "measurement",
+              "value": "={{ $json.measurement }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    }
+  ],
+  "connections": {
+    "Case Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Over-Limit Check (measurement >= max_limit)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Over-Limit Check (measurement >= max_limit)": {
+      "main": [
+        [
+          {
+            "node": "Emergency Cutoff Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Normal Path Clamp Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Emergency Cutoff Output": {
+      "main": [
+        [
+          {
+            "node": "Normal Path Clamp Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "skill2workflow": true,
+    "skill_id": "safety-interlocks",
+    "mapping": {
+      "structured_nodes": [
+        "Over-Limit Check (measurement >= max_limit)",
+        "Emergency Cutoff Output",
+        "Normal Path Clamp Output"
+      ],
+      "agent_fallback_nodes": [],
+      "structured_count": 3,
+      "agent_fallback_count": 0,
+      "all_agent_fallback": false
+    },
+    "fieldflow": [
+      {
+        "id": "n1",
+        "name": "Case Input Trigger",
+        "in": [
+          "command",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output"
+        ],
+        "out": [
+          "command",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n2",
+        "name": "Over-Limit Check (measurement >= max_limit)",
+        "in": [
+          "command",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output"
+        ],
+        "out": [
+          "command",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n3",
+        "name": "Emergency Cutoff Output",
+        "in": [
+          "command",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output"
+        ],
+        "out": [
+          "command",
+          "command_before",
+          "event_type",
+          "limit",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n4",
+        "name": "Normal Path Clamp Output",
+        "in": [
+          "command",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output"
+        ],
+        "out": [
+          "command",
+          "command_before",
+          "limit",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "missing": []
+      }
+    ]
+  }
+}

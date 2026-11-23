@@ -1,0 +1,33 @@
+{
+  "enabled": false,
+  "allowHttp": true,
+  "mcpTokenEnv": "RAG_MCP_TOKEN",
+  "topK": 3,
+  "candidateLimit": 20,
+  "minScore": 0.3,
+  "timeoutMs": 10000,
+  "maxResponseBytes": 1048576,
+  "eagerTools": ["mcp__robot__stop", "mcp__robot__self_check"],
+  "hiddenTools": [
+    "bash", "edit", "write", "glob", "grep", "working_directory",
+    "subagent", "subagent_fork", "list_agents", "interrupt_agent", "send_message", "workflow",
+    "web_fetch", "web_search", "todo_write", "present",
+    "read", "read_image", "render_ui", "exit_plan_mode", "create_goal", "get_goal", "update_goal"
+  ],
+  "toolMap": [
+    { "name": "mcp__n8n__search_semantic_map" },
+    { "name": "mcp__n8n__query_topology" },
+    { "name": "mcp__robot__self_check" },
+    { "name": "mcp__robot__navigate" },
+    { "name": "mcp__robot__move_to" },
+    { "name": "mcp__robot__knock_door" },
+    { "name": "mcp__robot__approach_object" },
+    { "name": "mcp__robot__follow_person" },
+    { "name": "mcp__robot__wait" },
+    { "name": "mcp__robot__set_posture" },
+    { "name": "mcp__robot__handoff_delivery" },
+    { "name": "mcp__robot__return_and_rest" },
+    { "name": "mcp__robot__patrol_stop" },
+    { "name": "mcp__robot__stop" }
+  ]
+}

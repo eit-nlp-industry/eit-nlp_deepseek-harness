@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-acceptance-flow/defs",
+  "$defs": {
+    "projectId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[^\\\\\\/\\u0000]+$",
+      "description": "与验收账本 project_id 相同；不含斜杠。"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "isoDateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "gitSha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,64}$",
+      "description": "送验时 HEAD 的 git 对象名；第一版以此作为 code_revision。"
+    },
+    "prdRevision": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "与研发 state.prdHash 对齐的 PRD 内容哈希。"
+    },
+    "pathRef": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "相对 project_root 或协调约定根的路径引用。"
+    },
+    "sessionId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "findingId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "跨轮次稳定的问题编号，例如 FIND-001；不得每轮新建。"
+    },
+    "requirementId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "PRD 需求编号或章节锚点。"
+    },
+    "flowStatus": {
+      "type": "string",
+      "enum": [
+        "bootstrapping",
+        "developing",
+        "awaiting_user",
+        "awaiting_acceptance",
+        "remediating",
+        "acceptance_passed",
+        "delivering",
+        "delivery_completed",
+        "needs_manual",
+        "failed_terminal"
+      ]
+    },
+    "waitingReason": {
+      "type": "string",
+      "enum": [
+        "none",
+        "prd_clarification",
+        "acceptance_blocked",
+        "awaiting_review",
+        "max_rounds_exceeded",
+        "environment",
+        "other"
+      ]
+    },
+    "submissionKind": {
+      "type": "string",
+      "enum": ["initial", "remediation"]
+    },
+    "reviewVerdict": {
+      "type": "string",
+      "enum": ["passed", "changes_required", "blocked"],
+      "description": "宿主状态机只认这三个值；勿把聊天措辞当 verdict。"
+    },
+    "findingCategory": {
+      "type": "string",
+      "enum": [
+        "requirement_gap",
+        "behavior_defect",
+        "missing_evidence",
+        "process_skip",
+        "regression",
+        "out_of_scope_suggestion",
+        "environment_block",
+        "other"
+      ]
+    },
+    "findingStatus": {
+      "type": "string",
+      "enum": [
+        "open",
+        "fixed_pending_retest",
+        "retested_passed",
+        "retested_failed",
+        "deferred_out_of_scope",
+        "blocked_insufficient_evidence"
+      ]
+    },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "command_log",
+            "test_report",
+            "artifact_file",
+            "source_path",
+            "git_commit",
+            "acceptance_record_id",
+            "other"
+          ]
+        },
+        "ref": { "$ref": "#/$defs/nonEmptyString" },
+        "note": { "type": "string", "maxLength": 2000 }
+      }
+    }
+  }
+}

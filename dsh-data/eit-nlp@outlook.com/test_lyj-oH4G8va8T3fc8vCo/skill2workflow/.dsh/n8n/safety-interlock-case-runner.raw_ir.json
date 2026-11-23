@@ -1,0 +1,161 @@
+{
+  "name": "safety-interlock-case-runner",
+  "skill_id": "safety-interlock-case-runner",
+  "notes": [
+    "Catalog search returned no results in this session; node types taken from the provided schema hints (n8n-nodes-base.if) and standard core types.",
+    "Case inputs (id, measurement, command, max_limit, min_output, max_output) arrive from the trigger as $json fields; no numeric case values are hard-coded.",
+    "Skill line 54 clamps after the trigger branch, but line 32 forbids clamping after a safety trigger; the triggered arm therefore forces min_output directly (matching trajectory output=0, not 40).",
+    "Output is the two result lines plus the DONE trailer, lowercase booleans."
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Case Input",
+      "n8n_type": "n8n-nodes-base.manualTrigger",
+      "slots": {},
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "9",
+        "quote": "Run a single safety-interlock case from `case.json` and emit a deterministic result."
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Over Limit Check",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.measurement }}",
+        "op": "gte",
+        "right": "={{ $json.max_limit }}",
+        "type": "number"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "27",
+        "quote": "If `measurement >= max_limit` (the equals sign counts as over-limit):"
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Safety Triggered Output",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "include_other_fields": true,
+        "assignments": {
+          "safety_triggered": "true",
+          "output": "={{ $json.min_output }}"
+        }
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "28",
+        "quote": "set `command = min_output`"
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Clamp Command",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "include_other_fields": true,
+        "assignments": {
+          "safety_triggered": "false",
+          "output": "={{ Math.max($json.min_output, Math.min($json.max_output, $json.command)) }}"
+        }
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "30",
+        "quote": "Otherwise: clamp only — `command = max(min_output, min(max_output, command))`, `safety_triggered = False`."
+      }
+    },
+    {
+      "id": "n5",
+      "name": "Emit Result Lines",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "include_other_fields": true,
+        "assignments": {
+          "result": "=safety_triggered={{ $json.safety_triggered }}\noutput={{ $json.output }}\nDONE case={{ $json.id }} safety={{ $json.safety_triggered }} output={{ $json.output }}"
+        }
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "68",
+        "quote": "DONE case=<id> safety=<true|false> output=<n>"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "src": "n1",
+      "dst": "n2",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "36",
+        "quote": "Read `./SKILL.md` (if present) and `./case.json` first."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e2",
+      "src": "n2",
+      "dst": "n3",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "27",
+        "quote": "If `measurement >= max_limit` (the equals sign counts as over-limit):"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e3",
+      "src": "n2",
+      "dst": "n4",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "30",
+        "quote": "Otherwise: clamp only — `command = max(min_output, min(max_output, command))`, `safety_triggered = False`."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e4",
+      "src": "n3",
+      "dst": "n5",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "32",
+        "quote": "Do not clamp the command after a safety trigger; the triggered branch forces `min_output`."
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e5",
+      "src": "n4",
+      "dst": "n5",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "63",
+        "quote": "Exactly two result lines, then a trailer:"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    }
+  ]
+}

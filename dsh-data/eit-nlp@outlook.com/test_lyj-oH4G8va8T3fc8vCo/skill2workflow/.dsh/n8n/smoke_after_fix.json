@@ -1,0 +1,26 @@
+{
+  "workflow_id": "jx7eZ5Htz856cC7a",
+  "updated": true,
+  "runs": [
+    {
+      "case_id": "paper-out-1",
+      "execution_id": "5207",
+      "status": "success",
+      "sink": "Report readable result",
+      "other_sink_ran": false,
+      "report": "这台打印机显示缺纸。有效观察位是 print-area-oblique-front。\nDONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front",
+      "expected_report": "这台打印机显示缺纸。有效观察位是 print-area-oblique-front。\nDONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front",
+      "ok": true
+    },
+    {
+      "case_id": "paper-out-none",
+      "execution_id": "5208",
+      "status": "success",
+      "sink": "Report no readable vantage",
+      "other_sink_ran": false,
+      "report": "没有可读的观察位；最后一个观察位失败原因：glare on the front of the screen",
+      "expected_report": "没有可读的观察位；最后一个观察位失败原因：glare on the front of the screen",
+      "ok": true
+    }
+  ]
+}

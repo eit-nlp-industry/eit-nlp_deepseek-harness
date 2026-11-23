@@ -1,0 +1,126 @@
+{
+  "name": "safety-interlocks",
+  "skill_id": "safety-interlocks",
+  "notes": [
+    "Over-limit check has highest priority: measurement >= max_limit forces command = min_output and safety_triggered = true (skill lines 32, 50-52).",
+    "Clamp step command = max(min_output, min(max_output, command)) is applied on both arms via Set expressions (skill line 33, 55).",
+    "Both arms are exclusive terminals that report safety_triggered and output; no edge between them (skill lines 34-39).",
+    "Inputs come from the trigger ($json.measurement, $json.command, $json.max_limit, $json.min_output, $json.max_output); no case.json file read (skill lines 16-27).",
+    "Catalog search returned no nodes; node types taken from the provided schema list (if, set) plus manualTrigger."
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Case Input Trigger",
+      "n8n_type": "n8n-nodes-base.manualTrigger",
+      "slots": {},
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "31",
+        "quote": "读取用例文件，取出上述字段。"
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Over-Limit Check (measurement >= max_limit)",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.measurement }}",
+        "op": "gte",
+        "right": "={{ $json.max_limit }}",
+        "type": "number"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "32",
+        "quote": "**过限判定最高优先级**：`measurement >= max_limit` 时立即 `command = min_output`，并记 `safety_triggered = true`"
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Emergency Cutoff Output",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "assignments": {
+          "safety_triggered": "={{ true }}",
+          "output": "={{ Math.max($json.min_output, Math.min($json.max_output, $json.min_output)) }}",
+          "command_before": "={{ $json.command }}",
+          "event_type": "limit_exceeded",
+          "limit": "={{ $json.max_limit }}",
+          "measurement": "={{ $json.measurement }}"
+        },
+        "include_other_fields": true
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "50",
+        "quote": "if measurement >= max_limit:"
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Normal Path Clamp Output",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "assignments": {
+          "safety_triggered": "={{ false }}",
+          "output": "={{ Math.max($json.min_output, Math.min($json.max_output, $json.command)) }}",
+          "command_before": "={{ $json.command }}",
+          "limit": "={{ $json.max_limit }}",
+          "measurement": "={{ $json.measurement }}"
+        },
+        "include_other_fields": true
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "55",
+        "quote": "command = max(min_output, min(max_output, command))"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "src": "n1",
+      "dst": "n2",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "31",
+        "quote": "读取用例文件，取出上述字段。"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e2",
+      "src": "n2",
+      "dst": "n3",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "32",
+        "quote": "`measurement >= max_limit` 时立即 `command = min_output`"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e3",
+      "src": "n2",
+      "dst": "n4",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "33",
+        "quote": "**钳位**：`command = max(min_output, min(max_output, command))`"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    }
+  ]
+}

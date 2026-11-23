@@ -1,11 +1,11 @@
 ---
 name: development-orchestrator
-description: 研发模式总控。以 PRD 为唯一规格，恢复 .development 状态，并按阶段调用审查、TDD、调试、UI 和验证 skill。处理研发任务、继续未完成项目或用户回复澄清时加载。
+description: 研发模式总控。以 PRD 为唯一规格，恢复 .development 状态，并按阶段调用审查、TDD、调试、UI、验证与验收交接 skill。处理研发任务、继续未完成项目、宿主整改/放行投递或用户回复澄清时加载。
 ---
 
 # 研发模式总控
 
-本 skill 只调度阶段、状态和其它 skill。PRD 写法、TDD、调试、UI 和测试步骤以对应 skill 为准，不要在这里重写。
+本 skill 只调度阶段、状态和其它 skill。PRD 写法、TDD、调试、UI、测试和验收交接步骤以对应 skill 为准，不要在这里重写。
 
 PRD 是唯一规格来源。不要引入 OpenSpec，不要创建 `openspec/`，不要另写 proposal、specs 或 design 来代替 PRD。预设只在目标项目生成任务、追踪和验证工件。
 
@@ -15,6 +15,7 @@ PRD 是唯一规格来源。不要引入 OpenSpec，不要创建 `openspec/`，�
 - 实现：`src/`、`tests/`
 - 任务和追踪：`.development/tasks.json`、`state.json`、`assumptions.md`、`decisions.md`、`deviations.md`、`execution-log.jsonl`
 - 验证：`artifacts/prd-audit.json`、`artifacts/verification-report.json`、`artifacts/final-result.json`
+- 验收交接：`.flow/submissions/`、`.flow/findings.json`（由宿主协调；本模式只写 submission，不写 review）
 
 不要把 `skills/` 复制到目标项目。
 
@@ -32,15 +33,15 @@ PRD 是唯一规格来源。不要引入 OpenSpec，不要创建 `openspec/`，�
 
 ## 状态
 
-`state.json` 至少包含 `schemaVersion`（1）、`status`、`phase`、`prdHash`、`currentTask`、`completedTasks`、`failedTasks`、`assumptions`、`deviations`、`retryCounts`、`pendingQuestion`、`resumePhase`、`lastVerifiedCommit`。
+`state.json` 至少包含 `schemaVersion`（1）、`status`、`phase`、`prdHash`、`currentTask`、`completedTasks`、`failedTasks`、`assumptions`、`deviations`、`retryCounts`、`pendingQuestion`、`resumePhase`、`lastVerifiedCommit`、`activeSubmissionId`。
 
-阶段顺序：`BOOTSTRAP` → `PRD_AUDIT` → `TASK_PREPARATION` → `IMPLEMENTATION` → `UI_VERIFICATION` → `PRD_VERIFICATION` → `FINAL_VERIFICATION` → `PACKAGE` → `DEPLOYMENT` → `COMPLETED`。
+阶段顺序：`BOOTSTRAP` → `PRD_AUDIT` → `TASK_PREPARATION` → `IMPLEMENTATION` → `UI_VERIFICATION` → `PRD_VERIFICATION` → `FINAL_VERIFICATION` → `ACCEPTANCE_GATE` → `PACKAGE` → `DEPLOYMENT` → `COMPLETED`。
 
-`status` 只用 `RUNNING`、`NEEDS_CLARIFICATION`、`REJECTED_PRD`、`FAILED_TERMINAL`、`COMPLETED`。禁止 `PENDING_APPROVAL` 和 `WAITING_FOR_APPROVAL`。
+`status` 只用 `RUNNING`、`NEEDS_CLARIFICATION`、`AWAITING_ACCEPTANCE`、`REJECTED_PRD`、`FAILED_TERMINAL`、`COMPLETED`。禁止 `PENDING_APPROVAL` 和 `WAITING_FOR_APPROVAL`。`AWAITING_ACCEPTANCE` 只表示等待宿主协调的验收结果，不是人工审批。
 
 每进入一个阶段或一次重试，向 `execution-log.jsonl` 追加一行：时间、阶段、动作、命令、退出码。
 
-已有 `state.json` 时从 `phase` 恢复。若读到旧阶段名 `SPEC_PREPARATION`，当作 `TASK_PREPARATION`；`SPEC_VERIFICATION` 当作 `PRD_VERIFICATION`。`status` 为 `NEEDS_CLARIFICATION` 时，把用户最新普通消息关联到 `pendingQuestion.id`，写入 `decisions.md`，清空 `pendingQuestion`，把 `status` 设回 `RUNNING`，从 `resumePhase` 继续。
+已有 `state.json` 时从 `phase` 恢复。若读到旧阶段名 `SPEC_PREPARATION`，当作 `TASK_PREPARATION`；`SPEC_VERIFICATION` 当作 `PRD_VERIFICATION`。`status` 为 `NEEDS_CLARIFICATION` 时，把用户最新普通消息关联到 `pendingQuestion.id`，写入 `decisions.md`，清空 `pendingQuestion`，把 `status` 设回 `RUNNING`，从 `resumePhase` 继续。`status` 为 `AWAITING_ACCEPTANCE` 时不要自动进入 `PACKAGE`；仅当收到宿主「整改」或「验收已通过，请继续交付」类投递后，按下方 `ACCEPTANCE_GATE` 规则继续。
 
 ## 阶段
 
@@ -63,11 +64,17 @@ UI 任务加载 `ui-ux-pro-max`。PRD 里的 UI 示例优先。不要重做已�
 
 `PRD_VERIFICATION`：对照 `PRD.md` 和 `tasks.json`，不对照另一套规格。检查每个需求是否有实现、每个任务是否完成、UI 是否覆盖 PRD 页面、验收标准是否遗漏、是否有无依据的多余功能、架构偏差是否已写入 `deviations.md`。结果写入 `artifacts/verification-report.json`。失败则把发现追加为修复任务，回到 `IMPLEMENTATION`。
 
-`FINAL_VERIFICATION`：加载 `verification-before-completion`。按仓库实际执行 format、lint、typecheck、单元测试、集成测试、端到端测试、build、迁移和依赖检查。保存命令、退出码和摘要。未执行的项标 `not_configured` 或 `not_applicable`，不能标 `passed`。必需门禁都通过后才进入 `PACKAGE`。
+`FINAL_VERIFICATION`：加载 `verification-before-completion`。按仓库实际执行 format、lint、typecheck、单元测试、集成测试、端到端测试、build、迁移和依赖检查。保存命令、退出码和摘要。未执行的项标 `not_configured` 或 `not_applicable`，不能标 `passed`。必需门禁都通过后进入 `ACCEPTANCE_GATE`，**不得**直接进入 `PACKAGE`。
 
-`PACKAGE`：整理 `artifacts/final-result.json` 和关键路径。不另造发布平台。
+`ACCEPTANCE_GATE`：加载 `flow-acceptance-handoff`。固定代码版本、写出 `.flow/submissions/<submission_id>.json`，将 `phase` 设为 `ACCEPTANCE_GATE`，`status` 设为 `AWAITING_ACCEPTANCE`，写入 `activeSubmissionId` 与 `lastVerifiedCommit`。然后停止主动推进，用中文简短说明已送验并等待验收。禁止在此阶段整理最终交付为“已完成”，禁止进入 `PACKAGE`。
 
-`DEPLOYMENT`：仅当 PRD 明确要求部署或仓库已有部署配置，且目标、命令、环境中的凭据和健康检查都已存在时，才按现有流程部署、做冒烟和健康检查。失败且已有回滚则回滚；没有回滚则 `FAILED_TERMINAL`。没有部署配置时不要询问云平台，不要注册服务，不要安装新部署平台；`deployment.status` 为 `not_configured`，其它门禁通过后可以 `COMPLETED`。
+- 收到宿主整改投递（或读到 `.flow/findings.json` 中仍开放的 blocking finding）：把问题映射进 `tasks.json`，`status` 改回 `RUNNING`，`phase` 回到 `IMPLEMENTATION`，按 TDD/调试修复并再跑验证，然后再次经 `ACCEPTANCE_GATE` 送出 `kind=remediation` 的新 submission。
+- 收到宿主“验收已通过，请继续交付”投递：确认对应 `submission_id` 后，`status` 改回 `RUNNING`，进入 `PACKAGE`。
+- 自检未通过时不要假装送验成功；写明阻塞原因，`status` 用 `FAILED_TERMINAL` 或 `NEEDS_CLARIFICATION`。
+
+`PACKAGE`：仅在验收放行后整理 `artifacts/final-result.json` 和关键路径。不另造发布平台。聊天中区分“验收通过”与“交付完成”。
+
+`DEPLOYMENT`：仅当 PRD 明确要求部署或仓库已有部署配置，且目标、命令、环境中的凭据和健康检查都已存在时，才按现有流程部署、做冒烟和健康检查。失败且已有回滚则回滚；没有回滚则 `FAILED_TERMINAL`。没有部署配置时不要询问云平台，不要注册服务，不要安装新部署平台；`deployment.status` 为 `not_configured`，其它门禁通过后可以 `COMPLETED`。验收通过不构成新增部署授权。
 
 ## 重试
 

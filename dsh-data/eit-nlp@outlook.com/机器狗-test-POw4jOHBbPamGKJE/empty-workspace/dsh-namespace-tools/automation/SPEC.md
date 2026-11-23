@@ -13,9 +13,9 @@ DSH 每周运行维护 Agent，使用自身模型判断工具功能。Node.js 20
 
 DSH 0.2.2-alpha.2 的 `tools.view(agent).knownNames/restrictableNames` 在 JS 中可读，但类型声明为 private；适配器必须检查两个字符串 Set，缺失时停止，不能静默退回经过 namespace mask 的列表。映射目标须属于可限制的祖先注册，并读取内部 tools.layers.peek(agent).tools.entries() 排除自身同名 shadow；检查接口、迭代和条目形状，不兼容时拒绝。Skill 必须安装到 DSH 能发现的目录，周任务须在同一目标预设下调用工具。真实组件验证覆盖隐藏工具仍在 inventory、外 scope 拒绝以及发布后旧实例保持不变。
 
-- `node automation/cli.js prepare --config config.local.json --state-dir /绝对路径/state`：抓取已指定的网站；生成唯一运行目录的 task.json。
+- `node automation/cli.js prepare --config config.json --state-dir /绝对路径/state`：抓取已指定的网站；生成唯一运行目录的 task.json。
 - `node automation/cli.js accept --run /运行目录 --assignments /分类结果.json`：校验本轮工具完整且唯一归属，保存 catalog.json。
-- `node automation/cli.js compile --catalog /catalog.json --config config.local.json --tool-map /tool-map.json --output /candidate.json`：按显式映射生成运行候选配置，不覆盖输入文件。
+- `node automation/cli.js compile --catalog /catalog.json --config config.json --tool-map /tool-map.json --output /candidate.json`：按显式映射生成运行候选配置，不覆盖输入文件。
 - `node automation/cli.js publish --catalog /catalog.json --config /实际配置.json --tool-map /tool-map.json`：独占锁内校验来源时效及配置基线，备份并保留文件权限原子发布；发布凭据支持相同运行重试。只写文件，等待 restart Harness 生效。
 - `automation/core.js` 为核心逻辑；`automation/cli.js` 为入口；`test/automation.test.js` 为行为测试；README 和 weekly-task 提供接口和任务说明。
 
@@ -32,7 +32,7 @@ HTTP 失败、响应格式错误、零符合条件的工具、重复 ID、漏项
 3. 使用合成 HTTP 服务验证成功、错误响应、响应上限和超时。
 4. `node --test test/automation.test.js` 与 `npm test`；独立审查由主 Agent 安排。
 
-发布必须拒绝 pending、缺失/碰撞映射、超过 24 小时的快照和基线冲突；当前文件已等于本轮发布 hash 时幂等成功。源码中的 config.local.json 不作为测试发布目标。
+发布必须拒绝 pending、缺失/碰撞映射、超过 24 小时的快照和基线冲突；当前文件已等于本轮发布 hash 时幂等成功。源码中的 config.json 不作为测试发布目标。
 
 入口只在安装时读取并完整校验配置，读取失败或内容无效直接拒绝启动。共享文件 enabled:false 与预设 enabled:true 合并，预设允许 enabled、绝对 configPath 及可选 maintenance；maintenance 默认关闭并继承总体 enabled/configPath。namespace/eager/hidden 由文件作为唯一来源，prepare 只额外向模型提供 eagerTools 以保持原归属。当前实例使用启动快照，文件修改以及 Agent idle 都不会使它重新读取。默认 selector 保留启动时的 namespace enum 与描述。
 

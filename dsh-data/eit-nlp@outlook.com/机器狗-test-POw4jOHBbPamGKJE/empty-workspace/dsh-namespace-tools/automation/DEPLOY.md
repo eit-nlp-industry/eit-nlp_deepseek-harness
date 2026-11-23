@@ -6,7 +6,7 @@
 
 先沿现有 `namespace-tools.js` 的 import 找到实际插件目录与实际配置。以下都是示例路径，必须改成 **DSH 进程内部可见的绝对路径**；若 DSH 在容器中，宿主路径不一定相同。
 
-上传 `namespace-automation-skill-suffix-20261116.tar.gz` 后，先解压到独立目录，不能直接覆盖服务器的现有 config.local.json：
+上传 `namespace-automation-skill-suffix-20261116.tar.gz` 后，先解压到独立目录，不能直接覆盖服务器的现有 config.json：
 
 ```sh
 mkdir -p /data/dsh/namespace-maintenance-release
@@ -15,7 +15,7 @@ tar -xzf /tmp/namespace-automation-skill-suffix-20261116.tar.gz -C /data/dsh/nam
 
 备份运行时代码。把新版 package.json、index.js、config.js、disclosure.js、preset-entry.js、maintenance.js 以及 automation/ 整个目录同步至实际插件代码目录，保留原服务器配置。maintenance.js 依赖 automation/core.js 和 workflow.js，不能只替换入口。Node.js 20+，不需要 npm install。
 
-代码、state 与配置都应持久化。**配置挂载整个目录，不能只 bind mount 单个 config.local.json**：发布依赖同目录临时文件及 rename，单文件挂载可能报 EBUSY 或继续读取旧 inode。DSH 用户需要 state 和实际配置父目录的写权限；publish 保留 mode/uid/gid，不能保留时会拒绝替换。容器中 docker cp 本身不是持久化方案。
+代码、state 与配置都应持久化。**配置挂载整个目录，不能只 bind mount 单个 config.json**：发布依赖同目录临时文件及 rename，单文件挂载可能报 EBUSY 或继续读取旧 inode。DSH 用户需要 state 和实际配置父目录的写权限；publish 保留 mode/uid/gid，不能保留时会拒绝替换。容器中 docker cp 本身不是持久化方案。
 
 桥接必须导出新版 preset-entry.js；直接导出 index.js 不读取实际文件，也不安装维护工具：
 
@@ -30,7 +30,7 @@ export { apply, inject, name } from '/实际插件目录/dsh-namespace-tools/pre
 ```yaml
 config:
   enabled: true
-  configPath: /实际持久化目录/config.local.json
+  configPath: /实际持久化目录/config.json
   maintenance:
     enabled: true
     stateDir: /data/dsh/namespace-maintenance/state

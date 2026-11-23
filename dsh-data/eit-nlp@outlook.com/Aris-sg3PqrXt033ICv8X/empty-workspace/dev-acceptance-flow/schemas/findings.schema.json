@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-acceptance-flow/findings",
+  "title": "Stable findings ledger",
+  "description": "跨轮次 finding 生命周期表。覆盖写到 .flow/findings.json。review 每次可引用同一 finding_id；不得因新 submission 重建编号。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "project_id", "items", "updated_at"],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "project_id": {
+      "$ref": "defs.schema.json#/$defs/projectId"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/findingItem"
+      }
+    },
+    "updated_at": {
+      "$ref": "defs.schema.json#/$defs/isoDateTime"
+    }
+  },
+  "$defs": {
+    "findingItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "requirement_id",
+        "category",
+        "blocking",
+        "description",
+        "acceptance_condition",
+        "status",
+        "opened_in_review_id",
+        "opened_against_submission_id",
+        "history"
+      ],
+      "properties": {
+        "finding_id": {
+          "$ref": "defs.schema.json#/$defs/findingId"
+        },
+        "requirement_id": {
+          "$ref": "defs.schema.json#/$defs/requirementId"
+        },
+        "category": {
+          "$ref": "defs.schema.json#/$defs/findingCategory"
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "description": {
+          "$ref": "defs.schema.json#/$defs/nonEmptyString"
+        },
+        "acceptance_condition": {
+          "$ref": "defs.schema.json#/$defs/nonEmptyString"
+        },
+        "status": {
+          "$ref": "defs.schema.json#/$defs/findingStatus"
+        },
+        "opened_in_review_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "opened_against_submission_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "last_submission_id": {
+          "type": ["string", "null"],
+          "description": "最近一次声称处理该 finding 的 submission。"
+        },
+        "last_review_id": {
+          "type": ["string", "null"]
+        },
+        "history": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["at", "status", "review_id", "submission_id"],
+            "properties": {
+              "at": {
+                "$ref": "defs.schema.json#/$defs/isoDateTime"
+              },
+              "status": {
+                "$ref": "defs.schema.json#/$defs/findingStatus"
+              },
+              "review_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "submission_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "note": {
+                "type": "string",
+                "maxLength": 2000
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

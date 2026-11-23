@@ -1,0 +1,34 @@
+[
+  {
+    "case": "ok-80",
+    "execution_id": "5194",
+    "safety_triggered": false,
+    "output": null,
+    "result_lines": "safety_triggered=false\noutput=40",
+    "trailer": "DONE case=ok-80 safety=false output=40"
+  },
+  {
+    "case": "clamp-150",
+    "execution_id": "5195",
+    "safety_triggered": false,
+    "output": null,
+    "result_lines": "safety_triggered=false\noutput=100",
+    "trailer": "DONE case=clamp-150 safety=false output=100"
+  },
+  {
+    "case": "trip-120",
+    "execution_id": "5196",
+    "safety_triggered": true,
+    "output": null,
+    "result_lines": "safety_triggered=true\noutput=0",
+    "trailer": "DONE case=trip-120 safety=true output=0"
+  },
+  {
+    "case": "eq-100",
+    "execution_id": "5197",
+    "safety_triggered": true,
+    "output": null,
+    "result_lines": "safety_triggered=true\noutput=0",
+    "trailer": "DONE case=eq-100 safety=true output=0"
+  }
+]

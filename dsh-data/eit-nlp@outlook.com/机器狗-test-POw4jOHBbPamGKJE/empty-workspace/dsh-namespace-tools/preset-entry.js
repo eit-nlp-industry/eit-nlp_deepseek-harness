@@ -18,7 +18,7 @@ export function apply(ctx, overrides = {}) {
     || Object.keys(overrides).some(key => !['enabled', 'configPath', 'maintenance'].includes(key))) {
     throw new Error('CONFIG_OVERRIDE_FORBIDDEN: 预设只允许 enabled/configPath/maintenance，分组与可见性策略由文件维护')
   }
-  const path = overrides.configPath ?? fileURLToPath(new URL('./config.local.json', import.meta.url))
+  const path = overrides.configPath ?? fileURLToPath(new URL('./config.json', import.meta.url))
   if (typeof path !== 'string' || !isAbsolute(path)) throw new Error('CONFIG_PATH_INVALID: configPath 必须是绝对路径')
   const input = { ...JSON.parse(readFileSync(path, 'utf8')),
     ...(Object.hasOwn(overrides, 'enabled') ? { enabled: overrides.enabled } : {}) }

@@ -1,0 +1,380 @@
+{
+  "name": "[s2w-gate0] safety-interlock-case-runner",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "id": "n-n1",
+      "name": "Case Input",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "formTitle": "safety-interlock-case-runner",
+        "formDescription": "Fields inferred from workflow expressions ($json.*).",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "command",
+              "fieldType": "number",
+              "requiredField": true,
+              "defaultValue": "40"
+            },
+            {
+              "fieldLabel": "id",
+              "fieldType": "text",
+              "requiredField": true,
+              "defaultValue": "eq-100"
+            },
+            {
+              "fieldLabel": "max_limit",
+              "fieldType": "number",
+              "requiredField": true,
+              "defaultValue": "100"
+            },
+            {
+              "fieldLabel": "max_output",
+              "fieldType": "number",
+              "requiredField": true,
+              "defaultValue": "100"
+            },
+            {
+              "fieldLabel": "measurement",
+              "fieldType": "number",
+              "requiredField": true,
+              "defaultValue": "100"
+            },
+            {
+              "fieldLabel": "min_output",
+              "fieldType": "number",
+              "requiredField": true,
+              "defaultValue": "0"
+            }
+          ]
+        },
+        "options": {},
+        "responseMode": "onReceived",
+        "defineForm": "fields"
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.formTrigger",
+      "webhookId": "form-n1"
+    },
+    {
+      "id": "n-n2",
+      "name": "Over Limit Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n2",
+              "leftValue": "={{ Number($json.measurement) }}",
+              "rightValue": "={{ Number($json.max_limit) }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n3",
+      "name": "Safety Triggered Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-safety_triggered",
+              "name": "safety_triggered",
+              "value": "true",
+              "type": "string"
+            },
+            {
+              "id": "a-output",
+              "name": "output",
+              "value": "={{ $json.min_output }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n4",
+      "name": "Clamp Command",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-safety_triggered",
+              "name": "safety_triggered",
+              "value": "false",
+              "type": "string"
+            },
+            {
+              "id": "a-output",
+              "name": "output",
+              "value": "={{ Math.max($json.min_output, Math.min($json.max_output, $json.command)) }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n5",
+      "name": "Emit Result Lines",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-result",
+              "name": "result",
+              "value": "=safety_triggered={{ $json.safety_triggered }}\noutput={{ $json.output }}\nDONE case={{ $json.id }} safety={{ $json.safety_triggered }} output={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    }
+  ],
+  "connections": {
+    "Case Input": {
+      "main": [
+        [
+          {
+            "node": "Over Limit Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Over Limit Check": {
+      "main": [
+        [
+          {
+            "node": "Safety Triggered Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Clamp Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Safety Triggered Output": {
+      "main": [
+        [
+          {
+            "node": "Emit Result Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clamp Command": {
+      "main": [
+        [
+          {
+            "node": "Emit Result Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "skill2workflow": true,
+    "skill_id": "safety-interlock-case-runner",
+    "mapping": {
+      "structured_nodes": [
+        "Over Limit Check",
+        "Safety Triggered Output",
+        "Clamp Command",
+        "Emit Result Lines"
+      ],
+      "agent_fallback_nodes": [],
+      "structured_count": 4,
+      "agent_fallback_count": 0,
+      "all_agent_fallback": false
+    },
+    "fieldflow": [
+      {
+        "id": "n1",
+        "name": "Case Input",
+        "in": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "out": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n2",
+        "name": "Over Limit Check",
+        "in": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "out": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n3",
+        "name": "Safety Triggered Output",
+        "in": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "out": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n4",
+        "name": "Clamp Command",
+        "in": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "out": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n5",
+        "name": "Emit Result Lines",
+        "in": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "safety_triggered"
+        ],
+        "out": [
+          "command",
+          "id",
+          "max_limit",
+          "max_output",
+          "measurement",
+          "min_output",
+          "output",
+          "result",
+          "safety_triggered"
+        ],
+        "missing": []
+      }
+    ]
+  }
+}

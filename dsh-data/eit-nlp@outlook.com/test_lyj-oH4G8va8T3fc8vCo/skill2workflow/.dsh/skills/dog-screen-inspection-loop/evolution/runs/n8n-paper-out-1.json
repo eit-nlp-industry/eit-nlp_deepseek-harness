@@ -1,0 +1,43 @@
+{
+  "case_id": "paper-out-1",
+  "finish_reason": "completed",
+  "branch": "oblique",
+  "executed_nodes": [
+    "Start Inspection",
+    "Move To Front Vantage",
+    "Wait Arrived Front",
+    "Capture Front",
+    "Front Readable?",
+    "Move To Front-Closer",
+    "Wait Arrived Front-Closer",
+    "Capture Front-Closer",
+    "Front-Closer Readable?",
+    "Move To Oblique-Front",
+    "Wait Arrived Oblique-Front",
+    "Capture Oblique-Front",
+    "Oblique-Front Readable?",
+    "Report DONE"
+  ],
+  "node_ok": {
+    "Start Inspection": true,
+    "Move To Front Vantage": true,
+    "Wait Arrived Front": true,
+    "Capture Front": true,
+    "Front Readable?": true,
+    "Move To Front-Closer": true,
+    "Wait Arrived Front-Closer": true,
+    "Capture Front-Closer": true,
+    "Front-Closer Readable?": true,
+    "Move To Oblique-Front": true,
+    "Wait Arrived Oblique-Front": true,
+    "Capture Oblique-Front": true,
+    "Oblique-Front Readable?": true,
+    "Report DONE": true
+  },
+  "cost": 14,
+  "source": "n8n",
+  "status": "success",
+  "branch_ok": true,
+  "output_ok": true,
+  "events": []
+}

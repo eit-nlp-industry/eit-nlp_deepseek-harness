@@ -1,0 +1,25 @@
+{
+  "case_id": "eq-100",
+  "finish_reason": "completed",
+  "parsed_done": {
+    "case_id": "eq-100",
+    "safety_triggered": true,
+    "output": 0.0
+  },
+  "events": [
+    {
+      "type": "tool/call",
+      "tool": "read"
+    },
+    {
+      "type": "tool/call",
+      "tool": "read"
+    },
+    {
+      "type": "tool/call",
+      "tool": "bash"
+    }
+  ],
+  "branch": "true",
+  "source": "trajectory"
+}

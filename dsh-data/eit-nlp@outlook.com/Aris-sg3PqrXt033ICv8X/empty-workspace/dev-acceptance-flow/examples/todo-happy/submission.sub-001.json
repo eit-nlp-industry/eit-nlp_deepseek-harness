@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "submission_id": "sub-001",
+  "event_id": "evt-sub-001",
+  "project_id": "todo-demo",
+  "kind": "initial",
+  "prd_revision": "prd-sha-aaaa1111",
+  "code_revision": "abc1234",
+  "readonly_tree_ref": ".flow/trees/sub-001",
+  "artifact_manifest_ref": ".flow/submissions/sub-001.artifacts.json",
+  "requirement_evidence_map_ref": ".flow/submissions/sub-001.requirements.json",
+  "previous_submission_id": null,
+  "remediation_summary_ref": null,
+  "addresses_finding_ids": [],
+  "self_check_status": "passed",
+  "self_check_summary": "单元测试与本地构建通过。",
+  "final_verification_ref": "artifacts/verification-report.json",
+  "submitted_at": "2026-11-23T02:00:00.000Z"
+}

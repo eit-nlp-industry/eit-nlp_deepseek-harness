@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {
+      "id": "paper-out-1",
+      "branch": "readable",
+      "paper_out": true,
+      "screen_text": "缺纸"
+    },
+    {
+      "id": "paper-out-none",
+      "branch": "unreadable",
+      "paper_out": false
+    }
+  ]
+}

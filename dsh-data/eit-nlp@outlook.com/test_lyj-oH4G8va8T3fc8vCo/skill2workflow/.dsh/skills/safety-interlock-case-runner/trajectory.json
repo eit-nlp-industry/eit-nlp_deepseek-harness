@@ -1,0 +1,87 @@
+{
+  "note": "Real dsh run: events are compacted from RunResult.events (tool/call, tool/result, ...). Not an Agent-written diary.",
+  "case_id": "eq-100",
+  "session_id": "s2w-traj-safety-interlocks-eq-100-1793414013",
+  "agent_summary": "DONE case=eq-100 safety=true output=0",
+  "finish_reason": "completed",
+  "case": {
+    "id": "eq-100",
+    "measurement": 100,
+    "command": 40,
+    "max_limit": 100,
+    "min_output": 0,
+    "max_output": 100
+  },
+  "parsed_done": {
+    "case_id": "eq-100",
+    "safety_triggered": true,
+    "output": 0.0
+  },
+  "events": [
+    {
+      "id": "e1",
+      "type": "tool/call",
+      "tool": "read",
+      "args": {
+        "file_path": "./SKILL.md"
+      },
+      "result": null
+    },
+    {
+      "id": "e2",
+      "type": "tool/call",
+      "tool": "read",
+      "args": {
+        "file_path": "./case.json"
+      },
+      "result": null
+    },
+    {
+      "id": "e3",
+      "type": "tool/result",
+      "tool": null,
+      "args": null,
+      "result": "<path>/tmp/s2w-traj-qzu2uur5/SKILL.md</path>\n<type>file</type>\n<content>\n1: ---\n2: name: safety-interlocks\n3: description: Implement safety interlocks and protective mechanisms to prevent equipment damage and ensure safe control system operation.\n4: ---\n5: \n6: # Safety Interlocks for Control Systems\n7: \n8: ## Overview\n9: \n10: Safety interlocks are protective mechanisms that prevent equipment damage and ensure safe operation. In control systems, the primary risks are output saturation and exceeding safe operating limits.\n11: \n12: ## Implementation Pattern\n13: \n14: Always check safety conditions BEFORE applying control outputs:\n15: \n16: ```python\n17: def apply_safety_limits(measurement, command, max_limit, min_limit, max_output, min_output):\n18:     \"\"\"\n19:     Apply safety checks and return safe command.\n20: \n21:     Args:\n22:         measurement: Current sensor reading\n23:         command: Requested control output\n24:         max_limit: Maximum safe measurement value\n25:         min_limit: Minimum safe measurement value\n26:         max_output: Maximum output command\n27:         min_output: Minimum output command\n28: \n29:     Returns:\n30:         tuple: (safe_command, safety_triggered)\n31:     \"\"\"\n32:     safety_triggered = False\n33: \n34:     # Check for over-limit - HIGHEST PRIORITY\n35:     if measurement >= max_limit:\n36:         command = min_output  # Emergency cutoff\n37:         safety_triggered = True\n38: \n39:     # Clamp output to valid range\n40:     command = max(min_output, min(max_output, command))\n41: \n42:     return command, safety_triggered\n43: ```\n44: \n45: ## Integration with Control Loop\n46: \n47: ```python\n48: class SafeController:\n49:     def __init__(self, controller, max_limit, min_output=0.0, max_output=100.0):\n50:         self.controller = controller\n51:         self.max_limit = max_limit\n52:         self.min_output = min_output\n53:         self.max_output = max_output\n54:         self.safety_events = []\n55: \n56:     def compute(self, measurement, dt):\n57:         \"\"\"Compute safe control output.\"\"\"\n58:         # Check safety FIRST\n59:         if measurement >= self.max_limit:\n60:             self.safety_events.append({\n61:                 \"measurement\": measurement,\n62:                 \"action\": \"emergency_cutoff\"\n63:             })\n64:             return self.min_output\n65: \n66:         # Normal control\n67:         output = self.controller.compute(measurement, dt)\n68: \n69:         # Clamp to valid range\n70:         return max(self.min_output, min(self.max_output, output))\n71: ```\n72: \n73: ## Safety During Open-Loop Testing\n74: \n75: During calibration/excitation, safety is especially important because there's no feedback control:\n76: \n77: ```python\n78: def run_test_with_safety(system, input_value, duration, dt, max_limit):\n79:     \"\"\"Run open-loop test while monitoring safety limits.\"\"\"\n80:     data = []\n81:     current_input = input_value\n82: \n83:     for step in range(int(duration / dt)):\n84:         result = system.step(current_input)\n85:         data.append(result)\n86: \n87:         # Safety check\n88:         if result[\"output\"] >= max_limit:\n89:             current_input = 0.0  # Cut input\n90: \n91:     return data\n92: ```\n93: \n94: ## Logging Safety Events\n95: \n96: Always log safety events for analysis:\n97: \n98: ```python\n99: safety_log = {\n100:     \"limit\": max_limit,\n101:     \"events\": []\n102: }\n103: \n104: if measurement >= max_limit:\n105:     safety_log[\"events\"].append({\n106:         \"time\": current_time,\n107:         \"measurement\": measurement,\n108:         \"command_before\": command,\n109:         \"command_after\": 0.0,\n110:         \"event_type\": \"limit_exceeded\"\n111:     })\n112: ```\n113: \n114: ## Pre-Control Checklist\n115: \n116: Before starting any control operation:\n117: \n118: 1. **Verify sensor reading is reasonable**\n119:    - Not NaN or infinite\n120:    - Within physical bounds\n121: \n122: 2. **Check initial conditions**\n123:    - Measurement should be at expected starting point\n124:    - Output should start at safe value\n125: \n126: 3. **Confirm safety limits are configured**\n127:    - Maximum limit threshold set\n128:    - Output clamping enabled\n129: \n130: ```python\n131: def pre_control_checks(measurement, config):\n132:     \"\"\"Run pre-control safety verification.\"\"\"\n133:     assert not np.isnan(measurement), \"Measurement is NaN\"\n134:     assert config.get(\"max_limit\") is not None, \"Safety limit not configured\"\n135:     return True\n136: ```\n137: \n138: ## Best Practices\n139: \n140: 1. **Defense in depth**: Multiple layers of protection\n141: 2. **Fail safe**: When in doubt, reduce output\n142: 3. **Log everything**: Record all safety events\n143: 4. **Never bypass**: Safety code should not be conditionally disabled\n144: 5. **Test safety**: Verify interlocks work before normal operation\n\n(End of file - total 144 lines)\n</content>"
+    },
+    {
+      "id": "e4",
+      "type": "tool/result",
+      "tool": null,
+      "args": null,
+      "result": "<path>/tmp/s2w-traj-qzu2uur5/case.json</path>\n<type>file</type>\n<content>\n1: {\n2:   \"id\": \"eq-100\",\n3:   \"measurement\": 100,\n4:   \"command\": 40,\n5:   \"max_limit\": 100,\n6:   \"min_output\": 0,\n7:   \"max_output\": 100\n8: }\n\n(End of file - total 8 lines)\n</content>"
+    },
+    {
+      "id": "e5",
+      "type": "tool/call",
+      "tool": "bash",
+      "args": {
+        "command": "python3 -c \"\nimport json\ncase = json.load(open('case.json'))\nmeasurement = case['measurement']\ncommand = case['command']\nmax_limit = case['max_limit']\nmin_output = case['min_output']\nmax_output = case['max_output']\n\nsafety_triggered = False\nif measurement >= max_limit:\n    command = min_output\n    safety_triggered = True\ncommand = max(min_output, min(max_output, command))\nprint('safety_triggered=', safety_triggered)\nprint('output=', command)\n\"",
+        "description": "Apply safety interlock logic to case"
+      },
+      "result": null
+    },
+    {
+      "id": "e6",
+      "type": "tool/result",
+      "tool": null,
+      "args": null,
+      "result": "safety_triggered= True\noutput= 0"
+    }
+  ],
+  "harness_event_count": 25,
+  "harness_event_types": [
+    "agent/inbox/spliced",
+    "assistant/message",
+    "request/context",
+    "request/header",
+    "session/title",
+    "step/end",
+    "step/start",
+    "system/message",
+    "tool/call",
+    "tool/result",
+    "turn/end",
+    "turn/start",
+    "user/message"
+  ]
+}

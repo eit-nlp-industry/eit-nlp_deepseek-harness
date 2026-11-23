@@ -1,0 +1,7 @@
+[Step 1]
+  User: distill this successful safety-interlock case run into a reusable project skill  Run this case: {   "id": "eq-100",   "measurement": 100,   "command": 40,   "max_limit": 100,   "min_output": 0,   "max_output": 100 }
+  Tools:
+    read({"file_path": "./SKILL.md"})
+    read({"file_path": "./case.json"})
+    bash({"command": "python3 -c \"\nimport json\ncase = json.load(open('case.json'))\nmeasurement = case['measurement']\ncommand = case['command']\nmax_limit = case['max_limit']\nmin_output = case['min_output']\nmax_output = case['max_output']\n\nsafety_triggered = False\nif measurement >= max_limit:\n    command = min_output\n    safety_triggered = True\ncommand = max(min_output, min(max_output, command)…)
+  Agent: DONE case=eq-100 safety=true output=0

@@ -1,0 +1,57 @@
+{
+  "skill": "safety-interlocks",
+  "extract": "agent",
+  "pathway": "C",
+  "report": {
+    "ok": true,
+    "dropped": [],
+    "pending": [],
+    "frozen": [
+      "e1",
+      "e2",
+      "e3"
+    ],
+    "errors": []
+  },
+  "workflow_id": "B8pj4wErFn8VjpZ4",
+  "runs": [
+    {
+      "case_id": "smoke-auto",
+      "kind": "smoke",
+      "expect_branch": null,
+      "execution_id": "5215",
+      "status": "success",
+      "write": {
+        "executed": [
+          "Case Input Trigger",
+          "Emergency Cutoff Output",
+          "Normal Path Clamp Output",
+          "Over-Limit Check (measurement >= max_limit)"
+        ],
+        "expect_node": null
+      },
+      "branch_ok": true,
+      "output_ok": true,
+      "error": null
+    }
+  ],
+  "mapping": {
+    "structured_nodes": [
+      "Over-Limit Check (measurement >= max_limit)",
+      "Emergency Cutoff Output",
+      "Normal Path Clamp Output"
+    ],
+    "agent_fallback_nodes": [],
+    "structured_count": 3,
+    "agent_fallback_count": 0,
+    "all_agent_fallback": false
+  },
+  "heldout": "smoke",
+  "validate": {
+    "ok": true,
+    "attempts": 1,
+    "issues": []
+  },
+  "passed": true,
+  "passed_structured": true
+}

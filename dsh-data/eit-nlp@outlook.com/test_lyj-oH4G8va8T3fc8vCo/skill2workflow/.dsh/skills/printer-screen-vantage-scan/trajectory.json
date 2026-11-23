@@ -1,0 +1,186 @@
+{
+  "note": "PDF 3.1 第一次探索：用户说「去看看打印区那台打印机是不是缺纸了」。机器狗能走到附近，但一开始不知道站在哪能看清屏幕。正面反光，侧前方可读。不是安监狗、也不是 safety-interlock。",
+  "case_id": "paper-out-1",
+  "session_id": "s2w-traj-printer-screen-check-paper-out-1",
+  "agent_summary": "这台打印机显示缺纸。有效观察位是打印区侧前方 print-area-oblique-front（正面反光、靠近后仍看不清）。DONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front",
+  "finish_reason": "completed",
+  "success": true,
+  "case": {
+    "id": "paper-out-1",
+    "user_request": "去看看打印区那台打印机是不是缺纸了",
+    "area_id": "print-area",
+    "printer_id": "office-printer-1",
+    "vantage_tried": ["print-area-front", "print-area-front-closer", "print-area-oblique-front"],
+    "vantage_ok": "print-area-oblique-front",
+    "screen_text": "缺纸",
+    "paper_out": true,
+    "readable": true
+  },
+  "parsed_done": {
+    "case_id": "paper-out-1",
+    "paper_out": true,
+    "screen_text": "缺纸",
+    "vantage": "print-area-oblique-front"
+  },
+  "events": [
+    {
+      "id": "e1",
+      "type": "tool/call",
+      "tool": "dog_move",
+      "args": {
+        "body": "dog-01",
+        "target": "print-area-front",
+        "goal": "reach the printer in the print area"
+      },
+      "result": null
+    },
+    {
+      "id": "e2",
+      "type": "tool/result",
+      "tool": "dog_move",
+      "args": null,
+      "result": "{\"ok\": true, \"job_id\": \"job-move-1\", \"status\": \"started\", \"note\": \"walking in background\"}"
+    },
+    {
+      "id": "e3",
+      "type": "tool/call",
+      "tool": "dog_wait_arrived",
+      "args": {
+        "job_id": "job-move-1"
+      },
+      "result": null
+    },
+    {
+      "id": "e4",
+      "type": "tool/result",
+      "tool": "dog_wait_arrived",
+      "args": null,
+      "result": "{\"ok\": true, \"status\": \"arrived\", \"pose\": \"print-area-front\"}"
+    },
+    {
+      "id": "e5",
+      "type": "tool/call",
+      "tool": "dog_capture",
+      "args": {
+        "target": "printer-screen",
+        "pose": "print-area-front"
+      },
+      "result": null
+    },
+    {
+      "id": "e6",
+      "type": "tool/result",
+      "tool": "dog_capture",
+      "args": null,
+      "result": "{\"ok\": true, \"image_id\": \"img-front-1\", \"readable\": false, \"reason\": \"screen text too small\"}"
+    },
+    {
+      "id": "e7",
+      "type": "tool/call",
+      "tool": "dog_move",
+      "args": {
+        "body": "dog-01",
+        "target": "print-area-front-closer",
+        "goal": "get closer so the screen text is larger"
+      },
+      "result": null
+    },
+    {
+      "id": "e8",
+      "type": "tool/result",
+      "tool": "dog_move",
+      "args": null,
+      "result": "{\"ok\": true, \"job_id\": \"job-move-2\", \"status\": \"started\"}"
+    },
+    {
+      "id": "e9",
+      "type": "tool/call",
+      "tool": "dog_wait_arrived",
+      "args": {
+        "job_id": "job-move-2"
+      },
+      "result": null
+    },
+    {
+      "id": "e10",
+      "type": "tool/result",
+      "tool": "dog_wait_arrived",
+      "args": null,
+      "result": "{\"ok\": true, \"status\": \"arrived\", \"pose\": \"print-area-front-closer\"}"
+    },
+    {
+      "id": "e11",
+      "type": "tool/call",
+      "tool": "dog_capture",
+      "args": {
+        "target": "printer-screen",
+        "pose": "print-area-front-closer"
+      },
+      "result": null
+    },
+    {
+      "id": "e12",
+      "type": "tool/result",
+      "tool": "dog_capture",
+      "args": null,
+      "result": "{\"ok\": true, \"image_id\": \"img-front-closer-1\", \"readable\": false, \"reason\": \"glare on the front of the screen\"}"
+    },
+    {
+      "id": "e13",
+      "type": "tool/call",
+      "tool": "dog_move",
+      "args": {
+        "body": "dog-01",
+        "target": "print-area-oblique-front",
+        "goal": "side-front vantage that can still see the screen"
+      },
+      "result": null
+    },
+    {
+      "id": "e14",
+      "type": "tool/result",
+      "tool": "dog_move",
+      "args": null,
+      "result": "{\"ok\": true, \"job_id\": \"job-move-3\", \"status\": \"started\"}"
+    },
+    {
+      "id": "e15",
+      "type": "tool/call",
+      "tool": "dog_wait_arrived",
+      "args": {
+        "job_id": "job-move-3"
+      },
+      "result": null
+    },
+    {
+      "id": "e16",
+      "type": "tool/result",
+      "tool": "dog_wait_arrived",
+      "args": null,
+      "result": "{\"ok\": true, \"status\": \"arrived\", \"pose\": \"print-area-oblique-front\"}"
+    },
+    {
+      "id": "e17",
+      "type": "tool/call",
+      "tool": "dog_capture",
+      "args": {
+        "target": "printer-screen",
+        "pose": "print-area-oblique-front"
+      },
+      "result": null
+    },
+    {
+      "id": "e18",
+      "type": "tool/result",
+      "tool": "dog_capture",
+      "args": null,
+      "result": "{\"ok\": true, \"image_id\": \"img-oblique-1\", \"readable\": true, \"screen_text\": \"缺纸\", \"paper_out\": true}"
+    }
+  ],
+  "harness_event_count": 18,
+  "harness_event_types": [
+    "tool/call",
+    "tool/result",
+    "user/message"
+  ]
+}

@@ -68,10 +68,10 @@ state/
 旧 CLI 仍供人工诊断和独立运行使用；只有此兼容路径需要显式 tool-map.json。新 Skill 流程不依赖这份文件，也不要求模型填映射。
 
 ```sh
-node automation/cli.js prepare --config /实际配置/config.local.json --state-dir /持久化/state
+node automation/cli.js prepare --config /实际配置/config.json --state-dir /持久化/state
 node automation/cli.js accept --run /持久化/state/runs/UUID --assignments /本轮/assignments.json
-node automation/cli.js compile --catalog /持久化/state/catalog.json --config /实际配置/config.local.json --tool-map /核对的/tool-map.json --output /独立/config.candidate.json
-node automation/cli.js publish --catalog /持久化/state/catalog.json --config /实际配置/config.local.json --tool-map /核对的/tool-map.json
+node automation/cli.js compile --catalog /持久化/state/catalog.json --config /实际配置/config.json --tool-map /核对的/tool-map.json --output /独立/config.candidate.json
+node automation/cli.js publish --catalog /持久化/state/catalog.json --config /实际配置/config.json --tool-map /核对的/tool-map.json
 ```
 
 CLI 不连接 DSH 注册清单，因此其映射必须由操作者核对；`tool-map.example.json` 仅展示格式。compile 只生成候选，publish 只发布文件。两种入口共享配置基线/锁/备份约束，但不要同时维护同一配置。工具模式额外核对最新网站元数据和实时注册名。

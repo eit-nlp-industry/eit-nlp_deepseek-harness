@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "submission_id": "sub-002",
+  "event_id": "evt-sub-002",
+  "project_id": "todo-demo",
+  "kind": "remediation",
+  "prd_revision": "prd-sha-aaaa1111",
+  "code_revision": "def5678",
+  "readonly_tree_ref": ".flow/trees/sub-002",
+  "artifact_manifest_ref": ".flow/submissions/sub-002.artifacts.json",
+  "requirement_evidence_map_ref": ".flow/submissions/sub-002.requirements.json",
+  "previous_submission_id": "sub-001",
+  "remediation_summary_ref": ".flow/submissions/sub-002.remediation.md",
+  "addresses_finding_ids": ["FIND-001"],
+  "self_check_status": "passed",
+  "self_check_summary": "补充持久化回归测试并修复 storage 写入。",
+  "final_verification_ref": "artifacts/verification-report.json",
+  "submitted_at": "2026-11-23T03:00:00.000Z"
+}

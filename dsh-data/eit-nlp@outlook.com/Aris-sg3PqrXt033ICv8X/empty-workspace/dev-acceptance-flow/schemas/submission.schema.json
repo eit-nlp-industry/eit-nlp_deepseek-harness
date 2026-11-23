@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-acceptance-flow/submission",
+  "title": "Acceptance submission",
+  "description": "研发送验记录。写入后不可变。宿主仅在校验通过且 flow_status 允许时采纳，并设置 active_submission_id。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "submission_id",
+    "project_id",
+    "kind",
+    "prd_revision",
+    "code_revision",
+    "readonly_tree_ref",
+    "artifact_manifest_ref",
+    "requirement_evidence_map_ref",
+    "self_check_status",
+    "submitted_at",
+    "event_id"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "submission_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "例如 sub-001；全局在本项目内唯一。"
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "幂等键。同一 event_id 重复到达不重复启动验收。"
+    },
+    "project_id": {
+      "$ref": "defs.schema.json#/$defs/projectId"
+    },
+    "kind": {
+      "$ref": "defs.schema.json#/$defs/submissionKind"
+    },
+    "prd_revision": {
+      "$ref": "defs.schema.json#/$defs/prdRevision"
+    },
+    "code_revision": {
+      "$ref": "defs.schema.json#/$defs/gitSha"
+    },
+    "readonly_tree_ref": {
+      "$ref": "defs.schema.json#/$defs/pathRef",
+      "description": "验收只读树：git worktree 路径或导出目录；不得指向研发可写工作区。"
+    },
+    "artifact_manifest_ref": {
+      "$ref": "defs.schema.json#/$defs/pathRef",
+      "description": "证据清单文件，列出命令日志、测试报告、构建产物路径。"
+    },
+    "requirement_evidence_map_ref": {
+      "$ref": "defs.schema.json#/$defs/pathRef",
+      "description": "需求 id → 证据引用的映射文件。"
+    },
+    "previous_submission_id": {
+      "type": ["string", "null"],
+      "description": "整改送验时必填，指向被驳回的上一份 submission。"
+    },
+    "remediation_summary_ref": {
+      "type": ["string", "null"],
+      "description": "整改摘要路径；kind=remediation 时必填。"
+    },
+    "addresses_finding_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "defs.schema.json#/$defs/findingId"
+      },
+      "description": "本轮声称已处理的 finding；initial 可为空数组。"
+    },
+    "self_check_status": {
+      "type": "string",
+      "enum": ["passed", "blocked"],
+      "description": "研发最终自检结果。blocked 时宿主不得当作验证成功送验；可记录阻塞原因供人工查看。"
+    },
+    "self_check_summary": {
+      "type": "string",
+      "maxLength": 4000
+    },
+    "final_verification_ref": {
+      "type": ["string", "null"],
+      "description": "指向 artifacts/verification-report.json 或等价真实执行记录。"
+    },
+    "submitted_at": {
+      "$ref": "defs.schema.json#/$defs/isoDateTime"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "kind": { "const": "remediation" } },
+        "required": ["kind"]
+      },
+      "then": {
+        "required": ["previous_submission_id", "remediation_summary_ref", "addresses_finding_ids"],
+        "properties": {
+          "previous_submission_id": { "type": "string", "minLength": 1 },
+          "remediation_summary_ref": { "type": "string", "minLength": 1 },
+          "addresses_finding_ids": { "type": "array", "minItems": 1 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "self_check_status": { "const": "passed" } },
+        "required": ["self_check_status"]
+      },
+      "then": {
+        "required": ["final_verification_ref"],
+        "properties": {
+          "final_verification_ref": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  ]
+}

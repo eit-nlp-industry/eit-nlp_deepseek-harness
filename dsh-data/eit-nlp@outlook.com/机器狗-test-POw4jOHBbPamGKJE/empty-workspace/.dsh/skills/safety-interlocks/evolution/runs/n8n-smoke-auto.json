@@ -1,0 +1,24 @@
+{
+  "case_id": "smoke-auto",
+  "finish_reason": "completed",
+  "parsed_done": {},
+  "events": [],
+  "branch": null,
+  "executed_nodes": [
+    "Case Input Trigger",
+    "Emergency Cutoff Output",
+    "Normal Path Clamp Output",
+    "Over-Limit Check (measurement >= max_limit)"
+  ],
+  "node_ok": {
+    "Case Input Trigger": true,
+    "Emergency Cutoff Output": true,
+    "Normal Path Clamp Output": true,
+    "Over-Limit Check (measurement >= max_limit)": true
+  },
+  "cost": 4,
+  "source": "n8n",
+  "status": "success",
+  "branch_ok": true,
+  "output_ok": true
+}

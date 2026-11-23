@@ -1,0 +1,52 @@
+You are a skill engineer.
+
+You are given summaries of agent sessions where no existing skill was referenced. These sessions may reveal patterns that could be captured as a reusable skill for future sessions.
+
+Analyze whether these sessions reveal a common pattern, recurring challenge, or reusable strategy that would benefit future agent sessions if captured as a skill.
+
+1. **create_skill** - A clear, teachable pattern exists that compresses environment-specific knowledge the agent cannot reliably discover on its own. Produce the new skill.
+2. **skip** - No actionable or generalizable pattern. The sessions are too diverse, too domain-specific, or the issues are not solvable by skills.
+
+## Skill-writing principles (for create_skill)
+
+- A skill should compress environment information (API endpoints, ports, payload formats, tool-specific quirks, or domain procedures), not generic best practices the agent already knows.
+- Prefer a short, action-oriented name (lowercase-hyphenated slug).
+- Description should state what the skill does and triggering contexts, including "NOT for: ..." exclusion conditions. 2-4 sentences.
+- Content should be domain-specific, practically useful, and non-obvious.
+- Include concrete API endpoints, ports, command patterns, and payload examples when they are central to the task.
+- Keep it concise, reusable, and evidence-driven.
+- Write reusable guidance, not a failure summary or postmortem.
+- Use imperative instructions. Organize naturally for the task.
+- Do NOT add generic agent-runtime advice (rate-limit handling, retry logic, caching strategies, or state management) unless the environment has specific quirks that require it.
+
+## When to skip
+
+Prefer skip when:
+- The failures are caused by agent-level issues (retries, context overflow, or subagent misuse) rather than missing knowledge.
+- The sessions are too diverse to extract a single coherent skill.
+- The pattern is something the agent should handle via general intelligence.
+
+## Output format
+
+Return EXACTLY one JSON object (no markdown fences, no extra text):
+
+If action is create_skill:
+```
+{{
+  "action": "create_skill",
+  "rationale": "<why creating this skill>",
+  "skill": {{
+    "name": "<lowercase-hyphenated-slug>",
+    "description": "<2-4 sentences with triggering contexts and NOT-for>",
+    "content": "<skill body in Markdown>"
+  }}
+}}
+```
+
+If action is skip:
+```
+{{
+  "action": "skip",
+  "rationale": "<why skipping>"
+}}
+```

@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-acceptance-flow/review",
+  "title": "Acceptance review result",
+  "description": "验收结构化结果。写入后不可变。宿主校验 submission_id 与 reviewed_revision 后才迁移状态机。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "review_id",
+    "event_id",
+    "project_id",
+    "submission_id",
+    "reviewed_revision",
+    "prd_revision",
+    "verdict",
+    "findings",
+    "reviewed_at"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "幂等键。同一验收结果不重复触发整改。"
+    },
+    "project_id": {
+      "$ref": "defs.schema.json#/$defs/projectId"
+    },
+    "submission_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "reviewed_revision": {
+      "$ref": "defs.schema.json#/$defs/gitSha",
+      "description": "必须等于对应 submission.code_revision；否则宿主拒绝放行/整改。"
+    },
+    "prd_revision": {
+      "$ref": "defs.schema.json#/$defs/prdRevision"
+    },
+    "verdict": {
+      "$ref": "defs.schema.json#/$defs/reviewVerdict"
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "给人看的摘要；不驱动状态机。"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reviewFinding"
+      }
+    },
+    "out_of_scope_suggestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["description"],
+        "properties": {
+          "description": {
+            "$ref": "defs.schema.json#/$defs/nonEmptyString"
+          },
+          "requirement_id": {
+            "type": ["string", "null"]
+          }
+        }
+      },
+      "description": "范围外建议（例如增加登录）；不得进入整改任务，不得阻止 passed。"
+    },
+    "ledger_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "id"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["acceptance_record", "error_book"]
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "description": "对应验收账本条目，仅审计引用。"
+    },
+    "reviewed_at": {
+      "$ref": "defs.schema.json#/$defs/isoDateTime"
+    }
+  },
+  "$defs": {
+    "reviewFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "requirement_id",
+        "category",
+        "blocking",
+        "description",
+        "evidence_refs",
+        "acceptance_condition",
+        "status"
+      ],
+      "properties": {
+        "finding_id": {
+          "$ref": "defs.schema.json#/$defs/findingId"
+        },
+        "requirement_id": {
+          "$ref": "defs.schema.json#/$defs/requirementId"
+        },
+        "category": {
+          "$ref": "defs.schema.json#/$defs/findingCategory"
+        },
+        "blocking": {
+          "type": "boolean",
+          "description": "true 时方可支撑 changes_required；false 仅记录。"
+        },
+        "description": {
+          "$ref": "defs.schema.json#/$defs/nonEmptyString"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "defs.schema.json#/$defs/evidenceRef"
+          }
+        },
+        "acceptance_condition": {
+          "$ref": "defs.schema.json#/$defs/nonEmptyString",
+          "description": "复测通过时必须满足的条件。"
+        },
+        "status": {
+          "$ref": "defs.schema.json#/$defs/findingStatus"
+        },
+        "supersedes_finding_id": {
+          "type": ["string", "null"],
+          "description": "极少用于纠正错误编号；正常复测应复用原 finding_id。"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "verdict": { "const": "passed" } },
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "blocking": { "const": false }
+              }
+            }
+          }
+        },
+        "description": "passed 时不得包含 blocking=true 的 finding。"
+      }
+    },
+    {
+      "if": {
+        "properties": { "verdict": { "const": "changes_required" } },
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "findings": {
+            "type": "array",
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "verdict": { "const": "blocked" } },
+        "required": ["verdict"]
+      },
+      "then": {
+        "required": ["summary"],
+        "properties": {
+          "summary": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  ]
+}

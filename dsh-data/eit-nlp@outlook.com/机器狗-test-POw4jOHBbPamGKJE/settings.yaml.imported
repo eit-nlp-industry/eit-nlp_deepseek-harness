@@ -1,0 +1,5 @@
+- id: voice-mode
+  name: dsh-voice-mode
+  config:
+    enabled: true
+    allowLan: true

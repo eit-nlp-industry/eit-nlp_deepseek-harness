@@ -47,67 +47,31 @@ worktrees/
 .agents/worktrees/
 .typert-*/
 native/system/test/bin/
+logs/
 
 # Generated company-signed CUA release record.
 /packages/experimental/cua-macos/cua-helper.json
 
-# ---------------------------------------------------------------------------
-# n8n-mounted DSH runtime home (dsh-data). Track preset/profile source only.
-# Container still mounts this tree at /data/dsh.
-# ---------------------------------------------------------------------------
-dsh-data/.pnpm-store/
-
-# Per-instance runtime / secrets
+# DSH general rules
 dsh-data/**/.anonymous-user-id
 dsh-data/**/.credentials.yaml
 dsh-data/**/.env
 dsh-data/**/.env.*
 !dsh-data/**/.env.example
-dsh-data/**/attachments/
-dsh-data/**/cache/
-dsh-data/**/logs/
 dsh-data/**/sessions/
 dsh-data/**/storages/
-dsh-data/**/memos-plugin/data/
-dsh-data/**/memos-plugin/.auth.json
-dsh-data/**/settings.yaml.imported
-dsh-data/**/node_modules/
-dsh-data/**/dist/
-dsh-data/**/.cache/
-dsh-data/**/*.log
-dsh-data/**/*.jsonl
-dsh-data/**/*.mp4
-dsh-data/**/*.key
-dsh-data/**/*.pem
-dsh-data/**/.DS_Store
-dsh-data/**/.git.bak-pre-unify-*/
-dsh-data/**/.s2s-control-status.json
-dsh-data/**/*.bak
-dsh-data/**/*.bak-*
-
-# Business runtime artifacts (camera, media, feedback, caches, archives)
-dsh-data/**/runtime_data/
-dsh-data/**/skill2workflow/
-# DeepSeek Files upload index under DSH home
+dsh-data/**/.plugin-manager
+dsh-data/**/attachments/
 dsh-data/**/llm-deepseek/
 
-# Workspace local agent state and leftover process files
-dsh-data/**/empty-workspace/.dsh/
-# Keep agent Skills under .dsh/ tracked (skills, skills-v03, skills-v031, …).
-!dsh-data/**/empty-workspace/.dsh/skills*/
-!dsh-data/**/empty-workspace/.dsh/skills*/**
-dsh-data/**/empty-workspace/.corepack/
-dsh-data/**/empty-workspace/.tmp-*/
-dsh-data/**/empty-workspace/.lc-extract/
-dsh-data/**/empty-workspace/.musl-extract/
-dsh-data/**/empty-workspace/.lc.tgz
-dsh-data/**/empty-workspace/.musl.tgz
-dsh-data/**/empty-workspace/.gitconfig
-dsh-data/**/empty-workspace/.preset-staging/
-dsh-data/**/empty-workspace/**/config.local.json
-dsh-data/**/empty-workspace/**/*probe*.txt
-dsh-data/**/empty-workspace/**/.write-probe.txt
+# DSH rules for 机器狗-test-POw4jOHBbPamGKJE
+dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/
+dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/memos-plugin/data/
+dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/memos-plugin/.auth.json
+# DSH rules for Aris-sg3PqrXt033ICv8X
+dsh-data/**/acceptance-data/
 
 # Local experiment homes. Files stay on this server and leave the repository index.
 dsh-data/eit-nlp@outlook.com/test_ln-uWmfvCwdQ4Im7Dr1/
 dsh-data/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/
+dsh-data/eit-nlp@outlook.com/DeepSeek Harness-qTP1D8GNsblXeXjH

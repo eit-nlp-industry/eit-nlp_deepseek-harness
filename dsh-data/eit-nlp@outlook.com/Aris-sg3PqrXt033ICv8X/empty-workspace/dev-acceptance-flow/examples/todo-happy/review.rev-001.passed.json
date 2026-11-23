@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "review_id": "rev-001",
+  "event_id": "evt-rev-001",
+  "project_id": "todo-demo",
+  "submission_id": "sub-001",
+  "reviewed_revision": "abc1234",
+  "prd_revision": "prd-sha-aaaa1111",
+  "verdict": "passed",
+  "summary": "新增、完成状态切换、删除与刷新持久化均有证据支持。",
+  "findings": [],
+  "out_of_scope_suggestions": [
+    {
+      "description": "建议后续增加账号登录，不在本 PRD 范围。",
+      "requirement_id": null
+    }
+  ],
+  "ledger_refs": [
+    {
+      "kind": "acceptance_record",
+      "id": "00000000-0000-4000-8000-000000000001"
+    }
+  ],
+  "reviewed_at": "2026-11-23T02:10:00.000Z"
+}

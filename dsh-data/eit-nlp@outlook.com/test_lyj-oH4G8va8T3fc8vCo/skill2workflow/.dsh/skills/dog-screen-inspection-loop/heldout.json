@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "id": "paper-out-front",
+      "branch": "front"
+    },
+    {
+      "id": "paper-out-1",
+      "branch": "oblique"
+    },
+    {
+      "id": "paper-out-none",
+      "branch": "none"
+    }
+  ]
+}

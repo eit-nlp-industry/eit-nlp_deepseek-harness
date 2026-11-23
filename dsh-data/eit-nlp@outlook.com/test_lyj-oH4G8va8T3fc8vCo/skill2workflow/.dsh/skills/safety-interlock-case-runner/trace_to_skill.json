@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "engine": "workflow",
+  "trajectory": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skills/safety-interlock-case-runner/trajectory.json",
+  "session": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skill2workflow/.skillclaw-store/s2w/sessions/s2w-traj-safety-interlocks-eq-100-1793414013.json",
+  "skill_md": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skills/safety-interlock-case-runner/SKILL.md",
+  "skill_dir": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skills/safety-interlock-case-runner",
+  "upserted_count": 1,
+  "skills": [
+    {
+      "name": "safety-interlock-case-runner",
+      "path": "/data/dsh/eit-nlp@outlook.com/test_lyj-oH4G8va8T3fc8vCo/skill2workflow/.dsh/skill2workflow/.skillclaw-store/s2w/skills/safety-interlock-case-runner/SKILL.md"
+    }
+  ],
+  "cycle": {
+    "sessions": 1,
+    "uploaded_skills": 0,
+    "no_skill_sessions": 1,
+    "evolutions": []
+  }
+}

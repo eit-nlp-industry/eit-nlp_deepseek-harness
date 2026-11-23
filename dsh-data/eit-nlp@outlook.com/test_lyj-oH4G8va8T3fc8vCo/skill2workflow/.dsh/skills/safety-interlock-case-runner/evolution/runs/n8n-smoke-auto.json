@@ -1,0 +1,24 @@
+{
+  "case_id": "smoke-auto",
+  "finish_reason": "completed",
+  "parsed_done": {},
+  "events": [],
+  "branch": null,
+  "executed_nodes": [
+    "Case Input",
+    "Emit Result Lines",
+    "Over Limit Check",
+    "Safety Triggered Output"
+  ],
+  "node_ok": {
+    "Case Input": true,
+    "Emit Result Lines": true,
+    "Over Limit Check": true,
+    "Safety Triggered Output": true
+  },
+  "cost": 4,
+  "source": "n8n",
+  "status": "success",
+  "branch_ok": true,
+  "output_ok": true
+}

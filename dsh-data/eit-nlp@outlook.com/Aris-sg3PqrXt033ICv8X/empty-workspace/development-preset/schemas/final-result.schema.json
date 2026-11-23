@@ -5,7 +5,17 @@
   "additionalProperties": true,
   "required": ["status", "summary"],
   "properties": {
-    "status": { "enum": ["COMPLETED", "NEEDS_CLARIFICATION", "REJECTED_PRD", "FAILED_TERMINAL"] },
+    "status": { "enum": ["COMPLETED", "NEEDS_CLARIFICATION", "AWAITING_ACCEPTANCE", "REJECTED_PRD", "FAILED_TERMINAL"] },
+    "activeSubmissionId": { "type": ["string", "null"] },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "submissionId": { "type": "string" },
+        "reviewId": { "type": ["string", "null"] },
+        "verdict": { "type": ["string", "null"] }
+      }
+    },
     "summary": { "type": "string" },
     "requirements": { "type": "object" },
     "quality": { "type": "object" },

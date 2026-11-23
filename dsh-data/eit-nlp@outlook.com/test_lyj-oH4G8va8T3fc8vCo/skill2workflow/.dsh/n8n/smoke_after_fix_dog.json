@@ -1,0 +1,36 @@
+{
+  "workflow_id": "sD9ipg31vBpQ92Xk",
+  "updated": true,
+  "runs": [
+    {
+      "case_id": "paper-out-1",
+      "execution_id": "5212",
+      "status": "success",
+      "sink": "Report DONE",
+      "other_sink_ran": false,
+      "report": "DONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front",
+      "expected_report": "DONE case=paper-out-1 paper_out=true vantage=print-area-oblique-front",
+      "ok": true
+    },
+    {
+      "case_id": "paper-out-front",
+      "execution_id": "5213",
+      "status": "success",
+      "sink": "Report DONE",
+      "other_sink_ran": false,
+      "report": "DONE case=paper-out-front paper_out=true vantage=print-area-front",
+      "expected_report": "DONE case=paper-out-front paper_out=true vantage=print-area-front",
+      "ok": true
+    },
+    {
+      "case_id": "paper-out-none",
+      "execution_id": "5214",
+      "status": "success",
+      "sink": "Report FAILED",
+      "other_sink_ran": false,
+      "report": "FAILED case=paper-out-none reason=glare on the front of the screen vantages_tried=print-area-front,print-area-front-closer,print-area-oblique-front",
+      "expected_report": "FAILED case=paper-out-none reason=glare on the front of the screen vantages_tried=print-area-front,print-area-front-closer,print-area-oblique-front",
+      "ok": true
+    }
+  ]
+}
