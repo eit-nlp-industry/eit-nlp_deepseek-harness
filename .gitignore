@@ -107,3 +107,7 @@ dsh-data/**/empty-workspace/.preset-staging/
 dsh-data/**/empty-workspace/**/config.local.json
 dsh-data/**/empty-workspace/**/*probe*.txt
 dsh-data/**/empty-workspace/**/.write-probe.txt
+
+# Local experiment homes. Files stay on this server and leave the repository index.
+dsh-data/eit-nlp@outlook.com/test_ln-uWmfvCwdQ4Im7Dr1/
+dsh-data/eit-nlp@outlook.com/test-cdt-VDe1vpITgGDI6TXV/
