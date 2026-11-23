@@ -2,14 +2,16 @@
   "name": "dsh-profile-n8n-web",
   "private": true,
   "dependencies": {
-    "@local/dsh-aris-acceptance-preset": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/empty-workspace/aris-acceptance-preset"
+    "@local/dsh-aris-acceptance-preset": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/empty-workspace/aris-acceptance-preset",
+    "@local/dsh-development-preset": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/empty-workspace/development-preset"
   },
   "dsh": {
     "profile": {
       "bundles": [
         "@deepseek-ai/dsh-base",
         "@deepseek-ai/dsh-web-app",
-        "@local/dsh-aris-acceptance-preset"
+        "@local/dsh-aris-acceptance-preset",
+        "@local/dsh-development-preset"
       ]
     }
   }

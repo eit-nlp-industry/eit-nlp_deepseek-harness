@@ -5,6 +5,12 @@
   name: "@deepseek-ai/dsh-client-ui-settings-general"
   config:
     welcomeNoticeVersion: 2026-09-28.1
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-official
+    model: deepseek-flash
+    reasoningEffort: low
 # n8n-managed workspace directory
 - id: workspace-controller
   name: "@deepseek-ai/dsh-api-workspace-controller"

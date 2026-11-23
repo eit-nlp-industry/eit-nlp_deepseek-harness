@@ -1,0 +1,23 @@
+enabled:
+  - tool-bash
+  - tool-pwsh
+  - tool-fs
+  - tool-fs-search
+  - tool-skill
+  - tool-todo
+  - tool-goal
+  - tool-web
+forbidden:
+  - ask_user
+  - ask_user_question
+  - tool-ask-user
+  - approval-card
+  - permission-escalation
+  - tool-subagent
+  - tool-subagent-control
+  - subagent
+  - subagent_fork
+  - tool-plugin-manager
+  - runtime-skill-install
+git: shell
+browser: project-playwright-if-present

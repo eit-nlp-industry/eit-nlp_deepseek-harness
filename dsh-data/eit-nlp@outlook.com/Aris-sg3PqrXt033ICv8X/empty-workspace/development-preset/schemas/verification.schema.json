@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "development/verification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["command", "exitCode", "summary", "status"],
+  "properties": {
+    "command": { "type": "string" },
+    "exitCode": { "type": ["integer", "null"] },
+    "summary": { "type": "string" },
+    "status": { "enum": ["passed", "failed", "not_configured", "not_applicable", "partial"] }
+  }
+}

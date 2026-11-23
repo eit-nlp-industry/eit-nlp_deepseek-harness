@@ -18,6 +18,7 @@
 //   POST /vision-v03/start        -> { sessionId, intervalMs, video } start pushing
 //   POST /vision-v03/stop         -> stop pushing and release the decoder
 //   POST /vision-v03/select       -> { video } switch the decoded file by filename
+//   POST /vision-v03/inject       -> { sessionId, images[] } push stills as one observation
 //   GET  /vision-v03/frame.jpg    -> newest complete frame, for the preview <img>
 
 import { readdirSync } from 'node:fs'
@@ -67,6 +68,8 @@ function sendJson(res, status, body) {
   })
   res.end(payload)
 }
+
+const INJECT_BODY_LIMIT = 8 * 1024 * 1024
 
 async function readJson(req, limit = 8192) {
   const chunks = []
@@ -216,6 +219,8 @@ export function apply(ctx, rawConfig) {
   }
 
   let timer = null
+  /** Still uploads use a high sequence so they never alias a decoded video frame. */
+  let uploadSequence = 9_000_000
   /** Tools are per-Agent and outlive a push session, so the catalog never churns mid-turn. */
   /** @type {Map<string, Array<() => void>>} */
   const agentTools = new Map()
@@ -728,6 +733,79 @@ export function apply(ctx, rawConfig) {
     return snapshot()
   }
 
+  function decodeImage(value) {
+    if (typeof value !== 'string' || value.length === 0) throw new Error('图片内容为空')
+    const payload = value.includes(',') ? value.slice(value.indexOf(',') + 1) : value
+    const bytes = Buffer.from(payload, 'base64')
+    if (bytes.length < 32) throw new Error('图片内容无效')
+    return bytes
+  }
+
+  /**
+   * Push uploaded stills as one 【环境观察】 window and register frame_ids.
+   * annotate_target resolves those ids from the same frame store as video pushes.
+   * @param {string} sessionId
+   * @param {unknown[]} images data URLs or raw base64, oldest first, at most windowSize
+   */
+  async function injectImages(sessionId, images) {
+    if (typeof sessionId !== 'string' || sessionId.length === 0) throw new Error('sessionId is required')
+    if (!Array.isArray(images) || images.length === 0) throw new Error('至少上传一张图片')
+    if (images.length > config.windowSize) throw new Error(`一次最多 ${config.windowSize} 张`)
+    const agent = ctx.get('agents')?.get?.(sessionId)
+    if (agent === undefined) throw new Error(`目标会话不存在：${sessionId}`)
+    if (!usesThisPreset(agent)) throw new Error('该会话不在本控制台的目标预设里')
+    if ((agent.inbox?.nextTurn?.length ?? 0) > 0 || (agent.inbox?.nextStep?.length ?? 0) > 0) {
+      throw new Error('会话正忙，等当前回合结束后再推')
+    }
+    const streamId = `upload-${Date.now().toString(36)}`
+    const capturedAt = Date.now()
+    const window = images.map(image => {
+      uploadSequence += 1
+      return {
+        jpeg: decodeImage(image),
+        sequence: uploadSequence,
+        capturedAt,
+        streamId,
+        videoTimeMs: 0,
+      }
+    })
+    const attachments = ctx.get('attachments')
+    if (attachments === undefined) throw new Error('attachment store is not available')
+    const refs = await attachments.saveImages(window.map(frame => ({
+      data: frame.jpeg,
+      mediaType: 'image/jpeg',
+      name: `upload-${frame.sequence}.jpg`,
+    })))
+    for (let index = 0; index < window.length; index += 1) {
+      putFrame(sessionId, `frame_${window[index].sequence}`, refs[index], capturedAt, config.frameViewTtlMs)
+    }
+    sweep()
+    let delivered = false
+    try {
+      await agent.runMaintenance(() => {
+        if ((agent.inbox?.nextTurn?.length ?? 0) > 0 || (agent.inbox?.nextStep?.length ?? 0) > 0) {
+          return Promise.resolve()
+        }
+        agent.steer(buildMessage(refs, window))
+        delivered = true
+        return Promise.resolve()
+      })
+    } catch (error) {
+      const message = errorText(error)
+      if (/not idle|active work|already/i.test(message)) throw new Error('会话正忙，等当前回合结束后再推')
+      throw error
+    }
+    if (!delivered) throw new Error('会话正忙，等当前回合结束后再推')
+    state.sessionId = sessionId
+    state.pushed += 1
+    state.lastPushAt = Date.now()
+    state.lastError = ''
+    return {
+      ...snapshot(),
+      frames: window.map(frame => `frame_${frame.sequence}`),
+    }
+  }
+
   function stop() {
     state.running = false
     if (timer !== null) {
@@ -811,6 +889,22 @@ export function apply(ctx, rawConfig) {
             const body = await readJson(req)
             selectVideo(body?.video)
             sendJson(res, 200, snapshot())
+          } catch (error) {
+            sendJson(res, 400, { error: errorText(error) })
+          }
+        },
+      }),
+      ctx.webServer.register({
+        kind: 'exact',
+        path: '/vision-v03/inject',
+        handler: async (req, res) => {
+          if (req.method !== 'POST') {
+            sendJson(res, 405, { error: 'use POST' })
+            return
+          }
+          try {
+            const body = await readJson(req, INJECT_BODY_LIMIT)
+            sendJson(res, 200, await injectImages(body?.sessionId, body?.images))
           } catch (error) {
             sendJson(res, 400, { error: errorText(error) })
           }

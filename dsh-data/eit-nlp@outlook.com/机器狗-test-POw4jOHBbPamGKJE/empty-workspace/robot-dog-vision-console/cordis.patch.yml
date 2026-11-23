@@ -15,6 +15,6 @@
         windowSize: 1
         targetPreset: robot-dog-test
         maxPushedWindows: 600
-        personStoreDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-test/person-store
+        personStoreDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-v03/person-store
         boxColor: red
         boxThickness: 6

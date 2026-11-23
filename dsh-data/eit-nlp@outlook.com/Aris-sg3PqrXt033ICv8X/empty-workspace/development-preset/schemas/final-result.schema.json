@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "development/final-result",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["status", "summary"],
+  "properties": {
+    "status": { "enum": ["COMPLETED", "NEEDS_CLARIFICATION", "REJECTED_PRD", "FAILED_TERMINAL"] },
+    "summary": { "type": "string" },
+    "requirements": { "type": "object" },
+    "quality": { "type": "object" },
+    "deployment": { "type": "object" },
+    "artifacts": { "type": "array" },
+    "questionId": { "type": "string" },
+    "question": { "type": "string" },
+    "reason": { "type": "string" },
+    "recommendation": { "type": "string" },
+    "blockingFindings": { "type": "array" },
+    "recommendedChanges": { "type": "array" },
+    "phase": { "type": "string" },
+    "lastError": { "type": "string" },
+    "attemptedRepairs": { "type": "array" },
+    "completedTasks": { "type": "array" },
+    "remainingTasks": { "type": "array" }
+  }
+}

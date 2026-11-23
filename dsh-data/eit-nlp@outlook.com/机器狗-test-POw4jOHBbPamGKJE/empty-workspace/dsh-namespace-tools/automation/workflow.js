@@ -75,8 +75,9 @@ export async function fetchRegistry(url, { timeoutMs = 15000, maxBytes = 5 * 102
 /**
  * 准备本轮任务文件，不改变 catalog 或运行配置。
  * @param options config 为现有配置路径，stateDir 为持久化目录，url 为注册接口；fetchImpl 仅用于测试。
+ * collectPresetTools 由维护工具提供，接收当前配置并读取同预设工具；CLI 不提供它，仍只处理网站。
  */
-export async function prepare({ config, stateDir, url = DEFAULT_URL, fetchImpl }) {
+export async function prepare({ config, stateDir, url = DEFAULT_URL, fetchImpl, collectPresetTools }) {
   const configPath = await realpath(config), configText = await readText(configPath)
   const base = JSON.parse(configText)
   normalizeConfig(base)
@@ -84,7 +85,13 @@ export async function prepare({ config, stateDir, url = DEFAULT_URL, fetchImpl }
   const previous = catalogText === null ? null : JSON.parse(catalogText)
   if (previous) ensure(previous.version === 1 && Array.isArray(previous.assignments) && Array.isArray(previous.namespaces), 'CATALOG_INVALID')
   const payload = await fetchRegistry(url, { fetchImpl })
-  const tools = selectTools(payload)
+  const registryTools = selectTools(payload, { allowEmpty: Boolean(collectPresetTools) })
+  const presetTools = collectPresetTools ? collectPresetTools(base) : []
+  const tools = collectPresetTools
+    ? [...registryTools.map(tool => ({ ...tool, source: 'mcp' })), ...presetTools].sort((a, b) => a.tool_id.localeCompare(b.tool_id))
+    : registryTools
+  ensure(tools.length > 0, 'SOURCE_EMPTY: 网站与预设均没有可分类工具')
+  ensure(new Set(tools.map(tool => tool.tool_id)).size === tools.length, 'SOURCE_ID_COLLISION: 网站与预设工具分类 ID 冲突')
   const known = new Map(base.namespaces.map(n => [n.id, n]))
   for (const entry of previous?.namespaces ?? []) if (!known.has(entry.id)) known.set(entry.id, entry)
   const runId = randomUUID(), run = join(state, 'runs', runId)
@@ -100,7 +107,7 @@ export async function prepare({ config, stateDir, url = DEFAULT_URL, fetchImpl }
   }
   await mkdir(run, { recursive: true, mode: 0o700 })
   await atomicWrite(join(run, 'task.json'), json(task))
-  return { run, task: join(run, 'task.json'), selected: tools.length, excluded: payload.registrations.length - tools.length }
+  return { run, task: join(run, 'task.json'), selected: tools.length, excluded: payload.registrations.length - registryTools.length }
 }
 
 /**

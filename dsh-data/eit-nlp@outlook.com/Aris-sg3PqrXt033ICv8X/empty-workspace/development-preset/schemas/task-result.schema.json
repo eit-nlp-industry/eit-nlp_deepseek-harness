@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "development/task-result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "requirementIds", "status", "verification"],
+  "properties": {
+    "id": { "type": "string" },
+    "requirementIds": { "type": "array", "items": { "type": "string" } },
+    "status": { "enum": ["pending", "in_progress", "passed", "failed"] },
+    "verification": { "type": "string" }
+  }
+}

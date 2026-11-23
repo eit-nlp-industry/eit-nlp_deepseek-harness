@@ -213,7 +213,7 @@ export function apply(ctx, config = {}) {
               bridge.accept({
                 task_id: started.taskId,
                 status: 'succeeded',
-                message: '用户已手动确认任务完成。',
+                message: '已完成',
               })
             },
             cancel(reason) {

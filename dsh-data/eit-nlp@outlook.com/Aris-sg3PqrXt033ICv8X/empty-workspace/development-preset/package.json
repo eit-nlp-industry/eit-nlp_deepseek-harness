@@ -1,0 +1,12 @@
+{
+  "name": "@local/dsh-development-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "研发模式：以 PRD 为输入的单 Agent 研发预设。",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "projectId": "qingdan",
+  "count": 3,
+  "pending": [
+    {
+      "id": "64f3f048-c7d8-4aaa-9337-3e17c81cae66",
+      "at": "2026-11-20T01:49:16.521Z",
+      "errorId": "2619d3be-d171-443e-abbd-69942c8e26e2",
+      "count": 1,
+      "reason": "完成状态自相矛盾：state.json 标记 status=COMPLETED 且 completedTasks 含 T02，final-result.json 也声明 T02 完成，但 tasks.json 中 T02 仍为 in_progress。交付账本对“是否全部完成”给出冲突结论，需订正后方可认定完成。",
+      "channel": "reserved",
+      "delivered": false,
+      "parentNotified": false
+    },
+    {
+      "id": "e924fa25-57b4-4d9a-a3e4-cc7d092a0f08",
+      "at": "2026-11-20T01:49:16.525Z",
+      "errorId": "48942c96-699d-4651-84e7-6ccf09111ab1",
+      "count": 2,
+      "reason": "实现与自述假设不一致：storage.ts 对数组内非法元素采取过滤后保留合法项并回写，并未按空列表处理；storage.test.ts 还将该行为固化为断言。isTask 未校验标题非空及 ≤80 字符，损坏数据可保留空标题或超长标题，破坏 REQ-001 数据不变量。需统一实现、假设与测试三者口径。",
+      "channel": "reserved",
+      "delivered": false,
+      "parentNotified": false
+    },
+    {
+      "id": "9ee08a48-4c7d-4b60-8b7b-61571e0c2786",
+      "at": "2026-11-20T01:49:16.526Z",
+      "errorId": "ff73f26d-7875-4bba-aa1b-474f68b74dbf",
+      "count": 3,
+      "reason": "execution-log.jsonl 不是合法 JSONL：首条为跨 8 行的美化 JSON，按行解析会失败；且首条时间 15:51 早于次条 15:50，时序倒置。执行证据可解析性与可信度不足，需重排并改为一行一条。",
+      "channel": "reserved",
+      "delivered": false,
+      "parentNotified": false
+    }
+  ],
+  "delivery": "reserved"
+}

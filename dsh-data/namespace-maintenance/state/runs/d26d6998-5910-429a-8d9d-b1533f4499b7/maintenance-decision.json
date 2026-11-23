@@ -1,0 +1,181 @@
+{
+  "namespaces": [
+    {
+      "id": "robot_vision",
+      "name": "视觉观察",
+      "description": "摄像头取帧、持续观察与观察需求管理，以及按帧裁剪登记人员照片。"
+    },
+    {
+      "id": "robot_map",
+      "name": "语义地图检索",
+      "description": "只读检索 RAGFlow 语义锚点，为导航提供地点候选。"
+    }
+  ],
+  "assignments": [
+    {
+      "tool_id": "smallbrain.g1_get_task_status",
+      "namespace": "g1_humanoid",
+      "reason": "G1 运动任务状态查询"
+    },
+    {
+      "tool_id": "smallbrain.g1_set_velocity",
+      "namespace": "g1_humanoid",
+      "reason": "G1 速度控制"
+    },
+    {
+      "tool_id": "smallbrain.g1_stand",
+      "namespace": "g1_humanoid",
+      "reason": "G1 站立姿态"
+    },
+    {
+      "tool_id": "smallbrain.g1_stop",
+      "namespace": "g1_humanoid",
+      "reason": "G1 停止运动"
+    },
+    {
+      "tool_id": "smallbrain.g1_walk_relative",
+      "namespace": "g1_humanoid",
+      "reason": "G1 相对位移行走"
+    },
+    {
+      "tool_id": "smallbrain.get_task_status",
+      "namespace": "robot_status",
+      "reason": "机器狗任务状态查询"
+    },
+    {
+      "tool_id": "smallbrain.self_check",
+      "namespace": "robot_status",
+      "reason": "机器狗自检"
+    },
+    {
+      "tool_id": "smallbrain.grasp_bag",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂抓取袋子"
+    },
+    {
+      "tool_id": "smallbrain.grasp_bottle",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂抓取瓶子"
+    },
+    {
+      "tool_id": "smallbrain.panda_move",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂末端移动，归入机械臂组"
+    },
+    {
+      "tool_id": "smallbrain.panda_place",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂放置动作，归入机械臂组"
+    },
+    {
+      "tool_id": "smallbrain.panda_spawn",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂操作对象生成，归入机械臂组"
+    },
+    {
+      "tool_id": "smallbrain.kineway_nav",
+      "namespace": "robot_simulation",
+      "reason": "导航仿真评估"
+    },
+    {
+      "tool_id": "smallbrain.tame_nav",
+      "namespace": "robot_simulation",
+      "reason": "导航仿真评估"
+    },
+    {
+      "tool_id": "smallbrain.patrol_start",
+      "namespace": "robot_navigation",
+      "reason": "巡逻导航"
+    },
+    {
+      "tool_id": "smallbrain.pause_navigation",
+      "namespace": "robot_navigation",
+      "reason": "导航暂停"
+    },
+    {
+      "tool_id": "smallbrain.resume_navigation",
+      "namespace": "robot_navigation",
+      "reason": "导航恢复"
+    },
+    {
+      "tool_id": "smallbrain.terminate_navigation",
+      "namespace": "robot_navigation",
+      "reason": "导航终止"
+    },
+    {
+      "tool_id": "smallbrain.pcn_navigate",
+      "namespace": "robot_navigation",
+      "reason": "PCN 导航"
+    },
+    {
+      "tool_id": "smallbrain.pcn_cancel_navigation",
+      "namespace": "robot_navigation",
+      "reason": "PCN 导航取消"
+    },
+    {
+      "tool_id": "smallbrain.pcn_navigation_status",
+      "namespace": "robot_navigation",
+      "reason": "PCN 导航状态"
+    },
+    {
+      "tool_id": "smallbrain.vln_navigate",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航"
+    },
+    {
+      "tool_id": "smallbrain.vln_cancel_navigation",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航取消"
+    },
+    {
+      "tool_id": "smallbrain.vln_navigation_status",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航状态"
+    },
+    {
+      "tool_id": "smallbrain.reinsvln_navigate",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航变体"
+    },
+    {
+      "tool_id": "preset:get_camera_frame",
+      "namespace": "robot_vision",
+      "reason": "摄像头取帧"
+    },
+    {
+      "tool_id": "preset:observation_start",
+      "namespace": "robot_vision",
+      "reason": "持续观察启动"
+    },
+    {
+      "tool_id": "preset:observation_stop",
+      "namespace": "robot_vision",
+      "reason": "持续观察停止"
+    },
+    {
+      "tool_id": "preset:observation_status",
+      "namespace": "robot_vision",
+      "reason": "观察状态查询"
+    },
+    {
+      "tool_id": "preset:observation_require",
+      "namespace": "robot_vision",
+      "reason": "观察需求登记"
+    },
+    {
+      "tool_id": "preset:observation_release",
+      "namespace": "robot_vision",
+      "reason": "观察需求释放"
+    },
+    {
+      "tool_id": "preset:remember_person",
+      "namespace": "robot_vision",
+      "reason": "基于摄像头帧裁剪保存人员照片"
+    },
+    {
+      "tool_id": "preset:search_ragflow_semantic_map",
+      "namespace": "robot_map",
+      "reason": "只读语义地图检索"
+    }
+  ]
+}

@@ -234,12 +234,14 @@
 
             config:
 
-              enabled: true
+              enabled: false
               configPath: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/dsh-namespace-tools/config.local.json
               maintenance:
                 enabled: true
                 stateDir: /data/dsh/namespace-maintenance/state
                 registryUrl: http://10.37.0.21:8040/ui/api/registrations
+                developerPluginRoots:
+                  - /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace
 
               # 保留当前其他配置
 
@@ -515,30 +517,6 @@
 
             name: '@local/dsh-robot-dog-a-preset/camera-tools.js'
 
-          - id: observation
-
-            name: '@local/dsh-robot-dog-a-preset/observation.js'
-
-            config:
-
-              provider: deepseek-official
-
-              model: deepseek-flash
-
-              personsDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-a/persons
-
-              intervalMs: 1500
-
-              dwellFrames: 3
-
-              absenceFrames: 3
-
-              cooldownMs: 300000
-
-              debugDir: /data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-a/obs-debug
-
-              debugMode: guide_follow
-
           - id: person-tools
 
             name: '@local/dsh-robot-dog-a-preset/person-tools.js'
@@ -557,7 +535,7 @@
 
               transport: streamable-http
 
-              url: http://10.37.0.21:8040/mcp
+              url: http://10.37.0.21:8050/mcp
 
               headers:
 
@@ -638,26 +616,6 @@
       config:
 
         directory: "/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/robot-dog-a/instant-snapshot"
-
-
-
-# Host registry bridging the per-session observation instances to the Web UI.
-
-- insert:
-
-    - id: observation-hub
-
-      name: '@local/dsh-robot-dog-a-preset/observation-hub.js'
-
-
-
-# HTTP surface used by the observation panel in the Web UI.
-
-- insert:
-
-    - id: observation-api
-
-      name: '@local/dsh-robot-dog-a-preset/observation-api.js'
 
 
 

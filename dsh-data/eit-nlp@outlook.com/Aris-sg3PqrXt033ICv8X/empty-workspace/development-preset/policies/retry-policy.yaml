@@ -1,0 +1,9 @@
+jsonOrSchemaOutput: 2
+singleTestFailure: 3
+buildFailure: 3
+uiVerificationFailure: 2
+prdVerificationFailure: 3
+deploymentFailure: 1
+totalRepairLoops: 8
+identicalFingerprintStopAfter: 2
+fingerprint: phase+command+exitCode+errorType+primaryMessage

@@ -18,9 +18,10 @@ function validText(text, max) {
 /**
  * 从完整注册响应筛选本轮可分类工具，仅接受布尔 true 和精确 active 状态。
  * @param payload 网站返回的 registrations 对象；空结果、重复 ID 或无效结构会拒绝。
+ * @param options.allowEmpty 双来源维护允许网站为空，随后检查合并清单。
  * @returns 按 tool_id 排序的分类元数据，不包含 api_url 等连接配置。
  */
-export function selectTools(payload) {
+export function selectTools(payload, { allowEmpty = false } = {}) {
   ensure(object(payload) && Array.isArray(payload.registrations), 'SOURCE_INVALID: 缺少 registrations 数组')
   const selected = [], ids = new Set()
   for (const row of payload.registrations) {
@@ -37,7 +38,7 @@ export function selectTools(payload) {
     selected.push({ tool_id: row.tool_id, name: typeof row.name === 'string' ? row.name : row.tool_id,
       description, input_schema: input, output_schema: output })
   }
-  ensure(selected.length > 0, 'SOURCE_EMPTY: 没有 active 且 enabled 为 true 的工具，保留旧结果')
+  ensure(allowEmpty || selected.length > 0, 'SOURCE_EMPTY: 没有 active 且 enabled 为 true 的工具，保留旧结果')
   return selected.sort((a, b) => a.tool_id.localeCompare(b.tool_id))
 }
 

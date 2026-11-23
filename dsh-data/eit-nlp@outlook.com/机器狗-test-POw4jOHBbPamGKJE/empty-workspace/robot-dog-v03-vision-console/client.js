@@ -52,6 +52,17 @@ window.__ModuleLoader__.load({
       display: 'inline-block',
     })
     const mono = { fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', fontSize: 11 }
+    const tabs = { display: 'flex', gap: 4, padding: 2, borderRadius: 8, background: '#f4f5f7' }
+    const tab = on => ({
+      flex: 1,
+      font: 'inherit',
+      padding: '4px 8px',
+      borderRadius: 6,
+      border: '1px solid transparent',
+      background: on ? '#fff' : 'transparent',
+      boxShadow: on ? '0 1px 2px rgba(0,0,0,0.08)' : 'none',
+      cursor: 'pointer',
+    })
 
     // The page may be served under a reverse-proxy prefix (or the API may live on
     // its own origin), so the base is probed instead of assumed: `/vision-v03`
@@ -97,6 +108,8 @@ window.__ModuleLoader__.load({
       const [diag, setDiag] = React.useState('')
       const [base, setBase] = React.useState('/vision-v03')
       const [tick, setTick] = React.useState(0)
+      const [injectNote, setInjectNote] = React.useState('')
+      const [mode, setMode] = React.useState('video')
 
       React.useEffect(() => {
         let alive = true
@@ -160,6 +173,69 @@ window.__ModuleLoader__.load({
         }
       }
 
+      const fileToJpeg = file => new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file)
+        const image = new Image()
+        image.onload = () => {
+          const canvas = document.createElement('canvas')
+          canvas.width = image.naturalWidth
+          canvas.height = image.naturalHeight
+          const context = canvas.getContext('2d')
+          if (context === null) {
+            URL.revokeObjectURL(url)
+            reject(new Error('无法读取图片'))
+            return
+          }
+          context.drawImage(image, 0, 0)
+          URL.revokeObjectURL(url)
+          resolve(canvas.toDataURL('image/jpeg', 0.92))
+        }
+        image.onerror = () => {
+          URL.revokeObjectURL(url)
+          reject(new Error(`无法读取 ${file.name}`))
+        }
+        image.src = url
+      })
+
+      const injectFiles = async event => {
+        const files = Array.from(event.target.files ?? [])
+        event.target.value = ''
+        if (files.length === 0) return
+        if (sessionId === '') {
+          setError('先选择目标会话')
+          return
+        }
+        const limit = 3
+        if (files.length > limit) {
+          setError(`一次最多 ${limit} 张`)
+          return
+        }
+        setBusy(true)
+        setInjectNote('')
+        try {
+          const images = []
+          for (const file of files) images.push(await fileToJpeg(file))
+          const response = await fetch(`${base}/inject`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ sessionId, images }),
+          })
+          const next = await response.json().catch(() => null)
+          if (!response.ok) {
+            setError((next && next.error) || `HTTP ${response.status}`)
+            return
+          }
+          setError('')
+          if (next) setState(next)
+          const frames = Array.isArray(next?.frames) ? next.frames.join('、') : ''
+          setInjectNote(frames ? `已作为环境观察推送：${frames}` : '已推送')
+        } catch (cause) {
+          setError(String(cause))
+        } finally {
+          setBusy(false)
+        }
+      }
+
       const running = state?.running === true
       const sessions = Array.isArray(state?.sessions) ? state.sessions : []
       const videos = Array.isArray(state?.videos) ? state.videos : null
@@ -179,47 +255,17 @@ window.__ModuleLoader__.load({
         }) },
           h('div', { style: row },
             h('span', { style: dot(running) }),
-            h('strong', null, '视频流调试 · v0.3'),
+            h('strong', null, '观察调试 · v0.3'),
             h('span', { style: { ...label, ...mono } }, state?.camera?.sequence ? `#${state.camera.sequence}` : '无帧'),
           ),
           h('span', { style: label }, open ? '收起' : '展开'),
         ),
         open
           ? h('div', { style: body },
-              h('div', {
-                style: {
-                  height: 132,
-                  borderRadius: 8,
-                  background: '#0f1115',
-                  display: 'grid',
-                  placeItems: 'center',
-                  overflow: 'hidden',
-                },
-              },
-                frameSrc
-                  ? h('img', { src: frameSrc, alt: 'latest frame', style: { width: '100%', height: '100%', objectFit: 'cover' } })
-                  : h('span', { style: { color: '#8890a0' } }, '还没有帧'),
+              h('div', { style: tabs },
+                h('button', { type: 'button', style: tab(mode === 'video'), onClick: () => setMode('video') }, '视频推送'),
+                h('button', { type: 'button', style: tab(mode === 'still'), onClick: () => setMode('still') }, '上传图片'),
               ),
-              videos === null
-                ? null
-                : h('div', { style: row },
-                    h('span', { style: label }, '视频'),
-                    h('select', {
-                      style: select,
-                      value: video,
-                      disabled: busy,
-                      onChange: async event => {
-                        const next = event.target.value
-                        const previous = video
-                        setVideo(next)
-                        const result = await post('/select', { video: next })
-                        if (result === null) setVideo(previous)
-                      },
-                    },
-                      h('option', { value: '' }, videoOptions.length === 0 ? '（没有视频）' : '请选择视频…'),
-                      videoOptions.map(name => h('option', { key: name, value: name, title: name }, name)),
-                    ),
-                  ),
               h('div', { style: row },
                 h('span', { style: label }, '目标会话'),
                 h('select', {
@@ -234,33 +280,84 @@ window.__ModuleLoader__.load({
                   )),
                 ),
               ),
-              h('div', { style: row },
-                h('span', { style: label }, '采样(ms)'),
-                h('input', {
-                  style: input,
-                  type: 'number',
-                  min: 500,
-                  step: 500,
-                  value: intervalMs,
-                  disabled: running || busy,
-                  onChange: event => setIntervalMs(Number(event.target.value) || 1000),
-                }),
-                h('span', { style: { ...label, ...mono } },
-                  state ? `推 ${state.pushed} / 缓 ${state.bufferedFrames ?? 0} / 采 ${state.sampled ?? 0}` : '',
-                ),
-              ),
-              h('div', { style: row },
-                h('button', {
-                  style: button(running),
-                  disabled: busy || running || sessionId === '' || (videos !== null && video === ''),
-                  onClick: () => post('/start', { sessionId, intervalMs, video: video || undefined }),
-                }, running ? '推送中…' : '开始推送'),
-                h('button', {
-                  style: button(false),
-                  disabled: busy || !running,
-                  onClick: () => post('/stop', {}),
-                }, '停止'),
-              ),
+              mode === 'video'
+                ? h(React.Fragment, null,
+                    h('div', {
+                      style: {
+                        height: 132,
+                        borderRadius: 8,
+                        background: '#0f1115',
+                        display: 'grid',
+                        placeItems: 'center',
+                        overflow: 'hidden',
+                      },
+                    },
+                      frameSrc
+                        ? h('img', { src: frameSrc, alt: 'latest frame', style: { width: '100%', height: '100%', objectFit: 'cover' } })
+                        : h('span', { style: { color: '#8890a0' } }, '还没有帧'),
+                    ),
+                    videos === null
+                      ? null
+                      : h('div', { style: row },
+                          h('span', { style: label }, '视频'),
+                          h('select', {
+                            style: select,
+                            value: video,
+                            disabled: busy,
+                            onChange: async event => {
+                              const next = event.target.value
+                              const previous = video
+                              setVideo(next)
+                              const result = await post('/select', { video: next })
+                              if (result === null) setVideo(previous)
+                            },
+                          },
+                            h('option', { value: '' }, videoOptions.length === 0 ? '（没有视频）' : '请选择视频…'),
+                            videoOptions.map(name => h('option', { key: name, value: name, title: name }, name)),
+                          ),
+                        ),
+                    h('div', { style: row },
+                      h('span', { style: label }, '采样(ms)'),
+                      h('input', {
+                        style: input,
+                        type: 'number',
+                        min: 500,
+                        step: 500,
+                        value: intervalMs,
+                        disabled: running || busy,
+                        onChange: event => setIntervalMs(Number(event.target.value) || 1000),
+                      }),
+                      h('span', { style: { ...label, ...mono } },
+                        state ? `推 ${state.pushed} / 缓 ${state.bufferedFrames ?? 0} / 采 ${state.sampled ?? 0}` : '',
+                      ),
+                    ),
+                    h('div', { style: row },
+                      h('button', {
+                        style: button(running),
+                        disabled: busy || running || sessionId === '' || (videos !== null && video === ''),
+                        onClick: () => post('/start', { sessionId, intervalMs, video: video || undefined }),
+                      }, running ? '推送中…' : '开始推送'),
+                      h('button', {
+                        style: button(false),
+                        disabled: busy || !running,
+                        onClick: () => post('/stop', {}),
+                      }, '停止'),
+                    ),
+                  )
+                : h(React.Fragment, null,
+                    h('div', { style: { color: '#5b5b66' } }, '选 1 到 3 张图，作为一次环境观察推到上面的会话，并登记 frame_id，供 annotate_target 使用。'),
+                    h('input', {
+                      type: 'file',
+                      accept: 'image/*',
+                      multiple: true,
+                      disabled: busy || sessionId === '',
+                      onChange: injectFiles,
+                      style: { font: 'inherit' },
+                    }),
+                    injectNote
+                      ? h('div', { style: { color: '#1b6b3a', ...mono } }, injectNote)
+                      : null,
+                  ),
               (error || state?.lastError || state?.camera?.lastError)
                 ? h('div', {
                     title: error || state?.lastError || (state?.camera?.lastError ? `解码器：${state.camera.lastError}` : ''),

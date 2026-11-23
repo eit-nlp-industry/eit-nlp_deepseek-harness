@@ -1,0 +1,134 @@
+{
+  "enabled": true,
+  "namespaces": [
+    {
+      "id": "robot_status",
+      "name": "机器人状态",
+      "description": "机器人自检和当前任务状态查询。",
+      "tools": [
+        "mcp__robot__get_task_status",
+        "mcp__robot__self_check",
+        "mcp__robot__smallbrain_get_task_status_c43ddcc4e9b5",
+        "mcp__robot__smallbrain_self_check_54240b18af65"
+      ]
+    },
+    {
+      "id": "robot_navigation",
+      "name": "机器狗导航",
+      "description": "语义锚点导航、按坐标或描述或图像框移动，以及停止当前巡航。",
+      "tools": [
+        "mcp__robot__navigate",
+        "mcp__robot__move_to",
+        "mcp__robot__patrol_stop",
+        "mcp__robot__smallbrain_patrol_start_5fa6d6bf1a68",
+        "mcp__robot__smallbrain_pause_navigation_0bf3583622ac",
+        "mcp__robot__smallbrain_pcn_cancel_navigation_939c8205aa0b",
+        "mcp__robot__smallbrain_pcn_navigate_47fecf4ea766",
+        "mcp__robot__smallbrain_pcn_navigation_status_4eca6162bb41",
+        "mcp__robot__smallbrain_reinsvln_navigate_c8b367374297",
+        "mcp__robot__smallbrain_resume_navigation_864480c8d734",
+        "mcp__robot__smallbrain_terminate_navigation_af5c169079ac",
+        "mcp__robot__smallbrain_vln_cancel_navigation_d155f8b02b85",
+        "mcp__robot__smallbrain_vln_navigate_3f4412cb531b",
+        "mcp__robot__smallbrain_vln_navigation_status_1cdf83761b94"
+      ]
+    },
+    {
+      "id": "robot_control",
+      "name": "机器狗控制",
+      "description": "停止、原地等待、姿态切换，以及设置业务空闲后返回起点休息的策略。",
+      "tools": [
+        "mcp__robot__return_and_rest",
+        "mcp__robot__set_posture",
+        "mcp__robot__stop",
+        "mcp__robot__wait"
+      ]
+    },
+    {
+      "id": "robot_interaction",
+      "name": "机器人交互",
+      "description": "靠近物体、跟随人员、在当前位置握手和敲门。",
+      "tools": [
+        "mcp__robot__approach_object",
+        "mcp__robot__follow_person",
+        "mcp__robot__handshake",
+        "mcp__robot__knock_door"
+      ]
+    },
+    {
+      "id": "robot_person",
+      "name": "人员识别与登记",
+      "description": "根据人脸图片识别已登记人员，或在本人确认同意后登记姓名与人脸图片。",
+      "tools": [
+        "mcp__robot__recognize_person",
+        "mcp__robot__remember_person"
+      ]
+    },
+    {
+      "id": "robot_delivery",
+      "name": "配送交接",
+      "description": "导航取货点、等待人工取货，再导航送达点完成交接。",
+      "tools": [
+        "mcp__robot__handoff_delivery"
+      ]
+    },
+    {
+      "id": "robot_simulation",
+      "name": "导航仿真评估",
+      "description": "在预设二维地图中按绝对坐标运行导航仿真评估，返回提交快照而非到达结果。",
+      "tools": [
+        "mcp__robot__smallbrain_kineway_nav_f7d89b579cb5",
+        "mcp__robot__smallbrain_tame_nav_9294416e5d4d"
+      ]
+    },
+    {
+      "id": "robot_manipulation",
+      "name": "机械臂抓取",
+      "description": "控制机械臂抓取指定类别物体（袋子、瓶子）。",
+      "tools": [
+        "mcp__robot__smallbrain_grasp_bag_d354435c40f3",
+        "mcp__robot__smallbrain_grasp_bottle_8c0ddc481db2"
+      ]
+    },
+    {
+      "id": "g1_humanoid",
+      "name": "人形 G1 运动控制",
+      "description": "G1 人形机器人按速度或相对位移行走、站立、停止及查询运动任务状态。",
+      "tools": [
+        "mcp__robot__smallbrain_g1_get_task_status_3b802faf5276",
+        "mcp__robot__smallbrain_g1_set_velocity_bc6f26906510",
+        "mcp__robot__smallbrain_g1_stand_4acc3a9bbdd4",
+        "mcp__robot__smallbrain_g1_stop_fb9ed80cb141",
+        "mcp__robot__smallbrain_g1_walk_relative_b07dbd8c9260"
+      ]
+    }
+  ],
+  "eagerTools": [
+    "mcp__robot__stop"
+  ],
+  "hiddenTools": [
+    "bash",
+    "edit",
+    "write",
+    "glob",
+    "grep",
+    "working_directory",
+    "subagent",
+    "subagent_fork",
+    "list_agents",
+    "interrupt_agent",
+    "send_message",
+    "workflow",
+    "web_fetch",
+    "web_search",
+    "todo_write",
+    "present",
+    "read",
+    "read_image",
+    "render_ui",
+    "exit_plan_mode",
+    "create_goal",
+    "get_goal",
+    "update_goal"
+  ]
+}

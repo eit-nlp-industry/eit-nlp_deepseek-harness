@@ -1,0 +1,223 @@
+{
+  "version": 1,
+  "runId": "d26d6998-5910-429a-8d9d-b1533f4499b7",
+  "acceptedAt": "2026-11-19T08:25:02.974Z",
+  "preparedAt": "2026-11-19T08:03:47.935Z",
+  "configPath": "/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/dsh-namespace-tools/config.local.json",
+  "sourceUrl": "http://10.37.0.21:8040/ui/api/registrations",
+  "sourceHash": "ff8f69471416df40918e3c4d584943e090f6fed9b5e889262c7b88c4ba4ce555",
+  "configHash": "d0a81409d167ff524987d4c3b5622b05a6e29f63b2426e87c68595b3088abff0",
+  "decisionHash": "149270718cd94360b534fc36c9c3cfc6e81ec2eba753279afb2d09b4b9ad99d0",
+  "namespaces": [
+    {
+      "id": "robot_status",
+      "name": "机器人状态",
+      "description": "机器人自检和当前任务状态查询。"
+    },
+    {
+      "id": "robot_navigation",
+      "name": "机器狗导航",
+      "description": "语义锚点导航、按坐标或描述或图像框移动，以及停止当前巡航。"
+    },
+    {
+      "id": "robot_simulation",
+      "name": "导航仿真评估",
+      "description": "在预设二维地图中按绝对坐标运行导航仿真评估，返回提交快照而非到达结果。"
+    },
+    {
+      "id": "robot_manipulation",
+      "name": "机械臂抓取",
+      "description": "控制机械臂抓取指定类别物体（袋子、瓶子）。"
+    },
+    {
+      "id": "g1_humanoid",
+      "name": "人形 G1 运动控制",
+      "description": "G1 人形机器人按速度或相对位移行走、站立、停止及查询运动任务状态。"
+    },
+    {
+      "id": "robot_vision",
+      "name": "视觉观察",
+      "description": "摄像头取帧、持续观察与观察需求管理，以及按帧裁剪登记人员照片。"
+    },
+    {
+      "id": "robot_map",
+      "name": "语义地图检索",
+      "description": "只读检索 RAGFlow 语义锚点，为导航提供地点候选。"
+    }
+  ],
+  "assignments": [
+    {
+      "tool_id": "preset:get_camera_frame",
+      "namespace": "robot_vision",
+      "reason": "摄像头取帧"
+    },
+    {
+      "tool_id": "preset:observation_release",
+      "namespace": "robot_vision",
+      "reason": "观察需求释放"
+    },
+    {
+      "tool_id": "preset:observation_require",
+      "namespace": "robot_vision",
+      "reason": "观察需求登记"
+    },
+    {
+      "tool_id": "preset:observation_start",
+      "namespace": "robot_vision",
+      "reason": "持续观察启动"
+    },
+    {
+      "tool_id": "preset:observation_status",
+      "namespace": "robot_vision",
+      "reason": "观察状态查询"
+    },
+    {
+      "tool_id": "preset:observation_stop",
+      "namespace": "robot_vision",
+      "reason": "持续观察停止"
+    },
+    {
+      "tool_id": "preset:remember_person",
+      "namespace": "robot_vision",
+      "reason": "基于摄像头帧裁剪保存人员照片"
+    },
+    {
+      "tool_id": "preset:search_ragflow_semantic_map",
+      "namespace": "robot_map",
+      "reason": "只读语义地图检索"
+    },
+    {
+      "tool_id": "smallbrain.g1_get_task_status",
+      "namespace": "g1_humanoid",
+      "reason": "G1 运动任务状态查询"
+    },
+    {
+      "tool_id": "smallbrain.g1_set_velocity",
+      "namespace": "g1_humanoid",
+      "reason": "G1 速度控制"
+    },
+    {
+      "tool_id": "smallbrain.g1_stand",
+      "namespace": "g1_humanoid",
+      "reason": "G1 站立姿态"
+    },
+    {
+      "tool_id": "smallbrain.g1_stop",
+      "namespace": "g1_humanoid",
+      "reason": "G1 停止运动"
+    },
+    {
+      "tool_id": "smallbrain.g1_walk_relative",
+      "namespace": "g1_humanoid",
+      "reason": "G1 相对位移行走"
+    },
+    {
+      "tool_id": "smallbrain.get_task_status",
+      "namespace": "robot_status",
+      "reason": "机器狗任务状态查询"
+    },
+    {
+      "tool_id": "smallbrain.grasp_bag",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂抓取袋子"
+    },
+    {
+      "tool_id": "smallbrain.grasp_bottle",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂抓取瓶子"
+    },
+    {
+      "tool_id": "smallbrain.kineway_nav",
+      "namespace": "robot_simulation",
+      "reason": "导航仿真评估"
+    },
+    {
+      "tool_id": "smallbrain.panda_move",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂末端移动，归入机械臂组"
+    },
+    {
+      "tool_id": "smallbrain.panda_place",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂放置动作，归入机械臂组"
+    },
+    {
+      "tool_id": "smallbrain.panda_spawn",
+      "namespace": "robot_manipulation",
+      "reason": "机械臂操作对象生成，归入机械臂组"
+    },
+    {
+      "tool_id": "smallbrain.patrol_start",
+      "namespace": "robot_navigation",
+      "reason": "巡逻导航"
+    },
+    {
+      "tool_id": "smallbrain.pause_navigation",
+      "namespace": "robot_navigation",
+      "reason": "导航暂停"
+    },
+    {
+      "tool_id": "smallbrain.pcn_cancel_navigation",
+      "namespace": "robot_navigation",
+      "reason": "PCN 导航取消"
+    },
+    {
+      "tool_id": "smallbrain.pcn_navigate",
+      "namespace": "robot_navigation",
+      "reason": "PCN 导航"
+    },
+    {
+      "tool_id": "smallbrain.pcn_navigation_status",
+      "namespace": "robot_navigation",
+      "reason": "PCN 导航状态"
+    },
+    {
+      "tool_id": "smallbrain.reinsvln_navigate",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航变体"
+    },
+    {
+      "tool_id": "smallbrain.resume_navigation",
+      "namespace": "robot_navigation",
+      "reason": "导航恢复"
+    },
+    {
+      "tool_id": "smallbrain.self_check",
+      "namespace": "robot_status",
+      "reason": "机器狗自检"
+    },
+    {
+      "tool_id": "smallbrain.tame_nav",
+      "namespace": "robot_simulation",
+      "reason": "导航仿真评估"
+    },
+    {
+      "tool_id": "smallbrain.terminate_navigation",
+      "namespace": "robot_navigation",
+      "reason": "导航终止"
+    },
+    {
+      "tool_id": "smallbrain.vln_cancel_navigation",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航取消"
+    },
+    {
+      "tool_id": "smallbrain.vln_navigate",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航"
+    },
+    {
+      "tool_id": "smallbrain.vln_navigation_status",
+      "namespace": "robot_navigation",
+      "reason": "视觉语言导航状态"
+    }
+  ],
+  "report": {
+    "selected": 33,
+    "classified": 33,
+    "pending": 0,
+    "added": 33,
+    "reassigned": 0,
+    "noLongerSelected": 0
+  }
+}

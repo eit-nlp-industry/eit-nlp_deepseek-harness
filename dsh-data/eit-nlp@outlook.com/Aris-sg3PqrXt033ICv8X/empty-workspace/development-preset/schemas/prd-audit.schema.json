@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "development/prd-audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "score", "blockingFindings", "questions", "assumptions", "normalizedRequirements"],
+  "properties": {
+    "decision": { "enum": ["ACCEPTED", "NEEDS_CLARIFICATION", "REJECTED_PRD"] },
+    "score": { "type": "number" },
+    "blockingFindings": { "type": "array" },
+    "questions": { "type": "array" },
+    "assumptions": { "type": "array" },
+    "normalizedRequirements": { "type": "array" }
+  }
+}
