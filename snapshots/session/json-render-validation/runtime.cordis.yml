@@ -1,0 +1,51 @@
+- id: tool-json-render
+  disabled: true
+
+- insert:
+    - id: json-render-validation-fixture
+      name: '../../../packages/json-render/tool-json-render/tests/fixtures/validation-server.ts'
+
+- id: memory-hindsight
+  disabled: true
+
+- id: tool-bash
+  disabled: true
+
+- id: tool-pwsh
+  disabled: true
+
+- id: working-directory
+  disabled: true
+
+- id: tool-working-directory
+  disabled: true
+- id: tool-fs
+  disabled: true
+- id: tool-fs-search
+  disabled: true
+- id: agent-instructions
+  disabled: true
+- id: tool-skill
+  disabled: true
+- id: subagent
+  disabled: true
+- id: subagent-spawn-in-process
+  disabled: true
+- id: subagent-fork-in-process
+  disabled: true
+- id: tool-subagent-control
+  disabled: true
+- id: tool-subagent-list-agents
+  disabled: true
+- id: tool-subagent
+  disabled: true
+- id: tool-subagent-fork
+  disabled: true
+- id: workflow-ptc
+  disabled: true
+- id: tool-workflow
+  disabled: true
+- id: hooks-claude-code
+  disabled: true
+- id: hooks-codex
+  disabled: true

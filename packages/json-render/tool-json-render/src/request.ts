@@ -1,6 +1,6 @@
 /**
  * HTTP client for one json-render server call, with a fixed attempt budget.
- * The server is the v0.2.4 `POST /v1/render` contract: format, user_query,
+ * The server is the v0.2.7 `POST /v1/render` contract: format, user_query,
  * business_data, optional prompt_mode, and context.locale / context.intent.
  * Host mode is not a server field and does not select the catalog.
  */
@@ -13,7 +13,7 @@ export const RENDER_UI_MAX_ATTEMPTS = 3
 export const RENDER_UI_FORMAT = 'json-render-v1'
 
 /** Release of the json-render server and Generation SDK this host calls. */
-export const JSON_RENDER_RELEASE = 'v0.2.4'
+export const JSON_RENDER_RELEASE = 'v0.2.7'
 
 export const FORM_INTENTS = ['generic_filters', 'generic_pick_one'] as const
 
@@ -26,6 +26,7 @@ export const RICH_COMPONENTS = [
   'Collapsible',
   'CodeBlock',
   'Workflow',
+  'Chart',
 ] as const
 
 export const PROMPT_MODES = ['full', 'progressive'] as const
@@ -169,9 +170,11 @@ export function formRequestError(args: RenderUiArgs): string | undefined {
 /** Layout text plus a display hint, kept inside the server's 2000-character limit. */
 export function renderUserQuery(args: RenderUiArgs): string {
   const query = args.user_query.trim()
-  const hint = args.mode === 'display' ? DISPLAY_DETAIL_HINT : args.submit_button === false
+  const contentHint = args.mode === 'display' ? DISPLAY_DETAIL_HINT : args.submit_button === false
     ? '用户明确不需要默认提交按钮。请遵循用户指定的操作，不要额外添加提交按钮。'
     : `表单必须包含一个可见且可用的提交 Button，通过 on.press 绑定 form.submit。${args.submit_label ? `提交按钮名称：${args.submit_label}。` : '用户指定按钮名称时使用该名称，否则使用“提交”。'}其他操作按钮不能代替提交按钮，除非用户明确要求不提供提交。`
+  const components = [...new Set(args.components?.filter(name => RICH_COMPONENT_NAMES.has(name)) ?? [])]
+  const hint = components.length === 0 ? contentHint : `请使用这些组件：${components.join('、')}。\n${contentHint}`
   const room = USER_QUERY_MAX_CHARS - hint.length - 1
   const head = query.length > room ? query.slice(0, room) : query
   return `${head}\n${hint}`.slice(0, USER_QUERY_MAX_CHARS)
@@ -346,6 +349,29 @@ function errorRecord(body: unknown): {
   }
 }
 
+function validationFailure(body: unknown, mode: RenderUiMode): RenderUiFailure | undefined {
+  const root = asObject(body)
+  const error = root === undefined ? undefined : asObject(own(root, 'error')) ?? root
+  if (error === undefined || error.code !== 'MODEL_OUTPUT_INVALID') return undefined
+  const requestId = safeToken(error.requestId)
+  const diagnostics = asObject(error.diagnostics)
+  const issues = Array.isArray(diagnostics?.issues) ? diagnostics.issues.slice(0, 8) : []
+  const details: string[] = []
+  for (const value of issues) {
+    const issue = asObject(value)
+    if (issue === undefined) continue
+    const code = safeToken(issue.code)
+    const path = safeIssue(issue.path)
+    const reason = typeof issue.message === 'string' ? safeIssue(issue.message.slice(0, 120)) : undefined
+    if (code !== undefined && reason !== undefined) details.push(`${code}${path === undefined ? '' : ` at ${path}`}: ${reason}`)
+  }
+  return {
+    ok: false,
+    mode,
+    message: `界面生成校验失败：MODEL_OUTPUT_INVALID${requestId === undefined ? '' : `（requestId: ${requestId}）`}。${details.length === 0 ? '' : `诊断：${details.join('；')}。`}请根据诊断修正请求后至多再调用一次；无法修正时用文字回答。不要原样重试，也不要向用户展示错误码或诊断 JSON。`,
+  }
+}
+
 /** The flag can change while fetch is pending. */
 function callAborted(signal: AbortSignal): boolean {
   const aborted: boolean = signal.aborted
@@ -396,7 +422,7 @@ function requestBody(args: RenderUiArgs, route: RenderRoute): Record<string, unk
 
 /**
  * Call POST /v1/render up to three times.
- * HTTP 400 is not retried. Other transport, server, and payload failures are.
+ * HTTP 400 and exhausted generation validation are not retried. Transport and other server failures are.
  * @param options - server origin, arguments, and the attempt signal.
  * @returns the payload, or a short failure the model can continue from.
  */
@@ -447,6 +473,8 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
           ...parsed.requestId !== undefined ? { requestId: parsed.requestId } : {},
           ...parsed.diagnostics !== undefined ? { diagnostics: parsed.diagnostics } : {},
         })
+        const invalid = validationFailure(body, args.mode)
+        if (invalid !== undefined) return invalid
         const detail = parsed.message ?? `HTTP ${response.status}`
         const labeled = parsed.code === undefined ? detail : `${parsed.code}: ${detail}`
         return {
@@ -469,6 +497,8 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
           ...parsed.requestId !== undefined ? { requestId: parsed.requestId } : {},
           ...parsed.diagnostics !== undefined ? { diagnostics: parsed.diagnostics } : {},
         })
+        const invalid = validationFailure(body, args.mode)
+        if (invalid !== undefined) return invalid
         const detail = parsed.message ?? `HTTP ${response.status}`
         last = parsed.code === undefined ? detail : `${parsed.code}: ${detail}`
         continue

@@ -5,11 +5,11 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/protocol
-  '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/runtime-core
-  '@eit/json-render-catalog': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/catalog
-  '@eit/json-render-react': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/react
-  '@eit/json-render-antd': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/antd
+  '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/protocol
+  '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/runtime-core
+  '@eit/json-render-catalog': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/catalog
+  '@eit/json-render-react': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/react
+  '@eit/json-render-antd': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/antd
   extract-zip>yauzl: 3.4.0
   '@deepseek-ai/cosmokit': link:vendor/cosmokit
   '@deepseek-ai/schemastery': link:vendor/schemastery
@@ -4746,14 +4746,14 @@ importers:
         specifier: workspace:*
         version: link:../../core/session
       '@eit/json-render-antd':
-        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/antd
-        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/antd(antd@5.29.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(zod@4.4.3)
+        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/antd
+        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/antd(antd@5.29.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(zod@4.4.3)
       '@eit/json-render-protocol':
-        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/protocol
-        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/protocol
+        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/protocol
+        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/protocol
       '@eit/json-render-react':
-        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/react
-        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/react(react@18.3.1)(zod@4.4.3)
+        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/react
+        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/react(react@18.3.1)(zod@4.4.3)
       '@types/react':
         specifier: ~18.3.1
         version: 18.3.31
@@ -13115,8 +13115,8 @@ importers:
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
       '@eit/json-render-catalog':
-        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.4&path:packages/catalog
-        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/catalog
+        specifier: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.7&path:packages/catalog
+        version: git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/catalog
     devDependencies:
       '@deepseek-ai/cordis':
         specifier: workspace:~
@@ -19245,33 +19245,33 @@ packages:
     resolution: {integrity: sha512-AlKvEwEWyVtnuw7SVb4N/mUhlfIohyFslUNWarZVdLHHSdt3ca5EhMLwTzblBpDpaofSz+f+tAHie6CfxVrWKA==}
     engines: {node: '>=22.19.0'}
 
-  '@eit/json-render-antd@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/antd':
-    resolution: {commit: d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3, path: packages/antd, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
+  '@eit/json-render-antd@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/antd':
+    resolution: {commit: a4b5a75a42858e0c2e18e7ad1f351e1f17210528, path: packages/antd, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
     version: 0.2.0
     engines: {node: '>=18'}
     peerDependencies:
       antd: '>=5.0.0'
       react: '>=18.0.0'
 
-  '@eit/json-render-catalog@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/catalog':
-    resolution: {commit: d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3, path: packages/catalog, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
+  '@eit/json-render-catalog@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/catalog':
+    resolution: {commit: a4b5a75a42858e0c2e18e7ad1f351e1f17210528, path: packages/catalog, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
     version: 0.2.0
     engines: {node: '>=18'}
 
-  '@eit/json-render-protocol@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/protocol':
-    resolution: {commit: d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3, path: packages/protocol, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
+  '@eit/json-render-protocol@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/protocol':
+    resolution: {commit: a4b5a75a42858e0c2e18e7ad1f351e1f17210528, path: packages/protocol, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
     version: 0.2.0
     engines: {node: '>=18'}
 
-  '@eit/json-render-react@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/react':
-    resolution: {commit: d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3, path: packages/react, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
+  '@eit/json-render-react@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/react':
+    resolution: {commit: a4b5a75a42858e0c2e18e7ad1f351e1f17210528, path: packages/react, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
     version: 0.2.0
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=18.0.0'
 
-  '@eit/json-render-runtime-core@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/runtime-core':
-    resolution: {commit: d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3, path: packages/runtime-core, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
+  '@eit/json-render-runtime-core@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/runtime-core':
+    resolution: {commit: a4b5a75a42858e0c2e18e7ad1f351e1f17210528, path: packages/runtime-core, repo: git@github.com:eit-nlp-industry/eit-json-render.git, type: git}
     version: 0.2.0
     engines: {node: '>=18'}
 
@@ -23158,6 +23158,9 @@ packages:
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
+  echarts@6.1.0:
+    resolution: {integrity: sha512-q0yaFPggC9FUdsWH4blavRWFmxdrIodbkoKNAjJudAI6CA9gNPxHtV2RcZNEepZVlk4yvBYkOkbk6HIVpIyHZA==}
+
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
@@ -26197,6 +26200,9 @@ packages:
   tslib@1.13.0:
     resolution: {integrity: sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==}
 
+  tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -26791,6 +26797,9 @@ packages:
 
   zod@4.4.3:
     resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
+
+  zrender@6.1.0:
+    resolution: {integrity: sha512-oEGMDB6pOP2S6OwRR4PdVv610zrjnA3Bh+JnSG12fYJlBKjtNAoEb5fSUoCOOINlH96I2fU38/A2UpRKs67xYQ==}
 
   zustand@4.5.7:
     resolution: {integrity: sha512-CHOUy7mu3lbD6o6LJLfllpjkzhHXSBlX8B9+qPddUsIfeF5S/UZ5q0kmCsnRqT1UHFQZchNFDDzMbQsuesHWlw==}
@@ -27633,43 +27642,44 @@ snapshots:
       get-east-asian-width: 1.6.0
       marked: 18.0.11
 
-  '@eit/json-render-antd@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/antd(antd@5.29.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(zod@4.4.3)':
+  '@eit/json-render-antd@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/antd(antd@5.29.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(zod@4.4.3)':
     dependencies:
-      '@eit/json-render-catalog': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/catalog
-      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/protocol
-      '@eit/json-render-react': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/react(react@18.3.1)(zod@4.4.3)
-      '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/runtime-core(zod@4.4.3)
+      '@eit/json-render-catalog': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/catalog
+      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/protocol
+      '@eit/json-render-react': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/react(react@18.3.1)(zod@4.4.3)
+      '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/runtime-core(zod@4.4.3)
       '@json-render/react': 0.19.0(react@18.3.1)(zod@4.4.3)
       antd: 5.29.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      echarts: 6.1.0
       react: 18.3.1
     transitivePeerDependencies:
       - zod
 
-  '@eit/json-render-catalog@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/catalog':
+  '@eit/json-render-catalog@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/catalog':
     dependencies:
-      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/protocol
-      '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/runtime-core(zod@4.4.3)
+      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/protocol
+      '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/runtime-core(zod@4.4.3)
       '@json-render/core': 0.19.0(zod@4.4.3)
       zod: 4.4.3
 
-  '@eit/json-render-protocol@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/protocol':
+  '@eit/json-render-protocol@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/protocol':
     dependencies:
       uuid: 9.0.1
       zod: 4.4.3
 
-  '@eit/json-render-react@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/react(react@18.3.1)(zod@4.4.3)':
+  '@eit/json-render-react@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/react(react@18.3.1)(zod@4.4.3)':
     dependencies:
-      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/protocol
-      '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/runtime-core(zod@4.4.3)
+      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/protocol
+      '@eit/json-render-runtime-core': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/runtime-core(zod@4.4.3)
       '@json-render/core': 0.19.0(zod@4.4.3)
       '@json-render/react': 0.19.0(react@18.3.1)(zod@4.4.3)
       react: 18.3.1
     transitivePeerDependencies:
       - zod
 
-  '@eit/json-render-runtime-core@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/runtime-core(zod@4.4.3)':
+  '@eit/json-render-runtime-core@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/runtime-core(zod@4.4.3)':
     dependencies:
-      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#d5cbd2bcc495651bfcd6eb1da67dc627add2a4d3&path:packages/protocol
+      '@eit/json-render-protocol': git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#a4b5a75a42858e0c2e18e7ad1f351e1f17210528&path:packages/protocol
       '@json-render/core': 0.19.0(zod@4.4.3)
     transitivePeerDependencies:
       - zod
@@ -31215,6 +31225,11 @@ snapshots:
   ecdsa-sig-formatter@1.0.11:
     dependencies:
       safe-buffer: 5.2.1
+
+  echarts@6.1.0:
+    dependencies:
+      tslib: 2.3.0
+      zrender: 6.1.0
 
   ee-first@1.1.1: {}
 
@@ -34827,6 +34842,8 @@ snapshots:
 
   tslib@1.13.0: {}
 
+  tslib@2.3.0: {}
+
   tslib@2.8.1: {}
 
   tsx@4.23.13:
@@ -35368,6 +35385,10 @@ snapshots:
       zod: 4.4.3
 
   zod@4.4.3: {}
+
+  zrender@6.1.0:
+    dependencies:
+      tslib: 2.3.0
 
   zustand@4.5.7(@types/react@18.3.31)(immer@10.2.0)(react@18.3.1):
     dependencies:

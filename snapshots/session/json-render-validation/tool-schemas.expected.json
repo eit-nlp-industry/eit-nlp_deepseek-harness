@@ -1,0 +1,285 @@
+{
+  "initial": [
+    {
+      "name": "create_goal",
+      "description": "Create a persisted goal that keeps this session working across automatic continuation rounds. Use it when the direct human request is a long-running objective, even if the user did not say \"goal\"; not for single-turn work.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "description": "The concrete completion objective inferred from the direct human request."
+          },
+          "max_goal_rounds": {
+            "type": "number",
+            "description": "Optional positive safe-integer limit on automatic continuation rounds."
+          }
+        },
+        "required": [
+          "objective"
+        ]
+      }
+    },
+    {
+      "name": "get_goal",
+      "description": "Read the current session goal, including the id and revision that update_goal requires.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "job_kill",
+      "description": "Request cancellation of a running background job.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "description": "Job id returned by the tool that started the background work."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Optional short reason, recorded in the log and forwarded to the job."
+          }
+        },
+        "required": [
+          "job_id"
+        ]
+      }
+    },
+    {
+      "name": "job_list",
+      "description": "List your background jobs (running and finished) with their ids, kinds, and statuses.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "job_output",
+      "description": "Read a background job: output since the previous read for stream jobs, or the result of a finished final-output job.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "description": "Job id returned by the tool that started the background work."
+          },
+          "wait": {
+            "type": "boolean",
+            "description": "Block until the job finishes or the timeout expires; a timed-out wait leaves the job running. Defaults to false."
+          },
+          "timeout_ms": {
+            "type": "number",
+            "description": "Max wait in milliseconds with wait: true. Defaults to and is capped by configuration."
+          }
+        },
+        "required": [
+          "job_id"
+        ]
+      }
+    },
+    {
+      "name": "render_ui",
+      "description": "Render a json-render interface when a card, table, steps, or form would help the user. Forms must include a visible enabled Button with on.press action form.submit. Use the requested submit_label, otherwise 提交. Additional actions do not replace submit. Set submit_button=false only when the user explicitly requests no submit button or only other actions; otherwise omit it or set true. Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters. For mode \"display\", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request. answer_presentation defaults to \"replace\" for display: the interface must fully answer the request. Use \"supplement\" when the written answer contains necessary explanations or caveats absent from the interface. mode does not select the component catalog. Omit intent for an ordinary display so the server uses base. Use mode \"form\" with intent \"generic_filters\" or \"generic_pick_one\" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit. When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, CodeBlock, or Workflow, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead. For an image, set business_data.image.assetId to a catalog id. The host writes image.src, image.alt, and image.caption before the render call. Do not send a disk path, domain, credential, component, or type. ImageUpload only names uploadTarget; do not invent an endpoint or credential. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "display renders a read-only layout and continues the turn. form renders a form and ends the turn on success. mode does not select the catalog.",
+            "enum": [
+              "display",
+              "form"
+            ]
+          },
+          "user_query": {
+            "type": "string",
+            "description": "Layout instruction in the user language, at most 2000 characters. Put facts in business_data, not here."
+          },
+          "answer_presentation": {
+            "type": "string",
+            "description": "Display only: replace (default) shows the complete interface instead of closing prose. supplement keeps necessary written explanations alongside it. Always write a complete fallback answer.",
+            "enum": [
+              "replace",
+              "supplement"
+            ]
+          },
+          "intent": {
+            "type": "string",
+            "description": "generic_filters or generic_pick_one for those forms. rich_content when the layout needs the rich catalog and components is omitted. Omit for ordinary display."
+          },
+          "components": {
+            "type": "array",
+            "description": "Rich component names this layout needs. Any one selects rich_content for the whole page, including a mix with base or form components.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Image",
+                "ImageUpload",
+                "Tabs",
+                "MapPreview",
+                "SortableSequence",
+                "Collapsible",
+                "CodeBlock",
+                "Workflow"
+              ]
+            }
+          },
+          "prompt_mode": {
+            "type": "string",
+            "description": "Optional server prompt mode. Only full or progressive.",
+            "enum": [
+              "full",
+              "progressive"
+            ]
+          },
+          "scene": {
+            "type": "string",
+            "description": "Optional scene hint passed through to the renderer, such as kb."
+          },
+          "locale": {
+            "type": "string",
+            "description": "Optional locale hint, such as zh-CN."
+          },
+          "business_data": {
+            "description": "Structured facts and component data available to the interface. Required for display and form. Include the complete answer and data the components need. Show user-relevant facts; only show raw fields and technical details when the user requests them."
+          },
+          "submit_button": {
+            "type": "boolean",
+            "description": "Form only. Defaults to true: add a missing submit button. Set false only when the user explicitly requests no submit button or only other actions."
+          },
+          "submit_label": {
+            "type": "string",
+            "description": "Form only. The submit button label requested by the user; defaults to 提交 for a host-added button."
+          }
+        },
+        "required": [
+          "mode",
+          "user_query"
+        ]
+      }
+    },
+    {
+      "name": "todo_write",
+      "description": "Record and update a task list to plan multi-step work and show progress; skip it for trivial single-step tasks. Add one todo per concrete step before you start. While work remains, keep the todos being worked on `in_progress`, several only when work runs in parallel. Mark each todo `completed` as soon as it is done.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "todos": {
+            "type": "array",
+            "description": "The COMPLETE task list, replacing any previous list.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "description": "What the task is — a short imperative line."
+                },
+                "status": {
+                  "type": "string",
+                  "description": "pending (not started) | in_progress (now) | completed (done).",
+                  "enum": [
+                    "pending",
+                    "in_progress",
+                    "completed"
+                  ]
+                }
+              },
+              "required": [
+                "content",
+                "status"
+              ]
+            }
+          }
+        },
+        "required": [
+          "todos"
+        ]
+      }
+    },
+    {
+      "name": "update_goal",
+      "description": "Update the current goal.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "goal_id": {
+            "type": "string",
+            "description": "Exact id returned by get_goal."
+          },
+          "revision": {
+            "type": "number",
+            "description": "Exact positive revision returned by get_goal."
+          },
+          "action": {
+            "type": "string",
+            "description": "edit, pause, and resume require a direct top-level human request. complete and blocked are also allowed during an automatic continuation of this goal; blocked is rejected before the configured minimum round count.",
+            "enum": [
+              "edit",
+              "pause",
+              "resume",
+              "complete",
+              "blocked"
+            ]
+          },
+          "objective": {
+            "type": "string",
+            "description": "Replacement objective; valid only with action edit."
+          },
+          "max_goal_rounds": {
+            "type": "number",
+            "description": "Replacement cap; valid only with action edit."
+          },
+          "blocked_reason": {
+            "type": "string",
+            "description": "Required only with action blocked: the concrete condition that persisted across rounds and blocks progress."
+          }
+        },
+        "required": [
+          "goal_id",
+          "revision",
+          "action"
+        ]
+      }
+    },
+    {
+      "name": "web_fetch",
+      "description": "Fetch the content of a specific HTTP(S) URL and return it decoded to text.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The HTTP(S) URL to fetch."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "name": "web_search",
+      "description": "Search the web for current information. Returns an optional summary answer and a list of source URLs.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "queries": {
+            "type": "array",
+            "description": "1–4 search queries; their results are merged.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "queries"
+        ]
+      }
+    }
+  ],
+  "changes": []
+}
