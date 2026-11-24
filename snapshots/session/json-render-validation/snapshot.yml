@@ -1,0 +1,9 @@
+version: 1
+scenario: json-render-validation
+profile: headless
+composition: default
+recording: authored
+header:
+  class: json-render-validation
+  pin: true
+  systemPromptSource: json-render-fallback

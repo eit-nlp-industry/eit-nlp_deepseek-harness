@@ -44,6 +44,15 @@ async function listen(pathname: string, bytes: Uint8Array): Promise<{ server: Se
 }
 
 describe('json-render image host route', () => {
+  it('recognizes Chart as a rich component when no profile diagnostic is present', () => {
+    const payload: JsonRenderPayload = { format: 'json-render-v1', spec: { root: 'chart', elements: {
+      chart: { type: 'Chart', props: { type: 'bar', labels: ['Q1'], series: [{ name: '营收', values: [120] }] } },
+    } } }
+    expect(inferRenderProfile(payload)).toBe('rich')
+    expect(registryRecognizes(reactRegistryForProfile('rich'), 'Chart')).toBe(true)
+    expect(registryRecognizes(reactRegistryForProfile('base'), 'Chart')).toBe(false)
+  })
+
   it('renders a host-built Image from the rich registry and serves its relative path', async () => {
     const src = hostImagePath('sample.webp')
     expect(imageElement(src, '样例图')).toEqual({ type: 'Image', props: { src, alt: '样例图' } })

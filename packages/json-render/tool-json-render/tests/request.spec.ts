@@ -30,6 +30,37 @@ function jsonResponse(status: number, body: unknown): Response {
 }
 
 describe('requestJsonRender', () => {
+  it('carries requested rich components into the server generation prompt', () => {
+    const query = renderUserQuery({ mode: 'display', user_query: '展示接驳车', components: ['MapPreview'], business_data: { places: [] } })
+    expect(query).toContain('MapPreview')
+    expect(query.length).toBeLessThanOrEqual(2000)
+  })
+  it('returns actionable validation diagnostics without repeating an exhausted generation request', async () => {
+    const fetchImpl = vi.fn<typeof fetch>(async () => jsonResponse(502, { error: {
+      code: 'MODEL_OUTPUT_INVALID', message: 'Model output is invalid after generation validation', requestId: 'req-map',
+      diagnostics: { issues: [{ code: 'invalid_props', path: '/elements/map/props/places/2/x', message: 'Expected number' }] },
+    } }))
+    const result = await requestJsonRender({ baseUrl: 'http://localhost', timeoutMs: 1000,
+      args: { mode: 'display', user_query: '展示地图', components: ['MapPreview'], business_data: { places: [] } },
+      signal: new AbortController().signal, fetchImpl })
+    expect(fetchImpl).toHaveBeenCalledOnce()
+    expect(result.ok).toBe(false)
+    expect(result.message).toContain('req-map')
+    expect(result.message).toContain('/elements/map/props/places/2/x')
+    expect(result.message).toContain('Expected number')
+  })
+
+  it('filters unsafe server validation details from model feedback', async () => {
+    const result = await requestJsonRender({ baseUrl: 'http://localhost', timeoutMs: 1000,
+      args: { mode: 'display', user_query: '展示', business_data: { name: 'A' } }, signal: new AbortController().signal,
+      fetchImpl: async () => jsonResponse(502, { error: { code: 'MODEL_OUTPUT_INVALID', requestId: 'req-safe',
+        diagnostics: { issues: [{ code: 'invalid_props', path: '/elements/map/props', message: 'Bearer sk-private' }] },
+      } }) })
+    expect(result.ok).toBe(false)
+    expect(result.message).not.toContain('sk-private')
+    expect(result.message).toContain('req-safe')
+  })
+
   it.each([
     ['missing', {}, true],
     ['existing', { action: 'form.submit' }, false],
@@ -82,9 +113,9 @@ describe('requestJsonRender', () => {
     } } } })
   })
 
-  it('selects the rich catalog for Workflow without an explicit intent', () => {
+  it.each(['Workflow', 'Chart'])('selects the rich catalog for %s without an explicit intent', (component) => {
     const route = selectRenderRoute({
-      mode: 'display', user_query: '编辑取材料流程', components: ['Workflow'],
+      mode: 'display', user_query: '展示内容', components: [component],
       business_data: { steps: ['前往办公室'] },
     })
     expect(route).toEqual({ profile: 'rich', intent: 'rich_content', promptMode: 'full' })
