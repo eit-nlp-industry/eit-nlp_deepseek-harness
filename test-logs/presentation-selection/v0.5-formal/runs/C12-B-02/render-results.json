@@ -1,0 +1,347 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_HdpyEK2rjhqdsWrIAUPg9049",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"user_query\": \"展示一张图书馆入口两名候选人的合成示意图（Image 组件，src 用给定的同源 path 字符串，alt 用给定描述）。图像下方用文字说明：地点图书馆入口；候选人 A：灰衣、拉箱子（与你描述相符）；候选人 B：蓝衣、背包。最后给出确认提示：请确认是否为 A，若不是请说明。只使用 Image 这一个富组件。\", \"business_data\": {\"image\": \"/api/media/bench05-person-pair/content\", \"alt\": \"MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture\", \"title\": \"图书馆入口 · 候选人对照图（合成示意图）\", \"location\": \"图书馆入口\", \"candidates\": [{\"id\": \"person-a\", \"label\": \"候选人 A：灰衣 + 拉箱子（与你描述相符）\"}, {\"id\": \"person-b\", \"label\": \"候选人 B：蓝衣 + 背包\"}], \"match\": \"灰衣服、拉箱子 → A\", \"note\": \"图为合成示意图，仅用于辨认对照；尚未由你确认。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "imageCard",
+                "detailsSection",
+                "confirmSection"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "图书馆入口 · 候选人对照图（合成示意图）",
+                "level": "h1"
+              }
+            },
+            "imageCard": {
+              "type": "Card",
+              "props": {
+                "title": "合成示意图",
+                "variant": "outlined"
+              },
+              "children": [
+                "image"
+              ]
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-pair/content",
+                "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "eager"
+              }
+            },
+            "detailsSection": {
+              "type": "Section",
+              "props": {
+                "title": "核对信息",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "locationRow",
+                "candidateARow",
+                "candidateBRow",
+                "matchRow",
+                "noteRow",
+                "altRow"
+              ]
+            },
+            "locationRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "locationLabel",
+                "locationValue"
+              ]
+            },
+            "locationLabel": {
+              "type": "Text",
+              "props": {
+                "content": "地点：",
+                "variant": "muted"
+              }
+            },
+            "locationValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/location"
+                },
+                "variant": "default"
+              }
+            },
+            "candidateARow": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "candidateAHeading",
+                "candidateAIdRow"
+              ]
+            },
+            "candidateAHeading": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/candidates/0/label"
+                },
+                "variant": "default"
+              }
+            },
+            "candidateAIdRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "candidateAIdLabel",
+                "candidateAIdValue"
+              ]
+            },
+            "candidateAIdLabel": {
+              "type": "Text",
+              "props": {
+                "content": "候选人 ID：",
+                "variant": "muted"
+              }
+            },
+            "candidateAIdValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/candidates/0/id"
+                },
+                "variant": "default"
+              }
+            },
+            "candidateBRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "candidateBHeading",
+                "candidateBIdRow"
+              ]
+            },
+            "candidateBHeading": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/candidates/1/label"
+                },
+                "variant": "default"
+              }
+            },
+            "candidateBIdRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "candidateBIdLabel",
+                "candidateBIdValue"
+              ]
+            },
+            "candidateBIdLabel": {
+              "type": "Text",
+              "props": {
+                "content": "候选人 ID：",
+                "variant": "muted"
+              }
+            },
+            "candidateBIdValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/candidates/1/id"
+                },
+                "variant": "default"
+              }
+            },
+            "matchRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "matchLabel",
+                "matchValue"
+              ]
+            },
+            "matchLabel": {
+              "type": "Text",
+              "props": {
+                "content": "匹配结论：",
+                "variant": "muted"
+              }
+            },
+            "matchValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/match"
+                },
+                "variant": "default"
+              }
+            },
+            "noteRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "noteLabel",
+                "noteValue"
+              ]
+            },
+            "noteLabel": {
+              "type": "Text",
+              "props": {
+                "content": "备注：",
+                "variant": "muted"
+              }
+            },
+            "noteValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "warning"
+              }
+            },
+            "altRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "altLabel",
+                "altValue"
+              ]
+            },
+            "altLabel": {
+              "type": "Text",
+              "props": {
+                "content": "图像替代说明（alt）：",
+                "variant": "muted"
+              }
+            },
+            "altValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/alt"
+                },
+                "variant": "muted"
+              }
+            },
+            "confirmSection": {
+              "type": "Section",
+              "props": {
+                "title": "确认",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "confirmText"
+              ]
+            },
+            "confirmText": {
+              "type": "Text",
+              "props": {
+                "content": "请确认是否为 A，若不是请说明。",
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "image": "/api/media/bench05-person-pair/content",
+            "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+            "title": "图书馆入口 · 候选人对照图（合成示意图）",
+            "location": "图书馆入口",
+            "candidates": [
+              {
+                "id": "person-a",
+                "label": "候选人 A：灰衣 + 拉箱子（与你描述相符）"
+              },
+              {
+                "id": "person-b",
+                "label": "候选人 B：蓝衣 + 背包"
+              }
+            ],
+            "match": "灰衣服、拉箱子 → A",
+            "note": "图为合成示意图，仅用于辨认对照；尚未由你确认。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_HdpyEK2rjhqdsWrIAUPg9049"
+      },
+      "toolCallId": "call_00_HdpyEK2rjhqdsWrIAUPg9049",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "fadfe3d0-83a2-43ce-8f2f-48bac7d716ee"
+    }
+  }
+]

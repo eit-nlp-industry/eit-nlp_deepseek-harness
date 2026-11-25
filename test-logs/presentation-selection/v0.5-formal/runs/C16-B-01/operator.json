@@ -1,0 +1,47 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C16",
+    "facts": "用户确认doc-01后，模拟交接完成；不代表真实取物。",
+    "assets": [],
+    "status": "simulated_handover_complete",
+    "candidate_id": "doc-01"
+  },
+  "events": [
+    {
+      "id": "C16-B-01-prepared",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "模拟已到office-zw门口、敲门、等待老师放好文件；现在doc-01已放妥，发布待确认文件图，交接尚未完成。",
+        "assets": [
+          {
+            "id": "bench05-doc-01",
+            "file": "bench05-doc-01.png",
+            "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture",
+            "source_id": "doc-01",
+            "url": "http://127.0.0.1:3080/api/media/bench05-doc-01/content",
+            "path": "/api/media/bench05-doc-01/content",
+            "sha256": "0b03c85dfff96d94a9b9cb57877cfef6b49950b14a851e213750ae1d335b04de",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "status": "ready_for_confirmation",
+        "candidate_id": "doc-01"
+      }
+    },
+    {
+      "id": "C16-B-01-handover",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "用户确认doc-01后，模拟交接完成；不代表真实取物。",
+        "assets": [],
+        "simulated": true,
+        "status": "simulated_handover_complete",
+        "candidate_id": "doc-01"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

@@ -1,0 +1,26 @@
+{
+  "run_id": "C11-A-02",
+  "case_id": "C11",
+  "card_id": "C11",
+  "category_id": "G11",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C11-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C11-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C11-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：停一下，我拿个东西。\n指定呈现方式：简短文字控制回执。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "ab735006eb44ceec02f526b4d56895e3d28e8152132dc8048e3e9e214161f14c",
+  "operator_actions": "发送“停一下，我拿个东西。”→模拟暂停；再“继续吧。”→模拟继续。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T12:16:10.300Z",
+  "interactions": [
+    {
+      "at": "2026-11-19T12:17:39.178Z",
+      "type": "text",
+      "value": "继续吧。"
+    }
+  ],
+  "tab_id": "6",
+  "final_at": "2026-11-19T12:20:48.742Z",
+  "notes": "请求与实际暂停/继续结果分开说明，目标和任务一致，最终恢复跟随中，简洁清楚。"
+}

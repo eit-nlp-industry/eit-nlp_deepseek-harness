@@ -1,0 +1,1 @@
+{"at":"2026-11-20T05:56:47.927Z","session_id":"session-c279dafb-3c0e-4287-ad1c-0ea6fb1d9392","values":{"flow_name":"expense-flow-v1 报销流程","steps":["填写申请","检查材料","财务审核","通知结果"],"branches":{"材料齐全":"进入财务审核→通知结果","材料不齐":"通知申请人补充→补齐后回到“检查材料”重新核对"},"supplement_deadline":"3个工作日","save_mode":"编辑保存草稿","execute_approval_or_payment":false}}

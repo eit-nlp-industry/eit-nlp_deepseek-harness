@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 3,
+  "readability": 2,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "确认前display图片被原生提问阻塞，按固定脚本确认后才显示正确8241图片；最终只有包含pending_confirmation的旧卡片，没有确认状态答复，business_data字段大量外露。未寄件。"
+}

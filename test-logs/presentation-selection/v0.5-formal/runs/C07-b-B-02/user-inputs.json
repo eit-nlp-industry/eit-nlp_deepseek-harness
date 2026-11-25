@@ -1,0 +1,22 @@
+[
+  {
+    "seq": 9,
+    "time": 1795089787405,
+    "source": {
+      "kind": "user",
+      "rpcId": "d2a8b6ab-9f8c-4eb8-b324-014f72555c98",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "【全量正式呈现测评 C07-b-B-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C07-b-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C07-b-B-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：那就不用白板了，时间也改到8点之后。\n指定呈现方式：冲突说明+合法替代时段表单，不能默认替用户接受。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。"
+  },
+  {
+    "seq": 33,
+    "time": 1795089933934,
+    "source": {
+      "kind": "user",
+      "rpcId": "403e575b-6a2b-4c80-8ff4-9a39b118903c",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "用户已提交表单：\n期望开始时间：20:00 开始\n时长：1 小时\n其他开始时间（如 21:30）：未填写\n备注（可选）：未填写"
+  }
+]

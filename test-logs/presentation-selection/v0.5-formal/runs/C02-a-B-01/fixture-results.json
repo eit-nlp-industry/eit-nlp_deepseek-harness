@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C02-a-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_RjQIZhhKpTUuvS7vNweR2136"
+      },
+      "toolCallId": "call_00_ET_RjQIZhhKpTUuvS7vNweR2136",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C02-a\",\"facts\":\"图书馆有讨论室。进入图书馆需来访预约，是否获准以馆方答复为准。白板、投屏、开放时间均未知。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "f000d241-fb6d-43c7-a8b4-538ba9c7d3f7"
+    }
+  }
+]

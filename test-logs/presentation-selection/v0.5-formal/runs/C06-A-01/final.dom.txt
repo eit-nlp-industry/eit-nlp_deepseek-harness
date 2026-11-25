@@ -1,0 +1,340 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 更新草稿并提交 刚刚":
+    - generic: 已完成
+    - generic: 更新草稿并提交
+    - generic: 刚刚
+  - treeitem "已完成 调整图书馆行程安排 刚刚":
+    - generic: 已完成
+    - generic: 调整图书馆行程安排
+    - generic: 刚刚
+  - treeitem "已完成 图书馆一小时行程草稿 刚刚":
+    - generic: 已完成
+    - generic: 图书馆一小时行程草稿
+    - generic: 刚刚
+  - treeitem "图书馆行程改为一小时 刚刚" [selected]:
+    - generic: 图书馆行程改为一小时
+    - generic: 刚刚
+  - treeitem "已完成 校外访客参观预约流程 2分钟":
+    - generic: 已完成
+    - generic: 校外访客参观预约流程
+    - generic: 2分钟
+  - treeitem "已完成 校外朋友参观预约咨询 2分钟":
+    - generic: 已完成
+    - generic: 校外朋友参观预约咨询
+    - generic: 2分钟
+  - treeitem "C05-B-01 访客参观预填表单测评 2分钟":
+    - generic: C05-B-01 访客参观预填表单测评
+    - generic: 2分钟
+  - treeitem "已完成 校外访客参观审批预填表单 3分钟":
+    - generic: 已完成
+    - generic: 校外访客参观审批预填表单
+    - generic: 3分钟
+  - treeitem "已完成 讲座线上线下选择呈现测评 4分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下选择呈现测评
+    - generic: 4分钟
+  - treeitem "已完成 讲座线上线下选择表单呈现 4分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下选择表单呈现
+    - generic: 4分钟
+  - treeitem "已完成 选择线上或线下讲座 6分钟":
+    - generic: 已完成
+    - generic: 选择线上或线下讲座
+    - generic: 6分钟
+  - treeitem "讲座线上线下偏好选择测评 6分钟":
+    - generic: 讲座线上线下偏好选择测评
+    - generic: 6分钟
+  - treeitem "已完成 校园半日游轻量表单测评 6分钟":
+    - generic: 已完成
+    - generic: 校园半日游轻量表单测评
+    - generic: 6分钟
+  - treeitem "校园半日游轻量form测评 7分钟":
+    - generic: 校园半日游轻量form测评
+    - generic: 7分钟
+  - treeitem "已完成 校园半日游偏好确认测评 8分钟":
+    - generic: 已完成
+    - generic: 校园半日游偏好确认测评
+    - generic: 8分钟
+  - treeitem "已完成 校园半日游偏好收集 8分钟":
+    - generic: 已完成
+    - generic: 校园半日游偏好收集
+    - generic: 8分钟
+  - treeitem "已完成 全量呈现测评地点查找 9分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评地点查找
+    - generic: 9分钟
+  - treeitem "已完成 测评C04-a-B-01：轻量form找地点 9分钟":
+    - generic: 已完成
+    - generic: 测评C04-a-B-01：轻量form找地点
+    - generic: 9分钟
+  - treeitem "已完成 协助用户寻找地点偏好 10分钟":
+    - generic: 已完成
+    - generic: 协助用户寻找地点偏好
+    - generic: 10分钟
+  - treeitem "模拟环境地点查找测评 10分钟":
+    - generic: 模拟环境地点查找测评
+    - generic: 10分钟
+  - treeitem "已完成 Benchmark fixture place-finding test 19分钟":
+    - generic: 已完成
+    - generic: Benchmark fixture place-finding test
+    - generic: 19分钟
+  - treeitem "已完成 轻量表单选择地点测评 19分钟":
+    - generic: 已完成
+    - generic: 轻量表单选择地点测评
+    - generic: 19分钟
+  - treeitem "已完成 轻量form找地点测评 C04-a-B-01 19分钟":
+    - generic: 已完成
+    - generic: 轻量form找地点测评 C04-a-B-01
+    - generic: 19分钟
+  - treeitem "寻找地点的偏好确认测试 19分钟":
+    - generic: 寻找地点的偏好确认测试
+    - generic: 19分钟
+  - treeitem "已完成 C03-B-02 场地推荐测评 23分钟":
+    - generic: 已完成
+    - generic: C03-B-02 场地推荐测评
+    - generic: 23分钟
+  - treeitem "已完成 会议室投屏白板试讲安排 23分钟":
+    - generic: 已完成
+    - generic: 会议室投屏白板试讲安排
+    - generic: 23分钟
+  - treeitem "已完成 明晚试讲场地推荐比较 23分钟":
+    - generic: 已完成
+    - generic: 明晚试讲场地推荐比较
+    - generic: 23分钟
+  - treeitem "试讲场地推荐测评 23分钟":
+    - generic: 试讲场地推荐测评
+    - generic: 23分钟
+  - treeitem "已完成 进校后能否直接去图书馆测评 29分钟":
+    - generic: 已完成
+    - generic: 进校后能否直接去图书馆测评
+    - generic: 29分钟
+  - treeitem "已完成 进校后图书馆访问测评 29分钟":
+    - generic: 已完成
+    - generic: 进校后图书馆访问测评
+    - generic: 29分钟
+  - treeitem "已完成 图书馆入校访问测评 29分钟":
+    - generic: 已完成
+    - generic: 图书馆入校访问测评
+    - generic: 29分钟
+  - treeitem "进校后能否直接去图书馆 29分钟":
+    - generic: 进校后能否直接去图书馆
+    - generic: 29分钟
+  - treeitem "已完成 图书馆讨论场所展示测评 31分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论场所展示测评
+    - generic: 31分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 31分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 31分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 32分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 32分钟
+  - treeitem "图书馆讨论空间简洁卡片 32分钟":
+    - generic: 图书馆讨论空间简洁卡片
+    - generic: 32分钟
+  - treeitem "已完成 东方理工校园设施介绍测评 36分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 36分钟
+  - treeitem "已完成 东方理工校园设施介绍呈现测评 36分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍呈现测评
+    - generic: 36分钟
+  - treeitem "已完成 东方理工校园信息介绍测评 36分钟":
+    - generic: 已完成
+    - generic: 东方理工校园信息介绍测评
+    - generic: 36分钟
+  - treeitem "东方理工校园设施介绍 36分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 36分钟
+  - treeitem "已完成 东方理工校园设施介绍测评 43分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 43分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 43分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 43分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 43分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 43分钟
+  - treeitem "东方理工图书馆餐饮书院介绍 43分钟":
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 43分钟
+  - treeitem "已完成 东方理工校园设施介绍 47分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 47分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 47分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 47分钟
+  - treeitem "已完成 东方理工校园设施介绍 47分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 47分钟
+  - treeitem "东方理工校园设施介绍 47分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 47分钟
+  - treeitem "已完成 四会话隔离预检marker 49分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检marker
+    - generic: 49分钟
+  - treeitem "已完成 四会话隔离预检测试 49分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 49分钟
+  - button "展开其余 50 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 图书馆行程改为一小时
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 C06-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C06-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C06-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：那就不去图书馆了，只逛一个小时左右，早上10点开始，然后吃午饭。 指定呈现方式：Markdown草稿，文字修改并确认。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 19:54
+- button "复制":
+- status: 已完成
+- button "已完成，用时 7秒":
+  - generic: 已完成，用时 7秒
+- paragraph: 我先获取这个案例的固定材料。
+- heading "参观草稿（修改版）" [level=2]
+- table:
+  - rowgroup:
+    - row "项目 内容":
+      - columnheader "项目"
+      - columnheader "内容"
+  - rowgroup:
+    - row "日期 2026年11月7日":
+      - cell "日期"
+      - cell "2026年11月7日"
+    - row "时间 10:00–11:00（约 1 小时）":
+      - cell "时间"
+      - cell "10:00–11:00（约 1 小时）"
+    - row "人数 3 人":
+      - cell "人数"
+      - cell "3 人"
+    - row "同行说明 带两位校外朋友参观":
+      - cell "同行说明"
+      - cell "带两位校外朋友参观"
+    - row "行程安排 只在校园内漫步参观，不去图书馆":
+      - cell "行程安排"
+      - cell "只在校园内漫步参观，不去图书馆":
+        - text: 只在校园内漫步参观，
+        - strong: 不去图书馆
+    - row "后续 11:00 结束漫步后，直接安排午饭":
+      - cell "后续"
+      - cell "11:00 结束漫步后，直接安排午饭"
+- paragraph: 标注：
+- list:
+  - listitem: 出发与结束时间从原草稿的 14:00–15:00 调整为 10:00–11:00，时长按“一个小时左右”设定。
+  - listitem: 行程中去掉了原计划里的图书馆，只保留漫步参观。
+  - listitem: 午饭时间接在漫步之后，具体地点还没定，可以按你的要求再补上。
+  - listitem: 日期和 3 人的信息沿用原草稿，暂未变动。
+- paragraph: 这是草稿，还没有提交。如果你要改时间、时长、地点或午饭安排，直接用文字告诉我就行；等你说“确认”，我再按上面内容提交。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 5.3K tok":
+  - generic: 用量 5.3K tok
+- generic: 19:54
+- generic: 确认提交草稿，备注为：带两位校外朋友逛校园，之后吃午饭。
+- generic: 19:55
+- button "复制":
+- status: 已完成
+- button "已完成，用时 3秒":
+  - generic: 已完成，用时 3秒
+- heading "已提交草稿" [level=2]
+- table:
+  - rowgroup:
+    - row "项目 内容":
+      - columnheader "项目"
+      - columnheader "内容"
+  - rowgroup:
+    - row "日期 2026年11月7日":
+      - cell "日期"
+      - cell "2026年11月7日"
+    - row "时间 10:00–11:00（约 1 小时）":
+      - cell "时间"
+      - cell "10:00–11:00（约 1 小时）"
+    - row "人数 3 人":
+      - cell "人数"
+      - cell "3 人"
+    - row "备注 带两位校外朋友逛校园，之后吃午饭。":
+      - cell "备注"
+      - cell "带两位校外朋友逛校园，之后吃午饭。"
+- paragraph: 状态：已收到你的草稿，这次提交的是模拟结果，没有在真实系统里预约，也没有实际预订。
+- paragraph: 午饭的地点、时间，或者漫步路线还得确定，随时告诉我，我再补上。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 6.9K tok":
+  - generic: 用量 6.9K tok
+- generic: 19:55
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

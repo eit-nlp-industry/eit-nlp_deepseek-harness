@@ -1,0 +1,212 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C24-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_0Gwfy5KK7mNfqCobMaQi1613"
+      },
+      "toolCallId": "call_00_ET_0Gwfy5KK7mNfqCobMaQi1613",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C24\",\"facts\":\"独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "fc91ebc8-4644-4a91-8bc4-e05807f10810"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C24-B-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Q64linjt16plEJmwBT1J6035"
+      },
+      "toolCallId": "call_00_Q64linjt16plEJmwBT1J6035",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C24\",\"facts\":\"独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "baafaf2a-83e0-4cbc-bd39-5322ea23070f"
+    }
+  },
+  {
+    "call": {
+      "seq": 46,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C24-B-01",
+        "values": {
+          "action": "workflow.save",
+          "workflow": {
+            "version": "workflow-v1",
+            "id": "wf-c24-lin-teacher-draft",
+            "name": "到林老师门口取材料并送回",
+            "nodes": [
+              {
+                "id": "start",
+                "type": "start",
+                "label": "开始",
+                "next": "go_door"
+              },
+              {
+                "id": "go_door",
+                "type": "action",
+                "label": "走到林老师门口",
+                "next": "knock_wait"
+              },
+              {
+                "id": "knock_wait",
+                "type": "action",
+                "label": "敲门并等待材料",
+                "next": "branch_teacher"
+              },
+              {
+                "id": "branch_teacher",
+                "type": "condition",
+                "label": "林老师在吗？",
+                "expression": "teacher.present === true",
+                "branches": [
+                  {
+                    "when": "true",
+                    "label": "老师在",
+                    "id": "branch_present",
+                    "next": "photo_confirm"
+                  },
+                  {
+                    "when": "false",
+                    "label": "老师不在",
+                    "id": "branch_absent",
+                    "next": "notify_absent"
+                  }
+                ]
+              },
+              {
+                "id": "photo_confirm",
+                "type": "action",
+                "label": "拍照确认材料",
+                "next": "send_back"
+              },
+              {
+                "id": "send_back",
+                "type": "action",
+                "label": "把材料送回",
+                "next": "end_done"
+              },
+              {
+                "id": "end_done",
+                "type": "end",
+                "label": "结束（已送回）"
+              },
+              {
+                "id": "notify_absent",
+                "type": "action",
+                "label": "通知我：老师不在",
+                "config": {
+                  "channel": "通知",
+                  "target": "我",
+                  "message": "林老师不在，已停止等待"
+                },
+                "next": "end_absent"
+              },
+              {
+                "id": "end_absent",
+                "type": "end",
+                "label": "结束（老师不在）"
+              }
+            ],
+            "edges": [
+              {
+                "from": "start",
+                "to": "go_door"
+              },
+              {
+                "from": "go_door",
+                "to": "knock_wait"
+              },
+              {
+                "from": "knock_wait",
+                "to": "branch_teacher"
+              },
+              {
+                "from": "branch_teacher",
+                "to": "photo_confirm",
+                "condition": "老师在",
+                "branch_id": "branch_present"
+              },
+              {
+                "from": "branch_teacher",
+                "to": "notify_absent",
+                "condition": "老师不在",
+                "branch_id": "branch_absent"
+              },
+              {
+                "from": "photo_confirm",
+                "to": "send_back"
+              },
+              {
+                "from": "send_back",
+                "to": "end_done"
+              },
+              {
+                "from": "notify_absent",
+                "to": "end_absent"
+              }
+            ],
+            "meta": {
+              "status": "draft",
+              "save_only": true,
+              "simulated": true
+            }
+          },
+          "parameters": {
+            "workflow_id": "wf-c24-lin-teacher-draft",
+            "mode": "draft",
+            "save_only": true
+          }
+        }
+      }
+    },
+    "result_seq": 47,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_2ysCdCOx8rijld43tuBo6851"
+      },
+      "toolCallId": "call_00_2ysCdCOx8rijld43tuBo6851",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"version\":3,\"submitted\":{\"action\":\"workflow.save\",\"workflow\":{\"version\":\"workflow-v1\",\"id\":\"wf-c24-lin-teacher-draft\",\"name\":\"到林老师门口取材料并送回\",\"nodes\":[{\"id\":\"start\",\"type\":\"start\",\"label\":\"开始\",\"next\":\"go_door\"},{\"id\":\"go_door\",\"type\":\"action\",\"label\":\"走到林老师门口\",\"next\":\"knock_wait\"},{\"id\":\"knock_wait\",\"type\":\"action\",\"label\":\"敲门并等待材料\",\"next\":\"branch_teacher\"},{\"id\":\"branch_teacher\",\"type\":\"condition\",\"label\":\"林老师在吗？\",\"expression\":\"teacher.present === true\",\"branches\":[{\"when\":\"true\",\"label\":\"老师在\",\"id\":\"branch_present\",\"next\":\"photo_confirm\"},{\"when\":\"false\",\"label\":\"老师不在\",\"id\":\"branch_absent\",\"next\":\"notify_absent\"}]},{\"id\":\"photo_confirm\",\"type\":\"action\",\"label\":\"拍照确认材料\",\"next\":\"send_back\"},{\"id\":\"send_back\",\"type\":\"action\",\"label\":\"把材料送回\",\"next\":\"end_done\"},{\"id\":\"end_done\",\"type\":\"end\",\"label\":\"结束（已送回）\"},{\"id\":\"notify_absent\",\"type\":\"action\",\"label\":\"通知我：老师不在\",\"config\":{\"channel\":\"通知\",\"target\":\"我\",\"message\":\"林老师不在，已停止等待\"},\"next\":\"end_absent\"},{\"id\":\"end_absent\",\"type\":\"end\",\"label\":\"结束（老师不在）\"}],\"edges\":[{\"from\":\"start\",\"to\":\"go_door\"},{\"from\":\"go_door\",\"to\":\"knock_wait\"},{\"from\":\"knock_wait\",\"to\":\"branch_teacher\"},{\"from\":\"branch_teacher\",\"to\":\"photo_confirm\",\"condition\":\"老师在\",\"branch_id\":\"branch_present\"},{\"from\":\"branch_teacher\",\"to\":\"notify_absent\",\"condition\":\"老师不在\",\"branch_id\":\"branch_absent\"},{\"from\":\"photo_confirm\",\"to\":\"send_back\"},{\"from\":\"send_back\",\"to\":\"end_done\"},{\"from\":\"notify_absent\",\"to\":\"end_absent\"}],\"meta\":{\"status\":\"draft\",\"save_only\":true,\"simulated\":true}},\"parameters\":{\"workflow_id\":\"wf-c24-lin-teacher-draft\",\"mode\":\"draft\",\"save_only\":true}}}}"
+        }
+      ],
+      "isError": false,
+      "id": "e6dcf3b5-6c90-4760-b777-c1af4ca9dde5"
+    }
+  }
+]

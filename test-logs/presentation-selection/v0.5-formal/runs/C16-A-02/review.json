@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "准备完成才展示doc-01图，用户确认后仍等交接事件，最后明确模拟完成与实际取物区分。"
+}

@@ -1,0 +1,389 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 Workflow编辑器材料呈现测评 刚刚":
+    - generic: 进行中
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 饮水机维修照片呈现测评 1分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 1分钟
+  - treeitem "工作流条件分支测评呈现 1分钟" [selected]:
+    - generic: 工作流条件分支测评呈现
+    - generic: 1分钟
+  - treeitem "已完成 Workflow 追加分支编辑器测评 1分钟":
+    - generic: 已完成
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 1分钟
+  - treeitem "已完成 报销流程草稿编辑保存 2分钟":
+    - generic: 已完成
+    - generic: 报销流程草稿编辑保存
+    - generic: 2分钟
+  - treeitem "已完成 报销流程整理与草稿保存 2分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 2分钟
+  - treeitem "Workflow材料取送流程测评 3分钟":
+    - generic: Workflow材料取送流程测评
+    - generic: 3分钟
+  - treeitem "已完成 监测文件处理任务失败通知 4分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 4分钟
+  - treeitem "已完成 文件处理任务监测模拟 4分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 4分钟
+  - treeitem "饮水机不出水照片评测 6分钟":
+    - generic: 饮水机不出水照片评测
+    - generic: 6分钟
+  - treeitem "已完成 平面图快递路线静态示意 8分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 8分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 8分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 8分钟
+  - treeitem "已完成 三项工作排期草稿确认 9分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 9分钟
+  - treeitem "已完成 安排三项工作并确认草稿 9分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 9分钟
+  - treeitem "已完成 会议室预约改期草稿 11分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 11分钟
+  - treeitem "已完成 会议室预约改期草稿测评 11分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 11分钟
+  - treeitem "已完成 售后申请草稿填写与确认 11分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 11分钟
+  - treeitem "已完成 售后申请草稿填写测评 11分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 11分钟
+  - treeitem "已完成 商品退货多视角图片呈现 13分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 13分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 13分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 13分钟
+  - treeitem "食堂导航状态卡片呈现 13分钟":
+    - generic: 食堂导航状态卡片呈现
+    - generic: 13分钟
+  - treeitem "已完成 包裹照片确认对象状态 15分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 15分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 16分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 16分钟
+  - treeitem "测评 C21-B-01 食堂导航 18分钟":
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 18分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 19分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 19分钟
+  - treeitem "已完成 活动需求确认与汇总 19分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 19分钟
+  - treeitem "已完成 活动需求确认测评 19分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 19分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 工作流条件分支测评呈现
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C24-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C24-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C24-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：老师不在就告诉我，不需要一直在那等。 指定呈现方式：Workflow追加条件分支并保存回传。必须实际调用render_ui；事实来自本例材料。本题需要Workflow：用intent=rich_content并省略不受支持的components枚举，在user_query要求Workflow编辑器。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。 Workflow接入规范：根Stack内放Workflow和独立保存Button两个兄弟节点；Workflow(mode=edit)用$bindState绑定/_ui/workflow，初始化完整workflow-v1文档；保存发workflow.save，payload.workflow用$state读取最新文档，parameters为对象。不要$ref，不用静态步骤或组件嵌套伪装编辑器。
+- generic: 13:57
+- button "复制":
+- status: 已完成
+- button "已完成，用时 1分5秒":
+  - generic: 已完成，用时 1分5秒
+- paragraph: 我先加载这个案例的固定材料。
+- paragraph: 草稿流程已经按“老师在”和“老师不在”分开，并在编辑器里展示为条件分支：
+- paragraph:
+  - strong: 流程结构
+- list:
+  - listitem: 到林老师门口
+  - listitem: 敲门并等待老师给材料
+  - strong: 条件分支：老师在不在？
+  - list:
+    - strong: 老师不在
+    - text: → 通知你“老师不在，本次不再等待” → 结束流程
+    - strong: 老师在
+    - text: → 拍照确认材料 → 送回材料 → 结束流程
+- paragraph: 关键点：“拍照确认”和“送回”只保留在“老师在”这一支里，不会再被两条路径共用。老师不在时，流程一定走到通知并结束，不会留在原地等你。
+- paragraph: 编辑器里可以直接改条件名、增删分支步骤；改完点“保存草稿为 workflow”保存，保存的是你此刻看到的版本。在此之前我不会提交任何内容，也不代表已保存成功；不涉及机器人操作，也不涉及真实取物。
+- paragraph: 如果你希望“老师不在”时改成打电话而不是发通知，或想加一步“把材料留在门口”，在编辑器里调整后告诉我，我按你确认的版本保存。
+- generic: 老师不在时会通知你并结束，不会原地等你。
+- region "林老师门口取材料（草稿）":
+  - heading "林老师门口取材料（草稿）" [level=3]
+  - button "编辑名称"
+  - button "撤销" [disabled]
+  - button "重做" [disabled]
+  - text: 编辑草稿 · 分支完成后继续后续步骤
+  - list:
+    - button "01 · 步骤 到林老师门口":
+      - generic: 01 · 步骤
+      - strong: 到林老师门口
+    - button "移动 到林老师门口": ⠿
+    - button "菜单 到林老师门口": ⋮
+    - text: ↓
+    - button "02 · 步骤 敲门并等待老师给材料":
+      - generic: 02 · 步骤
+      - strong: 敲门并等待老师给材料
+    - button "移动 敲门并等待老师给材料": ⠿
+    - button "菜单 敲门并等待老师给材料": ⋮
+    - text: ↓
+    - button "03 · 条件 老师在不在？":
+      - generic: 03 · 条件
+      - strong: 老师在不在？
+    - button "移动 老师在不在？": ⠿
+    - button "菜单 老师在不在？": ⋮
+    - generic: 老师不在
+    - button "编辑分支"
+    - button "删除分支"
+    - list:
+      - button "01 · 步骤 通知我：老师不在，本次不再等待":
+        - generic: 01 · 步骤
+        - strong: 通知我：老师不在，本次不再等待
+      - button "移动 通知我：老师不在，本次不再等待": ⠿
+      - button "菜单 通知我：老师不在，本次不再等待": ⋮
+      - text: ↓
+      - button "02 · 步骤 结束流程 老师不在，已通知用户，不再原地等待":
+        - generic: 02 · 步骤
+        - strong: 结束流程
+        - generic: 老师不在，已通知用户，不再原地等待
+      - button "移动 结束流程": ⠿
+      - button "菜单 结束流程": ⋮
+      - text: ↓
+    - button "＋ 步骤"
+    - generic: 老师在
+    - button "编辑分支"
+    - button "删除分支"
+    - list:
+      - button "01 · 步骤 拍照确认材料":
+        - generic: 01 · 步骤
+        - strong: 拍照确认材料
+      - button "移动 拍照确认材料": ⠿
+      - button "菜单 拍照确认材料": ⋮
+      - text: ↓
+      - button "02 · 步骤 送回材料":
+        - generic: 02 · 步骤
+        - strong: 送回材料
+      - button "移动 送回材料": ⠿
+      - button "菜单 送回材料": ⋮
+      - text: ↓
+      - button "03 · 步骤 结束流程 材料已拍照确认并送回":
+        - generic: 03 · 步骤
+        - strong: 结束流程
+        - generic: 材料已拍照确认并送回
+      - button "移动 结束流程": ⠿
+      - button "菜单 结束流程": ⋮
+      - text: ↓
+    - button "＋ 步骤"
+    - text: ↓
+  - button "＋ 新增步骤"
+  - button "＋ 新增条件"
+- button "保存草稿为 workflow":
+  - generic: 保存草稿为 workflow
+- heading "业务数据明细" [level=2]
+- paragraph: 以下按 business_data 原字段逐项展示草稿元数据、节点、分支、边与事实出处。
+- generic: 组件未注册
+- table:
+  - rowgroup:
+    - row "id type title order 说明 / 结束原因":
+      - columnheader "id"
+      - columnheader "type"
+      - columnheader "title"
+      - columnheader "order"
+      - columnheader "说明 / 结束原因"
+  - rowgroup:
+    - row "n1 task 到林老师门口 1":
+      - cell "n1"
+      - cell "task"
+      - cell "到林老师门口"
+      - cell "1"
+      - cell
+    - row "n2 task 敲门并等待老师给材料 2":
+      - cell "n2"
+      - cell "task"
+      - cell "敲门并等待老师给材料"
+      - cell "2"
+      - cell
+    - row "n3 branch 老师在不在？ 3":
+      - cell "n3"
+      - cell "branch"
+      - cell "老师在不在？"
+      - cell "3"
+      - cell
+    - row "n4a task 通知我：老师不在，本次不再等待 absent 分支":
+      - cell "n4a"
+      - cell "task"
+      - cell "通知我：老师不在，本次不再等待"
+      - cell
+      - cell "absent 分支"
+    - row "n4b end 结束流程 老师不在，已通知用户，不再原地等待":
+      - cell "n4b"
+      - cell "end"
+      - cell "结束流程"
+      - cell
+      - cell "老师不在，已通知用户，不再原地等待"
+    - row "n5a task 拍照确认材料 present 分支":
+      - cell "n5a"
+      - cell "task"
+      - cell "拍照确认材料"
+      - cell
+      - cell "present 分支"
+    - row "n5b task 送回材料 present 分支":
+      - cell "n5b"
+      - cell "task"
+      - cell "送回材料"
+      - cell
+      - cell "present 分支"
+    - row "n5c end 结束流程 材料已拍照确认并送回":
+      - cell "n5c"
+      - cell "end"
+      - cell "结束流程"
+      - cell
+      - cell "材料已拍照确认并送回"
+- table:
+  - rowgroup:
+    - row "分支 key 分支 label 分支内步骤（按原顺序） 结束原因":
+      - columnheader "分支 key"
+      - columnheader "分支 label"
+      - columnheader "分支内步骤（按原顺序）"
+      - columnheader "结束原因"
+  - rowgroup:
+    - row "absent 老师不在 通知我：老师不在，本次不再等待；结束流程 老师不在，已通知用户，不再原地等待":
+      - cell "absent"
+      - cell "老师不在"
+      - cell "通知我：老师不在，本次不再等待；结束流程"
+      - cell "老师不在，已通知用户，不再原地等待"
+    - row "present 老师在 拍照确认材料；送回材料；结束流程 材料已拍照确认并送回":
+      - cell "present"
+      - cell "老师在"
+      - cell "拍照确认材料；送回材料；结束流程"
+      - cell "材料已拍照确认并送回"
+- table:
+  - rowgroup:
+    - row "from to when":
+      - columnheader "from"
+      - columnheader "to"
+      - columnheader "when"
+  - rowgroup:
+    - row "n1 n2":
+      - cell "n1"
+      - cell "n2"
+      - cell
+    - row "n2 n3":
+      - cell "n2"
+      - cell "n3"
+      - cell
+    - row "n3 n4a absent":
+      - cell "n3"
+      - cell "n4a"
+      - cell "absent"
+    - row "n4a n4b":
+      - cell "n4a"
+      - cell "n4b"
+      - cell
+    - row "n3 n5a present":
+      - cell "n3"
+      - cell "n5a"
+      - cell "present"
+    - row "n5a n5b":
+      - cell "n5a"
+      - cell "n5b"
+      - cell
+    - row "n5b n5c":
+      - cell "n5b"
+      - cell "n5c"
+      - cell
+- generic: 组件未注册
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 11.8K tok":
+  - generic: 用量 11.8K tok
+- generic: 13:59
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

@@ -1,0 +1,384 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_INFdkjao8xGUgs2xSYeC3057",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"replace\", \"locale\": \"zh-CN\", \"user_query\": \"用一个简洁的状态卡片呈现\\\"留意五分钟，门开了告诉我\\\"的模拟观察状态：顶部大标题\\\"门开了告诉你\\\"，下方一行醒目状态徽标\\\"观察中·门仍关闭（初始）\\\"；再列三行事实：观察编号 watch-01、观察期限 5 分钟、当前门状态 关闭；一行说明\\\"尚无开门事件，暂不判断结果\\\"。底部放一小段文字兜底，完整写明：这是模拟观察，虚拟时钟计时，只有在收到开门事件后才会通知\\\"门开了\\\"，现在没有任何开门或观察完成的结果。不使用图片，不出现虚构地址。\", \"business_data\": {\"标题\": \"门开了告诉你\", \"状态徽标\": \"观察中 · 门仍关闭（初始）\", \"观察编号\": \"watch-01\", \"观察期限\": \"5 分钟\", \"当前门状态\": \"关闭\", \"事件\": \"尚无开门事件\", \"说明\": \"模拟观察，虚拟时钟计时；收到开门事件前不判断结果\", \"文字兜底\": \"模拟观察 watch-01，期限 5 分钟，门当前为关闭状态。尚无开门事件，观察未完成，暂时没有可报告的开门结果；一旦出现开门事件会立即告��。\", \"图像说明\": \"本轮材料未提供图像地址，仅给文字通知。\", \"所需rich组件\": \"Image（缺材料给定完整URL，未生成）\"}, \"scene\": \"kb\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "pageTitle",
+                "statusRow",
+                "factsSection",
+                "noteText",
+                "explainCallout",
+                "fallbackText",
+                "extraCollapsible"
+              ]
+            },
+            "pageTitle": {
+              "type": "Heading",
+              "props": {
+                "text": "门开了告诉你",
+                "level": "h1"
+              }
+            },
+            "statusRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "statusBadge"
+              ]
+            },
+            "statusBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "观察中 · 门仍关闭（初始）",
+                "variant": "info"
+              }
+            },
+            "factsSection": {
+              "type": "Section",
+              "props": {
+                "title": "观察字段",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "facts"
+              ]
+            },
+            "facts": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "观察编号",
+                    "value": "watch-01"
+                  },
+                  {
+                    "label": "观察期限",
+                    "value": "5 分钟"
+                  },
+                  {
+                    "label": "当前门状态",
+                    "value": "关闭"
+                  }
+                ]
+              }
+            },
+            "noteText": {
+              "type": "Text",
+              "props": {
+                "content": "尚无开门事件，暂不判断结果",
+                "variant": "default"
+              }
+            },
+            "explainCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "说明",
+                "description": "模拟观察，虚拟时钟计时；收到开门事件前不判断结果",
+                "showIcon": true
+              }
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": "模拟观察 watch-01，期限 5 分钟，门当前为关闭状态。尚无开门事件，观察未完成，暂时没有可报告的开门结果；一旦出现开门事件会立即告知。",
+                "variant": "muted"
+              }
+            },
+            "extraCollapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "补充说明与出处",
+                "summary": "图像说明、所需 rich 组件与未生成项",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "extraDetails"
+              ]
+            },
+            "extraDetails": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "图像说明",
+                    "value": "本轮材料未提供图像地址，仅给文字通知。"
+                  },
+                  {
+                    "label": "所需 rich 组件",
+                    "value": "Image（缺材料给定完整 URL，未生成）"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "门开了告诉你",
+            "状态徽标": "观察中 · 门仍关闭（初始）",
+            "观察编号": "watch-01",
+            "观察期限": "5 分钟",
+            "当前门状态": "关闭",
+            "事件": "尚无开门事件",
+            "说明": "模拟观察，虚拟时钟计时；收到开门事件前不判断结果",
+            "文字兜底": "模拟观察 watch-01，期限 5 分钟，门当前为关闭状态。尚无开门事件，观察未完成，暂时没有可报告的开门结果；一旦出现开门事件会立即告��。",
+            "图像说明": "本轮材料未提供图像地址，仅给文字通知。",
+            "所需rich组件": "Image（缺材料给定完整URL，未生成）"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_INFdkjao8xGUgs2xSYeC3057"
+      },
+      "toolCallId": "call_00_INFdkjao8xGUgs2xSYeC3057",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "cbad38e8-3230-438c-b2d2-86b5600ba7a9"
+    }
+  },
+  {
+    "call_seq": 64,
+    "result_seq": 65,
+    "call": {
+      "turn": 4,
+      "step": 1,
+      "callId": "call_00_8BOr7o55hbrzzHc4gmJ65414",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"事件编号\": \"door-opened-at-3\", \"事件时间\": \"虚拟计时第3分钟\", \"图像说明\": \"本轮材料未提供图像地址，仅给文字通知。\", \"文字兜底\": \"模拟观察 watch-01：虚拟计时第 3 分钟门已打开。观察提前结束，未用完 5 分钟期限。\", \"标题\": \"门开了\", \"状态徽标\": \"已开门\", \"观察编号\": \"watch-01\", \"观察期限\": \"5 分钟（第 3 分钟时开门，提前结束）\", \"观察状态\": \"已触发通知，观察结束\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"scene\": \"kb\", \"user_query\": \"用一个简洁的开门口吻通知卡片：顶部大标题\\\"门开了\\\"、亮色状态徽标\\\"已开门\\\"；下方列三行事实：观察编号 watch-01、触发时间 虚拟计时第 3 分钟、观察状态 已触发通知·观察结束（未满 5 分钟期限）；再加一行现有门状态\\\"门已打开\\\"。底部用一段文字兜底，完整写明：模拟观察 watch-01 在虚拟计时第 3 分钟观察到门打开，观察提前结束，未用完 5 分钟期限。不出现任何图片或地址。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "notification-card",
+                "business-data-section"
+              ]
+            },
+            "notification-card": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "notification-content"
+              ]
+            },
+            "notification-content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title-heading",
+                "status-badge",
+                "facts-descriptions",
+                "fallback-text"
+              ]
+            },
+            "title-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "门开了",
+                "level": "h1"
+              }
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已开门",
+                "variant": "success"
+              }
+            },
+            "facts-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "观察事实",
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "观察编号",
+                    "value": "watch-01"
+                  },
+                  {
+                    "label": "触发时间",
+                    "value": "虚拟计时第 3 分钟"
+                  },
+                  {
+                    "label": "观察状态",
+                    "value": "已触发通知·观察结束（未满 5 分钟期限）"
+                  },
+                  {
+                    "label": "门状态",
+                    "value": "门已打开"
+                  }
+                ]
+              }
+            },
+            "fallback-text": {
+              "type": "Text",
+              "props": {
+                "content": "模拟观察 watch-01 在虚拟计时第 3 分钟观察到门打开，观察提前结束，未用完 5 分钟期限。",
+                "variant": "default"
+              }
+            },
+            "business-data-section": {
+              "type": "Section",
+              "props": {
+                "title": "业务数据明细",
+                "description": "按字段逐项列出来源数据，保留数值与出处。",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "business-data-table"
+              ]
+            },
+            "business-data-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "字段",
+                  "值",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "事件编号",
+                    "door-opened-at-3",
+                    "business_data"
+                  ],
+                  [
+                    "事件时间",
+                    "虚拟计时第3分钟",
+                    "business_data"
+                  ],
+                  [
+                    "图像说明",
+                    "本轮材料未提供图像地址，仅给文字通知。",
+                    "business_data"
+                  ],
+                  [
+                    "文字兜底",
+                    "模拟观察 watch-01：虚拟计时第 3 分钟门已打开。观察提前结束，未用完 5 分钟期限。",
+                    "business_data"
+                  ],
+                  [
+                    "标题",
+                    "门开了",
+                    "business_data"
+                  ],
+                  [
+                    "状态徽标",
+                    "已开门",
+                    "business_data"
+                  ],
+                  [
+                    "观察编号",
+                    "watch-01",
+                    "business_data"
+                  ],
+                  [
+                    "观察期限",
+                    "5 分钟（第 3 分钟时开门，提前结束）",
+                    "business_data"
+                  ],
+                  [
+                    "观察状态",
+                    "已触发通知，观察结束",
+                    "business_data"
+                  ]
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "事件编号": "door-opened-at-3",
+            "事件时间": "虚拟计时第3分钟",
+            "图像说明": "本轮材料未提供图像地址，仅给文字通知。",
+            "文字兜底": "模拟观察 watch-01：虚拟计时第 3 分钟门已打开。观察提前结束，未用完 5 分钟期限。",
+            "标题": "门开了",
+            "状态徽标": "已开门",
+            "观察编号": "watch-01",
+            "观察期限": "5 分钟（第 3 分钟时开门，提前结束）",
+            "观察状态": "已触发通知，观察结束"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_8BOr7o55hbrzzHc4gmJ65414"
+      },
+      "toolCallId": "call_00_8BOr7o55hbrzzHc4gmJ65414",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "0294c397-9021-4cd0-9617-8f640831f3d6"
+    }
+  }
+]

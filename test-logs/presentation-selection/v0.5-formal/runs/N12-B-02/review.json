@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 2,
+  "state": 1,
+  "presentation": "partial",
+  "reason": "实际Workflow节点可编辑，补充期限改成3个工作日且保留返回检查的文字说明；完整DOM没有模型宣称的保存草稿按钮，无法实际保存/Host回传/取得version2回执。额外SortableSequence只调整展示清单、不改流程；大量节点边表及未注册组件，核心保存任务失败。"
+}

@@ -1,0 +1,138 @@
+模型可选呈现能力清单 v0.2
+
+范围：模型生成时能选择、用户能看到的呈现。原生UI内部按钮、输入框等不独立列为模型能力。
+证据级别：代码/说明可确认接入，trace可确认出现过返回；均不等于本轮实时可用或端到端成功。
+T文字含普通Markdown；N复用相同Markdown并增加已接通原生交互；J通过render_ui生成。
+图表、数据量上限、交互筛选、通用导出/公开分享目前没有充分证据，不写成已支持，也不武断判不支持。
+
+CAP01 文字、列表与静态表格
+  T：直接生成Markdown
+  N：同一Markdown呈现，不另算一套表格能力
+  J：display卡片/文字/Table；无需表单
+  依据：S1,S3,S8,S9
+  限制：表格可展示不代表支持分页、交互筛选或导出。
+
+CAP02 代码与数学表达
+  T：代码块、数学标记
+  N：原生代码/数学渲染
+  J：富组件CodeBlock有接入；数学专用组件未确认
+  依据：S1,S8,S9
+  限制：不推定Mermaid或任意HTML应用可执行。
+
+CAP03 单图与多图证据
+  T：仅文字或图片链接，不满足看图核对
+  N：Markdown图片及预览，受路径解析与媒体访问条件约束
+  J：Image；可组合Tabs多图
+  依据：S1,S2,S3,S9；trace38份payload
+  限制：同一图片资源供两臂；JSON和src存在不证明图片加载成功。
+
+CAP04 分类浏览与展开详情
+  T：标题、目录、分段阅读
+  N：本轮无已确认可由模型随意生成的Tabs/折叠协议
+  J：Tabs/TabContent、Collapsible明确接入
+  依据：S1,S3；案例1/14
+  限制：trace有Tabs；Collapsible仅确认接入，未在本批trace中出现。
+
+CAP05 单选、多选与自由回答
+  T：对话中提问，用户文字回复
+  N：ask_user_question：多题、单选、多选、自定义、跳过、推荐预选
+  J：form：generic_pick_one/generic_filters，真实选项来自business_data
+  依据：S1,S5,S6,S7
+  限制：原生卡为输入区接管；预选不等于提交或许可；两条表单路径用途不同。
+
+CAP06 多字段业务表单
+  T：通过文字收集，固定脚本解析为同一业务值
+  N：多题能收集值；未确认日期选择/数字输入/通用业务表单协议
+  J：DynamicForm有trace样例：date、number、text、select等字段
+  依据：S1,S3,S4；案例2/11&12/14
+  限制：校验、必填、默认值与真实提交值需逐项验收，不能从fields声明推定都有效。
+
+CAP07 筛选与检索
+  T：模型对固定数据筛选后输出结果
+  N：提问卡收集筛选条件；实际筛选仍由模型/工具处理
+  J：generic_filters可收集条件
+  依据：S1,S2,S5
+  限制：不将intent名称当作表格本地筛选引擎；自动联动筛选/大数据查询待验证。
+
+CAP08 排序与重新编排
+  T：按用户文字修改列表
+  N：未确认通用拖动排序入口
+  J：SortableSequence；route.order.apply回传顺序和条目
+  依据：S1,S3,S4；案例13
+  限制：route.order.change不发送；按实体ID验收，不要求复制参考元素ID。
+
+CAP09 参数调整与联动
+  T：用户文字改值后重新计算
+  N：可提问收集参数，未确认通用滑杆/实时联动
+  J：表单参数可提交；滑杆、自动重算及任意组件联动未确认
+  依据：S1,S4,S5
+  限制：参数输入不等于实时模拟计算；先确认catalog和宿主事件，再列入可比能力。
+
+CAP10 统计图表
+  T：文字与数表
+  N：未确认模型可选的原生图表协议
+  J：当前检查范围未确认可用Chart目录及交互
+  依据：S1,S2及当前仓库接入检查
+  限制：未确认不是断言不支持；趋势/分布图作为能力发现扩展，不纳入本轮可执行卡。
+
+CAP11 地图与路线示意
+  T：文字位置和路线说明
+  N：可展示已有地图图像，未确认可生成交互地图的原生入口
+  J：MapPreview；实时跟踪需要robot-live配置和位置SSE
+  依据：S1,S3；案例1
+  限制：静态示意、实时跟踪分开；没有地图服务不凭空补能力。
+
+CAP12 流程说明与编辑
+  T：步骤与条件文字
+  N：Markdown文档及专用计划视图；不等价于可编辑节点流程
+  J：Workflow编辑、撤销重做、workflow.save回传
+  依据：S1,S3,S4；案例15
+  限制：workflow.execute不发送；刷新不保留编辑；保存回传不等于永久存储或执行。
+
+CAP13 任务状态与控制
+  T：文字回执
+  N：已有工具卡/审批/状态由事件驱动
+  J：display可以表达业务状态；本身不执行暂停/导航
+  依据：S1,S3,S5及工具结果
+  限制：状态按钮只有接通处理器才有操作能力；不可把界面动作当真实机器人行为。
+
+CAP14 图片上传
+  T：不能形成上传控件
+  N：本轮未确认模型可生成的原生上传表单
+  J：ImageUpload明确接入；仅命名uploadTarget
+  依据：S1,S2,S3
+  限制：需要Host上传适配器；未配置目标不能伪造上传端点。
+
+CAP15 文件交付、复制与导出
+  T：文字可复制
+  N：present已有文件交付卡及侧栏预览；是专用流程
+  J：文字兜底保留用于复制/会话导出
+  依据：S3,S10
+  限制：未确认通用导出当前UI为PDF/图片/Excel或公开分享链接；文件生成是额外能力与成本。
+
+CAP16 失败与恢复
+  T：继续输出事实和可行下一步
+  N：提问状态/草稿恢复依调用模式；图片失败有替代说明
+  J：服务失败保留文字；渲染异常恢复Markdown；已成功卡不因后续失败消失
+  依据：S2,S3,S6,S7,S9
+  限制：服务最多3次尝试；HTTP400不重试；生成校验耗尽即停；图片GET失败不触发重新生成。
+
+共同限制与运行条件
+环境：当前核查的是DSH Web/桌面共用前端接入；SDK、Headless只有provider可处理时才具有对应UI，不能假定任意客户端都能渲染。
+窄屏：json-render代码含网格堆叠、宽表格局部滚动、主题与减少动效适配；这是实现证据，非已验证所有移动设备可用。原生提问有内部滚动；真机和触摸另测。
+数据量：尚未测得稳定最大条目/字段/图片/流程节点数；不得写“无限”或用HTTP响应成功推断可操作。首轮只测单事实、2选项、4字段、1图片。
+调用：原生ask_user_question经工具schema调用；legacy等待，timed须配置；J走render_ui(mode=display|form)，business_data存事实，user_query描述布局。
+J display后继续模型并生成完整文字兜底；仅符合条件的单成功replace卡替换文字；多个卡/补充卡在文字下。form成功结束当前轮，提交作为后续用户输入。
+导出：已有文字复制/会话导出与present文件交付；未确认一键导出json界面或生成公开分享链接。
+来源索引：
+S1 D:/work/project/eit-nlp_deepseek-harness/packages/json-render/tool-json-render/src/index.ts
+S2 D:/work/project/eit-nlp_deepseek-harness/packages/json-render/tool-json-render/README.md
+S3 D:/work/project/eit-nlp_deepseek-harness/packages/client/ui-json-render/README.md
+S4 D:/work/project/eit-nlp_deepseek-harness/packages/client/ui-json-render/src/client/submit.ts
+S5 D:/work/project/eit-nlp_deepseek-harness/packages/interaction/tool-ask-user/src/index.ts
+S6 D:/work/project/eit-nlp_deepseek-harness/packages/interaction/tool-ask-user/src/timed.ts
+S7 D:/work/project/eit-nlp_deepseek-harness/packages/client/ui-user-questions/README.md
+S8 D:/work/project/eit-nlp_deepseek-harness/packages/client/ui-primitives/src/markdown/parse.ts
+S9 D:/work/project/eit-nlp_deepseek-harness/packages/client/ui-primitives/src/markdown/render.tsx
+S10 D:/work/project/eit-nlp_deepseek-harness/packages/client/ui-deliverables/README.md
+S11 D:/work/project/eit-nlp_deepseek-harness/packages/bundle/web-app/presets/standard.patch.yml

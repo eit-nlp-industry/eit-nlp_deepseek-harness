@@ -1,0 +1,307 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 售后申请草稿动态表单测评 刚刚":
+    - generic: 进行中
+    - generic: 售后申请草稿动态表单测评
+    - generic: 刚刚
+  - treeitem "等待回答 商品多视角展示评测" [selected]:
+    - generic: 等待回答
+    - generic: 商品多视角展示评测
+    - generic: 待回答
+  - treeitem "已完成 售后申请草稿表单呈现测评 1分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿表单呈现测评
+    - generic: 1分钟
+  - treeitem "已完成 包裹照片确认呈现测评 1分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认呈现测评
+    - generic: 1分钟
+  - treeitem "进行中 商品多视角展示测评 2分钟":
+    - generic: 进行中
+    - generic: 商品多视角展示测评
+    - generic: 2分钟
+  - treeitem "已完成 活动需求三字段表单确认 3分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 3分钟
+  - treeitem "活动需求三字段表单确认 3分钟":
+    - generic: 活动需求三字段表单确认
+    - generic: 3分钟
+  - treeitem "已完成 包裹照片确认组件测评 4分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认组件测评
+    - generic: 4分钟
+  - treeitem "已完成 企业服务套餐固定材料呈现测评 5分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐固定材料呈现测评
+    - generic: 5分钟
+  - treeitem "已完成 测试笔记本挑选呈现 5分钟":
+    - generic: 已完成
+    - generic: 测试笔记本挑选呈现
+    - generic: 5分钟
+  - treeitem "6000元内出差笔记本推荐 5分钟":
+    - generic: 6000元内出差笔记本推荐
+    - generic: 5分钟
+  - treeitem "已完成 企业服务套餐介绍测评 5分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 5分钟
+  - treeitem "支付状态简洁卡片呈现 12分钟":
+    - generic: 支付状态简洁卡片呈现
+    - generic: 12分钟
+  - treeitem "已完成 支付状态卡片呈现测评 13分钟":
+    - generic: 已完成
+    - generic: 支付状态卡片呈现测评
+    - generic: 13分钟
+  - treeitem "图书馆预约必要吗（C26-B-02） 13分钟":
+    - generic: 图书馆预约必要吗（C26-B-02）
+    - generic: 13分钟
+  - treeitem "已完成 图书馆预约简短问答 13分钟":
+    - generic: 已完成
+    - generic: 图书馆预约简短问答
+    - generic: 13分钟
+  - treeitem "已完成 握手交互状态卡片呈现 14分钟":
+    - generic: 已完成
+    - generic: 握手交互状态卡片呈现
+    - generic: 14分钟
+  - treeitem "已完成 握手确认卡片呈现 15分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 15分钟
+  - treeitem "握手状态卡片渲染测评 15分钟":
+    - generic: 握手状态卡片渲染测评
+    - generic: 15分钟
+  - treeitem "已完成 握手交互卡片呈现 15分钟":
+    - generic: 已完成
+    - generic: 握手交互卡片呈现
+    - generic: 15分钟
+  - treeitem "已完成 Workflow 追加分支编辑器测评 15分钟":
+    - generic: 已完成
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 15分钟
+  - treeitem "饮水机维修照片呈现测评 16分钟":
+    - generic: 饮水机维修照片呈现测评
+    - generic: 16分钟
+  - treeitem "已完成 工作流条件分支测评呈现 16分钟":
+    - generic: 已完成
+    - generic: 工作流条件分支测评呈现
+    - generic: 16分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 17分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 17分钟
+  - treeitem "已完成 报销流程草稿编辑保存 19分钟":
+    - generic: 已完成
+    - generic: 报销流程草稿编辑保存
+    - generic: 19分钟
+  - treeitem "已完成 报销流程整理与草稿保存 19分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 19分钟
+  - treeitem "已完成 Workflow材料取送流程测评 19分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 19分钟
+  - treeitem "已完成 监测文件处理任务失败通知 21分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 21分钟
+  - treeitem "已完成 文件处理任务监测模拟 21分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 21分钟
+  - treeitem "已完成 饮水机不出水照片评测 23分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 23分钟
+  - treeitem "已完成 平面图快递路线静态示意 25分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 25分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 25分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 25分钟
+  - treeitem "已完成 三项工作排期草稿确认 26分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 26分钟
+  - treeitem "已完成 安排三项工作并确认草稿 26分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 26分钟
+  - treeitem "已完成 会议室预约改期草稿 27分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 27分钟
+  - treeitem "已完成 会议室预约改期草稿测评 27分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 27分钟
+  - treeitem "已完成 售后申请草稿填写与确认 28分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 28分钟
+  - treeitem "已完成 售后申请草稿填写测评 28分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 28分钟
+  - treeitem "已完成 商品退货多视角图片呈现 30分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 30分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "食堂路线状态卡片呈现 30分钟":
+    - generic: 食堂路线状态卡片呈现
+    - generic: 30分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 30分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 30分钟
+  - treeitem "已完成 包裹照片确认对象状态 32分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 32分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 33分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 33分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 35分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 35分钟
+  - treeitem "带用户去食堂的状态卡片测评 36分钟":
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 36分钟
+  - treeitem "已完成 活动需求确认与汇总 36分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 36分钟
+  - treeitem "已完成 活动需求确认测评 36分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 36分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 商品多视角展示评测
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N06-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N06-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N06-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：展示这件商品的正面、背面和瑕疵细节，让我核对后决定是否申请退货。 指定呈现方式：Tabs/Image多视角展示，真实切换可找到正面、背面、细节；按同一追问续接。。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 14:15
+- button "复制":
+- paragraph: I'll start by loading the fixed materials for this case.
+- button "工具调用 benchmark_fixture · N06-B-02":
+  - generic: 工具调用
+  - generic: benchmark_fixture · N06-B-02
+- button "思考 Only the front image is released. Back and detail not released. So I must show front, and clearly state back/detail are not yet available (unknown). I cannot invent URLs or reuse same image for other views.":
+  - generic: 思考
+  - generic: Only the front image is released. Back and detail not released. So I must show front, and clearly state back/detail are not yet available (unknown). I cannot invent URLs or reuse same image for other views.
+- generic: 界面已附在回答末尾。
+- 'button "思考 Now write fallback text and ask user how to proceed. Since back/detail are unknown, offering a question: 等待材料发布 / 先凭正面初步判断? Actually asking a question is fine but need care: \"等待实际用户选择或事件后再继续\". I''ll present summary and ask whether to wait for the back/detail images or stop here."':
+  - generic: 思考
+  - generic: "Now write fallback text and ask user how to proceed. Since back/detail are unknown, offering a question: 等待材料发布 / 先凭正面初步判断? Actually asking a question is fine but need care: \"等待实际用户选择或事件后再继续\". I'll present summary and ask whether to wait for the back/detail images or stop here."
+- paragraph: 以下是页面附图的文字兜底说明：
+- paragraph:
+  - strong: 可核对的视角（正面）
+- list:
+  - listitem: 状态：已发布
+  - text: 图像路径：
+  - code: /api/media/bench05-lamp-front/content
+  - listitem: 替代文本：MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture
+  - listitem: 尺寸：960×540
+- paragraph:
+  - strong: 尚不可核对的视角
+- list:
+  - listitem: 背面：图片尚未发布，暂无图像可提供。
+  - listitem: 瑕疵细节：图片尚未发布，暂无图像可提供。
+  - listitem: 这两个视角均未用正面图顶替，也不显示任何未给定的图像地址。
+- paragraph:
+  - strong: 关于退货
+  - text: 该商品的退货政策、损伤成因与发生时间目前都未发布，因此这里不判断是否具备退货资格。
+- text: 等待你的操作 · 背面和瑕疵细节图像尚未发布，你希望怎样继续？
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "背面和瑕疵细节图像尚未发布，你希望怎样继续？":
+  - generic: 下一步
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "背面和瑕疵细节图像尚未发布，你希望怎样继续？" [level=2]
+  - radiogroup:
+    - radio "等背面和细节图像发布后再一起核对" [checked]:
+      - generic: "1"
+      - generic: 等背面和细节图像发布后再一起核对
+      - generic: 推荐
+      - generic: 只有正面图时无法评估瑕疵，等三个视角齐全再决定是否申请退货。
+    - radio "先只看正面图，暂不判断退货":
+      - generic: "2"
+      - generic: 先只看正面图，暂不判断退货
+      - generic: 我会保留当前呈现，不做任何退货资格判断。
+    - radio "补充说明你想重点看的瑕疵位置":
+      - generic: "3"
+      - generic: 补充说明你想重点看的瑕疵位置
+      - generic: 你可以描述关注部位，待细节图发布后优先核对那里。
+    - textbox "输入你的答案"
+  - button "上一题" [disabled]:
+  - generic: 1 / 1
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交"

@@ -1,0 +1,20 @@
+[
+  {
+    "complete": true,
+    "height": 540,
+    "src": "http://127.0.0.1:3080/api/media/bench05-lib/content",
+    "width": 960
+  },
+  {
+    "complete": true,
+    "height": 540,
+    "src": "http://127.0.0.1:3080/api/media/bench05-canteen/content",
+    "width": 960
+  },
+  {
+    "complete": true,
+    "height": 540,
+    "src": "http://127.0.0.1:3080/api/media/bench05-college/content",
+    "width": 960
+  }
+]

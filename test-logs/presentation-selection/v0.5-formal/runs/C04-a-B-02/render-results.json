@@ -1,0 +1,153 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_S52lb0g7hwstG17MpWzF4143",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"帮你找个地方\", \"notice\": \"还不知道你的用途，选一下我就能给出对应建议\", \"purpose_field_label\": \"用途\", \"purpose_field_required\": true, \"purpose_options\": [{\"label\": \"安静阅读\", \"value\": \"安静阅读\", \"description\": \"已知图书馆适合安静阅读\"}, {\"label\": \"公共交流\", \"value\": \"公共交流\", \"description\": \"已知四明书院适合公共交流\"}], \"note_field_label\": \"其他补充（可选）\", \"note_field_placeholder\": \"例如时间、人数、想去的区域\", \"submit_label\": \"看看建议\", \"fallback_text\": \"目前只知道：图书馆适合安静阅读，四明书院适合公共交流；用途还不清楚。选好用途后再看建议。推荐只是建议，不等于已经确定。\"}, \"user_query\": \"一个轻量表单：标题“帮你找个地方”，一句说明“还不知道你的用途，选一下我就能给出对应建议”；一个必填的单选字段“用途”，选项只有“安静阅读（已知图书馆适合安静阅读）”和“公共交流（已知四明书院适合公共交流）”；下面一个可选的短文本字段“其他补充（可选）”，占位提示“例如时间、人数、想去的区域”；底部一个提交按钮“看看建议”。不要加地图、图片、标签页等富组件；表单下方用一段小字保留文字兜底说明。风格简洁轻量。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "notice",
+                "filter-form",
+                "submit-button",
+                "fallback"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "帮你找个地方",
+                "level": "h1"
+              }
+            },
+            "notice": {
+              "type": "Text",
+              "props": {
+                "content": "还不知道你的用途，选一下我就能给出对应建议",
+                "variant": "default"
+              }
+            },
+            "filter-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "purpose",
+                    "label": "用途（必填）",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "安静阅读",
+                          "label": "安静阅读"
+                        },
+                        {
+                          "value": "公共交流",
+                          "label": "公共交流"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "其他补充（可选）",
+                    "placeholder": "例如时间、人数、想去的区域"
+                  }
+                ]
+              }
+            },
+            "submit-button": {
+              "type": "Button",
+              "props": {
+                "label": "看看建议",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "fallback": {
+              "type": "Text",
+              "props": {
+                "content": "目前只知道：图书馆适合安静阅读，四明书院适合公共交流；用途还不清楚。选好用途后再看建议。推荐只是建议，不等于已经确定。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "帮你找个地方",
+            "notice": "还不知道你的用途，选一下我就能给出对应建议",
+            "purpose_field_label": "用途",
+            "purpose_field_required": true,
+            "purpose_options": [
+              {
+                "label": "安静阅读",
+                "value": "安静阅读",
+                "description": "已知图书馆适合安静阅读"
+              },
+              {
+                "label": "公共交流",
+                "value": "公共交流",
+                "description": "已知四明书院适合公共交流"
+              }
+            ],
+            "note_field_label": "其他补充（可选）",
+            "note_field_placeholder": "例如时间、人数、想去的区域",
+            "submit_label": "看看建议",
+            "fallback_text": "目前只知道：图书馆适合安静阅读，四明书院适合公共交流；用途还不清楚。选好用途后再看建议。推荐只是建议，不等于已经确定。",
+            "form": {
+              "purpose": "",
+              "note": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_S52lb0g7hwstG17MpWzF4143"
+      },
+      "toolCallId": "call_00_S52lb0g7hwstG17MpWzF4143",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "4f46eec8-fb09-468a-9cee-66e53b80efa2"
+    }
+  }
+]

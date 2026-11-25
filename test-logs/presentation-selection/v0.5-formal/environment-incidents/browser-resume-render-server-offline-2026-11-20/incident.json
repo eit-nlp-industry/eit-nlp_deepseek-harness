@@ -1,0 +1,6 @@
+{
+  "excluded_starts": 2,
+  "reason": "After Browser reconnection, json-render server port3001 refused connection. C21-B-01 resumed phase and new C21-B-02 affected. Preserve entire original starts including pre-interruption output, no primary quality scores assigned. Restart identical frozen inputs after same built server restored.",
+  "server_exec_session": 35390,
+  "server_start": "2026-11-20T05:42:13.828Z"
+}

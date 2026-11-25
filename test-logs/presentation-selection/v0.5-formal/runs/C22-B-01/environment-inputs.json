@@ -1,0 +1,37 @@
+[
+  {
+    "seq": 10,
+    "time": 1795153673044,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 42,
+    "time": 1795153759890,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C22-B-01-near",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C22-B-01-near\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"YSJ-07近景，设备仍不出水。\",\"assets\":[{\"id\":\"bench05-repair-near\",\"file\":\"bench05-repair-near.png\",\"alt\":\"MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture\",\"source_id\":\"repair-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-near/content\",\"path\":\"/api/media/bench05-repair-near/content\",\"sha256\":\"4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76\",\"width\":960,\"height\":540}],\"simulated\":true,\"device_id\":\"YSJ-07\",\"view\":\"near\"}}"
+  },
+  {
+    "seq": 62,
+    "time": 1795153855074,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C22-B-01-side",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C22-B-01-side\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"YSJ-07另一侧图。现已发布正面、近景、侧面三图。\",\"assets\":[{\"id\":\"bench05-repair-front\",\"file\":\"bench05-repair-front.png\",\"alt\":\"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\",\"source_id\":\"repair-front\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-front/content\",\"path\":\"/api/media/bench05-repair-front/content\",\"sha256\":\"b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b\",\"width\":960,\"height\":540},{\"id\":\"bench05-repair-near\",\"file\":\"bench05-repair-near.png\",\"alt\":\"MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture\",\"source_id\":\"repair-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-near/content\",\"path\":\"/api/media/bench05-repair-near/content\",\"sha256\":\"4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76\",\"width\":960,\"height\":540},{\"id\":\"bench05-repair-side\",\"file\":\"bench05-repair-side.png\",\"alt\":\"MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture\",\"source_id\":\"repair-side\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-side/content\",\"path\":\"/api/media/bench05-repair-side/content\",\"sha256\":\"7927ee2291dd11d9c44443f2f879c98ee3f387bd4818dd860e69b1ec0b4e3884\",\"width\":960,\"height\":540}],\"simulated\":true,\"device_id\":\"YSJ-07\",\"view\":\"side\"}}"
+  }
+]

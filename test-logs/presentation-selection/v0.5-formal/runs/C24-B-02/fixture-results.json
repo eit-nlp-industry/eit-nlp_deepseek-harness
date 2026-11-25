@@ -1,0 +1,138 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C24-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_t44A7zIcsn6q67Oyj1pJ2017"
+      },
+      "toolCallId": "call_00_ET_t44A7zIcsn6q67Oyj1pJ2017",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C24\",\"facts\":\"独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "fdd826aa-6bb6-46f1-aad1-9d25a098c824"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C24-B-02",
+        "values": {
+          "workflow": {
+            "schema": "workflow-v1",
+            "id": "wf-lin-teacher-material-draft",
+            "title": "林老师门口取材料（草稿）",
+            "status": "draft",
+            "parameters": {
+              "mode": "draft"
+            },
+            "nodes": [
+              {
+                "id": "n1",
+                "type": "task",
+                "title": "到林老师门口",
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "type": "task",
+                "title": "敲门并等待老师给材料",
+                "order": 2
+              },
+              {
+                "id": "n3",
+                "type": "branch",
+                "title": "老师在不在？",
+                "order": 3,
+                "branches": [
+                  {
+                    "id": "b-absent",
+                    "label": "老师不在",
+                    "nodes": [
+                      {
+                        "id": "n4a",
+                        "type": "task",
+                        "title": "通知我：老师不在，本次不再等待",
+                        "order": 1
+                      },
+                      {
+                        "id": "n4b",
+                        "type": "end",
+                        "title": "结束流程",
+                        "order": 2,
+                        "note": "老师不在，已通知用户，不再原地等待"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "b-present",
+                    "label": "老师在",
+                    "nodes": [
+                      {
+                        "id": "n5a",
+                        "type": "task",
+                        "title": "拍照确认材料",
+                        "order": 1
+                      },
+                      {
+                        "id": "n5b",
+                        "type": "task",
+                        "title": "送回材料",
+                        "order": 2
+                      },
+                      {
+                        "id": "n5c",
+                        "type": "end",
+                        "title": "结束流程",
+                        "order": 3,
+                        "note": "材料已拍照确认并送回"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "parameters": {
+            "mode": "draft"
+          },
+          "save_event": "workflow.save",
+          "bind_path": "/_ui/workflow"
+        }
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_unsIeXf9sLlpNshK2Kcg1321"
+      },
+      "toolCallId": "call_00_unsIeXf9sLlpNshK2Kcg1321",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"version\":3,\"submitted\":{\"workflow\":{\"schema\":\"workflow-v1\",\"id\":\"wf-lin-teacher-material-draft\",\"title\":\"林老师门口取材料（草稿）\",\"status\":\"draft\",\"parameters\":{\"mode\":\"draft\"},\"nodes\":[{\"id\":\"n1\",\"type\":\"task\",\"title\":\"到林老师门口\",\"order\":1},{\"id\":\"n2\",\"type\":\"task\",\"title\":\"敲门并等待老师给材料\",\"order\":2},{\"id\":\"n3\",\"type\":\"branch\",\"title\":\"老师在不在？\",\"order\":3,\"branches\":[{\"id\":\"b-absent\",\"label\":\"老师不在\",\"nodes\":[{\"id\":\"n4a\",\"type\":\"task\",\"title\":\"通知我：老师不在，本次不再等待\",\"order\":1},{\"id\":\"n4b\",\"type\":\"end\",\"title\":\"结束流程\",\"order\":2,\"note\":\"老师不在，已通知用户，不再原地等待\"}]},{\"id\":\"b-present\",\"label\":\"老师在\",\"nodes\":[{\"id\":\"n5a\",\"type\":\"task\",\"title\":\"拍照确认材料\",\"order\":1},{\"id\":\"n5b\",\"type\":\"task\",\"title\":\"送回材料\",\"order\":2},{\"id\":\"n5c\",\"type\":\"end\",\"title\":\"结束流程\",\"order\":3,\"note\":\"材料已拍照确认并送回\"}]}]}]},\"parameters\":{\"mode\":\"draft\"},\"save_event\":\"workflow.save\",\"bind_path\":\"/_ui/workflow\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "2b9e8c7a-a33c-40ab-ae8b-664ca2ebe996"
+    }
+  }
+]

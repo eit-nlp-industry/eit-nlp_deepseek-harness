@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_5QCR05KoVjS4DaszBO3e0610",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"save_draft\", \"header\": \"确认保存\", \"question\": \"是否按当前编辑内容保存这份流程草稿？\", \"options\": [{\"label\": \"保存草稿（推荐）\", \"description\": \"以当前流程文档（含“材料不齐退回补充”分支）生成草稿保存回执，不执行审批或付款。\"}, {\"label\": \"先不保存，我要继续改\", \"description\": \"保留编辑器内容不动，暂不提交任何保存请求。\"}], \"multi_select\": false}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_5QCR05KoVjS4DaszBO3e0610"
+      },
+      "toolCallId": "call_00_5QCR05KoVjS4DaszBO3e0610",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"save_draft\",\"selected\":[\"先不保存，我要继续改\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "55d86d87-b034-4b62-9bf6-ce96116e10e1"
+    }
+  }
+]

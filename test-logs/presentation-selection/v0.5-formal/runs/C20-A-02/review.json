@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 5,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "同一底图展示成功，robot到user及user到lib两段坐标与距离正确，明确静态示意且未导航。"
+}

@@ -1,0 +1,35 @@
+{
+  "run_id": "C18-A-02",
+  "session_id": "session-0c68ccd3-7068-451b-8571-c96b37f8c9db",
+  "status": "pass",
+  "selected_preset": "component-benchmark-full-v2",
+  "model": {
+    "provider": "deepseek-official",
+    "model": "deepseek-flash",
+    "reasoningEffort": "high"
+  },
+  "turns_started": 5,
+  "turns_ended": 5,
+  "model_ms": 23537,
+  "render_ms": 0,
+  "active_ms": 23537,
+  "usage": {
+    "inputTokens": 2802,
+    "outputTokens": 1689,
+    "cacheReadTokens": 25984,
+    "cacheWriteTokens": 0,
+    "totalTokens": 30475
+  },
+  "render_server_usage": "not_observed",
+  "tool_calls": [
+    "benchmark_fixture",
+    "benchmark_fixture",
+    "benchmark_fixture",
+    "benchmark_fixture"
+  ],
+  "render_calls": 0,
+  "question_calls": 0,
+  "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+  "environment_messages": 6,
+  "input_matches_frozen": true
+}

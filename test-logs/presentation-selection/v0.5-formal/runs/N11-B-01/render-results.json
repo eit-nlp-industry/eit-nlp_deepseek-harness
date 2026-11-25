@@ -1,0 +1,3551 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_h4PsV24PlQd7vEIH5kFg7740",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"用状态卡片加状态时间线呈现文件处理任务 job-convert-01 的模拟监测状态。卡片顶部显示任务名与\\\"模拟数据、不处理真实文件\\\"标识；关键指标并排显示：总文件数 10、已完成 3、当前状态 running（进度 3/10）。时间线只列已发生节点：任务启动（模拟）、当前进行中（running，已完成 3/10 文件，失败通知已开启）；失败通知与结束节点尚未发生，标注为\\\"等待中/未触发\\\"，进度条停在 3/10，不预示后续成功。底部列出可用的监测操作：暂停监测、继续监测、结束监测，并说明任一状态变化需以实际返回为准、尚未发生的暂停/继续/失败/结束结果不做预告。不放置任何输入框、下拉框或提交表单。\", \"business_data\": {\"title\": \"文件处理任务监测\", \"job_id\": \"job-convert-01\", \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"3\"}, {\"label\": \"当前状态\", \"value\": \"running\"}], \"progress\": {\"completed\": 3, \"total\": 10, \"text\": \"3 / 10\"}, \"timeline\": [{\"node\": \"任务启动\", \"detail\": \"模拟任务 job-convert-01 已创建\", \"state\": \"已发生\"}, {\"node\": \"处理进行中\", \"detail\": \"当前 running，已完成 3/10 个文件\", \"state\": \"当前\"}, {\"node\": \"失败通知\", \"detail\": \"尚未出现失败，通知未触发\", \"state\": \"等待中\"}, {\"node\": \"监测结束\", \"detail\": \"尚未结束监测\", \"state\": \"未触发\"}], \"controls\": [\"暂停监测\", \"继续监测\", \"结束监测\"], \"controls_note\": \"暂停、继续、失败、结束时均以实际返回的模拟状态为准；未发生的状态变化不做预告。\", \"fallback_text\": \"模拟监测状态：任务 job-convert-01 共 10 个文件，当前 running，已完成 3 个。失败通知已开启但尚未触发；可随时暂停、继续或结束监测，后续状态以实际返回为准。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "statusCard",
+                "timelineSection",
+                "controlsSection"
+              ]
+            },
+            "statusCard": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "statusContent"
+              ]
+            },
+            "statusContent": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "statusHeader",
+                "jobIdText",
+                "sourceText",
+                "divider1",
+                "metricsGrid",
+                "progressBar",
+                "progressNote"
+              ]
+            },
+            "statusHeader": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "jobHeading",
+                "simBadge"
+              ]
+            },
+            "jobHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "文件处理任务监测",
+                "level": "h3"
+              }
+            },
+            "simBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "info"
+              }
+            },
+            "jobIdText": {
+              "type": "Text",
+              "props": {
+                "content": "任务 ID：job-convert-01",
+                "variant": "muted"
+              }
+            },
+            "sourceText": {
+              "type": "Text",
+              "props": {
+                "content": "数据来源：模拟监测状态",
+                "variant": "muted"
+              }
+            },
+            "divider1": {
+              "type": "Divider",
+              "props": {}
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricCompleted",
+                "metricStatus"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metricCompleted": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "3"
+              }
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "当前状态",
+                "value": "running",
+                "trend": "neutral",
+                "trendLabel": "进度 3/10"
+              }
+            },
+            "progressBar": {
+              "type": "Progress",
+              "props": {
+                "value": 30,
+                "label": "进度 3 / 10",
+                "intent": "default",
+                "showValue": true,
+                "size": "medium"
+              }
+            },
+            "progressNote": {
+              "type": "Text",
+              "props": {
+                "content": "进度为 3 / 10（30%），停在 3/10，不预示后续成功。",
+                "variant": "muted"
+              }
+            },
+            "timelineSection": {
+              "type": "Section",
+              "props": {
+                "title": "状态时间线",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "timeline",
+                "failureNote"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "items": [
+                  {
+                    "title": "任务启动（已发生）",
+                    "description": "模拟任务 job-convert-01 已创建",
+                    "status": "success"
+                  },
+                  {
+                    "title": "处理进行中（当前）",
+                    "description": "当前 running，已完成 3/10 个文件",
+                    "status": "info"
+                  },
+                  {
+                    "title": "失败通知（等待中）",
+                    "description": "尚未出现失败，通知未触发",
+                    "status": "info"
+                  },
+                  {
+                    "title": "监测结束（未触发）",
+                    "description": "尚未结束监测",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无时间线节点"
+              }
+            },
+            "failureNote": {
+              "type": "Text",
+              "props": {
+                "content": "失败通知已开启；当前尚未出现失败，通知未触发。",
+                "variant": "muted"
+              }
+            },
+            "controlsSection": {
+              "type": "Section",
+              "props": {
+                "title": "监测操作",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "controlsStack",
+                "controlsNoteCallout"
+              ]
+            },
+            "controlsStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "pauseButton",
+                "resumeButton",
+                "endButton"
+              ]
+            },
+            "pauseButton": {
+              "type": "Button",
+              "props": {
+                "label": "暂停监测",
+                "variant": "outline",
+                "intent": "warning",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.pause",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "resumeButton": {
+              "type": "Button",
+              "props": {
+                "label": "继续监测",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.resume",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "endButton": {
+              "type": "Button",
+              "props": {
+                "label": "结束监测",
+                "variant": "outline",
+                "intent": "danger",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.end",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "controlsNoteCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "状态以实际返回为准",
+                "description": "暂停、继续、失败、结束时均以实际返回的模拟状态为准；未发生的状态变化不做预告。",
+                "showIcon": true
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "文件处理任务监测",
+            "job_id": "job-convert-01",
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "3"
+              },
+              {
+                "label": "当前状态",
+                "value": "running"
+              }
+            ],
+            "progress": {
+              "completed": 3,
+              "total": 10,
+              "text": "3 / 10"
+            },
+            "timeline": [
+              {
+                "node": "任务启动",
+                "detail": "模拟任务 job-convert-01 已创建",
+                "state": "已发生"
+              },
+              {
+                "node": "处理进行中",
+                "detail": "当前 running，已完成 3/10 个文件",
+                "state": "当前"
+              },
+              {
+                "node": "失败通知",
+                "detail": "尚未出现失败，通知未触发",
+                "state": "等待中"
+              },
+              {
+                "node": "监测结束",
+                "detail": "尚未结束监测",
+                "state": "未触发"
+              }
+            ],
+            "controls": [
+              "暂停监测",
+              "继续监测",
+              "结束监测"
+            ],
+            "controls_note": "暂停、继续、失败、结束时均以实际返回的模拟状态为准；未发生的状态变化不做预告。",
+            "fallback_text": "模拟监测状态：任务 job-convert-01 共 10 个文件，当前 running，已完成 3 个。失败通知已开启但尚未触发；可随时暂停、继续或结束监测，后续状态以实际返回为准。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_h4PsV24PlQd7vEIH5kFg7740"
+      },
+      "toolCallId": "call_00_h4PsV24PlQd7vEIH5kFg7740",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "854b3e6e-748d-4881-a297-5a5b1476d428"
+    }
+  },
+  {
+    "call_seq": 58,
+    "result_seq": 60,
+    "call": {
+      "turn": 2,
+      "step": 3,
+      "callId": "call_00_AoTu2UsTLmESpkRrS2Vr8380",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [\"重新尝试暂停监测\", \"继续监测\", \"结束监测\"], \"controls_note\": \"暂停结果尚未返回，任务状态仍为 running；不预设暂停已生效或后续成功。\", \"fallback_text\": \"暂停请求未获得模拟结果回执，job-convert-01 仍为 running，已完成 3/10 个文件、无失败、通知未触发。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"3\"}, {\"label\": \"当前状态\", \"value\": \"running（未变更）\"}], \"progress\": {\"completed\": 3, \"text\": \"3 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"模拟任务 job-convert-01 已创建\", \"node\": \"任务启动\", \"state\": \"已发生\"}, {\"detail\": \"当前 running，已完成 3/10 个文件\", \"node\": \"处理进行中\", \"state\": \"当前\"}, {\"detail\": \"已提交暂停请求，但未收到模拟结果回执，状态未变更\", \"node\": \"暂停请求（结果未知）\", \"state\": \"待确认\"}, {\"detail\": \"无失败记录，通知未触发\", \"node\": \"失败通知\", \"state\": \"未触发\"}, {\"detail\": \"监测仍在进行\", \"node\": \"监测结束\", \"state\": \"未触发\"}], \"title\": \"文件处理任务监测 · 暂停待确认\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现暂停请求后的监测状态卡片加状态时间线：卡片顶部显示\\\"文件处理任务监测 · 暂停待确认\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；指标并排：总文件数 10、已完成 3、当前状态 running（未变更）；进度条停在 3/10。时间线节点依次为：任务启动（已发生）、处理进行中（当前）、暂停请求（结果未知，待确认，说明未收到模拟结果回执、状态未变更）、失败通知（未触发）、监测结束（未触发）。底部列出可选操作：重新尝试暂停监测、继续监测、结束监测，并说明不预设暂停已生效或后续成功。不放任何输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "headerCard",
+                "metricsCard",
+                "progressCard",
+                "timelineCard",
+                "actionsCard",
+                "supportCollapsible"
+              ]
+            },
+            "headerCard": {
+              "type": "Card",
+              "props": {
+                "title": "文件处理任务监测 · 暂停待确认",
+                "variant": "default"
+              },
+              "children": [
+                "headerStack"
+              ]
+            },
+            "headerStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "simulatedBadge",
+                "jobIdText"
+              ]
+            },
+            "simulatedBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "info"
+              }
+            },
+            "jobIdText": {
+              "type": "Text",
+              "props": {
+                "content": "任务 ID：job-convert-01",
+                "variant": "muted"
+              }
+            },
+            "metricsCard": {
+              "type": "Card",
+              "props": {
+                "title": "任务指标",
+                "variant": "outlined"
+              },
+              "children": [
+                "metricsGrid"
+              ]
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricDone",
+                "metricStatus"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metricDone": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "3"
+              }
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "当前状态",
+                "value": "running（未变更）"
+              }
+            },
+            "progressCard": {
+              "type": "Card",
+              "props": {
+                "title": "处理进度",
+                "variant": "outlined"
+              },
+              "children": [
+                "progressStack"
+              ]
+            },
+            "progressStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "progressBar",
+                "progressText"
+              ]
+            },
+            "progressBar": {
+              "type": "Progress",
+              "props": {
+                "value": 30,
+                "label": "3 / 10",
+                "intent": "default",
+                "showValue": false,
+                "size": "medium"
+              }
+            },
+            "progressText": {
+              "type": "Text",
+              "props": {
+                "content": "已完成 3 / 总文件数 10",
+                "variant": "default"
+              }
+            },
+            "timelineCard": {
+              "type": "Card",
+              "props": {
+                "title": "状态时间线",
+                "variant": "outlined"
+              },
+              "children": [
+                "timeline"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "items": [
+                  {
+                    "title": "任务启动",
+                    "description": "状态：已发生 · 模拟任务 job-convert-01 已创建",
+                    "status": "success"
+                  },
+                  {
+                    "title": "处理进行中",
+                    "description": "状态：当前 · 当前 running，已完成 3/10 个文件",
+                    "status": "info"
+                  },
+                  {
+                    "title": "暂停请求（结果未知）",
+                    "description": "状态：待确认 · 已提交暂停请求，但未收到模拟结果回执，状态未变更",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "失败通知",
+                    "description": "状态：未触发 · 无失败记录，通知未触发",
+                    "status": "info"
+                  },
+                  {
+                    "title": "监测结束",
+                    "description": "状态：未触发 · 监测仍在进行",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无状态节点"
+              }
+            },
+            "actionsCard": {
+              "type": "Card",
+              "props": {
+                "title": "可选操作",
+                "variant": "outlined"
+              },
+              "children": [
+                "controlsList",
+                "controlsNote"
+              ]
+            },
+            "controlsList": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "重新尝试暂停监测",
+                    "status": "info"
+                  },
+                  {
+                    "title": "继续监测",
+                    "status": "info"
+                  },
+                  {
+                    "title": "结束监测",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无可选操作"
+              }
+            },
+            "controlsNote": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/controls_note"
+                },
+                "variant": "warning"
+              }
+            },
+            "supportCollapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "备用状态说明",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "fallbackText"
+              ]
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [
+              "重新尝试暂停监测",
+              "继续监测",
+              "结束监测"
+            ],
+            "controls_note": "暂停结果尚未返回，任务状态仍为 running；不预设暂停已生效或后续成功。",
+            "fallback_text": "暂停请求未获得模拟结果回执，job-convert-01 仍为 running，已完成 3/10 个文件、无失败、通知未触发。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "3"
+              },
+              {
+                "label": "当前状态",
+                "value": "running（未变更）"
+              }
+            ],
+            "progress": {
+              "completed": 3,
+              "text": "3 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "模拟任务 job-convert-01 已创建",
+                "node": "任务启动",
+                "state": "已发生"
+              },
+              {
+                "detail": "当前 running，已完成 3/10 个文件",
+                "node": "处理进行中",
+                "state": "当前"
+              },
+              {
+                "detail": "已提交暂停请求，但未收到模拟结果回执，状态未变更",
+                "node": "暂停请求（结果未知）",
+                "state": "待确认"
+              },
+              {
+                "detail": "无失败记录，通知未触发",
+                "node": "失败通知",
+                "state": "未触发"
+              },
+              {
+                "detail": "监测仍在进行",
+                "node": "监测结束",
+                "state": "未触发"
+              }
+            ],
+            "title": "文件处理任务监测 · 暂停待确认"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_AoTu2UsTLmESpkRrS2Vr8380"
+      },
+      "toolCallId": "call_00_AoTu2UsTLmESpkRrS2Vr8380",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "6a186c71-b0cf-4adb-b226-7b2edac5ff67"
+    }
+  },
+  {
+    "call_seq": 73,
+    "result_seq": 74,
+    "call": {
+      "turn": 3,
+      "step": 1,
+      "callId": "call_00_dC1djrRGDW0F4lJC4SEx0967",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [\"继续监测\", \"结束监测\"], \"controls_note\": \"任务已暂停，进度停在 3/10；继续或结束后的状态以实际返回为准，不预告后续处理结果。\", \"fallback_text\": \"job-convert-01 已模拟暂停，10 个文件中已完成 3 个；无失败记录，失败通知未触发，监测未结束。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"3\"}, {\"label\": \"当前状态\", \"value\": \"paused（已暂停）\"}], \"progress\": {\"completed\": 3, \"text\": \"3 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"模拟任务 job-convert-01 已创建，共 10 个文件\", \"node\": \"任务启动\", \"state\": \"已发生\"}, {\"detail\": \"处理至 3/10 个文件\", \"node\": \"处理进行中\", \"state\": \"已发生\"}, {\"detail\": \"任务已模拟暂停，进度停在 3/10 个文件\", \"node\": \"任务暂停\", \"state\": \"当前\"}, {\"detail\": \"暂停前无失败记录，通知未触发\", \"node\": \"失败通知\", \"state\": \"未触发\"}, {\"detail\": \"监测仍在进行，未结束\", \"node\": \"监测结束\", \"state\": \"未触发\"}], \"title\": \"文件处理任务监测 · 已暂停\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现任务暂停后的监测状态卡片加状态时间线：卡片顶部显示\\\"文件处理任务监测 · 已暂停\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；指标并排：总文件数 10、已完成 3、当前状态 paused（已暂停）；进度条停在 3/10。时间线依次：任务启动（已发生，共 10 个文件）、处理进行中（已发生，处理至 3/10）、任务暂停（当前，进度停在 3/10）、失败通知（未触发，暂停前无失败记录）、监测结束（未触发，监测仍在进行）。底部列出可选操作：继续监测、结束监测，并说明后续以实际返回为准、不预告处理结果。不要放输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "status-card",
+                "metrics-section",
+                "progress-card",
+                "timeline-section",
+                "fallback-section",
+                "actions-card"
+              ]
+            },
+            "status-card": {
+              "type": "Card",
+              "props": {
+                "title": "文件处理任务监测 · 已暂停",
+                "variant": "default"
+              },
+              "children": [
+                "status-stack"
+              ]
+            },
+            "status-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "status-badge",
+                "job-id-text",
+                "status-source"
+              ]
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "info"
+              }
+            },
+            "job-id-text": {
+              "type": "Text",
+              "props": {
+                "content": "任务 ID：job-convert-01",
+                "variant": "default"
+              }
+            },
+            "status-source": {
+              "type": "Text",
+              "props": {
+                "content": "来源：business_data.title、business_data.simulated_badge、business_data.job_id",
+                "variant": "muted"
+              }
+            },
+            "metrics-section": {
+              "type": "Section",
+              "props": {
+                "title": "任务指标",
+                "description": "指标并排展示，数值来自 business_data.metrics。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "metrics-grid",
+                "metrics-source"
+              ]
+            },
+            "metrics-grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metric-total",
+                "metric-completed",
+                "metric-status"
+              ]
+            },
+            "metric-total": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metric-completed": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "3"
+              }
+            },
+            "metric-status": {
+              "type": "Metric",
+              "props": {
+                "label": "当前状态",
+                "value": "paused（已暂停）"
+              }
+            },
+            "metrics-source": {
+              "type": "Text",
+              "props": {
+                "content": "来源：business_data.metrics",
+                "variant": "muted"
+              }
+            },
+            "progress-card": {
+              "type": "Card",
+              "props": {
+                "title": "处理进度",
+                "variant": "default"
+              },
+              "children": [
+                "progress-stack"
+              ]
+            },
+            "progress-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "progress-bar",
+                "progress-detail",
+                "progress-source"
+              ]
+            },
+            "progress-bar": {
+              "type": "Progress",
+              "props": {
+                "value": 30,
+                "label": "3 / 10",
+                "intent": "default",
+                "showValue": true,
+                "size": "medium"
+              }
+            },
+            "progress-detail": {
+              "type": "Text",
+              "props": {
+                "content": "进度：3 / 10（已完成 3 个，共 10 个）",
+                "variant": "default"
+              }
+            },
+            "progress-source": {
+              "type": "Text",
+              "props": {
+                "content": "来源：business_data.progress（completed=3，total=10，text=3 / 10）",
+                "variant": "muted"
+              }
+            },
+            "timeline-section": {
+              "type": "Section",
+              "props": {
+                "title": "状态时间线",
+                "description": "按任务生命周期逐项展示节点、状态与说明。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "timeline",
+                "timeline-source"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "items": [
+                  {
+                    "title": "任务启动（已发生）",
+                    "description": "模拟任务 job-convert-01 已创建，共 10 个文件",
+                    "status": "success"
+                  },
+                  {
+                    "title": "处理进行中（已发生）",
+                    "description": "处理至 3/10 个文件",
+                    "status": "success"
+                  },
+                  {
+                    "title": "任务暂停（当前）",
+                    "description": "任务已模拟暂停，进度停在 3/10 个文件",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "失败通知（未触发）",
+                    "description": "暂停前无失败记录，通知未触发",
+                    "status": "info"
+                  },
+                  {
+                    "title": "监测结束（未触发）",
+                    "description": "监测仍在进行，未结束",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无时间线记录"
+              }
+            },
+            "timeline-source": {
+              "type": "Text",
+              "props": {
+                "content": "来源：business_data.timeline（node、state、detail 逐项保留）",
+                "variant": "muted"
+              }
+            },
+            "fallback-section": {
+              "type": "Section",
+              "props": {
+                "title": "原始状态摘要",
+                "description": "来源：business_data.fallback_text",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "fallback-text"
+              ]
+            },
+            "fallback-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "default"
+              }
+            },
+            "actions-card": {
+              "type": "Card",
+              "props": {
+                "title": "可选操作",
+                "variant": "default"
+              },
+              "children": [
+                "actions-stack"
+              ]
+            },
+            "actions-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "controls-note-text",
+                "action-buttons",
+                "controls-source"
+              ]
+            },
+            "controls-note-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/controls_note"
+                },
+                "variant": "default"
+              }
+            },
+            "action-buttons": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "continue-button",
+                "end-button"
+              ]
+            },
+            "continue-button": {
+              "type": "Button",
+              "props": {
+                "label": "继续监测",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.continue",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "end-button": {
+              "type": "Button",
+              "props": {
+                "label": "结束监测",
+                "variant": "outline",
+                "intent": "danger",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.end",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "controls-source": {
+              "type": "Text",
+              "props": {
+                "content": "来源：business_data.controls、business_data.controls_note",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [
+              "继续监测",
+              "结束监测"
+            ],
+            "controls_note": "任务已暂停，进度停在 3/10；继续或结束后的状态以实际返回为准，不预告后续处理结果。",
+            "fallback_text": "job-convert-01 已模拟暂停，10 个文件中已完成 3 个；无失败记录，失败通知未触发，监测未结束。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "3"
+              },
+              {
+                "label": "当前状态",
+                "value": "paused（已暂停）"
+              }
+            ],
+            "progress": {
+              "completed": 3,
+              "text": "3 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "模拟任务 job-convert-01 已创建，共 10 个文件",
+                "node": "任务启动",
+                "state": "已发生"
+              },
+              {
+                "detail": "处理至 3/10 个文件",
+                "node": "处理进行中",
+                "state": "已发生"
+              },
+              {
+                "detail": "任务已模拟暂停，进度停在 3/10 个文件",
+                "node": "任务暂停",
+                "state": "当前"
+              },
+              {
+                "detail": "暂停前无失败记录，通知未触发",
+                "node": "失败通知",
+                "state": "未触发"
+              },
+              {
+                "detail": "监测仍在进行，未结束",
+                "node": "监测结束",
+                "state": "未触发"
+              }
+            ],
+            "title": "文件处理任务监测 · 已暂停"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_dC1djrRGDW0F4lJC4SEx0967"
+      },
+      "toolCallId": "call_00_dC1djrRGDW0F4lJC4SEx0967",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "e455581f-b904-4257-8b0b-111cdc967713"
+    }
+  },
+  {
+    "call_seq": 95,
+    "result_seq": 96,
+    "call": {
+      "turn": 4,
+      "step": 2,
+      "callId": "call_00_UuNXJ6gGeq4b8LJGWxyt7861",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [\"再次尝试继续监测\", \"结束监测\"], \"controls_note\": \"继续请求未收到模拟结果回执，状态仍按最近已释放的记录显示为 paused；不预设已恢复处理或后续成功。\", \"fallback_text\": \"继续请求未获得回执，job-convert-01 仍显示为 paused，已完成 3/10 个文件，无失败记录，通知未触发。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"3\"}, {\"label\": \"当前状态\", \"value\": \"paused（未变更）\"}], \"progress\": {\"completed\": 3, \"text\": \"3 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"模拟任务 job-convert-01 已创建，共 10 个文件\", \"node\": \"任务启动\", \"state\": \"已发生\"}, {\"detail\": \"处理至 3/10 个文件后暂停\", \"node\": \"处理进行中\", \"state\": \"已发生\"}, {\"detail\": \"任务暂停，进度停在 3/10\", \"node\": \"任务暂停\", \"state\": \"当前\"}, {\"detail\": \"已提交继续请求，未收到模拟结果回执，状态未变更\", \"node\": \"继续请求（结果未知）\", \"state\": \"待确认\"}, {\"detail\": \"无失败记录，通知未触发\", \"node\": \"失败通知\", \"state\": \"未触发\"}, {\"detail\": \"监测仍在进行，未结束\", \"node\": \"监测结束\", \"state\": \"未触发\"}], \"title\": \"文件处理任务监测 · 继续待确认\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现继续请求后的监测状态卡片加状态时间线：顶部标题\\\"文件处理任务监测 · 继续待确认\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；指标并排：总文件数 10、已完成 3、当前状态 paused（未变更）；进度条停在 3/10。时间线依次：任务启动（已发生）、处理进行中（已发生，处理至 3/10 后暂停）、任务暂停（当前，进度停在 3/10）、继续请求（结果未知，待确认，说明未收到模拟结果回执且状态未变更）、失败通知（未触发）、监测结束（未触发）。底部操作：再次尝试继续监测、结束监测，并说明不预设已恢复处理。不放输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "headerCard",
+                "metricsSection",
+                "progressSection",
+                "timelineSection",
+                "noticeCallout",
+                "actionsSection"
+              ]
+            },
+            "headerCard": {
+              "type": "Card",
+              "props": {
+                "variant": "default"
+              },
+              "children": [
+                "headerStack"
+              ]
+            },
+            "headerStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "titleHeading",
+                "badgeRow",
+                "jobText"
+              ]
+            },
+            "titleHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "文件处理任务监测 · 继续待确认",
+                "level": "h1"
+              }
+            },
+            "badgeRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "simBadge"
+              ]
+            },
+            "simBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "info"
+              }
+            },
+            "jobText": {
+              "type": "Text",
+              "props": {
+                "content": "任务 ID：job-convert-01",
+                "variant": "muted"
+              }
+            },
+            "metricsSection": {
+              "type": "Section",
+              "props": {
+                "title": "任务指标",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "metricsGrid"
+              ]
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricDone",
+                "metricStatus"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10",
+                "trend": "neutral"
+              }
+            },
+            "metricDone": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "3",
+                "trend": "neutral"
+              }
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "当前状态",
+                "value": "paused（未变更）",
+                "trend": "neutral"
+              }
+            },
+            "progressSection": {
+              "type": "Section",
+              "props": {
+                "title": "处理进度",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "progressStack"
+              ]
+            },
+            "progressStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "progressBar",
+                "progressNote"
+              ]
+            },
+            "progressBar": {
+              "type": "Progress",
+              "props": {
+                "value": 30,
+                "label": "已完成 3 / 10 个文件",
+                "intent": "warning",
+                "showValue": true,
+                "size": "medium"
+              }
+            },
+            "progressNote": {
+              "type": "Text",
+              "props": {
+                "content": "处理至 3/10 个文件后暂停，继续请求尚未带来状态变更。",
+                "variant": "muted"
+              }
+            },
+            "timelineSection": {
+              "type": "Section",
+              "props": {
+                "title": "监测状态时间线",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "timeline"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "title": "任务节点（job-convert-01）",
+                "items": [
+                  {
+                    "title": "任务启动（已发生）",
+                    "description": "模拟任务 job-convert-01 已创建，共 10 个文件",
+                    "status": "success"
+                  },
+                  {
+                    "title": "处理进行中（已发生）",
+                    "description": "处理至 3/10 个文件后暂停",
+                    "status": "success"
+                  },
+                  {
+                    "title": "任务暂停（当前）",
+                    "description": "任务暂停，进度停在 3/10",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "继续请求（结果未知） · 待确认",
+                    "description": "已提交继续请求，未收到模拟结果回执，状态未变更",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "失败通知（未触发）",
+                    "description": "无失败记录，通知未触发",
+                    "status": "info"
+                  },
+                  {
+                    "title": "监测结束（未触发）",
+                    "description": "监测仍在进行，未结束",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无事件记录"
+              }
+            },
+            "noticeCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "当前判定：继续请求未获回执",
+                "description": "继续请求未获得回执，job-convert-01 仍显示为 paused，已完成 3/10 个文件，无失败记录，通知未触发。",
+                "showIcon": true
+              }
+            },
+            "actionsSection": {
+              "type": "Section",
+              "props": {
+                "title": "操作",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "actionsStack",
+                "actionsNote"
+              ]
+            },
+            "actionsStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "retryButton",
+                "endButton"
+              ]
+            },
+            "retryButton": {
+              "type": "Button",
+              "props": {
+                "label": "再次尝试继续监测",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.retry",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "endButton": {
+              "type": "Button",
+              "props": {
+                "label": "结束监测",
+                "variant": "outline",
+                "intent": "default",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.end",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "actionsNote": {
+              "type": "Text",
+              "props": {
+                "content": "继续请求未收到模拟结果回执，状态仍按最近已释放的记录显示为 paused；不预设已恢复处理或后续成功。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [
+              "再次尝试继续监测",
+              "结束监测"
+            ],
+            "controls_note": "继续请求未收到模拟结果回执，状态仍按最近已释放的记录显示为 paused；不预设已恢复处理或后续成功。",
+            "fallback_text": "继续请求未获得回执，job-convert-01 仍显示为 paused，已完成 3/10 个文件，无失败记录，通知未触发。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "3"
+              },
+              {
+                "label": "当前状态",
+                "value": "paused（未变更）"
+              }
+            ],
+            "progress": {
+              "completed": 3,
+              "text": "3 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "模拟任务 job-convert-01 已创建，共 10 个文件",
+                "node": "任务启动",
+                "state": "已发生"
+              },
+              {
+                "detail": "处理至 3/10 个文件后暂停",
+                "node": "处理进行中",
+                "state": "已发生"
+              },
+              {
+                "detail": "任务暂停，进度停在 3/10",
+                "node": "任务暂停",
+                "state": "当前"
+              },
+              {
+                "detail": "已提交继续请求，未收到模拟结果回执，状态未变更",
+                "node": "继续请求（结果未知）",
+                "state": "待确认"
+              },
+              {
+                "detail": "无失败记录，通知未触发",
+                "node": "失败通知",
+                "state": "未触发"
+              },
+              {
+                "detail": "监测仍在进行，未结束",
+                "node": "监测结束",
+                "state": "未触发"
+              }
+            ],
+            "title": "文件处理任务监测 · 继续待确认"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_UuNXJ6gGeq4b8LJGWxyt7861"
+      },
+      "toolCallId": "call_00_UuNXJ6gGeq4b8LJGWxyt7861",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "73a878f8-b36d-4088-8cc9-5559579d8d5d"
+    }
+  },
+  {
+    "call_seq": 109,
+    "result_seq": 110,
+    "call": {
+      "turn": 5,
+      "step": 1,
+      "callId": "call_00_o0Gi48kehZwDQn1QYznX4547",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [\"暂停监测\", \"结束监测\"], \"controls_note\": \"任务已恢复为 running，进度 4/10；后续暂停、失败或结束均以实际返回为准，不预告后续成功。\", \"fallback_text\": \"job-convert-01 已恢复运行，10 个文件中已完成 4 个，状态 running；无失败记录，通知未触发，监测未结束。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"4\"}, {\"label\": \"当前状态\", \"value\": \"running（已恢复）\"}], \"progress\": {\"completed\": 4, \"text\": \"4 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"模拟任务 job-convert-01 已创建，共 10 个文件\", \"node\": \"任务启动\", \"state\": \"已发生\"}, {\"detail\": \"处理至 3/10 个文件后暂停\", \"node\": \"处理（首次）\", \"state\": \"已发生\"}, {\"detail\": \"任务模拟暂停，进度停在 3/10\", \"node\": \"任务暂停\", \"state\": \"已发生\"}, {\"detail\": \"任务已恢复运行，已完成 4/10 个文件\", \"node\": \"已继续运行\", \"state\": \"当前\"}, {\"detail\": \"无失败记录，通知未触发\", \"node\": \"失败通知\", \"state\": \"未触发\"}, {\"detail\": \"监测仍在进行，未结束\", \"node\": \"监测结束\", \"state\": \"未触发\"}], \"title\": \"文件处理任务监测 · 运行中\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现任务继续后的监测状态卡片加状态时间线：顶部标题\\\"文件处理任务监测 · 运行中\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；指标并排：总文件数 10、已完成 4、当前状态 running（已恢复）；进度条在 4/10。时间线依次：任务启动（已发生，共 10 个文件）、处理（首次）（已发生，处理至 3/10 后暂停）、任务暂停（已发生，进度停在 3/10）、已继续运行（当前，已完成 4/10）、失败通知（未触发，无失败记录）、监测结束（未触发，监测仍在进行）。底部可选操作：暂停监测、结束监测，并说明后续以实际返回为准、不预告成功。不放输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "hero",
+                "metricsGrid",
+                "progressCard",
+                "timelineCard",
+                "actionsCard"
+              ]
+            },
+            "hero": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "titleRow",
+                "heroText"
+              ]
+            },
+            "titleRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "pageHeading",
+                "simBadge"
+              ]
+            },
+            "pageHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "文件处理任务监测 · 运行中",
+                "level": "h1"
+              }
+            },
+            "simBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "warning"
+              }
+            },
+            "heroText": {
+              "type": "Text",
+              "props": {
+                "content": "job-convert-01 已恢复运行，10 个文件中已完成 4 个，状态 running；无失败记录，通知未触发，监测未结束。",
+                "variant": "default"
+              }
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricCompleted",
+                "metricStatus"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metricCompleted": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "4"
+              }
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "当前状态",
+                "value": "running（已恢复）"
+              }
+            },
+            "progressCard": {
+              "type": "Card",
+              "props": {
+                "title": "处理进度",
+                "variant": "default"
+              },
+              "children": [
+                "progressBar"
+              ]
+            },
+            "progressBar": {
+              "type": "Progress",
+              "props": {
+                "value": 4,
+                "label": "4 / 10",
+                "intent": "default",
+                "showValue": true,
+                "size": "medium"
+              }
+            },
+            "timelineCard": {
+              "type": "Card",
+              "props": {
+                "title": "状态时间线",
+                "variant": "default"
+              },
+              "children": [
+                "timeline"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "items": [
+                  {
+                    "title": "任务启动 · 已发生",
+                    "description": "模拟任务 job-convert-01 已创建，共 10 个文件",
+                    "status": "success"
+                  },
+                  {
+                    "title": "处理（首次） · 已发生",
+                    "description": "处理至 3/10 个文件后暂停",
+                    "status": "success"
+                  },
+                  {
+                    "title": "任务暂停 · 已发生",
+                    "description": "任务模拟暂停，进度停在 3/10",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "已继续运行 · 当前",
+                    "description": "任务已恢复运行，已完成 4/10 个文件",
+                    "status": "info"
+                  },
+                  {
+                    "title": "失败通知 · 未触发",
+                    "description": "无失败记录，通知未触发",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "监测结束 · 未触发",
+                    "description": "监测仍在进行，未结束",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无时间线记录"
+              }
+            },
+            "actionsCard": {
+              "type": "Card",
+              "props": {
+                "title": "可选操作",
+                "variant": "outlined"
+              },
+              "children": [
+                "controlsNote",
+                "actionsRow"
+              ]
+            },
+            "controlsNote": {
+              "type": "Text",
+              "props": {
+                "content": "任务已恢复为 running，进度 4/10；后续暂停、失败或结束均以实际返回为准，不预告后续成功。",
+                "variant": "muted"
+              }
+            },
+            "actionsRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "pauseButton",
+                "endButton"
+              ]
+            },
+            "pauseButton": {
+              "type": "Button",
+              "props": {
+                "label": "暂停监测",
+                "variant": "outline",
+                "intent": "default",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.pause",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            },
+            "endButton": {
+              "type": "Button",
+              "props": {
+                "label": "结束监测",
+                "variant": "outline",
+                "intent": "danger",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.end",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [
+              "暂停监测",
+              "结束监测"
+            ],
+            "controls_note": "任务已恢复为 running，进度 4/10；后续暂停、失败或结束均以实际返回为准，不预告后续成功。",
+            "fallback_text": "job-convert-01 已恢复运行，10 个文件中已完成 4 个，状态 running；无失败记录，通知未触发，监测未结束。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "4"
+              },
+              {
+                "label": "当前状态",
+                "value": "running（已恢复）"
+              }
+            ],
+            "progress": {
+              "completed": 4,
+              "text": "4 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "模拟任务 job-convert-01 已创建，共 10 个文件",
+                "node": "任务启动",
+                "state": "已发生"
+              },
+              {
+                "detail": "处理至 3/10 个文件后暂停",
+                "node": "处理（首次）",
+                "state": "已发生"
+              },
+              {
+                "detail": "任务模拟暂停，进度停在 3/10",
+                "node": "任务暂停",
+                "state": "已发生"
+              },
+              {
+                "detail": "任务已恢复运行，已完成 4/10 个文件",
+                "node": "已继续运行",
+                "state": "当前"
+              },
+              {
+                "detail": "无失败记录，通知未触发",
+                "node": "失败通知",
+                "state": "未触发"
+              },
+              {
+                "detail": "监测仍在进行，未结束",
+                "node": "监测结束",
+                "state": "未触发"
+              }
+            ],
+            "title": "文件处理任务监测 · 运行中"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_o0Gi48kehZwDQn1QYznX4547"
+      },
+      "toolCallId": "call_00_o0Gi48kehZwDQn1QYznX4547",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "f33b4bf2-63fe-4a0e-9e7e-08201d78f36e"
+    }
+  },
+  {
+    "call_seq": 124,
+    "result_seq": 125,
+    "call": {
+      "turn": 6,
+      "step": 1,
+      "callId": "call_00_nSzcpdxSzj4ycpppNkf32960",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [\"结束监测\", \"重新尝试暂停/继续前先确认处理方式\"], \"controls_note\": \"任务已失败，进度停在 4/10；失败通知已发出，后续是否重试或结束监测以你的选择为准，不预设重试会成功。\", \"failure\": {\"error\": \"INVALID_FILE\", \"failed_file\": \"doc-05\", \"event_id\": \"e-fail-01\", \"message\": \"job-convert-01 处理失败：文件 doc-05 无效（错误码 INVALID_FILE）\"}, \"fallback_text\": \"失败通知：job-convert-01 已失败，已完成 4/10 个文件，失败文件为 doc-05，错误码 INVALID_FILE。监测仍开启，可选择结束监测。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"4\"}, {\"label\": \"当前状态\", \"value\": \"failed（失败）\"}], \"progress\": {\"completed\": 4, \"text\": \"4 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"模拟任务 job-convert-01 已创建，共 10 个文件\", \"node\": \"任务启动\", \"state\": \"已发生\"}, {\"detail\": \"处理至 3/10 后暂停\", \"node\": \"处理（首次）\", \"state\": \"已发生\"}, {\"detail\": \"已继续运行，处理至 4/10\", \"node\": \"继续运行\", \"state\": \"已发生\"}, {\"detail\": \"文件 doc-05 无效，错误码 INVALID_FILE，任务失败\", \"node\": \"任务失败\", \"state\": \"当前\"}, {\"detail\": \"失败通知已发出（事件 e-fail-01）\", \"node\": \"失败通知\", \"state\": \"已触发\"}, {\"detail\": \"监测仍开启，等待你选择是否结束\", \"node\": \"监测结束\", \"state\": \"未触发\"}], \"title\": \"文件处理任务监测 · 已失败\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现任务失败后的监测状态卡片加醒目失败提示条与状态时间线：顶部标题\\\"文件处理任务监测 · 已失败\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；失败提示突出显示：任务 job-convert-01 处理失败，失败文件 doc-05，错误码 INVALID_FILE，事件 e-fail-01，进度停在 4/10。指标并排：总文件数 10、已完成 4、当前状态 failed（失败）。时间线依次：任务启动（已发生）、处理（首次）（已发生，3/10 后暂停）、继续运行（已发生，处理至 4/10）、任务失败（当前，doc-05 无效 INVALID_FILE）、失败通知（已触发，事件 e-fail-01）、监测结束（未触发，监测仍开启等待选择）。底部操作：结束监测，并说明是否重试以你的选择为准、不预设重试会成功。不放输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "headerSection",
+                "failureSection",
+                "metricsSection",
+                "progressSection",
+                "timelineSection",
+                "noticeSection",
+                "actionSection"
+              ]
+            },
+            "headerSection": {
+              "type": "Section",
+              "props": {
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "headerStack"
+              ]
+            },
+            "headerStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "titleHeading",
+                "simulatedBadge"
+              ]
+            },
+            "titleHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "文件处理任务监测 · 已失败",
+                "level": "h1"
+              }
+            },
+            "simulatedBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "info"
+              }
+            },
+            "failureSection": {
+              "type": "Section",
+              "props": {
+                "title": "失败详情",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "failureStack"
+              ]
+            },
+            "failureStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "failureCallout",
+                "failureDescriptions"
+              ]
+            },
+            "failureCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "danger",
+                "title": "任务处理失败",
+                "description": "job-convert-01 处理失败：文件 doc-05 无效（错误码 INVALID_FILE）",
+                "showIcon": true
+              }
+            },
+            "failureDescriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "失败字段",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "任务 ID",
+                    "value": "job-convert-01"
+                  },
+                  {
+                    "label": "失败文件",
+                    "value": "doc-05"
+                  },
+                  {
+                    "label": "错误码",
+                    "value": "INVALID_FILE"
+                  },
+                  {
+                    "label": "事件 ID",
+                    "value": "e-fail-01"
+                  },
+                  {
+                    "label": "进度",
+                    "value": "4 / 10"
+                  }
+                ]
+              }
+            },
+            "metricsSection": {
+              "type": "Section",
+              "props": {
+                "title": "任务指标",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "metricsGrid"
+              ]
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricCompleted",
+                "metricStatus"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metricCompleted": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "4"
+              }
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "当前状态",
+                "value": "failed（失败）"
+              }
+            },
+            "progressSection": {
+              "type": "Section",
+              "props": {
+                "title": "处理进度",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "progressStack"
+              ]
+            },
+            "progressStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "progressBar",
+                "progressText"
+              ]
+            },
+            "progressBar": {
+              "type": "Progress",
+              "props": {
+                "value": 40,
+                "label": "4 / 10",
+                "intent": "danger",
+                "showValue": true,
+                "size": "medium"
+              }
+            },
+            "progressText": {
+              "type": "Text",
+              "props": {
+                "content": "任务已失败，进度停在 4/10。",
+                "variant": "danger"
+              }
+            },
+            "timelineSection": {
+              "type": "Section",
+              "props": {
+                "title": "状态时间线",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "timeline"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "title": "任务事件",
+                "items": [
+                  {
+                    "title": "任务启动",
+                    "description": "已发生 · 模拟任务 job-convert-01 已创建，共 10 个文件",
+                    "status": "success"
+                  },
+                  {
+                    "title": "处理（首次）",
+                    "description": "已发生 · 处理至 3/10 后暂停",
+                    "status": "success"
+                  },
+                  {
+                    "title": "继续运行",
+                    "description": "已发生 · 已继续运行，处理至 4/10",
+                    "status": "success"
+                  },
+                  {
+                    "title": "任务失败",
+                    "description": "当前 · 文件 doc-05 无效，错误码 INVALID_FILE，任务失败",
+                    "status": "error"
+                  },
+                  {
+                    "title": "失败通知",
+                    "description": "已触发 · 失败通知已发出（事件 e-fail-01）",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "监测结束",
+                    "description": "未触发 · 监测仍开启，等待你选择是否结束",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无时间线事件"
+              }
+            },
+            "noticeSection": {
+              "type": "Section",
+              "props": {
+                "title": "通知文案",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "fallbackText"
+              ]
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": "失败通知：job-convert-01 已失败，已完成 4/10 个文件，失败文件为 doc-05，错误码 INVALID_FILE。监测仍开启，可选择结束监测。",
+                "variant": "default"
+              }
+            },
+            "actionSection": {
+              "type": "Section",
+              "props": {
+                "title": "操作",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "actionStack"
+              ]
+            },
+            "actionStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "actionNote",
+                "retryNote",
+                "endButton"
+              ]
+            },
+            "actionNote": {
+              "type": "Text",
+              "props": {
+                "content": "任务已失败，进度停在 4/10；失败通知已发出，后续是否重试或结束监测以你的选择为准，不预设重试会成功。",
+                "variant": "muted"
+              }
+            },
+            "retryNote": {
+              "type": "Text",
+              "props": {
+                "content": "重新尝试暂停/继续前先确认处理方式",
+                "variant": "default"
+              }
+            },
+            "endButton": {
+              "type": "Button",
+              "props": {
+                "label": "结束监测",
+                "variant": "default",
+                "intent": "danger",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.end",
+                    "payload": {
+                      "job_id": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [
+              "结束监测",
+              "重新尝试暂停/继续前先确认处理方式"
+            ],
+            "controls_note": "任务已失败，进度停在 4/10；失败通知已发出，后续是否重试或结束监测以你的选择为准，不预设重试会成功。",
+            "failure": {
+              "error": "INVALID_FILE",
+              "failed_file": "doc-05",
+              "event_id": "e-fail-01",
+              "message": "job-convert-01 处理失败：文件 doc-05 无效（错误码 INVALID_FILE）"
+            },
+            "fallback_text": "失败通知：job-convert-01 已失败，已完成 4/10 个文件，失败文件为 doc-05，错误码 INVALID_FILE。监测仍开启，可选择结束监测。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "4"
+              },
+              {
+                "label": "当前状态",
+                "value": "failed（失败）"
+              }
+            ],
+            "progress": {
+              "completed": 4,
+              "text": "4 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "模拟任务 job-convert-01 已创建，共 10 个文件",
+                "node": "任务启动",
+                "state": "已发生"
+              },
+              {
+                "detail": "处理至 3/10 后暂停",
+                "node": "处理（首次）",
+                "state": "已发生"
+              },
+              {
+                "detail": "已继续运行，处理至 4/10",
+                "node": "继续运行",
+                "state": "已发生"
+              },
+              {
+                "detail": "文件 doc-05 无效，错误码 INVALID_FILE，任务失败",
+                "node": "任务失败",
+                "state": "当前"
+              },
+              {
+                "detail": "失败通知已发出（事件 e-fail-01）",
+                "node": "失败通知",
+                "state": "已触发"
+              },
+              {
+                "detail": "监测仍开启，等待你选择是否结束",
+                "node": "监测结束",
+                "state": "未触发"
+              }
+            ],
+            "title": "文件处理任务监测 · 已失败"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_nSzcpdxSzj4ycpppNkf32960"
+      },
+      "toolCallId": "call_00_nSzcpdxSzj4ycpppNkf32960",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "7f5262e8-54ae-4f54-9b67-e40691bfa5c5"
+    }
+  },
+  {
+    "call_seq": 145,
+    "result_seq": 147,
+    "call": {
+      "turn": 7,
+      "step": 2,
+      "callId": "call_00_Z4WvUH9v7LUarwkicKMM9292",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [\"再次尝试结束监测\"], \"controls_note\": \"结束监测的请求未收到模拟结果回执，因此不能确认监测已停止；任务本次最终状态仍为 failed。\", \"failure\": {\"error\": \"INVALID_FILE\", \"event_id\": \"e-fail-01\", \"failed_file\": \"doc-05\", \"message\": \"本次失败：文件 doc-05 无效（INVALID_FILE），最终已完成 4/10\"}, \"fallback_text\": \"结束监测请求未获得回执，无法确认监测已停止；本次唯一已释放的最终结果为失败：doc-05 无效（INVALID_FILE），已完成 4/10。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"4\"}, {\"label\": \"任务状态\", \"value\": \"failed（失败）\"}], \"progress\": {\"completed\": 4, \"text\": \"4 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"已继续运行并处理至 4/10\", \"node\": \"继续运行\", \"state\": \"已发生\"}, {\"detail\": \"文件 doc-05 无效，错误码 INVALID_FILE\", \"node\": \"任务失败\", \"state\": \"已发生\"}, {\"detail\": \"失败通知已发出（事件 e-fail-01）\", \"node\": \"失败通知\", \"state\": \"已触发\"}, {\"detail\": \"已提交结束监测请求，未收到模拟结果回执，无法确认监测是否已停止\", \"node\": \"结束监测请求（结果未知）\", \"state\": \"待确认\"}], \"title\": \"文件处理任务监测 · 结束待确认\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现结束监测请求后的状态卡片加状态时间线：顶部标题\\\"文件处理任务监测 · 结束待确认\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；失败提示条保留：doc-05 无效（INVALID_FILE），事件 e-fail-01，最终完成 4/10。指标并排：总文件数 10、已完成 4、任务状态 failed（失败）。时间线依次：继续运行（已发生，处理至 4/10）、任务失败（已发生，doc-05 INVALID_FILE）、失败通知（已触发）、结束监测请求（结果未知，待确认，说明未收到模拟结果回执、无法确认监测已停止）。底部操作：再次尝试结束监测，并说明不能确认监测已停止。不放输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "header",
+                "failureCallout",
+                "metricsGrid",
+                "taskInfoCard",
+                "timelineSection",
+                "endMonitorCard"
+              ]
+            },
+            "header": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "titleHeading",
+                "simBadge"
+              ]
+            },
+            "titleHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "文件处理任务监测 · 结束待确认",
+                "level": "h1"
+              }
+            },
+            "simBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "info"
+              }
+            },
+            "failureCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "danger",
+                "title": "任务失败",
+                "description": "doc-05 无效（INVALID_FILE） · 事件 e-fail-01 · 最终完成 4/10",
+                "showIcon": true
+              }
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricCompleted",
+                "metricStatus"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metricCompleted": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "4"
+              }
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "任务状态",
+                "value": "failed（失败）"
+              }
+            },
+            "taskInfoCard": {
+              "type": "Card",
+              "props": {
+                "title": "任务状态详情",
+                "variant": "outlined"
+              },
+              "children": [
+                "taskDetailsStack"
+              ]
+            },
+            "taskDetailsStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "taskDescriptions",
+                "taskProgress"
+              ]
+            },
+            "taskDescriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "任务 ID",
+                    "value": "job-convert-01"
+                  },
+                  {
+                    "label": "进度",
+                    "value": "4 / 10"
+                  },
+                  {
+                    "label": "模拟状态",
+                    "value": "模拟状态 · 不处理真实文件"
+                  },
+                  {
+                    "label": "失败文件",
+                    "value": "doc-05"
+                  },
+                  {
+                    "label": "错误码",
+                    "value": "INVALID_FILE"
+                  },
+                  {
+                    "label": "事件 ID",
+                    "value": "e-fail-01"
+                  },
+                  {
+                    "label": "失败消息",
+                    "value": "本次失败：文件 doc-05 无效（INVALID_FILE），最终已完成 4/10"
+                  },
+                  {
+                    "label": "可用操作",
+                    "value": "再次尝试结束监测"
+                  }
+                ]
+              }
+            },
+            "taskProgress": {
+              "type": "Progress",
+              "props": {
+                "value": 40,
+                "label": "已完成 4 / 10",
+                "intent": "warning",
+                "showValue": true,
+                "size": "medium"
+              }
+            },
+            "timelineSection": {
+              "type": "Timeline",
+              "props": {
+                "title": "状态时间线",
+                "items": [
+                  {
+                    "title": "继续运行（已发生）",
+                    "description": "已继续运行并处理至 4/10",
+                    "status": "info"
+                  },
+                  {
+                    "title": "任务失败（已发生）",
+                    "description": "文件 doc-05 无效，错误码 INVALID_FILE",
+                    "status": "error"
+                  },
+                  {
+                    "title": "失败通知（已触发）",
+                    "description": "失败通知已发出（事件 e-fail-01）",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "结束监测请求（结果未知 · 待确认）",
+                    "description": "已提交结束监测请求，未收到模拟结果回执，无法确认监测是否已停止",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无时间线记录"
+              }
+            },
+            "endMonitorCard": {
+              "type": "Card",
+              "props": {
+                "title": "结束监测",
+                "variant": "filled"
+              },
+              "children": [
+                "endMonitorStack"
+              ]
+            },
+            "endMonitorStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "controlsNoteText",
+                "fallbackText",
+                "retryButton"
+              ]
+            },
+            "controlsNoteText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/controls_note"
+                },
+                "variant": "warning"
+              }
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            },
+            "retryButton": {
+              "type": "Button",
+              "props": {
+                "label": "再次尝试结束监测",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "monitor.end.retry",
+                    "payload": {
+                      "jobId": "job-convert-01"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [
+              "再次尝试结束监测"
+            ],
+            "controls_note": "结束监测的请求未收到模拟结果回执，因此不能确认监测已停止；任务本次最终状态仍为 failed。",
+            "failure": {
+              "error": "INVALID_FILE",
+              "event_id": "e-fail-01",
+              "failed_file": "doc-05",
+              "message": "本次失败：文件 doc-05 无效（INVALID_FILE），最终已完成 4/10"
+            },
+            "fallback_text": "结束监测请求未获得回执，无法确认监测已停止；本次唯一已释放的最终结果为失败：doc-05 无效（INVALID_FILE），已完成 4/10。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "4"
+              },
+              {
+                "label": "任务状态",
+                "value": "failed（失败）"
+              }
+            ],
+            "progress": {
+              "completed": 4,
+              "text": "4 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "已继续运行并处理至 4/10",
+                "node": "继续运行",
+                "state": "已发生"
+              },
+              {
+                "detail": "文件 doc-05 无效，错误码 INVALID_FILE",
+                "node": "任务失败",
+                "state": "已发生"
+              },
+              {
+                "detail": "失败通知已发出（事件 e-fail-01）",
+                "node": "失败通知",
+                "state": "已触发"
+              },
+              {
+                "detail": "已提交结束监测请求，未收到模拟结果回执，无法确认监测是否已停止",
+                "node": "结束监测请求（结果未知）",
+                "state": "待确认"
+              }
+            ],
+            "title": "文件处理任务监测 · 结束待确认"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Z4WvUH9v7LUarwkicKMM9292"
+      },
+      "toolCallId": "call_00_Z4WvUH9v7LUarwkicKMM9292",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "4b041205-6fe3-4c12-a995-04e94a700e53"
+    }
+  },
+  {
+    "call_seq": 160,
+    "result_seq": 161,
+    "call": {
+      "turn": 8,
+      "step": 1,
+      "callId": "call_00_8SOQl8ZRVsoHGKxI7ZEc7051",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [], \"controls_note\": \"监测已结束，不再随任务状态变化更新；监测结束不等于文件处理成功。\", \"failure\": {\"error\": \"INVALID_FILE\", \"event_id\": \"e-fail-01\", \"failed_file\": \"doc-05\", \"message\": \"文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10\"}, \"fallback_text\": \"监测已结束：任务 job-convert-01 最终状态 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。监测结束不等于文件处理成功。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"4\"}, {\"label\": \"任务状态\", \"value\": \"failed（失败）\"}], \"monitoring_status\": \"ended（已结束）\", \"progress\": {\"completed\": 4, \"text\": \"4 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"共 10 个文件\", \"node\": \"任务启动\", \"state\": \"已发生\"}, {\"detail\": \"处理至 3/10 后暂停\", \"node\": \"处理（首次）\", \"state\": \"已发生\"}, {\"detail\": \"已继续，处理至 4/10\", \"node\": \"继续运行\", \"state\": \"已发生\"}, {\"detail\": \"doc-05 无效，错误码 INVALID_FILE\", \"node\": \"任务失败\", \"state\": \"已发生\"}, {\"detail\": \"失败通知已发出（事件 e-fail-01）\", \"node\": \"失败通知\", \"state\": \"已触发\"}, {\"detail\": \"监测状态 ended；监测结束不等于文件处理成功\", \"node\": \"监测结束\", \"state\": \"已结束\"}], \"title\": \"文件处理任务监测 · 监测已结束\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现监测结束后的最终状态卡片加完整状态时间线：顶部标题\\\"文件处理任务监测 · 监测已结束\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；显著提示\\\"监测已结束，不等于文件处理成功\\\"。指标并排：总文件数 10、已完成 4、任务状态 failed（失败）、监测状态 ended。进度条停在 4/10。失败提示保留：doc-05 无效（INVALID_FILE），事件 e-fail-01。时间线完整列出：任务启动（已发生）、处理（首次）（已发生，3/10 后暂停）、继续运行（已发生，4/10）、任务失败（已发生，doc-05 INVALID_FILE）、失败通知（已触发）、监测结束（已结束，注明监测结束不等于文件处理成功）。底部仅一句说明监测已停止更新、不再提供输入控件，不放输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "statusCard",
+                "timelineSection",
+                "footerText"
+              ]
+            },
+            "statusCard": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "header",
+                "statusCallout",
+                "metricsBlock",
+                "progressBlock",
+                "failureBlock"
+              ]
+            },
+            "header": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "md",
+                "align": "center"
+              },
+              "children": [
+                "titleHeading",
+                "simulatedBadge"
+              ]
+            },
+            "titleHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "文件处理任务监测 · 监测已结束",
+                "level": "h1"
+              }
+            },
+            "simulatedBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "info"
+              }
+            },
+            "statusCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "重要提示",
+                "description": "监测已结束，不等于文件处理成功",
+                "showIcon": true
+              }
+            },
+            "metricsBlock": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "metricsHeading",
+                "metricsGrid"
+              ]
+            },
+            "metricsHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "任务指标",
+                "level": "h3"
+              }
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 4,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricCompleted",
+                "metricTaskStatus",
+                "metricMonitoringStatus"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metricCompleted": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "4"
+              }
+            },
+            "metricTaskStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "任务状态",
+                "value": "failed（失败）"
+              }
+            },
+            "metricMonitoringStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "监测状态",
+                "value": "ended（已结束）"
+              }
+            },
+            "progressBlock": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "progressHeading",
+                "progressBar"
+              ]
+            },
+            "progressHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "处理进度",
+                "level": "h3"
+              }
+            },
+            "progressBar": {
+              "type": "Progress",
+              "props": {
+                "value": 40,
+                "label": "4 / 10",
+                "intent": "danger",
+                "showValue": false,
+                "size": "medium"
+              }
+            },
+            "failureBlock": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "failureHeading",
+                "failureCallout",
+                "failureDescriptions"
+              ]
+            },
+            "failureHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "失败详情",
+                "level": "h3"
+              }
+            },
+            "failureCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "danger",
+                "title": "任务失败",
+                "description": "文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10；事件 e-fail-01。",
+                "showIcon": true
+              }
+            },
+            "failureDescriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "任务 ID",
+                    "value": "job-convert-01"
+                  },
+                  {
+                    "label": "失败文件",
+                    "value": "doc-05"
+                  },
+                  {
+                    "label": "错误码",
+                    "value": "INVALID_FILE"
+                  },
+                  {
+                    "label": "事件 ID",
+                    "value": "e-fail-01"
+                  },
+                  {
+                    "label": "监测状态",
+                    "value": "ended（已结束）"
+                  },
+                  {
+                    "label": "进度",
+                    "value": "4 / 10"
+                  },
+                  {
+                    "label": "失败消息",
+                    "value": "文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10"
+                  }
+                ]
+              }
+            },
+            "timelineSection": {
+              "type": "Section",
+              "props": {
+                "title": "完整状态时间线",
+                "description": "按发生顺序逐项列出",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "timeline"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "title": "状态节点",
+                "emptyText": "暂无时间线记录",
+                "items": [
+                  {
+                    "title": "任务启动",
+                    "description": "共 10 个文件 · 状态：已发生",
+                    "status": "info"
+                  },
+                  {
+                    "title": "处理（首次）",
+                    "description": "处理至 3/10 后暂停 · 状态：已发生",
+                    "status": "info"
+                  },
+                  {
+                    "title": "继续运行",
+                    "description": "已继续，处理至 4/10 · 状态：已发生",
+                    "status": "info"
+                  },
+                  {
+                    "title": "任务失败",
+                    "description": "doc-05 无效，错误码 INVALID_FILE · 状态：已发生",
+                    "status": "error"
+                  },
+                  {
+                    "title": "失败通知",
+                    "description": "失败通知已发出（事件 e-fail-01） · 状态：已触发",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "监测结束",
+                    "description": "监测状态 ended；监测结束不等于文件处理成功 · 状态：已结束",
+                    "status": "info"
+                  }
+                ]
+              }
+            },
+            "footerText": {
+              "type": "Text",
+              "props": {
+                "content": "监测已结束，不再随任务状态变化更新；本页不提供输入控件或提交表单。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [],
+            "controls_note": "监测已结束，不再随任务状态变化更新；监测结束不等于文件处理成功。",
+            "failure": {
+              "error": "INVALID_FILE",
+              "event_id": "e-fail-01",
+              "failed_file": "doc-05",
+              "message": "文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10"
+            },
+            "fallback_text": "监测已结束：任务 job-convert-01 最终状态 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。监测结束不等于文件处理成功。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "4"
+              },
+              {
+                "label": "任务状态",
+                "value": "failed（失败）"
+              }
+            ],
+            "monitoring_status": "ended（已结束）",
+            "progress": {
+              "completed": 4,
+              "text": "4 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "共 10 个文件",
+                "node": "任务启动",
+                "state": "已发生"
+              },
+              {
+                "detail": "处理至 3/10 后暂停",
+                "node": "处理（首次）",
+                "state": "已发生"
+              },
+              {
+                "detail": "已继续，处理至 4/10",
+                "node": "继续运行",
+                "state": "已发生"
+              },
+              {
+                "detail": "doc-05 无效，错误码 INVALID_FILE",
+                "node": "任务失败",
+                "state": "已发生"
+              },
+              {
+                "detail": "失败通知已发出（事件 e-fail-01）",
+                "node": "失败通知",
+                "state": "已触发"
+              },
+              {
+                "detail": "监测状态 ended；监测结束不等于文件处理成功",
+                "node": "监测结束",
+                "state": "已结束"
+              }
+            ],
+            "title": "文件处理任务监测 · 监测已结束"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_8SOQl8ZRVsoHGKxI7ZEc7051"
+      },
+      "toolCallId": "call_00_8SOQl8ZRVsoHGKxI7ZEc7051",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "21d209d6-db39-422c-bba1-980137113646"
+    }
+  },
+  {
+    "call_seq": 175,
+    "result_seq": 176,
+    "call": {
+      "turn": 9,
+      "step": 1,
+      "callId": "call_00_UJJ9IMH34bWuFmz7syiW2713",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"controls\": [], \"controls_note\": \"监测维持 ended，不重新开启；重复到达的失败事件已去重，未重复提醒。\", \"dedup_note\": \"收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。\", \"failure\": {\"error\": \"INVALID_FILE\", \"event_id\": \"e-fail-01\", \"failed_file\": \"doc-05\", \"message\": \"文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10\"}, \"fallback_text\": \"状态未变：监测已结束，任务 job-convert-01 仍为 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。晚到的 e-fail-01 为同一事件，已去重。\", \"job_id\": \"job-convert-01\", \"metrics\": [{\"label\": \"总文件数\", \"value\": \"10\"}, {\"label\": \"已完成\", \"value\": \"4\"}, {\"label\": \"任务状态\", \"value\": \"failed（失败）\"}], \"monitoring_status\": \"ended（已结束）\", \"progress\": {\"completed\": 4, \"text\": \"4 / 10\", \"total\": 10}, \"simulated_badge\": \"模拟状态 · 不处理真实文件\", \"timeline\": [{\"detail\": \"doc-05 无效，错误码 INVALID_FILE\", \"node\": \"任务失败\", \"state\": \"已发生\"}, {\"detail\": \"失败通知已发出（事件 e-fail-01）\", \"node\": \"失败通知\", \"state\": \"已触发\"}, {\"detail\": \"监测状态 ended，不再更新\", \"node\": \"监测结束\", \"state\": \"已结束\"}, {\"detail\": \"事件 e-fail-01 重复到达，产生于监测结束前，已去重，状态未变更\", \"node\": \"晚到旧失败事件\", \"state\": \"已去重\"}], \"title\": \"文件处理任务监测 · 监测已结束（状态未变）\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"呈现监测已结束后的状态卡片加状态时间线，说明收到的是晚到的重复失败事件、状态未变更：顶部标题\\\"文件处理任务监测 · 监测已结束（状态未变）\\\"与\\\"模拟状态 · 不处理真实文件\\\"标识；一行提示：收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，已去重、未重复提醒。指标并排：总文件数 10、已完成 4、任务状态 failed（失败）、监测状态 ended。进度停在 4/10。失败详情：doc-05 无效（INVALID_FILE）。时间线依次：任务失败（已发生，doc-05 INVALID_FILE）、失败通知（已触发，e-fail-01）、监测结束（已结束）、晚到旧失败事件（已去重，说明产生于监测结束前、状态未变更）。无输入控件，不放输入框或提交表单。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "headerSection",
+                "metricsGrid",
+                "progressCard",
+                "lateEventCallout",
+                "failureCard",
+                "monitoringCard",
+                "timelineCard",
+                "sourcesCard"
+              ]
+            },
+            "headerSection": {
+              "type": "Section",
+              "props": {
+                "title": "文件处理任务监测 · 监测已结束（状态未变）",
+                "description": "状态未变：监测已结束，任务 job-convert-01 仍为 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。晚到的 e-fail-01 为同一事件，已去重。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "headerMeta"
+              ]
+            },
+            "headerMeta": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "simBadge"
+              ]
+            },
+            "simBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟状态 · 不处理真实文件",
+                "variant": "warning"
+              }
+            },
+            "metricsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 4,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metricTotal",
+                "metricCompleted",
+                "metricStatus",
+                "metricMonitoring"
+              ]
+            },
+            "metricTotal": {
+              "type": "Metric",
+              "props": {
+                "label": "总文件数",
+                "value": "10"
+              }
+            },
+            "metricCompleted": {
+              "type": "Metric",
+              "props": {
+                "label": "已完成",
+                "value": "4"
+              }
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "任务状态",
+                "value": "failed（失败）"
+              }
+            },
+            "metricMonitoring": {
+              "type": "Metric",
+              "props": {
+                "label": "监测状态",
+                "value": "ended（已结束）"
+              }
+            },
+            "progressCard": {
+              "type": "Card",
+              "props": {
+                "title": "任务进度（4 / 10）",
+                "variant": "outlined"
+              },
+              "children": [
+                "progressBar"
+              ]
+            },
+            "progressBar": {
+              "type": "Progress",
+              "props": {
+                "value": 4,
+                "label": "4 / 10",
+                "intent": "danger",
+                "showValue": true,
+                "size": "medium"
+              }
+            },
+            "lateEventCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "收到晚到事件 e-fail-01（已去重）",
+                "description": "收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。",
+                "showIcon": true
+              }
+            },
+            "failureCard": {
+              "type": "Card",
+              "props": {
+                "title": "失败详情",
+                "variant": "outlined"
+              },
+              "children": [
+                "failureDescriptions"
+              ]
+            },
+            "failureDescriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "任务 ID",
+                    "value": "job-convert-01"
+                  },
+                  {
+                    "label": "失败文件",
+                    "value": "doc-05"
+                  },
+                  {
+                    "label": "错误码",
+                    "value": "INVALID_FILE"
+                  },
+                  {
+                    "label": "事件 ID",
+                    "value": "e-fail-01"
+                  },
+                  {
+                    "label": "任务状态",
+                    "value": "failed（失败）"
+                  },
+                  {
+                    "label": "监测状态",
+                    "value": "ended（已结束）"
+                  },
+                  {
+                    "label": "已完成 / 总数",
+                    "value": "4 / 10"
+                  },
+                  {
+                    "label": "失败消息",
+                    "value": "文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10"
+                  }
+                ]
+              }
+            },
+            "monitoringCard": {
+              "type": "Card",
+              "props": {
+                "title": "监测约束与去重结果",
+                "variant": "default"
+              },
+              "children": [
+                "monitoringConstraints"
+              ]
+            },
+            "monitoringConstraints": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "监测状态",
+                    "value": "ended（已结束）"
+                  },
+                  {
+                    "label": "控制说明",
+                    "value": "监测维持 ended，不重新开启；重复到达的失败事件已去重，未重复提醒。"
+                  },
+                  {
+                    "label": "去重说明",
+                    "value": "收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。"
+                  }
+                ]
+              }
+            },
+            "timelineCard": {
+              "type": "Card",
+              "props": {
+                "title": "状态时间线",
+                "variant": "default"
+              },
+              "children": [
+                "timeline"
+              ]
+            },
+            "timeline": {
+              "type": "Timeline",
+              "props": {
+                "items": [
+                  {
+                    "title": "任务失败（已发生）",
+                    "description": "doc-05 无效，错误码 INVALID_FILE",
+                    "status": "error"
+                  },
+                  {
+                    "title": "失败通知（已触发）",
+                    "description": "失败通知已发出（事件 e-fail-01）",
+                    "status": "info"
+                  },
+                  {
+                    "title": "监测结束（已结束）",
+                    "description": "监测状态 ended，不再更新",
+                    "status": "info"
+                  },
+                  {
+                    "title": "晚到旧失败事件（已去重）",
+                    "description": "事件 e-fail-01 重复到达，产生于监测结束前，已去重，状态未变更",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无时间线事件"
+              }
+            },
+            "sourcesCard": {
+              "type": "Card",
+              "props": {
+                "title": "business_data 逐项出处",
+                "variant": "outlined"
+              },
+              "children": [
+                "sourcesTable"
+              ]
+            },
+            "sourcesTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "字段出处",
+                  "值",
+                  "说明"
+                ],
+                "rows": [
+                  [
+                    "business_data.title",
+                    "文件处理任务监测 · 监测已结束（状态未变）",
+                    "标题"
+                  ],
+                  [
+                    "business_data.simulated_badge",
+                    "模拟状态 · 不处理真实文件",
+                    "模拟标识"
+                  ],
+                  [
+                    "business_data.job_id",
+                    "job-convert-01",
+                    "任务 ID"
+                  ],
+                  [
+                    "business_data.fallback_text",
+                    "状态未变：监测已结束，任务 job-convert-01 仍为 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。晚到的 e-fail-01 为同一事件，已去重。",
+                    "兜底说明"
+                  ],
+                  [
+                    "business_data.dedup_note",
+                    "收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。",
+                    "去重说明"
+                  ],
+                  [
+                    "business_data.controls_note",
+                    "监测维持 ended，不重新开启；重复到达的失败事件已去重，未重复提醒。",
+                    "控制说明"
+                  ],
+                  [
+                    "business_data.metrics[0].label",
+                    "总文件数",
+                    "指标标签"
+                  ],
+                  [
+                    "business_data.metrics[0].value",
+                    "10",
+                    "指标值"
+                  ],
+                  [
+                    "business_data.metrics[1].label",
+                    "已完成",
+                    "指标标签"
+                  ],
+                  [
+                    "business_data.metrics[1].value",
+                    "4",
+                    "指标值"
+                  ],
+                  [
+                    "business_data.metrics[2].label",
+                    "任务状态",
+                    "指标标签"
+                  ],
+                  [
+                    "business_data.metrics[2].value",
+                    "failed（失败）",
+                    "指标值"
+                  ],
+                  [
+                    "business_data.monitoring_status",
+                    "ended（已结束）",
+                    "监测状态"
+                  ],
+                  [
+                    "business_data.progress.completed",
+                    "4",
+                    "进度完成数"
+                  ],
+                  [
+                    "business_data.progress.total",
+                    "10",
+                    "进度总数"
+                  ],
+                  [
+                    "business_data.progress.text",
+                    "4 / 10",
+                    "进度文本"
+                  ],
+                  [
+                    "business_data.failure.failed_file",
+                    "doc-05",
+                    "失败文件"
+                  ],
+                  [
+                    "business_data.failure.error",
+                    "INVALID_FILE",
+                    "错误码"
+                  ],
+                  [
+                    "business_data.failure.event_id",
+                    "e-fail-01",
+                    "失败事件 ID"
+                  ],
+                  [
+                    "business_data.failure.message",
+                    "文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10",
+                    "失败消息"
+                  ],
+                  [
+                    "business_data.timeline[0].node",
+                    "任务失败",
+                    "时间线步骤"
+                  ],
+                  [
+                    "business_data.timeline[0].state",
+                    "已发生",
+                    "时间线状态"
+                  ],
+                  [
+                    "business_data.timeline[0].detail",
+                    "doc-05 无效，错误码 INVALID_FILE",
+                    "时间线步骤说明"
+                  ],
+                  [
+                    "business_data.timeline[1].node",
+                    "失败通知",
+                    "时间线步骤"
+                  ],
+                  [
+                    "business_data.timeline[1].state",
+                    "已触发",
+                    "时间线状态"
+                  ],
+                  [
+                    "business_data.timeline[1].detail",
+                    "失败通知已发出（事件 e-fail-01）",
+                    "时间线步骤说明"
+                  ],
+                  [
+                    "business_data.timeline[2].node",
+                    "监测结束",
+                    "时间线步骤"
+                  ],
+                  [
+                    "business_data.timeline[2].state",
+                    "已结束",
+                    "时间线状态"
+                  ],
+                  [
+                    "business_data.timeline[2].detail",
+                    "监测状态 ended，不再更新",
+                    "时间线步骤说明"
+                  ],
+                  [
+                    "business_data.timeline[3].node",
+                    "晚到旧失败事件",
+                    "时间线步骤"
+                  ],
+                  [
+                    "business_data.timeline[3].state",
+                    "已去重",
+                    "时间线状态"
+                  ],
+                  [
+                    "business_data.timeline[3].detail",
+                    "事件 e-fail-01 重复到达，产生于监测结束前，已去重，状态未变更",
+                    "时间线步骤说明"
+                  ]
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "controls": [],
+            "controls_note": "监测维持 ended，不重新开启；重复到达的失败事件已去重，未重复提醒。",
+            "dedup_note": "收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。",
+            "failure": {
+              "error": "INVALID_FILE",
+              "event_id": "e-fail-01",
+              "failed_file": "doc-05",
+              "message": "文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10"
+            },
+            "fallback_text": "状态未变：监测已结束，任务 job-convert-01 仍为 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。晚到的 e-fail-01 为同一事件，已去重。",
+            "job_id": "job-convert-01",
+            "metrics": [
+              {
+                "label": "总文件数",
+                "value": "10"
+              },
+              {
+                "label": "已完成",
+                "value": "4"
+              },
+              {
+                "label": "任务状态",
+                "value": "failed（失败）"
+              }
+            ],
+            "monitoring_status": "ended（已结束）",
+            "progress": {
+              "completed": 4,
+              "text": "4 / 10",
+              "total": 10
+            },
+            "simulated_badge": "模拟状态 · 不处理真实文件",
+            "timeline": [
+              {
+                "detail": "doc-05 无效，错误码 INVALID_FILE",
+                "node": "任务失败",
+                "state": "已发生"
+              },
+              {
+                "detail": "失败通知已发出（事件 e-fail-01）",
+                "node": "失败通知",
+                "state": "已触发"
+              },
+              {
+                "detail": "监测状态 ended，不再更新",
+                "node": "监测结束",
+                "state": "已结束"
+              },
+              {
+                "detail": "事件 e-fail-01 重复到达，产生于监测结束前，已去重，状态未变更",
+                "node": "晚到旧失败事件",
+                "state": "已去重"
+              }
+            ],
+            "title": "文件处理任务监测 · 监测已结束（状态未变）"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_UJJ9IMH34bWuFmz7syiW2713"
+      },
+      "toolCallId": "call_00_UJJ9IMH34bWuFmz7syiW2713",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5aeefade-042c-424a-a71d-06e3a9b9f41d"
+    }
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_or1ATshSeGcUpe2NIWyb3759",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"最小状态卡片：只显示一条握手请求的状态。标题「握手请求」，状态标签「待处理 / pending」，说明「已接收握手请求，当前尚无成功或失败结果」。卡片内不设任何按钮、不复述动作、不发起新的握手。保持极简，只含标题、状态字段与简短说明，附文字兜底段落完整重复同样事实。\", \"business_data\": {\"title\": \"握手请求\", \"status\": \"待处理（pending）\", \"status_key\": \"pending\", \"summary\": \"已接收握手请求，当前尚无成功或失败结果。\", \"detail\": \"动作编号 handshake-01；结果未产生，不预报成功或失败。\", \"fallback_text\": \"握手请求：handshake-01，状态为待处理（pending）。已接收请求，目前没有成功或失败结果，完成后才能告知结局。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "handshake-card",
+                "handshake-fallback"
+              ]
+            },
+            "handshake-card": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "handshake-status-stack"
+              ]
+            },
+            "handshake-status-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "handshake-status",
+                "handshake-summary"
+              ]
+            },
+            "handshake-status": {
+              "type": "Badge",
+              "props": {
+                "label": "待处理 / pending",
+                "variant": "default"
+              }
+            },
+            "handshake-summary": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/summary"
+                },
+                "variant": "default"
+              }
+            },
+            "handshake-fallback": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "握手请求",
+            "status": "待处理（pending）",
+            "status_key": "pending",
+            "summary": "已接收握手请求，当前尚无成功或失败结果。",
+            "detail": "动作编号 handshake-01；结果未产生，不预报成功或失败。",
+            "fallback_text": "握手请求：handshake-01，状态为待处理（pending）。已接收请求，目前没有成功或失败结果，完成后才能告知结局。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_or1ATshSeGcUpe2NIWyb3759"
+      },
+      "toolCallId": "call_00_or1ATshSeGcUpe2NIWyb3759",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "0a86dd02-d609-4617-b559-c2b9e78811dd"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ET_24OF4TlePkMQAIdh7kSW5657",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"detail\": \"动作编号 handshake-01；失败原因：target_unreachable（目标无法触及）。\", \"fallback_text\": \"握手请求 handshake-01 结果为失败，原因 target_unreachable（目标无法触及）。本次为模拟结果，未控制真实机器人，也没有产生真实动作；不会自动重试。\", \"note\": \"模拟结果，未控制真实机器人；不会自动重试，也不提前预报后续结果。\", \"status\": \"失败（failed）\", \"status_key\": \"failed\", \"summary\": \"握手请求已结束，本次未能完成握手。\", \"title\": \"握手请求\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"最小状态卡片：只显示握手请求结果。标题「握手请求」，状态标签「失败 / failed」，说明「握手请求已结束，本次未能完成握手」，并给出失败原因 target_unreachable 与「模拟结果，未控制真实机器人」提示。卡片内不设任何按钮、不复述动作、不发起新的握手、不自动重试。保持极简，附文字兜底完整重复同样事实。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "statusRow",
+                "summary",
+                "detail",
+                "note",
+                "fallback",
+                "source"
+              ]
+            },
+            "statusRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "statusBadge"
+              ]
+            },
+            "statusBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "失败 / failed",
+                "variant": "danger"
+              }
+            },
+            "summary": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/summary"
+                },
+                "variant": "default"
+              }
+            },
+            "detail": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/detail"
+                },
+                "variant": "muted"
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "warning"
+              }
+            },
+            "fallback": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            },
+            "source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "detail": "动作编号 handshake-01；失败原因：target_unreachable（目标无法触及）。",
+            "fallback_text": "握手请求 handshake-01 结果为失败，原因 target_unreachable（目标无法触及）。本次为模拟结果，未控制真实机器人，也没有产生真实动作；不会自动重试。",
+            "note": "模拟结果，未控制真实机器人；不会自动重试，也不提前预报后续结果。",
+            "status": "失败（failed）",
+            "status_key": "failed",
+            "summary": "握手请求已结束，本次未能完成握手。",
+            "title": "握手请求"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_24OF4TlePkMQAIdh7kSW5657"
+      },
+      "toolCallId": "call_00_ET_24OF4TlePkMQAIdh7kSW5657",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "1b57bd75-75e0-488a-8ed8-3c84140773fc"
+    }
+  }
+]

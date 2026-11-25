@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 3,
+  "presentation": "pass",
+  "reason": "字段真实提交后正确汇总；草稿未提交及旧备注静态说明未更新，与完成状态并列。"
+}

@@ -1,0 +1,22 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C08",
+    "facts": "合成候选person-a和person-b，用户要求昵称小张关联person-a。初始未确认，确认后也只记录模拟状态，不做真实身份建档。",
+    "assets": [
+      {
+        "id": "bench05-person-pair",
+        "file": "bench05-person-pair.png",
+        "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+        "source_id": "person-pair",
+        "url": "http://127.0.0.1:3080/api/media/bench05-person-pair/content",
+        "path": "/api/media/bench05-person-pair/content",
+        "sha256": "618f34452e8eb947b9d7c7a419c59782b42e321fb62d42e1bfaf16ffe4d2bf9e",
+        "width": 960,
+        "height": 540
+      }
+    ]
+  },
+  "events": [],
+  "monitoringEnded": true
+}

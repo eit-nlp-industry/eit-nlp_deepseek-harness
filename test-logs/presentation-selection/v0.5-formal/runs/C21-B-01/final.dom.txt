@@ -1,0 +1,214 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 售后申请草稿填写与确认 刚刚":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 刚刚
+  - treeitem "已完成 售后申请草稿填写测评 刚刚":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 刚刚
+  - treeitem "已完成 商品退货多视角图片呈现 1分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 1分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 2分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 2分钟
+  - treeitem "食堂导航状态卡片呈现 2分钟" [selected]:
+    - generic: 食堂导航状态卡片呈现
+    - generic: 2分钟
+  - treeitem "已完成 包裹照片确认对象状态 3分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 3分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 4分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 4分钟
+  - treeitem "测评 C21-B-01 食堂导航 6分钟":
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 6分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 7分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 7分钟
+  - treeitem "已完成 活动需求确认与汇总 7分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 7分钟
+  - treeitem "已完成 活动需求确认测评 7分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 7分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 食堂导航状态卡片呈现
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 C21-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C21-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C21-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：可以，带我去食堂吧。 指定呈现方式：Image/状态卡片+停止原因，不编造绕行。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:45
+- button "复制":
+- status: 已完成
+- button "已完成，用时 46秒":
+  - generic: 已完成，用时 46秒
+- paragraph: 我会先获取这个案例的固定材料。
+- paragraph:
+  - strong: 前往食堂 · 当前状态
+- list:
+  - listitem: 目的地：食堂
+  - text: 当前状态：已收到你的确认，正准备前往；
+  - strong: 尚未到达
+  - listitem: 是否到达：未知，材料中还没有到达结论
+  - listitem: 停止原因：暂无。本例材料没有提供任何停止事件，因此不编造中断理由，也不编造绕行方案
+  - listitem: 路上障碍：未知，以随后出现的实际事件为准
+  - listitem: 画面：本例材料没有提供图片地址，所以状态卡片中没有放置图片，也不使用其他图片代替
+- paragraph:
+  - strong: 接下来
+  - text: ：只有等到出现实际到达或停止事件后，我才能继续更新状态和停止原因；在此之前，我不会预告结果。
+- heading "前往食堂 · 状态卡片" [level=2]
+- generic: 出处：business_data.title
+- table:
+  - rowgroup:
+    - row "字段 值 出处":
+      - columnheader "字段"
+      - columnheader "值"
+      - columnheader "出处"
+  - rowgroup:
+    - row "目的地 食堂（canteen） business_data.destination":
+      - cell "目的地"
+      - cell "食堂（canteen）"
+      - cell "business_data.destination"
+    - row "当前状态 已按你的确认准备前往，尚未到达 business_data.current_status":
+      - cell "当前状态"
+      - cell "已按你的确认准备前往，尚未到达"
+      - cell "business_data.current_status"
+    - row "是否到达 未知（材料未给出到达结论） business_data.arrival":
+      - cell "是否到达"
+      - cell "未知（材料未给出到达结论）"
+      - cell "business_data.arrival"
+    - row "停止原因 材料未释放：本次材料未释放任何停止事件，因此暂无停止原因 business_data.stop_reason":
+      - cell "停止原因"
+      - cell "材料未释放：本次材料未释放任何停止事件，因此暂无停止原因"
+      - cell "business_data.stop_reason"
+    - row "障碍情况 未知（障碍情况以随后事件为准） business_data.obstacle":
+      - cell "障碍情况"
+      - cell "未知（障碍情况以随后事件为准）"
+      - cell "business_data.obstacle"
+    - row "图像状态 本例材料未提供任何图像地址，暂无法展示现场画面（图像不可用） business_data.image_status":
+      - cell "图像状态"
+      - cell "本例材料未提供任何图像地址，暂无法展示现场画面（图像不可用）"
+      - cell "business_data.image_status"
+    - row "下一步 收到到达或停止事件后，再更新状态与停止原因 business_data.next_step":
+      - cell "下一步"
+      - cell "收到到达或停止事件后，再更新状态与停止原因"
+      - cell "business_data.next_step"
+- alert:
+  - img "info-circle":
+  - generic: 模拟说明
+  - generic: 模拟环境，仅作呈现（出处：business_data.simulated_note）
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 8.5K tok":
+  - generic: 用量 8.5K tok
+- generic: 13:46
+- button "收到执行请求 13:46":
+  - generic: 收到执行请求
+  - time: 13:46
+- status: 已完成
+- button "已完成，用时 28秒":
+  - generic: 已完成，用时 28秒
+- paragraph:
+  - strong: 前往食堂 · 导航已停止
+- list:
+  - listitem: 当前状态：已停止，未到达食堂
+  - text: 停止原因：前方
+  - strong: door-1 关闭
+  - listitem: 障碍：door-1 关闭
+  - listitem: 替代路线：导航未返回可用替代路线，因此我不提供绕行方案
+  - listitem: 画面：状态卡片中显示了模拟材料给出的 door-1 关闭图像，它是门处于关闭状态的画面，不是其他视角
+  - listitem: 下一步：需要先有可用的替代路线，或等你进一步安排；具体到达时间尚不确定，我不会提前预告
+- paragraph: 如果你之后拿到可通行的门或新的路线信息，告诉我，我再更新导航状态。
+- figure "模拟材料图：door-1 关闭状态（MOCK DOOR CLOSED），非其他视角":
+  - button "预览 MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture":
+    - img "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture"
+  - generic: 模拟材料图：door-1 关闭状态（MOCK DOOR CLOSED），非其他视角
+- heading "前往食堂 · 已停止" [level=1]
+- generic: 组件未注册
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 12.3K tok":
+  - generic: 用量 12.3K tok
+- generic: 13:47
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

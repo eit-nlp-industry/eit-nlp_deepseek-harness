@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_j4OFRohmV12avvIadM7y1786",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_person\", \"header\": \"确认\", \"question\": \"把昵称“小张”记到图中标记 A（灰色衣物 + 手提箱）的人物上，对吗？\", \"options\": [{\"label\": \"确认：A 就是小张（推荐）\", \"description\": \"按你的说明把“小张”关联到合成候选 A。\"}, {\"label\": \"不是，我是图中的 B（蓝色衣物 + 提包）\", \"description\": \"改为把“小张”关联到合成候选 B。\"}, {\"label\": \"图中的都不是我\", \"description\": \"不关联任何候选，昵称“小张”仅作为称呼记录。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_j4OFRohmV12avvIadM7y1786"
+      },
+      "toolCallId": "call_00_j4OFRohmV12avvIadM7y1786",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_person\",\"selected\":[\"确认：A 就是小张（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "0f33e54c-b73f-4c40-9bed-108752e47fa0"
+    }
+  }
+]

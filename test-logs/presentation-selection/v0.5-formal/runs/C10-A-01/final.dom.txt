@@ -1,0 +1,374 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "等待回答 跟随参观同学的图像状态呈现测评":
+    - generic: 等待回答
+    - generic: 跟随参观同学的图像状态呈现测评
+    - generic: 待回答
+  - treeitem "进行中 跟着参观同学的状态展示 2分钟":
+    - generic: 进行中
+    - generic: 跟着参观同学的状态展示
+    - generic: 2分钟
+  - treeitem "已完成 跟随参观同学的原生图像核对 2分钟":
+    - generic: 已完成
+    - generic: 跟随参观同学的原生图像核对
+    - generic: 2分钟
+  - treeitem "等待回答 跟着同学参观的测评任务" [selected]:
+    - generic: 等待回答
+    - generic: 跟着同学参观的测评任务
+    - generic: 待回答
+  - treeitem "已完成 C09-B-02 固定材料初始化测评 5分钟":
+    - generic: 已完成
+    - generic: C09-B-02 固定材料初始化测评
+    - generic: 5分钟
+  - treeitem "已完成 测评 C07-b 时间改约表单 6分钟":
+    - generic: 已完成
+    - generic: 测评 C07-b 时间改约表单
+    - generic: 6分钟
+  - treeitem "已完成 C09-B-01 固定材料呈现测评 6分钟":
+    - generic: 已完成
+    - generic: C09-B-01 固定材料呈现测评
+    - generic: 6分钟
+  - treeitem "已完成 C09-A-02 benchmark fixture initialization 7分钟":
+    - generic: 已完成
+    - generic: C09-A-02 benchmark fixture initialization
+    - generic: 7分钟
+  - treeitem "C09-A-01固定材料初始化测评 7分钟":
+    - generic: C09-A-01固定材料初始化测评
+    - generic: 7分钟
+  - treeitem "已完成 记住用户小张的图片确认测评 9分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的图片确认测评
+    - generic: 9分钟
+  - treeitem "已完成 小张记忆与图像确认提示测评 9分钟":
+    - generic: 已完成
+    - generic: 小张记忆与图像确认提示测评
+    - generic: 9分钟
+  - treeitem "调整冲突说明与替代时段表单 10分钟":
+    - generic: 调整冲突说明与替代时段表单
+    - generic: 10分钟
+  - treeitem "已完成 小张身份记忆测评 10分钟":
+    - generic: 已完成
+    - generic: 小张身份记忆测评
+    - generic: 10分钟
+  - treeitem "已完成 记住用户小张的测评 11分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的测评
+    - generic: 11分钟
+  - treeitem "已完成 评测呈现：冲突说明与替代时段表单 12分钟":
+    - generic: 已完成
+    - generic: 评测呈现：冲突说明与替代时段表单
+    - generic: 12分钟
+  - treeitem "用户改约8点后时段冲突呈现 13分钟":
+    - generic: 用户改约8点后时段冲突呈现
+    - generic: 13分钟
+  - treeitem "已完成 会议室预订时间调整确认 15分钟":
+    - generic: 已完成
+    - generic: 会议室预订时间调整确认
+    - generic: 15分钟
+  - treeitem "已完成 调整会议安排确认 15分钟":
+    - generic: 已完成
+    - generic: 调整会议安排确认
+    - generic: 15分钟
+  - treeitem "已完成 全量呈现测评 C07-a-A-02 19分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评 C07-a-A-02
+    - generic: 19分钟
+  - treeitem "已完成 时间改到8点后的需求确认 19分钟":
+    - generic: 已完成
+    - generic: 时间改到8点后的需求确认
+    - generic: 19分钟
+  - treeitem "已完成 更新草稿并提交 20分钟":
+    - generic: 已完成
+    - generic: 更新草稿并提交
+    - generic: 20分钟
+  - treeitem "已完成 调整图书馆行程安排 20分钟":
+    - generic: 已完成
+    - generic: 调整图书馆行程安排
+    - generic: 20分钟
+  - treeitem "图书馆一小时行程草稿 20分钟":
+    - generic: 图书馆一小时行程草稿
+    - generic: 20分钟
+  - treeitem "已完成 图书馆行程改为一小时 20分钟":
+    - generic: 已完成
+    - generic: 图书馆行程改为一小时
+    - generic: 20分钟
+  - treeitem "校外访客参观预约流程 22分钟":
+    - generic: 校外访客参观预约流程
+    - generic: 22分钟
+  - treeitem "已完成 校外朋友参观预约咨询 22分钟":
+    - generic: 已完成
+    - generic: 校外朋友参观预约咨询
+    - generic: 22分钟
+  - treeitem "已完成 C05-B-01 访客参观预填表单测评 22分钟":
+    - generic: 已完成
+    - generic: C05-B-01 访客参观预填表单测评
+    - generic: 22分钟
+  - treeitem "已完成 校外访客参观审批预填表单 23分钟":
+    - generic: 已完成
+    - generic: 校外访客参观审批预填表单
+    - generic: 23分钟
+  - treeitem "已完成 讲座线上线下选择呈现测评 24分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下选择呈现测评
+    - generic: 24分钟
+  - treeitem "已完成 讲座线上线下选择表单呈现 24分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下选择表单呈现
+    - generic: 24分钟
+  - treeitem "选择线上或线下讲座 26分钟":
+    - generic: 选择线上或线下讲座
+    - generic: 26分钟
+  - treeitem "已完成 讲座线上线下偏好选择测评 26分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下偏好选择测评
+    - generic: 26分钟
+  - treeitem "已完成 校园半日游轻量表单测评 26分钟":
+    - generic: 已完成
+    - generic: 校园半日游轻量表单测评
+    - generic: 26分钟
+  - treeitem "已完成 校园半日游轻量form测评 27分钟":
+    - generic: 已完成
+    - generic: 校园半日游轻量form测评
+    - generic: 27分钟
+  - treeitem "校园半日游偏好确认测评 28分钟":
+    - generic: 校园半日游偏好确认测评
+    - generic: 28分钟
+  - treeitem "已完成 校园半日游偏好收集 29分钟":
+    - generic: 已完成
+    - generic: 校园半日游偏好收集
+    - generic: 29分钟
+  - treeitem "已完成 全量呈现测评地点查找 29分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评地点查找
+    - generic: 29分钟
+  - treeitem "已完成 测评C04-a-B-01：轻量form找地点 29分钟":
+    - generic: 已完成
+    - generic: 测评C04-a-B-01：轻量form找地点
+    - generic: 29分钟
+  - treeitem "协助用户寻找地点偏好 30分钟":
+    - generic: 协助用户寻找地点偏好
+    - generic: 30分钟
+  - treeitem "已完成 模拟环境地点查找测评 31分钟":
+    - generic: 已完成
+    - generic: 模拟环境地点查找测评
+    - generic: 31分钟
+  - treeitem "Benchmark fixture place-finding test 39分钟":
+    - generic: Benchmark fixture place-finding test
+    - generic: 39分钟
+  - treeitem "已完成 轻量表单选择地点测评 39分钟":
+    - generic: 已完成
+    - generic: 轻量表单选择地点测评
+    - generic: 39分钟
+  - treeitem "已完成 轻量form找地点测评 C04-a-B-01 39分钟":
+    - generic: 已完成
+    - generic: 轻量form找地点测评 C04-a-B-01
+    - generic: 39分钟
+  - treeitem "已完成 寻找地点的偏好确认测试 39分钟":
+    - generic: 已完成
+    - generic: 寻找地点的偏好确认测试
+    - generic: 39分钟
+  - treeitem "C03-B-02 场地推荐测评 43分钟":
+    - generic: C03-B-02 场地推荐测评
+    - generic: 43分钟
+  - treeitem "已完成 会议室投屏白板试讲安排 43分钟":
+    - generic: 已完成
+    - generic: 会议室投屏白板试讲安排
+    - generic: 43分钟
+  - treeitem "已完成 明晚试讲场地推荐比较 43分钟":
+    - generic: 已完成
+    - generic: 明晚试讲场地推荐比较
+    - generic: 43分钟
+  - treeitem "已完成 试讲场地推荐测评 43分钟":
+    - generic: 已完成
+    - generic: 试讲场地推荐测评
+    - generic: 43分钟
+  - treeitem "进校后能否直接去图书馆测评 49分钟":
+    - generic: 进校后能否直接去图书馆测评
+    - generic: 49分钟
+  - treeitem "已完成 进校后图书馆访问测评 49分钟":
+    - generic: 已完成
+    - generic: 进校后图书馆访问测评
+    - generic: 49分钟
+  - button "展开其余 70 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 跟着同学参观的测评任务
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+  - button "跳转到第 3 轮"
+- generic: 【全量正式呈现测评 C10-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C10-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C10-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：跟着这位带我们参观的同学。 指定呈现方式：原生图像核对+文字任务状态。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 20:13
+- button "复制":
+- status: 已完成
+- button "已完成，用时 57秒":
+  - generic: 已完成，用时 57秒
+- paragraph: 我先初始化本例的固定材料。
+- group "问题与回答":
+  - term:
+    - generic: 确认向导
+    - generic: 材料中只有一位向导候选（person-guide）。是否就跟着这位？
+  - definition: 是，就跟这位同学（推荐）
+  - generic: 20:13
+  - button "复制":
+- paragraph:
+  - strong: 向导核对：这位同学（唯一候选）
+- paragraph:
+  - 'button "查看大图: 参观向导候选人（材料图，唯一视角）：MOCK GUIDE; PERSON GUIDE; synthetic fixture"':
+    - img "参观向导候选人（材料图，唯一视角）：MOCK GUIDE; PERSON GUIDE; synthetic fixture"
+- paragraph:
+  - text: 图片地址（材料给定完整 URL）：
+  - code:
+    - link "http://127.0.0.1:3080/api/media/bench05-person-guide/content":
+      - /url: http://127.0.0.1:3080/api/media/bench05-person-guide/content
+      - text: http://127.0.0.1:3080/api/media/bench05-person-guide/content
+  - text: 尺寸 960×540。 材料里只有这一张、这一个视角，没有其他角度或第二张可用图，因此仅凭此图做一次人脸/衣着核对，不重复用它冒充别的视角。
+- paragraph:
+  - strong: 任务状态
+- list:
+  - listitem: 目标：跟着参观向导（person-guide）
+  - listitem: 你的确认：已选择“就跟这位同学”
+  - text: 跟随任务 follow-01：
+  - strong: 仍未启动
+  - text: 已尝试登记这份跟随草稿，但模拟回执尚未释放（返回“No mock submission response has been released”），所以
+  - strong: 没有生成回执、不能视为已开始跟随
+  - listitem: 跟随中／跟丢等状态：需要后续实际事件才能判断，目前均未知
+- paragraph:
+  - strong: 下一步
+  - text: 想让我再试着登记一次这份草稿，还是暂时保持未启动？在拿到回执或实际事件之前，我不会做任何“已跟上”“已启动”的表示。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 11.6K tok":
+  - generic: 用量 11.6K tok
+- generic: 20:14
+- button "收到执行请求 20:14":
+  - generic: 收到执行请求
+  - time: 20:14
+- status: 已完成
+- button "已完成，用时 4秒":
+  - generic: 已完成，用时 4秒
+- paragraph:
+  - strong: 向导核对：这位同学（唯一候选）
+- paragraph:
+  - 'button "查看大图: 参观向导候选人（材料图，唯一视角）：MOCK GUIDE; PERSON GUIDE; synthetic fixture"':
+    - img "参观向导候选人（材料图，唯一视角）：MOCK GUIDE; PERSON GUIDE; synthetic fixture"
+- paragraph:
+  - text: 图片地址（材料给定完整 URL）：
+  - code:
+    - link "http://127.0.0.1:3080/api/media/bench05-person-guide/content":
+      - /url: http://127.0.0.1:3080/api/media/bench05-person-guide/content
+      - text: http://127.0.0.1:3080/api/media/bench05-person-guide/content
+  - text: 仍只有这一个视角的材料图，没有新增其他角度。
+- paragraph:
+  - strong: 任务状态
+- list:
+  - listitem: 任务：follow-01
+  - listitem: 目标：person-guide（上图这位同学）
+  - text: 状态：
+  - strong: 跟随中（following）
+  - listitem: 依据：模拟环境事件，非真实机器人在执行
+- paragraph:
+  - strong: 留意
+- list:
+  - listitem: 现在只是“跟随中”，尚无跟丢、到达或结束的信号；这些要等后续事件才能判断。
+  - listitem: 若这位同学走远、换人或多个相似目标同时出现，请告诉我，我会先停下再核对，不擅自换目标。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 8K tok":
+  - generic: 用量 8K tok
+- generic: 20:14
+- button "收到执行请求 20:15":
+  - generic: 收到执行请求
+  - time: 20:15
+- text: 等待你的操作 · 向导迷出视野，跟随已停止。你想怎么处理？
+- 'button "思考 Now status: stopped_target_lost. Report honestly. Ask user for next step? Maybe offer options: 重新核对向导 / 结束任务 / 原地等待。Should ask user. Use ask_user_question? It''s reasonable — but keep it simple. I''ll present text status and ask what to do next. Perhaps a question tool is fine. But maybe just plain text asking. Given the guidance, ask_user_question is a presentation option. I''ll do plain text to avoid over-asking... Actually a concise question with options helps. But the last user turn is an event, not an instruction; asking a question is acceptable since next step is unknown and requires user decision."':
+  - generic: 思考
+  - generic: "Now status: stopped_target_lost. Report honestly. Ask user for next step? Maybe offer options: 重新核对向导 / 结束任务 / 原地等待。Should ask user. Use ask_user_question? It's reasonable — but keep it simple. I'll present text status and ask what to do next. Perhaps a question tool is fine. But maybe just plain text asking. Given the guidance, ask_user_question is a presentation option. I'll do plain text to avoid over-asking... Actually a concise question with options helps. But the last user turn is an event, not an instruction; asking a question is acceptable since next step is unknown and requires user decision."
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "向导迷出视野，跟随已停止。你想怎么处理？":
+  - generic: 下一步
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "向导迷出视野，跟随已停止。你想怎么处理？" [level=2]
+  - radiogroup:
+    - radio "先原地停下，我来找" [checked]:
+      - generic: "1"
+      - generic: 先原地停下，我来找
+      - generic: 推荐
+      - generic: 任务保持停止，你自己找人；我不做任何动作。
+    - radio "重新核对这张图再试":
+      - generic: "2"
+      - generic: 重新核对这张图再试
+      - generic: 基于同一张材料图再核对一次特征，但仍需你确认后才行动。
+    - radio "结束这个跟随任务":
+      - generic: "3"
+      - generic: 结束这个跟随任务
+      - generic: 本轮跟随到此结束，不在后续事件之外继续。
+    - textbox "输入你的答案"
+  - button "上一题" [disabled]:
+  - generic: 1 / 1
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交"

@@ -1,0 +1,310 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 报销流程草稿编辑保存 刚刚":
+    - generic: 已完成
+    - generic: 报销流程草稿编辑保存
+    - generic: 刚刚
+  - treeitem "报销流程整理与草稿保存 刚刚" [selected]:
+    - generic: 报销流程整理与草稿保存
+    - generic: 刚刚
+  - treeitem "已完成 Workflow材料取送流程测评 1分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 1分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 1分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 1分钟
+  - treeitem "已完成 监测文件处理任务失败通知 2分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 2分钟
+  - treeitem "文件处理任务监测模拟 2分钟":
+    - generic: 文件处理任务监测模拟
+    - generic: 2分钟
+  - treeitem "已完成 饮水机不出水照片评测 4分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 4分钟
+  - treeitem "已完成 平面图快递路线静态示意 6分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 6分钟
+  - treeitem "平面图快递路线静态示意说明 6分钟":
+    - generic: 平面图快递路线静态示意说明
+    - generic: 6分钟
+  - treeitem "已完成 三项工作排期草稿确认 7分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 7分钟
+  - treeitem "安排三项工作并确认草稿 7分钟":
+    - generic: 安排三项工作并确认草稿
+    - generic: 7分钟
+  - treeitem "已完成 会议室预约改期草稿 8分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 8分钟
+  - treeitem "会议室预约改期草稿测评 9分钟":
+    - generic: 会议室预约改期草稿测评
+    - generic: 9分钟
+  - treeitem "已完成 售后申请草稿填写与确认 9分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 9分钟
+  - treeitem "售后申请草稿填写测评 9分钟":
+    - generic: 售后申请草稿填写测评
+    - generic: 9分钟
+  - treeitem "已完成 商品退货多视角图片呈现 11分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 11分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 11分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 11分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 11分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 11分钟
+  - treeitem "包裹照片确认对象状态 13分钟":
+    - generic: 包裹照片确认对象状态
+    - generic: 13分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 14分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 14分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 16分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 16分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 17分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 17分钟
+  - treeitem "已完成 活动需求确认与汇总 17分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 17分钟
+  - button "展开其余 185 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 报销流程整理与草稿保存
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 N12-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N12-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N12-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：把这个报销流程整理出来，并补充“材料不齐退回补充”的分支，让我编辑后保存草稿，不执行真实审批或付款。 指定呈现方式：Markdown步骤与条件分支+文字编辑确认保存。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:56
+- button "复制":
+- status: 已完成
+- button "已完成，用时 7秒":
+  - generic: 已完成，用时 7秒
+- paragraph: 我先获取本例的固定材料。
+- paragraph:
+  - text: 已取得本例固定材料。以下为
+  - strong: 草稿（未保存、未执行任何审批或付款）
+  - text: ：
+- separator
+- heading "报销流程（草稿 v1）" [level=2]
+- paragraph:
+  - strong: 流程名称
+  - text: ：虚构 expense-flow-v1
+  - strong: 状态
+  - text: ：草稿，待你编辑确认后保存
+- heading "步骤" [level=3]
+- table:
+  - rowgroup:
+    - row "序号 步骤 进入下一步的条件":
+      - columnheader "序号"
+      - columnheader "步骤"
+      - columnheader "进入下一步的条件"
+  - rowgroup:
+    - row "1 填写申请 提交后进入材料检查":
+      - cell "1"
+      - cell "填写申请"
+      - cell "提交后进入材料检查"
+    - row "2 检查材料 依据材料是否齐全分流":
+      - cell "2"
+      - cell "检查材料"
+      - cell "依据材料是否齐全分流"
+    - row "3 财务审核 仅在材料齐全时进行":
+      - cell "3"
+      - cell "财务审核"
+      - cell "仅在材料齐全时进行"
+    - row "4 通知结果 审核完成后通知":
+      - cell "4"
+      - cell "通知结果"
+      - cell "审核完成后通知"
+- heading "条件分支" [level=3]
+- paragraph:
+  - strong: 判断点：材料是否齐全（位于第 2 步“检查材料”之后）
+- list:
+  - strong: 材料齐全
+  - text: → 进入第 3 步「财务审核」→ 第 4 步「通知结果」
+  - strong: 材料不齐
+  - text: → 进入分支「材料不齐退回补充」
+  - list:
+    - listitem: 动作：通知申请人补充材料
+    - text: 补充完成后：
+    - strong: 回流至第 2 步「检查材料」
+    - text: ，重新判断是否齐全
+    - text: 补充期限：
+    - strong: 材料未指定，草稿中留空
+- heading "流程示意" [level=3]
+- generic: 代码块
+- button "自动换行" [pressed]:
+- button "复制":
+- code: 填写申请 → 检查材料 →〔材料齐全?〕 ├─ 是 → 财务审核 → 通知结果 └─ 否 → 通知补充 → 补齐后回到「检查材料」
+- heading "待你确认或修改的点" [level=3]
+- list:
+  - listitem: 步骤顺序与名称是否保持现状（填写申请 / 检查材料 / 财务审核 / 通知结果）
+  - listitem: 「材料不齐退回补充」是否就放在第 2 步之后的分支，补齐后回到「检查材料」重新判断
+  - listitem: 补充期限一栏是否留空（材料中未给出期限，我不会替你填数值）
+  - listitem: 是否需要给各步骤补充责任角色或时限等额外字段（材料中未提供，需你给出）
+- separator
+- paragraph:
+  - strong: 可直接回复我，例如：
+- list:
+  - listitem: “确认，按现有内容保存草稿”
+  - listitem: 或者告诉我修改点，如“第 2 步改名‘材料预检’，补充期限留空，然后保存”
+- paragraph: 你确认后，我会把你确认的最终内容作为草稿保存（仅保存草稿，不执行审批、不付款）。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 7.8K tok":
+  - generic: 用量 7.8K tok
+- generic: 13:56
+- generic: 补充期限设为3个工作日，保留材料不齐退回补充、补齐后回到检查材料的分支，确认保存草稿。
+- generic: 13:56
+- button "复制":
+- status: 已完成
+- button "已完成，用时 4秒":
+  - generic: 已完成，用时 4秒
+- paragraph: 已按你确认的值完成草稿保存（仅保存草稿，未执行审批、未付款）。
+- separator
+- heading "报销流程（草稿 v2 · 已保存）" [level=2]
+- paragraph:
+  - strong: 流程名称
+  - text: ：虚构 expense-flow-v1
+  - strong: 保存方式
+  - text: ：仅保存草稿
+  - strong: 补充期限
+  - text: ：3 个工作日（本次新增）
+- heading "步骤" [level=3]
+- table:
+  - rowgroup:
+    - row "序号 步骤 进入下一步的条件":
+      - columnheader "序号"
+      - columnheader "步骤"
+      - columnheader "进入下一步的条件"
+  - rowgroup:
+    - row "1 填写申请 提交后进入材料检查":
+      - cell "1"
+      - cell "填写申请"
+      - cell "提交后进入材料检查"
+    - row "2 检查材料 依据材料是否齐全分流":
+      - cell "2"
+      - cell "检查材料"
+      - cell "依据材料是否齐全分流"
+    - row "3 财务审核 仅在材料齐全时进行":
+      - cell "3"
+      - cell "财务审核"
+      - cell "仅在材料齐全时进行"
+    - row "4 通知结果 审核完成后通知":
+      - cell "4"
+      - cell "通知结果"
+      - cell "审核完成后通知"
+- heading "条件分支" [level=3]
+- paragraph:
+  - strong: 判断点：材料是否齐全（位于第 2 步「检查材料」之后）
+- list:
+  - strong: 材料齐全
+  - text: → 第 3 步「财务审核」→ 第 4 步「通知结果」
+  - strong: 材料不齐
+  - text: → 「材料不齐退回补充」
+  - list:
+    - listitem: 通知申请人补充材料
+    - text: 补充期限：
+    - strong: 3 个工作日
+    - text: 补齐后：
+    - strong: 回流至第 2 步「检查材料」
+    - text: ，重新判断是否齐全
+- heading "流程示意" [level=3]
+- generic: 代码块
+- button "自动换行" [pressed]:
+- button "复制":
+- code: 填写申请 → 检查材料 →〔材料齐全?〕 ├─ 是 → 财务审核 → 通知结果 └─ 否 → 通知补充（限 3 个工作日）→ 补齐后回到「检查材料」
+- separator
+- paragraph: 草稿已保存，随时可以让我继续修改。需要真正提交审批时，需另行确认。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 7.5K tok":
+  - generic: 用量 7.5K tok
+- generic: 13:56
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

@@ -1,0 +1,120 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C15-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_VcBcBAKKvXtWVWgDZL4t5948"
+      },
+      "toolCallId": "call_00_ET_VcBcBAKKvXtWVWgDZL4t5948",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"当前候选parcel-3726，订单尾号3726，初始待确认。当前视角远景img-far；近景和侧景尚未发布。不实际取送。\",\"assets\":[{\"id\":\"bench05-img-far\",\"file\":\"bench05-img-far.png\",\"alt\":\"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\",\"source_id\":\"img-far\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-far/content\",\"path\":\"/api/media/bench05-img-far/content\",\"sha256\":\"890c916a7d9a70f37079b6a60264e1ee04c0229d7ee469b9e2d12d26d530d9dd\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "c4e15c06-6d86-45a5-b12b-fffad5cf4720"
+    }
+  },
+  {
+    "call": {
+      "seq": 34,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-A-02"
+      }
+    },
+    "result_seq": 35,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_NtZckZadH4WkdhP7fEtu0972"
+      },
+      "toolCallId": "call_00_NtZckZadH4WkdhP7fEtu0972",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"当前候选parcel-3726，订单尾号3726，初始待确认。当前视角远景img-far；近景和侧景尚未发布。不实际取送。\",\"assets\":[{\"id\":\"bench05-img-far\",\"file\":\"bench05-img-far.png\",\"alt\":\"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\",\"source_id\":\"img-far\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-far/content\",\"path\":\"/api/media/bench05-img-far/content\",\"sha256\":\"890c916a7d9a70f37079b6a60264e1ee04c0229d7ee469b9e2d12d26d530d9dd\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "9ae4c2f6-18c2-4b35-a71b-597db4de1d1d"
+    }
+  },
+  {
+    "call": {
+      "seq": 58,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-A-02"
+      }
+    },
+    "result_seq": 59,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_vPViDcAlH3npZ7kRisRT0169"
+      },
+      "toolCallId": "call_00_vPViDcAlH3npZ7kRisRT0169",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"同一候选parcel-3726近景，尾号3726。\",\"assets\":[{\"id\":\"bench05-img-near\",\"file\":\"bench05-img-near.png\",\"alt\":\"MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture\",\"source_id\":\"img-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-near/content\",\"path\":\"/api/media/bench05-img-near/content\",\"sha256\":\"e957159ba866a87b47ec27051ebdf0e09fd59517e08bd759cac42d7b1573f6a5\",\"width\":960,\"height\":540}],\"candidate_id\":\"parcel-3726\",\"view\":\"near\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "db521fb1-d1f1-4610-8a36-224ca938b8a5"
+    }
+  },
+  {
+    "call": {
+      "seq": 82,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C15-A-02",
+        "values": {
+          "candidate_id": "parcel-3726",
+          "order_suffix": "3726",
+          "user_confirmed": true,
+          "confirmed_view": [
+            "far",
+            "near",
+            "side"
+          ]
+        }
+      }
+    },
+    "result_seq": 83,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_uwMKCi0Dcwa43N3rX7hq1947"
+      },
+      "toolCallId": "call_00_uwMKCi0Dcwa43N3rX7hq1947",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "44cf68b9-ce19-4795-ab9e-fd56b8ec73c8"
+    }
+  }
+]

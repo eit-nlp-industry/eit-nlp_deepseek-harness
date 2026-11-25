@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_RfD3aVhauzx85146YVQP7939",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"lecture_format\", \"header\": \"选择讲座形式\", \"question\": \"这次讲座你希望参加线上还是线下？（我会把线下列为推荐第一项，你也可以选择线上）\", \"options\": [{\"label\": \"线下（推荐）\", \"description\": \"推荐项，放在第一项；如果你更偏向到现场参加，选这个。\"}, {\"label\": \"线上\", \"description\": \"如果你更偏向远程参加，选这个。\"}], \"multi_select\": false}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_RfD3aVhauzx85146YVQP7939"
+      },
+      "toolCallId": "call_00_RfD3aVhauzx85146YVQP7939",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"lecture_format\",\"selected\":[\"线上\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "a99b6f63-4554-412b-94c4-966fc3694070"
+    }
+  }
+]

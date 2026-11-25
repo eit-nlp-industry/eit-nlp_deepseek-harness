@@ -1,0 +1,110 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C14-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_zIm9FCJTRaory8JdjSss8550"
+      },
+      "toolCallId": "call_00_ET_zIm9FCJTRaory8JdjSss8550",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C14\",\"facts\":\"当前图片img-left，14:00左侧视角；固定观察结论满座。其他视角尚未观察，不断言有座或已预订。\",\"assets\":[{\"id\":\"bench05-img-left\",\"file\":\"bench05-img-left.png\",\"alt\":\"MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture\",\"source_id\":\"img-left\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-left/content\",\"path\":\"/api/media/bench05-img-left/content\",\"sha256\":\"f2e502fd95b88dc90db907d1127b06e7e3654e9721bb9c5de8916d681423be46\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "ced7f216-7467-4548-aa33-100748b45aec"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "run_id": "C14-B-02",
+        "action": "read"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_p6d4BvxQ9zFRwqFXDBth9009"
+      },
+      "toolCallId": "call_00_p6d4BvxQ9zFRwqFXDBth9009",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C14\",\"facts\":\"当前图片img-left，14:00左侧视角；固定观察结论满座。其他视角尚未观察，不断言有座或已预订。\",\"assets\":[{\"id\":\"bench05-img-left\",\"file\":\"bench05-img-left.png\",\"alt\":\"MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture\",\"source_id\":\"img-left\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-left/content\",\"path\":\"/api/media/bench05-img-left/content\",\"sha256\":\"f2e502fd95b88dc90db907d1127b06e7e3654e9721bb9c5de8916d681423be46\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "adced265-a8dd-4bec-8621-d62ec16276c2"
+    }
+  },
+  {
+    "call": {
+      "seq": 46,
+      "arguments": {
+        "action": "read",
+        "run_id": "C14-B-02"
+      }
+    },
+    "result_seq": 47,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_wzAJVC0Ho0aZHYaITIzP1054"
+      },
+      "toolCallId": "call_00_wzAJVC0Ho0aZHYaITIzP1054",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C14\",\"facts\":\"当前图片img-left，14:00左侧视角；固定观察结论满座。其他视角尚未观察，不断言有座或已预订。\",\"assets\":[{\"id\":\"bench05-img-left\",\"file\":\"bench05-img-left.png\",\"alt\":\"MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture\",\"source_id\":\"img-left\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-left/content\",\"path\":\"/api/media/bench05-img-left/content\",\"sha256\":\"f2e502fd95b88dc90db907d1127b06e7e3654e9721bb9c5de8916d681423be46\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "ee0f72eb-8917-4121-a891-1f7de962a8f0"
+    }
+  },
+  {
+    "call": {
+      "seq": 61,
+      "arguments": {
+        "action": "read",
+        "run_id": "C14-B-02"
+      }
+    },
+    "result_seq": 62,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_imAVAzDtpAftjkCyMhRt5216"
+      },
+      "toolCallId": "call_00_imAVAzDtpAftjkCyMhRt5216",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C14\",\"facts\":\"14:01右侧新观察，固定结论：有2个空位。只是当前观察，不等于预订。\",\"assets\":[{\"id\":\"bench05-img-right\",\"file\":\"bench05-img-right.png\",\"alt\":\"MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture\",\"source_id\":\"img-right\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-right/content\",\"path\":\"/api/media/bench05-img-right/content\",\"sha256\":\"5ceb1c86d80c273693963e51434a27852e315146bebaaf9a3684ee44576d87e3\",\"width\":960,\"height\":540}],\"asset_id\":\"img-right\",\"view\":\"right\",\"observed_at\":\"14:01\",\"empty_seats\":2}}"
+        }
+      ],
+      "isError": false,
+      "id": "3e1869a7-fb5b-42c1-8573-b5fbf3b18301"
+    }
+  }
+]

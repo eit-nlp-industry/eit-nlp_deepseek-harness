@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_NmX81o1RxL49VodPLVSR7794",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_save\", \"header\": \"确认保存\", \"question\": \"以上草稿是否按此文字保存？\", \"options\": [{\"label\": \"确认，按此文字保存草稿（Recommended）\", \"description\": \"保留老师在/不在分支，不在分支通知并结束后不再有共用拍照送回步骤。\"}, {\"label\": \"需要修改\", \"description\": \"告诉我具体改哪一步，我改完再请你确认。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_NmX81o1RxL49VodPLVSR7794"
+      },
+      "toolCallId": "call_00_NmX81o1RxL49VodPLVSR7794",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_save\",\"selected\":[\"确认，按此文字保存草稿（Recommended）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "88c76425-1dc0-4aea-bfeb-8386d83d679b"
+    }
+  }
+]

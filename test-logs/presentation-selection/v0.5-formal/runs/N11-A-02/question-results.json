@@ -1,0 +1,58 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_jUdkPpDfXEoOhtMEjQNM5917",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"next_action\", \"header\": \"任务 job-convert-01\", \"question\": \"当前任务 job-convert-01 处于运行中（3/10 已完成）。你想怎么处理监测？\", \"options\": [{\"label\": \"继续监测（推荐）\", \"description\": \"保持运行，失败时发送一次通知。\"}, {\"label\": \"暂停任务\", \"description\": \"暂停后不再推进进度。\"}, {\"label\": \"结束监测\", \"description\": \"停止监测，不再发送失败通知。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_jUdkPpDfXEoOhtMEjQNM5917"
+      },
+      "toolCallId": "call_00_jUdkPpDfXEoOhtMEjQNM5917",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"next_action\",\"selected\":[\"暂停任务\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "cd606314-6861-4e24-a47b-86b366e9770e"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_00_SEiQZOpMxBGenyRvh4a72495",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"job-convert-01 已暂停\", \"id\": \"paused_next\", \"options\": [{\"description\": \"从3/10继续推进，失败时发一次通知。\", \"label\": \"继续任务（推荐）\"}, {\"description\": \"保持暂停，不再推进也不发通知。\", \"label\": \"保持暂停\"}, {\"description\": \"结束监测，之后不再发失败通知。\", \"label\": \"结束监测\"}], \"question\": \"job-convert-01 已暂停在 3/10。下一步怎么处理？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_SEiQZOpMxBGenyRvh4a72495"
+      },
+      "toolCallId": "call_00_SEiQZOpMxBGenyRvh4a72495",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"paused_next\",\"selected\":[\"继续任务（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "8985fe30-5dbd-461b-90d7-0e79c296f87f"
+    }
+  }
+]

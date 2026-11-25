@@ -1,0 +1,365 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_ESEIX3MFKgMDN40fJWPB8365",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"用一张“状态卡片”呈现当前情况：卡片标题“前往食堂”；第一行大号状态文字“正在前往食堂”，并标注“模拟，尚未到达”；下面两个字段行：“目的地：食堂（canteen）”、“停止原因：暂无，尚未收到障碍或停止事件（以后续事件为准）”；再加一行说明“无绕行方案，不编造路线”；最后一行小字提示“本例材料未提供图像资源，因此不展示图像，仅保留文字说明”。不要出现地图、拼图或任何未提供的图片地址。布局简洁，单卡片纵向排列。\", \"business_data\": {\"card_title\": \"前往食堂\", \"status_headline\": \"正在前往食堂\", \"status_tag\": \"模拟 · 尚未到达\", \"destination\": \"食堂（canteen）\", \"stop_reason\": \"暂无——尚未收到障碍或停止事件，停止状态以后续事件为准\", \"detour_note\": \"无绕行方案，不编造路线\", \"image_note\": \"本例材料未提供图像资源，故不展示图像，仅保留文字说明\", \"simulated\": true, \"arrival\": \"无到达结论\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "status-card"
+              ]
+            },
+            "status-card": {
+              "type": "Card",
+              "props": {
+                "title": "前往食堂",
+                "variant": "outlined"
+              },
+              "children": [
+                "card-stack"
+              ]
+            },
+            "card-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "status-heading",
+                "status-badge",
+                "status-details",
+                "detour-text",
+                "image-note-text"
+              ]
+            },
+            "status-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "正在前往食堂",
+                "level": "h1"
+              }
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟 · 尚未到达",
+                "variant": "info"
+              }
+            },
+            "status-details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "目的地",
+                    "value": "食堂（canteen）"
+                  },
+                  {
+                    "label": "停止原因",
+                    "value": "暂无——尚未收到障碍或停止事件，停止状态以后续事件为准"
+                  }
+                ]
+              }
+            },
+            "detour-text": {
+              "type": "Text",
+              "props": {
+                "content": "无绕行方案，不编造路线",
+                "variant": "default"
+              }
+            },
+            "image-note-text": {
+              "type": "Text",
+              "props": {
+                "content": "本例材料未提供图像资源，故不展示图像，仅保留文字说明",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "card_title": "前往食堂",
+            "status_headline": "正在前往食堂",
+            "status_tag": "模拟 · 尚未到达",
+            "destination": "食堂（canteen）",
+            "stop_reason": "暂无——尚未收到障碍或停止事件，停止状态以后续事件为准",
+            "detour_note": "无绕行方案，不编造路线",
+            "image_note": "本例材料未提供图像资源，故不展示图像，仅保留文字说明",
+            "simulated": true,
+            "arrival": "无到达结论"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ESEIX3MFKgMDN40fJWPB8365"
+      },
+      "toolCallId": "call_00_ESEIX3MFKgMDN40fJWPB8365",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "499e2fea-fa95-4317-8979-a5282c59aac3"
+    }
+  },
+  {
+    "call_seq": 52,
+    "result_seq": 53,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_sFIH8NnQCnwuuh8trkXG9475",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"image\": \"/api/media/bench05-img-door/content\", \"alt\": \"MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture\", \"card_title\": \"已停止：门关闭\", \"status\": \"已停止（模拟）\", \"obstacle\": \"door-1 关闭（door-1_closed）\", \"stop_reason\": \"前方门 door-1 关闭，导航已停止\", \"alternative_route\": \"无可用替代路线（未返回）\", \"detour_policy\": \"不编造绕行路线\", \"image_caption\": \"模拟示意图：door-1 处于关闭状态\", \"next_step\": \"等待你的选择：原地等待门开启、重新规划或改为其他目的地\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"顶部放一张 Image 组件，展示本例材料提供的 door-1 关闭示意图，图片源使用材料给定的同源路径，并显示其说明文字。图片下方是“停止”状态卡片：标题“已停止：门关闭”，状态行“已停止（模拟）”；字段“停止原因：前方门 door-1 关闭，导航已停止”；字段“替代路线：无可用替代路线（未返回）”；一行说明“不编造绕行路线”；最后一行“后续：等待你选择（原地等待 / 重新规划 / 更换目的地）”。只使用这一张材料图，不添加其他图片。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "hero-image",
+                "stop-card"
+              ]
+            },
+            "hero-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-door/content",
+                "alt": "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+                "caption": "模拟示意图：door-1 处于关闭状态",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "stop-card": {
+              "type": "Card",
+              "props": {
+                "title": "已停止：门关闭",
+                "variant": "outlined"
+              },
+              "children": [
+                "stop-card-stack"
+              ]
+            },
+            "stop-card-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "status-row",
+                "stop-descriptions",
+                "detour-note",
+                "business-table",
+                "next-step-text"
+              ]
+            },
+            "status-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "status-label",
+                "status-badge"
+              ]
+            },
+            "status-label": {
+              "type": "Text",
+              "props": {
+                "content": "状态",
+                "variant": "muted"
+              }
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已停止（模拟）",
+                "variant": "warning"
+              }
+            },
+            "stop-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "停止信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "停止原因",
+                    "value": "前方门 door-1 关闭，导航已停止"
+                  },
+                  {
+                    "label": "替代路线",
+                    "value": "无可用替代路线（未返回）"
+                  },
+                  {
+                    "label": "障碍",
+                    "value": "door-1 关闭（door-1_closed）"
+                  },
+                  {
+                    "label": "停止状态",
+                    "value": "已停止（模拟）"
+                  }
+                ]
+              }
+            },
+            "detour-note": {
+              "type": "Text",
+              "props": {
+                "content": "不编造绕行路线",
+                "variant": "warning"
+              }
+            },
+            "business-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "字段",
+                  "值",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "image",
+                    "/api/media/bench05-img-door/content",
+                    "business_data.image"
+                  ],
+                  [
+                    "alt",
+                    "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+                    "business_data.alt"
+                  ],
+                  [
+                    "card_title",
+                    "已停止：门关闭",
+                    "business_data.card_title"
+                  ],
+                  [
+                    "status",
+                    "已停止（模拟）",
+                    "business_data.status"
+                  ],
+                  [
+                    "obstacle",
+                    "door-1 关闭（door-1_closed）",
+                    "business_data.obstacle"
+                  ],
+                  [
+                    "stop_reason",
+                    "前方门 door-1 关闭，导航已停止",
+                    "business_data.stop_reason"
+                  ],
+                  [
+                    "alternative_route",
+                    "无可用替代路线（未返回）",
+                    "business_data.alternative_route"
+                  ],
+                  [
+                    "detour_policy",
+                    "不编造绕行路线",
+                    "business_data.detour_policy"
+                  ],
+                  [
+                    "image_caption",
+                    "模拟示意图：door-1 处于关闭状态",
+                    "business_data.image_caption"
+                  ],
+                  [
+                    "next_step",
+                    "等待你的选择：原地等待门开启、重新规划或改为其他目的地",
+                    "business_data.next_step"
+                  ]
+                ]
+              }
+            },
+            "next-step-text": {
+              "type": "Text",
+              "props": {
+                "content": "后续：等待你选择（原地等待 / 重新规划 / 更换目的地）",
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "image": "/api/media/bench05-img-door/content",
+            "alt": "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+            "card_title": "已停止：门关闭",
+            "status": "已停止（模拟）",
+            "obstacle": "door-1 关闭（door-1_closed）",
+            "stop_reason": "前方门 door-1 关闭，导航已停止",
+            "alternative_route": "无可用替代路线（未返回）",
+            "detour_policy": "不编造绕行路线",
+            "image_caption": "模拟示意图：door-1 处于关闭状态",
+            "next_step": "等待你的选择：原地等待门开启、重新规划或改为其他目的地"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_sFIH8NnQCnwuuh8trkXG9475"
+      },
+      "toolCallId": "call_00_sFIH8NnQCnwuuh8trkXG9475",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "4df16578-5004-4140-b24c-657311197c46"
+    }
+  }
+]

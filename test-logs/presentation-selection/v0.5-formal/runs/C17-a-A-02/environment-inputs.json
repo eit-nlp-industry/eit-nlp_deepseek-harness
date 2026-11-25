@@ -1,0 +1,47 @@
+[
+  {
+    "seq": 10,
+    "time": 1795092559236,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 37,
+    "time": 1795092661762,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C17-a-A-02-closed",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C17-a-A-02-closed\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"虚拟计时第2分钟，门仍关闭，观察期限5分钟。\",\"assets\":[],\"simulated\":true,\"event_id\":\"door-closed-at-2\",\"clock_minutes\":2,\"door\":\"closed\"}}"
+  },
+  {
+    "seq": 46,
+    "time": 1795092735644,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C17-a-A-02-repeat",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C17-a-A-02-repeat\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"虚拟计时仍为第2分钟，同一业务观测重复，门仍关闭。\",\"assets\":[],\"simulated\":true,\"event_id\":\"door-closed-at-2\",\"clock_minutes\":2,\"door\":\"closed\"}}"
+  },
+  {
+    "seq": 55,
+    "time": 1795092786623,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C17-a-A-02-opened",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C17-a-A-02-opened\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"虚拟计时第3分钟观察到门打开。\",\"assets\":[],\"simulated\":true,\"event_id\":\"door-opened-at-3\",\"clock_minutes\":3,\"door\":\"open\"}}"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C03-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_EnFLDNd94kQb8SCtjToe0640"
+      },
+      "toolCallId": "call_00_ET_EnFLDNd94kQb8SCtjToe0640",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C03\",\"facts\":\"当前2026-11-06 12:00 Asia/Shanghai；明晚为11月7日。lib-room容6人、有投屏和白板、19:00–20:00空闲；college-room距离更近、容4人、有投屏、白板未知；canteen无讨论场地。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "8b1d9788-1a98-4d59-84c8-ecd6d36eaefb"
+    }
+  }
+]

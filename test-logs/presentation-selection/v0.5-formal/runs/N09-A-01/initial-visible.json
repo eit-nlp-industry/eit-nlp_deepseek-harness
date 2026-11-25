@@ -1,0 +1,6 @@
+{
+  "simulated": true,
+  "case_id": "N09",
+  "facts": "稳定ID review=审阅需求、report=整理报告、client=客户沟通；初始review/report/client。仅保存排序草稿，不实际创建任务或联系客户。",
+  "assets": []
+}

@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 4,
+  "presentation": "partial",
+  "reason": "跟随中及丢失停止均按事件如实更新；最初确认前无图，之后才显示，丢失后又发原生问题并等待下一步，保留此终态不编造回答。来源路径尺寸及内部错误信息冗长。"
+}

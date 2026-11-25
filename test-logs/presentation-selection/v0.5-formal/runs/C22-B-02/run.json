@@ -1,0 +1,41 @@
+{
+  "run_id": "C22-B-02",
+  "case_id": "C22",
+  "card_id": "C22",
+  "category_id": "G07",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "B",
+  "repeat": 2,
+  "status": "partial",
+  "prompt": "【全量正式呈现测评 C22-B-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C22-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C22-B-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：饮水机不出水，先拍一张照片给我。\n指定呈现方式：Tabs/Image+DynamicForm，保留3个资产关联。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "956c57e0c50faea119a45a6ab63fbd54e211d9be95f31d6fd185d0a747ef2496",
+  "operator_actions": "正面→近景→另一侧；用户要求将三图放入反馈单并备注“昨天也这样”，补测试联系人A后确认提交。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T05:48:14.330Z",
+  "interactions": [
+    {
+      "at": "2026-11-20T05:53:01.523Z",
+      "type": "text",
+      "value": "靠近一点拍给我看看，暂不提交。"
+    },
+    {
+      "at": "2026-11-20T05:55:26.287Z",
+      "type": "text",
+      "value": "再拍一下另一侧，暂不提交。"
+    },
+    {
+      "at": "2026-11-20T05:58:23.638Z",
+      "type": "text",
+      "value": "把这三张图都放进反馈单，备注“昨天也这样”，先不提交。"
+    },
+    {
+      "at": "2026-11-20T05:59:54.412Z",
+      "type": "text",
+      "value": "联系人填测试联系人A，保留三张照片和“昨天也这样”的备注，确认提交反馈草稿。"
+    }
+  ],
+  "tab_id": "2",
+  "final_at": "2026-11-20T06:01:00.319Z",
+  "notes": "最终三图实际页签均可查看，文字兜底提交保留三资产ID、备注和联系人并取得回执；DynamicForm超时转原生追问，首图在跳过两题后才显示，路径及字段说明冗余。"
+}

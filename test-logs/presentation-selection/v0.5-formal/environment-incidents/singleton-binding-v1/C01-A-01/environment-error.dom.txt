@@ -1,0 +1,114 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 东方理工校园设施介绍测评 3分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 3分钟
+  - treeitem "已完成 东方理工图书馆与书院介绍 3分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆与书院介绍
+    - generic: 3分钟
+  - treeitem "进行中 东方理工图书馆书院介绍测评 3分钟":
+    - generic: 进行中
+    - generic: 东方理工图书馆书院介绍测评
+    - generic: 3分钟
+  - treeitem "东方理工校园设施介绍 3分钟" [selected]:
+    - generic: 东方理工校园设施介绍
+    - generic: 3分钟
+  - treeitem "链路预检模拟回放 7分钟":
+    - generic: 链路预检模拟回放
+    - generic: 7分钟
+  - button "展开其余 43 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 东方理工校园设施介绍
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C01-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C01-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C01-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：刚来东方理工，先给我介绍一下图书馆、吃饭的地方和四明书院。 指定呈现方式：Markdown分节+同源图片。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 18:45
+- button "复制":
+- status: 已完成
+- button "已完成，用时 7秒":
+  - generic: 已完成，用时 7秒
+- paragraph: 我先加载这个案例的固定材料。
+- paragraph: 我无法完成这次呈现，因为固定材料没有取到。
+- paragraph:
+  - strong: 发生了什么
+- list:
+  - text: 我按第一步调用初始化材料，运行环境返回：
+  - code: This session is bound to another benchmark run
+  - text: （本会话已绑定到另一个测评运行）。
+  - listitem: 我又尝试读取当前已释放材料，返回同一个错误。
+  - text: 因此，关于图书馆、食堂和四明书院的任何名称、位置、开放时间、服务内容，以及随附图片（含图片 URL、视角说明），
+  - strong: 我一条都没有拿到
+  - text: 。在缺材料的情况下，我不能凭想象补齐，也不会用相似图片顶替，所以现在没有可以如实交付的分节内容与配图。
+- paragraph:
+  - strong: 需要你确认的一点
+  - text: 这个会话似乎已经被一个不同的 run_id 占用。请告诉我应该使用的正确 run_id，或在本会话中重新开始一个未绑定的运行；拿到材料后，我会按你指定的方式交付：Markdown 分节介绍图书馆、餐饮场所、四明书院，并在对应小节内嵌材料给定的完整图片 URL（原生图片），不调用 render_ui。
+- paragraph: 另外提前说明：如果材料里某些信息（例如开放时间、书院内部设施细节）属于尚未释放的事实，我会明确标为“材料中未提供”，不会推测填写。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 7.4K tok":
+  - generic: 用量 7.4K tok
+- generic: 18:45
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

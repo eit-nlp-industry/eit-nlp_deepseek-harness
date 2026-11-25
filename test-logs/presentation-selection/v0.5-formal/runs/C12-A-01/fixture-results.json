@@ -1,0 +1,89 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C12-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 19,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_RTm9VLNY6UdWfo4g8LCK0430"
+      },
+      "toolCallId": "call_00_ET_RTm9VLNY6UdWfo4g8LCK0430",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C12\",\"facts\":\"地点图书馆入口，两名合成候选：person-a灰衣拉箱，person-b蓝衣背包。初始尚未由用户确认；传话仅模拟，结果以回放为准。\",\"assets\":[{\"id\":\"bench05-person-pair\",\"file\":\"bench05-person-pair.png\",\"alt\":\"MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture\",\"source_id\":\"person-pair\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-person-pair/content\",\"path\":\"/api/media/bench05-person-pair/content\",\"sha256\":\"618f34452e8eb947b9d7c7a419c59782b42e321fb62d42e1bfaf16ffe4d2bf9e\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "3f6505bf-a720-49a6-9bce-6f5419b82afb"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C12-A-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_vYJprgMOTDy9jemHZq5c5394"
+      },
+      "toolCallId": "call_00_vYJprgMOTDy9jemHZq5c5394",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C12\",\"facts\":\"地点图书馆入口，两名合成候选：person-a灰衣拉箱，person-b蓝衣背包。初始尚未由用户确认；传话仅模拟，结果以回放为准。\",\"assets\":[{\"id\":\"bench05-person-pair\",\"file\":\"bench05-person-pair.png\",\"alt\":\"MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture\",\"source_id\":\"person-pair\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-person-pair/content\",\"path\":\"/api/media/bench05-person-pair/content\",\"sha256\":\"618f34452e8eb947b9d7c7a419c59782b42e321fb62d42e1bfaf16ffe4d2bf9e\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "c96eec8a-12c4-48f2-be25-7ac15be066d1"
+    }
+  },
+  {
+    "call": {
+      "seq": 37,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C12-A-01",
+        "values": {
+          "candidate": "person-a",
+          "description": "灰衣拉箱",
+          "action": "relay_message",
+          "message": "我马上到"
+        }
+      }
+    },
+    "result_seq": 38,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_yQTCreV2BNR6hjzUNWS45101"
+      },
+      "toolCallId": "call_00_yQTCreV2BNR6hjzUNWS45101",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "d3e897c1-90f5-44e1-89e5-b756305d2ae0"
+    }
+  }
+]

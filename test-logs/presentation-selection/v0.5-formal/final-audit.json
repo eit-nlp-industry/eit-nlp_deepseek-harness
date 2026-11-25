@@ -1,0 +1,151 @@
+{
+  "planned": 176,
+  "scored": 176,
+  "unique_sessions": 176,
+  "problems": [],
+  "nonclosed_turns": [
+    {
+      "run_id": "C10-B-01",
+      "started": 3,
+      "ended": 2,
+      "declared_terminal": "awaiting_user_after_scripted_final_event"
+    },
+    {
+      "run_id": "C10-A-01",
+      "started": 3,
+      "ended": 2,
+      "declared_terminal": "awaiting_user_after_scripted_final_event"
+    },
+    {
+      "run_id": "C10-B-02",
+      "started": 3,
+      "ended": 2,
+      "declared_terminal": "awaiting_user_after_scripted_final_event"
+    },
+    {
+      "run_id": "N06-A-01",
+      "started": 3,
+      "ended": 2,
+      "declared_terminal": "awaiting_user_after_scripted_final_event"
+    }
+  ],
+  "presets": {
+    "component-benchmark-full-v2": 176
+  },
+  "models": {
+    "{\"model\": \"deepseek-flash\", \"provider\": \"deepseek-official\", \"reasoningEffort\": \"high\"}": 176
+  },
+  "tool_schema_hashes": {
+    "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d": 176
+  },
+  "all_request_models": {
+    "{\"model\": \"deepseek-flash\", \"provider\": \"deepseek-official\", \"reasoningEffort\": \"high\"}": 176
+  },
+  "all_request_tool_schemas": {
+    "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d": 176
+  },
+  "initial_material_groups": 44,
+  "tool_names": {
+    "benchmark_fixture": 406,
+    "render_ui": 172,
+    "ask_user_question": 69
+  },
+  "excluded_started_count": 18,
+  "excluded_starts": [
+    {
+      "path": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-01/run.json",
+      "run_id": "C21-B-01",
+      "status": "running"
+    },
+    {
+      "path": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-02/run.json",
+      "run_id": "C21-B-02",
+      "status": "running"
+    },
+    {
+      "path": "environment-incidents/singleton-binding-v1/C01-A-01/run.json",
+      "run_id": "C01-A-01",
+      "status": "environment_excluded"
+    },
+    {
+      "path": "environment-incidents/singleton-binding-v1/C01-A-02/run.json",
+      "run_id": "C01-A-02",
+      "status": "environment_excluded"
+    },
+    {
+      "path": "environment-incidents/singleton-binding-v1/C01-B-01/run.json",
+      "run_id": "C01-B-01",
+      "status": "environment_excluded"
+    },
+    {
+      "path": "environment-incidents/singleton-binding-v1/C01-B-02/run.json",
+      "run_id": "C01-B-02",
+      "status": "environment_excluded"
+    },
+    {
+      "path": "protocol-incidents/browser-cached-input-v1/C01-A-01/run.json",
+      "run_id": "C01-A-01",
+      "status": "running"
+    },
+    {
+      "path": "protocol-incidents/browser-cached-input-v1/C01-A-02/run.json",
+      "run_id": "C01-A-02",
+      "status": "running"
+    },
+    {
+      "path": "protocol-incidents/browser-cached-input-v1/C01-B-01/run.json",
+      "run_id": "C01-B-01",
+      "status": "running"
+    },
+    {
+      "path": "protocol-incidents/browser-cached-input-v1/C01-B-02/run.json",
+      "run_id": "C01-B-02",
+      "status": "running"
+    },
+    {
+      "path": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-A-01/run.json",
+      "run_id": "C04-a-A-01",
+      "status": "material_excluded"
+    },
+    {
+      "path": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-A-02/run.json",
+      "run_id": "C04-a-A-02",
+      "status": "material_excluded"
+    },
+    {
+      "path": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-B-01/run.json",
+      "run_id": "C04-a-B-01",
+      "status": "material_excluded"
+    },
+    {
+      "path": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-B-02/run.json",
+      "run_id": "C04-a-B-02",
+      "status": "material_excluded"
+    },
+    {
+      "path": "protocol-incidents/common-workflow-hint-v1/C01-A-01/run.json",
+      "run_id": "C01-A-01",
+      "status": "protocol_excluded"
+    },
+    {
+      "path": "protocol-incidents/common-workflow-hint-v1/C01-A-02/run.json",
+      "run_id": "C01-A-02",
+      "status": "protocol_excluded"
+    },
+    {
+      "path": "protocol-incidents/common-workflow-hint-v1/C01-B-01/run.json",
+      "run_id": "C01-B-01",
+      "status": "protocol_excluded"
+    },
+    {
+      "path": "protocol-incidents/common-workflow-hint-v1/C01-B-02/run.json",
+      "run_id": "C01-B-02",
+      "status": "protocol_excluded"
+    }
+  ],
+  "environment_files_checked": 187,
+  "environment_changed": [
+    "D:\\work\\project\\eit-nlp_deepseek-harness\\.artifacts\\benchmark-replay-plugin\\replay.js"
+  ],
+  "environment_missing": []
+}

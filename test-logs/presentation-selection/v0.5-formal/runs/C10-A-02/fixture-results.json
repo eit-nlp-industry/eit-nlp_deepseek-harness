@@ -1,0 +1,116 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C10-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_HL8wmhghM9wClcm5xItu7072"
+      },
+      "toolCallId": "call_00_ET_HL8wmhghM9wClcm5xItu7072",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C10\",\"facts\":\"唯一向导候选person-guide，待用户确认。任务follow-01当前未启动；跟随和丢失状态只能依据后续模拟事件，不操作真实机器人。\",\"assets\":[{\"id\":\"bench05-person-guide\",\"file\":\"bench05-person-guide.png\",\"alt\":\"MOCK GUIDE; PERSON GUIDE; synthetic fixture\",\"source_id\":\"person-guide\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-person-guide/content\",\"path\":\"/api/media/bench05-person-guide/content\",\"sha256\":\"fd6f4c3b74f82d33bb852c82d78f77cad292bc339a01c15b5bd67c8a99505c64\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "74ff61a3-f908-45b9-b5b7-98ae9d33f61e"
+    }
+  },
+  {
+    "call": {
+      "seq": 31,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C10-A-02",
+        "values": {
+          "task_id": "follow-01",
+          "target_person_id": "person-guide",
+          "target_label": "画面中的同学（person-guide）",
+          "user_confirmed": true
+        }
+      }
+    },
+    "result_seq": 32,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_3YCZ4Xoyv5iVQopi9Ylv8447"
+      },
+      "toolCallId": "call_00_3YCZ4Xoyv5iVQopi9Ylv8447",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "90991069-af79-4644-a369-516e0a6ebc08"
+    }
+  },
+  {
+    "call": {
+      "seq": 46,
+      "arguments": {
+        "action": "read",
+        "run_id": "C10-A-02"
+      }
+    },
+    "result_seq": 47,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_CcxqTKkFx94IgAJu2Vik8259"
+      },
+      "toolCallId": "call_00_CcxqTKkFx94IgAJu2Vik8259",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C10\",\"facts\":\"模拟跟随已开始，follow-01，目标person-guide。\",\"assets\":[],\"status\":\"following\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "a8e80205-c7a3-40ab-b2e7-221ae5adb3cc"
+    }
+  },
+  {
+    "call": {
+      "seq": 61,
+      "arguments": {
+        "action": "read",
+        "run_id": "C10-A-02"
+      }
+    },
+    "result_seq": 62,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_t5wTyy88aals45jZDLbq0450"
+      },
+      "toolCallId": "call_00_ET_t5wTyy88aals45jZDLbq0450",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C10\",\"facts\":\"person-guide已离开视野，模拟跟随已停止，等待进一步处理。\",\"assets\":[],\"status\":\"stopped_target_lost\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "1b4d2899-525d-4432-8f0f-331c57e53840"
+    }
+  }
+]

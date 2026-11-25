@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 1,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "与B01相同，确认前无Image，完成后才显示；已确认与卡片尚未确认矛盾，business_data逐项和同源路径等大量实现细节外露。最终图片加载且对象映射正确。"
+}

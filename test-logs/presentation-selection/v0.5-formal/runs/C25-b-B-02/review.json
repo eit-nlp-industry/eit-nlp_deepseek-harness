@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 3,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "失败和target_unreachable正确，未重发动作；同一结果在文字、卡片字段和兜底反复展示。"
+}

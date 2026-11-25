@@ -1,0 +1,41 @@
+{
+  "version": "0.6-suitability",
+  "date": "2026-11-24",
+  "assessment_kind": "expert_requirement_fit_reassessment",
+  "new_model_runs": 0,
+  "independent_cases": 44,
+  "campus_cases": 32,
+  "non_campus_cases": 12,
+  "fit_ratings": 88,
+  "legacy_reference_runs": 176,
+  "weights": {
+    "coverage": 35,
+    "operation": 25,
+    "review_edit": 20,
+    "organization": 10,
+    "necessity": 10
+  },
+  "recommendation_counts": {
+    "conditional": 4,
+    "text": 11,
+    "native": 18,
+    "json_render": 11
+  },
+  "source_sha256": {
+    "confirmed-plan.json": "2350ab2a9b6a0741964511112b6c3eeb777819e9e182bd659dae50e01eacab13",
+    "results-index.json": "f1a02b9c01a915e0b7c5f212f89c694b56853afc1917eb16abe3848b24df0d9c",
+    "scores.json": "56add9135f7971f3df61f40323aba4332c6aa13e3dbb4fb1fb7e5a6883a3d80e",
+    "aggregates.json": "734e2b25e3aa3617c47af7cf492fad5e052b1c1aaeb4dfd941e8e0b6551fbb6e"
+  },
+  "unscored_reliability_fields": [
+    "generation_failure",
+    "registry_errors",
+    "timeouts",
+    "host_event_delivery",
+    "receipt_failure",
+    "legacy_F_R_S",
+    "tokens",
+    "generation_time"
+  ],
+  "old_source_files_unchanged": true
+}

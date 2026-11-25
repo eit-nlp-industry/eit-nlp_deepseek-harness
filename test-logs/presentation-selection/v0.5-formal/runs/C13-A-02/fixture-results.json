@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C13-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_pWm8gGIx9slA3y0gUn796764"
+      },
+      "toolCallId": "call_00_ET_pWm8gGIx9slA3y0gUn796764",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C13\",\"facts\":\"同一14:00观察：lib-reading安静且有座；college-lounge正在活动、嘈杂。静态介绍不替代当前观察；图像MOCK，不重新视觉识别。\",\"assets\":[{\"id\":\"bench05-lib-reading\",\"file\":\"bench05-lib-reading.png\",\"alt\":\"MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture\",\"source_id\":\"lib-reading\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-lib-reading/content\",\"path\":\"/api/media/bench05-lib-reading/content\",\"sha256\":\"b3e247ec5f57b6a4b88d97a1ec766c79c85c9626187302c7d69c8159c4443570\",\"width\":960,\"height\":540},{\"id\":\"bench05-college-lounge\",\"file\":\"bench05-college-lounge.png\",\"alt\":\"MOCK COLLEGE LOUNGE; EVENT | NOISY; synthetic fixture\",\"source_id\":\"college-lounge\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-college-lounge/content\",\"path\":\"/api/media/bench05-college-lounge/content\",\"sha256\":\"0d3ba4c9a680831552850658f845d25a3d31c528f92a11d0531c6d19445d122e\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "5dfd3523-cd07-4805-9a13-8ce3e25bb8cd"
+    }
+  }
+]

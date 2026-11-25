@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 42,
+    "result_seq": 43,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ZNxNn4wn2mxBJKSqrVZ45452",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"next_step\", \"header\": \"如何继续\", \"question\": \"2026-11-07 没有 20:00 之后可用的时段（仅剩 14:00–15:00、16:00–17:00，均早于 20:00）。你希望怎么处理？\", \"options\": [{\"label\": \"换一个日期再查（请告知日期）（推荐）\", \"description\": \"保留“20:00 之后、仅投屏、4 人、四明书院”的条件，我再按你给的日期查询是否有时段。\"}, {\"label\": \"放宽时间，接受当天 14:00–15:00\", \"description\": \"放弃“20:00 之后”的要求，用当天下午这一小时段，其余条件不变。\"}, {\"label\": \"放宽时间，接受当天 16:00–17:00\", \"description\": \"放弃“20:00 之后”的要求，用当天下午这一小时段，其余条件不变。\"}, {\"label\": \"暂时不预约\", \"description\": \"保留当前草稿，不做任何时段选择。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ZNxNn4wn2mxBJKSqrVZ45452"
+      },
+      "toolCallId": "call_00_ZNxNn4wn2mxBJKSqrVZ45452",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"next_step\",\"selected\":[],\"custom\":\"下午不行，先不要提交。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "6a74fc27-2626-4311-899d-1d2a3a181027"
+    }
+  }
+]

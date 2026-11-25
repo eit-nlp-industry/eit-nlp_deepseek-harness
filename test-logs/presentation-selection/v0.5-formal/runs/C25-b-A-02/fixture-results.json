@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C25-b-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_YaKztJs26Jh4GIF6jpwo5014"
+      },
+      "toolCallId": "call_00_ET_YaKztJs26Jh4GIF6jpwo5014",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C25-b\",\"facts\":\"本题不控制机器人；请求交由固定模拟结果回放。当前动作handshake-01状态pending，尚无成功或失败结果。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "38035c39-83ca-4b99-8649-b7c0a1ced82a"
+    }
+  }
+]

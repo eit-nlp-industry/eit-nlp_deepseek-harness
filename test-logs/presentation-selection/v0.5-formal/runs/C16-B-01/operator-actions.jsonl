@@ -1,0 +1,3 @@
+{"at": "2026-11-19T12:50:59.748176+00:00", "stage": "prepared", "release": "environment_event"}
+{"at": "2026-11-19T12:54:12.840615+00:00", "stage": "handover", "release": "environment_event"}
+{"at": "2026-11-19T13:04:06.114876+00:00", "action": "stop_fixture_driver_after_final_capture", "business_event": false}

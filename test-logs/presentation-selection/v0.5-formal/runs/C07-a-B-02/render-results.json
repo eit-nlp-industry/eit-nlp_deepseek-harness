@@ -1,0 +1,850 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_xhLZZADJuUfMdYy0tXB10437",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"页面分三块。第一块「冲突说明」用普通段落/提示条展示：原草稿时段 2026-11-07 19:00–20:00 与新的「8 点之后」要求不重叠，原时段不再适用，因此不能直接沿用；并展示草稿其余条件（场地四明书院、4 人、投屏；白板已按用户要求移除）。第二块「待确认未知项」提示：8 点之后的可预约时段尚未获得，不能默认接受，也不预判是否成功。第三块是表单字段，逐项让用户填写并确认：希望开始时间（必须晚于 20:00）、结束时间或时长、场地（预填四明书院，可改）、日期（预填 2026-11-07）、人数（预填 4）、所需设备（预填投屏，白板已移除）、备注。表单底部保留提交按钮，提交仅为草稿确认，不代表预约成功。不渲染任何图片、地图、标签页、折叠面板、代码块或图片上传控件。\", \"business_data\": {\"title\": \"四明书院场地草稿 · 时段修改\", \"conflict_title\": \"冲突说明：原时段不再适用\", \"conflict_lines\": [\"原草稿时段：2026-11-07 19:00–20:00\", \"新要求：时间改到 20:00（晚 8 点）之后\", \"两者不重叠：原 19:00–20:00 一小时窗口不包含 20:00 之后的时间，不能沿用原标题时段，需要重新确定开始与结束时间\", \"白板需求已移除，草稿仅保留投屏；此项无冲突\"], \"draft_after_edit\": {\"场地\": \"四明书院\", \"日期\": \"2026-11-07\", \"人数\": \"4 人\", \"所需设备\": \"投屏（白板已移除）\"}, \"unknown_notice\": \"20:00 之后该场地是否有可用时段目前未知，需按你确认的时段另行确认；本页不会默认替你把新时段视为已接受或已订成。\", \"form_fields\": [{\"label\": \"希望开始时间（须晚于 20:00）\", \"required\": true, \"hint\": \"例如 20:00、20:30\"}, {\"label\": \"结束时间或时长\", \"required\": true, \"hint\": \"例如 21:30 或 1.5 小时\"}, {\"label\": \"场地\", \"value\": \"四明书院\"}, {\"label\": \"日期\", \"value\": \"2026-11-07\"}, {\"label\": \"人数\", \"value\": \"4\"}, {\"label\": \"所需设备\", \"value\": \"投屏\"}, {\"label\": \"备注\", \"required\": false}], \"submit_note\": \"提交后仅生成草稿确认结果，不代表预约成功或时段已锁定。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page-heading",
+                "conflict-section",
+                "unknown-section",
+                "form-section"
+              ]
+            },
+            "page-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "四明书院场地草稿 · 时段修改",
+                "level": "h1"
+              }
+            },
+            "conflict-section": {
+              "type": "Section",
+              "props": {
+                "title": "冲突说明：原时段不再适用",
+                "description": "原草稿时段与新的 20:00 之后要求不重叠，不能直接沿用。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "conflict-callout",
+                "conflict-lines",
+                "draft-heading",
+                "draft-grid"
+              ]
+            },
+            "conflict-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "原时段不再适用",
+                "description": "原草稿时段 2026-11-07 19:00–20:00 与新的「8 点之后」要求不重叠，原时段不再适用，因此不能直接沿用。",
+                "showIcon": true
+              }
+            },
+            "conflict-lines": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "conflict-line-0",
+                "conflict-line-1",
+                "conflict-line-2",
+                "conflict-line-3"
+              ]
+            },
+            "conflict-line-0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/0"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict-line-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/1"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict-line-2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/2"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict-line-3": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/3"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "草稿其余条件",
+                "level": "h3"
+              }
+            },
+            "draft-grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "draft-location-label",
+                "draft-location-value",
+                "draft-date-label",
+                "draft-date-value",
+                "draft-people-label",
+                "draft-people-value",
+                "draft-equipment-label",
+                "draft-equipment-value"
+              ]
+            },
+            "draft-location-label": {
+              "type": "Text",
+              "props": {
+                "content": "场地",
+                "variant": "muted"
+              }
+            },
+            "draft-location-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_after_edit/场地"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-date-label": {
+              "type": "Text",
+              "props": {
+                "content": "日期",
+                "variant": "muted"
+              }
+            },
+            "draft-date-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_after_edit/日期"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-people-label": {
+              "type": "Text",
+              "props": {
+                "content": "人数",
+                "variant": "muted"
+              }
+            },
+            "draft-people-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_after_edit/人数"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-equipment-label": {
+              "type": "Text",
+              "props": {
+                "content": "所需设备",
+                "variant": "muted"
+              }
+            },
+            "draft-equipment-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_after_edit/所需设备"
+                },
+                "variant": "default"
+              }
+            },
+            "unknown-section": {
+              "type": "Section",
+              "props": {
+                "title": "待确认未知项",
+                "description": "8 点之后的可预约时段尚未获得，不能默认接受，也不预判是否成功。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "unknown-callout",
+                "unknown-text"
+              ]
+            },
+            "unknown-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "可预约时段尚未获得",
+                "description": "8 点之后的可预约时段尚未获得，不能默认接受，也不预判是否成功。",
+                "showIcon": true
+              }
+            },
+            "unknown-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknown_notice"
+                },
+                "variant": "muted"
+              }
+            },
+            "form-section": {
+              "type": "Section",
+              "props": {
+                "title": "填写并确认筛选条件",
+                "description": "提交仅为草稿确认，不代表预约成功或时段已锁定。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "form-intro",
+                "filter-form",
+                "submit-button",
+                "submit-note"
+              ]
+            },
+            "form-intro": {
+              "type": "Text",
+              "props": {
+                "content": "请逐项填写并确认；带预填值的项目可按需修改。",
+                "variant": "default"
+              }
+            },
+            "filter-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "input",
+                    "key": "start_time",
+                    "label": "希望开始时间（须晚于 20:00，必填）",
+                    "placeholder": "例如 20:00、20:30"
+                  },
+                  {
+                    "type": "input",
+                    "key": "end_time_or_duration",
+                    "label": "结束时间或时长（必填）",
+                    "placeholder": "例如 21:30 或 1.5 小时"
+                  },
+                  {
+                    "type": "input",
+                    "key": "venue",
+                    "label": "场地",
+                    "value": "四明书院"
+                  },
+                  {
+                    "type": "date",
+                    "key": "date",
+                    "label": "日期",
+                    "value": "2026-11-07"
+                  },
+                  {
+                    "type": "inputNumber",
+                    "key": "people_count",
+                    "label": "人数",
+                    "value": "4"
+                  },
+                  {
+                    "type": "input",
+                    "key": "equipment",
+                    "label": "所需设备（白板已移除）",
+                    "value": "投屏"
+                  },
+                  {
+                    "type": "input",
+                    "key": "notes",
+                    "label": "备注（选填）",
+                    "placeholder": "选填"
+                  }
+                ]
+              }
+            },
+            "submit-button": {
+              "type": "Button",
+              "props": {
+                "label": "提交并确认草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "submit-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/submit_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "四明书院场地草稿 · 时段修改",
+            "conflict_title": "冲突说明：原时段不再适用",
+            "conflict_lines": [
+              "原草稿时段：2026-11-07 19:00–20:00",
+              "新要求：时间改到 20:00（晚 8 点）之后",
+              "两者不重叠：原 19:00–20:00 一小时窗口不包含 20:00 之后的时间，不能沿用原标题时段，需要重新确定开始与结束时间",
+              "白板需求已移除，草稿仅保留投屏；此项无冲突"
+            ],
+            "draft_after_edit": {
+              "场地": "四明书院",
+              "日期": "2026-11-07",
+              "人数": "4 人",
+              "所需设备": "投屏（白板已移除）"
+            },
+            "unknown_notice": "20:00 之后该场地是否有可用时段目前未知，需按你确认的时段另行确认；本页不会默认替你把新时段视为已接受或已订成。",
+            "form_fields": [
+              {
+                "label": "希望开始时间（须晚于 20:00）",
+                "required": true,
+                "hint": "例如 20:00、20:30"
+              },
+              {
+                "label": "结束时间或时长",
+                "required": true,
+                "hint": "例如 21:30 或 1.5 小时"
+              },
+              {
+                "label": "场地",
+                "value": "四明书院"
+              },
+              {
+                "label": "日期",
+                "value": "2026-11-07"
+              },
+              {
+                "label": "人数",
+                "value": "4"
+              },
+              {
+                "label": "所需设备",
+                "value": "投屏"
+              },
+              {
+                "label": "备注",
+                "required": false
+              }
+            ],
+            "submit_note": "提交后仅生成草稿确认结果，不代表预约成功或时段已锁定。",
+            "form": {
+              "start_time": "",
+              "end_time_or_duration": "",
+              "venue": "四明书院",
+              "date": "2026-11-07",
+              "people_count": 4,
+              "equipment": "投屏",
+              "notes": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_xhLZZADJuUfMdYy0tXB10437"
+      },
+      "toolCallId": "call_00_xhLZZADJuUfMdYy0tXB10437",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "a3e0658f-441d-4d7e-a451-dc166c180a22"
+    }
+  },
+  {
+    "call_seq": 48,
+    "result_seq": 49,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_1mr43QL81hspVyQz2f0C6786",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"conflict_lines\": [\"你确认的草稿时段：2026-11-07 20:00–21:00（四明书院、4 人、投屏、无白板）\", \"模拟查询结果：该时段冲突，20:00–21:00 不可用\", \"2026-11-07 当天实际可用的只有 14:00–15:00 和 16:00–17:00，两者都早于 20:00，不满足你“8 点之后”的要求\", \"因此当天无法同时保留“8 点之后”和现有可用时段，需你明确取舍；两个可用时段均未被默认接受\"], \"conflict_title\": \"冲突说明：20:00 之后当天无可用时段\", \"draft_kept\": {\"人数\": \"4 人\", \"日期\": \"2026-11-07\", \"所需设备\": \"投屏（白板已移除）\", \"场地\": \"四明书院\"}, \"form_fields\": [{\"hint\": \"选一个即表示你同意改到该时段；未选则维持现状\", \"label\": \"处理方式\", \"options\": [\"接受 14:00–15:00（早于 20:00）\", \"接受 16:00–17:00（早于 20:00）\", \"当天都不接受，保留“8 点之后”，改其他日期再看\", \"保留“8 点之后”，仍选 2026-11-07 并继续找其他方案\"], \"required\": true}, {\"hint\": \"若换日期，请填具体日期；否则保持 2026-11-07\", \"label\": \"日期\", \"required\": false, \"value\": \"2026-11-07\"}, {\"hint\": \"仅在需重新确认时段时填写，须晚于 20:00\", \"label\": \"希望开始时间\", \"required\": false}, {\"hint\": \"例如 21:00 或 1 小时\", \"label\": \"结束时间或时长\", \"required\": false}, {\"label\": \"场地\", \"value\": \"四明书院\"}, {\"label\": \"人数\", \"value\": \"4\"}, {\"label\": \"所需设备\", \"value\": \"投屏\"}, {\"label\": \"备注\", \"required\": false}], \"status\": \"conflict\", \"submit_note\": \"提交仅更新草稿并按你的选择重新确认，不代表预约成功；本次为模拟流程，未做任何真实预约或场地操作。\", \"title\": \"四明书院 · 2026-11-07 时段冲突待你取舍\"}, \"locale\": \"zh-CN\", \"mode\": \"form\", \"user_query\": \"页面分三块。第一块「冲突说明」用提示条加段落：说明你确认的 2026-11-07 20:00–21:00 查询结果为冲突，当天只剩 14:00–15:00 与 16:00–17:00，均早于 20:00，因此当天无法满足「8 点之后」，并说明这两个时段尚未被默认接受。第二块展示当前草稿保留的条件（四明书院、4 人、投屏、白板已移除）。第三块是表单：一个「处理方式」单选组，选项为接受 14:00–15:00（早于 20:00）、接受 16:00–17:00（早于 20:00）、当天都不接受并改其他日期、保留「8 点之后」仍按 2026-11-07 继续找方案；其后是日期、希望开始时间（须晚于 20:00）、结束时间或时长、场地、人数、所需设备、备注字段，均给出预填值或填写提示。底部保留提交按钮并注明仅更新草稿、不代表预约成功。不渲染任何图片、地图、标签页、折叠面板、代码块或图片上传控件。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_1mr43QL81hspVyQz2f0C6786"
+      },
+      "toolCallId": "call_00_1mr43QL81hspVyQz2f0C6786",
+      "content": [
+        {
+          "type": "text",
+          "text": "表单模式必须提供 intent：generic_filters 或 generic_pick_one。意图不清时改用 ask_user_question，不要调用 render_ui。"
+        }
+      ],
+      "isError": false,
+      "id": "d48f77d3-1c53-45e1-9cf3-028045cde6dd"
+    }
+  },
+  {
+    "call_seq": 54,
+    "result_seq": 55,
+    "call": {
+      "turn": 2,
+      "step": 3,
+      "callId": "call_00_TV8ato9Hup0AXmYhDhPt6716",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"conflict_lines\": [\"你确认的草稿时段：2026-11-07 20:00–21:00（四明书院、4 人、投屏、无白板）\", \"模拟查询结果：该时段冲突，20:00–21:00 不可用\", \"2026-11-07 当天实际可用的只有 14:00–15:00 和 16:00–17:00，两者都早于 20:00，不满足你“8 点之后”的要求\", \"因此当天无法同时保留“8 点之后”和现有可用时段，需你明确取舍；两个可用时段均未被默认接受\"], \"conflict_title\": \"冲突说明：20:00 之后当天无可用时段\", \"draft_kept\": {\"人数\": \"4 人\", \"日期\": \"2026-11-07\", \"所需设备\": \"投屏（白板已移除）\", \"场地\": \"四明书院\"}, \"form_fields\": [{\"hint\": \"选一个即表示你同意改到该时段；未选则维持现状\", \"label\": \"处理方式\", \"options\": [\"接受 14:00–15:00（早于 20:00）\", \"接受 16:00–17:00（早于 20:00）\", \"当天都不接受，保留“8 点之后”，改其他日期再看\", \"保留“8 点之后”，仍选 2026-11-07 并继续找其他方案\"], \"required\": true}, {\"hint\": \"若换日期，请填具体日期；否则保持 2026-11-07\", \"label\": \"日期\", \"required\": false, \"value\": \"2026-11-07\"}, {\"hint\": \"仅在需重新确认时段时填写，须晚于 20:00\", \"label\": \"希望开始时间\", \"required\": false}, {\"hint\": \"例如 21:00 或 1 小时\", \"label\": \"结束时间或时长\", \"required\": false}, {\"label\": \"场地\", \"value\": \"四明书院\"}, {\"label\": \"人数\", \"value\": \"4\"}, {\"label\": \"所需设备\", \"value\": \"投屏\"}, {\"label\": \"备注\", \"required\": false}], \"status\": \"conflict\", \"submit_note\": \"提交仅更新草稿并按你的选择重新确认，不代表预约成功；本次为模拟流程，未做任何真实预约或场地操作。\", \"title\": \"四明书院 · 2026-11-07 时段冲突待你取舍\"}, \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"mode\": \"form\", \"user_query\": \"页面分三块。第一块「冲突说明」用提示条加段落：说明你确认的 2026-11-07 20:00–21:00 查询结果为冲突，当天只剩 14:00–15:00 与 16:00–17:00，均早于 20:00，因此当天无法满足「8 点之后」，并说明这两个时段尚未被默认接受。第二块展示当前草稿保留的条件（四明书院、4 人、投屏、白板已移除）。第三块是表单：一个「处理方式」单选组，选项为接受 14:00–15:00（早于 20:00）、接受 16:00–17:00（早于 20:00）、当天都不接受并改其他日期、保留「8 点之后」仍按 2026-11-07 继续找方案；其后是日期、希望开始时间（须晚于 20:00）、结束时间或时长、场地、人数、所需设备、备注字段，均给出预填值或填写提示。底部保留提交按钮并注明仅更新草稿、不代表预约成功。不渲染任何图片、地图、标签页、折叠面板、代码块或图片上传控件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "conflictSection",
+                "draftSection",
+                "formSection"
+              ]
+            },
+            "conflictSection": {
+              "type": "Section",
+              "props": {
+                "title": "冲突说明",
+                "description": "查询结果与你的期望时段冲突，需要你选择处理方式。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "conflictCallout",
+                "conflictText0",
+                "conflictText1",
+                "conflictText2",
+                "conflictText3"
+              ]
+            },
+            "conflictCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "冲突说明：20:00 之后当天无可用时段",
+                "description": "你确认的 2026-11-07 20:00–21:00 查询结果为冲突，当天只剩 14:00–15:00 与 16:00–17:00，均早于 20:00，因此当天无法满足「8 点之后」；两个可用时段尚未被默认接受。",
+                "showIcon": true
+              }
+            },
+            "conflictText0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/0"
+                },
+                "variant": "default"
+              }
+            },
+            "conflictText1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/1"
+                },
+                "variant": "default"
+              }
+            },
+            "conflictText2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/2"
+                },
+                "variant": "default"
+              }
+            },
+            "conflictText3": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_lines/3"
+                },
+                "variant": "default"
+              }
+            },
+            "draftSection": {
+              "type": "Section",
+              "props": {
+                "title": "当前草稿保留的条件",
+                "description": "以下条件仍保留在草稿中。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "draftGrid"
+              ]
+            },
+            "draftGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "draftLabelVenue",
+                "draftValueVenue",
+                "draftLabelDate",
+                "draftValueDate",
+                "draftLabelPeople",
+                "draftValuePeople",
+                "draftLabelEquipment",
+                "draftValueEquipment"
+              ]
+            },
+            "draftLabelVenue": {
+              "type": "Text",
+              "props": {
+                "content": "场地",
+                "variant": "muted"
+              }
+            },
+            "draftValueVenue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_kept/场地"
+                },
+                "variant": "default"
+              }
+            },
+            "draftLabelDate": {
+              "type": "Text",
+              "props": {
+                "content": "日期",
+                "variant": "muted"
+              }
+            },
+            "draftValueDate": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_kept/日期"
+                },
+                "variant": "default"
+              }
+            },
+            "draftLabelPeople": {
+              "type": "Text",
+              "props": {
+                "content": "人数",
+                "variant": "muted"
+              }
+            },
+            "draftValuePeople": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_kept/人数"
+                },
+                "variant": "default"
+              }
+            },
+            "draftLabelEquipment": {
+              "type": "Text",
+              "props": {
+                "content": "所需设备",
+                "variant": "muted"
+              }
+            },
+            "draftValueEquipment": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft_kept/所需设备"
+                },
+                "variant": "default"
+              }
+            },
+            "formSection": {
+              "type": "Section",
+              "props": {
+                "title": "处理方式与筛选条件",
+                "description": "请选择处理方式，并确认日期、时间、场地、人数和设备等条件。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "formIntro",
+                "dynamicForm",
+                "submitButton",
+                "submitNote"
+              ]
+            },
+            "formIntro": {
+              "type": "Text",
+              "props": {
+                "content": "处理方式为必选项；日期、希望开始时间、结束时间或时长、场地、人数、所需设备和备注请按提示填写。",
+                "variant": "muted"
+              }
+            },
+            "dynamicForm": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "handling",
+                    "label": "处理方式",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "接受 14:00–15:00（早于 20:00）",
+                          "label": "接受 14:00–15:00（早于 20:00）"
+                        },
+                        {
+                          "value": "接受 16:00–17:00（早于 20:00）",
+                          "label": "接受 16:00–17:00（早于 20:00）"
+                        },
+                        {
+                          "value": "当天都不接受，保留“8 点之后”，改其他日期再看",
+                          "label": "当天都不接受，保留“8 点之后”，改其他日期再看"
+                        },
+                        {
+                          "value": "保留“8 点之后”，仍选 2026-11-07 并继续找其他方案",
+                          "label": "保留“8 点之后”，仍选 2026-11-07 并继续找其他方案"
+                        }
+                      ]
+                    },
+                    "placeholder": "请选择处理方式（必选）"
+                  },
+                  {
+                    "type": "date",
+                    "key": "date",
+                    "label": "日期",
+                    "value": "2026-11-07",
+                    "placeholder": "若换日期，请填具体日期"
+                  },
+                  {
+                    "type": "input",
+                    "key": "preferredStart",
+                    "label": "希望开始时间",
+                    "placeholder": "须晚于 20:00"
+                  },
+                  {
+                    "type": "input",
+                    "key": "endOrDuration",
+                    "label": "结束时间或时长",
+                    "placeholder": "例如 21:00 或 1 小时"
+                  },
+                  {
+                    "type": "input",
+                    "key": "venue",
+                    "label": "场地",
+                    "value": "四明书院"
+                  },
+                  {
+                    "type": "inputNumber",
+                    "key": "people",
+                    "label": "人数",
+                    "value": 4
+                  },
+                  {
+                    "type": "input",
+                    "key": "equipment",
+                    "label": "所需设备",
+                    "value": "投屏"
+                  },
+                  {
+                    "type": "input",
+                    "key": "notes",
+                    "label": "备注",
+                    "placeholder": "可填写补充说明"
+                  }
+                ]
+              }
+            },
+            "submitButton": {
+              "type": "Button",
+              "props": {
+                "label": "提交并更新草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "submitNote": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/submit_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "conflict_lines": [
+              "你确认的草稿时段：2026-11-07 20:00–21:00（四明书院、4 人、投屏、无白板）",
+              "模拟查询结果：该时段冲突，20:00–21:00 不可用",
+              "2026-11-07 当天实际可用的只有 14:00–15:00 和 16:00–17:00，两者都早于 20:00，不满足你“8 点之后”的要求",
+              "因此当天无法同时保留“8 点之后”和现有可用时段，需你明确取舍；两个可用时段均未被默认接受"
+            ],
+            "conflict_title": "冲突说明：20:00 之后当天无可用时段",
+            "draft_kept": {
+              "人数": "4 人",
+              "日期": "2026-11-07",
+              "所需设备": "投屏（白板已移除）",
+              "场地": "四明书院"
+            },
+            "form_fields": [
+              {
+                "hint": "选一个即表示你同意改到该时段；未选则维持现状",
+                "label": "处理方式",
+                "options": [
+                  "接受 14:00–15:00（早于 20:00）",
+                  "接受 16:00–17:00（早于 20:00）",
+                  "当天都不接受，保留“8 点之后”，改其他日期再看",
+                  "保留“8 点之后”，仍选 2026-11-07 并继续找其他方案"
+                ],
+                "required": true
+              },
+              {
+                "hint": "若换日期，请填具体日期；否则保持 2026-11-07",
+                "label": "日期",
+                "required": false,
+                "value": "2026-11-07"
+              },
+              {
+                "hint": "仅在需重新确认时段时填写，须晚于 20:00",
+                "label": "希望开始时间",
+                "required": false
+              },
+              {
+                "hint": "例如 21:00 或 1 小时",
+                "label": "结束时间或时长",
+                "required": false
+              },
+              {
+                "label": "场地",
+                "value": "四明书院"
+              },
+              {
+                "label": "人数",
+                "value": "4"
+              },
+              {
+                "label": "所需设备",
+                "value": "投屏"
+              },
+              {
+                "label": "备注",
+                "required": false
+              }
+            ],
+            "status": "conflict",
+            "submit_note": "提交仅更新草稿并按你的选择重新确认，不代表预约成功；本次为模拟流程，未做任何真实预约或场地操作。",
+            "title": "四明书院 · 2026-11-07 时段冲突待你取舍",
+            "form": {
+              "handling": "",
+              "date": "2026-11-07",
+              "preferredStart": "",
+              "endOrDuration": "",
+              "venue": "四明书院",
+              "people": 4,
+              "equipment": "投屏",
+              "notes": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_TV8ato9Hup0AXmYhDhPt6716"
+      },
+      "toolCallId": "call_00_TV8ato9Hup0AXmYhDhPt6716",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "3ecf4560-e5b0-4036-a956-a190e79b19f6"
+    }
+  }
+]

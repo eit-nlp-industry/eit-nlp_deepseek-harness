@@ -1,0 +1,97 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C19-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_1w9TqEKrznQLK7A5ih681233"
+      },
+      "toolCallId": "call_00_ET_1w9TqEKrznQLK7A5ih681233",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C19\",\"facts\":\"稳定地点ID lib=图书馆、canteen=食堂、college=四明书院，初始lib/canteen/college。college地图位置尚未确认。只保存排序草稿，不导航。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "bc4caaf6-67f8-46ea-ac37-3a7aa26dc126"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C19-A-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_PwTmHcifKtJWSbO6YrrQ3562"
+      },
+      "toolCallId": "call_00_PwTmHcifKtJWSbO6YrrQ3562",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C19\",\"facts\":\"稳定地点ID lib=图书馆、canteen=食堂、college=四明书院，初始lib/canteen/college。college地图位置尚未确认。只保存排序草稿，不导航。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "25c6cb7a-20f9-451b-881f-89c590e484b8"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C19-A-01",
+        "values": {
+          "order": [
+            "canteen",
+            "lib",
+            "college"
+          ],
+          "order_labels": [
+            "食堂（吃饭）",
+            "图书馆",
+            "四明书院"
+          ],
+          "kind": "route_order_draft",
+          "confirmed_by_user": true
+        }
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_hsJl6UQ67hMwadT3NsBM8353"
+      },
+      "toolCallId": "call_00_hsJl6UQ67hMwadT3NsBM8353",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"order\":[\"canteen\",\"lib\",\"college\"],\"order_labels\":[\"食堂（吃饭）\",\"图书馆\",\"四明书院\"],\"kind\":\"route_order_draft\",\"confirmed_by_user\":true}}}"
+        }
+      ],
+      "isError": false,
+      "id": "b74c7410-3335-4944-9f7e-a019f293b215"
+    }
+  }
+]

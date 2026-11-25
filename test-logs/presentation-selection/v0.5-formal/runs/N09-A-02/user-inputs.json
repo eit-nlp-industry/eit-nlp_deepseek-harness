@@ -1,0 +1,22 @@
+[
+  {
+    "seq": 9,
+    "time": 1795153775686,
+    "source": {
+      "kind": "user",
+      "rpcId": "128ff786-7c70-4379-9f0f-4c795032b80a",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "【全量正式呈现测评 N09-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N09-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N09-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：安排这三个工作事项：审阅需求、整理报告、客户沟通。先按这个顺序列出，再让我调整并保存草稿。\n指定呈现方式：Markdown有序列表+文字调整并确认保存。。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。"
+  },
+  {
+    "seq": 31,
+    "time": 1795153805218,
+    "source": {
+      "kind": "user",
+      "rpcId": "51e64d5c-fcda-4d5d-9de1-38141b3380a1",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "把客户沟通移到第一位，其余顺序保持，确认保存草稿。"
+  }
+]

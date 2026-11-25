@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "实际三字段form填入产品培训/12/线上，Host回传与最终需求汇总一致，未开始安排。无须持久化却额外调用模拟提交并解释通道错误，表单保留已提交等待继续回答，增加噪声。"
+}

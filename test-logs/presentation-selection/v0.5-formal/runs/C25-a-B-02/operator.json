@@ -1,0 +1,24 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C25-a",
+    "facts": "handshake-01模拟结果：成功。未控制真实机器人。",
+    "assets": [],
+    "task_id": "handshake-01",
+    "status": "succeeded"
+  },
+  "events": [
+    {
+      "id": "C25-a-B-02-result",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "handshake-01模拟结果：成功。未控制真实机器人。",
+        "assets": [],
+        "simulated": true,
+        "task_id": "handshake-01",
+        "status": "succeeded"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

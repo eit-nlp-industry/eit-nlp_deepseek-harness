@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 70,
+    "result_seq": 71,
+    "call": {
+      "turn": 2,
+      "step": 3,
+      "callId": "call_00_INN6f8AvpFYdZB29qzk27016",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_end_and_return\", \"header\": \"确认下一步\", \"question\": \"照片已经给你看了，现在要结束观察 watch-01 并返回吗？\", \"options\": [{\"label\": \"对，结束观察并返回（推荐）\", \"description\": \"按你原本的安排，看完照片后收尾：停止观察，然后回来。\"}, {\"label\": \"先别结束，继续观察\", \"description\": \"保持 watch-01 进行中，不做返回。\"}, {\"label\": \"再补拍一次门口\", \"description\": \"保持观察，再要一张新画面，先不收工。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_INN6f8AvpFYdZB29qzk27016"
+      },
+      "toolCallId": "call_00_INN6f8AvpFYdZB29qzk27016",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_end_and_return\",\"selected\":[\"对，结束观察并返回（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "efe3d9c3-bfa4-4c0a-b9bd-cb85966a6046"
+    }
+  }
+]

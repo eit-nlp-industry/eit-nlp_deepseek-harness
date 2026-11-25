@@ -1,0 +1,20 @@
+{
+  "run_id": "C24-B-01",
+  "case_id": "C24",
+  "card_id": "C24",
+  "category_id": "G12",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "B",
+  "repeat": 1,
+  "status": "fail",
+  "prompt": "【全量正式呈现测评 C24-B-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C24-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C24-B-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：老师不在就告诉我，不需要一直在那等。\n指定呈现方式：Workflow追加条件分支并保存回传。必须实际调用render_ui；事实来自本例材料。本题需要Workflow：用intent=rich_content并省略不受支持的components枚举，在user_query要求Workflow编辑器。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。\nWorkflow接入规范：根Stack内放Workflow和独立保存Button两个兄弟节点；Workflow(mode=edit)用$bindState绑定/_ui/workflow，初始化完整workflow-v1文档；保存发workflow.save，payload.workflow用$state读取最新文档，parameters为对象。不要$ref，不用静态步骤或组件嵌套伪装编辑器。",
+  "prompt_sha256": "c1cde6c001e9026032a98ee12facf65d1fd45c2a70d2b1b4d810b2f3d94d92c7",
+  "operator_actions": "发送“老师不在就告诉我，不需要一直在那等。”→保存；审计在/不在两条有向路径。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T05:57:35.470Z",
+  "interactions": [],
+  "tab_id": "4",
+  "final_at": "2026-11-20T06:01:32.519Z",
+  "notes": "实际Workflow及version3保存链路成立，但老师在/不在判断前无条件等待材料，老师不在仍先等材料；核心路径错误。初始大量节点/边/变量字段表和未注册组件，最终仅编辑器未明确保存结果。"
+}

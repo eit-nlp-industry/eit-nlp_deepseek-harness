@@ -1,0 +1,86 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_N4Zl8YDjExMI1YdWVL8l7539",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_parcel\", \"header\": \"确认取件\", \"question\": \"是否确认按尾号 3726 取这个包裹（parcel-3726）？\", \"options\": [{\"label\": \"确认，按尾号 3726 取（Recommended）\", \"description\": \"以图中包裹作为你的外卖去取，我随后提交这份确认草稿。\"}, {\"label\": \"先别取，等近景图\", \"description\": \"先不确认，等近景或侧面图发布后再核对尾号。\"}, {\"label\": \"不是我的，取消\", \"description\": \"停止本次取件，不去取这个包裹。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_N4Zl8YDjExMI1YdWVL8l7539"
+      },
+      "toolCallId": "call_00_N4Zl8YDjExMI1YdWVL8l7539",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_parcel\",\"selected\":[],\"custom\":\"先不确认，靠近一点让我看。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "e0b06ad2-32f5-44cd-a41e-75a15ecaf43f"
+    }
+  },
+  {
+    "call_seq": 52,
+    "result_seq": 53,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ET_aCGMBWnKzn7i7XIdWTDp6271",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"确认取件\", \"id\": \"confirm_near\", \"options\": [{\"description\": \"按尾号 3726 取这个包裹，我提交确认草稿。\", \"label\": \"确认，就取这个（Recommended）\"}, {\"description\": \"先不提交，再多看一个视角或重拍。\", \"label\": \"再等等\"}, {\"description\": \"停止本次取件，不动包裹。\", \"label\": \"不是我的，取消\"}], \"question\": \"近景尾号 3726 已看清，确认取这个包裹吗？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_aCGMBWnKzn7i7XIdWTDp6271"
+      },
+      "toolCallId": "call_00_ET_aCGMBWnKzn7i7XIdWTDp6271",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_near\",\"selected\":[],\"custom\":\"先不确认，再看一下侧面。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "14480f8e-46ad-4803-95d2-c85c5951a497"
+    }
+  },
+  {
+    "call_seq": 79,
+    "result_seq": 80,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_ET_CBNnsCPxO0vulJp3xX2h3967",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"确认取件\", \"id\": \"confirm_final\", \"options\": [{\"description\": \"我提交这份取件确认草稿，地点学校大门、尾号 3726。\", \"label\": \"确认，取这个包裹（Recommended）\"}, {\"description\": \"再看看或再拍，暂不提交。\", \"label\": \"再等等\"}, {\"description\": \"停止本次取件，不动包裹。\", \"label\": \"取消取件\"}], \"question\": \"三张视角都看过了，确认取尾号 3726 这个包裹吗？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_CBNnsCPxO0vulJp3xX2h3967"
+      },
+      "toolCallId": "call_00_ET_CBNnsCPxO0vulJp3xX2h3967",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_final\",\"selected\":[],\"custom\":\"确认这是我的外卖，候选parcel-3726，尾号3726。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "579e2eed-2b71-4571-b4d0-f334a1dbe710"
+    }
+  }
+]

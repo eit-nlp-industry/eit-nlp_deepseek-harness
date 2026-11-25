@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_H051hdjzIytNswFQq7vS9298",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"bind_person_a\", \"header\": \"确认绑定\", \"question\": \"是否把昵称「小张」与 person-a（图中灰色衣着 + 手提箱的那位）绑定？\", \"options\": [{\"label\": \"是，绑定 person-a（推荐）\", \"description\": \"按你的说法，把「小张」记为 person-a，仅保存这一条模拟确认状态。\"}, {\"label\": \"不是，我要绑定 person-b\", \"description\": \"改为把「小张」记为 person-b（蓝色衣着 + 背包）。\"}, {\"label\": \"先不绑定\", \"description\": \"暂不记录任何绑定，保持未确认状态。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_H051hdjzIytNswFQq7vS9298"
+      },
+      "toolCallId": "call_00_H051hdjzIytNswFQq7vS9298",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"bind_person_a\",\"selected\":[\"是，绑定 person-a（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "24d02914-b945-4f3b-92d6-98755451b463"
+    }
+  }
+]

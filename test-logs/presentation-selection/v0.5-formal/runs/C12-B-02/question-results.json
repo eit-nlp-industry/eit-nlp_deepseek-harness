@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_ozGDJxCVcu12Vfjfve9S5257",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_candidate\", \"header\": \"确认\", \"question\": \"图中拉到的是哪个？你描述的是「灰衣服、拉箱子」，对应图中的 A。请确认：\", \"options\": [{\"label\": \"是 A（灰衣、拉箱子）（推荐）\", \"description\": \"与你的描述一致，确认后我按这位同学记录。\"}, {\"label\": \"其实是 B（蓝衣、背包）\", \"description\": \"与描述不符，改按 B 记录。\"}, {\"label\": \"都不是\", \"description\": \"图中没有你要找的同学，我不会做任何确认。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ozGDJxCVcu12Vfjfve9S5257"
+      },
+      "toolCallId": "call_00_ozGDJxCVcu12Vfjfve9S5257",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_candidate\",\"selected\":[],\"custom\":\"确认是person-a（A），请转达我马上到。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "5268e738-2b4c-41bd-93c6-ab153743a74b"
+    }
+  }
+]

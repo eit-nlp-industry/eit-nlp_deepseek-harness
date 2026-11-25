@@ -1,0 +1,296 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 C03-B-02 场地推荐测评 刚刚":
+    - generic: 已完成
+    - generic: C03-B-02 场地推荐测评
+    - generic: 刚刚
+  - treeitem "已完成 会议室投屏白板试讲安排 刚刚":
+    - generic: 已完成
+    - generic: 会议室投屏白板试讲安排
+    - generic: 刚刚
+  - treeitem "已完成 明晚试讲场地推荐比较 刚刚":
+    - generic: 已完成
+    - generic: 明晚试讲场地推荐比较
+    - generic: 刚刚
+  - treeitem "试讲场地推荐测评 刚刚" [selected]:
+    - generic: 试讲场地推荐测评
+    - generic: 刚刚
+  - treeitem "已完成 进校后能否直接去图书馆测评 6分钟":
+    - generic: 已完成
+    - generic: 进校后能否直接去图书馆测评
+    - generic: 6分钟
+  - treeitem "已完成 进校后图书馆访问测评 6分钟":
+    - generic: 已完成
+    - generic: 进校后图书馆访问测评
+    - generic: 6分钟
+  - treeitem "已完成 图书馆入校访问测评 6分钟":
+    - generic: 已完成
+    - generic: 图书馆入校访问测评
+    - generic: 6分钟
+  - treeitem "进校后能否直接去图书馆 6分钟":
+    - generic: 进校后能否直接去图书馆
+    - generic: 6分钟
+  - treeitem "已完成 图书馆讨论场所展示测评 8分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论场所展示测评
+    - generic: 8分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 8分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 8分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 9分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 9分钟
+  - treeitem "图书馆讨论空间简洁卡片 9分钟":
+    - generic: 图书馆讨论空间简洁卡片
+    - generic: 9分钟
+  - treeitem "已完成 东方理工校园设施介绍测评 13分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 13分钟
+  - treeitem "已完成 东方理工校园设施介绍呈现测评 13分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍呈现测评
+    - generic: 13分钟
+  - treeitem "已完成 东方理工校园信息介绍测评 13分钟":
+    - generic: 已完成
+    - generic: 东方理工校园信息介绍测评
+    - generic: 13分钟
+  - treeitem "东方理工校园设施介绍 13分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 13分钟
+  - treeitem "已完成 东方理工校园设施介绍测评 20分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 20分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 20分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 20分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 20分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 20分钟
+  - treeitem "东方理工图书馆餐饮书院介绍 20分钟":
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 20分钟
+  - treeitem "已完成 东方理工校园设施介绍 24分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 24分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 24分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 24分钟
+  - treeitem "已完成 东方理工校园设施介绍 24分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 24分钟
+  - treeitem "东方理工校园设施介绍 24分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 24分钟
+  - treeitem "已完成 四会话隔离预检marker 26分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检marker
+    - generic: 26分钟
+  - treeitem "已完成 四会话隔离预检测试 26分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 26分钟
+  - treeitem "已完成 预检调用初始化返回marker 28分钟":
+    - generic: 已完成
+    - generic: 预检调用初始化返回marker
+    - generic: 28分钟
+  - button "展开其余 49 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 试讲场地推荐测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 C03-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C03-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C03-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：明晚七点四个人试讲一小时，需要投屏和白板，哪里合适? 指定呈现方式：结构化推荐/比较卡片；不擅自弹预约表。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 19:29
+- button "复制":
+- status: 已完成
+- button "已完成，用时 50秒":
+  - generic: 已完成，用时 50秒
+- paragraph: 我先调用 benchmark_fixture，读取本例的固定材料。
+- paragraph:
+  - strong: 明晚（11月7日）19:00–20:00 四人试讲 · 场地比较
+- table:
+  - rowgroup:
+    - row "场地 容量 投屏 白板 19:00–20:00 位置":
+      - columnheader "场地"
+      - columnheader "容量"
+      - columnheader "投屏"
+      - columnheader "白板"
+      - columnheader "19:00–20:00"
+      - columnheader "位置"
+  - rowgroup:
+    - row "lib-room（推荐） 6人（有余量） 有 有 空闲 材料未标注":
+      - cell "lib-room（推荐）":
+        - strong: lib-room（推荐）
+      - cell "6人（有余量）"
+      - cell "有"
+      - cell "有":
+        - strong: 有
+      - cell "空闲":
+        - strong: 空闲
+      - cell "材料未标注"
+    - row "college-room（备选） 4人（刚好坐满） 有 未知 未说明 距离更近":
+      - cell "college-room（备选）"
+      - cell "4人（刚好坐满）"
+      - cell "有"
+      - cell "未知":
+        - strong: 未知
+      - cell "未说明"
+      - cell "距离更近"
+    - row "canteen — — — — 无讨论场地，不适合":
+      - cell "canteen"
+      - cell "—"
+      - cell "—"
+      - cell "—"
+      - cell "—"
+      - cell "无讨论场地，不适合"
+- paragraph:
+  - strong: 结论：
+  - text: lib-room 是目前唯一能同时满足“4人、投屏、白板、明晚19:00–20:00可用”这几个条件的地方，因此建议选它。
+- paragraph:
+  - strong: college-room 要先核实两点：
+  - text: 一是有没有白板，二是明晚19:00–20:00是否空闲；这两项材料里都没有写，不能视为已满足。它离得更近，但容量刚好坐满4人，没有余量。
+- paragraph:
+  - strong: 下一步：
+  - text: 请你在这两处中选一处告诉我；如果你想选 college-room，我可以按已有的信息继续帮你核对还缺的条件。现在还没有生成任何预约信息，我也不会替你提交。
+- generic: 明晚19:00–20:00 四人试讲场地比较
+- generic: 时间：2026年11月7日（明晚）19:00–20:00，试讲1小时
+- generic: 人数：4人
+- generic: 硬性需求：投屏 + 白板
+- generic: 11月7日（明晚）19:00–20:00 进行四人试讲，需投屏和白板。
+- generic: lib-room
+- generic: 推荐
+- generic: 容量：可容纳6人（4人使用有余量）
+- generic: 投屏：有
+- generic: 白板：有
+- generic: 该时段空闲：19:00–20:00 空闲
+- generic: 位置：材料未标注距离信息
+- separator
+- generic: 结论：投屏、白板两项硬性需求均满足，人数余量充足，且该时段确认空闲，是唯一各项都对得上的选择。
+- generic: lib-room：容6人、有投屏、有白板、该时段空闲，满足全部需求，推荐。
+- generic: college-room
+- generic: 备选（有未知项）
+- generic: 容量：可容纳4人（刚好坐满，无余量）
+- generic: 投屏：有
+- generic: 白板：未知
+- generic: 该时段空闲：材料未说明该时段是否空闲
+- generic: 位置：距离更近
+- separator
+- generic: 结论：位置更近且有投屏，但白板情况未确认，是否空闲也未说明，需先核实才能作为正式选择。
+- generic: college-room：容4人、有投屏、白板未知、该时段空闲情况未知，仅距离更近，属备选。
+- generic: 需先确认
+- generic: college-room 是否有白板：材料未给出
+- generic: college-room 明晚19:00–20:00 是否空闲：材料未给出
+- generic: college-room 容量刚好4人，无余量。
+- separator
+- generic: canteen：无讨论场地，不具备试讲所需的安静讨论环境。
+- generic: 需先确认：college-room 白板情况未知、容量刚好4人无余量；canteen 不适合讨论需求。
+- generic: 下一步
+- generic: 请在这两处中选定一处；确认后我再继续下一步，目前不生成预约信息。
+- generic: 下一步：请先选定 lib-room 或 college-room，再继续后续安排；当前不生成预约信息。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 12.4K tok":
+  - generic: 用量 12.4K tok
+- generic: 19:30
+- generic: 书院离我更近啊，为什么不去那里
+- generic: 19:32
+- button "复制":
+- status: 已完成
+- button "已完成，用时 5秒":
+  - generic: 已完成，用时 5秒
+- paragraph: 距离更近确实是一个实际优势，材料里也明确写了：college-room 比 lib-room 离你更近。所以它并不是被排除的选项，我把它列为备选也只是因为它还有两项硬性条件没有确定，和位置无关。
+- paragraph:
+  - strong: 距离近本身不是问题，问题在这两点：
+- list:
+  - strong: 白板未知
+  - text: ：你把“白板”列为硬性需求，但材料里只在 lib-room 确认有白板，college-room 有投屏、白板情况没有写明。白板情况没确认，就不能当作满足。
+  - strong: 明晚 19:00–20:00 是否空闲未说明
+  - text: ：材料里只写了 lib-room 这个时段空闲，college-room 的时段可用性没有给，因此无法保证明晚能使用。
+- paragraph:
+  - text: 至于容量，我上一句说得不够准确：college-room 能容 4 人，你们正好 4 人，
+  - strong: 是够用的
+  - text: ，只是没有额外空位，不适合再带旁听或设备堆放。这一点并不卡。
+- paragraph:
+  - strong: 所以判断很简单：
+  - text: 如果你能确认 college-room 有白板、且明晚 19:00–20:00 可用，它就更合适，离你近还满足需求；在确认之前，lib-room 是目前唯一能确定各项条件都满足的。
+- paragraph: 你想让我按“优先尝试 college-room”来准备，还是先定 lib-room？这两项我无法从现有材料中得到确认，不能替你说成已经有。现在也没有生成任何预约信息。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 4.9K tok":
+  - generic: 用量 4.9K tok
+- generic: 19:32
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

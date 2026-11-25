@@ -1,0 +1,83 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C22-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 19,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_4ZWINmo73TYmDeVRqnBA6836"
+      },
+      "toolCallId": "call_00_ET_4ZWINmo73TYmDeVRqnBA6836",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C22\",\"facts\":\"设备YSJ-07，教学楼一层东侧，不出水；当前已提供正面repair-front图。其他视角尚未发布，备注和联系人未提供。只提交反馈草稿，不创建真实工单。\",\"assets\":[{\"id\":\"bench05-repair-front\",\"file\":\"bench05-repair-front.png\",\"alt\":\"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\",\"source_id\":\"repair-front\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-front/content\",\"path\":\"/api/media/bench05-repair-front/content\",\"sha256\":\"b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "48655aef-39b0-4d02-a3f5-688e55512247"
+    }
+  },
+  {
+    "call": {
+      "seq": 87,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C22-B-01",
+        "values": {
+          "设备编号": "YSJ-07",
+          "位置": "教学楼一层东侧",
+          "故障现象": "不出水",
+          "备注": "昨天也这样",
+          "联系人": "测试联系人A",
+          "资产关联": [
+            {
+              "序号": 1,
+              "关联项": "正面照片",
+              "asset_id": "bench05-repair-front",
+              "source_id": "repair-front"
+            },
+            {
+              "序号": 2,
+              "关联项": "近景照片（出水口特写）",
+              "asset_id": "bench05-repair-near",
+              "source_id": "repair-near"
+            },
+            {
+              "序号": 3,
+              "关联项": "侧面照片（另一侧）",
+              "asset_id": "bench05-repair-side",
+              "source_id": "repair-side"
+            }
+          ]
+        }
+      }
+    },
+    "result_seq": 88,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_hTvq5oz2UqKKakIYMrCQ3764"
+      },
+      "toolCallId": "call_00_hTvq5oz2UqKKakIYMrCQ3764",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"设备编号\":\"YSJ-07\",\"位置\":\"教学楼一层东侧\",\"故障现象\":\"不出水\",\"备注\":\"昨天也这样\",\"联系人\":\"测试联系人A\",\"资产关联\":[{\"序号\":1,\"关联项\":\"正面照片\",\"asset_id\":\"bench05-repair-front\",\"source_id\":\"repair-front\"},{\"序号\":2,\"关联项\":\"近景照片（出水口特写）\",\"asset_id\":\"bench05-repair-near\",\"source_id\":\"repair-near\"},{\"序号\":3,\"关联项\":\"侧面照片（另一侧）\",\"asset_id\":\"bench05-repair-side\",\"source_id\":\"repair-side\"}]}}}"
+        }
+      ],
+      "isError": false,
+      "id": "fb34414f-926f-4f7a-9f7e-131a199fe5a1"
+    }
+  }
+]

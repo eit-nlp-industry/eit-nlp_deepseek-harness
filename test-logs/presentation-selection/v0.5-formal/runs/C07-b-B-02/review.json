@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 3,
+  "state": 4,
+  "presentation": "partial",
+  "reason": "初次动态表单后冲突改用原生提问，未生成指定替代动态表单；明确拒绝后无第二次提交，事实与状态正确，等待徽标残留。"
+}

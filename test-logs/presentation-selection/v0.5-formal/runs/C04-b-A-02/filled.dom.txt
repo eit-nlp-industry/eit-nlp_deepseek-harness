@@ -1,0 +1,243 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 校园半日游轻量表单测评 刚刚":
+    - generic: 已完成
+    - generic: 校园半日游轻量表单测评
+    - generic: 刚刚
+  - treeitem "等待回答 校园半日游偏好确认测评" [selected]:
+    - generic: 等待回答
+    - generic: 校园半日游偏好确认测评
+    - generic: 待回答
+  - treeitem "进行中 校园半日游偏好收集 1分钟":
+    - generic: 进行中
+    - generic: 校园半日游偏好收集
+    - generic: 1分钟
+  - treeitem "已完成 校园半日游轻量form测评 1分钟":
+    - generic: 已完成
+    - generic: 校园半日游轻量form测评
+    - generic: 1分钟
+  - treeitem "已完成 全量呈现测评地点查找 1分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评地点查找
+    - generic: 1分钟
+  - treeitem "已完成 测评C04-a-B-01：轻量form找地点 2分钟":
+    - generic: 已完成
+    - generic: 测评C04-a-B-01：轻量form找地点
+    - generic: 2分钟
+  - treeitem "协助用户寻找地点偏好 3分钟":
+    - generic: 协助用户寻找地点偏好
+    - generic: 3分钟
+  - treeitem "已完成 模拟环境地点查找测评 3分钟":
+    - generic: 已完成
+    - generic: 模拟环境地点查找测评
+    - generic: 3分钟
+  - treeitem "Benchmark fixture place-finding test 11分钟":
+    - generic: Benchmark fixture place-finding test
+    - generic: 11分钟
+  - treeitem "已完成 轻量表单选择地点测评 11分钟":
+    - generic: 已完成
+    - generic: 轻量表单选择地点测评
+    - generic: 11分钟
+  - treeitem "已完成 轻量form找地点测评 C04-a-B-01 11分钟":
+    - generic: 已完成
+    - generic: 轻量form找地点测评 C04-a-B-01
+    - generic: 11分钟
+  - treeitem "已完成 寻找地点的偏好确认测试 11分钟":
+    - generic: 已完成
+    - generic: 寻找地点的偏好确认测试
+    - generic: 11分钟
+  - treeitem "C03-B-02 场地推荐测评 15分钟":
+    - generic: C03-B-02 场地推荐测评
+    - generic: 15分钟
+  - treeitem "已完成 会议室投屏白板试讲安排 15分钟":
+    - generic: 已完成
+    - generic: 会议室投屏白板试讲安排
+    - generic: 15分钟
+  - treeitem "已完成 明晚试讲场地推荐比较 15分钟":
+    - generic: 已完成
+    - generic: 明晚试讲场地推荐比较
+    - generic: 15分钟
+  - treeitem "已完成 试讲场地推荐测评 15分钟":
+    - generic: 已完成
+    - generic: 试讲场地推荐测评
+    - generic: 15分钟
+  - treeitem "进校后能否直接去图书馆测评 21分钟":
+    - generic: 进校后能否直接去图书馆测评
+    - generic: 21分钟
+  - treeitem "已完成 进校后图书馆访问测评 21分钟":
+    - generic: 已完成
+    - generic: 进校后图书馆访问测评
+    - generic: 21分钟
+  - treeitem "已完成 图书馆入校访问测评 21分钟":
+    - generic: 已完成
+    - generic: 图书馆入校访问测评
+    - generic: 21分钟
+  - treeitem "已完成 进校后能否直接去图书馆 21分钟":
+    - generic: 已完成
+    - generic: 进校后能否直接去图书馆
+    - generic: 21分钟
+  - treeitem "图书馆讨论场所展示测评 24分钟":
+    - generic: 图书馆讨论场所展示测评
+    - generic: 24分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 24分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 24分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 24分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 24分钟
+  - treeitem "已完成 图书馆讨论空间简洁卡片 24分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间简洁卡片
+    - generic: 24分钟
+  - treeitem "东方理工校园设施介绍测评 28分钟":
+    - generic: 东方理工校园设施介绍测评
+    - generic: 28分钟
+  - treeitem "已完成 东方理工校园设施介绍呈现测评 28分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍呈现测评
+    - generic: 28分钟
+  - treeitem "已完成 东方理工校园信息介绍测评 28分钟":
+    - generic: 已完成
+    - generic: 东方理工校园信息介绍测评
+    - generic: 28分钟
+  - treeitem "已完成 东方理工校园设施介绍 28分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 28分钟
+  - treeitem "东方理工校园设施介绍测评 35分钟":
+    - generic: 东方理工校园设施介绍测评
+    - generic: 35分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 35分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 35分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 35分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 35分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 35分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 35分钟
+  - treeitem "东方理工校园设施介绍 39分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 39分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 39分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 39分钟
+  - treeitem "已完成 东方理工校园设施介绍 39分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 39分钟
+  - treeitem "已完成 东方理工校园设施介绍 39分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 39分钟
+  - treeitem "四会话隔离预检marker 41分钟":
+    - generic: 四会话隔离预检marker
+    - generic: 41分钟
+  - treeitem "已完成 四会话隔离预检测试 41分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 41分钟
+  - treeitem "已完成 预检调用初始化返回marker 43分钟":
+    - generic: 已完成
+    - generic: 预检调用初始化返回marker
+    - generic: 43分钟
+  - treeitem "已完成 四会话隔离预检初始化 44分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检初始化
+    - generic: 44分钟
+  - button "展开其余 48 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 校园半日游偏好确认测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C04-b-A-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C04-b-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C04-b-A-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：校园半日游先确认上午还是下午、愿意去哪些地点，可多选图书馆/食堂/四明书院，其他想法我自行补充。 指定呈现方式：ask_user_question收集必要偏好。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 19:46
+- button "复制":
+- paragraph: 我先获取本案例的固定材料。
+- text: 等待你的操作 · 校园半日游安排在上午还是下午？
+- button "工具调用 benchmark_fixture · C04-b-A-02":
+  - generic: 工具调用
+  - generic: benchmark_fixture · C04-b-A-02
+- 'button "思考 Now ask user questions via ask_user_question: time slot and locations multi-select, plus maybe free text."':
+  - generic: 思考
+  - generic: "Now ask user questions via ask_user_question: time slot and locations multi-select, plus maybe free text."
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "有其他想法或特别要求吗？（可直接填写，如同行人数、想看的重点、节奏偏好）":
+  - generic: 补充想法
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "有其他想法或特别要求吗？（可直接填写，如同行人数、想看的重点、节奏偏好）" [level=2]
+  - radiogroup:
+    - radio "暂无补充":
+      - generic: "1"
+      - generic: 暂无补充
+      - generic: 先按所选时段和地点安排。
+    - textbox "输入你的答案" [active]: 少走路
+  - button "上一题":
+  - generic: 3 / 3
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交"

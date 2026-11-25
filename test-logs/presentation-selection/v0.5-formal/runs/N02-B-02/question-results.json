@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_zuq3EIBHbEUoTNytK2JE0710",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"plan_choice\", \"header\": \"按需查看\", \"question\": \"想先深入看哪个套餐的适用范围与限制？\", \"options\": [{\"label\": \"团队版（推荐先看）\", \"description\": \"价格、成员数与 CSV 导出均已明确，信息最完整。\"}, {\"label\": \"基础版\", \"description\": \"最低价的 5 人方案，但无数据导出。\"}, {\"label\": \"企业版\", \"description\": \"需询价，成员上限与导出能力尚未公布。\"}, {\"label\": \"三个都简要对比\", \"description\": \"按同一维度并列比较，不展开细节。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_zuq3EIBHbEUoTNytK2JE0710"
+      },
+      "toolCallId": "call_00_zuq3EIBHbEUoTNytK2JE0710",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"plan_choice\",\"selected\":[\"团队版（推荐先看）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "da234cbe-28c7-470e-a8a0-0f72b84a01c5"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "C15",
+  "facts": "当前候选parcel-3726，订单尾号3726，初始待确认。当前视角远景img-far；近景和侧景尚未发布。不实际取送。",
+  "assets": [
+    {
+      "id": "bench05-img-far",
+      "file": "bench05-img-far.png",
+      "alt": "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture",
+      "source_id": "img-far",
+      "url": "http://127.0.0.1:3080/api/media/bench05-img-far/content",
+      "path": "/api/media/bench05-img-far/content",
+      "sha256": "890c916a7d9a70f37079b6a60264e1ee04c0229d7ee469b9e2d12d26d530d9dd",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

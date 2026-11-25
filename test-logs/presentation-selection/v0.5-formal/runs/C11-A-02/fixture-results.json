@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C11-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_inC7l1SxXXC1N7hs3jri2494"
+      },
+      "toolCallId": "call_00_ET_inC7l1SxXXC1N7hs3jri2494",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"任务follow-01，目标person-guide，模拟状态following。暂停、继续的结果以随后模拟回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "5a9226f8-8888-4b8d-89e5-74a7b808ecda"
+    }
+  }
+]

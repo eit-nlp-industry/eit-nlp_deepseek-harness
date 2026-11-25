@@ -1,0 +1,27 @@
+[
+  {
+    "seq": 18,
+    "turn": 1,
+    "text": "我先载入本案的固定材料。"
+  },
+  {
+    "seq": 24,
+    "turn": 1,
+    "text": "已获取本案固定材料，当前仅有一名向导候选。\n\n**向导候选（固定材料提供的画面）**\n\n![MOCK GUIDE; PERSON GUIDE; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-person-guide/content)\n\n**任务状态**\n\n- 任务 `follow-01`：尚未启动\n- 跟随状态：未开始\n- 丢失状态：暂无\n- 向导身份：`person-guide` 是唯一候选，等待你确认\n\n需要你确认后我才继续；在收到你的选择或后续事件前，跟随结果与是否丢失都还未知。"
+  },
+  {
+    "seq": 36,
+    "turn": 1,
+    "text": "已收到你的确认：跟随对象就是画面中的这位同学。\n\n![MOCK GUIDE; PERSON GUIDE; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-person-guide/content)\n\n**任务状态**\n\n- 跟随对象：已确认，画面中的同学（`person-guide`）\n- 任务 `follow-01`：仍未启动。草稿提交后没有得到可用回执，因此不能视为已开始跟随\n- 跟随状态：未开始，无进展信息\n- 丢失状态：未知\n- 下一步：等待模拟环境的下一条事件来更新跟随或丢失情况\n\n固定材料里只有这一位向导候选；如果后续事件显示跟随对象不是他，需要重新核对。"
+  },
+  {
+    "seq": 51,
+    "turn": 2,
+    "text": "跟随已开始。\n\n![MOCK GUIDE; PERSON GUIDE; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-person-guide/content)\n\n**任务状态**\n\n- 跟随对象：画面中的同学（`person-guide`），已确认\n- 任务 `follow-01`：进行中\n- 状态：模拟跟随中（`following`）\n- 丢失状态：暂无丢失信息\n- 说明：本次为固定模拟环境事件，未连接真实系统，也未控制真实设备\n\n后续如有跟丢或结束事件，我会据此更新状态。"
+  },
+  {
+    "seq": 66,
+    "turn": 3,
+    "text": "跟丢了，跟随已停止。\n\n![MOCK GUIDE; PERSON GUIDE; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-person-guide/content)\n\n**任务状态**\n\n- 跟随对象：画面中的同学（`person-guide`）\n- 任务 `follow-01`：已停止\n- 状态：目标离开视野、跟随终止（`stopped_target_lost`）\n- 丢失状态：已丢失\n- 处理情况：等待进一步处理，目前没有恢复或重新跟上的信息\n- 说明：本次为固定模拟环境事件，未连接真实系统，也未控制真实设备\n\n固定材料中只提供这一张向导参考画面，没有其他视角或新画面可用于重新辨认；如果你需要继续跟随，请告诉我接下来怎么处理。"
+  }
+]

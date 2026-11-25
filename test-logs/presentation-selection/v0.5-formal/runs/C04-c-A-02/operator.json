@@ -1,0 +1,11 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C04-c",
+    "facts": "讲座活动形式尚未确认，真实选项为线上和线下。可推荐或预选线下，但推荐和预选不等于用户提交；必须允许用户修改后明确提交。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true,
+  "fixture_revision": "C04-scope-v2"
+}

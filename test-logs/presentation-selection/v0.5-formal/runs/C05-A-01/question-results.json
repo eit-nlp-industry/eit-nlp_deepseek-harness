@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_QDkgZeKqsWL6JyfNk4Jr4465",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"slot\", \"header\": \"下午时段\", \"question\": \"周六（11月7日）下午，你们计划哪个时段进校参观？\", \"options\": [{\"label\": \"14:00–15:30\", \"description\": \"较早开始，留出的参观时间较长。\"}, {\"label\": \"15:00–16:30\", \"description\": \"午后偏中段，兼顾往返时间。\"}, {\"label\": \"16:00–17:30\", \"description\": \"较晚开始，傍晚结束。\"}, {\"label\": \"其他时段（我来填写）\", \"description\": \"以上都不合适时，直接给出具体起止时间。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_QDkgZeKqsWL6JyfNk4Jr4465"
+      },
+      "toolCallId": "call_00_QDkgZeKqsWL6JyfNk4Jr4465",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"slot\",\"selected\":[],\"custom\":\"14:00–15:00\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "efc4b19f-3574-4782-9e4e-b622dbdfd13e"
+    }
+  }
+]

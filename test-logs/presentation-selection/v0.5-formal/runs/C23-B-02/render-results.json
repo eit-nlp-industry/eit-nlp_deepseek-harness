@@ -1,0 +1,637 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_aTJQ1RCRgAnuM6O99QPp8478",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"business_data\": {\"title\": \"取材料流程：到林老师处取材料并送回\", \"workflow_id\": \"wf-material-v1\", \"summary\": \"共 4 步：到林老师门口 → 敲门并等材料放好 → 拍图等用户确认 → 确认后送回。等待上限未指定，可在步骤说明中自行补充。\", \"initial_state\": {\"_ui\": {\"workflow\": {\"schema\": \"workflow-v1\", \"id\": \"wf-material-v1\", \"name\": \"到林老师处取材料并送回\", \"version\": 1, \"status\": \"draft\", \"description\": \"以后找林老师拿材料时的固定流程。\", \"variables\": {}, \"steps\": [{\"id\": \"s1\", \"type\": \"action\", \"title\": \"到林老师门口\", \"description\": \"到达林老师门口。\"}, {\"id\": \"s2\", \"type\": \"action\", \"title\": \"敲门并等老师把材料放好\", \"description\": \"先敲门；等林老师把材料放好后再取。（等待上限未指定，可在此补充，例如最长等待时长、超时如何处理。）\"}, {\"id\": \"s3\", \"type\": \"action\", \"title\": \"拍照发给用户确认\", \"description\": \"拍下材料的照片发给用户，等待用户确认。\"}, {\"id\": \"s4\", \"type\": \"action\", \"title\": \"确认后送回\", \"description\": \"用户确认后把材料送回。\"}], \"edges\": [{\"from\": \"s1\", \"to\": \"s2\"}, {\"from\": \"s2\", \"to\": \"s3\"}, {\"from\": \"s3\", \"to\": \"s4\"}], \"notes\": [\"等待上限未指定，可通过编辑 s2 的步骤说明补充。\", \"本页只保存模拟草稿：不执行、不连接真实系统、无永久记忆。\"]}}}, \"steps\": [{\"id\": \"s1\", \"title\": \"到林老师门口\", \"description\": \"到达林老师门口。\"}, {\"id\": \"s2\", \"title\": \"敲门并等老师把材料放好\", \"description\": \"先敲门；等林老师把材料放好后再取。等待上限未指定，可补充最长等待时长和超时处理。\"}, {\"id\": \"s3\", \"title\": \"拍照发给用户确认\", \"description\": \"拍下材料照片发给用户，等待用户确认。\"}, {\"id\": \"s4\", \"title\": \"确认后送回\", \"description\": \"用户确认后把材料送回。\"}], \"save\": {\"button_label\": \"保存流程\", \"event\": \"workflow.save\", \"payload\": {\"workflow\": \"$state:/_ui/workflow\", \"parameters\": {}}}, \"notes\": [\"等待上限未指定，可通过编辑第 2 步说明补充。\", \"只保存模拟草稿，不执行、不连接真实系统、无永久记忆。\"]}, \"user_query\": \"渲染一个可编辑的流程编辑器页面，根节点用 Stack，Stack 内放两个兄弟节点：① 一个 Workflow 组件，props 设 mode=\\\"edit\\\"，用 $bindState 绑定到 /_ui/workflow，初始值使用 business_data.initial_state._ui.workflow 里完整的 workflow-v1 文档（含 4 个步骤和三段连线，可增删改步骤与说明）；② 一个独立的 Button 兄弟节点，文案“保存流程”，点击发出 workflow.save 事件，payload.workflow 用 $state 读取当前的 /_ui/workflow 最新文档，parameters 为对象。两个节点必须是 Stack 的直接兄弟，不要组件嵌套，不要用静态步骤列表或卡片冒充编辑器，不要使用 $ref。页面上方用标题和 summary 文字说明这是“以后找林老师拿材料”的流程草稿，并在下方以文字列出 steps 和 notes 作为兜底说明（等待上限未指定、只保存模拟草稿）。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "summary",
+                "draftNotice",
+                "meta",
+                "workflow",
+                "saveBtn",
+                "stepsSection",
+                "notesSection",
+                "saveSection"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "取材料流程：到林老师处取材料并送回",
+                "level": "h1"
+              }
+            },
+            "summary": {
+              "type": "Text",
+              "props": {
+                "content": "共 4 步：到林老师门口 → 敲门并等材料放好 → 拍图等用户确认 → 确认后送回。等待上限未指定，可在步骤说明中自行补充。",
+                "variant": "muted"
+              }
+            },
+            "draftNotice": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "草稿说明",
+                "description": "本页只保存模拟草稿：不执行、不连接真实系统、无永久记忆。",
+                "showIcon": true
+              }
+            },
+            "meta": {
+              "type": "Descriptions",
+              "props": {
+                "title": "流程信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "流程 ID",
+                    "value": "wf-material-v1"
+                  },
+                  {
+                    "label": "名称",
+                    "value": "到林老师处取材料并送回"
+                  },
+                  {
+                    "label": "版本",
+                    "value": 1
+                  },
+                  {
+                    "label": "状态",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "以后找林老师拿材料时的固定流程。"
+                  },
+                  {
+                    "label": "等待上限",
+                    "value": "未指定（可在第 2 步说明中补充最长等待时长与超时处理）"
+                  }
+                ]
+              }
+            },
+            "workflow": {
+              "type": "Workflow",
+              "props": {
+                "mode": "edit",
+                "disabled": false,
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                }
+              }
+            },
+            "saveBtn": {
+              "type": "Button",
+              "props": {
+                "label": "保存流程",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.save",
+                    "payload": {
+                      "workflow": {
+                        "$state": "/_ui/workflow"
+                      },
+                      "parameters": {}
+                    }
+                  }
+                }
+              }
+            },
+            "stepsSection": {
+              "type": "Section",
+              "props": {
+                "title": "步骤明细（兜底说明）",
+                "description": "共 4 步，逐项列出步骤标题与说明。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "stepsTable"
+              ]
+            },
+            "stepsTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "序号",
+                  "步骤 ID",
+                  "标题",
+                  "说明"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "s1",
+                    "到林老师门口",
+                    "到达林老师门口。"
+                  ],
+                  [
+                    "2",
+                    "s2",
+                    "敲门并等老师把材料放好",
+                    "先敲门；等林老师把材料放好后再取。等待上限未指定，可补充最长等待时长和超时处理。"
+                  ],
+                  [
+                    "3",
+                    "s3",
+                    "拍照发给用户确认",
+                    "拍下材料照片发给用户，等待用户确认。"
+                  ],
+                  [
+                    "4",
+                    "s4",
+                    "确认后送回",
+                    "用户确认后把材料送回。"
+                  ]
+                ]
+              }
+            },
+            "notesSection": {
+              "type": "Section",
+              "props": {
+                "title": "备注",
+                "description": "草稿限制与待补充信息。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "notesList"
+              ]
+            },
+            "notesList": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "等待上限未指定，可通过编辑第 2 步说明补充。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "只保存模拟草稿，不执行、不连接真实系统、无永久记忆。",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无备注"
+              }
+            },
+            "saveSection": {
+              "type": "Section",
+              "props": {
+                "title": "保存配置",
+                "description": "点击“保存流程”时发出的本地事件与负载。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "saveDesc"
+              ]
+            },
+            "saveDesc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "按钮文案",
+                    "value": "保存流程"
+                  },
+                  {
+                    "label": "事件",
+                    "value": "workflow.save"
+                  },
+                  {
+                    "label": "payload.workflow",
+                    "value": "$state:/_ui/workflow"
+                  },
+                  {
+                    "label": "payload.parameters",
+                    "value": "{}（空对象）"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "取材料流程：到林老师处取材料并送回",
+            "workflow_id": "wf-material-v1",
+            "summary": "共 4 步：到林老师门口 → 敲门并等材料放好 → 拍图等用户确认 → 确认后送回。等待上限未指定，可在步骤说明中自行补充。",
+            "initial_state": {
+              "_ui": {
+                "workflow": {
+                  "schema": "workflow-v1",
+                  "id": "wf-material-v1",
+                  "name": "到林老师处取材料并送回",
+                  "version": 1,
+                  "status": "draft",
+                  "description": "以后找林老师拿材料时的固定流程。",
+                  "variables": {},
+                  "steps": [
+                    {
+                      "id": "s1",
+                      "type": "action",
+                      "title": "到林老师门口",
+                      "description": "到达林老师门口。"
+                    },
+                    {
+                      "id": "s2",
+                      "type": "action",
+                      "title": "敲门并等老师把材料放好",
+                      "description": "先敲门；等林老师把材料放好后再取。（等待上限未指定，可在此补充，例如最长等待时长、超时如何处理。）"
+                    },
+                    {
+                      "id": "s3",
+                      "type": "action",
+                      "title": "拍照发给用户确认",
+                      "description": "拍下材料的照片发给用户，等待用户确认。"
+                    },
+                    {
+                      "id": "s4",
+                      "type": "action",
+                      "title": "确认后送回",
+                      "description": "用户确认后把材料送回。"
+                    }
+                  ],
+                  "edges": [
+                    {
+                      "from": "s1",
+                      "to": "s2"
+                    },
+                    {
+                      "from": "s2",
+                      "to": "s3"
+                    },
+                    {
+                      "from": "s3",
+                      "to": "s4"
+                    }
+                  ],
+                  "notes": [
+                    "等待上限未指定，可通过编辑 s2 的步骤说明补充。",
+                    "本页只保存模拟草稿：不执行、不连接真实系统、无永久记忆。"
+                  ]
+                }
+              }
+            },
+            "steps": [
+              {
+                "id": "s1",
+                "title": "到林老师门口",
+                "description": "到达林老师门口。"
+              },
+              {
+                "id": "s2",
+                "title": "敲门并等老师把材料放好",
+                "description": "先敲门；等林老师把材料放好后再取。等待上限未指定，可补充最长等待时长和超时处理。"
+              },
+              {
+                "id": "s3",
+                "title": "拍照发给用户确认",
+                "description": "拍下材料照片发给用户，等待用户确认。"
+              },
+              {
+                "id": "s4",
+                "title": "确认后送回",
+                "description": "用户确认后把材料送回。"
+              }
+            ],
+            "save": {
+              "button_label": "保存流程",
+              "event": "workflow.save",
+              "payload": {
+                "workflow": "$state:/_ui/workflow",
+                "parameters": {}
+              }
+            },
+            "notes": [
+              "等待上限未指定，可通过编辑第 2 步说明补充。",
+              "只保存模拟草稿，不执行、不连接真实系统、无永久记忆。"
+            ],
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-material-v1",
+                "title": "到林老师处取材料并送回",
+                "steps": [
+                  {
+                    "id": "s1",
+                    "type": "step",
+                    "title": "到林老师门口",
+                    "description": "到达林老师门口。"
+                  },
+                  {
+                    "id": "s2",
+                    "type": "step",
+                    "title": "敲门并等老师把材料放好",
+                    "description": "先敲门；等林老师把材料放好后再取。（等待上限未指定，可在此补充，例如最长等待时长、超时如何处理。）"
+                  },
+                  {
+                    "id": "s3",
+                    "type": "step",
+                    "title": "拍照发给用户确认",
+                    "description": "拍下材料的照片发给用户，等待用户确认。"
+                  },
+                  {
+                    "id": "s4",
+                    "type": "step",
+                    "title": "确认后送回",
+                    "description": "用户确认后把材料送回。"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_aTJQ1RCRgAnuM6O99QPp8478"
+      },
+      "toolCallId": "call_00_aTJQ1RCRgAnuM6O99QPp8478",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "3b170be8-0ba8-4728-ab7d-b86ca2785400"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_4zBdoVCScR5sEcNdmKA73520",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"fallback_text\": \"流程：到林老师处取材料并送回（wf-material-v1，v2，草稿）。1 到林老师门口：到达林老师门口。2 敲门并等老师把材料放好：先敲门；等林老师把材料放好后再取，等待上限为2分钟。3 拍照发给用户确认：拍下材料的照片发给用户，等待用户确认。4 确认后送回：用户确认后把材料送回。连线 1→2→3→4；参数为空对象。已接收为模拟草稿：不执行、不连接真实系统。\", \"initial_state\": {\"_ui\": {\"workflow\": {\"description\": \"到林老师处取材料并送回\", \"edges\": [{\"from\": \"s1\", \"to\": \"s2\"}, {\"from\": \"s2\", \"to\": \"s3\"}, {\"from\": \"s3\", \"to\": \"s4\"}], \"id\": \"wf-material-v1\", \"name\": \"到林老师处取材料并送回\", \"parameters\": {}, \"schema\": \"workflow-v1\", \"status\": \"draft\", \"steps\": [{\"description\": \"到达林老师门口。\", \"id\": \"s1\", \"title\": \"到林老师门口\", \"type\": \"action\"}, {\"description\": \"先敲门；等林老师把材料放好后再取。等待上限为2分钟。\", \"id\": \"s2\", \"title\": \"敲门并等老师把材料放好\", \"type\": \"action\"}, {\"description\": \"拍下材料的照片发给用户，等待用户确认。\", \"id\": \"s3\", \"title\": \"拍照发给用户确认\", \"type\": \"action\"}, {\"description\": \"用户确认后把材料送回。\", \"id\": \"s4\", \"title\": \"确认后送回\", \"type\": \"action\"}], \"variables\": {}, \"version\": 2}}}, \"notes\": [\"等待上限已补充为2分钟（第 2 步）。\", \"本次只接收为模拟草稿（wf-material-v1 v2），不执行、不连接真实系统、无永久记忆。\"], \"parameters\": {}, \"save\": {\"button_label\": \"保存流程\", \"event\": \"workflow.save\", \"payload\": {\"parameters\": \"$state:/_ui/workflow/parameters\", \"workflow\": \"$state:/_ui/workflow\"}}, \"status_note\": \"已接收编辑后的流程为模拟草稿（v2），未做任何真实操作。\", \"workflow\": {\"description\": \"到林老师处取材料并送回\", \"edges\": [{\"from\": \"s1\", \"to\": \"s2\"}, {\"from\": \"s2\", \"to\": \"s3\"}, {\"from\": \"s3\", \"to\": \"s4\"}], \"id\": \"wf-material-v1\", \"name\": \"到林老师处取材料并送回\", \"parameters\": {}, \"schema\": \"workflow-v1\", \"status\": \"draft\", \"steps\": [{\"description\": \"到达林老师门口。\", \"id\": \"s1\", \"title\": \"到林老师门口\", \"type\": \"action\"}, {\"description\": \"先敲门；等林老师把材料放好后再取。等待上限为2分钟。\", \"id\": \"s2\", \"title\": \"敲门并等老师把材料放好\", \"type\": \"action\"}, {\"description\": \"拍下材料的照片发给用户，等待用户确认。\", \"id\": \"s3\", \"title\": \"拍照发给用户确认\", \"type\": \"action\"}, {\"description\": \"用户确认后把材料送回。\", \"id\": \"s4\", \"title\": \"确认后送回\", \"type\": \"action\"}], \"variables\": {}, \"version\": 2}}, \"components\": [\"Workflow\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"整页只用一个 Stack 根节点，Stack 内只放两个兄弟节点：① Workflow 组件，props: mode=\\\"edit\\\"，用 $bindState 绑定到 /_ui/workflow，初始值取 business_data.initial_state._ui.workflow（完整的 workflow-v1 文档，流程名称显示在编辑器内）；② 独立的 Button，文案「保存流程」，点击发出 workflow.save，payload.workflow 用 $state 读取 /_ui/workflow 最新值，payload.parameters 为 {}。不要把 Workflow 套进任何其他容器，不要用静态步骤列表冒充编辑器，不要用 $ref。卡片开头用一行文字显示 status_note 和 notes 作为文字兜底，并在末尾附上 fallback_text 全文。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "workflow-editor",
+                "save-button"
+              ]
+            },
+            "workflow-editor": {
+              "type": "Workflow",
+              "props": {
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                },
+                "mode": "edit",
+                "disabled": false
+              }
+            },
+            "save-button": {
+              "type": "Button",
+              "props": {
+                "label": "保存流程",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.save",
+                    "payload": {
+                      "workflow": {
+                        "$state": "/_ui/workflow"
+                      },
+                      "parameters": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "fallback_text": "流程：到林老师处取材料并送回（wf-material-v1，v2，草稿）。1 到林老师门口：到达林老师门口。2 敲门并等老师把材料放好：先敲门；等林老师把材料放好后再取，等待上限为2分钟。3 拍照发给用户确认：拍下材料的照片发给用户，等待用户确认。4 确认后送回：用户确认后把材料送回。连线 1→2→3→4；参数为空对象。已接收为模拟草稿：不执行、不连接真实系统。",
+            "initial_state": {
+              "_ui": {
+                "workflow": {
+                  "description": "到林老师处取材料并送回",
+                  "edges": [
+                    {
+                      "from": "s1",
+                      "to": "s2"
+                    },
+                    {
+                      "from": "s2",
+                      "to": "s3"
+                    },
+                    {
+                      "from": "s3",
+                      "to": "s4"
+                    }
+                  ],
+                  "id": "wf-material-v1",
+                  "name": "到林老师处取材料并送回",
+                  "parameters": {},
+                  "schema": "workflow-v1",
+                  "status": "draft",
+                  "steps": [
+                    {
+                      "description": "到达林老师门口。",
+                      "id": "s1",
+                      "title": "到林老师门口",
+                      "type": "action"
+                    },
+                    {
+                      "description": "先敲门；等林老师把材料放好后再取。等待上限为2分钟。",
+                      "id": "s2",
+                      "title": "敲门并等老师把材料放好",
+                      "type": "action"
+                    },
+                    {
+                      "description": "拍下材料的照片发给用户，等待用户确认。",
+                      "id": "s3",
+                      "title": "拍照发给用户确认",
+                      "type": "action"
+                    },
+                    {
+                      "description": "用户确认后把材料送回。",
+                      "id": "s4",
+                      "title": "确认后送回",
+                      "type": "action"
+                    }
+                  ],
+                  "variables": {},
+                  "version": 2
+                }
+              }
+            },
+            "notes": [
+              "等待上限已补充为2分钟（第 2 步）。",
+              "本次只接收为模拟草稿（wf-material-v1 v2），不执行、不连接真实系统、无永久记忆。"
+            ],
+            "parameters": {},
+            "save": {
+              "button_label": "保存流程",
+              "event": "workflow.save",
+              "payload": {
+                "parameters": "$state:/_ui/workflow/parameters",
+                "workflow": "$state:/_ui/workflow"
+              }
+            },
+            "status_note": "已接收编辑后的流程为模拟草稿（v2），未做任何真实操作。",
+            "workflow": {
+              "description": "到林老师处取材料并送回",
+              "edges": [
+                {
+                  "from": "s1",
+                  "to": "s2"
+                },
+                {
+                  "from": "s2",
+                  "to": "s3"
+                },
+                {
+                  "from": "s3",
+                  "to": "s4"
+                }
+              ],
+              "id": "wf-material-v1",
+              "name": "到林老师处取材料并送回",
+              "parameters": {},
+              "schema": "workflow-v1",
+              "status": "draft",
+              "steps": [
+                {
+                  "description": "到达林老师门口。",
+                  "id": "s1",
+                  "title": "到林老师门口",
+                  "type": "action"
+                },
+                {
+                  "description": "先敲门；等林老师把材料放好后再取。等待上限为2分钟。",
+                  "id": "s2",
+                  "title": "敲门并等老师把材料放好",
+                  "type": "action"
+                },
+                {
+                  "description": "拍下材料的照片发给用户，等待用户确认。",
+                  "id": "s3",
+                  "title": "拍照发给用户确认",
+                  "type": "action"
+                },
+                {
+                  "description": "用户确认后把材料送回。",
+                  "id": "s4",
+                  "title": "确认后送回",
+                  "type": "action"
+                }
+              ],
+              "variables": {},
+              "version": 2
+            },
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-material-v1",
+                "title": "到林老师处取材料并送回",
+                "steps": [
+                  {
+                    "id": "s1",
+                    "type": "step",
+                    "title": "到林老师门口",
+                    "description": "到达林老师门口。"
+                  },
+                  {
+                    "id": "s2",
+                    "type": "step",
+                    "title": "敲门并等老师把材料放好",
+                    "description": "先敲门；等林老师把材料放好后再取。等待上限为2分钟。"
+                  },
+                  {
+                    "id": "s3",
+                    "type": "step",
+                    "title": "拍照发给用户确认",
+                    "description": "拍下材料的照片发给用户，等待用户确认。"
+                  },
+                  {
+                    "id": "s4",
+                    "type": "step",
+                    "title": "确认后送回",
+                    "description": "用户确认后把材料送回。"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_4zBdoVCScR5sEcNdmKA73520"
+      },
+      "toolCallId": "call_00_4zBdoVCScR5sEcNdmKA73520",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "0b1a3ca9-8b7d-4be6-bcce-e4861ec4aaa0"
+    }
+  }
+]

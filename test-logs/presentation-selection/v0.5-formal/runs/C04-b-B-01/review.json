@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 4,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "实际填写的少走路在截图中存在，但UI回传和最终回复丢失该值，按提交值保留硬验收记失败；时段与两地点正确。无回执时未冒充业务成功。"
+}

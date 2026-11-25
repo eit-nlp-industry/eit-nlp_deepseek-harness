@@ -1,0 +1,469 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 文件处理任务状态监测 刚刚":
+    - generic: 进行中
+    - generic: 文件处理任务状态监测
+    - generic: 刚刚
+  - treeitem "进行中 文件处理任务监测状态卡片测评 刚刚":
+    - generic: 进行中
+    - generic: 文件处理任务监测状态卡片测评
+    - generic: 刚刚
+  - treeitem "进行中 报销流程Workflow编辑器测评 1分钟":
+    - generic: 已完成
+    - generic: 报销流程Workflow编辑器测评
+    - generic: 2分钟
+  - treeitem "新会话" [selected]:
+    - generic: 报销流程 Workflow 编辑与保存
+    - generic: 2分钟
+  - treeitem "新会话":
+    - generic: 快递静态路线示意图呈现
+    - generic: 3分钟
+  - treeitem "进行中 会议室预约改期表单呈现 刚刚":
+    - generic: 已完成
+    - generic: 会议室预约改期表单呈现
+    - generic: 6分钟
+  - treeitem "进行中 快递配送静态路线示意图 刚刚":
+    - generic: 已完成
+    - generic: 快递配送静态路线示意图
+    - generic: 9分钟
+  - treeitem "新会话":
+    - generic: SortableSequence 拖动排序草稿测评
+    - generic: 11分钟
+  - treeitem "进行中 安排三个工作事项并保存草稿 刚刚":
+    - generic: 已完成
+    - generic: 安排三个工作事项并保存草稿
+    - generic: 11分钟
+  - treeitem "进行中 【全量正式呈现测评 N08-B-01】 刚刚":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿呈现
+    - generic: 11分钟
+  - treeitem "进行中 商品多视角展示测评 刚刚":
+    - generic: 已完成
+    - generic: 商品多视角展示测评
+    - generic: 12分钟
+  - treeitem "新会话":
+    - generic: 售后申请草稿动态表单测评
+    - generic: 14分钟
+  - treeitem "进行中 【全量正式呈现测评 N06-B-02】 刚刚":
+    - generic: 已完成
+    - generic: 商品多视角展示评测
+    - generic: 14分钟
+  - treeitem "进行中 售后申请草稿表单呈现测评 刚刚":
+    - generic: 已完成
+    - generic: 售后申请草稿表单呈现测评
+    - generic: 15分钟
+  - treeitem "新会话":
+    - generic: 包裹照片确认呈现测评
+    - generic: 15分钟
+  - treeitem "进行中 活动需求三字段表单确认 刚刚":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 17分钟
+  - treeitem "进行中 活动需求三字段表单确认 刚刚":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 17分钟
+  - treeitem "进行中 未命名 刚刚":
+    - generic: 已完成
+    - generic: 包裹照片确认组件测评
+    - generic: 18分钟
+  - treeitem "等待回答 企业服务套餐固定材料呈现测评":
+    - generic: 企业服务套餐固定材料呈现测评
+    - generic: 18分钟
+  - treeitem "进行中 测试笔记本挑选呈现 刚刚":
+    - generic: 已完成
+    - generic: 测试笔记本挑选呈现
+    - generic: 19分钟
+  - treeitem "进行中 6000元内出差笔记本推荐 刚刚":
+    - generic: 已完成
+    - generic: 6000元内出差笔记本推荐
+    - generic: 19分钟
+  - treeitem "已完成 企业服务套餐介绍测评 1分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 19分钟
+  - treeitem "已完成 支付状态简洁卡片呈现 1分钟":
+    - generic: 已完成
+    - generic: 支付状态简洁卡片呈现
+    - generic: 26分钟
+  - treeitem "已完成 支付状态卡片呈现测评 1分钟":
+    - generic: 已完成
+    - generic: 支付状态卡片呈现测评
+    - generic: 26分钟
+  - treeitem "已完成 图书馆预约必要吗（C26-B-02） 1分钟":
+    - generic: 已完成
+    - generic: 图书馆预约必要吗（C26-B-02）
+    - generic: 26分钟
+  - treeitem "图书馆预约简短问答 1分钟":
+    - generic: 图书馆预约简短问答
+    - generic: 26分钟
+  - treeitem "已完成 握手交互状态卡片呈现 3分钟":
+    - generic: 已完成
+    - generic: 握手交互状态卡片呈现
+    - generic: 28分钟
+  - treeitem "已完成 握手确认卡片呈现 3分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 28分钟
+  - treeitem "已完成 握手状态卡片渲染测评 3分钟":
+    - generic: 已完成
+    - generic: 握手状态卡片渲染测评
+    - generic: 28分钟
+  - treeitem "握手交互卡片呈现 3分钟":
+    - generic: 握手交互卡片呈现
+    - generic: 28分钟
+  - treeitem "已完成 Workflow 追加分支编辑器测评 4分钟":
+    - generic: 已完成
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 29分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 4分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 29分钟
+  - treeitem "工作流条件分支测评呈现 5分钟":
+    - generic: 工作流条件分支测评呈现
+    - generic: 30分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 5分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 30分钟
+  - treeitem "已完成 报销流程草稿编辑保存 8分钟":
+    - generic: 已完成
+    - generic: 报销流程草稿编辑保存
+    - generic: 33分钟
+  - treeitem "已完成 报销流程整理与草稿保存 8分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 33分钟
+  - treeitem "Workflow材料取送流程测评 8分钟":
+    - generic: Workflow材料取送流程测评
+    - generic: 33分钟
+  - treeitem "已完成 监测文件处理任务失败通知 10分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 35分钟
+  - treeitem "已完成 文件处理任务监测模拟 10分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 35分钟
+  - treeitem "饮水机不出水照片评测 11分钟":
+    - generic: 饮水机不出水照片评测
+    - generic: 36分钟
+  - treeitem "已完成 平面图快递路线静态示意 13分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 38分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 13分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 38分钟
+  - treeitem "已完成 三项工作排期草稿确认 14分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 39分钟
+  - treeitem "已完成 安排三项工作并确认草稿 14分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 39分钟
+  - treeitem "已完成 会议室预约改期草稿 16分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 41分钟
+  - treeitem "已完成 会议室预约改期草稿测评 16分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 41分钟
+  - treeitem "已完成 售后申请草稿填写与确认 17分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 42分钟
+  - treeitem "已完成 售后申请草稿填写测评 17分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 42分钟
+  - treeitem "已完成 商品退货多视角图片呈现 18分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 43分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - button "展开其余 184 个会话": 展开其余 192 个会话
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 报销流程 Workflow 编辑与保存
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N12-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N12-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N12-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：把这个报销流程整理出来，并补充“材料不齐退回补充”的分支，让我编辑后保存草稿，不执行真实审批或付款。 指定呈现方式：Workflow可编辑流程及真实保存回传，不用静态图片冒充编辑器。。必须实际调用render_ui；事实来自本例材料。本题需要Workflow：用intent=rich_content并省略不受支持的components枚举，在user_query要求Workflow编辑器。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。 Workflow接入规范：根Stack内放Workflow和独立保存Button两个兄弟节点；Workflow(mode=edit)用$bindState绑定/_ui/workflow，初始化完整workflow-v1文档；保存发workflow.save，payload.workflow用$state读取最新文档，parameters为对象。不要$ref，不用静态步骤或组件嵌套伪装编辑器。
+- generic: 14:26
+- button "复制":
+- status: 已完成
+- button "已完成，用时 2分11秒":
+  - generic: 已完成，用时 2分11秒
+- paragraph: 我先获取本任务固定材料。
+- paragraph: 报销流程已整理成可编辑的草稿，流程如下（下为文字备份，编辑请在上方工作流编辑器中进行）：
+- paragraph:
+  - strong: 主流程
+- list:
+  - listitem: 填写申请
+  - listitem: 检查材料
+  - listitem: 财务审核
+  - listitem: 通知结果
+- paragraph:
+  - strong: 判定规则
+- list:
+  - text: 检查材料 → 财务审核：
+  - strong: 材料齐全
+  - text: 检查材料 → 通知补充：
+  - strong: 材料不齐
+  - text: 通知补充 → 检查材料：
+  - strong: 补齐后返回检查
+  - text: （重新核对）
+- paragraph:
+  - strong: 待办事项
+- list:
+  - listitem: 补充期限：材料未指定，通知补充节点是否需要写明时限由你决定。
+- paragraph:
+  - strong: 保存方式与边界
+- list:
+  - listitem: 用编辑器下方的「保存草稿」按钮保存；保存只产生草稿结果，不会触发真实审批或付款。
+  - listitem: 我不会替你直接提交，也不会提前判断保存是否成功；你在编辑器里改好后告诉我，我再按你实际确认的内容保存并回传结果。
+- paragraph: 以上节点名称、判断条件与连线均来自本例固定材料；除“材料不齐退回补充”这一分支外，没有添加其他事实。
+- generic: 基于虚构材料 expense-flow-v1 整理
+- generic: 原始流程：填写申请 → 检查材料 → 财务审核 → 通知结果；材料齐全才审核；材料不齐需通知补充，补齐后回到检查；补充期限未指定。
+- region "报销流程":
+  - heading "报销流程" [level=3]
+  - button "编辑名称"
+  - button "撤销" [disabled]
+  - button "重做" [disabled]
+  - text: 编辑草稿 · 分支完成后继续后续步骤
+  - list:
+    - button "01 · 步骤 填写申请 申请人填写报销申请":
+      - generic: 01 · 步骤
+      - strong: 填写申请
+      - generic: 申请人填写报销申请
+    - button "移动 填写申请": ⠿
+    - button "菜单 填写申请": ⋮
+    - text: ↓
+    - button "02 · 条件 检查材料 核对材料是否齐全":
+      - generic: 02 · 条件
+      - strong: 检查材料
+      - generic: 核对材料是否齐全
+    - button "移动 检查材料": ⠿
+    - button "菜单 检查材料": ⋮
+    - generic: 材料齐全
+    - button "编辑分支"
+    - button "删除分支"
+    - list:
+      - button "01 · 步骤 财务审核 材料齐全才进入财务审核":
+        - generic: 01 · 步骤
+        - strong: 财务审核
+        - generic: 材料齐全才进入财务审核
+      - button "移动 财务审核": ⠿
+      - button "菜单 财务审核": ⋮
+      - text: ↓
+      - button "02 · 步骤 通知结果 通知申请人审核结果":
+        - generic: 02 · 步骤
+        - strong: 通知结果
+        - generic: 通知申请人审核结果
+      - button "移动 通知结果": ⠿
+      - button "菜单 通知结果": ⋮
+      - text: ↓
+    - button "＋ 步骤"
+    - generic: 材料不齐
+    - button "编辑分支"
+    - button "删除分支"
+    - list:
+      - button "01 · 步骤 通知补充 材料不齐，退回并通知申请人补充材料；补齐后返回 检查材料（循环）":
+        - generic: 01 · 步骤
+        - strong: 通知补充
+        - generic: 材料不齐，退回并通知申请人补充材料；补齐后返回 检查材料（循环）
+      - button "移动 通知补充": ⠿
+      - button "菜单 通知补充": ⋮
+      - text: ↓
+    - button "＋ 步骤"
+    - text: ↓
+  - button "＋ 新增步骤"
+  - button "＋ 新增条件"
+- heading "工作流元信息（逐项）" [level=3]
+- paragraph: 出处：business_data.workflow 的 version、id、name、description、status
+- generic: 组件未注册
+- heading "节点清单（可拖动，仅调整展示顺序）" [level=3]
+- paragraph: 出处：business_data.workflow.nodes；拖动只改变本清单的展示顺序，不修改 Workflow 编辑器中的流程文档。
+- paragraph: 拖动手柄排序，或聚焦手柄使用 ↑ ↓ / Home / End
+- list:
+  - generic: "01"
+  - strong: 填写申请
+  - paragraph: 申请人填写报销申请
+  - button "移动 填写申请": ⠿
+  - generic: "02"
+  - strong: 检查材料
+  - paragraph: 核对材料是否齐全
+  - button "移动 检查材料": ⠿
+  - generic: "03"
+  - strong: 财务审核
+  - paragraph: 材料齐全才进入财务审核
+  - button "移动 财务审核": ⠿
+  - generic: "04"
+  - strong: 通知结果
+  - paragraph: 通知申请人审核结果
+  - button "移动 通知结果": ⠿
+  - generic: "05"
+  - strong: 通知补充
+  - paragraph: 材料不齐，退回并通知申请人补充材料
+  - button "移动 通知补充": ⠿
+- status
+- heading "流程节点（逐项）" [level=3]
+- paragraph: 出处：business_data.workflow.nodes
+- table:
+  - rowgroup:
+    - row "节点ID 类型 名称 说明 出处":
+      - columnheader "节点ID"
+      - columnheader "类型"
+      - columnheader "名称"
+      - columnheader "说明"
+      - columnheader "出处"
+  - rowgroup:
+    - row "n1 start 填写申请 申请人填写报销申请 business_data.workflow.nodes":
+      - cell "n1"
+      - cell "start"
+      - cell "填写申请"
+      - cell "申请人填写报销申请"
+      - cell "business_data.workflow.nodes"
+    - row "n2 task 检查材料 核对材料是否齐全 business_data.workflow.nodes":
+      - cell "n2"
+      - cell "task"
+      - cell "检查材料"
+      - cell "核对材料是否齐全"
+      - cell "business_data.workflow.nodes"
+    - row "n3 task 财务审核 材料齐全才进入财务审核 business_data.workflow.nodes":
+      - cell "n3"
+      - cell "task"
+      - cell "财务审核"
+      - cell "材料齐全才进入财务审核"
+      - cell "business_data.workflow.nodes"
+    - row "n4 end 通知结果 通知申请人审核结果 business_data.workflow.nodes":
+      - cell "n4"
+      - cell "end"
+      - cell "通知结果"
+      - cell "通知申请人审核结果"
+      - cell "business_data.workflow.nodes"
+    - row "n5 task 通知补充 材料不齐，退回并通知申请人补充材料 business_data.workflow.nodes":
+      - cell "n5"
+      - cell "task"
+      - cell "通知补充"
+      - cell "材料不齐，退回并通知申请人补充材料"
+      - cell "business_data.workflow.nodes"
+- heading "流程连线（逐项）" [level=3]
+- paragraph: 出处：business_data.workflow.edges
+- table:
+  - rowgroup:
+    - row "连线ID 起点 终点 标签 出处":
+      - columnheader "连线ID"
+      - columnheader "起点"
+      - columnheader "终点"
+      - columnheader "标签"
+      - columnheader "出处"
+  - rowgroup:
+    - row "e1 n1 n2 提交 business_data.workflow.edges":
+      - cell "e1"
+      - cell "n1"
+      - cell "n2"
+      - cell "提交"
+      - cell "business_data.workflow.edges"
+    - row "e2 n2 n3 材料齐全 business_data.workflow.edges":
+      - cell "e2"
+      - cell "n2"
+      - cell "n3"
+      - cell "材料齐全"
+      - cell "business_data.workflow.edges"
+    - row "e3 n2 n5 材料不齐 business_data.workflow.edges":
+      - cell "e3"
+      - cell "n2"
+      - cell "n5"
+      - cell "材料不齐"
+      - cell "business_data.workflow.edges"
+    - row "e4 n5 n2 补齐后返回检查 business_data.workflow.edges":
+      - cell "e4"
+      - cell "n5"
+      - cell "n2"
+      - cell "补齐后返回检查"
+      - cell "business_data.workflow.edges"
+    - row "e5 n3 n4 审核完成 business_data.workflow.edges":
+      - cell "e5"
+      - cell "n3"
+      - cell "n4"
+      - cell "审核完成"
+      - cell "business_data.workflow.edges"
+- heading "保存动作与范围（逐项）" [level=3]
+- paragraph: 出处：business_data.save、business_data.scope_note
+- generic: 组件未注册
+- generic "补充说明与开放项（可选）"
+- generic: 仅保存草稿，不执行真实审批或付款；补充期限未指定，请自行决定是否填写。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 13.3K tok":
+  - generic: 用量 13.3K tok
+- generic: 14:29
+- textbox "请开始，描述你想要的任务" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

@@ -1,0 +1,244 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "6000元内轻薄本推荐比较 15小时":
+    - generic: 6000元内轻薄本推荐比较
+    - generic: 15小时
+  - treeitem "6000元内轻薄本推荐测评 会话“6000元内轻薄本推荐测评”的操作 归档会话 置顶会话" [selected]:
+    - generic: 6000元内轻薄本推荐测评
+    - button "会话“6000元内轻薄本推荐测评”的操作":
+    - button "归档会话":
+    - button "置顶会话":
+  - treeitem "测评 C21-B-01 食堂导航 15小时":
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 15小时
+  - treeitem "企业服务套餐概览介绍 16小时":
+    - generic: 企业服务套餐概览介绍
+    - generic: 16小时
+  - treeitem "企业服务套餐介绍测评 16小时":
+    - generic: 企业服务套餐介绍测评
+    - generic: 16小时
+  - button "展开其余 180 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 6000元内轻薄本推荐测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 N03-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N03-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N03-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：从给定笔记本清单中选一款6000元以内、轻于1.5kg、适合出差的机型。先满足价格和重量，再优先续航，解释为什么没选其他款。 指定呈现方式：Markdown比较表+简短推荐理由。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 11月19日 21:39
+- button "复制":
+- status: 已完成
+- button "已完成，用时 5秒":
+  - generic: 已完成，用时 5秒
+- paragraph: 我先加载这个案例的固定材料。
+- heading "笔记本来回比较（筛选条件：价格不超过 6000 元、重量轻于 1.5kg，合格后再按续航优先）" [level=2]
+- table:
+  - rowgroup:
+    - row "机型 价格 重量 标称续航 价格符合 重量符合 结论":
+      - columnheader "机型"
+      - columnheader "价格"
+      - columnheader "重量"
+      - columnheader "标称续航"
+      - columnheader "价格符合"
+      - columnheader "重量符合"
+      - columnheader "结论"
+  - rowgroup:
+    - row "model-a 5899 元 1.30 kg 10 小时 ✅ ✅ 推荐：两项条件都满足，且合格机型中续航最长":
+      - cell "model-a":
+        - strong: model-a
+      - cell "5899 元"
+      - cell "1.30 kg"
+      - cell "10 小时"
+      - cell "✅"
+      - cell "✅"
+      - cell "推荐：两项条件都满足，且合格机型中续航最长":
+        - strong: 推荐
+        - text: ：两项条件都满足，且合格机型中续航最长
+    - row "model-d 5999 元 1.49 kg 8 小时 ✅ ✅ 备选：两项条件都满足，但续航比 model-a 短 2 小时，重量也只差 0.19kg":
+      - cell "model-d"
+      - cell "5999 元"
+      - cell "1.49 kg"
+      - cell "8 小时"
+      - cell "✅"
+      - cell "✅"
+      - cell "备选：两项条件都满足，但续航比 model-a 短 2 小时，重量也只差 0.19kg"
+    - row "model-b 5599 元 1.70 kg 14 小时 ✅ ❌（超重 0.20kg） 排除：续航虽最长，但重量不符合出差要求":
+      - cell "model-b"
+      - cell "5599 元"
+      - cell "1.70 kg"
+      - cell "14 小时"
+      - cell "✅"
+      - cell "❌（超重 0.20kg）"
+      - cell "排除：续航虽最长，但重量不符合出差要求"
+    - row "model-c 6399 元 1.20 kg 12 小时 ❌（超预算 399 元） ✅ 排除：最轻、续航也长，但价格超过预算":
+      - cell "model-c"
+      - cell "6399 元"
+      - cell "1.20 kg"
+      - cell "12 小时"
+      - cell "❌（超预算 399 元）"
+      - cell "✅"
+      - cell "排除：最轻、续航也长，但价格超过预算"
+- heading "推荐：model-a" [level=3]
+- paragraph:
+  - strong: 理由：
+  - text: model-a 是唯一同时满足「6000 元以内」和「轻于 1.5kg」的机型，并且在两个合格机型中，续航最好（标称 10 小时），便携性也更占优势（1.30kg）。出差时，重量和续航是直接影响体验的两项指标，model-a 在这两项上都占优。
+- paragraph:
+  - strong: 其他机型没有选的原因：
+- list:
+  - strong: model-b
+  - text: ：价格最低、续航最长（14 小时），但重量 1.70kg，超出 1.5kg 的要求，不符合出差携带条件，先按筛选条件排除。
+  - strong: model-c
+  - text: ：1.20kg 最轻、续航 12 小时也不错，但售价 6399 元，超出预算 399 元，价格条件优先，因此排除。
+  - strong: model-d
+  - text: ：价格、重量都符合，但续航仅 8 小时，是合格机型中最短的，在续航优先原则下不如 model-a。
+- blockquote:
+  - paragraph: 以上均为虚构机型参数，仅用于本次比较演示，不构成实际购买建议。标称续航为官方宣称值，实际续航受负载、屏幕亮度等因素影响。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 5.2K tok":
+  - generic: 用量 5.2K tok
+- generic: 11月19日 21:39
+- generic: B的续航更好，为什么不选B？
+- generic: 11月19日 21:40
+- button "复制":
+- status: 已完成
+- button "已完成，用时 5秒":
+  - generic: 已完成，用时 5秒
+- heading "先看为什么 B 没进候选" [level=2]
+- paragraph:
+  - text: 您说的没错：
+  - strong: model-b 的续航确实是四款里最长的（14 小时）
+  - text: 。但它未能进入候选，原因在于它在筛选阶段就被排除了，并不是续航输给了其他机型：
+- table:
+  - rowgroup:
+    - row "机型 价格 重量 标称续航 价格≤6000 重量<1.5kg":
+      - columnheader "机型"
+      - columnheader "价格"
+      - columnheader "重量"
+      - columnheader "标称续航"
+      - columnheader "价格≤6000"
+      - columnheader "重量<1.5kg"
+  - rowgroup:
+    - row "model-a 5899 元 1.30 kg 10 小时 ✅ ✅":
+      - cell "model-a":
+        - strong: model-a
+      - cell "5899 元"
+      - cell "1.30 kg"
+      - cell "10 小时"
+      - cell "✅"
+      - cell "✅"
+    - row "model-d 5999 元 1.49 kg 8 小时 ✅ ✅":
+      - cell "model-d"
+      - cell "5999 元"
+      - cell "1.49 kg"
+      - cell "8 小时"
+      - cell "✅"
+      - cell "✅"
+    - row "model-b 5599 元 1.70 kg 14 小时 ✅ ❌ 超出 0.20 kg":
+      - cell "model-b"
+      - cell "5599 元"
+      - cell "1.70 kg":
+        - strong: 1.70 kg
+      - cell "14 小时":
+        - strong: 14 小时
+      - cell "✅"
+      - cell "❌ 超出 0.20 kg"
+    - row "model-c 6399 元 1.20 kg 12 小时 ❌ 超出 399 元 ✅":
+      - cell "model-c"
+      - cell "6399 元"
+      - cell "1.20 kg"
+      - cell "12 小时"
+      - cell "❌ 超出 399 元"
+      - cell "✅"
+- paragraph:
+  - text: 您的需求是一个
+  - strong: 有先后顺序的两步筛选
+  - text: ：
+- list:
+  - listitem: 先满足价格 ≤ 6000 元、重量 < 1.5kg，这是必须同时满足的硬性条件；
+  - listitem: 在通过这两项硬性条件的机型里，再优先比较续航。
+- paragraph:
+  - text: 续航只在
+  - strong: 已经通过价格和重量筛选
+  - text: 的机型之间比较。model-b 虽然续航更长，但 1.70kg 没有达到重量要求，因此不在这一步的比较范围内。如果为了续航放宽重量要求，就等于改变了您最初设定的条件。
+- heading "补充一点：B 的真正权衡" [level=2]
+- paragraph: model-b 的优势不只是续航：它还是四款中最便宜的（5599 元），比 model-a 省 300 元，续航多 4 小时。代价是重量为 1.70kg，比 model-a 重 0.40kg。
+- paragraph: 对出差来说，0.40kg 的差别是每天背着走路时都能感觉到的：单手握持、放包里、长时间通勤的疲劳感都会更明显。所以我按您“重量优先于续航”的设定选择了 model-a。
+- paragraph:
+  - strong: 如果您愿意调整条件
+  - text: ，以下两种方向可以考虑：
+- list:
+  - strong: 能接受 1.7kg 的重量
+  - text: ：model-b 就是更划算的选择：更便宜、续航最长，适合更看重续航和预算的人。
+  - strong: 重量必须低于 1.5kg
+  - text: ：model-a 仍是最佳平衡；若愿意多花 500 元预算，model-c（1.20kg、12 小时）其实是便携性和续航更好的组合。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 3.8K tok":
+  - generic: 用量 3.8K tok
+- generic: 11月19日 21:40
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

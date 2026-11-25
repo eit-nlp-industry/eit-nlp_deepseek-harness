@@ -1,0 +1,1 @@
+{"visible": {"marker": "isolated-1", "simulated": true}, "events": [{"id": "shared-event-id", "kind": "scope_check", "data": {"marker": "event-isolated-1", "simulated": true}}], "monitoringEnded": true}

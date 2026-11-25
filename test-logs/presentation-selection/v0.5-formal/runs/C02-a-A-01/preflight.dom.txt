@@ -1,0 +1,129 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "新会话" [selected]:
+    - generic: 新会话
+  - treeitem "进行中 图书馆讨论空间简洁卡片 刚刚":
+    - generic: 进行中
+    - generic: 图书馆讨论空间简洁卡片
+    - generic: 刚刚
+  - treeitem "已完成 东方理工校园设施介绍测评 4分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 4分钟
+  - treeitem "已完成 东方理工校园设施介绍呈现测评 4分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍呈现测评
+    - generic: 4分钟
+  - treeitem "东方理工校园信息介绍测评 4分钟":
+    - generic: 东方理工校园信息介绍测评
+    - generic: 4分钟
+  - treeitem "已完成 东方理工校园设施介绍 4分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 4分钟
+  - treeitem "已完成 东方理工校园设施介绍测评 11分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 11分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 11分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 11分钟
+  - treeitem "东方理工图书馆餐饮书院介绍 11分钟":
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 11分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 11分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 11分钟
+  - treeitem "已完成 东方理工校园设施介绍 15分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 15分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 15分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 15分钟
+  - treeitem "东方理工校园设施介绍 15分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 15分钟
+  - treeitem "已完成 东方理工校园设施介绍 15分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 15分钟
+  - treeitem "已完成 四会话隔离预检marker 17分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检marker
+    - generic: 17分钟
+  - treeitem "已完成 四会话隔离预检测试 17分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 17分钟
+  - treeitem "预检调用初始化返回marker 19分钟":
+    - generic: 预检调用初始化返回marker
+    - generic: 19分钟
+  - treeitem "已完成 四会话隔离预检初始化 20分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检初始化
+    - generic: 20分钟
+  - button "展开其余 48 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - button "打开右侧边栏":
+- img "EIT-NLP"
+- generic: 我们开始吧
+- button "选择工作区":
+  - generic: 默认工作区
+- button "Component benchmark full v2":
+  - generic: Component benchmark full v2
+- textbox "请开始，描述你想要的任务"
+- generic: 请开始，描述你想要的任务
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:

@@ -1,0 +1,296 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_Fe8mfhZ3yCclyaVITvXj9188",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"前往食堂 · 状态卡片\", \"destination\": \"食堂（canteen）\", \"current_status\": \"已按你的确认准备前往，尚未到达\", \"arrival\": \"未知（材料未给出到达结论）\", \"stop_reason\": \"本次材料未释放任何停止事件，因此暂无停止原因\", \"obstacle\": \"未知（障碍情况以随后事件为准）\", \"image_status\": \"本例材料未提供任何图像地址，暂无法展示现场画面\", \"next_step\": \"收到到达或停止事件后，再更新状态与停止原因\", \"simulated_note\": \"模拟环境，仅作呈现\"}, \"user_query\": \"展示一张“前往食堂”的状态卡片：标题、目的地、当前状态、是否到达、停止原因、障碍情况、图像状态、下一步。全部使用 business_data 中的事实，不要补充推测内容。停止原因明确写为材料未释放，不要编造绕行路线。由于材料没有给出任何图片地址，不要放置图片占位或虚构链接，仅用文字说明图像不可用。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "statusCard",
+                "simulationNote"
+              ]
+            },
+            "statusCard": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "cardContent"
+              ]
+            },
+            "cardContent": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "titleHeading",
+                "titleSource",
+                "factsTable"
+              ]
+            },
+            "titleHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "前往食堂 · 状态卡片",
+                "level": "h2"
+              }
+            },
+            "titleSource": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.title",
+                "variant": "muted"
+              }
+            },
+            "factsTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "字段",
+                  "值",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "目的地",
+                    "食堂（canteen）",
+                    "business_data.destination"
+                  ],
+                  [
+                    "当前状态",
+                    "已按你的确认准备前往，尚未到达",
+                    "business_data.current_status"
+                  ],
+                  [
+                    "是否到达",
+                    "未知（材料未给出到达结论）",
+                    "business_data.arrival"
+                  ],
+                  [
+                    "停止原因",
+                    "材料未释放：本次材料未释放任何停止事件，因此暂无停止原因",
+                    "business_data.stop_reason"
+                  ],
+                  [
+                    "障碍情况",
+                    "未知（障碍情况以随后事件为准）",
+                    "business_data.obstacle"
+                  ],
+                  [
+                    "图像状态",
+                    "本例材料未提供任何图像地址，暂无法展示现场画面（图像不可用）",
+                    "business_data.image_status"
+                  ],
+                  [
+                    "下一步",
+                    "收到到达或停止事件后，再更新状态与停止原因",
+                    "business_data.next_step"
+                  ]
+                ]
+              }
+            },
+            "simulationNote": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "模拟说明",
+                "description": "模拟环境，仅作呈现（出处：business_data.simulated_note）",
+                "showIcon": true
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "前往食堂 · 状态卡片",
+            "destination": "食堂（canteen）",
+            "current_status": "已按你的确认准备前往，尚未到达",
+            "arrival": "未知（材料未给出到达结论）",
+            "stop_reason": "本次材料未释放任何停止事件，因此暂无停止原因",
+            "obstacle": "未知（障碍情况以随后事件为准）",
+            "image_status": "本例材料未提供任何图像地址，暂无法展示现场画面",
+            "next_step": "收到到达或停止事件后，再更新状态与停止原因",
+            "simulated_note": "模拟环境，仅作呈现"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Fe8mfhZ3yCclyaVITvXj9188"
+      },
+      "toolCallId": "call_00_Fe8mfhZ3yCclyaVITvXj9188",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ddf1d605-cec0-44b6-b622-aa8ab241b2af"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ET_AsVtJp38uRGscvpaBqjX2525",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture\", \"current_status\": \"已停止（stopped）\", \"destination\": \"食堂（canteen）\", \"image\": \"/api/media/bench05-img-door/content\", \"image_note\": \"模拟材料图：door-1 关闭状态（MOCK DOOR CLOSED），非其他视角\", \"next_step\": \"等待可用替代路线或你的进一步安排，不预告到达时间\", \"obstacle\": \"door-1 关闭（door-1_closed）\", \"route_note\": \"未返回可用替代路线（alternative_route 为空），因此不提供绕行方案\", \"status\": \"已停止\", \"stop_reason\": \"前方 door-1 关闭，导航已停止\", \"title\": \"前往食堂 · 已停止\", \"arrival\": \"未到达\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"展示“前往食堂”的状态卡片：顶部放一张图片，使用 business_data.image 中给定的同源 path 字符串作为 Image.props.src，alt 使用 business_data.alt；图片下方依次列出目的地、当前状态、是否到达、停止原因、障碍、替代路线、下一步。停止原因写成 door-1 关闭导致已停止；替代路线写为未返回可用替代路线，不要给出或暗示任何绕行方案。所有内容只用 business_data 中的事实。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "hero-card"
+              ]
+            },
+            "hero-card": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "hero-image",
+                "page-title",
+                "status-details"
+              ]
+            },
+            "hero-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-door/content",
+                "alt": "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+                "caption": "模拟材料图：door-1 关闭状态（MOCK DOOR CLOSED），非其他视角",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "eager"
+              }
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "前往食堂 · 已停止",
+                "level": "h1"
+              }
+            },
+            "status-details": {
+              "type": "Descriptions",
+              "props": {
+                "title": "逐项详情",
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "目的地",
+                    "value": "食堂（canteen）"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "已停止（stopped）"
+                  },
+                  {
+                    "label": "是否到达",
+                    "value": "未到达"
+                  },
+                  {
+                    "label": "停止原因",
+                    "value": "door-1 关闭导致已停止"
+                  },
+                  {
+                    "label": "障碍",
+                    "value": "door-1 关闭（door-1_closed）"
+                  },
+                  {
+                    "label": "替代路线",
+                    "value": "未返回可用替代路线"
+                  },
+                  {
+                    "label": "下一步",
+                    "value": "等待可用替代路线或你的进一步安排，不预告到达时间"
+                  },
+                  {
+                    "label": "图片说明",
+                    "value": "模拟材料图：door-1 关闭状态（MOCK DOOR CLOSED），非其他视角"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+            "current_status": "已停止（stopped）",
+            "destination": "食堂（canteen）",
+            "image": "/api/media/bench05-img-door/content",
+            "image_note": "模拟材料图：door-1 关闭状态（MOCK DOOR CLOSED），非其他视角",
+            "next_step": "等待可用替代路线或你的进一步安排，不预告到达时间",
+            "obstacle": "door-1 关闭（door-1_closed）",
+            "route_note": "未返回可用替代路线（alternative_route 为空），因此不提供绕行方案",
+            "status": "已停止",
+            "stop_reason": "前方 door-1 关闭，导航已停止",
+            "title": "前往食堂 · 已停止",
+            "arrival": "未到达"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_AsVtJp38uRGscvpaBqjX2525"
+      },
+      "toolCallId": "call_00_ET_AsVtJp38uRGscvpaBqjX2525",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "1431aeeb-0d2f-4275-9f8f-6bdab5321e97"
+    }
+  }
+]

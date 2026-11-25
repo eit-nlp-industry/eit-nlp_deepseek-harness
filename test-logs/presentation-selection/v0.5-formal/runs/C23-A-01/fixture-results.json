@@ -1,0 +1,99 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C23-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_T8Ba7rud78OgvBcTtuWN0199"
+      },
+      "toolCallId": "call_00_ET_T8Ba7rud78OgvBcTtuWN0199",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C23\",\"facts\":\"流程wf-material-v1：到林老师门口→敲门等待材料放好→拍图等待用户确认→确认后送回。等待上限未指定，可通过编辑步骤说明补充；只保存模拟草稿，不执行、无永久记忆。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "18a9fe73-3e77-4099-8d66-045819216fb0"
+    }
+  },
+  {
+    "call": {
+      "seq": 31,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C23-A-01",
+        "values": {
+          "workflow_id": "wf-material-v1",
+          "title": "流程：向林老师取材料",
+          "steps": [
+            {
+              "step": 1,
+              "name": "到达门口",
+              "condition": "人已到门口，材料尚未拿到"
+            },
+            {
+              "step": 2,
+              "name": "敲门并等待",
+              "condition": "等林老师把材料放好后才能继续；材料未放好前不自行拿取、不推门进入",
+              "wait_limit": "2分钟"
+            },
+            {
+              "step": 3,
+              "name": "拍照发给用户确认",
+              "condition": "拿到材料后立即拍摄清晰照片并发给用户，停在等待状态直到用户回复，不提前送回",
+              "wait_limit": "未指定"
+            },
+            {
+              "step": 4,
+              "name": "按用户回复处理",
+              "condition": "确认无误则送回；照片不清或不对则重拍再发并等待确认"
+            },
+            {
+              "step": 5,
+              "name": "送回",
+              "condition": "送回材料并报告已送达"
+            }
+          ],
+          "exceptions": [
+            "林老师不在或无法交材料：告知用户，不自行滞留、不替代取用",
+            "材料与预期不符：先拍图给用户确认，不擅自带回"
+          ],
+          "pending": [
+            "拍照确认后的等待上限未指定"
+          ],
+          "execute": false,
+          "save_mode": "文字编辑确认保存",
+          "confirmed": true
+        }
+      }
+    },
+    "result_seq": 32,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_NsdkZz3pXt65TuEmoUad3496"
+      },
+      "toolCallId": "call_00_NsdkZz3pXt65TuEmoUad3496",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"version\":2,\"submitted\":{\"workflow_id\":\"wf-material-v1\",\"title\":\"流程：向林老师取材料\",\"steps\":[{\"step\":1,\"name\":\"到达门口\",\"condition\":\"人已到门口，材料尚未拿到\"},{\"step\":2,\"name\":\"敲门并等待\",\"condition\":\"等林老师把材料放好后才能继续；材料未放好前不自行拿取、不推门进入\",\"wait_limit\":\"2分钟\"},{\"step\":3,\"name\":\"拍照发给用户确认\",\"condition\":\"拿到材料后立即拍摄清晰照片并发给用户，停在等待状态直到用户回复，不提前送回\",\"wait_limit\":\"未指定\"},{\"step\":4,\"name\":\"按用户回复处理\",\"condition\":\"确认无误则送回；照片不清或不对则重拍再发并等待确认\"},{\"step\":5,\"name\":\"送回\",\"condition\":\"送回材料并报告已送达\"}],\"exceptions\":[\"林老师不在或无法交材料：告知用户，不自行滞留、不替代取用\",\"材料与预期不符：先拍图给用户确认，不擅自带回\"],\"pending\":[\"拍照确认后的等待上限未指定\"],\"execute\":false,\"save_mode\":\"文字编辑确认保存\",\"confirmed\":true}}}"
+        }
+      ],
+      "isError": false,
+      "id": "3f33a1d9-8aaf-4822-8e70-d4e71d4081c6"
+    }
+  }
+]

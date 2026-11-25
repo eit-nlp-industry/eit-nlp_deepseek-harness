@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_EWZB8vRl1yOMByVZdXZu6824",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_order\", \"header\": \"确认保存\", \"question\": \"是否按「图书馆 → 食堂 → 四明书院」保存这份排序草稿？\", \"options\": [{\"label\": \"确认保存这个顺序（推荐）\", \"description\": \"按当前草稿顺序保存，与你说的一致。\"}, {\"label\": \"我要调整顺序\", \"description\": \"告诉我新的先后，我改完再请你确认。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_EWZB8vRl1yOMByVZdXZu6824"
+      },
+      "toolCallId": "call_00_EWZB8vRl1yOMByVZdXZu6824",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_order\",\"selected\":[],\"custom\":\"把食堂移到第一位，确认保存。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "aaf3bf38-e2c6-425a-866a-db8acdb8e0c9"
+    }
+  }
+]

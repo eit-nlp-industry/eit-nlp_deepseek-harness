@@ -1,0 +1,83 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C21-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_271Nak39GiMR4Cbe3pMV1551"
+      },
+      "toolCallId": "call_00_ET_271Nak39GiMR4Cbe3pMV1551",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C21\",\"facts\":\"当前模拟前往食堂，尚无到达结论；目的地canteen。障碍与停止状态以随后事件为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "58be68f8-75a6-4688-bf30-05874336112e"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C21-A-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Yaty0AtsIix9IFR6ckuC8338"
+      },
+      "toolCallId": "call_00_Yaty0AtsIix9IFR6ckuC8338",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C21\",\"facts\":\"当前模拟前往食堂，尚无到达结论；目的地canteen。障碍与停止状态以随后事件为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "535af34c-82cf-474b-9a0b-c21cd0d30278"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "action": "read",
+        "run_id": "C21-A-01"
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_B1LRue6RI1mWp2uMcqAC1679"
+      },
+      "toolCallId": "call_00_B1LRue6RI1mWp2uMcqAC1679",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C21\",\"facts\":\"模拟导航遇door-1关闭，已停止；没有返回可用替代路线。\",\"assets\":[{\"id\":\"bench05-img-door\",\"file\":\"bench05-img-door.png\",\"alt\":\"MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture\",\"source_id\":\"img-door\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-door/content\",\"path\":\"/api/media/bench05-img-door/content\",\"sha256\":\"c369682198bea1e413f3b9cccdf6d581ad40466f1e6dba90a4ea11315fa036a2\",\"width\":960,\"height\":540}],\"status\":\"stopped\",\"obstacle\":\"door-1_closed\",\"alternative_route\":null}}"
+        }
+      ],
+      "isError": false,
+      "id": "110a0493-ce49-43f5-9bb4-ae5d65a71631"
+    }
+  }
+]

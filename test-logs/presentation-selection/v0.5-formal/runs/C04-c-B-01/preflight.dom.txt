@@ -1,0 +1,219 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "新会话" [selected]:
+    - generic: 新会话
+  - treeitem "等待回答 讲座线上线下偏好选择测评":
+    - generic: 等待回答
+    - generic: 讲座线上线下偏好选择测评
+    - generic: 待回答
+  - treeitem "已完成 校园半日游轻量表单测评 刚刚":
+    - generic: 已完成
+    - generic: 校园半日游轻量表单测评
+    - generic: 刚刚
+  - treeitem "已完成 校园半日游轻量form测评 1分钟":
+    - generic: 已完成
+    - generic: 校园半日游轻量form测评
+    - generic: 1分钟
+  - treeitem "已完成 校园半日游偏好确认测评 2分钟":
+    - generic: 已完成
+    - generic: 校园半日游偏好确认测评
+    - generic: 2分钟
+  - treeitem "校园半日游偏好收集 2分钟":
+    - generic: 校园半日游偏好收集
+    - generic: 2分钟
+  - treeitem "已完成 全量呈现测评地点查找 2分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评地点查找
+    - generic: 2分钟
+  - treeitem "测评C04-a-B-01：轻量form找地点 3分钟":
+    - generic: 测评C04-a-B-01：轻量form找地点
+    - generic: 3分钟
+  - treeitem "已完成 协助用户寻找地点偏好 4分钟":
+    - generic: 已完成
+    - generic: 协助用户寻找地点偏好
+    - generic: 4分钟
+  - treeitem "已完成 模拟环境地点查找测评 4分钟":
+    - generic: 已完成
+    - generic: 模拟环境地点查找测评
+    - generic: 4分钟
+  - treeitem "已完成 Benchmark fixture place-finding test 12分钟":
+    - generic: 已完成
+    - generic: Benchmark fixture place-finding test
+    - generic: 12分钟
+  - treeitem "已完成 轻量表单选择地点测评 12分钟":
+    - generic: 已完成
+    - generic: 轻量表单选择地点测评
+    - generic: 12分钟
+  - treeitem "轻量form找地点测评 C04-a-B-01 12分钟":
+    - generic: 轻量form找地点测评 C04-a-B-01
+    - generic: 12分钟
+  - treeitem "已完成 寻找地点的偏好确认测试 13分钟":
+    - generic: 已完成
+    - generic: 寻找地点的偏好确认测试
+    - generic: 13分钟
+  - treeitem "已完成 C03-B-02 场地推荐测评 16分钟":
+    - generic: 已完成
+    - generic: C03-B-02 场地推荐测评
+    - generic: 16分钟
+  - treeitem "已完成 会议室投屏白板试讲安排 16分钟":
+    - generic: 已完成
+    - generic: 会议室投屏白板试讲安排
+    - generic: 16分钟
+  - treeitem "明晚试讲场地推荐比较 16分钟":
+    - generic: 明晚试讲场地推荐比较
+    - generic: 16分钟
+  - treeitem "已完成 试讲场地推荐测评 16分钟":
+    - generic: 已完成
+    - generic: 试讲场地推荐测评
+    - generic: 16分钟
+  - treeitem "已完成 进校后能否直接去图书馆测评 22分钟":
+    - generic: 已完成
+    - generic: 进校后能否直接去图书馆测评
+    - generic: 22分钟
+  - treeitem "已完成 进校后图书馆访问测评 22分钟":
+    - generic: 已完成
+    - generic: 进校后图书馆访问测评
+    - generic: 22分钟
+  - treeitem "图书馆入校访问测评 23分钟":
+    - generic: 图书馆入校访问测评
+    - generic: 23分钟
+  - treeitem "已完成 进校后能否直接去图书馆 23分钟":
+    - generic: 已完成
+    - generic: 进校后能否直接去图书馆
+    - generic: 23分钟
+  - treeitem "已完成 图书馆讨论场所展示测评 25分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论场所展示测评
+    - generic: 25分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 25分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 25分钟
+  - treeitem "图书馆讨论空间咨询测评 25分钟":
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 25分钟
+  - treeitem "已完成 图书馆讨论空间简洁卡片 25分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间简洁卡片
+    - generic: 25分钟
+  - treeitem "已完成 东方理工校园设施介绍测评 30分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 30分钟
+  - treeitem "已完成 东方理工校园设施介绍呈现测评 30分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍呈现测评
+    - generic: 30分钟
+  - treeitem "东方理工校园信息介绍测评 30分钟":
+    - generic: 东方理工校园信息介绍测评
+    - generic: 30分钟
+  - treeitem "已完成 东方理工校园设施介绍 30分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 30分钟
+  - treeitem "已完成 东方理工校园设施介绍测评 36分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍测评
+    - generic: 36分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 36分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 36分钟
+  - treeitem "东方理工图书馆餐饮书院介绍 37分钟":
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 37分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 37分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 37分钟
+  - treeitem "已完成 东方理工校园设施介绍 40分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 40分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 40分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 40分钟
+  - treeitem "东方理工校园设施介绍 41分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 41分钟
+  - treeitem "已完成 东方理工校园设施介绍 41分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 41分钟
+  - treeitem "已完成 四会话隔离预检marker 43分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检marker
+    - generic: 43分钟
+  - treeitem "已完成 四会话隔离预检测试 43分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 43分钟
+  - treeitem "预检调用初始化返回marker 45分钟":
+    - generic: 预检调用初始化返回marker
+    - generic: 45分钟
+  - treeitem "已完成 四会话隔离预检初始化 46分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检初始化
+    - generic: 46分钟
+  - button "展开其余 48 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - button "打开右侧边栏":
+- img "EIT-NLP"
+- generic: 我们开始吧
+- button "选择工作区":
+  - generic: 默认工作区
+- button "Component benchmark full v2":
+  - generic: Component benchmark full v2
+- textbox "请开始，描述你想要的任务"
+- generic: 请开始，描述你想要的任务
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:

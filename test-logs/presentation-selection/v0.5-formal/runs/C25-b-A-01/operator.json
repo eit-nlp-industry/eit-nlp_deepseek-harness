@@ -1,0 +1,26 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C25-b",
+    "facts": "handshake-01模拟结果：失败，原因target_unreachable。未控制真实机器人。",
+    "assets": [],
+    "task_id": "handshake-01",
+    "status": "failed",
+    "reason": "target_unreachable"
+  },
+  "events": [
+    {
+      "id": "C25-b-A-01-result",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "handshake-01模拟结果：失败，原因target_unreachable。未控制真实机器人。",
+        "assets": [],
+        "simulated": true,
+        "task_id": "handshake-01",
+        "status": "failed",
+        "reason": "target_unreachable"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

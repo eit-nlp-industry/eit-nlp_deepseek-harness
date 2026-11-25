@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 52,
+    "result_seq": 53,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_KTdxK2NipMCwaUz7ukv83918",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_doc01\", \"header\": \"确认文件\", \"question\": \"老师已把 doc-01 放在办公室门口（模拟场景），文件图也已发布。请确认这份文件是否就是张伟老师让你取的那份，确认后我再继续走交接。\", \"options\": [{\"label\": \"确认，就是这份 doc-01\", \"description\": \"按已发布文件图继续推进交接，交接完成状态仍以随后模拟事件为准。\"}, {\"label\": \"先不确认，我要再核对\", \"description\": \"维持“待确认”状态，暂不推进交接，等你给出进一步说明。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_KTdxK2NipMCwaUz7ukv83918"
+      },
+      "toolCallId": "call_00_KTdxK2NipMCwaUz7ukv83918",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_doc01\",\"selected\":[],\"custom\":\"就是这个文件。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "2c642e97-c477-4703-9661-8af4eb6a9ce3"
+    }
+  }
+]

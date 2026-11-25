@@ -1,0 +1,20 @@
+{
+  "run_id": "N12-B-02",
+  "case_id": "N12",
+  "card_id": "N12",
+  "category_id": "G12",
+  "scenario_domain": "non_campus",
+  "arm": "B",
+  "repeat": 2,
+  "status": "fail",
+  "prompt": "【全量正式呈现测评 N12-B-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N12-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N12-B-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：把这个报销流程整理出来，并补充“材料不齐退回补充”的分支，让我编辑后保存草稿，不执行真实审批或付款。\n指定呈现方式：Workflow可编辑流程及真实保存回传，不用静态图片冒充编辑器。。必须实际调用render_ui；事实来自本例材料。本题需要Workflow：用intent=rich_content并省略不受支持的components枚举，在user_query要求Workflow编辑器。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。\nWorkflow接入规范：根Stack内放Workflow和独立保存Button两个兄弟节点；Workflow(mode=edit)用$bindState绑定/_ui/workflow，初始化完整workflow-v1文档；保存发workflow.save，payload.workflow用$state读取最新文档，parameters为对象。不要$ref，不用静态步骤或组件嵌套伪装编辑器。",
+  "prompt_sha256": "3ab7d609787af911289d763d98e0c42ed3dce17a29c8814e58beaf267670b609",
+  "operator_actions": "展示并编辑分支→将补充期限设置为3个工作日→确认保存；A用文字修改确认，B在Workflow编辑并实际保存回传；审计材料齐全和不齐两条有向路径。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T06:26:50.607Z",
+  "interactions": [],
+  "tab_id": "1",
+  "final_at": "2026-11-20T06:30:22.201Z",
+  "notes": "实际Workflow节点可编辑，补充期限改成3个工作日且保留返回检查的文字说明；完整DOM没有模型宣称的保存草稿按钮，无法实际保存/Host回传/取得version2回执。额外SortableSequence只调整展示清单、不改流程；大量节点边表及未注册组件，核心保存任务失败。"
+}

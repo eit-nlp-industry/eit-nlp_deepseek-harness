@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "初始及到期动态状态可见，第2分钟关闭未重复生成；到期无开门结论正确，少量出处及英文screen字段干扰。"
+}

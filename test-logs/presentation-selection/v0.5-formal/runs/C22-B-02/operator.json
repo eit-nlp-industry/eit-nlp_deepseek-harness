@@ -1,0 +1,122 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C22",
+    "facts": "YSJ-07另一侧图。现已发布正面、近景、侧面三图。",
+    "assets": [
+      {
+        "id": "bench05-repair-front",
+        "file": "bench05-repair-front.png",
+        "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+        "source_id": "repair-front",
+        "url": "http://127.0.0.1:3080/api/media/bench05-repair-front/content",
+        "path": "/api/media/bench05-repair-front/content",
+        "sha256": "b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b",
+        "width": 960,
+        "height": 540
+      },
+      {
+        "id": "bench05-repair-near",
+        "file": "bench05-repair-near.png",
+        "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+        "source_id": "repair-near",
+        "url": "http://127.0.0.1:3080/api/media/bench05-repair-near/content",
+        "path": "/api/media/bench05-repair-near/content",
+        "sha256": "4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76",
+        "width": 960,
+        "height": 540
+      },
+      {
+        "id": "bench05-repair-side",
+        "file": "bench05-repair-side.png",
+        "alt": "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture",
+        "source_id": "repair-side",
+        "url": "http://127.0.0.1:3080/api/media/bench05-repair-side/content",
+        "path": "/api/media/bench05-repair-side/content",
+        "sha256": "7927ee2291dd11d9c44443f2f879c98ee3f387bd4818dd860e69b1ec0b4e3884",
+        "width": 960,
+        "height": 540
+      }
+    ],
+    "device_id": "YSJ-07",
+    "view": "side"
+  },
+  "events": [
+    {
+      "id": "C22-B-02-near",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "YSJ-07近景，设备仍不出水。",
+        "assets": [
+          {
+            "id": "bench05-repair-near",
+            "file": "bench05-repair-near.png",
+            "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+            "source_id": "repair-near",
+            "url": "http://127.0.0.1:3080/api/media/bench05-repair-near/content",
+            "path": "/api/media/bench05-repair-near/content",
+            "sha256": "4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "device_id": "YSJ-07",
+        "view": "near"
+      }
+    },
+    {
+      "id": "C22-B-02-side",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "YSJ-07另一侧图。现已发布正面、近景、侧面三图。",
+        "assets": [
+          {
+            "id": "bench05-repair-front",
+            "file": "bench05-repair-front.png",
+            "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+            "source_id": "repair-front",
+            "url": "http://127.0.0.1:3080/api/media/bench05-repair-front/content",
+            "path": "/api/media/bench05-repair-front/content",
+            "sha256": "b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b",
+            "width": 960,
+            "height": 540
+          },
+          {
+            "id": "bench05-repair-near",
+            "file": "bench05-repair-near.png",
+            "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+            "source_id": "repair-near",
+            "url": "http://127.0.0.1:3080/api/media/bench05-repair-near/content",
+            "path": "/api/media/bench05-repair-near/content",
+            "sha256": "4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76",
+            "width": 960,
+            "height": 540
+          },
+          {
+            "id": "bench05-repair-side",
+            "file": "bench05-repair-side.png",
+            "alt": "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture",
+            "source_id": "repair-side",
+            "url": "http://127.0.0.1:3080/api/media/bench05-repair-side/content",
+            "path": "/api/media/bench05-repair-side/content",
+            "sha256": "7927ee2291dd11d9c44443f2f879c98ee3f387bd4818dd860e69b1ec0b4e3884",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "device_id": "YSJ-07",
+        "view": "side"
+      }
+    }
+  ],
+  "monitoringEnded": true,
+  "submission": {
+    "response": {
+      "status": "draft_received",
+      "simulated": true,
+      "real_operation": false
+    }
+  }
+}

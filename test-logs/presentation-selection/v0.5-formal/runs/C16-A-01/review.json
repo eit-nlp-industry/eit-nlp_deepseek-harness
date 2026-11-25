@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 3,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "文件图确认及模拟交接事件前后状态正确，未提前报交接完成；初答预述取到放好后才给图的顺序与确认流程不符，重复说明较多。"
+}

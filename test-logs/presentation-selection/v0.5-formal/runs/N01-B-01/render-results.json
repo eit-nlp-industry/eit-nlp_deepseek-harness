@@ -1,0 +1,107 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_uv7he5YQp5hP0Tb4kHS44624",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"用简洁状态卡片呈现支付状态：标题“订单支付状态”，显示模拟订单号 pay-order-01、金额 128.00 元、支付状态“支付成功”（succeeded）、结算状态“结算待处理”（pending），并在卡片底部附一行说明：支付与结算是两个环节，结算待处理。不需要表单，不需要任何图片或其他富组件。\", \"business_data\": {\"title\": \"订单支付状态\", \"order_id\": \"pay-order-01\", \"simulated\": true, \"amount\": \"128.00 元\", \"payment_status\": \"支付成功（succeeded）\", \"settlement_status\": \"结算待处理（pending）\", \"note\": \"支付与结算是两个不同环节，本笔支付已成功，结算仍待处理。\", \"fallback_text\": \"模拟订单 pay-order-01：支付状态=支付成功（succeeded），金额 128.00 元；结算状态=结算待处理（pending）。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "订单支付状态",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "details",
+                "note"
+              ]
+            },
+            "details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "模拟订单号",
+                    "value": "pay-order-01"
+                  },
+                  {
+                    "label": "金额",
+                    "value": "128.00 元"
+                  },
+                  {
+                    "label": "支付状态",
+                    "value": "支付成功（succeeded）"
+                  },
+                  {
+                    "label": "结算状态",
+                    "value": "结算待处理（pending）"
+                  }
+                ]
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "variant": "muted",
+                "content": "支付与结算是两个环节，结算待处理。"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "订单支付状态",
+            "order_id": "pay-order-01",
+            "simulated": true,
+            "amount": "128.00 元",
+            "payment_status": "支付成功（succeeded）",
+            "settlement_status": "结算待处理（pending）",
+            "note": "支付与结算是两个不同环节，本笔支付已成功，结算仍待处理。",
+            "fallback_text": "模拟订单 pay-order-01：支付状态=支付成功（succeeded），金额 128.00 元；结算状态=结算待处理（pending）。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_uv7he5YQp5hP0Tb4kHS44624"
+      },
+      "toolCallId": "call_00_uv7he5YQp5hP0Tb4kHS44624",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "8e668d37-28f1-413b-a61d-9ca2333aad9a"
+    }
+  }
+]

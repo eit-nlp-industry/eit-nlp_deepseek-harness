@@ -1,0 +1,116 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C15-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_4ZiabHtamcUiUe4ZwkOA4377"
+      },
+      "toolCallId": "call_00_ET_4ZiabHtamcUiUe4ZwkOA4377",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"当前候选parcel-3726，订单尾号3726，初始待确认。当前视角远景img-far；近景和侧景尚未发布。不实际取送。\",\"assets\":[{\"id\":\"bench05-img-far\",\"file\":\"bench05-img-far.png\",\"alt\":\"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\",\"source_id\":\"img-far\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-far/content\",\"path\":\"/api/media/bench05-img-far/content\",\"sha256\":\"890c916a7d9a70f37079b6a60264e1ee04c0229d7ee469b9e2d12d26d530d9dd\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "8a9678a6-f55a-466b-a8eb-ac06430c7b5c"
+    }
+  },
+  {
+    "call": {
+      "seq": 43,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-B-02"
+      }
+    },
+    "result_seq": 44,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_WlNGTcRjlCLDTkjNf6R03614"
+      },
+      "toolCallId": "call_00_WlNGTcRjlCLDTkjNf6R03614",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"当前候选parcel-3726，订单尾号3726，初始待确认。当前视角远景img-far；近景和侧景尚未发布。不实际取送。\",\"assets\":[{\"id\":\"bench05-img-far\",\"file\":\"bench05-img-far.png\",\"alt\":\"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\",\"source_id\":\"img-far\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-far/content\",\"path\":\"/api/media/bench05-img-far/content\",\"sha256\":\"890c916a7d9a70f37079b6a60264e1ee04c0229d7ee469b9e2d12d26d530d9dd\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "577bb710-5eca-4201-94a3-6d9e2ea9fc77"
+    }
+  },
+  {
+    "call": {
+      "seq": 70,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-B-02"
+      }
+    },
+    "result_seq": 71,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_wewrmJwXUPYJZNlBvLLG4115"
+      },
+      "toolCallId": "call_00_wewrmJwXUPYJZNlBvLLG4115",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"同一候选parcel-3726近景，尾号3726。\",\"assets\":[{\"id\":\"bench05-img-near\",\"file\":\"bench05-img-near.png\",\"alt\":\"MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture\",\"source_id\":\"img-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-near/content\",\"path\":\"/api/media/bench05-img-near/content\",\"sha256\":\"e957159ba866a87b47ec27051ebdf0e09fd59517e08bd759cac42d7b1573f6a5\",\"width\":960,\"height\":540}],\"candidate_id\":\"parcel-3726\",\"view\":\"near\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "f333717c-f76f-48a6-ba0d-7bed5e1d8d79"
+    }
+  },
+  {
+    "call": {
+      "seq": 97,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C15-B-02",
+        "values": {
+          "candidate_id": "parcel-3726",
+          "order_tail": "3726",
+          "user_confirmation": "确认这是我的外卖",
+          "confirmed": true
+        }
+      }
+    },
+    "result_seq": 98,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_cSOuFtj0b50TfQj7TrGs6088"
+      },
+      "toolCallId": "call_00_ET_cSOuFtj0b50TfQj7TrGs6088",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "64ef5e1b-6781-4682-974e-98881e15a9b2"
+    }
+  }
+]

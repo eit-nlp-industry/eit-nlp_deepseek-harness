@@ -1,0 +1,6 @@
+{
+  "simulated": true,
+  "case_id": "C11",
+  "facts": "任务follow-01，目标person-guide，模拟状态following。暂停、继续的结果以随后模拟回放为准。",
+  "assets": []
+}

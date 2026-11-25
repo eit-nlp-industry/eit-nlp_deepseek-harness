@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "C14",
+  "facts": "当前图片img-left，14:00左侧视角；固定观察结论满座。其他视角尚未观察，不断言有座或已预订。",
+  "assets": [
+    {
+      "id": "bench05-img-left",
+      "file": "bench05-img-left.png",
+      "alt": "MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture",
+      "source_id": "img-left",
+      "url": "http://127.0.0.1:3080/api/media/bench05-img-left/content",
+      "path": "/api/media/bench05-img-left/content",
+      "sha256": "f2e502fd95b88dc90db907d1127b06e7e3654e9721bb9c5de8916d681423be46",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

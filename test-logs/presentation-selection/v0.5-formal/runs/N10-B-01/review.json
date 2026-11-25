@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 4,
+  "presentation": "partial",
+  "reason": "固定底图实际显示、MapPreview三点与缩放可用，但SVG没有path/line/polyline，两段路线仅在表格文字中，叠加路线的宣称不实；多处未注册组件和技术字段重复。追问未虚构实际送达，但开头没有与后文实际状态未知冲突。"
+}

@@ -1,0 +1,178 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "等待回答 会议室预约改期草稿":
+    - generic: 等待回答
+    - generic: 会议室预约改期草稿
+    - generic: 待回答
+  - treeitem "等待回答 会议室预约改期草稿测评" [selected]:
+    - generic: 等待回答
+    - generic: 会议室预约改期草稿测评
+    - generic: 待回答
+  - treeitem "进行中 饮水机维修照片呈现测评 刚刚":
+    - generic: 进行中
+    - generic: 饮水机维修照片呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 饮水机不出水照片评测 刚刚":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 刚刚
+  - treeitem "已完成 售后申请草稿填写与确认 1分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 1分钟
+  - treeitem "售后申请草稿填写测评 1分钟":
+    - generic: 售后申请草稿填写测评
+    - generic: 1分钟
+  - treeitem "已完成 商品退货多视角图片呈现 2分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 2分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 3分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 3分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 3分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 3分钟
+  - treeitem "包裹照片确认对象状态 4分钟":
+    - generic: 包裹照片确认对象状态
+    - generic: 4分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 6分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 6分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 8分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 8分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 8分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 8分钟
+  - treeitem "已完成 活动需求确认与汇总 8分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 8分钟
+  - button "展开其余 185 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 会议室预约改期草稿测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N08-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N08-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N08-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：把会议室R-01在2026年11月23日的预约草稿，从14点到15点改到16点到17点；如果约满，先列出真实替代时段让我选。 指定呈现方式：文字修改+冲突说明+原生时段选项，用户明确选后回执。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:48
+- button "复制":
+- paragraph: 我先调取这个案例的固定材料。
+- button "工具调用 benchmark_fixture · N08-A-01":
+  - generic: 工具调用
+  - generic: benchmark_fixture · N08-A-01
+- button "思考 Now read current state? The initialize returned facts. Maybe call read to get released facts.":
+  - generic: 思考
+  - generic: Now read current state? The initialize returned facts. Maybe call read to get released facts.
+- button "工具调用 benchmark_fixture · read":
+  - generic: 工具调用
+  - generic: benchmark_fixture · read
+- 'button "思考 Now submit the user-requested values: room R-01, date 2026-11-23, slot 16:00–17:00, people 6."':
+  - generic: 思考
+  - generic: "Now submit the user-requested values: room R-01, date 2026-11-23, slot 16:00–17:00, people 6."
+- button "工具调用 benchmark_fixture · submit":
+  - generic: 工具调用
+  - generic: benchmark_fixture · submit
+- 'button "思考 16:00–17:00 is full (conflict). Real available alternatives: 17:00–18:00 and 18:00–19:00."':
+  - generic: 思考
+  - generic: "16:00–17:00 is full (conflict). Real available alternatives: 17:00–18:00 and 18:00–19:00."
+- paragraph: 会议室 R-01 在 2026-11-23 的预约草稿未能改成 16:00–17:00。
+- list:
+  - listitem: 原草稿：R-01，2026-11-23，14:00–15:00，6 人
+  - listitem: 目标：2026-11-23，16:00–17:00
+  - text: 结果：
+  - strong: 该时段已约满，冲突，未生效
+  - listitem: 当前草稿仍保持在原有状态 14:00–15:00，这只是一项草稿改动，未进行实际预约
+- paragraph: 该日 R-01 实际可选的替代时段只有以下两个：
+- text: 等待你的操作 · 2026-11-23 的 16:00–17:00 已约满，R-01 当天可选的替代时段如下，请选择要用于草稿的时段：
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "2026-11-23 的 16:00–17:00 已约满，R-01 当天可选的替代时段如下，请选择要用于草稿的时段：":
+  - generic: 选择替代时段
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "2026-11-23 的 16:00–17:00 已约满，R-01 当天可选的替代时段如下，请选择要用于草稿的时段：" [level=2]
+  - radiogroup:
+    - radio "17:00–18:00":
+      - generic: "1"
+      - generic: 17:00–18:00
+      - generic: 当天实际可选时段，确定后按此改写草稿。
+    - radio "18:00–19:00":
+      - generic: "2"
+      - generic: 18:00–19:00
+      - generic: 当天实际可选时段，确定后按此改写草稿。
+    - radio "保留原草稿 14:00–15:00 不改":
+      - generic: "3"
+      - generic: 保留原草稿 14:00–15:00 不改
+      - generic: 不做改动，草稿维持 14:00–15:00。
+    - textbox "输入你的答案"
+  - button "上一题" [disabled]:
+  - generic: 1 / 1
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交" [disabled]

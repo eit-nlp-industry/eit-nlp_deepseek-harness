@@ -1,0 +1,679 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_TvZmSEcdRqXs8UkzzJXv5321",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"出差笔记本选购对照：先展示一张比较表格（列：机型、价格、重量、标称续航、价格≤6000是否满足、重量<1.5kg是否满足、是否进入候选），四行分别列出四款机型；表格下方用比较卡片突出推荐机型与被排除机型的简短理由；最后给出推荐结论卡片。数据全部来自business_data，不要编造参数。\", \"business_data\": {\"标题\": \"6000元以内、轻于1.5kg的出差笔记本对照\", \"筛选规则\": \"第一关：价格≤6000元；第二关：重量<1.5kg；两关都通过后再优先比较续航\", \"比较表\": [{\"机型\": \"model-a\", \"价格\": \"5899元\", \"重量\": \"1.30kg\", \"标称续航\": \"10小时\", \"价格关\": \"通过\", \"重量关\": \"通过\", \"是否候选\": \"是\"}, {\"机型\": \"model-b\", \"价格\": \"5599元\", \"重量\": \"1.70kg\", \"标称续航\": \"14小时\", \"价格关\": \"通过\", \"重量关\": \"不通过\", \"是否候选\": \"否\"}, {\"机型\": \"model-c\", \"价格\": \"6399元\", \"重量\": \"1.20kg\", \"标称续航\": \"12小时\", \"价格关\": \"不通过\", \"重量关\": \"通过\", \"是否候选\": \"否\"}, {\"机型\": \"model-d\", \"价格\": \"5999元\", \"重量\": \"1.49kg\", \"标称续航\": \"8小时\", \"价格关\": \"通过\", \"重量关\": \"通过\", \"是否候选\": \"是\"}], \"推荐结论\": {\"机型\": \"model-a\", \"价格\": \"5899元\", \"重量\": \"1.30kg\", \"标称续航\": \"10小时\", \"理由\": \"价格与重量两关均满足，且在合格机型中标称续航最长（10小时对8小时），更符合出差场景。\"}, \"未选理由\": [{\"机型\": \"model-b\", \"理由\": \"1.70kg 超过1.5kg重量上限，续航虽标称14小时但先被重量关排除。\"}, {\"机型\": \"model-c\", \"理由\": \"6399元超出6000元预算，重量与续航都不错但先被价格关排除。\"}, {\"机型\": \"model-d\", \"理由\": \"价格与重量都达标，但标称续航8小时在合格机型中最短。\"}], \"免责说明\": \"以上为虚构机型固定材料，非实际购买建议；续航为厂商标称值，实际使用会有差异。\", \"文字兜底\": \"model-a：5899元/1.30kg/10小时；model-b：5599元/1.70kg/14小时；model-c：6399元/1.20kg/12小时；model-d：5999元/1.49kg/8小时。合格者为model-a与model-d，model-a续航更长，故推荐model-a。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "header",
+                "rules-section",
+                "table-section",
+                "cards-section",
+                "conclusion-section",
+                "notes-section",
+                "fallback-section"
+              ]
+            },
+            "header": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "main-title",
+                "source-badge"
+              ]
+            },
+            "main-title": {
+              "type": "Heading",
+              "props": {
+                "text": "6000元以内、轻于1.5kg的出差笔记本对照",
+                "level": "h1"
+              }
+            },
+            "source-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "数据来源：business_data",
+                "variant": "info"
+              }
+            },
+            "rules-section": {
+              "type": "Section",
+              "props": {
+                "title": "筛选规则与步骤",
+                "bordered": true
+              },
+              "children": [
+                "rules-text",
+                "rules-steps"
+              ]
+            },
+            "rules-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/筛选规则"
+                },
+                "variant": "default"
+              }
+            },
+            "rules-steps": {
+              "type": "Steps",
+              "props": {
+                "current": 3,
+                "direction": "horizontal",
+                "items": [
+                  {
+                    "title": "第一关：价格≤6000元",
+                    "description": "价格关通过才进入下一关",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "第二关：重量<1.5kg",
+                    "description": "重量关通过才进入候选",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "续航比较",
+                    "description": "两关都通过后再优先比较续航",
+                    "status": "finish"
+                  }
+                ]
+              }
+            },
+            "table-section": {
+              "type": "Section",
+              "props": {
+                "title": "比较表",
+                "bordered": true
+              },
+              "children": [
+                "compare-table"
+              ]
+            },
+            "compare-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "机型",
+                  "价格",
+                  "重量",
+                  "标称续航",
+                  "价格≤6000是否满足",
+                  "重量<1.5kg是否满足",
+                  "是否进入候选"
+                ],
+                "rows": [
+                  [
+                    "model-a",
+                    "5899元",
+                    "1.30kg",
+                    "10小时",
+                    "通过",
+                    "通过",
+                    "是"
+                  ],
+                  [
+                    "model-b",
+                    "5599元",
+                    "1.70kg",
+                    "14小时",
+                    "通过",
+                    "不通过",
+                    "否"
+                  ],
+                  [
+                    "model-c",
+                    "6399元",
+                    "1.20kg",
+                    "12小时",
+                    "不通过",
+                    "通过",
+                    "否"
+                  ],
+                  [
+                    "model-d",
+                    "5999元",
+                    "1.49kg",
+                    "8小时",
+                    "通过",
+                    "通过",
+                    "是"
+                  ]
+                ]
+              }
+            },
+            "cards-section": {
+              "type": "Section",
+              "props": {
+                "title": "推荐与排除对照",
+                "description": "比较卡片突出推荐机型与被排除机型的简短理由。",
+                "bordered": true
+              },
+              "children": [
+                "cards-grid"
+              ]
+            },
+            "cards-grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "card-a",
+                "card-b",
+                "card-c",
+                "card-d"
+              ]
+            },
+            "card-a": {
+              "type": "Card",
+              "props": {
+                "title": "model-a（推荐候选）",
+                "variant": "filled"
+              },
+              "children": [
+                "a-stack"
+              ]
+            },
+            "a-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "a-badge",
+                "a-desc",
+                "a-reason"
+              ]
+            },
+            "a-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "进入候选",
+                "variant": "success"
+              }
+            },
+            "a-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "5899元"
+                  },
+                  {
+                    "label": "重量",
+                    "value": "1.30kg"
+                  },
+                  {
+                    "label": "标称续航",
+                    "value": "10小时"
+                  },
+                  {
+                    "label": "价格关",
+                    "value": "通过"
+                  },
+                  {
+                    "label": "重量关",
+                    "value": "通过"
+                  },
+                  {
+                    "label": "是否候选",
+                    "value": "是"
+                  }
+                ]
+              }
+            },
+            "a-reason": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/推荐结论/理由"
+                },
+                "variant": "success"
+              }
+            },
+            "card-b": {
+              "type": "Card",
+              "props": {
+                "title": "model-b（排除）",
+                "variant": "outlined"
+              },
+              "children": [
+                "b-stack"
+              ]
+            },
+            "b-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "b-badge",
+                "b-desc",
+                "b-reason"
+              ]
+            },
+            "b-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "未进入候选",
+                "variant": "danger"
+              }
+            },
+            "b-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "5599元"
+                  },
+                  {
+                    "label": "重量",
+                    "value": "1.70kg"
+                  },
+                  {
+                    "label": "标称续航",
+                    "value": "14小时"
+                  },
+                  {
+                    "label": "价格关",
+                    "value": "通过"
+                  },
+                  {
+                    "label": "重量关",
+                    "value": "不通过"
+                  },
+                  {
+                    "label": "是否候选",
+                    "value": "否"
+                  }
+                ]
+              }
+            },
+            "b-reason": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/未选理由/0/理由"
+                },
+                "variant": "default"
+              }
+            },
+            "card-c": {
+              "type": "Card",
+              "props": {
+                "title": "model-c（排除）",
+                "variant": "outlined"
+              },
+              "children": [
+                "c-stack"
+              ]
+            },
+            "c-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "c-badge",
+                "c-desc",
+                "c-reason"
+              ]
+            },
+            "c-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "未进入候选",
+                "variant": "danger"
+              }
+            },
+            "c-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "6399元"
+                  },
+                  {
+                    "label": "重量",
+                    "value": "1.20kg"
+                  },
+                  {
+                    "label": "标称续航",
+                    "value": "12小时"
+                  },
+                  {
+                    "label": "价格关",
+                    "value": "不通过"
+                  },
+                  {
+                    "label": "重量关",
+                    "value": "通过"
+                  },
+                  {
+                    "label": "是否候选",
+                    "value": "否"
+                  }
+                ]
+              }
+            },
+            "c-reason": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/未选理由/1/理由"
+                },
+                "variant": "default"
+              }
+            },
+            "card-d": {
+              "type": "Card",
+              "props": {
+                "title": "model-d（排除）",
+                "variant": "outlined"
+              },
+              "children": [
+                "d-stack"
+              ]
+            },
+            "d-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "d-badge",
+                "d-desc",
+                "d-reason"
+              ]
+            },
+            "d-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "未进入候选",
+                "variant": "danger"
+              }
+            },
+            "d-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "5999元"
+                  },
+                  {
+                    "label": "重量",
+                    "value": "1.49kg"
+                  },
+                  {
+                    "label": "标称续航",
+                    "value": "8小时"
+                  },
+                  {
+                    "label": "价格关",
+                    "value": "通过"
+                  },
+                  {
+                    "label": "重量关",
+                    "value": "通过"
+                  },
+                  {
+                    "label": "是否候选",
+                    "value": "否"
+                  }
+                ]
+              }
+            },
+            "d-reason": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/未选理由/2/理由"
+                },
+                "variant": "default"
+              }
+            },
+            "conclusion-section": {
+              "type": "Section",
+              "props": {
+                "title": "推荐结论",
+                "bordered": true
+              },
+              "children": [
+                "conclusion-card"
+              ]
+            },
+            "conclusion-card": {
+              "type": "Card",
+              "props": {
+                "title": "推荐机型：model-a",
+                "variant": "filled"
+              },
+              "children": [
+                "conclusion-stack"
+              ]
+            },
+            "conclusion-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "conclusion-badge",
+                "conclusion-desc",
+                "conclusion-reason"
+              ]
+            },
+            "conclusion-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "推荐",
+                "variant": "success"
+              }
+            },
+            "conclusion-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 3,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "5899元"
+                  },
+                  {
+                    "label": "重量",
+                    "value": "1.30kg"
+                  },
+                  {
+                    "label": "标称续航",
+                    "value": "10小时"
+                  }
+                ]
+              }
+            },
+            "conclusion-reason": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/推荐结论/理由"
+                },
+                "variant": "success"
+              }
+            },
+            "notes-section": {
+              "type": "Section",
+              "props": {
+                "title": "免责说明",
+                "bordered": false
+              },
+              "children": [
+                "disclaimer"
+              ]
+            },
+            "disclaimer": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "免责说明",
+                "description": "以上为虚构机型固定材料，非实际购买建议；续航为厂商标称值，实际使用会有差异。",
+                "showIcon": true
+              }
+            },
+            "fallback-section": {
+              "type": "Section",
+              "props": {
+                "title": "文字兜底",
+                "description": "原始兜底文本，便于无表格场景阅读。",
+                "bordered": false
+              },
+              "children": [
+                "fallback-text"
+              ]
+            },
+            "fallback-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/文字兜底"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "6000元以内、轻于1.5kg的出差笔记本对照",
+            "筛选规则": "第一关：价格≤6000元；第二关：重量<1.5kg；两关都通过后再优先比较续航",
+            "比较表": [
+              {
+                "机型": "model-a",
+                "价格": "5899元",
+                "重量": "1.30kg",
+                "标称续航": "10小时",
+                "价格关": "通过",
+                "重量关": "通过",
+                "是否候选": "是"
+              },
+              {
+                "机型": "model-b",
+                "价格": "5599元",
+                "重量": "1.70kg",
+                "标称续航": "14小时",
+                "价格关": "通过",
+                "重量关": "不通过",
+                "是否候选": "否"
+              },
+              {
+                "机型": "model-c",
+                "价格": "6399元",
+                "重量": "1.20kg",
+                "标称续航": "12小时",
+                "价格关": "不通过",
+                "重量关": "通过",
+                "是否候选": "否"
+              },
+              {
+                "机型": "model-d",
+                "价格": "5999元",
+                "重量": "1.49kg",
+                "标称续航": "8小时",
+                "价格关": "通过",
+                "重量关": "通过",
+                "是否候选": "是"
+              }
+            ],
+            "推荐结论": {
+              "机型": "model-a",
+              "价格": "5899元",
+              "重量": "1.30kg",
+              "标称续航": "10小时",
+              "理由": "价格与重量两关均满足，且在合格机型中标称续航最长（10小时对8小时），更符合出差场景。"
+            },
+            "未选理由": [
+              {
+                "机型": "model-b",
+                "理由": "1.70kg 超过1.5kg重量上限，续航虽标称14小时但先被重量关排除。"
+              },
+              {
+                "机型": "model-c",
+                "理由": "6399元超出6000元预算，重量与续航都不错但先被价格关排除。"
+              },
+              {
+                "机型": "model-d",
+                "理由": "价格与重量都达标，但标称续航8小时在合格机型中最短。"
+              }
+            ],
+            "免责说明": "以上为虚构机型固定材料，非实际购买建议；续航为厂商标称值，实际使用会有差异。",
+            "文字兜底": "model-a：5899元/1.30kg/10小时；model-b：5599元/1.70kg/14小时；model-c：6399元/1.20kg/12小时；model-d：5999元/1.49kg/8小时。合格者为model-a与model-d，model-a续航更长，故推荐model-a。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_TvZmSEcdRqXs8UkzzJXv5321"
+      },
+      "toolCallId": "call_00_TvZmSEcdRqXs8UkzzJXv5321",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "3b3a91f2-a97e-46f9-a7a8-dde71b70afc3"
+    }
+  }
+]

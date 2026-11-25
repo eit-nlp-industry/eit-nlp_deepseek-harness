@@ -1,0 +1,554 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_cWSvDewY4iOUCULuvQ3H4417",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"user_query\": \"渲染报销流程的可编辑工作流界面（不是静态图片）。根节点用 Stack，内部放两个并列兄弟节点：第一个是 Workflow 编辑器，属性 mode=\\\"edit\\\"、state 绑定用 $bindState 指向 /_ui/workflow，初始值就是业务数据里的完整 workflow-v1 文档（包含节点与连线，含“材料不齐退回补充”分支）；第二个是独立的保存 Button，文案“保存草稿”。保存按钮点击后发出事件 workflow.save，payload.workflow 用 $state 读取 /_ui/workflow 的最新文档，parameters 传对象（例如 {draftOnly:true}）。不要用 $ref，不要用静态步骤列表或组件嵌套来伪装编辑器。页面顶部显示标题与材料说明，并在底部说明：仅保存草稿，不执行真实审批或付款；补充期限未指定，请自行决定是否填写。\", \"business_data\": {\"title\": \"报销流程（可编辑草稿）\", \"subtitle\": \"基于虚构材料 expense-flow-v1 整理\", \"facts_note\": \"原始流程：填写申请 → 检查材料 → 财务审核 → 通知结果；材料齐全才审核；材料不齐需通知补充，补齐后回到检查；补充期限未指定。\", \"if_branch_added\": \"新增分支：检查材料 → 通知补充（材料不齐）→ 补齐后返回 检查材料（循环）\", \"scope_note\": \"仅编辑并保存草稿，不执行真实审批或付款。\", \"save\": {\"label\": \"保存草稿\", \"event\": \"workflow.save\", \"payload\": {\"workflow\": \"$state:/_ui/workflow\", \"parameters\": {\"draftOnly\": true}}, \"after_save\": \"草稿保存后仍不触发任何审批或付款动作。\"}, \"workflow\": {\"version\": \"workflow-v1\", \"id\": \"expense-flow-v1\", \"name\": \"报销流程\", \"description\": \"填写申请→检查材料→财务审核→通知结果；材料不齐退回补充后重新检查。\", \"status\": \"draft\", \"nodes\": [{\"id\": \"n1\", \"type\": \"start\", \"label\": \"填写申请\", \"description\": \"申请人填写报销申请\"}, {\"id\": \"n2\", \"type\": \"task\", \"label\": \"检查材料\", \"description\": \"核对材料是否齐全\"}, {\"id\": \"n3\", \"type\": \"task\", \"label\": \"财务审核\", \"description\": \"材料齐全才进入财务审核\"}, {\"id\": \"n4\", \"type\": \"end\", \"label\": \"通知结果\", \"description\": \"通知申请人审核结果\"}, {\"id\": \"n5\", \"type\": \"task\", \"label\": \"通知补充\", \"description\": \"材料不齐，退回并通知申请人补充材料\"}], \"edges\": [{\"id\": \"e1\", \"from\": \"n1\", \"to\": \"n2\", \"label\": \"提交\"}, {\"id\": \"e2\", \"from\": \"n2\", \"to\": \"n3\", \"label\": \"材料齐全\"}, {\"id\": \"e3\", \"from\": \"n2\", \"to\": \"n5\", \"label\": \"材料不齐\"}, {\"id\": \"e4\", \"from\": \"n5\", \"to\": \"n2\", \"label\": \"补齐后返回检查\"}, {\"id\": \"e5\", \"from\": \"n3\", \"to\": \"n4\", \"label\": \"审核完成\"}], \"open_items\": [\"补充期限未指定，由你决定是否在通知补充节点中补充时限\"]}}, \"components\": [\"SortableSequence\", \"Collapsible\"]}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "page-subtitle",
+                "materials-note",
+                "workflow-editor",
+                "workflow-meta-section",
+                "node-order-section",
+                "nodes-section",
+                "edges-section",
+                "save-def-section",
+                "supplement-collapsible",
+                "scope-footer"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "报销流程（可编辑草稿）",
+                "level": "h1"
+              }
+            },
+            "page-subtitle": {
+              "type": "Text",
+              "props": {
+                "content": "基于虚构材料 expense-flow-v1 整理",
+                "variant": "muted"
+              }
+            },
+            "materials-note": {
+              "type": "Text",
+              "props": {
+                "content": "原始流程：填写申请 → 检查材料 → 财务审核 → 通知结果；材料齐全才审核；材料不齐需通知补充，补齐后回到检查；补充期限未指定。",
+                "variant": "default"
+              }
+            },
+            "workflow-editor": {
+              "type": "Workflow",
+              "props": {
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                },
+                "mode": "edit",
+                "disabled": false
+              }
+            },
+            "workflow-meta-section": {
+              "type": "Section",
+              "props": {
+                "title": "工作流元信息（逐项）",
+                "description": "出处：business_data.workflow 的 version、id、name、description、status",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "workflow-meta-descriptions"
+              ]
+            },
+            "workflow-meta-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "version",
+                    "value": "workflow-v1"
+                  },
+                  {
+                    "label": "id",
+                    "value": "expense-flow-v1"
+                  },
+                  {
+                    "label": "name",
+                    "value": "报销流程"
+                  },
+                  {
+                    "label": "description",
+                    "value": "填写申请→检查材料→财务审核→通知结果；材料不齐退回补充后重新检查。"
+                  },
+                  {
+                    "label": "status",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.workflow"
+                  }
+                ]
+              }
+            },
+            "node-order-section": {
+              "type": "Section",
+              "props": {
+                "title": "节点清单（可拖动，仅调整展示顺序）",
+                "description": "出处：business_data.workflow.nodes；拖动只改变本清单的展示顺序，不修改 Workflow 编辑器中的流程文档。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "node-order-sequence"
+              ]
+            },
+            "node-order-sequence": {
+              "type": "SortableSequence",
+              "props": {
+                "items": [
+                  {
+                    "id": "n1",
+                    "title": "填写申请",
+                    "description": "申请人填写报销申请"
+                  },
+                  {
+                    "id": "n2",
+                    "title": "检查材料",
+                    "description": "核对材料是否齐全"
+                  },
+                  {
+                    "id": "n3",
+                    "title": "财务审核",
+                    "description": "材料齐全才进入财务审核"
+                  },
+                  {
+                    "id": "n4",
+                    "title": "通知结果",
+                    "description": "通知申请人审核结果"
+                  },
+                  {
+                    "id": "n5",
+                    "title": "通知补充",
+                    "description": "材料不齐，退回并通知申请人补充材料"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/nodeOrder"
+                },
+                "disabled": false,
+                "showHandle": true
+              }
+            },
+            "nodes-section": {
+              "type": "Section",
+              "props": {
+                "title": "流程节点（逐项）",
+                "description": "出处：business_data.workflow.nodes",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "nodes-table"
+              ]
+            },
+            "nodes-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "节点ID",
+                  "类型",
+                  "名称",
+                  "说明",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "n1",
+                    "start",
+                    "填写申请",
+                    "申请人填写报销申请",
+                    "business_data.workflow.nodes"
+                  ],
+                  [
+                    "n2",
+                    "task",
+                    "检查材料",
+                    "核对材料是否齐全",
+                    "business_data.workflow.nodes"
+                  ],
+                  [
+                    "n3",
+                    "task",
+                    "财务审核",
+                    "材料齐全才进入财务审核",
+                    "business_data.workflow.nodes"
+                  ],
+                  [
+                    "n4",
+                    "end",
+                    "通知结果",
+                    "通知申请人审核结果",
+                    "business_data.workflow.nodes"
+                  ],
+                  [
+                    "n5",
+                    "task",
+                    "通知补充",
+                    "材料不齐，退回并通知申请人补充材料",
+                    "business_data.workflow.nodes"
+                  ]
+                ]
+              }
+            },
+            "edges-section": {
+              "type": "Section",
+              "props": {
+                "title": "流程连线（逐项）",
+                "description": "出处：business_data.workflow.edges",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "edges-table"
+              ]
+            },
+            "edges-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "连线ID",
+                  "起点",
+                  "终点",
+                  "标签",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "e1",
+                    "n1",
+                    "n2",
+                    "提交",
+                    "business_data.workflow.edges"
+                  ],
+                  [
+                    "e2",
+                    "n2",
+                    "n3",
+                    "材料齐全",
+                    "business_data.workflow.edges"
+                  ],
+                  [
+                    "e3",
+                    "n2",
+                    "n5",
+                    "材料不齐",
+                    "business_data.workflow.edges"
+                  ],
+                  [
+                    "e4",
+                    "n5",
+                    "n2",
+                    "补齐后返回检查",
+                    "business_data.workflow.edges"
+                  ],
+                  [
+                    "e5",
+                    "n3",
+                    "n4",
+                    "审核完成",
+                    "business_data.workflow.edges"
+                  ]
+                ]
+              }
+            },
+            "save-def-section": {
+              "type": "Section",
+              "props": {
+                "title": "保存动作与范围（逐项）",
+                "description": "出处：business_data.save、business_data.scope_note",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "save-def-descriptions"
+              ]
+            },
+            "save-def-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "按钮文案",
+                    "value": "保存草稿"
+                  },
+                  {
+                    "label": "事件",
+                    "value": "workflow.save"
+                  },
+                  {
+                    "label": "payload.workflow",
+                    "value": "$state:/_ui/workflow"
+                  },
+                  {
+                    "label": "payload.parameters.draftOnly",
+                    "value": true
+                  },
+                  {
+                    "label": "保存后",
+                    "value": "草稿保存后仍不触发任何审批或付款动作。"
+                  },
+                  {
+                    "label": "范围说明",
+                    "value": "仅编辑并保存草稿，不执行真实审批或付款。"
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.save / business_data.scope_note"
+                  }
+                ]
+              }
+            },
+            "supplement-collapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "补充说明与开放项（可选）",
+                "summary": "补充期限未指定；仅保存草稿",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "supplement-open-item",
+                "supplement-branch-note",
+                "supplement-save-note"
+              ]
+            },
+            "supplement-open-item": {
+              "type": "Text",
+              "props": {
+                "content": "补充期限未指定，由你决定是否在通知补充节点中补充时限。出处：business_data.workflow.open_items。",
+                "variant": "warning"
+              }
+            },
+            "supplement-branch-note": {
+              "type": "Text",
+              "props": {
+                "content": "新增分支：检查材料 → 通知补充（材料不齐）→ 补齐后返回 检查材料（循环）。出处：business_data.if_branch_added。",
+                "variant": "default"
+              }
+            },
+            "supplement-save-note": {
+              "type": "Text",
+              "props": {
+                "content": "草稿保存后仍不触发任何审批或付款动作。出处：business_data.save.after_save。",
+                "variant": "muted"
+              }
+            },
+            "scope-footer": {
+              "type": "Text",
+              "props": {
+                "content": "仅保存草稿，不执行真实审批或付款；补充期限未指定，请自行决定是否填写。",
+                "variant": "warning"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "报销流程（可编辑草稿）",
+            "subtitle": "基于虚构材料 expense-flow-v1 整理",
+            "facts_note": "原始流程：填写申请 → 检查材料 → 财务审核 → 通知结果；材料齐全才审核；材料不齐需通知补充，补齐后回到检查；补充期限未指定。",
+            "if_branch_added": "新增分支：检查材料 → 通知补充（材料不齐）→ 补齐后返回 检查材料（循环）",
+            "scope_note": "仅编辑并保存草稿，不执行真实审批或付款。",
+            "save": {
+              "label": "保存草稿",
+              "event": "workflow.save",
+              "payload": {
+                "workflow": "$state:/_ui/workflow",
+                "parameters": {
+                  "draftOnly": true
+                }
+              },
+              "after_save": "草稿保存后仍不触发任何审批或付款动作。"
+            },
+            "workflow": {
+              "version": "workflow-v1",
+              "id": "expense-flow-v1",
+              "name": "报销流程",
+              "description": "填写申请→检查材料→财务审核→通知结果；材料不齐退回补充后重新检查。",
+              "status": "draft",
+              "nodes": [
+                {
+                  "id": "n1",
+                  "type": "start",
+                  "label": "填写申请",
+                  "description": "申请人填写报销申请"
+                },
+                {
+                  "id": "n2",
+                  "type": "task",
+                  "label": "检查材料",
+                  "description": "核对材料是否齐全"
+                },
+                {
+                  "id": "n3",
+                  "type": "task",
+                  "label": "财务审核",
+                  "description": "材料齐全才进入财务审核"
+                },
+                {
+                  "id": "n4",
+                  "type": "end",
+                  "label": "通知结果",
+                  "description": "通知申请人审核结果"
+                },
+                {
+                  "id": "n5",
+                  "type": "task",
+                  "label": "通知补充",
+                  "description": "材料不齐，退回并通知申请人补充材料"
+                }
+              ],
+              "edges": [
+                {
+                  "id": "e1",
+                  "from": "n1",
+                  "to": "n2",
+                  "label": "提交"
+                },
+                {
+                  "id": "e2",
+                  "from": "n2",
+                  "to": "n3",
+                  "label": "材料齐全"
+                },
+                {
+                  "id": "e3",
+                  "from": "n2",
+                  "to": "n5",
+                  "label": "材料不齐"
+                },
+                {
+                  "id": "e4",
+                  "from": "n5",
+                  "to": "n2",
+                  "label": "补齐后返回检查"
+                },
+                {
+                  "id": "e5",
+                  "from": "n3",
+                  "to": "n4",
+                  "label": "审核完成"
+                }
+              ],
+              "open_items": [
+                "补充期限未指定，由你决定是否在通知补充节点中补充时限"
+              ]
+            },
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "expense-flow-v1",
+                "title": "报销流程",
+                "steps": [
+                  {
+                    "id": "s1",
+                    "type": "step",
+                    "title": "填写申请",
+                    "description": "申请人填写报销申请"
+                  },
+                  {
+                    "id": "cond1",
+                    "type": "condition",
+                    "title": "检查材料",
+                    "description": "核对材料是否齐全",
+                    "branches": [
+                      {
+                        "id": "br1",
+                        "label": "材料齐全",
+                        "steps": [
+                          {
+                            "id": "s2",
+                            "type": "step",
+                            "title": "财务审核",
+                            "description": "材料齐全才进入财务审核"
+                          },
+                          {
+                            "id": "s3",
+                            "type": "step",
+                            "title": "通知结果",
+                            "description": "通知申请人审核结果"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "br2",
+                        "label": "材料不齐",
+                        "steps": [
+                          {
+                            "id": "s4",
+                            "type": "step",
+                            "title": "通知补充",
+                            "description": "材料不齐，退回并通知申请人补充材料；补齐后返回 检查材料（循环）"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "nodeOrder": [
+                "n1",
+                "n2",
+                "n3",
+                "n4",
+                "n5"
+              ]
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_cWSvDewY4iOUCULuvQ3H4417"
+      },
+      "toolCallId": "call_00_cWSvDewY4iOUCULuvQ3H4417",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "01e07b51-eabb-46ea-8300-fecd3fba0857"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "N10",
+  "facts": "合成平面图courier=(0,0)、pickup=(2,0)、destination=(2,3)；两段courier→pickup→destination，单位示意格。MapPreview归一坐标courier=(10,80),pickup=(35,80),destination=(35,20)，非真实地理/实时定位；不配送。",
+  "assets": [
+    {
+      "id": "bench05-warehouse-map",
+      "file": "bench05-warehouse-map.png",
+      "alt": "MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture",
+      "source_id": "warehouse-map",
+      "url": "http://127.0.0.1:3080/api/media/bench05-warehouse-map/content",
+      "path": "/api/media/bench05-warehouse-map/content",
+      "sha256": "09fcc2c2e40ac4a73a86e3cde10f1c32098fb9c865883976dbb68192529db49f",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

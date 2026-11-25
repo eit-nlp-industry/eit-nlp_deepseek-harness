@@ -1,0 +1,235 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_QnhpTd9Ui8gMZhPOXaHB6744",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_pick_one\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"components\": [\"Image\"], \"business_data\": {\"title\": \"请确认待寄包裹\", \"order_tail\": \"8241\", \"candidate_id\": \"parcel-8241\", \"current_status\": \"待确认（pending_confirmation）\", \"image\": \"/api/media/bench05-img-parcel-8241/content\", \"alt\": \"MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture\", \"image_caption\": \"包裹实拍（唯一候选 parcel-8241，订单尾号 8241）\", \"prompt\": \"这是订单尾号 8241 的待寄包裹吗？\", \"options\": [\"是，就是这一件\", \"不是这一件\"], \"note\": \"确认后仅记录该包裹的对象状态，不会寄件。\", \"text_fallback\": \"图像未能显示时的文字说明：唯一候选包裹 parcel-8241，订单尾号 8241，当前状态为待确认。请确认是否为此件；确认后仅记录状态，不执行寄件。\", \"all_rich_components_needed\": [\"Image\"]}, \"user_query\": \"用 Image 组件完整显示这张包裹照片（不裁剪、保持宽高比，图片源使用给定的同源路径字符串），图片下方放一行标题「请确认待寄包裹」、订单尾号 8241、候选包裹 parcel-8241 与当前状态「待确认」，再放一句简短确认提示「这是订单尾号 8241 的待寄包裹吗？」并提供两个单选项「是，就是这一件」「不是这一件」；底部一行小字说明「确认后仅记录该包裹的对象状态，不会寄件。」并在图片区域外保留一行文字兜底描述。只使用 Image 这一种 rich 组件，其余信息用基础文字呈现。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "image",
+                "title",
+                "orderLine",
+                "candidateLine",
+                "statusLine",
+                "promptText",
+                "choice",
+                "note",
+                "fallback"
+              ]
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-parcel-8241/content",
+                "alt": "MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture",
+                "caption": "包裹实拍（唯一候选 parcel-8241，订单尾号 8241）",
+                "fit": "contain",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "请确认待寄包裹",
+                "level": "h2"
+              }
+            },
+            "orderLine": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "orderLabel",
+                "orderValue"
+              ]
+            },
+            "orderLabel": {
+              "type": "Text",
+              "props": {
+                "content": "订单尾号",
+                "variant": "muted"
+              }
+            },
+            "orderValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/order_tail"
+                },
+                "variant": "default"
+              }
+            },
+            "candidateLine": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "candidateLabel",
+                "candidateValue"
+              ]
+            },
+            "candidateLabel": {
+              "type": "Text",
+              "props": {
+                "content": "候选包裹",
+                "variant": "muted"
+              }
+            },
+            "candidateValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/candidate_id"
+                },
+                "variant": "default"
+              }
+            },
+            "statusLine": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "statusLabel",
+                "statusValue"
+              ]
+            },
+            "statusLabel": {
+              "type": "Text",
+              "props": {
+                "content": "当前状态",
+                "variant": "muted"
+              }
+            },
+            "statusValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/current_status"
+                },
+                "variant": "warning"
+              }
+            },
+            "promptText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/prompt"
+                },
+                "variant": "default"
+              }
+            },
+            "choice": {
+              "type": "ChoiceGroup",
+              "props": {
+                "options": [
+                  {
+                    "value": "是，就是这一件",
+                    "label": "是，就是这一件"
+                  },
+                  {
+                    "value": "不是这一件",
+                    "label": "不是这一件"
+                  }
+                ],
+                "multiple": false,
+                "disabled": false,
+                "direction": "vertical",
+                "value": {
+                  "$bindState": "/_ui/choice"
+                }
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            },
+            "fallback": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/text_fallback"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "请确认待寄包裹",
+            "order_tail": "8241",
+            "candidate_id": "parcel-8241",
+            "current_status": "待确认（pending_confirmation）",
+            "image": "/api/media/bench05-img-parcel-8241/content",
+            "alt": "MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture",
+            "image_caption": "包裹实拍（唯一候选 parcel-8241，订单尾号 8241）",
+            "prompt": "这是订单尾号 8241 的待寄包裹吗？",
+            "options": [
+              "是，就是这一件",
+              "不是这一件"
+            ],
+            "note": "确认后仅记录该包裹的对象状态，不会寄件。",
+            "text_fallback": "图像未能显示时的文字说明：唯一候选包裹 parcel-8241，订单尾号 8241，当前状态为待确认。请确认是否为此件；确认后仅记录状态，不执行寄件。",
+            "all_rich_components_needed": [
+              "Image"
+            ],
+            "_ui": {
+              "choice": ""
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_QnhpTd9Ui8gMZhPOXaHB6744"
+      },
+      "toolCallId": "call_00_QnhpTd9Ui8gMZhPOXaHB6744",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "3b8baf70-ab34-4ace-afc1-dcb57be161af"
+    }
+  }
+]

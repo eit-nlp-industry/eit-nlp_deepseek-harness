@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "交接完成严格等模拟事件，最终状态和Image正确；确认前无文件图，确认后旧卡仍要求确认，之后才恢复；多个重复卡及原始字段路径外露，曾有未注册组件。"
+}

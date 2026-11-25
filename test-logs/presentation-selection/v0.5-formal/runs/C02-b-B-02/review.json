@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 3,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "文字兜底完整；卡片正文组件未注册，仅剩标题和简短结论。"
+}

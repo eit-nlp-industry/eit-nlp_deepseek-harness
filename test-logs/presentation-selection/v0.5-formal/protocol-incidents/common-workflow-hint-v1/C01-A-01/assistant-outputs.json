@@ -1,0 +1,12 @@
+[
+  {
+    "seq": 18,
+    "turn": 1,
+    "text": "我会先加载本例的固定材料。"
+  },
+  {
+    "seq": 24,
+    "turn": 1,
+    "text": "# 东方理工校园导览\n\n## 图书馆（lib）\n- 设有**安静阅读区**，另外还有**讨论室**，适合个人自习和小范围讨论。\n- 入馆需要**预约**；具体的预约方式、名额和开放时间，都以图书馆方面的答复为准，这里先不给出确切结论。\n\n![MOCK LIBRARY; READING / DISCUSSION; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-lib/content)\n\n## 食堂（canteen）\n- 提供**午餐**。\n- 其余时段的营业安排目前还没有掌握；如果需要早餐或晚餐的信息，可以现场看一下公告，或者先问一下，以免白跑一趟。\n\n![MOCK CANTEEN; LUNCH AREA; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-canteen/content)\n\n## 四明书院（college）\n- 属于**公共交流空间**，适合见面、聊天和小组活动。\n- 是否配备**投屏设备**目前还不明确；如果要放 PPT 或其他材料，建议先现场确认一下，再安排活动。\n\n![MOCK COLLEGE; COMMON AREA; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-college/content)\n\n> 说明：以上图片是这批材料中配套的示意图，分别对应图书馆、食堂和四明书院，并不是这三个地点的实景照片；具体位置和设施情况，以现场指引为准。"
+  }
+]

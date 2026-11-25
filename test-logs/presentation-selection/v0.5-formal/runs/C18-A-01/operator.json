@@ -1,0 +1,75 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C18",
+    "facts": "晚到的旧观察：门打开；产生于结束观察之前。",
+    "assets": [],
+    "asset_id": "img-door-new",
+    "status": "new_photo",
+    "monitoring_status": "ended",
+    "return_status": "completed",
+    "event_id": "old-door-open",
+    "event_before_monitor_end": true,
+    "door": "open"
+  },
+  "events": [
+    {
+      "id": "C18-A-01-photo",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "按用户要求补拍门口，这是最新图像。",
+        "assets": [
+          {
+            "id": "bench05-img-door-new",
+            "file": "bench05-img-door-new.png",
+            "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+            "source_id": "img-door-new",
+            "url": "http://127.0.0.1:3080/api/media/bench05-img-door-new/content",
+            "path": "/api/media/bench05-img-door-new/content",
+            "sha256": "bbed56e912957f22af711cd42e87babdccc780cd1fa1cd14feaf5f3a2f48b37d",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "asset_id": "img-door-new",
+        "status": "new_photo"
+      }
+    },
+    {
+      "id": "C18-A-01-stopped",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "观察watch-01已模拟结束，正在返回。",
+        "assets": [],
+        "simulated": true,
+        "monitoring_status": "ended",
+        "return_status": "returning"
+      }
+    },
+    {
+      "id": "C18-A-01-returned",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "模拟返回已完成。",
+        "assets": [],
+        "simulated": true,
+        "monitoring_status": "ended",
+        "return_status": "completed"
+      }
+    },
+    {
+      "id": "C18-A-01-late",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "晚到的旧观察：门打开；产生于结束观察之前。",
+        "assets": [],
+        "simulated": true,
+        "event_id": "old-door-open",
+        "event_before_monitor_end": true,
+        "door": "open"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

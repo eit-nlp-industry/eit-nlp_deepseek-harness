@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "N05",
+  "facts": "唯一候选parcel-8241，尾号8241，初始pending_confirmation。图像MOCK，用户确认后只记录状态，不寄件。",
+  "assets": [
+    {
+      "id": "bench05-img-parcel-8241",
+      "file": "bench05-img-parcel-8241.png",
+      "alt": "MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture",
+      "source_id": "img-parcel-8241",
+      "url": "http://127.0.0.1:3080/api/media/bench05-img-parcel-8241/content",
+      "path": "/api/media/bench05-img-parcel-8241/content",
+      "sha256": "f3c2235c40b1cfe400a7511f7de3bf6f2a7e0e62cf50f87354eddb202fe84fa0",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

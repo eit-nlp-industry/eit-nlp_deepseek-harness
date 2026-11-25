@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 4,
+  "state": 1,
+  "presentation": "partial",
+  "reason": "真实Home将客户沟通移第一，列表显示正确；实际点击保存排序草稿后无Host用户回传、无模拟submit或回执，日志只有初始用户消息。与N09-B-01的已接通应用链不同，本次生成按钮未完成要求的保存。"
+}

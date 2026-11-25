@@ -1,0 +1,26 @@
+{
+  "run_id": "N02-A-01",
+  "case_id": "N02",
+  "card_id": "N02",
+  "category_id": "G02",
+  "scenario_domain": "non_campus",
+  "arm": "A",
+  "repeat": 1,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 N02-A-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N02-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N02-A-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：介绍这三个企业服务套餐，先给概览，再让我按需看适用范围与限制。\n指定呈现方式：Markdown对比表与分节详情；通过文字追问继续。。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "86c9cb5ae858c4b72331bdaa005c2b4b4b0a866c898fedd6f89ef9aa79849e74",
+  "operator_actions": "初始查看三个套餐概览→用户请求查看团队版的适用范围和导出限制。A通过文字追问；B先切换团队版/展开详情，再发送同一追问，让模型续接回答。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T13:36:52.401Z",
+  "interactions": [
+    {
+      "at": "2026-11-19T13:38:10.888Z",
+      "type": "text",
+      "value": "展开团队版的适用范围与限制。"
+    }
+  ],
+  "tab_id": "5",
+  "final_at": "2026-11-19T13:39:14.427Z",
+  "notes": "三档价格人数导出及团队版详情完整，企业未知项保留；将未列出的专属支持断言为不具备，且展开较冗长。"
+}

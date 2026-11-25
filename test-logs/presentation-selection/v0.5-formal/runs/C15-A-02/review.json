@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "远近侧三图不同且对象尾号一致，用户确认后正确保留候选，无真实取件误报；无回执的业务提交说明略多。"
+}

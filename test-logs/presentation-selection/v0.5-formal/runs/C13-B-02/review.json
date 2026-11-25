@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 1,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "推荐与不选备选的理由及14:00观察完整，Image加载；重复兜底与business_data等实现字段大量外露，含未注册组件。"
+}

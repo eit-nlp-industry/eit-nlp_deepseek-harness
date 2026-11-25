@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_yy1uuZ5e2Eft2tCQIkB87674",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"mode\", \"header\": \"活动形式\", \"question\": \"你希望线上还是线下进行？\", \"options\": [{\"label\": \"线下\"}, {\"label\": \"线上\"}]}, {\"id\": \"places\", \"header\": \"意向地点\", \"question\": \"想去哪些地方？（可多选；图书馆适合安静阅读，四明书院可以公共交流）\", \"multi_select\": true, \"options\": [{\"label\": \"图书馆\"}, {\"label\": \"食堂\"}, {\"label\": \"四明书院\"}]}, {\"id\": \"time\", \"header\": \"时段\", \"question\": \"如果安排半日游，你偏上午还是下午？\", \"options\": [{\"label\": \"上午\"}, {\"label\": \"下午\"}]}, {\"id\": \"note\", \"header\": \"补充想法\", \"question\": \"还有其他补充吗？比如人数、用途或特别想做的事（没有可跳过）。\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_yy1uuZ5e2Eft2tCQIkB87674"
+      },
+      "toolCallId": "call_00_yy1uuZ5e2Eft2tCQIkB87674",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: the user cancelled ask_user_question"
+        }
+      ],
+      "isError": true,
+      "id": "47d5438d-4a3f-4b78-aea2-d3c94b4a109a"
+    }
+  }
+]

@@ -1,0 +1,438 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_xxRyKf5GlaKaXtn05mwi1242",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"intent\": \"rich_content\", \"user_query\": \"用\\\"结构化推荐/比较卡片\\\"呈现：顶部一个标题卡，说明试讲时间 11月7日（明晚）19:00–20:00、共4人、需投屏+白板。下面并排两张候选场地比较卡：lib-room 与 college-room，每张卡按\\\"容量 / 投屏 / 白板 / 该时段空闲 / 位置\\\"列出要点，并各带一句适配结论（lib-room 标为推荐，college-room 标为备选）。再放一张\\\"需先确认\\\"提示卡，列出 college-room 白板情况未知、容量刚好4人无余量；以及 canteen 不适合讨论需求的说明。底部一张\\\"下一步\\\"卡，提示用户在两处中选定一处后再继续，不要出现预约表单或提交按钮。不使用任何富组件，纯基础卡片布局；每张卡都要有可读的文字说明作为兜底。\", \"business_data\": {\"标题\": \"明晚19:00–20:00 四人试讲场地比较\", \"时间\": \"2026年11月7日（明晚）19:00–20:00，试讲1小时\", \"人数\": \"4人\", \"硬性需求\": \"投屏 + 白板\", \"候选场地\": [{\"名称\": \"lib-room\", \"标签\": \"推荐\", \"容量\": \"可容纳6人（4人使用有余量）\", \"投屏\": \"有\", \"白板\": \"有\", \"该时段空闲\": \"19:00–20:00 空闲\", \"位置\": \"材料未标注距离信息\", \"结论\": \"投屏、白板两项硬性需求均满足，人数余量充足，且该时段确认空闲，是唯一各项都对得上的选择。\"}, {\"名称\": \"college-room\", \"标签\": \"备选（有未知项）\", \"容量\": \"可容纳4人（刚好坐满，无余量）\", \"投屏\": \"有\", \"白板\": \"未知\", \"该时段空闲\": \"材料未说明该时段是否空闲\", \"位置\": \"距离更近\", \"结论\": \"位置更近且有投屏，但白板情况未确认，是否空闲也未说明，需先核实才能作为正式选择。\"}], \"不推荐\": {\"名称\": \"canteen\", \"原因\": \"无讨论场地，不具备试讲所需的安静讨论环境。\"}, \"需先确认\": [\"college-room 是否有白板：材料未给出\", \"college-room 明晚19:00–20:00 是否空闲：材料未给出\"], \"下一步\": \"请在这两处中选定一处；确认后我再继续下一步，目前不生成预约信息。\", \"文字兜底\": \"明晚（11月7日）19:00–20:00 四人试讲，需要投屏和白板。lib-room：容6人、有投屏、有白板、该时段空闲，满足全部需求，推荐。college-room：容4人、有投屏、白板未知、该时段空闲情况未知，仅距离更近，属备选。canteen 无讨论场地，不适合。请先选定场地，再继续后续安排。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "headerCard",
+                "comparisonGrid",
+                "confirmCard",
+                "nextStepCard"
+              ]
+            },
+            "headerCard": {
+              "type": "Card",
+              "props": {
+                "title": "明晚19:00–20:00 四人试讲场地比较",
+                "variant": "outlined"
+              },
+              "children": [
+                "headerStack"
+              ]
+            },
+            "headerStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "headerTime",
+                "headerPeople",
+                "headerNeeds",
+                "headerFallback"
+              ]
+            },
+            "headerTime": {
+              "type": "Text",
+              "props": {
+                "content": "时间：2026年11月7日（明晚）19:00–20:00，试讲1小时",
+                "variant": "default"
+              }
+            },
+            "headerPeople": {
+              "type": "Text",
+              "props": {
+                "content": "人数：4人",
+                "variant": "default"
+              }
+            },
+            "headerNeeds": {
+              "type": "Text",
+              "props": {
+                "content": "硬性需求：投屏 + 白板",
+                "variant": "default"
+              }
+            },
+            "headerFallback": {
+              "type": "Text",
+              "props": {
+                "content": "11月7日（明晚）19:00–20:00 进行四人试讲，需投屏和白板。",
+                "variant": "muted"
+              }
+            },
+            "comparisonGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "libCard",
+                "collegeCard"
+              ]
+            },
+            "libCard": {
+              "type": "Card",
+              "props": {
+                "title": "lib-room",
+                "variant": "outlined"
+              },
+              "children": [
+                "libStack"
+              ]
+            },
+            "libStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "libBadge",
+                "libCapacity",
+                "libProjector",
+                "libWhiteboard",
+                "libFree",
+                "libLocation",
+                "libDivider",
+                "libConclusion",
+                "libFallback"
+              ]
+            },
+            "libBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "推荐",
+                "variant": "success"
+              }
+            },
+            "libCapacity": {
+              "type": "Text",
+              "props": {
+                "content": "容量：可容纳6人（4人使用有余量）",
+                "variant": "default"
+              }
+            },
+            "libProjector": {
+              "type": "Text",
+              "props": {
+                "content": "投屏：有",
+                "variant": "default"
+              }
+            },
+            "libWhiteboard": {
+              "type": "Text",
+              "props": {
+                "content": "白板：有",
+                "variant": "default"
+              }
+            },
+            "libFree": {
+              "type": "Text",
+              "props": {
+                "content": "该时段空闲：19:00–20:00 空闲",
+                "variant": "default"
+              }
+            },
+            "libLocation": {
+              "type": "Text",
+              "props": {
+                "content": "位置：材料未标注距离信息",
+                "variant": "default"
+              }
+            },
+            "libDivider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "libConclusion": {
+              "type": "Text",
+              "props": {
+                "content": "结论：投屏、白板两项硬性需求均满足，人数余量充足，且该时段确认空闲，是唯一各项都对得上的选择。",
+                "variant": "default"
+              }
+            },
+            "libFallback": {
+              "type": "Text",
+              "props": {
+                "content": "lib-room：容6人、有投屏、有白板、该时段空闲，满足全部需求，推荐。",
+                "variant": "muted"
+              }
+            },
+            "collegeCard": {
+              "type": "Card",
+              "props": {
+                "title": "college-room",
+                "variant": "outlined"
+              },
+              "children": [
+                "collegeStack"
+              ]
+            },
+            "collegeStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "collegeBadge",
+                "collegeCapacity",
+                "collegeProjector",
+                "collegeWhiteboard",
+                "collegeFree",
+                "collegeLocation",
+                "collegeDivider",
+                "collegeConclusion",
+                "collegeFallback"
+              ]
+            },
+            "collegeBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "备选（有未知项）",
+                "variant": "warning"
+              }
+            },
+            "collegeCapacity": {
+              "type": "Text",
+              "props": {
+                "content": "容量：可容纳4人（刚好坐满，无余量）",
+                "variant": "default"
+              }
+            },
+            "collegeProjector": {
+              "type": "Text",
+              "props": {
+                "content": "投屏：有",
+                "variant": "default"
+              }
+            },
+            "collegeWhiteboard": {
+              "type": "Text",
+              "props": {
+                "content": "白板：未知",
+                "variant": "default"
+              }
+            },
+            "collegeFree": {
+              "type": "Text",
+              "props": {
+                "content": "该时段空闲：材料未说明该时段是否空闲",
+                "variant": "default"
+              }
+            },
+            "collegeLocation": {
+              "type": "Text",
+              "props": {
+                "content": "位置：距离更近",
+                "variant": "default"
+              }
+            },
+            "collegeDivider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "collegeConclusion": {
+              "type": "Text",
+              "props": {
+                "content": "结论：位置更近且有投屏，但白板情况未确认，是否空闲也未说明，需先核实才能作为正式选择。",
+                "variant": "default"
+              }
+            },
+            "collegeFallback": {
+              "type": "Text",
+              "props": {
+                "content": "college-room：容4人、有投屏、白板未知、该时段空闲情况未知，仅距离更近，属备选。",
+                "variant": "muted"
+              }
+            },
+            "confirmCard": {
+              "type": "Card",
+              "props": {
+                "title": "需先确认",
+                "variant": "outlined"
+              },
+              "children": [
+                "confirmStack"
+              ]
+            },
+            "confirmStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "confirmWhiteboard",
+                "confirmFree",
+                "confirmCapacity",
+                "confirmDivider",
+                "confirmCanteen",
+                "confirmFallback"
+              ]
+            },
+            "confirmWhiteboard": {
+              "type": "Text",
+              "props": {
+                "content": "college-room 是否有白板：材料未给出",
+                "variant": "default"
+              }
+            },
+            "confirmFree": {
+              "type": "Text",
+              "props": {
+                "content": "college-room 明晚19:00–20:00 是否空闲：材料未给出",
+                "variant": "default"
+              }
+            },
+            "confirmCapacity": {
+              "type": "Text",
+              "props": {
+                "content": "college-room 容量刚好4人，无余量。",
+                "variant": "default"
+              }
+            },
+            "confirmDivider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "confirmCanteen": {
+              "type": "Text",
+              "props": {
+                "content": "canteen：无讨论场地，不具备试讲所需的安静讨论环境。",
+                "variant": "danger"
+              }
+            },
+            "confirmFallback": {
+              "type": "Text",
+              "props": {
+                "content": "需先确认：college-room 白板情况未知、容量刚好4人无余量；canteen 不适合讨论需求。",
+                "variant": "muted"
+              }
+            },
+            "nextStepCard": {
+              "type": "Card",
+              "props": {
+                "title": "下一步",
+                "variant": "outlined"
+              },
+              "children": [
+                "nextStack"
+              ]
+            },
+            "nextStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "nextText",
+                "nextFallback"
+              ]
+            },
+            "nextText": {
+              "type": "Text",
+              "props": {
+                "content": "请在这两处中选定一处；确认后我再继续下一步，目前不生成预约信息。",
+                "variant": "default"
+              }
+            },
+            "nextFallback": {
+              "type": "Text",
+              "props": {
+                "content": "下一步：请先选定 lib-room 或 college-room，再继续后续安排；当前不生成预约信息。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "明晚19:00–20:00 四人试讲场地比较",
+            "时间": "2026年11月7日（明晚）19:00–20:00，试讲1小时",
+            "人数": "4人",
+            "硬性需求": "投屏 + 白板",
+            "候选场地": [
+              {
+                "名称": "lib-room",
+                "标签": "推荐",
+                "容量": "可容纳6人（4人使用有余量）",
+                "投屏": "有",
+                "白板": "有",
+                "该时段空闲": "19:00–20:00 空闲",
+                "位置": "材料未标注距离信息",
+                "结论": "投屏、白板两项硬性需求均满足，人数余量充足，且该时段确认空闲，是唯一各项都对得上的选择。"
+              },
+              {
+                "名称": "college-room",
+                "标签": "备选（有未知项）",
+                "容量": "可容纳4人（刚好坐满，无余量）",
+                "投屏": "有",
+                "白板": "未知",
+                "该时段空闲": "材料未说明该时段是否空闲",
+                "位置": "距离更近",
+                "结论": "位置更近且有投屏，但白板情况未确认，是否空闲也未说明，需先核实才能作为正式选择。"
+              }
+            ],
+            "不推荐": {
+              "名称": "canteen",
+              "原因": "无讨论场地，不具备试讲所需的安静讨论环境。"
+            },
+            "需先确认": [
+              "college-room 是否有白板：材料未给出",
+              "college-room 明晚19:00–20:00 是否空闲：材料未给出"
+            ],
+            "下一步": "请在这两处中选定一处；确认后我再继续下一步，目前不生成预约信息。",
+            "文字兜底": "明晚（11月7日）19:00–20:00 四人试讲，需要投屏和白板。lib-room：容6人、有投屏、有白板、该时段空闲，满足全部需求，推荐。college-room：容4人、有投屏、白板未知、该时段空闲情况未知，仅距离更近，属备选。canteen 无讨论场地，不适合。请先选定场地，再继续后续安排。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_xxRyKf5GlaKaXtn05mwi1242"
+      },
+      "toolCallId": "call_00_xxRyKf5GlaKaXtn05mwi1242",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "4bb7ebea-e703-43a2-8fd4-2c58e40320f4"
+    }
+  }
+]

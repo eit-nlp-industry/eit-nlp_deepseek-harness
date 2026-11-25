@@ -1,0 +1,17 @@
+[
+  {
+    "seq": 18,
+    "turn": 1,
+    "text": "我先初始化本例的固定材料。"
+  },
+  {
+    "seq": 36,
+    "turn": 1,
+    "text": "**向导核对：这位同学（唯一候选）**\n\n![参观向导候选人（材料图，唯一视角）：MOCK GUIDE; PERSON GUIDE; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-person-guide/content)\n\n图片地址（材料给定完整 URL）：`http://127.0.0.1:3080/api/media/bench05-person-guide/content`　尺寸 960×540。\n材料里只有这一张、这一个视角，没有其他角度或第二张可用图，因此仅凭此图做一次人脸/衣着核对，不重复用它冒充别的视角。\n\n**任务状态**\n- 目标：跟着参观向导（person-guide）\n- 你的确认：已选择“就跟这位同学”\n- 跟随任务 follow-01：**仍未启动**\n- 已尝试登记这份跟随草稿，但模拟回执尚未释放（返回“No mock submission response has been released”），所以**没有生成回执、不能视为已开始跟随**\n- 跟随中／跟丢等状态：需要后续实际事件才能判断，目前均未知\n\n**下一步**\n想让我再试着登记一次这份草稿，还是暂时保持未启动？在拿到回执或实际事件之前，我不会做任何“已跟上”“已启动”的表示。"
+  },
+  {
+    "seq": 51,
+    "turn": 2,
+    "text": "**向导核对：这位同学（唯一候选）**\n\n![参观向导候选人（材料图，唯一视角）：MOCK GUIDE; PERSON GUIDE; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-person-guide/content)\n\n图片地址（材料给定完整 URL）：`http://127.0.0.1:3080/api/media/bench05-person-guide/content`\n仍只有这一个视角的材料图，没有新增其他角度。\n\n**任务状态**\n- 任务：follow-01\n- 目标：person-guide（上图这位同学）\n- 状态：**跟随中（following）**\n- 依据：模拟环境事件，非真实机器人在执行\n\n**留意**\n- 现在只是“跟随中”，尚无跟丢、到达或结束的信号；这些要等后续事件才能判断。\n- 若这位同学走远、换人或多个相似目标同时出现，请告诉我，我会先停下再核对，不擅自换目标。"
+  }
+]

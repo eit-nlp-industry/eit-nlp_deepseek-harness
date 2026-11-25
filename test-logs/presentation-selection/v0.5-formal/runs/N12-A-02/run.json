@@ -1,0 +1,26 @@
+{
+  "run_id": "N12-A-02",
+  "case_id": "N12",
+  "card_id": "N12",
+  "category_id": "G12",
+  "scenario_domain": "non_campus",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 N12-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N12-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N12-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：把这个报销流程整理出来，并补充“材料不齐退回补充”的分支，让我编辑后保存草稿，不执行真实审批或付款。\n指定呈现方式：Markdown步骤与条件分支+文字编辑确认保存。。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "ef0479df3525b8d1623368fb6312bad03ba68c749227d005f4547aaf9a365aef",
+  "operator_actions": "展示并编辑分支→将补充期限设置为3个工作日→确认保存；A用文字修改确认，B在Workflow编辑并实际保存回传；审计材料齐全和不齐两条有向路径。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T05:56:05.243Z",
+  "interactions": [
+    {
+      "at": "2026-11-20T05:56:46.378Z",
+      "type": "text",
+      "value": "补充期限设为3个工作日，保留材料不齐退回补充、补齐后回到检查材料的分支，确认保存草稿。"
+    }
+  ],
+  "tab_id": "4",
+  "final_at": "2026-11-20T05:57:30.680Z",
+  "notes": "实际保存3工作日期限及回流检查分支，version2回执且未审批付款；初始擅自分配财务检查及通知角色，内容多次重复。"
+}

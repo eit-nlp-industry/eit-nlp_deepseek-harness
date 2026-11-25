@@ -1,0 +1,67 @@
+[
+  {
+    "seq": 10,
+    "time": 1795093218261,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 37,
+    "time": 1795093435098,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C18-A-02-photo",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C18-A-02-photo\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"按用户要求补拍门口，这是最新图像。\",\"assets\":[{\"id\":\"bench05-img-door-new\",\"file\":\"bench05-img-door-new.png\",\"alt\":\"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\",\"source_id\":\"img-door-new\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-door-new/content\",\"path\":\"/api/media/bench05-img-door-new/content\",\"sha256\":\"bbed56e912957f22af711cd42e87babdccc780cd1fa1cd14feaf5f3a2f48b37d\",\"width\":960,\"height\":540}],\"simulated\":true,\"asset_id\":\"img-door-new\",\"status\":\"new_photo\"}}"
+  },
+  {
+    "seq": 52,
+    "time": 1795093577318,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C18-A-02-stopped",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C18-A-02-stopped\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"观察watch-01已模拟结束，正在返回。\",\"assets\":[],\"simulated\":true,\"monitoring_status\":\"ended\",\"return_status\":\"returning\"}}"
+  },
+  {
+    "seq": 61,
+    "time": 1795093582411,
+    "source": {
+      "kind": "repeat-tool-reminder",
+      "form": "notice",
+      "summary": "benchmark_fixture × 3"
+    },
+    "text": "You are repeating the exact same tool call with identical arguments. Carefully analyze the previous result before calling again: if the task is not complete, try a different approach or different arguments instead of repeating the call."
+  },
+  {
+    "seq": 70,
+    "time": 1795093785905,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C18-A-02-returned",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C18-A-02-returned\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"模拟返回已完成。\",\"assets\":[],\"simulated\":true,\"monitoring_status\":\"ended\",\"return_status\":\"completed\"}}"
+  },
+  {
+    "seq": 79,
+    "time": 1795093948146,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C18-A-02-late",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C18-A-02-late\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"晚到的旧观察：门打开；产生于结束观察之前。\",\"assets\":[],\"simulated\":true,\"event_id\":\"old-door-open\",\"event_before_monitor_end\":true,\"door\":\"open\"}}"
+  }
+]

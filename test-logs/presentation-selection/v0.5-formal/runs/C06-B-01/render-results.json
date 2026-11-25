@@ -1,0 +1,187 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_PUovqvKADoJZ1ItqeLfh8360",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"渲染一个预填好的 DynamicForm（动态表单）供用户确认行程草稿：顶部标题「更新行程草稿」，说明本次只逛园区约1小时、10:00开始、随后吃午饭、不含图书馆。表单包含四个字段并以草稿值预填：日期（date，预填 2026-11-07）、时间段（select，预填 10:00–11:00，候选含 10:00–11:00、14:00–15:00）、人数（number，预填 3）、备注（textarea，预填「不进入图书馆，园区内漫步约1小时，11:00左右出发去吃午饭；带两位校外朋友」）。表单底部为提交按钮「提交更新」。仅使用 DynamicForm 基础组件，不渲染任何其他 rich 组件。\", \"business_data\": {\"title\": \"更新行程草稿\", \"description\": \"原来 14:00–15:00 含图书馆的安排改为：10:00 开始在园区逛约 1 小时，之后吃午饭，不去图书馆。提交前可再调整以下内容。\", \"submit_label\": \"提交更新\", \"fields\": [{\"name\": \"date\", \"label\": \"日期\", \"type\": \"date\", \"value\": \"2026-11-07\", \"required\": true}, {\"name\": \"slot\", \"label\": \"时间段\", \"type\": \"select\", \"value\": \"10:00–11:00\", \"options\": [\"10:00–11:00\", \"14:00–15:00\"], \"required\": true, \"help\": \"10:00–11:00 对应约 1 小时漫步\"}, {\"name\": \"people\", \"label\": \"人数\", \"type\": \"number\", \"value\": 3, \"required\": true}, {\"name\": \"note\", \"label\": \"备注\", \"type\": \"textarea\", \"value\": \"不进入图书馆，园区内漫步约1小时，11:00左右出发去吃午饭；带两位校外朋友\", \"required\": false}], \"unchanged\": [\"date=2026-11-07\", \"people=3\"], \"changed\": [\"slot: 14:00–15:00 → 10:00–11:00\", \"备注：去掉图书馆参观，改为漫步约1小时后吃午饭\"], \"status\": \"草稿，尚未提交\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "heading",
+                "description",
+                "form",
+                "submit"
+              ]
+            },
+            "heading": {
+              "type": "Heading",
+              "props": {
+                "text": "更新行程草稿",
+                "level": "h1"
+              }
+            },
+            "description": {
+              "type": "Text",
+              "props": {
+                "content": "原来 14:00–15:00 含图书馆的安排改为：10:00 开始在园区逛约 1 小时，之后吃午饭，不去图书馆。提交前可再调整以下内容。",
+                "variant": "default"
+              }
+            },
+            "form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "date",
+                    "key": "date",
+                    "label": "日期",
+                    "value": "2026-11-07"
+                  },
+                  {
+                    "type": "select",
+                    "key": "slot",
+                    "label": "时间段",
+                    "value": {
+                      "value": "10:00–11:00",
+                      "options": [
+                        {
+                          "value": "10:00–11:00",
+                          "label": "10:00–11:00"
+                        },
+                        {
+                          "value": "14:00–15:00",
+                          "label": "14:00–15:00"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "inputNumber",
+                    "key": "people",
+                    "label": "人数",
+                    "value": 3
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "备注",
+                    "value": "不进入图书馆，园区内漫步约1小时，11:00左右出发去吃午饭；带两位校外朋友"
+                  }
+                ]
+              }
+            },
+            "submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交更新",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "更新行程草稿",
+            "description": "原来 14:00–15:00 含图书馆的安排改为：10:00 开始在园区逛约 1 小时，之后吃午饭，不去图书馆。提交前可再调整以下内容。",
+            "submit_label": "提交更新",
+            "fields": [
+              {
+                "name": "date",
+                "label": "日期",
+                "type": "date",
+                "value": "2026-11-07",
+                "required": true
+              },
+              {
+                "name": "slot",
+                "label": "时间段",
+                "type": "select",
+                "value": "10:00–11:00",
+                "options": [
+                  "10:00–11:00",
+                  "14:00–15:00"
+                ],
+                "required": true,
+                "help": "10:00–11:00 对应约 1 小时漫步"
+              },
+              {
+                "name": "people",
+                "label": "人数",
+                "type": "number",
+                "value": 3,
+                "required": true
+              },
+              {
+                "name": "note",
+                "label": "备注",
+                "type": "textarea",
+                "value": "不进入图书馆，园区内漫步约1小时，11:00左右出发去吃午饭；带两位校外朋友",
+                "required": false
+              }
+            ],
+            "unchanged": [
+              "date=2026-11-07",
+              "people=3"
+            ],
+            "changed": [
+              "slot: 14:00–15:00 → 10:00–11:00",
+              "备注：去掉图书馆参观，改为漫步约1小时后吃午饭"
+            ],
+            "status": "草稿，尚未提交",
+            "form": {
+              "date": "2026-11-07",
+              "slot": "",
+              "people": 3,
+              "note": "不进入图书馆，园区内漫步约1小时，11:00左右出发去吃午饭；带两位校外朋友"
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_PUovqvKADoJZ1ItqeLfh8360"
+      },
+      "toolCallId": "call_00_PUovqvKADoJZ1ItqeLfh8360",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "7b973380-ab2a-4661-ad60-6485dbc12653"
+    }
+  }
+]

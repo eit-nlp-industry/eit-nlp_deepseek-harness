@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "补拍图直到额外原生确认后才显示，确认前无IMG；图卡保留待确认且含未注册组件。停止/返回/晚到旧事件均准确，没有恢复监测。"
+}

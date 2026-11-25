@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "action": "initialize",
+        "run_id": "C09-B-02"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_eIXnm23dUXvcJ3WTim1y0582"
+      },
+      "toolCallId": "call_00_ET_eIXnm23dUXvcJ3WTim1y0582",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C09\",\"facts\":\"初始化资料：合成person-a=小张，已在先前模拟状态中确认。无新的业务用户请求；仅初始化并等待benchmark-event，收到事件后再决定通知。\",\"assets\":[{\"id\":\"bench05-person-a\",\"file\":\"bench05-person-a.png\",\"alt\":\"MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture\",\"source_id\":\"person-a\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-person-a/content\",\"path\":\"/api/media/bench05-person-a/content\",\"sha256\":\"8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "edb50b18-d5ef-4661-9fa9-ecbb02fcfda2"
+    }
+  }
+]

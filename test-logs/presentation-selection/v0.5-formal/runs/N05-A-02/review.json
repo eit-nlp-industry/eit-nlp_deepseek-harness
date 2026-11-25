@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 4,
+  "state": 3,
+  "presentation": "pass",
+  "reason": "原生图先显示、实际选择回传正确且不寄件；收到确认后仍按待确认处理，混淆对话对象确认和无后端回执的持久记录。"
+}

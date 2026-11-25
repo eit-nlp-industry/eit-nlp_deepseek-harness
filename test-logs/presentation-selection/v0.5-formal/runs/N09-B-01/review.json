@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "实际使用排序手柄Home将客户沟通移第一，点击应用回传client/review/report及完整orderedItems，模拟保存回执一致；没有联系客户或创建真实任务。旧初始顺序说明及等待继续回答仍保留。"
+}

@@ -1,0 +1,20 @@
+{
+  "run_id": "C21-B-01",
+  "case_id": "C21",
+  "card_id": "C21",
+  "category_id": "G10",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "B",
+  "repeat": 1,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C21-B-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C21-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C21-B-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：可以，带我去食堂吧。\n指定呈现方式：Image/状态卡片+停止原因，不编造绕行。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "6c546470f8086882aa9057663c9df2374db487eaa1669e78131d77796c85f0bc",
+  "operator_actions": "发送“可以，带我去食堂吧。”；模拟返回门关闭、已停止；不给替代路线。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T05:45:28.384Z",
+  "interactions": [],
+  "tab_id": "1",
+  "final_at": "2026-11-20T05:47:51.561Z",
+  "notes": "门关闭图实际显示，停止原因、未到达及无替代路线准确；初始字段出处表冗余，最新状态详情为未注册组件。"
+}

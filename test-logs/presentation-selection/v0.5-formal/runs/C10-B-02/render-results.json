@@ -1,0 +1,1046 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_9NPTLmjV9VasZT2qHF4w9540",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"business_data\": {\"title\": \"跟随参观向导\", \"subtitle\": \"唯一向导候选：person-guide\", \"image\": \"/api/media/bench05-person-guide/content\", \"alt\": \"MOCK GUIDE; PERSON GUIDE; synthetic fixture\", \"guide\": {\"id\": \"person-guide\", \"label\": \"参观向导（候选）\", \"source\": \"person-guide\", \"asset_id\": \"bench05-person-guide\"}, \"status\": {\"overall\": \"等待你的确认\", \"follow_task\": \"follow-01 · 未启动\", \"following\": \"未知（尚未收到跟随/丢失事件）\", \"lost\": \"未知（尚未收到事件）\", \"robot_control\": \"本场景不连接真实机器人，仅展示模拟状态\"}, \"notes\": [\"这是固定测试材料中的合成示意图，不是真实拍摄画面。\", \"确认后才会进入跟随流程；是否能跟上、是否丢失，要等后续模拟事件才能确定。\"]}, \"user_query\": \"做一个\\\"跟随向导\\\"的状态展示卡片：顶部显示标题\\\"跟随参观向导\\\"和副标题\\\"唯一向导候选：person-guide\\\"；中间放一张 Image，src 用给定的同源路径字符串 /api/media/bench05-person-guide/content，alt 用\\\"MOCK GUIDE; PERSON GUIDE; synthetic fixture\\\"，并注明这是合成示意图；下方用状态区展示：整体状态\\\"等待你的确认\\\"、跟随任务\\\"follow-01 · 未启动\\\"、当前是否跟上\\\"未知（尚未收到跟随/丢失事件）\\\"、是否丢失\\\"未知（尚未收到事件）\\\"、机器人控制\\\"本场景不连接真实机器人，仅展示模拟状态\\\"；再列出两条说明文字。只生成 Image 这一个富组件，不要其他富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "guide-card"
+              ]
+            },
+            "guide-card": {
+              "type": "Card",
+              "props": {
+                "title": "跟随参观向导",
+                "variant": "outlined"
+              },
+              "children": [
+                "content-stack"
+              ]
+            },
+            "content-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "header-subtitle",
+                "guide-image",
+                "guide-heading",
+                "guide-descriptions",
+                "status-heading",
+                "status-descriptions",
+                "notes-divider",
+                "notes-heading",
+                "note-1",
+                "note-2"
+              ]
+            },
+            "header-subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "guide-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-guide/content",
+                "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+                "caption": "合成示意图（固定测试材料中的模拟内容）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "eager"
+              }
+            },
+            "guide-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "向导与素材",
+                "level": "h3"
+              }
+            },
+            "guide-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "向导候选 ID",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "名称",
+                    "value": "参观向导（候选）"
+                  },
+                  {
+                    "label": "来源",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "素材 ID",
+                    "value": "bench05-person-guide"
+                  },
+                  {
+                    "label": "图片路径",
+                    "value": "/api/media/bench05-person-guide/content"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK GUIDE; PERSON GUIDE; synthetic fixture"
+                  }
+                ]
+              }
+            },
+            "status-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "状态区",
+                "level": "h3"
+              }
+            },
+            "status-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "整体状态",
+                    "value": "等待你的确认"
+                  },
+                  {
+                    "label": "跟随任务",
+                    "value": "follow-01 · 未启动"
+                  },
+                  {
+                    "label": "当前是否跟上",
+                    "value": "未知（尚未收到跟随/丢失事件）"
+                  },
+                  {
+                    "label": "是否丢失",
+                    "value": "未知（尚未收到事件）"
+                  },
+                  {
+                    "label": "机器人控制",
+                    "value": "本场景不连接真实机器人，仅展示模拟状态"
+                  }
+                ]
+              }
+            },
+            "notes-divider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "notes-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "说明",
+                "level": "h3"
+              }
+            },
+            "note-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notes/0"
+                },
+                "variant": "default"
+              }
+            },
+            "note-2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notes/1"
+                },
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "跟随参观向导",
+            "subtitle": "唯一向导候选：person-guide",
+            "image": "/api/media/bench05-person-guide/content",
+            "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+            "guide": {
+              "id": "person-guide",
+              "label": "参观向导（候选）",
+              "source": "person-guide",
+              "asset_id": "bench05-person-guide"
+            },
+            "status": {
+              "overall": "等待你的确认",
+              "follow_task": "follow-01 · 未启动",
+              "following": "未知（尚未收到跟随/丢失事件）",
+              "lost": "未知（尚未收到事件）",
+              "robot_control": "本场景不连接真实机器人，仅展示模拟状态"
+            },
+            "notes": [
+              "这是固定测试材料中的合成示意图，不是真实拍摄画面。",
+              "确认后才会进入跟随流程；是否能跟上、是否丢失，要等后续模拟事件才能确定。"
+            ]
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_9NPTLmjV9VasZT2qHF4w9540"
+      },
+      "toolCallId": "call_00_9NPTLmjV9VasZT2qHF4w9540",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "520c9976-584a-440f-a77e-c669c03d264a"
+    }
+  },
+  {
+    "call_seq": 43,
+    "result_seq": 44,
+    "call": {
+      "turn": 1,
+      "step": 5,
+      "callId": "call_00_Yl7JnCsVqMGGtv3xDZVN7754",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK GUIDE; PERSON GUIDE; synthetic fixture\", \"guide\": {\"asset_id\": \"bench05-person-guide\", \"id\": \"person-guide\", \"label\": \"参观向导（已确认为跟随对象）\", \"source\": \"person-guide\"}, \"image\": \"/api/media/bench05-person-guide/content\", \"notes\": [\"这是固定测试材料中的合成示意图，不是真实拍摄画面。\", \"草稿已按你的确认记录，但未收到模拟回单，因此不视为已开始跟随。\", \"是否跟上、是否丢失，只在收到后续事件后才能确定。\"], \"status\": {\"confirmation\": \"已由你确认：以 person-guide 为跟随对象\", \"draft\": \"跟进请求草稿：follow-01 · 已记录（无额外约束要求）\", \"follow_task\": \"follow-01 · 未启动\", \"following\": \"未知（尚未收到跟随事件）\", \"lost\": \"未知（尚未收到丢失事件）\", \"receipt\": \"模拟回单未释放（未能确认提交结果）\", \"robot_control\": \"本场景不连接真实机器人，仅展示模拟状态\"}, \"subtitle\": \"唯一向导候选：person-guide\", \"title\": \"跟随参观向导\", \"token\": \"C10-B-02\"}, \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"更新同一张\\\"跟随向导\\\"状态卡片：顶部标题\\\"跟随参观向导\\\"、副标题\\\"唯一向导候选：person-guide\\\"；中间仍是那张 Image，src 用 /api/media/bench05-person-guide/content，alt 用\\\"MOCK GUIDE; PERSON GUIDE; synthetic fixture\\\"；状态区改为：确认情况\\\"已由你确认：以 person-guide 为跟随对象\\\"、草稿\\\"跟进请求草稿：follow-01 · 已记录（无额外约束要求）\\\"、跟随任务\\\"follow-01 · 未启动\\\"、当前是否跟上\\\"未知（尚未收到跟随事件）\\\"、是否丢失\\\"未知（尚未收到丢失事件）\\\"、提交结果\\\"模拟回单未释放（未能确认提交结果）\\\"、机器人控制\\\"本场景不连接真实机器人，仅展示模拟状态\\\"；下方三条说明：合成示意图、草稿已记录但未收到回单不算已开始跟随、跟随/丢失只能由后续事件确定。只用 Image 一个富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "status-card"
+              ]
+            },
+            "status-card": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "card-stack"
+              ]
+            },
+            "card-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title-heading",
+                "subtitle-text",
+                "guide-image",
+                "image-section",
+                "guide-section",
+                "status-section",
+                "notes-section",
+                "meta-section"
+              ]
+            },
+            "title-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "跟随参观向导",
+                "level": "h2"
+              }
+            },
+            "subtitle-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "guide-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-guide/content",
+                "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+                "caption": "这是固定测试材料中的合成示意图，不是真实拍摄画面。",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "image-section": {
+              "type": "Section",
+              "props": {
+                "title": "图像信息",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "image-desc"
+              ]
+            },
+            "image-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "图像地址",
+                    "value": "/api/media/bench05-person-guide/content"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK GUIDE; PERSON GUIDE; synthetic fixture"
+                  }
+                ]
+              }
+            },
+            "guide-section": {
+              "type": "Section",
+              "props": {
+                "title": "向导候选",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "guide-desc"
+              ]
+            },
+            "guide-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "候选 ID",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "素材 ID",
+                    "value": "bench05-person-guide"
+                  },
+                  {
+                    "label": "标签",
+                    "value": "参观向导（已确认为跟随对象）"
+                  },
+                  {
+                    "label": "来源",
+                    "value": "person-guide"
+                  }
+                ]
+              }
+            },
+            "status-section": {
+              "type": "Section",
+              "props": {
+                "title": "状态信息",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "status-desc"
+              ]
+            },
+            "status-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "确认情况",
+                    "value": "已由你确认：以 person-guide 为跟随对象"
+                  },
+                  {
+                    "label": "草稿",
+                    "value": "跟进请求草稿：follow-01 · 已记录（无额外约束要求）"
+                  },
+                  {
+                    "label": "跟随任务",
+                    "value": "follow-01 · 未启动"
+                  },
+                  {
+                    "label": "当前是否跟上",
+                    "value": "未知（尚未收到跟随事件）"
+                  },
+                  {
+                    "label": "是否丢失",
+                    "value": "未知（尚未收到丢失事件）"
+                  },
+                  {
+                    "label": "提交结果",
+                    "value": "模拟回单未释放（未能确认提交结果）"
+                  },
+                  {
+                    "label": "机器人控制",
+                    "value": "本场景不连接真实机器人，仅展示模拟状态"
+                  }
+                ]
+              }
+            },
+            "notes-section": {
+              "type": "Section",
+              "props": {
+                "title": "说明",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "notes-list"
+              ]
+            },
+            "notes-list": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "这是固定测试材料中的合成示意图，不是真实拍摄画面。"
+                  },
+                  {
+                    "title": "草稿已按你的确认记录，但未收到模拟回单，因此不视为已开始跟随。"
+                  },
+                  {
+                    "title": "是否跟上、是否丢失，只在收到后续事件后才能确定。"
+                  }
+                ],
+                "emptyText": "暂无说明"
+              }
+            },
+            "meta-section": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "材料编号",
+                    "value": "C10-B-02"
+                  },
+                  {
+                    "label": "标题",
+                    "value": "跟随参观向导"
+                  },
+                  {
+                    "label": "副标题",
+                    "value": "唯一向导候选：person-guide"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+            "guide": {
+              "asset_id": "bench05-person-guide",
+              "id": "person-guide",
+              "label": "参观向导（已确认为跟随对象）",
+              "source": "person-guide"
+            },
+            "image": "/api/media/bench05-person-guide/content",
+            "notes": [
+              "这是固定测试材料中的合成示意图，不是真实拍摄画面。",
+              "草稿已按你的确认记录，但未收到模拟回单，因此不视为已开始跟随。",
+              "是否跟上、是否丢失，只在收到后续事件后才能确定。"
+            ],
+            "status": {
+              "confirmation": "已由你确认：以 person-guide 为跟随对象",
+              "draft": "跟进请求草稿：follow-01 · 已记录（无额外约束要求）",
+              "follow_task": "follow-01 · 未启动",
+              "following": "未知（尚未收到跟随事件）",
+              "lost": "未知（尚未收到丢失事件）",
+              "receipt": "模拟回单未释放（未能确认提交结果）",
+              "robot_control": "本场景不连接真实机器人，仅展示模拟状态"
+            },
+            "subtitle": "唯一向导候选：person-guide",
+            "title": "跟随参观向导",
+            "token": "C10-B-02"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Yl7JnCsVqMGGtv3xDZVN7754"
+      },
+      "toolCallId": "call_00_Yl7JnCsVqMGGtv3xDZVN7754",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "dd8d1f92-b9e6-43f1-a1f9-37dfaac55658"
+    }
+  },
+  {
+    "call_seq": 64,
+    "result_seq": 65,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ET_4EoGIFZWONR4qjVqyyzr2011",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK GUIDE; PERSON GUIDE; synthetic fixture\", \"guide\": {\"asset_id\": \"bench05-person-guide\", \"id\": \"person-guide\", \"label\": \"参观向导（当前跟随对象）\", \"source\": \"person-guide\"}, \"image\": \"/api/media/bench05-person-guide/content\", \"notes\": [\"这是固定测试材料中的合成示意图，不是实时画面，也不代表新视角。\", \"本次仍未收到提交回单；跟随已开始以模拟事件为准。\", \"是否丢失要等后续事件才能确定，现在不计为丢失。\"], \"status\": {\"confirmation\": \"已由你确认：以 person-guide 为跟随对象\", \"draft\": \"跟进请求草稿：follow-01 · 已记录（无额外约束要求）\", \"follow_task\": \"follow-01 · 跟随中\", \"following\": \"跟随中（模拟事件：跟随已开始）\", \"lost\": \"未丢失（尚未收到丢失事件）\", \"receipt\": \"模拟回单仍未被释放\", \"robot_control\": \"本场景不连接真实机器人，仅展示模拟状态\", \"target\": \"person-guide\"}, \"subtitle\": \"唯一向导候选：person-guide · 跟随中\", \"title\": \"跟随参观向导\", \"token\": \"C10-B-02\"}, \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"把\\\"跟随向导\\\"状态卡片更新为跟随中：顶部标题\\\"跟随参观向导\\\"，副标题\\\"唯一向导候选：person-guide · 跟随中\\\"；中间保留同一张 Image，src 仍用 /api/media/bench05-person-guide/content，alt 仍用\\\"MOCK GUIDE; PERSON GUIDE; synthetic fixture\\\"；状态区：确认情况\\\"已由你确认：以 person-guide 为跟随对象\\\"、跟随对象\\\"person-guide\\\"、跟随任务\\\"follow-01 · 跟随中\\\"、当前是否跟上\\\"跟随中（模拟事件：跟随已开始）\\\"、是否丢失\\\"未丢失（尚未收到丢失事件）\\\"、提交回单\\\"模拟回单仍未被释放\\\"、机器人控制\\\"本场景不连接真实机器人，仅展示模拟状态\\\"；下方三条说明：合成示意图非实时画面、回单仍未收到、丢失只能由后续事件确定。只用 Image 一个富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "statusCard"
+              ]
+            },
+            "statusCard": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "cardStack"
+              ]
+            },
+            "cardStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "subtitle",
+                "guideImage",
+                "guideInfo",
+                "divider",
+                "statusInfo",
+                "notesSection"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "跟随参观向导",
+                "level": "h1"
+              }
+            },
+            "subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "guideImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-guide/content",
+                "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+                "caption": "合成示意图，非实时画面",
+                "fit": "cover",
+                "aspectRatio": "4:3",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "guideInfo": {
+              "type": "Descriptions",
+              "props": {
+                "title": "向导信息",
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "向导名称",
+                    "value": "参观向导（当前跟随对象）"
+                  },
+                  {
+                    "label": "向导 ID",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "素材 ID",
+                    "value": "bench05-person-guide"
+                  },
+                  {
+                    "label": "来源",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "测试标识",
+                    "value": "C10-B-02"
+                  }
+                ]
+              }
+            },
+            "divider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "statusInfo": {
+              "type": "Descriptions",
+              "props": {
+                "title": "跟随状态",
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "确认情况",
+                    "value": "已由你确认：以 person-guide 为跟随对象"
+                  },
+                  {
+                    "label": "跟随对象",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "跟随任务",
+                    "value": "follow-01 · 跟随中"
+                  },
+                  {
+                    "label": "当前是否跟上",
+                    "value": "跟随中（模拟事件：跟随已开始）"
+                  },
+                  {
+                    "label": "是否丢失",
+                    "value": "未丢失（尚未收到丢失事件）"
+                  },
+                  {
+                    "label": "提交回单",
+                    "value": "模拟回单仍未被释放"
+                  },
+                  {
+                    "label": "机器人控制",
+                    "value": "本场景不连接真实机器人，仅展示模拟状态"
+                  },
+                  {
+                    "label": "跟进请求草稿",
+                    "value": "跟进请求草稿：follow-01 · 已记录（无额外约束要求）"
+                  }
+                ]
+              }
+            },
+            "notesSection": {
+              "type": "Section",
+              "props": {
+                "title": "说明",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "notesStack"
+              ]
+            },
+            "notesStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "note0",
+                "note1",
+                "note2"
+              ]
+            },
+            "note0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notes/0"
+                },
+                "variant": "muted"
+              }
+            },
+            "note1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notes/1"
+                },
+                "variant": "muted"
+              }
+            },
+            "note2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notes/2"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+            "guide": {
+              "asset_id": "bench05-person-guide",
+              "id": "person-guide",
+              "label": "参观向导（当前跟随对象）",
+              "source": "person-guide"
+            },
+            "image": "/api/media/bench05-person-guide/content",
+            "notes": [
+              "这是固定测试材料中的合成示意图，不是实时画面，也不代表新视角。",
+              "本次仍未收到提交回单；跟随已开始以模拟事件为准。",
+              "是否丢失要等后续事件才能确定，现在不计为丢失。"
+            ],
+            "status": {
+              "confirmation": "已由你确认：以 person-guide 为跟随对象",
+              "draft": "跟进请求草稿：follow-01 · 已记录（无额外约束要求）",
+              "follow_task": "follow-01 · 跟随中",
+              "following": "跟随中（模拟事件：跟随已开始）",
+              "lost": "未丢失（尚未收到丢失事件）",
+              "receipt": "模拟回单仍未被释放",
+              "robot_control": "本场景不连接真实机器人，仅展示模拟状态",
+              "target": "person-guide"
+            },
+            "subtitle": "唯一向导候选：person-guide · 跟随中",
+            "title": "跟随参观向导",
+            "token": "C10-B-02"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_4EoGIFZWONR4qjVqyyzr2011"
+      },
+      "toolCallId": "call_00_ET_4EoGIFZWONR4qjVqyyzr2011",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ce4afff0-fc1a-4ab5-b740-fd295014798e"
+    }
+  },
+  {
+    "call_seq": 79,
+    "result_seq": 80,
+    "call": {
+      "turn": 3,
+      "step": 1,
+      "callId": "call_00_TT16WxwlVQVjFEktlRGk6061",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK GUIDE; PERSON GUIDE; synthetic fixture\", \"guide\": {\"asset_id\": \"bench05-person-guide\", \"id\": \"person-guide\", \"label\": \"参观向导（已离开视野）\", \"source\": \"person-guide\"}, \"image\": \"/api/media/bench05-person-guide/content\", \"notes\": [\"这是固定测试材料中的合成示意图，不是实时画面，也不表示目标当前所在位置。\", \"跟随已停止，不会自行恢复或自行移动。\", \"模拟回单始终未被释放，开始与停止均以后续模拟事件为准。\"], \"status\": {\"confirmation\": \"已由你确认：以 person-guide 为跟随对象\", \"follow_task\": \"follow-01 · 已停止\", \"following\": \"已停止（目标丢失）\", \"lost\": \"目标已离开视野\", \"next\": \"等待进一步处理（尚未收到后续事件）\", \"receipt\": \"模拟回单始终未释放\", \"robot_control\": \"本场景不连接真实机器人，仅展示模拟状态\", \"target\": \"person-guide\"}, \"subtitle\": \"唯一向导候选：person-guide · 目标丢失\", \"title\": \"跟随参观向导\", \"token\": \"C10-B-02\"}, \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"把\\\"跟随向导\\\"状态卡片更新为目标丢失：顶部标题\\\"跟随参观向导\\\"，副标题\\\"唯一向导候选：person-guide · 目标丢失\\\"；中间保留同一张 Image，src 仍用 /api/media/bench05-person-guide/content，alt 仍用\\\"MOCK GUIDE; PERSON GUIDE; synthetic fixture\\\"；状态区：确认情况\\\"已由你确认：以 person-guide 为跟随对象\\\"、跟随对象\\\"person-guide\\\"、跟随任务\\\"follow-01 · 已停止\\\"、是否跟上\\\"已停止（目标丢失）\\\"、目标状态\\\"已离开视野\\\"、后续处理\\\"等待进一步处理（尚未收到后续事件）\\\"、提交回单\\\"模拟回单始终未释放\\\"、机器人控制\\\"本场景不连接真实机器人，仅展示模拟状态\\\"；下方三条说明：合成示意图非实时画面也不代表目标位置、跟随已停止不会自行恢复、回单未释放。只用 Image 一个富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "header-card",
+                "status-card",
+                "notes-card",
+                "source-card"
+              ]
+            },
+            "header-card": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "header-stack"
+              ]
+            },
+            "header-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "title-heading",
+                "subtitle-text",
+                "guide-image"
+              ]
+            },
+            "title-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "跟随参观向导",
+                "level": "h2"
+              }
+            },
+            "subtitle-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "guide-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-guide/content",
+                "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+                "caption": "合成示意图（非实时画面）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "status-card": {
+              "type": "Card",
+              "props": {
+                "title": "跟随状态",
+                "variant": "filled"
+              },
+              "children": [
+                "status-descriptions"
+              ]
+            },
+            "status-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "确认情况",
+                    "value": "已由你确认：以 person-guide 为跟随对象"
+                  },
+                  {
+                    "label": "跟随对象",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "跟随任务",
+                    "value": "follow-01 · 已停止"
+                  },
+                  {
+                    "label": "是否跟上",
+                    "value": "已停止（目标丢失）"
+                  },
+                  {
+                    "label": "目标状态",
+                    "value": "已离开视野"
+                  },
+                  {
+                    "label": "后续处理",
+                    "value": "等待进一步处理（尚未收到后续事件）"
+                  },
+                  {
+                    "label": "提交回单",
+                    "value": "模拟回单始终未释放"
+                  },
+                  {
+                    "label": "机器人控制",
+                    "value": "本场景不连接真实机器人，仅展示模拟状态"
+                  }
+                ]
+              }
+            },
+            "notes-card": {
+              "type": "Card",
+              "props": {
+                "title": "说明",
+                "variant": "default"
+              },
+              "children": [
+                "notes-list"
+              ]
+            },
+            "notes-list": {
+              "type": "List",
+              "props": {
+                "emptyText": "暂无说明",
+                "items": [
+                  {
+                    "title": "这是固定测试材料中的合成示意图，不是实时画面，也不表示目标当前所在位置。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "跟随已停止，不会自行恢复或自行移动。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "模拟回单始终未被释放，开始与停止均以后续模拟事件为准。",
+                    "status": "info"
+                  }
+                ]
+              }
+            },
+            "source-card": {
+              "type": "Card",
+              "props": {
+                "title": "素材与出处",
+                "variant": "outlined"
+              },
+              "children": [
+                "source-descriptions"
+              ]
+            },
+            "source-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "素材 ID",
+                    "value": "bench05-person-guide"
+                  },
+                  {
+                    "label": "图片路径",
+                    "value": "/api/media/bench05-person-guide/content"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK GUIDE; PERSON GUIDE; synthetic fixture"
+                  },
+                  {
+                    "label": "测试令牌",
+                    "value": "C10-B-02"
+                  },
+                  {
+                    "label": "向导标签",
+                    "value": "参观向导（已离开视野）"
+                  },
+                  {
+                    "label": "向导来源",
+                    "value": "person-guide"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+            "guide": {
+              "asset_id": "bench05-person-guide",
+              "id": "person-guide",
+              "label": "参观向导（已离开视野）",
+              "source": "person-guide"
+            },
+            "image": "/api/media/bench05-person-guide/content",
+            "notes": [
+              "这是固定测试材料中的合成示意图，不是实时画面，也不表示目标当前所在位置。",
+              "跟随已停止，不会自行恢复或自行移动。",
+              "模拟回单始终未被释放，开始与停止均以后续模拟事件为准。"
+            ],
+            "status": {
+              "confirmation": "已由你确认：以 person-guide 为跟随对象",
+              "follow_task": "follow-01 · 已停止",
+              "following": "已停止（目标丢失）",
+              "lost": "目标已离开视野",
+              "next": "等待进一步处理（尚未收到后续事件）",
+              "receipt": "模拟回单始终未释放",
+              "robot_control": "本场景不连接真实机器人，仅展示模拟状态",
+              "target": "person-guide"
+            },
+            "subtitle": "唯一向导候选：person-guide · 目标丢失",
+            "title": "跟随参观向导",
+            "token": "C10-B-02"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_TT16WxwlVQVjFEktlRGk6061"
+      },
+      "toolCallId": "call_00_TT16WxwlVQVjFEktlRGk6061",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "51d39f06-581e-4118-8cb1-2a12cb368a97"
+    }
+  }
+]

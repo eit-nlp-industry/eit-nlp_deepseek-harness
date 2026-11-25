@@ -1,0 +1,202 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_O0wwYpA2xp148Y1QYUcF1617",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"会议室改期草稿表单：顶部用醒目的冲突提示条，说明 2026-11-23 的 16:00–17:00 已约满、改期未成功、当前仍只是草稿未实际预约。下面依次为只读预填字段：会议室 R-01、日期 2026-11-23、人数 6、原草稿时段 14:00–15:00、申请的新时段 16:00–17:00（冲突）。最后是一个必填的单选下拉 Select「选择替代时段」，选项有且仅有两个：17:00–18:00 和 18:00–19:00，外加提交按钮。不要添加其他可选项、日期选择器或图表组件。\", \"business_data\": {\"title\": \"会议室 R-01 改期草稿\", \"status\": \"conflict\", \"conflict_message\": \"2026-11-23 的 16:00–17:00 已约满，从 14:00–15:00 改到 16:00–17:00 未成功。\", \"draft_only_note\": \"以下仅为草稿，未实际预约。\", \"fields\": [{\"label\": \"会议室\", \"value\": \"R-01\", \"readonly\": true}, {\"label\": \"日期\", \"value\": \"2026-11-23\", \"readonly\": true}, {\"label\": \"人数\", \"value\": 6, \"readonly\": true}, {\"label\": \"原草稿时段\", \"value\": \"14:00–15:00\", \"readonly\": true}, {\"label\": \"申请的新时段\", \"value\": \"16:00–17:00\", \"readonly\": true, \"state\": \"conflict\"}], \"select\": {\"name\": \"alt_slot\", \"label\": \"选择替代时段\", \"required\": true, \"placeholder\": \"请选择一个替代时段\", \"options\": [{\"label\": \"17:00–18:00\", \"value\": \"17:00–18:00\"}, {\"label\": \"18:00–19:00\", \"value\": \"18:00–19:00\"}]}, \"submit_label\": \"确认改到所选时段\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "heading",
+                "conflictCallout",
+                "fieldsTable",
+                "dynamicForm",
+                "submitButton"
+              ]
+            },
+            "heading": {
+              "type": "Heading",
+              "props": {
+                "text": "会议室 R-01 改期草稿",
+                "level": "h1"
+              }
+            },
+            "conflictCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "danger",
+                "title": "冲突提示",
+                "description": "2026-11-23 的 16:00–17:00 已约满，从 14:00–15:00 改到 16:00–17:00 未成功。以下仅为草稿，未实际预约。",
+                "showIcon": true
+              }
+            },
+            "fieldsTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "项目",
+                  "值"
+                ],
+                "rows": [
+                  [
+                    "会议室",
+                    "R-01"
+                  ],
+                  [
+                    "日期",
+                    "2026-11-23"
+                  ],
+                  [
+                    "人数",
+                    "6"
+                  ],
+                  [
+                    "原草稿时段",
+                    "14:00–15:00"
+                  ],
+                  [
+                    "申请的新时段",
+                    "16:00–17:00（冲突）"
+                  ]
+                ]
+              }
+            },
+            "dynamicForm": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "alt_slot",
+                    "label": "选择替代时段",
+                    "placeholder": "请选择一个替代时段",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "17:00–18:00",
+                          "label": "17:00–18:00"
+                        },
+                        {
+                          "value": "18:00–19:00",
+                          "label": "18:00–19:00"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "submitButton": {
+              "type": "Button",
+              "props": {
+                "label": "确认改到所选时段",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "会议室 R-01 改期草稿",
+            "status": "conflict",
+            "conflict_message": "2026-11-23 的 16:00–17:00 已约满，从 14:00–15:00 改到 16:00–17:00 未成功。",
+            "draft_only_note": "以下仅为草稿，未实际预约。",
+            "fields": [
+              {
+                "label": "会议室",
+                "value": "R-01",
+                "readonly": true
+              },
+              {
+                "label": "日期",
+                "value": "2026-11-23",
+                "readonly": true
+              },
+              {
+                "label": "人数",
+                "value": 6,
+                "readonly": true
+              },
+              {
+                "label": "原草稿时段",
+                "value": "14:00–15:00",
+                "readonly": true
+              },
+              {
+                "label": "申请的新时段",
+                "value": "16:00–17:00",
+                "readonly": true,
+                "state": "conflict"
+              }
+            ],
+            "select": {
+              "name": "alt_slot",
+              "label": "选择替代时段",
+              "required": true,
+              "placeholder": "请选择一个替代时段",
+              "options": [
+                {
+                  "label": "17:00–18:00",
+                  "value": "17:00–18:00"
+                },
+                {
+                  "label": "18:00–19:00",
+                  "value": "18:00–19:00"
+                }
+              ]
+            },
+            "submit_label": "确认改到所选时段",
+            "form": {
+              "alt_slot": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_O0wwYpA2xp148Y1QYUcF1617"
+      },
+      "toolCallId": "call_00_O0wwYpA2xp148Y1QYUcF1617",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "eb11b96d-8cd8-4b43-8972-d6912ad9eca6"
+    }
+  }
+]

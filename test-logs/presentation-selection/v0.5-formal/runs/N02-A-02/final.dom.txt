@@ -1,0 +1,379 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 测评 C21-B-01 食堂导航 刚刚":
+    - generic: 进行中
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 刚刚
+  - treeitem "企业服务套餐概览介绍 刚刚" [selected]:
+    - generic: 企业服务套餐概览介绍
+    - generic: 刚刚
+  - treeitem "已完成 企业服务套餐介绍测评 刚刚":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 刚刚
+  - treeitem "进行中 图书馆地图预览测评 C20-B-02 刚刚":
+    - generic: 进行中
+    - generic: 图书馆地图预览测评 C20-B-02
+    - generic: 刚刚
+  - treeitem "已完成 图书馆吃饭回合院排序 1分钟":
+    - generic: 已完成
+    - generic: 图书馆吃饭回合院排序
+    - generic: 1分钟
+  - treeitem "费用支付状态简短确认 2分钟":
+    - generic: 费用支付状态简短确认
+    - generic: 2分钟
+  - treeitem "已完成 费用支付状态问答测评 2分钟":
+    - generic: 已完成
+    - generic: 费用支付状态问答测评
+    - generic: 2分钟
+  - treeitem "已完成 图书馆地图预览测评 2分钟":
+    - generic: 已完成
+    - generic: 图书馆地图预览测评
+    - generic: 2分钟
+  - treeitem "图书馆预约简答测评 C26-A-02 3分钟":
+    - generic: 图书馆预约简答测评 C26-A-02
+    - generic: 3分钟
+  - treeitem "已完成 图书馆预约测评 3分钟":
+    - generic: 已完成
+    - generic: 图书馆预约测评
+    - generic: 3分钟
+  - treeitem "已完成 图书馆路线排序测评 5分钟":
+    - generic: 已完成
+    - generic: 图书馆路线排序测评
+    - generic: 5分钟
+  - treeitem "握手需求简短文字回执 5分钟":
+    - generic: 握手需求简短文字回执
+    - generic: 5分钟
+  - treeitem "已完成 握手请求简短回执 5分钟":
+    - generic: 已完成
+    - generic: 握手请求简短回执
+    - generic: 5分钟
+  - treeitem "测评场景握手回执 7分钟":
+    - generic: 测评场景握手回执
+    - generic: 7分钟
+  - treeitem "已完成 握手需求简短回执测评 7分钟":
+    - generic: 已完成
+    - generic: 握手需求简短回执测评
+    - generic: 7分钟
+  - treeitem "老师不在告知流程确认 8分钟":
+    - generic: 老师不在告知流程确认
+    - generic: 8分钟
+  - treeitem "已完成 条件分支文字修改确认 8分钟":
+    - generic: 已完成
+    - generic: 条件分支文字修改确认
+    - generic: 8分钟
+  - treeitem "林老师材料取送流程确认 10分钟":
+    - generic: 林老师材料取送流程确认
+    - generic: 10分钟
+  - treeitem "已完成 林老师材料取送流程 10分钟":
+    - generic: 已完成
+    - generic: 林老师材料取送流程
+    - generic: 10分钟
+  - treeitem "饮水机不出水照片草稿测评 11分钟":
+    - generic: 饮水机不出水照片草稿测评
+    - generic: 11分钟
+  - treeitem "已完成 C18-B-02 门口补拍呈现测评 14分钟":
+    - generic: 已完成
+    - generic: C18-B-02 门口补拍呈现测评
+    - generic: 14分钟
+  - treeitem "已完成 饮水机照片呈现测评 15分钟":
+    - generic: 已完成
+    - generic: 饮水机照片呈现测评
+    - generic: 15分钟
+  - treeitem "食堂导航门图测评 17分钟":
+    - generic: 食堂导航门图测评
+    - generic: 17分钟
+  - treeitem "已完成 食堂导航原生门图测评 17分钟":
+    - generic: 已完成
+    - generic: 食堂导航原生门图测评
+    - generic: 17分钟
+  - treeitem "图书馆导盲犬路线呈现测评 18分钟":
+    - generic: 图书馆导盲犬路线呈现测评
+    - generic: 18分钟
+  - treeitem "已完成 图书馆导盲犬路线测评 18分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线测评
+    - generic: 18分钟
+  - treeitem "已完成 补拍门口并结束观察 19分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 19分钟
+  - treeitem "已完成 图书馆用餐回程排序 19分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐回程排序
+    - generic: 19分钟
+  - treeitem "已完成 五分钟门开提醒测评 20分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 20分钟
+  - treeitem "图书馆用餐与回程排序 20分钟":
+    - generic: 图书馆用餐与回程排序
+    - generic: 20分钟
+  - treeitem "已完成 门开提醒：图像通知呈现 29分钟":
+    - generic: 已完成
+    - generic: 门开提醒：图像通知呈现
+    - generic: 29分钟
+  - treeitem "已完成 监视门开提醒呈现 35分钟":
+    - generic: 已完成
+    - generic: 监视门开提醒呈现
+    - generic: 35分钟
+  - treeitem "门口补拍并结束观察 38分钟":
+    - generic: 门口补拍并结束观察
+    - generic: 38分钟
+  - treeitem "已完成 补拍门口并结束观察 38分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 38分钟
+  - treeitem "已完成 门开五分钟提醒呈现测评 42分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒呈现测评
+    - generic: 42分钟
+  - treeitem "五分钟门开提醒测评 43分钟":
+    - generic: 五分钟门开提醒测评
+    - generic: 43分钟
+  - treeitem "已完成 门开五分钟提醒文字通知 43分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒文字通知
+    - generic: 43分钟
+  - treeitem "门开提醒固定材料测评 49分钟":
+    - generic: 门开提醒固定材料测评
+    - generic: 49分钟
+  - treeitem "已完成 门开提醒测试 49分钟":
+    - generic: 已完成
+    - generic: 门开提醒测试
+    - generic: 49分钟
+  - treeitem "已完成 文件交接呈现测评 C16-B-02 50分钟":
+    - generic: 已完成
+    - generic: 文件交接呈现测评 C16-B-02
+    - generic: 50分钟
+  - treeitem "已完成 全量正式呈现测评 C16-B-01 50分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-B-01
+    - generic: 50分钟
+  - treeitem "全量正式呈现测评 C16-A-02 53分钟":
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 53分钟
+  - treeitem "已完成 正式呈现测评 C16-A-01 53分钟":
+    - generic: 已完成
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 53分钟
+  - treeitem "外卖取餐确认测评 57分钟":
+    - generic: 外卖取餐确认测评
+    - generic: 57分钟
+  - treeitem "已完成 外卖取件模拟呈现 1小时":
+    - generic: 已完成
+    - generic: 外卖取件模拟呈现
+    - generic: 1小时
+  - treeitem "已完成 外卖取件图像确认测评 1小时":
+    - generic: 已完成
+    - generic: 外卖取件图像确认测评
+    - generic: 1小时
+  - treeitem "已完成 外卖取件确认测评 C15-A-01 1小时":
+    - generic: 已完成
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位图像呈现测评 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位图像呈现测评
+    - generic: 1小时
+  - treeitem "图书馆座位查询测评 1小时":
+    - generic: 图书馆座位查询测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位图像化呈现 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位图像化呈现
+    - generic: 1小时
+  - button "展开其余 133 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 企业服务套餐概览介绍
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 N02-A-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N02-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N02-A-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：介绍这三个企业服务套餐，先给概览，再让我按需看适用范围与限制。 指定呈现方式：Markdown对比表与分节详情；通过文字追问继续。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 21:36
+- button "复制":
+- status: 已完成
+- button "已完成，用时 5秒":
+  - generic: 已完成，用时 5秒
+- paragraph: I'll start by initializing the fixture to get the released material for this case.
+- heading "三个企业服务套餐概览" [level=2]
+- table:
+  - rowgroup:
+    - row "套餐 价格 成员上限 支持方式 数据导出":
+      - columnheader "套餐"
+      - columnheader "价格"
+      - columnheader "成员上限"
+      - columnheader "支持方式"
+      - columnheader "数据导出"
+  - rowgroup:
+    - row "基础版（plan-basic） 99 元/月 5 人 邮件支持 不支持导出":
+      - cell "基础版（plan-basic）"
+      - cell "99 元/月"
+      - cell "5 人"
+      - cell "邮件支持"
+      - cell "不支持导出"
+    - row "团队版（plan-team） 299 元/月 20 人 邮件 + 在线支持 支持 CSV 导出":
+      - cell "团队版（plan-team）"
+      - cell "299 元/月"
+      - cell "20 人"
+      - cell "邮件 + 在线支持"
+      - cell "支持 CSV 导出"
+    - row "企业版（plan-enterprise） 需询价 尚未公布 专属支持 尚未公布":
+      - cell "企业版（plan-enterprise）"
+      - cell "需询价"
+      - cell "尚未公布"
+      - cell "专属支持"
+      - cell "尚未公布"
+- paragraph:
+  - strong: 一句话定位
+- list:
+  - strong: 基础版
+  - text: ：价格最低，按人数限制也最紧，适合小规模团队的基础使用，支持方式只有邮件，并且不具备数据导出能力。
+  - strong: 团队版
+  - text: ：价格是基础版的约 3 倍，人数上限翻了两番，多了在线支持与 CSV 导出，是三个套餐里配置最完整、信息最明确的一档。
+  - strong: 企业版
+  - text: ：采用询价制，目前只知道提供专属支持；成员上限和导出能力仍未公开，需要向商务询价时一并确认。
+- paragraph:
+  - strong: 按需查看
+- paragraph:
+  - text: 需要我展开哪一档的
+  - strong: 适用范围与限制
+  - text: ？回复套餐名即可（例如“基础版”），也可以一次说多个，我会分成小节依次说明；如果企业版当前的未公开项仍无法确定，我会直接标注为待补充，不做推测。
+- paragraph: 需要的话，我还可以补一份“选型建议”，对比哪种规模、哪种导出需求该落在哪一档。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 5K tok":
+  - generic: 用量 5K tok
+- generic: 21:37
+- generic: 展开团队版的适用范围与限制。
+- generic: 21:38
+- button "复制":
+- status: 已完成
+- button "已完成，用时 6秒":
+  - generic: 已完成，用时 6秒
+- heading "团队版（plan-team）适用范围与限制" [level=2]
+- paragraph:
+  - strong: 已公布的配置
+- table:
+  - rowgroup:
+    - row "项目 内容":
+      - columnheader "项目"
+      - columnheader "内容"
+  - rowgroup:
+    - row "价格 299 元/月":
+      - cell "价格"
+      - cell "299 元/月"
+    - row "成员上限 20 人":
+      - cell "成员上限"
+      - cell "20 人"
+    - row "支持方式 邮件 + 在线支持":
+      - cell "支持方式"
+      - cell "邮件 + 在线支持"
+    - row "数据导出 支持 CSV 导出":
+      - cell "数据导出"
+      - cell "支持 CSV 导出"
+- paragraph:
+  - strong: 适用范围（可直接对应到配置的需求）
+- list:
+  - strong: 团队规模在 20 人以内
+  - text: ：这是本套餐唯一明确的容量边界。
+  - strong: 需要在线渠道获得支持的团队
+  - text: ：材料明确写了“邮件 + 在线支持”，比基础版仅提供邮件支持多一条在线渠道。
+  - strong: 有数据导出需求的场景
+  - text: ：这是三个套餐里唯一明确支持导出的档位（基础版明确无导出，企业版未公布）。
+- paragraph:
+  - strong: 限制
+- list:
+  - strong: 成员数上限固定为 20 人
+  - text: ，材料未提供加购或临时扩员的说法。
+  - strong: 导出格式只写明 CSV
+  - text: ；是否支持其他格式、能否有更细的导出权限控制，均未公布。
+  - strong: 支持不包含“专属支持”
+  - text: ；材料把“专属支持”单独列在企业版名下，团队版没有这一项。
+  - listitem: 相对基础版，团队版的价格约 3 倍、人数上限约 4 倍；因此人数规模较小、又不需要导出的团队，用团队版就会多付一部分钱。
+- paragraph:
+  - strong: 材料未提供、需另行确认的部分
+- list:
+  - listitem: 计费周期、是否年付优惠
+  - listitem: 超出 20 人时的处理方式
+  - listitem: 是否需要或需要多长时间完成数据迁移
+  - listitem: 适用范围上的行业、地区或合规要求
+  - listitem: 在线支持的服务时段、响应时效，以及 CSL 之外的其他导出格式
+- paragraph: 这些内容在固定材料里尚未给出。我无法把未公布的内容当作团队版的实际条款填进去；需要的话，请向商务确认。
+- paragraph:
+  - text: 要接着看
+  - strong: 基础版
+  - text: 或
+  - strong: 企业版
+  - text: 的适用范围与限制吗？（企业版目前只有“询价 + 专属支持”两项，成员上限与导出能力仍未知。）
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 6.9K tok":
+  - generic: 用量 6.9K tok
+- generic: 21:38
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

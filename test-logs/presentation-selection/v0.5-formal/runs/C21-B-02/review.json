@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 2,
+  "state": 4,
+  "presentation": "partial",
+  "reason": "实际门关闭图和停止原因可见，未到达及无替代路线正确；业务字段出处大表冗余，初始状态有未注册组件。"
+}

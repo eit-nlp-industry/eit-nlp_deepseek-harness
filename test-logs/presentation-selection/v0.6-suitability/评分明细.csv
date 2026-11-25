@@ -1,0 +1,89 @@
+﻿case_id,category_id,scenario_domain,arm,coverage,operation,review_edit,organization,necessity,weighted_score,recommendation_class,recommendation,reason
+C01,G02,campus_trace_derived,A_native,5,4,5,4,5,93,conditional,原生图文分节；持续按地点浏览时用Tabs,分节与三张原生图片足够读完；持续来回浏览稍分散；三地点配三图，一次介绍原生已够；需要反复切换详情时动态更有价值。
+C01,G02,campus_trace_derived,J_json_render,5,5,5,5,4,98,conditional,原生图文分节；持续按地点浏览时用Tabs,Tabs可在地点之间直接切换，信息密度高时更清楚；三地点配三图，一次介绍原生已够；需要反复切换详情时动态更有价值。
+C02-a,G02,campus_trace_derived,A_native,5,5,5,5,5,100,text,文字/Markdown,无额外输入或编辑要求，直接文字即可完整满足；单地点讨论空间与进入条件的直接问答，没有额外操作。
+C02-a,G02,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,文字/Markdown,动态卡片也能表达同样内容，但没有新增浏览/编辑能力；单地点讨论空间与进入条件的直接问答，没有额外操作。
+C02-b,G02,campus_trace_derived,A_native,5,5,5,5,5,100,text,文字/Markdown,无额外输入或编辑要求，直接文字即可完整满足；只回答进入条件，不应为一句说明生成表单。
+C02-b,G02,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,文字/Markdown,动态卡片也能表达同样内容，但没有新增浏览/编辑能力；只回答进入条件，不应为一句说明生成表单。
+C03,G03,campus_trace_derived,A_native,5,5,5,5,5,100,text,Markdown比较表+推荐理由,少量固定候选，一张Markdown比较表及理由即可；候选少且条件已给定；质疑推荐时解释硬条件，不应自动弹预约表。
+C03,G03,campus_trace_derived,J_json_render,5,5,5,5,3,96,text,Markdown比较表+推荐理由,动态Table也适用，但没有改筛选条件或探索数据的要求；候选少且条件已给定；质疑推荐时解释硬条件，不应自动弹预约表。
+C04-a,G04,campus_trace_derived,A_native,5,5,5,5,5,100,native,DSH原生提问,原生单选/多选/自由回答已覆盖一次选择与提交；只缺用途，一个自由回答或少量选项即可补齐。
+C04-a,G04,campus_trace_derived,J_json_render,5,5,5,5,2,94,native,DSH原生提问,轻量动态表单也能完成，但没有业务整单编辑价值；只缺用途，一个自由回答或少量选项即可补齐。
+C04-b,G04,campus_trace_derived,A_native,5,5,4,4,5,94,conditional,默认原生多题；反复改偏好时用轻量表单,原生多题能收齐偏好；跨题回看修改略分散；上午/下午、多选地点、补充文字是偏好采集，尚无正式业务整单；集中回看时动态略占优。
+C04-b,G04,campus_trace_derived,J_json_render,5,5,5,5,4,98,conditional,默认原生多题；反复改偏好时用轻量表单,一页集中核对三项更便利，但本例没有正式业务草稿或复杂联动；上午/下午、多选地点、补充文字是偏好采集，尚无正式业务整单；集中回看时动态略占优。
+C04-c,G04,campus_trace_derived,A_native,5,5,5,5,5,100,native,DSH原生单选,原生单选/多选/自由回答已覆盖一次选择与提交；线上或线下二选一，推荐预选与实际提交分开即可。
+C04-c,G04,campus_trace_derived,J_json_render,5,5,5,5,2,94,native,DSH原生单选,轻量动态表单也能完成，但没有业务整单编辑价值；线上或线下二选一，推荐预选与实际提交分开即可。
+C05,G07,campus_trace_derived,A_native,5,3,3,4,4,78,json_render,json-render预约表单,能通过对话完整完成，但日期/人数/备注等整单回看和局部修改分散；本卡脚本进入日期、时段、人数、备注的预约草稿核对与提交；初始只咨询手续时先文字解释。
+C05,G07,campus_trace_derived,J_json_render,5,5,5,5,4,98,json_render,json-render预约表单,预填业务字段，集中核对/编辑后提交，DynamicForm有明确价值；本卡脚本进入日期、时段、人数、备注的预约草稿核对与提交；初始只咨询手续时先文字解释。
+C06,G08,campus_trace_derived,A_native,5,4,3,4,5,85,json_render,json-render修订后的预约草稿,自然语言可一次改多个值，但完整草稿回看与再编辑仍分散；已有预约需同时改时段、行程和备注并核对整单；仅报知一次修改结果时不必重绘全表。
+C06,G08,campus_trace_derived,J_json_render,5,5,5,5,4,98,json_render,json-render修订后的预约草稿,已有多字段草稿，保留未改字段并展示可编辑修订稿更合适；已有预约需同时改时段、行程和备注并核对整单；仅报知一次修改结果时不必重绘全表。
+C07-a,G08,campus_trace_derived,A_native,5,4,3,4,4,83,json_render,json-render整单修改；原生询问是否接受替代,取消设备、改时间、冲突改选可用对话完成，跨字段核对较费力；取消白板、改变时间并处理冲突涉及修订草稿；偏离晚间的下午选项必须另获用户选择。
+C07-a,G08,campus_trace_derived,J_json_render,5,5,5,5,4,98,json_render,json-render整单修改；原生询问是否接受替代,保留设备/时段等完整修订草稿，约束和可选值集中呈现；取消白板、改变时间并处理冲突涉及修订草稿；偏离晚间的下午选项必须另获用户选择。
+C07-b,G08,campus_trace_derived,A_native,5,5,5,5,5,100,native,DSH原生替代选项；拒绝后文字回执,原生单选/多选/自由回答已覆盖一次选择与提交；本分支最终只需确认是否接受下午；用户拒绝后停止，不再强迫填写预约表。
+C07-b,G08,campus_trace_derived,J_json_render,5,5,5,5,2,94,native,DSH原生替代选项；拒绝后文字回执,轻量动态表单也能完成，但没有业务整单编辑价值；本分支最终只需确认是否接受下午；用户拒绝后停止，不再强迫填写预约表。
+C08,G05,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生图片+身份确认,原生图片先给证据，原生问题接一次确认，能力已足够；确认一个候选是否本人，不需要业务多字段表单。
+C08,G05,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生图片+身份确认,Image加确认也能满足，但不需要额外业务表单或图像操作；确认一个候选是否本人，不需要业务多字段表单。
+C09,G05,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生图片+简短通知,已有图片/状态通知，原生图文即可表达；没有用户输入；环境触发的重逢通知，没有新用户输入需要收集。
+C09,G05,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生图片+简短通知,动态Image/卡片可展示相同信息，但不新增必要交互；环境触发的重逢通知，没有新用户输入需要收集。
+C10,G11,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生图片确认+文字跟随状态,少量阶段状态与一张证据图，图文回执足够；确认向导后接收跟随/丢失/停止回执，不需要生成机器人控制面板。
+C10,G11,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生图片确认+文字跟随状态,状态卡可用，但没有持续操控面板或多任务对照要求；确认向导后接收跟随/丢失/停止回执，不需要生成机器人控制面板。
+C11,G11,campus_trace_derived,A_native,5,5,5,5,5,100,text,简短文字控制回执,用户要事件发生时通知或一句控制回执，文字最直接；暂停与继续的指令已由用户给出，不再额外询问同一意图。
+C11,G11,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,简短文字控制回执,没有持续看板要求，动态界面不带来必要操作；暂停与继续的指令已由用户给出，不再额外询问同一意图。
+C12,G05,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生候选图+必要确认,原生图片先给证据，原生问题接一次确认，能力已足够；图中两名候选中确认灰衣拉箱者，原生选择足够。
+C12,G05,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生候选图+必要确认,Image加确认也能满足，但不需要额外业务表单或图像操作；图中两名候选中确认灰衣拉箱者，原生选择足够。
+C13,G03,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生证据图+简短推荐,两处固定观察和推荐，用原生图片及短说明便于直接对照；固定两处观察证据足以解释安静地点推荐，没有交互筛选需求。
+C13,G03,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生证据图+简短推荐,推荐卡与图片同样适合，但本例不需要用户切换条件；固定两处观察证据足以解释安静地点推荐，没有交互筛选需求。
+C14,G06,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生左右图对照；动态并列图组可选,只有左右两图，时间/视角标注后并列核对最直接；只有左/右两张、不同时间的证据；视角时间标签比Tabs本身更重要。
+C14,G06,campus_trace_derived,J_json_render,5,5,5,5,4,98,native,原生左右图对照；动态并列图组可选,最小动态图组也可并列满足；原生能力已够，引入动态组件新增价值较小；只有左/右两张、不同时间的证据；视角时间标签比Tabs本身更重要。
+C15,G05,campus_trace_derived,A_native,5,5,5,5,5,100,native,逐次原生图片+对象确认,原生图片先给证据，原生问题接一次确认，能力已足够；远近侧三次追加证据，最后确认同一外卖；不是填写取件业务表。
+C15,G05,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,逐次原生图片+对象确认,Image加确认也能满足，但不需要额外业务表单或图像操作；远近侧三次追加证据，最后确认同一外卖；不是填写取件业务表。
+C16,G05,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生文件图+确认和交接回执,少量阶段状态与一张证据图，图文回执足够；确认一份文件及交接阶段，不需要Workflow或业务表单。
+C16,G05,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生文件图+确认和交接回执,状态卡可用，但没有持续操控面板或多任务对照要求；确认一份文件及交接阶段，不需要Workflow或业务表单。
+C17-a,G11,campus_trace_derived,A_native,5,5,5,5,5,100,text,一次开门文字通知；有证据时附原生图,用户要事件发生时通知或一句控制回执，文字最直接；观察五分钟的通知型需求，不等于用户要持续操作看板。
+C17-a,G11,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,一次开门文字通知；有证据时附原生图,没有持续看板要求，动态界面不带来必要操作；观察五分钟的通知型需求，不等于用户要持续操作看板。
+C17-b,G11,campus_trace_derived,A_native,5,5,5,5,5,100,text,到期文字总结,用户要事件发生时通知或一句控制回执，文字最直接；到期未开门只需说明观察结果和监测结束。
+C17-b,G11,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,到期文字总结,没有持续看板要求，动态界面不带来必要操作；到期未开门只需说明观察结果和监测结束。
+C18,G11,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生补拍图+停止/返回状态,少量阶段状态与一张证据图，图文回执足够；一次补拍和停止/返回反馈，保持阶段清楚即可。
+C18,G11,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生补拍图+停止/返回状态,状态卡可用，但没有持续操控面板或多任务对照要求；一次补拍和停止/返回反馈，保持阶段清楚即可。
+C19,G09,campus_trace_derived,A_native,5,3,2,4,5,76,json_render,json-render SortableSequence,文字能完整描述并保存目标顺序，但不能直接操控列表和试排；该卡包含用户调整并保存顺序，直接试排与整体核对有价值；只要一次固定排序结果时文字即可。
+C19,G09,campus_trace_derived,J_json_render,5,5,5,5,4,98,json_render,json-render SortableSequence,直接重排、保持全部条目、应用新顺序匹配方案调整目标；该卡包含用户调整并保存顺序，直接试排与整体核对有价值；只要一次固定排序结果时文字即可。
+C20,G10,campus_trace_derived,A_native,5,5,5,5,5,100,native,固定原生地图+路线文字；交互地图另列条件,本例只需看同一静态底图和两段路线，原生图文已足够；原题只作静态三点两段示意，没有点选、路线切换或实时位置需求。
+C20,G10,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,固定原生地图+路线文字；交互地图另列条件,MapPreview有缩放/点位组织价值，但本例未要求交互探索或实时定位；原题只作静态三点两段示意，没有点选、路线切换或实时位置需求。
+C21,G10,campus_trace_derived,A_native,5,5,5,5,5,100,native,原生门图+停止原因,少量阶段状态与一张证据图，图文回执足够；受阻原因和停止状态是回执，不因涉及导航就必须上地图。
+C21,G10,campus_trace_derived,J_json_render,5,5,5,5,3,96,native,原生门图+停止原因,状态卡可用，但没有持续操控面板或多任务对照要求；受阻原因和停止状态是回执，不因涉及导航就必须上地图。
+C22,G07,campus_trace_derived,A_native,5,3,2,3,4,72,json_render,先原生看图；报修阶段json-render证据表单,能完整收齐并提交，但图片、设备、地点、故障、备注和联系人分散在对话，交叉核对成本高；拍一张图阶段无需表单；三图、设备、地点、故障、备注及联系人一起核对提交时表单收益明确。
+C22,G07,campus_trace_derived,J_json_render,5,5,5,5,4,98,json_render,先原生看图；报修阶段json-render证据表单,三图证据与多字段反馈单绑定，集中核对、补填及提交更合适；拍一张图阶段无需表单；三图、设备、地点、故障、备注及联系人一起核对提交时表单收益明确。
+C23,G12,campus_trace_derived,A_native,5,3,3,3,4,76,json_render,json-render Workflow编辑器,文字能完整改步骤和条件，但不能直接编辑节点、整体检查后再保存；需求已进入可复用流程编辑，修改等待参数并保存草稿，适合直接编辑对象。
+C23,G12,campus_trace_derived,J_json_render,5,5,5,5,4,98,json_render,json-render Workflow编辑器,Workflow把步骤、参数、分支与保存置于同一编辑对象；需求已进入可复用流程编辑，修改等待参数并保存草稿，适合直接编辑对象。
+C24,G12,campus_trace_derived,A_native,5,3,2,3,4,72,json_render,json-render Workflow条件分支编辑,条件分支与回流可完整用文字说明，但局部修改和跨路径核对困难；对已存流程增添不在场分支，需要回看在/不在两条完整路径。
+C24,G12,campus_trace_derived,J_json_render,5,5,5,5,4,98,json_render,json-render Workflow条件分支编辑,直接编辑分支、回看完整路径并保存，交互收益明确；对已存流程增添不在场分支，需要回看在/不在两条完整路径。
+C25-a,G01,campus_trace_derived,A_native,5,5,5,5,5,100,text,简短文字成功回执,无额外输入或编辑要求，直接文字即可完整满足；单动作模拟成功，最终答案无需让用户再操作。
+C25-a,G01,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,简短文字成功回执,动态卡片也能表达同样内容，但没有新增浏览/编辑能力；单动作模拟成功，最终答案无需让用户再操作。
+C25-b,G01,campus_trace_derived,A_native,5,5,5,5,5,100,text,简短文字失败回执,无额外输入或编辑要求，直接文字即可完整满足；单动作失败及原因，动态卡片没有必要交互。
+C25-b,G01,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,简短文字失败回执,动态卡片也能表达同样内容，但没有新增浏览/编辑能力；单动作失败及原因，动态卡片没有必要交互。
+C26,G01,campus_trace_derived,A_native,5,5,5,5,5,100,text,一句话条件说明,无额外输入或编辑要求，直接文字即可完整满足；明确要求简短，保留预约和批准条件即可。
+C26,G01,campus_trace_derived,J_json_render,5,5,5,5,2,94,text,一句话条件说明,动态卡片也能表达同样内容，但没有新增浏览/编辑能力；明确要求简短，保留预约和批准条件即可。
+N01,G01,non_campus,A_native,5,5,5,5,5,100,text,简短支付状态文字,无额外输入或编辑要求，直接文字即可完整满足；支付成功与结算待处理是两条事实，不需要表单或状态看板。
+N01,G01,non_campus,J_json_render,5,5,5,5,2,94,text,简短支付状态文字,动态卡片也能表达同样内容，但没有新增浏览/编辑能力；支付成功与结算待处理是两条事实，不需要表单或状态看板。
+N02,G02,non_campus,A_native,5,3,5,3,5,86,json_render,json-render Tabs/Collapsible,文字能完整给出资料，但按需详情依靠长文或再次追问；用户明确先概览、再自主按需看套餐范围与限制，切换/展开有直接用途。
+N02,G02,non_campus,J_json_render,5,5,5,5,4,98,json_render,json-render Tabs/Collapsible,明确需要概览后自主看详情，Tabs/Collapsible直接匹配浏览目标；用户明确先概览、再自主按需看套餐范围与限制，切换/展开有直接用途。
+N03,G03,non_campus,A_native,5,5,5,5,5,100,text,Markdown比较表+筛选理由,少量固定候选，一张Markdown比较表及理由即可；四个固定候选、固定预算重量与续航优先级，不需要尚未要求的交互筛选器。
+N03,G03,non_campus,J_json_render,5,5,5,5,3,96,text,Markdown比较表+筛选理由,动态Table也适用，但没有改筛选条件或探索数据的要求；四个固定候选、固定预算重量与续航优先级，不需要尚未要求的交互筛选器。
+N04,G04,non_campus,A_native,5,5,5,5,5,100,native,DSH原生三题；一页轻量form也可,三个独立未知信息，原生多题即可收齐，不需要整单反复编辑；只收用途、人数、形式然后汇总，不创建可反复修改提交的业务申请单。
+N04,G04,non_campus,J_json_render,5,5,5,5,4,98,native,DSH原生三题；一页轻量form也可,三字段一页填写也适合；优势尚不足以要求专用业务表单；只收用途、人数、形式然后汇总，不创建可反复修改提交的业务申请单。
+N05,G05,non_campus,A_native,5,5,5,5,5,100,native,原生包裹图+是否确认,原生图片先给证据，原生问题接一次确认，能力已足够；一张图和一个是/否确认，不应升级成复杂表单。
+N05,G05,non_campus,J_json_render,5,5,5,5,3,96,native,原生包裹图+是否确认,Image加确认也能满足，但不需要额外业务表单或图像操作；一张图和一个是/否确认，不应升级成复杂表单。
+N06,G06,non_campus,A_native,5,4,5,5,5,95,conditional,原生并列图或Tabs；按核对方式选择,三张原生图可并列核对，往返查找略多；三个视角各有价值；同时比较选并列，逐角看细节选Tabs。退货意向仍用原生确认。
+N06,G06,non_campus,J_json_render,5,5,5,5,4,98,conditional,原生并列图或Tabs；按核对方式选择,动态呈现可按核对方式选择图组或Tabs；不能把Tabs隐藏其他图当作必然最优；三个视角各有价值；同时比较选并列，逐角看细节选Tabs。退货意向仍用原生确认。
+N07,G07,non_campus,A_native,5,3,3,4,4,78,json_render,json-render售后申请表+附件,能通过对话完整完成，但日期/人数/备注等整单回看和局部修改分散；订单、故障、联系人和照片关联一起预填、核对、改联系人并提交，属于业务整单编辑。
+N07,G07,non_campus,J_json_render,5,5,5,5,4,98,json_render,json-render售后申请表+附件,预填业务字段，集中核对/编辑后提交，DynamicForm有明确价值；订单、故障、联系人和照片关联一起预填、核对、改联系人并提交，属于业务整单编辑。
+N08,G08,non_campus,A_native,5,5,5,5,5,100,native,原生替代时段选择；整单编辑时再用json-render,本例仅改一个时段并在两项中选一项，原生提问已足够；本例仅改时段，日期房间人数已确定；冲突后只有两项可选，原生选择足够。
+N08,G08,non_campus,J_json_render,5,5,5,5,3,96,native,原生替代时段选择；整单编辑时再用json-render,整单表单也能做，但当前操作没有要求重填房间、日期和人数；本例仅改时段，日期房间人数已确定；冲突后只有两项可选，原生选择足够。
+N09,G09,non_campus,A_native,5,3,2,4,5,76,json_render,json-render SortableSequence,文字能完整描述并保存目标顺序，但不能直接操控列表和试排；明确让用户调整和保存工作顺序，直接操控列表比反复描述位置更合适。
+N09,G09,non_campus,J_json_render,5,5,5,5,4,98,json_render,json-render SortableSequence,直接重排、保持全部条目、应用新顺序匹配方案调整目标；明确让用户调整和保存工作顺序，直接操控列表比反复描述位置更合适。
+N10,G10,non_campus,A_native,5,5,5,5,5,100,native,原生静态平面图+两段路线,本例只需看同一静态底图和两段路线，原生图文已足够；仅说明给定三点和静态路线，没有地图探索操作，不能凭Map组件名称加分。
+N10,G10,non_campus,J_json_render,5,5,5,5,3,96,native,原生静态平面图+两段路线,MapPreview有缩放/点位组织价值，但本例未要求交互探索或实时定位；仅说明给定三点和静态路线，没有地图探索操作，不能凭Map组件名称加分。
+N11,G11,non_campus,A_native,5,5,4,4,5,94,conditional,默认文字通知；需要持续回看时用状态卡/时间线,只监测一个任务、失败通知和对话控制，原生可完成；历史回看较分散；一个任务的失败通知及对话控制原生可满足；长期停留看进度/历史时动态看板更有收益。
+N11,G11,non_campus,J_json_render,5,5,5,5,4,98,conditional,默认文字通知；需要持续回看时用状态卡/时间线,统一进度和时间线便于回看，持续查看时更合适；本例仍非必须；一个任务的失败通知及对话控制原生可满足；长期停留看进度/历史时动态看板更有收益。
+N12,G12,non_campus,A_native,5,3,2,3,4,72,json_render,json-render Workflow分支与期限编辑,条件分支与回流可完整用文字说明，但局部修改和跨路径核对困难；要编辑报销流程、材料不齐回补分支和3工作日期限并保存，适合直接操作流程对象。
+N12,G12,non_campus,J_json_render,5,5,5,5,4,98,json_render,json-render Workflow分支与期限编辑,直接编辑分支、回看完整路径并保存，交互收益明确；要编辑报销流程、材料不齐回补分支和3工作日期限并保存，适合直接操作流程对象。

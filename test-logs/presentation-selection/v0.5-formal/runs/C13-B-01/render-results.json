@@ -1,0 +1,200 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_XV9FFMLDJb0jeSCfrRgi4422",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"rich_content\": \"true\", \"components\": [\"Image\"], \"user_query\": \"展示一张“安静读书地点”推荐卡片：卡片标题为地点名称，突出观察时间 14:00、当前状态（安静）、座位情况（有座）；卡片内用 Image 组件展示该地点图像，src 使用 business_data 中给出的同源 path 字符串，alt 使用给定的描述文字；卡片下方给出简短文字兜底说明（观察时间点、图像为模拟材料），并注明静态介绍不代表当前实况。不要加入其他地点或无关信息。\", \"business_data\": {\"title\": \"安静读书地点推荐\", \"place_name\": \"图书馆阅览区（lib-reading）\", \"observation_time\": \"14:00\", \"observation_note\": \"同一时间点 14:00 的现场观察\", \"status\": \"安静\", \"seats\": \"有座\", \"summary\": \"14:00 观察到图书馆阅览区安静且有座，适合读书。\", \"image\": \"/api/media/bench05-lib-reading/content\", \"alt\": \"MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture\", \"image_note\": \"图像为模拟材料（MOCK），不代表真实视角或当前实况。\", \"fallback_text\": \"文字兜底：14:00 观察，图书馆阅览区安静、有座，适合读书。图像为模拟材料。静态介绍不替代当前现场观察，前往前请以现场情况为准。\"}, \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "page-heading",
+                "place-card",
+                "fallback-text"
+              ]
+            },
+            "page-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "安静读书地点推荐",
+                "level": "h1"
+              }
+            },
+            "place-card": {
+              "type": "Card",
+              "props": {
+                "title": "图书馆阅览区（lib-reading）",
+                "variant": "outlined"
+              },
+              "children": [
+                "card-stack"
+              ]
+            },
+            "fallback-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            },
+            "card-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metrics-grid",
+                "place-image",
+                "details"
+              ]
+            },
+            "metrics-grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "metric-time",
+                "metric-status",
+                "metric-seats"
+              ]
+            },
+            "metric-time": {
+              "type": "Metric",
+              "props": {
+                "label": "观察时间",
+                "value": "14:00"
+              }
+            },
+            "metric-status": {
+              "type": "Metric",
+              "props": {
+                "label": "当前状态",
+                "value": "安静"
+              }
+            },
+            "metric-seats": {
+              "type": "Metric",
+              "props": {
+                "label": "座位情况",
+                "value": "有座"
+              }
+            },
+            "place-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lib-reading/content",
+                "alt": "MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture",
+                "caption": "图像为模拟材料（MOCK），不代表真实视角或当前实况。",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "details": {
+              "type": "Descriptions",
+              "props": {
+                "title": "逐项信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "地点名称",
+                    "value": "图书馆阅览区（lib-reading）"
+                  },
+                  {
+                    "label": "观察时间",
+                    "value": "14:00"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "安静"
+                  },
+                  {
+                    "label": "座位情况",
+                    "value": "有座"
+                  },
+                  {
+                    "label": "观察说明",
+                    "value": "同一时间点 14:00 的现场观察"
+                  },
+                  {
+                    "label": "摘要",
+                    "value": "14:00 观察到图书馆阅览区安静且有座，适合读书。"
+                  },
+                  {
+                    "label": "图像路径",
+                    "value": "/api/media/bench05-lib-reading/content"
+                  },
+                  {
+                    "label": "图像替代文本",
+                    "value": "MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture"
+                  },
+                  {
+                    "label": "图像说明",
+                    "value": "图像为模拟材料（MOCK），不代表真实视角或当前实况。"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "安静读书地点推荐",
+            "place_name": "图书馆阅览区（lib-reading）",
+            "observation_time": "14:00",
+            "observation_note": "同一时间点 14:00 的现场观察",
+            "status": "安静",
+            "seats": "有座",
+            "summary": "14:00 观察到图书馆阅览区安静且有座，适合读书。",
+            "image": "/api/media/bench05-lib-reading/content",
+            "alt": "MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture",
+            "image_note": "图像为模拟材料（MOCK），不代表真实视角或当前实况。",
+            "fallback_text": "文字兜底：14:00 观察，图书馆阅览区安静、有座，适合读书。图像为模拟材料。静态介绍不替代当前现场观察，前往前请以现场情况为准。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_XV9FFMLDJb0jeSCfrRgi4422"
+      },
+      "toolCallId": "call_00_XV9FFMLDJb0jeSCfrRgi4422",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "775ce9ba-a1ea-439f-bc87-3fe02073978e"
+    }
+  }
+]

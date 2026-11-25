@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "实际键盘改序、应用及Host回传正确稳定ID，模拟草稿保存；已回答后组件仍显示等待继续回答。"
+}

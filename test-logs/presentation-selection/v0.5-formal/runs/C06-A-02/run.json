@@ -1,0 +1,26 @@
+{
+  "run_id": "C06-A-02",
+  "case_id": "C06",
+  "card_id": "C06",
+  "category_id": "G08",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C06-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C06-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C06-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：那就不去图书馆了，只逛一个小时左右，早上10点开始，然后吃午饭。\n指定呈现方式：Markdown草稿，文字修改并确认。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "c770974896bb0e81e5de4757631405cba46657f140d5d5e6b40289a754d60c06",
+  "operator_actions": "文字/界面改为10:00–11:00、去掉图书馆、更新备注→实际确认提交。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T11:54:19.518Z",
+  "interactions": [
+    {
+      "at": "2026-11-19T11:55:20.219Z",
+      "type": "text",
+      "value": "确认提交草稿，备注为：带两位校外朋友逛校园，之后吃午饭。"
+    }
+  ],
+  "tab_id": "8",
+  "final_at": "2026-11-19T11:56:12.321Z",
+  "notes": "时段日期人数及用户新备注完整，去掉图书馆，无真实预约误报。"
+}

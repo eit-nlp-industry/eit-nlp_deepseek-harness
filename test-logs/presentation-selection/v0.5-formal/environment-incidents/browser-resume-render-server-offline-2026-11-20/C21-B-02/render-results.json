@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_KJXPLRgSARJgyNSZGWN54196",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"user_query\": \"用一张“导航状态卡片”呈现本次模拟前往食堂的状态：顶部标题写“前往食堂 · 模拟状态”，用一行大字显示当前状态“前往中，尚无到达结论”，下面用键值行列出：目的地 = 食堂（canteen）、到达结论 = 尚未到达、障碍与停止状态 = 暂未收到事件、图像素材 = 材料未提供实景图。再单独用醒目的提示块写“停止原因：暂无（尚未收到停止或障碍事件，不作推断，不预报成功）”。不要放地图、不要放其他富组件；不要使用任何未提供的图片地址。\", \"business_data\": {\"title\": \"前往食堂 · 模拟状态\", \"status_headline\": \"前往中，尚无到达结论\", \"status_note\": \"本次为固定材料的模拟导航呈现，不代表真实带路已完成。\", \"details\": [{\"label\": \"目的地\", \"value\": \"食堂（canteen）\"}, {\"label\": \"到达结论\", \"value\": \"尚未到达（无结论）\"}, {\"label\": \"障碍与停止状态\", \"value\": \"暂未收到事件\"}, {\"label\": \"图像素材\", \"value\": \"材料未提供实景图，故未展示任何图片\"}], \"stop_reason\": {\"label\": \"停止原因\", \"value\": \"暂无 —— 尚未收到停止或障碍事件\", \"note\": \"停止原因以随后事件为准，此处不作推断，也不预报成功。\"}, \"next_step\": \"等待后续事件或你的选择后再继续。\"}}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_KJXPLRgSARJgyNSZGWN54196"
+      },
+      "toolCallId": "call_00_KJXPLRgSARJgyNSZGWN54196",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面生成失败，已尝试 3 次：fetch failed。请用文字继续回答。不要把错误 JSON 展示给用户。"
+        }
+      ],
+      "isError": false,
+      "id": "9eee5e8b-74dc-4cc7-9557-0d46fac981d7"
+    }
+  }
+]

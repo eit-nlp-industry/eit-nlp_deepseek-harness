@@ -1,0 +1,83 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C14-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_d2eYJBnjzJNlhv73NChN1934"
+      },
+      "toolCallId": "call_00_ET_d2eYJBnjzJNlhv73NChN1934",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C14\",\"facts\":\"当前图片img-left，14:00左侧视角；固定观察结论满座。其他视角尚未观察，不断言有座或已预订。\",\"assets\":[{\"id\":\"bench05-img-left\",\"file\":\"bench05-img-left.png\",\"alt\":\"MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture\",\"source_id\":\"img-left\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-left/content\",\"path\":\"/api/media/bench05-img-left/content\",\"sha256\":\"f2e502fd95b88dc90db907d1127b06e7e3654e9721bb9c5de8916d681423be46\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "898983f0-d653-43f9-b3ae-9c54ab472842"
+    }
+  },
+  {
+    "call": {
+      "seq": 34,
+      "arguments": {
+        "action": "read",
+        "run_id": "C14-A-02"
+      }
+    },
+    "result_seq": 35,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_DEn8wtPCCwxSURSffA0t9458"
+      },
+      "toolCallId": "call_00_DEn8wtPCCwxSURSffA0t9458",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C14\",\"facts\":\"当前图片img-left，14:00左侧视角；固定观察结论满座。其他视角尚未观察，不断言有座或已预订。\",\"assets\":[{\"id\":\"bench05-img-left\",\"file\":\"bench05-img-left.png\",\"alt\":\"MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture\",\"source_id\":\"img-left\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-left/content\",\"path\":\"/api/media/bench05-img-left/content\",\"sha256\":\"f2e502fd95b88dc90db907d1127b06e7e3654e9721bb9c5de8916d681423be46\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "1cddade3-9315-47f9-8d2d-72a8ff9fcece"
+    }
+  },
+  {
+    "call": {
+      "seq": 49,
+      "arguments": {
+        "action": "read",
+        "run_id": "C14-A-02"
+      }
+    },
+    "result_seq": 50,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_v6883rHsfZTo6pOhnK1d9181"
+      },
+      "toolCallId": "call_00_v6883rHsfZTo6pOhnK1d9181",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C14\",\"facts\":\"14:01右侧新观察，固定结论：有2个空位。只是当前观察，不等于预订。\",\"assets\":[{\"id\":\"bench05-img-right\",\"file\":\"bench05-img-right.png\",\"alt\":\"MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture\",\"source_id\":\"img-right\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-right/content\",\"path\":\"/api/media/bench05-img-right/content\",\"sha256\":\"5ceb1c86d80c273693963e51434a27852e315146bebaaf9a3684ee44576d87e3\",\"width\":960,\"height\":540}],\"asset_id\":\"img-right\",\"view\":\"right\",\"observed_at\":\"14:01\",\"empty_seats\":2}}"
+        }
+      ],
+      "isError": false,
+      "id": "cf502499-9e19-4697-8e0a-c10c2a289f22"
+    }
+  }
+]

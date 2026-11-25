@@ -1,0 +1,12 @@
+[
+  {
+    "seq": 18,
+    "turn": 1,
+    "text": "我先取出本案例的固定材料。"
+  },
+  {
+    "seq": 24,
+    "turn": 1,
+    "text": "## 东方理工校园三处介绍\n\n### 📚 图书馆\n- **安静阅读区**：图书馆内设有安静阅读区，适合专注自习。\n- **讨论室**：另设讨论室，可供小组交流使用。\n- **入馆预约**：入馆需提前预约，具体预约方式与名额**以图书馆方面的答复为准**。\n\n![MOCK LIBRARY; READING / DISCUSSION; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-lib/content)\n\n### 🍽️ 食堂\n- **午餐**：食堂提供午餐。\n- **其余时段**：早餐、晚餐及具体营业时间**目前未知**，建议到现场查看公告，或向食堂工作人员确认。\n\n![MOCK CANTEEN; LUNCH AREA; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-canteen/content)\n\n### 🏛️ 四明书院\n- **定位**：四明书院设有**公共交流空间**，适合日常会面、交流与活动。\n- **投屏设备**：是否有投屏设备**目前未知**；如需用于演示或活动，建议提前向书院管理方确认。\n\n![MOCK COLLEGE; COMMON AREA; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-college/content)\n\n以上是关于这三处的介绍。如果你接下来想了解某个地点的更多细节，或需要我帮你整理成一份到校后要确认的事项清单，告诉我即可。"
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N05-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_bwhkmKYc5BEGjlGi8avg5501"
+      },
+      "toolCallId": "call_00_ET_bwhkmKYc5BEGjlGi8avg5501",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N05\",\"facts\":\"唯一候选parcel-8241，尾号8241，初始pending_confirmation。图像MOCK，用户确认后只记录状态，不寄件。\",\"assets\":[{\"id\":\"bench05-img-parcel-8241\",\"file\":\"bench05-img-parcel-8241.png\",\"alt\":\"MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture\",\"source_id\":\"img-parcel-8241\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-parcel-8241/content\",\"path\":\"/api/media/bench05-img-parcel-8241/content\",\"sha256\":\"f3c2235c40b1cfe400a7511f7de3bf6f2a7e0e62cf50f87354eddb202fe84fa0\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "764f781b-a86b-46e9-b53d-871b8d9c30ff"
+    }
+  },
+  {
+    "call": {
+      "seq": 34,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N05-A-01",
+        "values": {
+          "parcel_id": "parcel-8241",
+          "order_tail": "8241",
+          "confirmed_by_user": true,
+          "recorded_state": "confirmed_for_dispatch",
+          "dispatch_requested": false
+        }
+      }
+    },
+    "result_seq": 35,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_FdlSn7FientOEywSTsjJ5826"
+      },
+      "toolCallId": "call_00_FdlSn7FientOEywSTsjJ5826",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "84ae2355-ea0e-4ed8-945c-0f79df49a40e"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "action": "read",
+        "run_id": "N05-A-01"
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ZakqUduuN6KFPIqGdRmq3888"
+      },
+      "toolCallId": "call_00_ZakqUduuN6KFPIqGdRmq3888",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N05\",\"facts\":\"唯一候选parcel-8241，尾号8241，初始pending_confirmation。图像MOCK，用户确认后只记录状态，不寄件。\",\"assets\":[{\"id\":\"bench05-img-parcel-8241\",\"file\":\"bench05-img-parcel-8241.png\",\"alt\":\"MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture\",\"source_id\":\"img-parcel-8241\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-parcel-8241/content\",\"path\":\"/api/media/bench05-img-parcel-8241/content\",\"sha256\":\"f3c2235c40b1cfe400a7511f7de3bf6f2a7e0e62cf50f87354eddb202fe84fa0\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "81225a2f-5338-49b5-ac9f-9b5010d9573a"
+    }
+  }
+]

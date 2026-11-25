@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 5,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "pending后按失败事件准确说明target_unreachable，未再次发起动作或宣称成功。"
+}

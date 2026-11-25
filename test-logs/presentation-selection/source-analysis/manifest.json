@@ -1,0 +1,277 @@
+{
+  "files": [
+    {
+      "file": "案例1.jsonl",
+      "sha256": "2f3f0eedb32b3d038a7f5aea6aa243ca59b03f50897dcf7a1311ed31e9ae2aad",
+      "session_id": "session-42d173fc-9133-4565-924c-dc9cd7b23abb",
+      "events": 135,
+      "user_message_events": 6,
+      "human_messages": 3,
+      "render_results": 3,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "user": 3,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "tool-jobs": 1
+      }
+    },
+    {
+      "file": "案例2.jsonl",
+      "sha256": "53307ce984656296a1450247ac22c1b2784865ab39a492e10861e1d0b5075c93",
+      "session_id": "session-533689b1-47dd-45c9-ac0a-a9b63c4c6251",
+      "events": 110,
+      "user_message_events": 6,
+      "human_messages": 4,
+      "render_results": 4,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "user": 4,
+        "runtime-context": 1,
+        "skill-catalog": 1
+      }
+    },
+    {
+      "file": "案例3-1.jsonl",
+      "sha256": "5214762eaf254af43f1683b96545256051795f0631d9173fc8087b7ee901fa5f",
+      "session_id": "session-ebd498ed-b586-44f4-bcde-a5c3153221b5",
+      "events": 242,
+      "user_message_events": 18,
+      "human_messages": 2,
+      "render_results": 1,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 14,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 2
+      }
+    },
+    {
+      "file": "案例3-2.jsonl",
+      "sha256": "0f159a78de1dc5527eb2a64b32a688fcf83a2d55a02a838b2bf5d2508f3de9d2",
+      "session_id": "session-77eda274-7f01-442d-8d23-ea6aa036a252",
+      "events": 236,
+      "user_message_events": 20,
+      "human_messages": 1,
+      "render_results": 1,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 15,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "person-references": 1,
+        "user": 1,
+        "tool-jobs": 1
+      }
+    },
+    {
+      "file": "案例4.jsonl",
+      "sha256": "478521cdd1569253b42c1941d22962ac9441c9bd2625e8e286b0a94df00c54fc",
+      "session_id": "session-54b0e946-a6fc-458f-a353-0a0dc698adb5",
+      "events": 300,
+      "user_message_events": 24,
+      "human_messages": 3,
+      "render_results": 2,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 17,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 3,
+        "tool-jobs": 2
+      }
+    },
+    {
+      "file": "案例5.jsonl",
+      "sha256": "bbd3b0d37b6f1e7255138e06168618d2f971b2551c484856c452c87fbfb388e2",
+      "session_id": "session-83ca1dba-a0bb-4bc2-812c-450036118cb5",
+      "events": 432,
+      "user_message_events": 34,
+      "human_messages": 1,
+      "render_results": 2,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 27,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 1,
+        "tool-jobs": 4
+      }
+    },
+    {
+      "file": "案例6.jsonl",
+      "sha256": "b177f9f52e1512b9fca8c83db98a0200b71d3bd1ed6c5ce76621bb3672de2208",
+      "session_id": "session-e9afae3b-f7b3-47be-a06a-d2aa6f824185",
+      "events": 306,
+      "user_message_events": 26,
+      "human_messages": 2,
+      "render_results": 1,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 20,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 2,
+        "tool-jobs": 2
+      }
+    },
+    {
+      "file": "案例7.jsonl",
+      "sha256": "b1d7453a507fe2caa09b9db6e5eba03c4e7ed424db2a791a14adc5b9063c1b22",
+      "session_id": "session-663f6499-1b57-443a-a3cb-445e1d3c6726",
+      "events": 507,
+      "user_message_events": 39,
+      "human_messages": 4,
+      "render_results": 5,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 29,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 4,
+        "tool-jobs": 4
+      }
+    },
+    {
+      "file": "案例8.jsonl",
+      "sha256": "58a211a9c647db75512f4296ca33ae0d8fe5c19c960be0e707b89fce6d0cbf83",
+      "session_id": "session-053a346a-66da-4672-81af-c5581a9b97f9",
+      "events": 591,
+      "user_message_events": 51,
+      "human_messages": 2,
+      "render_results": 2,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 44,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 2,
+        "tool-jobs": 3
+      }
+    },
+    {
+      "file": "案例9.jsonl",
+      "sha256": "5129000eadedcd356e625024b0584e1a142230ff5c9de0367abf1b843af53440",
+      "session_id": "session-5a68f8ab-c719-4d4b-b41f-67531e82f7d7",
+      "events": 556,
+      "user_message_events": 48,
+      "human_messages": 2,
+      "render_results": 2,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 42,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 2,
+        "tool-jobs": 2
+      }
+    },
+    {
+      "file": "案例10.jsonl",
+      "sha256": "bd70b67425b87076ce74b392ec2589e54f484f88bfa03e8a6b38e031a0468c69",
+      "session_id": "session-b5c8f9e3-eede-4a3f-bbac-1b3c09c2b062",
+      "events": 351,
+      "user_message_events": 29,
+      "human_messages": 2,
+      "render_results": 2,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 23,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 2,
+        "tool-jobs": 2
+      }
+    },
+    {
+      "file": "案例11&12.jsonl",
+      "sha256": "796c809cda5869a212243fddfb2dfffd9888f844ef32bf55811869bb63ac2783",
+      "session_id": "session-11d70228-4584-4082-8245-95b5451c19ef",
+      "events": 115,
+      "user_message_events": 7,
+      "human_messages": 5,
+      "render_results": 5,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "user": 5,
+        "runtime-context": 1,
+        "skill-catalog": 1
+      }
+    },
+    {
+      "file": "案例13.jsonl",
+      "sha256": "eb08238f6c6c24e9b74fa56c22f4742f0fca90c705f4ba45c3fd98c92737d6e2",
+      "session_id": "session-342d5864-6bb4-493a-9b21-2d91cd04c692",
+      "events": 379,
+      "user_message_events": 29,
+      "human_messages": 3,
+      "render_results": 3,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "user": 3,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "camera-observation": 22,
+        "tool-jobs": 2
+      }
+    },
+    {
+      "file": "案例14.jsonl",
+      "sha256": "4d75bd9d2fe9d7e5694fd0ffd05265d80eb7cfba7b6f59b66c7a36255ef9615d",
+      "session_id": "session-09cff05d-0f60-4e66-89a5-2d35fea1e5f8",
+      "events": 646,
+      "user_message_events": 54,
+      "human_messages": 4,
+      "render_results": 4,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "camera-observation": 45,
+        "runtime-context": 1,
+        "skill-catalog": 1,
+        "user": 4,
+        "tool-jobs": 3
+      }
+    },
+    {
+      "file": "案例15.jsonl",
+      "sha256": "8af13ee08055f842d2e850e69c69aa96fd5e8641fe35d3818006a0789119bab6",
+      "session_id": "session-d03789ef-d8ff-4138-a657-97b364bee6c0",
+      "events": 54,
+      "user_message_events": 4,
+      "human_messages": 2,
+      "render_results": 2,
+      "ask_user_calls": 0,
+      "source_kinds": {
+        "user": 2,
+        "runtime-context": 1,
+        "skill-catalog": 1
+      }
+    }
+  ],
+  "totals": {
+    "files": 15,
+    "user_message_events": 395,
+    "human_messages": 40,
+    "render_results": 39,
+    "display": 32,
+    "form": 7,
+    "with_payload": 38,
+    "components": {
+      "Tabs": 2,
+      "TabContent": 6,
+      "Heading": 11,
+      "Text": 15,
+      "Image": 32,
+      "Stack": 14,
+      "Card": 10,
+      "MapPreview": 1,
+      "Section": 4,
+      "DynamicForm": 6,
+      "Button": 8,
+      "SortableSequence": 2,
+      "Workflow": 2
+    },
+    "direct_data_text": 0
+  }
+}

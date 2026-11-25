@@ -1,0 +1,209 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "握手交互状态卡片呈现 1分钟" [selected]:
+    - generic: 握手交互状态卡片呈现
+    - generic: 1分钟
+  - treeitem "已完成 握手确认卡片呈现 1分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 1分钟
+  - treeitem "已完成 握手状态卡片渲染测评 1分钟":
+    - generic: 已完成
+    - generic: 握手状态卡片渲染测评
+    - generic: 1分钟
+  - treeitem "已完成 握手交互卡片呈现 1分钟":
+    - generic: 已完成
+    - generic: 握手交互卡片呈现
+    - generic: 1分钟
+  - treeitem "Workflow 追加分支编辑器测评 2分钟":
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 2分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 2分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 2分钟
+  - treeitem "已完成 工作流条件分支测评呈现 3分钟":
+    - generic: 已完成
+    - generic: 工作流条件分支测评呈现
+    - generic: 3分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 3分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 3分钟
+  - treeitem "报销流程草稿编辑保存 5分钟":
+    - generic: 报销流程草稿编辑保存
+    - generic: 5分钟
+  - treeitem "已完成 报销流程整理与草稿保存 5分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 5分钟
+  - treeitem "已完成 Workflow材料取送流程测评 6分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 6分钟
+  - treeitem "监测文件处理任务失败通知 8分钟":
+    - generic: 监测文件处理任务失败通知
+    - generic: 8分钟
+  - treeitem "已完成 文件处理任务监测模拟 8分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 8分钟
+  - treeitem "已完成 饮水机不出水照片评测 9分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 9分钟
+  - treeitem "平面图快递路线静态示意 11分钟":
+    - generic: 平面图快递路线静态示意
+    - generic: 11分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 11分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 11分钟
+  - treeitem "三项工作排期草稿确认 12分钟":
+    - generic: 三项工作排期草稿确认
+    - generic: 12分钟
+  - treeitem "已完成 安排三项工作并确认草稿 12分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 12分钟
+  - treeitem "会议室预约改期草稿 14分钟":
+    - generic: 会议室预约改期草稿
+    - generic: 14分钟
+  - treeitem "已完成 会议室预约改期草稿测评 14分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 14分钟
+  - treeitem "售后申请草稿填写与确认 15分钟":
+    - generic: 售后申请草稿填写与确认
+    - generic: 15分钟
+  - treeitem "已完成 售后申请草稿填写测评 15分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 15分钟
+  - treeitem "商品退货多视角图片呈现 16分钟":
+    - generic: 商品退货多视角图片呈现
+    - generic: 16分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 17分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 17分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 17分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 17分钟
+  - treeitem "已完成 包裹照片确认对象状态 18分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 18分钟
+  - treeitem "确认包裹照片与订单尾号 19分钟":
+    - generic: 确认包裹照片与订单尾号
+    - generic: 19分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 21分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 21分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 22分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 22分钟
+  - treeitem "活动需求确认与汇总 22分钟":
+    - generic: 活动需求确认与汇总
+    - generic: 22分钟
+  - treeitem "已完成 活动需求确认测评 22分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 22分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 握手交互状态卡片呈现
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C25-b-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C25-b-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C25-b-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：握个手吧。 指定呈现方式：最小display状态卡片，禁止再次发起动作。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 14:01
+- button "复制":
+- status: 已完成
+- button "已完成，用时 49秒":
+  - generic: 已完成，用时 49秒
+- paragraph: 我先调取本例材料。
+- paragraph:
+  - text: 握手请求：
+  - strong: handshake-01
+  - text: ，当前状态为
+  - strong: 待处理（pending）
+  - text: 。
+- paragraph: 已收到你的握手请求，但眼下还没有成功或失败的结果，因此无法告知结局，我也不会再次发起动作。等结果实际产生后，我再告诉你。
+- generic: 握手请求
+- generic: 待处理 / pending
+- generic: 已接收握手请求，当前尚无成功或失败结果。
+- generic: 握手请求：handshake-01，状态为待处理（pending）。已接收请求，目前没有成功或失败结果，完成后才能告知结局。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 8.1K tok":
+  - generic: 用量 8.1K tok
+- generic: 14:02
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

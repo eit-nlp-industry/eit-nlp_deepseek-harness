@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "C10",
+  "facts": "唯一向导候选person-guide，待用户确认。任务follow-01当前未启动；跟随和丢失状态只能依据后续模拟事件，不操作真实机器人。",
+  "assets": [
+    {
+      "id": "bench05-person-guide",
+      "file": "bench05-person-guide.png",
+      "alt": "MOCK GUIDE; PERSON GUIDE; synthetic fixture",
+      "source_id": "person-guide",
+      "url": "http://127.0.0.1:3080/api/media/bench05-person-guide/content",
+      "path": "/api/media/bench05-person-guide/content",
+      "sha256": "fd6f4c3b74f82d33bb852c82d78f77cad292bc339a01c15b5bd67c8a99505c64",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

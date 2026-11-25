@@ -1,0 +1,17 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C19",
+    "facts": "稳定地点ID lib=图书馆、canteen=食堂、college=四明书院，初始lib/canteen/college。college地图位置尚未确认。只保存排序草稿，不导航。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true,
+  "submission": {
+    "response": {
+      "status": "draft_received",
+      "simulated": true,
+      "real_operation": false
+    }
+  }
+}

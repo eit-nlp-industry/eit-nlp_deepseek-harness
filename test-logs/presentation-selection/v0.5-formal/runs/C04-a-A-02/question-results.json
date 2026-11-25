@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_0ao0JJEzQKg9LGMfZ6wx7722",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"purpose\", \"header\": \"用途\", \"question\": \"你主要想在这个地方做什么？\", \"options\": [{\"label\": \"安静阅读/自习\", \"description\": \"更看重安静环境和独立座位。\"}, {\"label\": \"公共交流/讨论\", \"description\": \"更需要适合多人沟通的空间。\"}, {\"label\": \"其他用途\", \"description\": \"请补充说明，我会按你的用途再判断。\"}], \"multi_select\": false}, {\"id\": \"area\", \"header\": \"位置\", \"question\": \"你希望在哪个区域或附近找？如果暂时没定，可跳过。\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_0ao0JJEzQKg9LGMfZ6wx7722"
+      },
+      "toolCallId": "call_00_0ao0JJEzQKg9LGMfZ6wx7722",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"purpose\",\"selected\":[],\"custom\":\"想安静读书\"},{\"id\":\"area\",\"selected\":[]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "ab8ceb06-7070-45d5-a3b5-76863bc6424c"
+    }
+  }
+]

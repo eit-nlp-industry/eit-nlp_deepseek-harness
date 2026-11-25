@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 3,
+  "readability": 3,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "初始回放前声称已停下待命又说following且结果未知，前后冲突；后续暂停和恢复随事件正确更新，但各阶段状态组件均未注册，靠文字兜底。未测真实设备控制耗时。"
+}

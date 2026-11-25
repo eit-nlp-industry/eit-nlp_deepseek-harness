@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "两轮控制及事件正确：暂停3/10、继续4/10、doc-05 INVALID_FILE失败、结束监测而任务仍failed，迟到同ID旧事件不重复通知也不重启。实际状态卡/时间线可见，但多轮全文与卡片重复、技术字段表和旧未知状态过多；把任务暂停称为暂停监测，且把未完成6个泛称未处理，语义不够准确。"
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C18-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_5ClbUlCTuBkf6kF2jPKU7555"
+      },
+      "toolCallId": "call_00_ET_5ClbUlCTuBkf6kF2jPKU7555",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"模拟观察watch-01进行中，门此前关闭。补拍、停止、返回状态以随后回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "8f41173b-5798-452b-be29-e2f4a3951703"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_7yV1r4AxhGZdBBN2AdCh1084"
+      },
+      "toolCallId": "call_00_7yV1r4AxhGZdBBN2AdCh1084",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"模拟观察watch-01进行中，门此前关闭。补拍、停止、返回状态以随后回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "a48f9135-ff4e-478b-83ad-e99228f258e7"
+    }
+  },
+  {
+    "call": {
+      "seq": 52,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-01"
+      }
+    },
+    "result_seq": 53,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_JVT0PpZHdzPqQn27Ak501046"
+      },
+      "toolCallId": "call_00_JVT0PpZHdzPqQn27Ak501046",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"按用户要求补拍门口，这是最新图像。\",\"assets\":[{\"id\":\"bench05-img-door-new\",\"file\":\"bench05-img-door-new.png\",\"alt\":\"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\",\"source_id\":\"img-door-new\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-door-new/content\",\"path\":\"/api/media/bench05-img-door-new/content\",\"sha256\":\"bbed56e912957f22af711cd42e87babdccc780cd1fa1cd14feaf5f3a2f48b37d\",\"width\":960,\"height\":540}],\"asset_id\":\"img-door-new\",\"status\":\"new_photo\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "06c00a78-b918-4caa-9a22-4a3543102198"
+    }
+  },
+  {
+    "call": {
+      "seq": 73,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-01"
+      }
+    },
+    "result_seq": 74,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_8WTL6JRJXomVDy1DDWnW6453"
+      },
+      "toolCallId": "call_00_8WTL6JRJXomVDy1DDWnW6453",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"观察watch-01已模拟结束，正在返回。\",\"assets\":[],\"asset_id\":\"img-door-new\",\"status\":\"new_photo\",\"monitoring_status\":\"ended\",\"return_status\":\"returning\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "e429b6f1-f96a-4dea-af52-a21553958e77"
+    }
+  },
+  {
+    "call": {
+      "seq": 94,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-01"
+      }
+    },
+    "result_seq": 95,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_q46qeAZDC7tyPDyYAJcp8049"
+      },
+      "toolCallId": "call_00_q46qeAZDC7tyPDyYAJcp8049",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"模拟返回已完成。\",\"assets\":[],\"asset_id\":\"img-door-new\",\"status\":\"new_photo\",\"monitoring_status\":\"ended\",\"return_status\":\"completed\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "c6347fab-66fe-439c-b717-aee2aa8ad49b"
+    }
+  },
+  {
+    "call": {
+      "seq": 115,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-01"
+      }
+    },
+    "result_seq": 116,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Kq4tMJeTBSlO6IwgEXBg4166"
+      },
+      "toolCallId": "call_00_Kq4tMJeTBSlO6IwgEXBg4166",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"晚到的旧观察：门打开；产生于结束观察之前。\",\"assets\":[],\"asset_id\":\"img-door-new\",\"status\":\"new_photo\",\"monitoring_status\":\"ended\",\"return_status\":\"completed\",\"event_id\":\"old-door-open\",\"event_before_monitor_end\":true,\"door\":\"open\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "e98eb40b-c5a7-46a5-9f9c-4757ae3e32d4"
+    }
+  }
+]

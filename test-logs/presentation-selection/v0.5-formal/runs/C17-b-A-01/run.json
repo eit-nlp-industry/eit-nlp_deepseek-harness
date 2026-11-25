@@ -1,0 +1,20 @@
+{
+  "run_id": "C17-b-A-01",
+  "case_id": "C17-b",
+  "card_id": "C17",
+  "category_id": "G11",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "A",
+  "repeat": 1,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C17-b-A-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C17-b-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C17-b-A-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：留意五分钟，门开了告诉我。\n指定呈现方式：文字通知；必要时原生MOCK证据图。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "395bc998343631a96c607d3e85f1536177ec7545fa3f3a802ce4b68d197aabf6",
+  "operator_actions": "注入持续关闭→5分钟到期；说明期间未观察到开门并结束。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T12:54:57.261Z",
+  "interactions": [],
+  "tab_id": "5",
+  "final_at": "2026-11-19T13:00:09.848Z",
+  "notes": "第2分钟状态及第5分钟到期结果一致，未提前报观察完成，也未捏造开门或人员在场情况。"
+}

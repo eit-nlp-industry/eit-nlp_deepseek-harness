@@ -1,0 +1,365 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 快递静态路线示意图呈现 刚刚":
+    - generic: 进行中
+    - generic: 快递静态路线示意图呈现
+    - generic: 刚刚
+  - treeitem "快递配送静态路线示意图 1分钟" [selected]:
+    - generic: 快递配送静态路线示意图
+    - generic: 1分钟
+  - treeitem "已完成 SortableSequence 拖动排序草稿测评 1分钟":
+    - generic: 已完成
+    - generic: SortableSequence 拖动排序草稿测评
+    - generic: 1分钟
+  - treeitem "已完成 安排三个工作事项并保存草稿 1分钟":
+    - generic: 已完成
+    - generic: 安排三个工作事项并保存草稿
+    - generic: 1分钟
+  - treeitem "会议室预约改期草稿呈现 1分钟":
+    - generic: 会议室预约改期草稿呈现
+    - generic: 1分钟
+  - treeitem "已完成 会议室预约改期表单呈现 2分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期表单呈现
+    - generic: 2分钟
+  - treeitem "已完成 商品多视角展示测评 2分钟":
+    - generic: 已完成
+    - generic: 商品多视角展示测评
+    - generic: 2分钟
+  - treeitem "已完成 售后申请草稿动态表单测评 4分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿动态表单测评
+    - generic: 4分钟
+  - treeitem "已完成 商品多视角展示评测 4分钟":
+    - generic: 已完成
+    - generic: 商品多视角展示评测
+    - generic: 4分钟
+  - treeitem "售后申请草稿表单呈现测评 5分钟":
+    - generic: 售后申请草稿表单呈现测评
+    - generic: 5分钟
+  - treeitem "已完成 包裹照片确认呈现测评 5分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认呈现测评
+    - generic: 5分钟
+  - treeitem "已完成 活动需求三字段表单确认 7分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 7分钟
+  - treeitem "已完成 活动需求三字段表单确认 7分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 7分钟
+  - treeitem "包裹照片确认组件测评 8分钟":
+    - generic: 包裹照片确认组件测评
+    - generic: 8分钟
+  - treeitem "已完成 企业服务套餐固定材料呈现测评 9分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐固定材料呈现测评
+    - generic: 9分钟
+  - treeitem "测试笔记本挑选呈现 9分钟":
+    - generic: 测试笔记本挑选呈现
+    - generic: 9分钟
+  - treeitem "已完成 6000元内出差笔记本推荐 9分钟":
+    - generic: 已完成
+    - generic: 6000元内出差笔记本推荐
+    - generic: 9分钟
+  - treeitem "已完成 企业服务套餐介绍测评 9分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 9分钟
+  - treeitem "已完成 支付状态简洁卡片呈现 16分钟":
+    - generic: 已完成
+    - generic: 支付状态简洁卡片呈现
+    - generic: 16分钟
+  - treeitem "已完成 支付状态卡片呈现测评 17分钟":
+    - generic: 已完成
+    - generic: 支付状态卡片呈现测评
+    - generic: 17分钟
+  - treeitem "已完成 图书馆预约必要吗（C26-B-02） 17分钟":
+    - generic: 已完成
+    - generic: 图书馆预约必要吗（C26-B-02）
+    - generic: 17分钟
+  - treeitem "已完成 图书馆预约简短问答 17分钟":
+    - generic: 已完成
+    - generic: 图书馆预约简短问答
+    - generic: 17分钟
+  - treeitem "握手交互状态卡片呈现 18分钟":
+    - generic: 握手交互状态卡片呈现
+    - generic: 18分钟
+  - treeitem "已完成 握手确认卡片呈现 18分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 18分钟
+  - treeitem "已完成 握手状态卡片渲染测评 18分钟":
+    - generic: 已完成
+    - generic: 握手状态卡片渲染测评
+    - generic: 18分钟
+  - treeitem "已完成 握手交互卡片呈现 19分钟":
+    - generic: 已完成
+    - generic: 握手交互卡片呈现
+    - generic: 19分钟
+  - treeitem "Workflow 追加分支编辑器测评 19分钟":
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 19分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 20分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 20分钟
+  - treeitem "已完成 工作流条件分支测评呈现 20分钟":
+    - generic: 已完成
+    - generic: 工作流条件分支测评呈现
+    - generic: 20分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 20分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 20分钟
+  - treeitem "报销流程草稿编辑保存 23分钟":
+    - generic: 报销流程草稿编辑保存
+    - generic: 23分钟
+  - treeitem "已完成 报销流程整理与草稿保存 23分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 23分钟
+  - treeitem "已完成 Workflow材料取送流程测评 23分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 23分钟
+  - treeitem "监测文件处理任务失败通知 25分钟":
+    - generic: 监测文件处理任务失败通知
+    - generic: 25分钟
+  - treeitem "已完成 文件处理任务监测模拟 25分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 25分钟
+  - treeitem "已完成 饮水机不出水照片评测 27分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 27分钟
+  - treeitem "平面图快递路线静态示意 28分钟":
+    - generic: 平面图快递路线静态示意
+    - generic: 28分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 28分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 28分钟
+  - treeitem "三项工作排期草稿确认 30分钟":
+    - generic: 三项工作排期草稿确认
+    - generic: 30分钟
+  - treeitem "已完成 安排三项工作并确认草稿 30分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 30分钟
+  - treeitem "会议室预约改期草稿 31分钟":
+    - generic: 会议室预约改期草稿
+    - generic: 31分钟
+  - treeitem "已完成 会议室预约改期草稿测评 31分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 31分钟
+  - treeitem "售后申请草稿填写与确认 32分钟":
+    - generic: 售后申请草稿填写与确认
+    - generic: 32分钟
+  - treeitem "已完成 售后申请草稿填写测评 32分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 32分钟
+  - treeitem "商品退货多视角图片呈现 33分钟":
+    - generic: 商品退货多视角图片呈现
+    - generic: 33分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 34分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 34分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 34分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 34分钟
+  - treeitem "已完成 包裹照片确认对象状态 36分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 36分钟
+  - treeitem "确认包裹照片与订单尾号 37分钟":
+    - generic: 确认包裹照片与订单尾号
+    - generic: 37分钟
+  - button "展开其余 188 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 快递配送静态路线示意图
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N10-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N10-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N10-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：根据给定平面图，说明快递员先到收件点，再到目的地的位置和路线。只作静态示意，不开始配送。 指定呈现方式：MapPreview静态底图、三点标记、两段路线；不添加虚构实时追踪。。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。 MapPreview是无自定义底图参数的示意图：另用Image显示给定同一底图，再用MapPreview画给定归一坐标和route；两者一起标明静态示意。不得虚构background等不支持的属性。
+- generic: 14:18
+- button "复制":
+- status: 已完成
+- button "已完成，用时 1分7秒":
+  - generic: 已完成，用时 1分7秒
+- paragraph: 我先加载本例的固定材料。
+- paragraph:
+  - strong: 快递员取件路线静态示意
+  - text: （合成平面图；单位示意格；不进行实际配送，也没有实时追踪）
+- list:
+  - listitem: 底图：给定的合成平面图（MOCK WAREHOUSE GRID，960 × 540），它仅作为静态底图，不代表真实地理位置，也不提供实时定位。
+  - listitem: 三点位置：按单位示意格坐标（courier 为 (0,0)、pickup 为 (2,0)、destination 为 (2,3)），并在同一底图上以约百分之几至百分之几十的归一坐标标出：快递员 = (10,80)、收件点 = (35,80)、目的地 = (35,20)。这些数字仅用于把点画在图上，不代表经纬度。
+- paragraph: 路线分两段，按顺序行进：
+- list:
+  - strong: 第一段：快递员 → 收件点
+  - text: ：从 (10,80) 沿水平方向走到 (35,80)，也就是向东移动 2 个示意格。
+  - strong: 第二段：收件点 → 目的地
+  - text: ：从 (35,80) 沿竖直方向走到 (35,20)，也就是向北移动 3 个示意格。
+- paragraph: 全程共 5 个示意格，第一段 2 格、第二段 3 格，行进顺序固定为先到收件点、再到目的地。
+- paragraph: 图例说明：底图上用两个标记分别表示快递员当前位置和收件点，另有一个标记表示目的地；第一段和第二条路线用连线表示，并带有文字标签。页面只为静态示意，不显示实时位置更新。
+- heading "快递取件路线静态示意" [level=1]
+- generic: 合成平面图 · 单位示意格（courier=(0,0)、pickup=(2,0)、destination=(2,3)）
+- alert:
+  - img "info-circle":
+  - generic: 静态说明
+  - generic: 静态示意图，非真实地理坐标，无实时定位/追踪，本页不执行任何配送动作。
+- heading "1) 合成平面图静态底图" [level=2]
+- figure "合成平面图静态底图（MOCK WAREHOUSE GRID）：静态，无实时定位":
+  - button "预览 MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture":
+    - img "MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture"
+  - generic: 合成平面图静态底图（MOCK WAREHOUSE GRID）：静态，无实时定位
+- generic: 组件未注册
+- heading "2) 归一坐标路线示意" [level=2]
+- figure "归一坐标静态示意（百分比坐标 0–100，非真实经纬度）":
+  - generic "园区地图视口":
+    - img "Mock 校园路线示意图":
+      - generic: 快递员当前位置
+      - generic: 收件点
+      - generic: 目的地
+  - button "放大地图" [active]: ＋
+  - button "缩小地图": −
+  - button "全图"
+  - generic: 归一坐标静态示意（百分比坐标 0–100，非真实经纬度）
+- generic: 静态示意图，非真实地理坐标，无实时定位/追踪，本页不执行任何配送动作。
+- generic: 底图由上方 Image 提供；MapPreview 仅叠加归一坐标标记与路线，二者共同构成静态示意。
+- generic: 组件未注册
+- table:
+  - rowgroup:
+    - row "点位 ID 标签 x y 示意格坐标/说明":
+      - columnheader "点位 ID"
+      - columnheader "标签"
+      - columnheader "x"
+      - columnheader "y"
+      - columnheader "示意格坐标/说明"
+  - rowgroup:
+    - row "courier 快递员当前位置 10 80 示意格坐标 (0,0)":
+      - cell "courier"
+      - cell "快递员当前位置"
+      - cell "10"
+      - cell "80"
+      - cell "示意格坐标 (0,0)"
+    - row "pickup 收件点 35 80 示意格坐标 (2,0)":
+      - cell "pickup"
+      - cell "收件点"
+      - cell "35"
+      - cell "80"
+      - cell "示意格坐标 (2,0)"
+    - row "destination 目的地 35 20 示意格坐标 (2,3)":
+      - cell "destination"
+      - cell "目的地"
+      - cell "35"
+      - cell "20"
+      - cell "示意格坐标 (2,3)"
+- table:
+  - rowgroup:
+    - row "顺序 路线段 ID 起点 终点 起点坐标 终点坐标 标签":
+      - columnheader "顺序"
+      - columnheader "路线段 ID"
+      - columnheader "起点"
+      - columnheader "终点"
+      - columnheader "起点坐标"
+      - columnheader "终点坐标"
+      - columnheader "标签"
+  - rowgroup:
+    - row "1 leg1 courier pickup (10,80) (35,80) 第一段：快递员 → 收件点（向东 2 格）":
+      - cell "1"
+      - cell "leg1"
+      - cell "courier"
+      - cell "pickup"
+      - cell "(10,80)"
+      - cell "(35,80)"
+      - cell "第一段：快递员 → 收件点（向东 2 格）"
+    - row "2 leg2 pickup destination (35,80) (35,20) 第二段：收件点 → 目的地（向北 3 格）":
+      - cell "2"
+      - cell "leg2"
+      - cell "pickup"
+      - cell "destination"
+      - cell "(35,80)"
+      - cell "(35,20)"
+      - cell "第二段：收件点 → 目的地（向北 3 格）"
+- heading "业务数据字段与出处" [level=2]
+- generic: 以下字段均来自 business_data：title、subtitle、notice、image、alt、image_caption、image_size、map_caption、points、routes、total_units。
+- generic: 组件未注册
+- generic: 出处：以上内容逐项取自 business_data；未添加实时追踪、真实地理坐标或配送执行。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 9.8K tok":
+  - generic: 用量 9.8K tok
+- generic: 14:19
+- button "回到底部":
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

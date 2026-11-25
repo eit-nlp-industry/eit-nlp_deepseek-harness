@@ -1,0 +1,297 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_JwsF5SiPwEzHFMJTpjO74672",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Tabs\", \"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"用 Tabs 组件做三个分类页签：「图书馆」「食堂」「四明书院」。每个页签内先放一段简短说明文字，再放一个 Image 组件展示该场所的材料配图，图片地址与图片描述必须原样取自 business_data 对应字段。最后用一小段\\\"待确认\\\"文字列出三处尚未明确的细节（入馆预约、食堂非午餐时段营业时间、书院投屏设备）。整体为只读展示，不需要表单。\", \"business_data\": {\"title\": \"东方理工：图书馆 · 食堂 · 四明书院\", \"intro\": \"刚到东方理工，以下是这三处的已知情况。\", \"tabs\": [{\"key\": \"lib\", \"label\": \"图书馆\", \"heading\": \"图书馆\", \"description\": \"设有安静阅读区，也有可供小组使用的讨论室。入馆需要预约，具体预约方式与名额以馆方答复为准。\", \"image\": \"/api/media/bench05-lib/content\", \"alt\": \"MOCK LIBRARY; READING / DISCUSSION; synthetic fixture\"}, {\"key\": \"canteen\", \"label\": \"食堂\", \"heading\": \"食堂\", \"description\": \"提供午餐。除午餐外，其余营业时间目前未知。\", \"image\": \"/api/media/bench05-canteen/content\", \"alt\": \"MOCK CANTEEN; LUNCH AREA; synthetic fixture\"}, {\"key\": \"college\", \"label\": \"四明书院\", \"heading\": \"四明书院\", \"description\": \"是公共交流空间，适合见面、交谈与日常活动。是否配备投屏设备目前未知。\", \"image\": \"/api/media/bench05-college/content\", \"alt\": \"MOCK COLLEGE; COMMON AREA; synthetic fixture\"}], \"pending\": [\"图书馆：入馆需预约，具体流程与能否约到以馆方答复为准。\", \"食堂：仅确认提供午餐，其他时段营业时间未知。\", \"四明书院：投屏设备情况未知。\"]}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "page-intro",
+                "place-tabs",
+                "pending-section"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "东方理工：图书馆 · 食堂 · 四明书院",
+                "level": "h1"
+              }
+            },
+            "page-intro": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/intro"
+                },
+                "variant": "default"
+              }
+            },
+            "place-tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "lib",
+                    "label": "图书馆"
+                  },
+                  {
+                    "value": "canteen",
+                    "label": "食堂"
+                  },
+                  {
+                    "value": "college",
+                    "label": "四明书院"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activeTab"
+                },
+                "defaultValue": "lib",
+                "disabled": false
+              },
+              "children": [
+                "tab-lib",
+                "tab-canteen",
+                "tab-college"
+              ]
+            },
+            "tab-lib": {
+              "type": "TabContent",
+              "props": {
+                "value": "lib"
+              },
+              "children": [
+                "lib-stack"
+              ]
+            },
+            "lib-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "lib-description",
+                "lib-image"
+              ]
+            },
+            "lib-description": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/0/description"
+                },
+                "variant": "default"
+              }
+            },
+            "lib-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lib/content",
+                "alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture",
+                "caption": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "tab-canteen": {
+              "type": "TabContent",
+              "props": {
+                "value": "canteen"
+              },
+              "children": [
+                "canteen-stack"
+              ]
+            },
+            "canteen-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "canteen-description",
+                "canteen-image"
+              ]
+            },
+            "canteen-description": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/1/description"
+                },
+                "variant": "default"
+              }
+            },
+            "canteen-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-canteen/content",
+                "alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture",
+                "caption": "MOCK CANTEEN; LUNCH AREA; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "tab-college": {
+              "type": "TabContent",
+              "props": {
+                "value": "college"
+              },
+              "children": [
+                "college-stack"
+              ]
+            },
+            "college-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "college-description",
+                "college-image"
+              ]
+            },
+            "college-description": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/2/description"
+                },
+                "variant": "default"
+              }
+            },
+            "college-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-college/content",
+                "alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture",
+                "caption": "MOCK COLLEGE; COMMON AREA; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "pending-section": {
+              "type": "Section",
+              "props": {
+                "title": "待确认",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "pending-list"
+              ]
+            },
+            "pending-list": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "图书馆：入馆需预约，具体流程与能否约到以馆方答复为准。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "食堂：仅确认提供午餐，其他时段营业时间未知。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "四明书院：投屏设备情况未知。",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无待确认事项"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "东方理工：图书馆 · 食堂 · 四明书院",
+            "intro": "刚到东方理工，以下是这三处的已知情况。",
+            "tabs": [
+              {
+                "key": "lib",
+                "label": "图书馆",
+                "heading": "图书馆",
+                "description": "设有安静阅读区，也有可供小组使用的讨论室。入馆需要预约，具体预约方式与名额以馆方答复为准。",
+                "image": "/api/media/bench05-lib/content",
+                "alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture"
+              },
+              {
+                "key": "canteen",
+                "label": "食堂",
+                "heading": "食堂",
+                "description": "提供午餐。除午餐外，其余营业时间目前未知。",
+                "image": "/api/media/bench05-canteen/content",
+                "alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture"
+              },
+              {
+                "key": "college",
+                "label": "四明书院",
+                "heading": "四明书院",
+                "description": "是公共交流空间，适合见面、交谈与日常活动。是否配备投屏设备目前未知。",
+                "image": "/api/media/bench05-college/content",
+                "alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture"
+              }
+            ],
+            "pending": [
+              "图书馆：入馆需预约，具体流程与能否约到以馆方答复为准。",
+              "食堂：仅确认提供午餐，其他时段营业时间未知。",
+              "四明书院：投屏设备情况未知。"
+            ],
+            "_ui": {
+              "activeTab": "lib"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_JwsF5SiPwEzHFMJTpjO74672"
+      },
+      "toolCallId": "call_00_JwsF5SiPwEzHFMJTpjO74672",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "d5d54928-6d89-413b-be18-85d074a884ad"
+    }
+  }
+]

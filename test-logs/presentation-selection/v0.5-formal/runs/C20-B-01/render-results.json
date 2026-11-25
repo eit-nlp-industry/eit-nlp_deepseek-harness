@@ -1,0 +1,490 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_5IWyGEefRPO2dC3Wra5P4959",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\", \"MapPreview\"], \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"展示一张静态 campus 示意图：先用 Image 显示给定的同一底图（path 字符串 /api/media/bench05-campus-map/content，alt 用材料给定文案），标注\\\"MOCK CAMPUS GRID; STATIC\\\"。紧接着用 MapPreview 在同一张示意底图上画出三个给定点位与路线：robot=(10,50)、user=(30,50)、lib=(70,50)（对应格坐标 robot=(0,2)、user=(2,2)、lib=(6,2)），路线 robot→user→lib，坐标按 x=10+10*x、y=70-10*y 的归一换算。所有标题与说明都标明\\\"静态示意、无实时定位\\\"，不要出现任何真实导航或已叫到狗的表述。\", \"business_data\": {\"title\": \"静态示意：狗先来接你，再一起前往图书馆\", \"subtitle\": \"MOCK CAMPUS GRID; STATIC ｜ 单位：示意格 ｜ 无实时定位\", \"image\": \"/api/media/bench05-campus-map/content\", \"alt\": \"MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture\", \"static_notice\": \"静态示意图，非实时地图；点位与路线为固定材料数值，没有实时定位。\", \"points\": [{\"id\": \"robot\", \"label\": \"狗（机器人）起点\", \"grid\": \"(0,2)\", \"x\": 10, \"y\": 50}, {\"id\": \"user\", \"label\": \"你所在位置\", \"grid\": \"(2,2)\", \"x\": 30, \"y\": 50}, {\"id\": \"lib\", \"label\": \"图书馆\", \"grid\": \"(6,2)\", \"x\": 70, \"y\": 50}], \"route\": [{\"x\": 10, \"y\": 50}, {\"x\": 30, \"y\": 50}, {\"x\": 70, \"y\": 50}], \"route_label\": \"路线：robot → user → lib（狗先到你的位置，再一同前往图书馆）\", \"steps\": [\"狗从 (0,2) 出发\", \"到 (2,2) 与你汇合\", \"再前往图书馆 (6,2)\"], \"caption\": \"坐标换算：x=10+10×格x，y=70-10×格y\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "hero-heading",
+                "hero-subtitle",
+                "static-callout",
+                "map-section",
+                "points-section",
+                "steps-section",
+                "details-collapsible"
+              ]
+            },
+            "hero-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "静态示意：狗先来接你，再一起前往图书馆",
+                "level": "h1"
+              }
+            },
+            "hero-subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "static-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "静态示意，无实时定位",
+                "description": "静态示意图，非实时地图；点位与路线为固定材料数值，没有实时定位。",
+                "showIcon": true
+              }
+            },
+            "map-section": {
+              "type": "Section",
+              "props": {
+                "title": "静态底图与点位路线（静态示意，无实时定位）",
+                "description": "MOCK CAMPUS GRID; STATIC ｜ 单位：示意格；无实时定位",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "map-card",
+                "preview-card"
+              ]
+            },
+            "map-card": {
+              "type": "Card",
+              "props": {
+                "title": "MOCK CAMPUS GRID; STATIC（静态示意）",
+                "variant": "outlined"
+              },
+              "children": [
+                "map-image",
+                "map-caption"
+              ]
+            },
+            "map-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-campus-map/content",
+                "alt": "MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "map-caption": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/static_notice"
+                },
+                "variant": "muted"
+              }
+            },
+            "preview-card": {
+              "type": "Card",
+              "props": {
+                "title": "点位与路线（静态示意，无实时定位）",
+                "variant": "default"
+              },
+              "children": [
+                "campus-map-preview",
+                "route-label",
+                "route-static-note"
+              ]
+            },
+            "campus-map-preview": {
+              "type": "MapPreview",
+              "props": {
+                "places": [
+                  {
+                    "id": "robot",
+                    "label": "狗（机器人）起点",
+                    "x": 10,
+                    "y": 50
+                  },
+                  {
+                    "id": "user",
+                    "label": "你所在位置",
+                    "x": 30,
+                    "y": 50
+                  },
+                  {
+                    "id": "lib",
+                    "label": "图书馆",
+                    "x": 70,
+                    "y": 50
+                  }
+                ],
+                "route": [
+                  "robot",
+                  "user",
+                  "lib"
+                ],
+                "markerSize": 28,
+                "caption": "MOCK CAMPUS GRID; STATIC ｜ 静态示意，非实时地图，无实时定位"
+              }
+            },
+            "route-label": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/route_label"
+                },
+                "variant": "default"
+              }
+            },
+            "route-static-note": {
+              "type": "Text",
+              "props": {
+                "content": "以上路线为固定材料数值，仅作静态示意；不表示实时导航或已完成的行动。",
+                "variant": "muted"
+              }
+            },
+            "points-section": {
+              "type": "Section",
+              "props": {
+                "title": "点位明细（静态示意，无实时定位）",
+                "description": "逐项列出材料中的点位、格坐标、示意坐标与出处",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "points-table",
+                "points-grid"
+              ]
+            },
+            "points-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "点位 ID",
+                  "名称",
+                  "格坐标",
+                  "示意 x",
+                  "示意 y",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "robot",
+                    "狗（机器人）起点",
+                    "(0,2)",
+                    "10",
+                    "50",
+                    "business_data.points[0]"
+                  ],
+                  [
+                    "user",
+                    "你所在位置",
+                    "(2,2)",
+                    "30",
+                    "50",
+                    "business_data.points[1]"
+                  ],
+                  [
+                    "lib",
+                    "图书馆",
+                    "(6,2)",
+                    "70",
+                    "50",
+                    "business_data.points[2]"
+                  ]
+                ]
+              }
+            },
+            "points-grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "point-card-robot",
+                "point-card-user",
+                "point-card-lib"
+              ]
+            },
+            "point-card-robot": {
+              "type": "Card",
+              "props": {
+                "title": "静态点位：狗（机器人）起点",
+                "variant": "outlined"
+              },
+              "children": [
+                "point-desc-robot"
+              ]
+            },
+            "point-desc-robot": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "点位 ID",
+                    "value": "robot"
+                  },
+                  {
+                    "label": "格坐标",
+                    "value": "(0,2)"
+                  },
+                  {
+                    "label": "示意 x",
+                    "value": 10
+                  },
+                  {
+                    "label": "示意 y",
+                    "value": 50
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.points"
+                  }
+                ]
+              }
+            },
+            "point-card-user": {
+              "type": "Card",
+              "props": {
+                "title": "静态点位：你所在位置",
+                "variant": "outlined"
+              },
+              "children": [
+                "point-desc-user"
+              ]
+            },
+            "point-desc-user": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "点位 ID",
+                    "value": "user"
+                  },
+                  {
+                    "label": "格坐标",
+                    "value": "(2,2)"
+                  },
+                  {
+                    "label": "示意 x",
+                    "value": 30
+                  },
+                  {
+                    "label": "示意 y",
+                    "value": 50
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.points"
+                  }
+                ]
+              }
+            },
+            "point-card-lib": {
+              "type": "Card",
+              "props": {
+                "title": "静态点位：图书馆",
+                "variant": "outlined"
+              },
+              "children": [
+                "point-desc-lib"
+              ]
+            },
+            "point-desc-lib": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "点位 ID",
+                    "value": "lib"
+                  },
+                  {
+                    "label": "格坐标",
+                    "value": "(6,2)"
+                  },
+                  {
+                    "label": "示意 x",
+                    "value": 70
+                  },
+                  {
+                    "label": "示意 y",
+                    "value": 50
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.points"
+                  }
+                ]
+              }
+            },
+            "steps-section": {
+              "type": "Section",
+              "props": {
+                "title": "步骤说明（静态示意，无实时定位）",
+                "description": "材料步骤固定展示，非实时执行",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "steps-list"
+              ]
+            },
+            "steps-list": {
+              "type": "List",
+              "props": {
+                "title": "固定步骤（来自 business_data.steps；非实时执行）",
+                "items": [
+                  {
+                    "title": "狗从 (0,2) 出发",
+                    "description": "出处：business_data.steps[0]",
+                    "status": "info"
+                  },
+                  {
+                    "title": "到 (2,2) 与你汇合",
+                    "description": "出处：business_data.steps[1]",
+                    "status": "info"
+                  },
+                  {
+                    "title": "再前往图书馆 (6,2)",
+                    "description": "出处：business_data.steps[2]",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "无步骤数据"
+              }
+            },
+            "details-collapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "坐标换算与底图说明（静态示意，无实时定位）",
+                "summary": "可选详情：固定换算公式",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "caption-text",
+                "formula-code"
+              ]
+            },
+            "caption-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/caption"
+                },
+                "variant": "muted"
+              }
+            },
+            "formula-code": {
+              "type": "CodeBlock",
+              "props": {
+                "code": "x = 10 + 10 × 格x\ny = 70 - 10 × 格y\nrobot=(0,2) → (10,50)\nuser=(2,2) → (30,50)\nlib=(6,2) → (70,50)",
+                "language": "text",
+                "showLineNumbers": false,
+                "wrap": true,
+                "maxHeight": "sm"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "静态示意：狗先来接你，再一起前往图书馆",
+            "subtitle": "MOCK CAMPUS GRID; STATIC ｜ 单位：示意格 ｜ 无实时定位",
+            "image": "/api/media/bench05-campus-map/content",
+            "alt": "MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture",
+            "static_notice": "静态示意图，非实时地图；点位与路线为固定材料数值，没有实时定位。",
+            "points": [
+              {
+                "id": "robot",
+                "label": "狗（机器人）起点",
+                "grid": "(0,2)",
+                "x": 10,
+                "y": 50
+              },
+              {
+                "id": "user",
+                "label": "你所在位置",
+                "grid": "(2,2)",
+                "x": 30,
+                "y": 50
+              },
+              {
+                "id": "lib",
+                "label": "图书馆",
+                "grid": "(6,2)",
+                "x": 70,
+                "y": 50
+              }
+            ],
+            "route": [
+              {
+                "x": 10,
+                "y": 50
+              },
+              {
+                "x": 30,
+                "y": 50
+              },
+              {
+                "x": 70,
+                "y": 50
+              }
+            ],
+            "route_label": "路线：robot → user → lib（狗先到你的位置，再一同前往图书馆）",
+            "steps": [
+              "狗从 (0,2) 出发",
+              "到 (2,2) 与你汇合",
+              "再前往图书馆 (6,2)"
+            ],
+            "caption": "坐标换算：x=10+10×格x，y=70-10×格y"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_5IWyGEefRPO2dC3Wra5P4959"
+      },
+      "toolCallId": "call_00_5IWyGEefRPO2dC3Wra5P4959",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5cac893a-ea0a-4baf-891c-0d088d141300"
+    }
+  }
+]

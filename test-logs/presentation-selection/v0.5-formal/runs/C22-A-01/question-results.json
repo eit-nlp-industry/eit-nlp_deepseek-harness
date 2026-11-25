@@ -1,0 +1,86 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_SR6B2zcQzn0b4aH9NZvp7182",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"submit_draft\", \"header\": \"确认提交\", \"question\": \"这份反馈草稿（YSJ-07、教学楼一层东侧、不出水）是否按现状提交？如需修改，请直接告诉我要改的文字（备注、联系人等）。\", \"options\": [{\"label\": \"按草稿现状提交（推荐）\", \"description\": \"以现有信息提交反馈草稿，备注和联系人留空。\"}, {\"label\": \"先修改草稿文字\", \"description\": \"你补充或修改备注、联系人等内容后，我再更新草稿并等你确认。\"}, {\"label\": \"暂不提交\", \"description\": \"只保留当前照片和草稿，不做任何提交。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_SR6B2zcQzn0b4aH9NZvp7182"
+      },
+      "toolCallId": "call_00_SR6B2zcQzn0b4aH9NZvp7182",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"submit_draft\",\"selected\":[],\"custom\":\"先靠近一点拍给我看看，暂不提交。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "a1b7a6e1-741d-4851-a2f0-dee8cc09dad4"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_olEKGRoVipQXmaTWyQXx7514",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"下一步\", \"id\": \"after_near\", \"options\": [{\"description\": \"按当前信息（YSJ-07、教学楼一层东侧、不出水、两张照片）提交反馈草稿。\", \"label\": \"按草稿提交\"}, {\"description\": \"你先补充备注、联系人或要改的文字，我改完再等你确认。\", \"label\": \"先改草稿文字\"}, {\"description\": \"继续保留草稿，不做任何提交。\", \"label\": \"继续暂不提交\"}], \"question\": \"近景图已补上，这份草稿现在怎么处理？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_olEKGRoVipQXmaTWyQXx7514"
+      },
+      "toolCallId": "call_00_olEKGRoVipQXmaTWyQXx7514",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"after_near\",\"selected\":[],\"custom\":\"再拍一下另一侧，暂不提交。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "a5223a6d-5511-4aca-90f4-c6804a9245ee"
+    }
+  },
+  {
+    "call_seq": 67,
+    "result_seq": 68,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_pfProqjphYWqE1AgR1Za1000",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"下一步\", \"id\": \"after_side\", \"options\": [{\"description\": \"按当前三图与现有信息提交反馈草稿。\", \"label\": \"按草稿提交\"}, {\"description\": \"你先告诉我要改的备注、联系人等文字，我改完再等你确认。\", \"label\": \"先改草稿文字\"}, {\"description\": \"三张图保留，草稿不提交。\", \"label\": \"继续暂不提交\"}], \"question\": \"三张图已齐，这份草稿现在怎么处理？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_pfProqjphYWqE1AgR1Za1000"
+      },
+      "toolCallId": "call_00_pfProqjphYWqE1AgR1Za1000",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"after_side\",\"selected\":[],\"custom\":\"把这三张图都放进反馈单，备注“昨天也这样”，联系人填“测试联系人A”，确认提交反馈草稿。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "79868da8-8dba-4359-ab53-80382b8f3f95"
+    }
+  }
+]

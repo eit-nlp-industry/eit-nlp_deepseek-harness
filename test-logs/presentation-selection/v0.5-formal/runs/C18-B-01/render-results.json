@@ -1,0 +1,2484 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_xyDOJfJ46WOnLeSnEMPI2003",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"business_data\": {\"title\": \"门口补拍 · 分阶段状态\", \"observation\": \"模拟观察 watch-01 进行中\", \"door_state\": \"门此前为关闭状态\", \"image_status\": \"门口补拍画面尚未释放\", \"image_note\": \"当前没有可用的补拍图像地址，画面位留空，不以其他视角或示意图代替\", \"stages\": [{\"step\": \"1\", \"name\": \"补拍门口\", \"status\": \"已记录 · 等待模拟回放\", \"detail\": \"补拍结果尚未返回，暂无可查看的画面\"}, {\"step\": \"2\", \"name\": \"给你看画面\", \"status\": \"等待补拍图像\", \"detail\": \"图像释放后在此展示；在此之前不预报画面内容\"}, {\"step\": \"3\", \"name\": \"结束观察\", \"status\": \"未执行\", \"detail\": \"将在补拍画面确认后进行，结果以回放为准\"}, {\"step\": \"4\", \"name\": \"返回\", \"status\": \"未执行\", \"detail\": \"结束观察完成后返回起点，到位情况以回放为准\"}], \"notes\": [\"门在补拍前的状态为关闭\", \"补拍、停止、返回的实际结果均未产生，不提前宣布成功\"]}, \"user_query\": \"一张「门口补拍 · 分阶段状态」信息卡。顶部标题与模拟观察标识（watch-01 进行中、门此前关闭）。画面区使用 Image 组件：当前材料未提供图像地址，因此不得虚构任何 src，画面区只显示文字占位“门口补拍画面尚未释放，暂无可查看图像”，绝不使用其他视角或示意图冒充。其下为四步分阶段状态列表：1 补拍门口（已记录，等待模拟回放）；2 给你看画面（等待补拍图像）；3 结束观察（未执行）；4 返回（未执行）。每步显示状态徽标与一句说明。底部列出两条备注：门在补拍前为关闭；补拍、停止、返回结果均未产生，不预报成功。整体使用中文、浅色卡片、清晰层级，附完整文字兜底说明。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_xyDOJfJ46WOnLeSnEMPI2003"
+      },
+      "toolCallId": "call_00_xyDOJfJ46WOnLeSnEMPI2003",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面生成失败，已尝试 3 次：生成的界面缺少组件：Image。请用文字继续回答。不要把错误 JSON 展示给用户。"
+        }
+      ],
+      "isError": false,
+      "id": "a52056a0-229b-4610-b68a-48ac21116e5e"
+    }
+  },
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_0fGLYWdoVrARHqugWuTA0606",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"door_state\": \"门此前为关闭状态\", \"image_note\": \"门口补拍画面尚未释放，暂无可查看图像；不以其他视角或示意图代替\", \"notes\": [\"门在补拍前的状态为关闭\", \"补拍、停止、返回均尚未产生实际结果，不提前宣布成功\"], \"observation\": \"模拟观察 watch-01 进行中\", \"stages\": [{\"detail\": \"补拍结果尚未返回，暂无可查看画面\", \"name\": \"补拍门口\", \"status\": \"已记录 · 等待模拟回放\", \"step\": \"1\"}, {\"detail\": \"图像释放后在此展示，不预报画面内容\", \"name\": \"给你看画面\", \"status\": \"等待补拍图像\", \"step\": \"2\"}, {\"detail\": \"在补拍画面确认后执行，结果以回放为准\", \"name\": \"结束观察\", \"status\": \"未执行\", \"step\": \"3\"}, {\"detail\": \"结束观察完成后返回，到位情况以回放为准\", \"name\": \"返回\", \"status\": \"未执行\", \"step\": \"4\"}], \"title\": \"门口补拍 · 分阶段状态\", \"unavailable_components\": [\"Image（需要真实图像地址，本例材料尚未释放）\"]}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"「门口补拍 · 分阶段状态」信息卡，中文浅色卡片。顶部：标题、模拟观察 watch-01 进行中、门此前关闭。画面区：暂无图像，显示文字“门口补拍画面尚未释放，暂无可查看图像”，并注明不以其他视角或示意图代替。中部：四步分阶段状态列表，每步含序号、名称、状态徽标与一句说明：1 补拍门口（已记录，等待模拟回放）；2 给你看画面（等待补拍图像）；3 结束观察（未执行）；4 返回（未执行）。底部：备注两条，另列“暂不可显示的组件：Image（缺少图像地址）”。附完整文字兜底说明，层级清晰。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "header",
+                "image-section",
+                "stages-section",
+                "notes-section",
+                "unavailable-section",
+                "fallback-section"
+              ]
+            },
+            "header": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "title-heading",
+                "observation-text",
+                "door-state-text"
+              ]
+            },
+            "title-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "门口补拍 · 分阶段状态",
+                "level": "h1"
+              }
+            },
+            "observation-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/observation"
+                },
+                "variant": "default"
+              }
+            },
+            "door-state-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/door_state"
+                },
+                "variant": "muted"
+              }
+            },
+            "image-section": {
+              "type": "Section",
+              "props": {
+                "title": "画面区",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "image-text"
+              ]
+            },
+            "image-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/image_note"
+                },
+                "variant": "muted"
+              }
+            },
+            "stages-section": {
+              "type": "Section",
+              "props": {
+                "title": "分阶段状态",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "stage-list"
+              ]
+            },
+            "stage-list": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "stage-1",
+                "stage-2",
+                "stage-3",
+                "stage-4"
+              ]
+            },
+            "stage-1": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "stage-1-header",
+                "stage-1-detail"
+              ]
+            },
+            "stage-1-header": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "stage-1-step",
+                "stage-1-name",
+                "stage-1-badge"
+              ]
+            },
+            "stage-1-step": {
+              "type": "Text",
+              "props": {
+                "content": "1",
+                "variant": "muted"
+              }
+            },
+            "stage-1-name": {
+              "type": "Text",
+              "props": {
+                "content": "补拍门口",
+                "variant": "default"
+              }
+            },
+            "stage-1-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已记录 · 等待模拟回放",
+                "variant": "info"
+              }
+            },
+            "stage-1-detail": {
+              "type": "Text",
+              "props": {
+                "content": "补拍结果尚未返回，暂无可查看画面",
+                "variant": "muted"
+              }
+            },
+            "stage-2": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "stage-2-header",
+                "stage-2-detail"
+              ]
+            },
+            "stage-2-header": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "stage-2-step",
+                "stage-2-name",
+                "stage-2-badge"
+              ]
+            },
+            "stage-2-step": {
+              "type": "Text",
+              "props": {
+                "content": "2",
+                "variant": "muted"
+              }
+            },
+            "stage-2-name": {
+              "type": "Text",
+              "props": {
+                "content": "给你看画面",
+                "variant": "default"
+              }
+            },
+            "stage-2-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "等待补拍图像",
+                "variant": "warning"
+              }
+            },
+            "stage-2-detail": {
+              "type": "Text",
+              "props": {
+                "content": "图像释放后在此展示，不预报画面内容",
+                "variant": "muted"
+              }
+            },
+            "stage-3": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "stage-3-header",
+                "stage-3-detail"
+              ]
+            },
+            "stage-3-header": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "stage-3-step",
+                "stage-3-name",
+                "stage-3-badge"
+              ]
+            },
+            "stage-3-step": {
+              "type": "Text",
+              "props": {
+                "content": "3",
+                "variant": "muted"
+              }
+            },
+            "stage-3-name": {
+              "type": "Text",
+              "props": {
+                "content": "结束观察",
+                "variant": "default"
+              }
+            },
+            "stage-3-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "未执行",
+                "variant": "default"
+              }
+            },
+            "stage-3-detail": {
+              "type": "Text",
+              "props": {
+                "content": "在补拍画面确认后执行，结果以回放为准",
+                "variant": "muted"
+              }
+            },
+            "stage-4": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "stage-4-header",
+                "stage-4-detail"
+              ]
+            },
+            "stage-4-header": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "stage-4-step",
+                "stage-4-name",
+                "stage-4-badge"
+              ]
+            },
+            "stage-4-step": {
+              "type": "Text",
+              "props": {
+                "content": "4",
+                "variant": "muted"
+              }
+            },
+            "stage-4-name": {
+              "type": "Text",
+              "props": {
+                "content": "返回",
+                "variant": "default"
+              }
+            },
+            "stage-4-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "未执行",
+                "variant": "default"
+              }
+            },
+            "stage-4-detail": {
+              "type": "Text",
+              "props": {
+                "content": "结束观察完成后返回，到位情况以回放为准",
+                "variant": "muted"
+              }
+            },
+            "notes-section": {
+              "type": "Section",
+              "props": {
+                "title": "备注",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "notes-list"
+              ]
+            },
+            "notes-list": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "门在补拍前的状态为关闭",
+                    "status": "info"
+                  },
+                  {
+                    "title": "补拍、停止、返回均尚未产生实际结果，不提前宣布成功",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无备注"
+              }
+            },
+            "unavailable-section": {
+              "type": "Section",
+              "props": {
+                "title": "暂不可显示的组件",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "unavailable-list"
+              ]
+            },
+            "unavailable-list": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "Image（需要真实图像地址，本例材料尚未释放）",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            },
+            "fallback-section": {
+              "type": "Section",
+              "props": {
+                "title": "文字兜底说明",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "fallback-text-1",
+                "fallback-text-2",
+                "fallback-text-3",
+                "fallback-text-4",
+                "fallback-text-5"
+              ]
+            },
+            "fallback-text-1": {
+              "type": "Text",
+              "props": {
+                "content": "模拟观察 watch-01 进行中；门此前为关闭状态。",
+                "variant": "default"
+              }
+            },
+            "fallback-text-2": {
+              "type": "Text",
+              "props": {
+                "content": "画面区：门口补拍画面尚未释放，暂无可查看图像；不以其他视角或示意图代替。",
+                "variant": "default"
+              }
+            },
+            "fallback-text-3": {
+              "type": "Text",
+              "props": {
+                "content": "分阶段状态：1 补拍门口（已记录 · 等待模拟回放）——补拍结果尚未返回，暂无可查看画面；2 给你看画面（等待补拍图像）——图像释放后在此展示，不预报画面内容；3 结束观察（未执行）——在补拍画面确认后执行，结果以回放为准；4 返回（未执行）——结束观察完成后返回，到位情况以回放为准。",
+                "variant": "default"
+              }
+            },
+            "fallback-text-4": {
+              "type": "Text",
+              "props": {
+                "content": "备注：门在补拍前的状态为关闭；补拍、停止、返回均尚未产生实际结果，不提前宣布成功。",
+                "variant": "default"
+              }
+            },
+            "fallback-text-5": {
+              "type": "Text",
+              "props": {
+                "content": "暂不可显示的组件：Image（需要真实图像地址，本例材料尚未释放）。",
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "door_state": "门此前为关闭状态",
+            "image_note": "门口补拍画面尚未释放，暂无可查看图像；不以其他视角或示意图代替",
+            "notes": [
+              "门在补拍前的状态为关闭",
+              "补拍、停止、返回均尚未产生实际结果，不提前宣布成功"
+            ],
+            "observation": "模拟观察 watch-01 进行中",
+            "stages": [
+              {
+                "detail": "补拍结果尚未返回，暂无可查看画面",
+                "name": "补拍门口",
+                "status": "已记录 · 等待模拟回放",
+                "step": "1"
+              },
+              {
+                "detail": "图像释放后在此展示，不预报画面内容",
+                "name": "给你看画面",
+                "status": "等待补拍图像",
+                "step": "2"
+              },
+              {
+                "detail": "在补拍画面确认后执行，结果以回放为准",
+                "name": "结束观察",
+                "status": "未执行",
+                "step": "3"
+              },
+              {
+                "detail": "结束观察完成后返回，到位情况以回放为准",
+                "name": "返回",
+                "status": "未执行",
+                "step": "4"
+              }
+            ],
+            "title": "门口补拍 · 分阶段状态",
+            "unavailable_components": [
+              "Image（需要真实图像地址，本例材料尚未释放）"
+            ]
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_0fGLYWdoVrARHqugWuTA0606"
+      },
+      "toolCallId": "call_00_0fGLYWdoVrARHqugWuTA0606",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "d58d6927-0889-43ee-85cd-75d7b1a73ed5"
+    }
+  },
+  {
+    "call_seq": 58,
+    "result_seq": 59,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_5isFDmqFkkMp7vJAAkIK7976",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"caption\": \"门口补拍 · 最新画面\", \"door_state\": \"门此前为关闭状态\", \"image\": \"/api/media/bench05-img-door-new/content\", \"image_meta\": \"960×540 · 来自本例材料的最新观察图\", \"image_status\": \"补拍已完成，已取得最新门口图像\", \"notes\": [\"这是本次补拍得到的最新门口视角，未使用旧图或其他视角代替\", \"结束观察、返回的实际结果尚未产生，以回放为准\"], \"observation\": \"模拟观察 watch-01\", \"stages\": [{\"detail\": \"已取得最新门口图像\", \"name\": \"补拍门口\", \"status\": \"已完成\", \"step\": \"1\"}, {\"detail\": \"画面见上方图像\", \"name\": \"给你看画面\", \"status\": \"已展示\", \"step\": \"2\"}, {\"detail\": \"结果尚未回放，不提前宣布成功\", \"name\": \"结束观察\", \"status\": \"等待结果回放\", \"step\": \"3\"}, {\"detail\": \"结束观察完成后返回，到位情况以回放为准\", \"name\": \"返回\", \"status\": \"等待结果回放\", \"step\": \"4\"}], \"title\": \"门口补拍 · 分阶段状态\", \"alt\": \"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"「门口补拍 · 分阶段状态」信息卡。顶部：标题、模拟观察 watch-01、门此前关闭。画面区用 Image 组件展示本次补拍的最新门口视角（src 使用材料给出的同源 path），下方一行小字说明“960×540 · 最新观察图”以及这是最新补拍、未用旧图代替。中部：四步分阶段状态：1 补拍门口（已完成）；2 给你看画面（已展示）；3 结束观察（等待结果回放）；4 返回（等待结果回放）。每步带状态徽标与说明。底部两条备注：未使用旧图/其他视角；结束观察与返回结果尚未产生。另附完整文字兜底说明。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "header",
+                "imageCard",
+                "stagesSection",
+                "notesSection",
+                "fallbackCollapsible"
+              ]
+            },
+            "header": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "pageTitle",
+                "pageSubtitle",
+                "doorStateText"
+              ]
+            },
+            "pageTitle": {
+              "type": "Heading",
+              "props": {
+                "text": "门口补拍 · 分阶段状态",
+                "level": "h1"
+              }
+            },
+            "pageSubtitle": {
+              "type": "Text",
+              "props": {
+                "content": "模拟观察 watch-01",
+                "variant": "muted"
+              }
+            },
+            "doorStateText": {
+              "type": "Text",
+              "props": {
+                "content": "门此前为关闭状态",
+                "variant": "default"
+              }
+            },
+            "imageCard": {
+              "type": "Card",
+              "props": {
+                "title": "门口补拍 · 最新画面",
+                "variant": "outlined"
+              },
+              "children": [
+                "imageStack"
+              ]
+            },
+            "imageStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "doorImage",
+                "imageMetaText",
+                "imageStatusText"
+              ]
+            },
+            "doorImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-door-new/content",
+                "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "eager"
+              }
+            },
+            "imageMetaText": {
+              "type": "Text",
+              "props": {
+                "content": "960×540 · 来自本例材料的最新观察图",
+                "variant": "muted"
+              }
+            },
+            "imageStatusText": {
+              "type": "Text",
+              "props": {
+                "content": "补拍已完成，已取得最新门口图像",
+                "variant": "success"
+              }
+            },
+            "stagesSection": {
+              "type": "Section",
+              "props": {
+                "title": "分阶段状态",
+                "description": "按步骤逐项展示状态与说明",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "stagesGrid"
+              ]
+            },
+            "stagesGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "stage1Card",
+                "stage2Card",
+                "stage3Card",
+                "stage4Card"
+              ]
+            },
+            "stage1Card": {
+              "type": "Card",
+              "props": {
+                "title": "1 · 补拍门口",
+                "variant": "default"
+              },
+              "children": [
+                "stage1Stack"
+              ]
+            },
+            "stage1Stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "stage1Badge",
+                "stage1Detail"
+              ]
+            },
+            "stage1Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已完成",
+                "variant": "success"
+              }
+            },
+            "stage1Detail": {
+              "type": "Text",
+              "props": {
+                "content": "已取得最新门口图像",
+                "variant": "default"
+              }
+            },
+            "stage2Card": {
+              "type": "Card",
+              "props": {
+                "title": "2 · 给你看画面",
+                "variant": "default"
+              },
+              "children": [
+                "stage2Stack"
+              ]
+            },
+            "stage2Stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "stage2Badge",
+                "stage2Detail"
+              ]
+            },
+            "stage2Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已展示",
+                "variant": "success"
+              }
+            },
+            "stage2Detail": {
+              "type": "Text",
+              "props": {
+                "content": "画面见上方图像",
+                "variant": "default"
+              }
+            },
+            "stage3Card": {
+              "type": "Card",
+              "props": {
+                "title": "3 · 结束观察",
+                "variant": "default"
+              },
+              "children": [
+                "stage3Stack"
+              ]
+            },
+            "stage3Stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "stage3Badge",
+                "stage3Detail"
+              ]
+            },
+            "stage3Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "等待结果回放",
+                "variant": "warning"
+              }
+            },
+            "stage3Detail": {
+              "type": "Text",
+              "props": {
+                "content": "结果尚未回放，不提前宣布成功",
+                "variant": "default"
+              }
+            },
+            "stage4Card": {
+              "type": "Card",
+              "props": {
+                "title": "4 · 返回",
+                "variant": "default"
+              },
+              "children": [
+                "stage4Stack"
+              ]
+            },
+            "stage4Stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "stage4Badge",
+                "stage4Detail"
+              ]
+            },
+            "stage4Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "等待结果回放",
+                "variant": "warning"
+              }
+            },
+            "stage4Detail": {
+              "type": "Text",
+              "props": {
+                "content": "结束观察完成后返回，到位情况以回放为准",
+                "variant": "default"
+              }
+            },
+            "notesSection": {
+              "type": "Section",
+              "props": {
+                "title": "备注",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "notesList"
+              ]
+            },
+            "notesList": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "这是本次补拍得到的最新门口视角，未使用旧图或其他视角代替",
+                    "status": "info"
+                  },
+                  {
+                    "title": "结束观察、返回的实际结果尚未产生，以回放为准",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无备注"
+              }
+            },
+            "fallbackCollapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "完整文字兜底说明",
+                "summary": "逐项文字版：标题、观察、画面信息、四步状态与备注",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "fallbackStack"
+              ]
+            },
+            "fallbackStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "fallbackTitle",
+                "fallbackCaption",
+                "fallbackObservation",
+                "fallbackDoorState",
+                "fallbackImage",
+                "fallbackImageMeta",
+                "fallbackImageStatus",
+                "fallbackAlt",
+                "fallbackStepsHeading",
+                "fallbackStep1",
+                "fallbackStep2",
+                "fallbackStep3",
+                "fallbackStep4",
+                "fallbackNotesHeading",
+                "fallbackNote1",
+                "fallbackNote2"
+              ]
+            },
+            "fallbackTitle": {
+              "type": "Text",
+              "props": {
+                "content": "标题：门口补拍 · 分阶段状态",
+                "variant": "default"
+              }
+            },
+            "fallbackCaption": {
+              "type": "Text",
+              "props": {
+                "content": "画面标题：门口补拍 · 最新画面",
+                "variant": "default"
+              }
+            },
+            "fallbackObservation": {
+              "type": "Text",
+              "props": {
+                "content": "观察：模拟观察 watch-01",
+                "variant": "default"
+              }
+            },
+            "fallbackDoorState": {
+              "type": "Text",
+              "props": {
+                "content": "门状态：门此前为关闭状态",
+                "variant": "default"
+              }
+            },
+            "fallbackImage": {
+              "type": "Text",
+              "props": {
+                "content": "图像：/api/media/bench05-img-door-new/content",
+                "variant": "default"
+              }
+            },
+            "fallbackImageMeta": {
+              "type": "Text",
+              "props": {
+                "content": "画面信息：960×540 · 来自本例材料的最新观察图",
+                "variant": "muted"
+              }
+            },
+            "fallbackImageStatus": {
+              "type": "Text",
+              "props": {
+                "content": "画面状态：补拍已完成，已取得最新门口图像",
+                "variant": "success"
+              }
+            },
+            "fallbackAlt": {
+              "type": "Text",
+              "props": {
+                "content": "图像替代文本：MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+                "variant": "default"
+              }
+            },
+            "fallbackStepsHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "分阶段状态",
+                "level": "h4"
+              }
+            },
+            "fallbackStep1": {
+              "type": "Text",
+              "props": {
+                "content": "1 补拍门口 · 已完成：已取得最新门口图像",
+                "variant": "default"
+              }
+            },
+            "fallbackStep2": {
+              "type": "Text",
+              "props": {
+                "content": "2 给你看画面 · 已展示：画面见上方图像",
+                "variant": "default"
+              }
+            },
+            "fallbackStep3": {
+              "type": "Text",
+              "props": {
+                "content": "3 结束观察 · 等待结果回放：结果尚未回放，不提前宣布成功",
+                "variant": "warning"
+              }
+            },
+            "fallbackStep4": {
+              "type": "Text",
+              "props": {
+                "content": "4 返回 · 等待结果回放：结束观察完成后返回，到位情况以回放为准",
+                "variant": "warning"
+              }
+            },
+            "fallbackNotesHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "备注",
+                "level": "h4"
+              }
+            },
+            "fallbackNote1": {
+              "type": "Text",
+              "props": {
+                "content": "备注1：这是本次补拍得到的最新门口视角，未使用旧图或其他视角代替",
+                "variant": "default"
+              }
+            },
+            "fallbackNote2": {
+              "type": "Text",
+              "props": {
+                "content": "备注2：结束观察、返回的实际结果尚未产生，以回放为准",
+                "variant": "warning"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "caption": "门口补拍 · 最新画面",
+            "door_state": "门此前为关闭状态",
+            "image": "/api/media/bench05-img-door-new/content",
+            "image_meta": "960×540 · 来自本例材料的最新观察图",
+            "image_status": "补拍已完成，已取得最新门口图像",
+            "notes": [
+              "这是本次补拍得到的最新门口视角，未使用旧图或其他视角代替",
+              "结束观察、返回的实际结果尚未产生，以回放为准"
+            ],
+            "observation": "模拟观察 watch-01",
+            "stages": [
+              {
+                "detail": "已取得最新门口图像",
+                "name": "补拍门口",
+                "status": "已完成",
+                "step": "1"
+              },
+              {
+                "detail": "画面见上方图像",
+                "name": "给你看画面",
+                "status": "已展示",
+                "step": "2"
+              },
+              {
+                "detail": "结果尚未回放，不提前宣布成功",
+                "name": "结束观察",
+                "status": "等待结果回放",
+                "step": "3"
+              },
+              {
+                "detail": "结束观察完成后返回，到位情况以回放为准",
+                "name": "返回",
+                "status": "等待结果回放",
+                "step": "4"
+              }
+            ],
+            "title": "门口补拍 · 分阶段状态",
+            "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_5isFDmqFkkMp7vJAAkIK7976"
+      },
+      "toolCallId": "call_00_5isFDmqFkkMp7vJAAkIK7976",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "036d7210-98af-43dd-9a39-8cec2046324d"
+    }
+  },
+  {
+    "call_seq": 79,
+    "result_seq": 80,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_koKUXKHXDIFx1df78QPC1764",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"image\": \"/api/media/bench05-img-door-new/content\", \"image_meta\": \"960×540 · 本次补拍的最新观察图（保留展示）\", \"notes\": [\"返回仍在进行中，尚未到位，暂不宣布已回来\", \"结束观察为模拟状态，无其他实际业务动作\"], \"observation\": \"模拟观察 watch-01 · 已结束\", \"return\": \"正在返回（returning）\", \"stages\": [{\"detail\": \"已取得最新门口图像\", \"name\": \"补拍门口\", \"status\": \"已完成\", \"step\": \"1\"}, {\"detail\": \"补拍图仍保留在上方，可继续查看\", \"name\": \"给你看画面\", \"status\": \"已展示\", \"step\": \"2\"}, {\"detail\": \"观察已模拟结束\", \"name\": \"结束观察\", \"status\": \"已完成\", \"step\": \"3\"}, {\"detail\": \"正在返回途中，己到位信息尚未出现\", \"name\": \"返回\", \"status\": \"进行中\", \"step\": \"4\"}], \"title\": \"门口补拍 · 分阶段状态\", \"alt\": \"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"「门口补拍 · 分阶段状态」信息卡，标题下标注模拟观察 watch-01 已结束。画面区仍用 Image 组件展示同一张本次补拍门口图（同源 path），标注“保留查看”。中部四步状态：1 补拍门口（已完成）；2 给你看画面（已展示）；3 结束观察（已完成）；4 返回（进行中）。每步带徽标与说明，第 4 步强调仍在途中、尚未到位。底部备注两条：未到位不宣布已回来；结束观察为模拟状态。附完整文字兜底。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "card"
+              ]
+            },
+            "card": {
+              "type": "Card",
+              "props": {
+                "title": "门口补拍 · 分阶段状态",
+                "variant": "outlined"
+              },
+              "children": [
+                "cardBody"
+              ]
+            },
+            "cardBody": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "obsCallout",
+                "returnRow",
+                "imageSection",
+                "stagesSection",
+                "notesSection",
+                "fallback"
+              ]
+            },
+            "obsCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "模拟观察 watch-01 · 已结束",
+                "description": "观察状态为已结束；以下为本次补拍画面、分阶段状态与备注。",
+                "showIcon": true
+              }
+            },
+            "returnRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "returnBadge",
+                "returnText"
+              ]
+            },
+            "returnBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "正在返回",
+                "variant": "warning"
+              }
+            },
+            "returnText": {
+              "type": "Text",
+              "props": {
+                "content": "返回状态：正在返回（returning）",
+                "variant": "warning"
+              }
+            },
+            "imageSection": {
+              "type": "Section",
+              "props": {
+                "title": "本次补拍画面",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "imageStack"
+              ]
+            },
+            "imageStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "doorImage",
+                "imageMetaRow"
+              ]
+            },
+            "doorImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-door-new/content",
+                "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+                "caption": "960×540 · 本次补拍的最新观察图（保留展示）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "imageMetaRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "keepBadge",
+                "imageMetaText"
+              ]
+            },
+            "keepBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "保留查看",
+                "variant": "info"
+              }
+            },
+            "imageMetaText": {
+              "type": "Text",
+              "props": {
+                "content": "同源 path：/api/media/bench05-img-door-new/content",
+                "variant": "muted"
+              }
+            },
+            "stagesSection": {
+              "type": "Section",
+              "props": {
+                "title": "分阶段状态",
+                "description": "共 4 步；第 4 步仍在进行中，尚未到位。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "stagesStack"
+              ]
+            },
+            "stagesStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "step1Row",
+                "step2Row",
+                "step3Row",
+                "step4Row"
+              ]
+            },
+            "step1Row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "step1Badge",
+                "step1Text"
+              ]
+            },
+            "step1Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已完成",
+                "variant": "success"
+              }
+            },
+            "step1Text": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "start"
+              },
+              "children": [
+                "step1Name",
+                "step1Detail"
+              ]
+            },
+            "step1Name": {
+              "type": "Text",
+              "props": {
+                "content": "1 补拍门口",
+                "variant": "default"
+              }
+            },
+            "step1Detail": {
+              "type": "Text",
+              "props": {
+                "content": "已取得最新门口图像",
+                "variant": "muted"
+              }
+            },
+            "step2Row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "step2Badge",
+                "step2Text"
+              ]
+            },
+            "step2Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已展示",
+                "variant": "info"
+              }
+            },
+            "step2Text": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "start"
+              },
+              "children": [
+                "step2Name",
+                "step2Detail"
+              ]
+            },
+            "step2Name": {
+              "type": "Text",
+              "props": {
+                "content": "2 给你看画面",
+                "variant": "default"
+              }
+            },
+            "step2Detail": {
+              "type": "Text",
+              "props": {
+                "content": "补拍图仍保留在上方，可继续查看",
+                "variant": "muted"
+              }
+            },
+            "step3Row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "step3Badge",
+                "step3Text"
+              ]
+            },
+            "step3Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已完成",
+                "variant": "success"
+              }
+            },
+            "step3Text": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "start"
+              },
+              "children": [
+                "step3Name",
+                "step3Detail"
+              ]
+            },
+            "step3Name": {
+              "type": "Text",
+              "props": {
+                "content": "3 结束观察",
+                "variant": "default"
+              }
+            },
+            "step3Detail": {
+              "type": "Text",
+              "props": {
+                "content": "观察已模拟结束",
+                "variant": "muted"
+              }
+            },
+            "step4Row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "step4Badge",
+                "step4Text"
+              ]
+            },
+            "step4Badge": {
+              "type": "Badge",
+              "props": {
+                "label": "进行中",
+                "variant": "warning"
+              }
+            },
+            "step4Text": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "start"
+              },
+              "children": [
+                "step4Name",
+                "step4Detail",
+                "step4Emphasis"
+              ]
+            },
+            "step4Name": {
+              "type": "Text",
+              "props": {
+                "content": "4 返回",
+                "variant": "default"
+              }
+            },
+            "step4Detail": {
+              "type": "Text",
+              "props": {
+                "content": "正在返回途中，己到位信息尚未出现",
+                "variant": "warning"
+              }
+            },
+            "step4Emphasis": {
+              "type": "Text",
+              "props": {
+                "content": "仍在途中，尚未到位；未到位不宣布已回来",
+                "variant": "warning"
+              }
+            },
+            "notesSection": {
+              "type": "Section",
+              "props": {
+                "title": "备注",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "notesStack"
+              ]
+            },
+            "notesStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "noteCallout1",
+                "noteCallout2"
+              ]
+            },
+            "noteCallout1": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "未到位不宣布已回来",
+                "description": "返回仍在进行中，尚未到位，暂不宣布已回来",
+                "showIcon": true
+              }
+            },
+            "noteCallout2": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "结束观察为模拟状态",
+                "description": "结束观察为模拟状态，无其他实际业务动作",
+                "showIcon": true
+              }
+            },
+            "fallback": {
+              "type": "Collapsible",
+              "props": {
+                "title": "完整文字兜底",
+                "summary": "逐项字段、四步状态、备注与出处",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "fallbackStack"
+              ]
+            },
+            "fallbackStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "fallbackDesc",
+                "fallbackTable",
+                "fallbackNotesList",
+                "fallbackSourceText"
+              ]
+            },
+            "fallbackDesc": {
+              "type": "Descriptions",
+              "props": {
+                "title": "关键字段",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "标题",
+                    "value": "门口补拍 · 分阶段状态"
+                  },
+                  {
+                    "label": "观察",
+                    "value": "模拟观察 watch-01 · 已结束"
+                  },
+                  {
+                    "label": "返回",
+                    "value": "正在返回（returning）"
+                  },
+                  {
+                    "label": "图像说明",
+                    "value": "960×540 · 本次补拍的最新观察图（保留展示）"
+                  },
+                  {
+                    "label": "图像出处（同源 path）",
+                    "value": "/api/media/bench05-img-door-new/content"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture"
+                  },
+                  {
+                    "label": "步骤总数",
+                    "value": "4"
+                  }
+                ]
+              }
+            },
+            "fallbackTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "步骤",
+                  "名称",
+                  "状态",
+                  "说明"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "补拍门口",
+                    "已完成",
+                    "已取得最新门口图像"
+                  ],
+                  [
+                    "2",
+                    "给你看画面",
+                    "已展示",
+                    "补拍图仍保留在上方，可继续查看"
+                  ],
+                  [
+                    "3",
+                    "结束观察",
+                    "已完成",
+                    "观察已模拟结束"
+                  ],
+                  [
+                    "4",
+                    "返回",
+                    "进行中",
+                    "正在返回途中，己到位信息尚未出现"
+                  ]
+                ]
+              }
+            },
+            "fallbackNotesList": {
+              "type": "List",
+              "props": {
+                "title": "备注全文",
+                "items": [
+                  {
+                    "title": "返回仍在进行中，尚未到位，暂不宣布已回来",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "结束观察为模拟状态，无其他实际业务动作",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无备注"
+              }
+            },
+            "fallbackSourceText": {
+              "type": "Text",
+              "props": {
+                "content": "出处：模拟观察 watch-01 · 已结束；图像出处：/api/media/bench05-img-door-new/content。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "image": "/api/media/bench05-img-door-new/content",
+            "image_meta": "960×540 · 本次补拍的最新观察图（保留展示）",
+            "notes": [
+              "返回仍在进行中，尚未到位，暂不宣布已回来",
+              "结束观察为模拟状态，无其他实际业务动作"
+            ],
+            "observation": "模拟观察 watch-01 · 已结束",
+            "return": "正在返回（returning）",
+            "stages": [
+              {
+                "detail": "已取得最新门口图像",
+                "name": "补拍门口",
+                "status": "已完成",
+                "step": "1"
+              },
+              {
+                "detail": "补拍图仍保留在上方，可继续查看",
+                "name": "给你看画面",
+                "status": "已展示",
+                "step": "2"
+              },
+              {
+                "detail": "观察已模拟结束",
+                "name": "结束观察",
+                "status": "已完成",
+                "step": "3"
+              },
+              {
+                "detail": "正在返回途中，己到位信息尚未出现",
+                "name": "返回",
+                "status": "进行中",
+                "step": "4"
+              }
+            ],
+            "title": "门口补拍 · 分阶段状态",
+            "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_koKUXKHXDIFx1df78QPC1764"
+      },
+      "toolCallId": "call_00_koKUXKHXDIFx1df78QPC1764",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "14ebc453-5510-4466-92a2-d8b22f393d44"
+    }
+  },
+  {
+    "call_seq": 100,
+    "result_seq": 101,
+    "call": {
+      "turn": 4,
+      "step": 2,
+      "callId": "call_00_ET_QXGvpx8cwqzdGPBsU79b4658",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"alt\": \"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\", \"image\": \"/api/media/bench05-img-door-new/content\", \"image_meta\": \"960×540 · 本次补拍的最新观察图\", \"notes\": [\"补拍只用本次最新门口视角，未用旧图代替\", \"本次为模拟观察，无其他真实业务动作\"], \"observation\": \"模拟观察 watch-01 · 已结束\", \"return\": \"已完成（completed）\", \"stages\": [{\"detail\": \"已取得最新门口图像\", \"name\": \"补拍门口\", \"status\": \"已完成\", \"step\": \"1\"}, {\"detail\": \"补拍图见上方\", \"name\": \"给你看画面\", \"status\": \"已展示\", \"step\": \"2\"}, {\"detail\": \"观察 watch-01 已模拟结束\", \"name\": \"结束观察\", \"status\": \"已完成\", \"step\": \"3\"}, {\"detail\": \"模拟返回已完成\", \"name\": \"返回\", \"status\": \"已完成\", \"step\": \"4\"}], \"title\": \"门口补拍 · 分阶段状态\", \"updated\": \"返回状态已更新\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"「门口补拍 · 分阶段状态」信息卡，标题下标注模拟观察 watch-01 已结束、返回已完成。画面区用 Image 组件展示本次补拍门口图（同源 path）。中部四步状态全部显示为完成：1 补拍门口（已完成）；2 给你看画面（已展示）；3 结束观察（已完成）；4 返回（已完成）。底部备注两条：补拍只用本次最新视角；本次为模拟观察。附完整文字兜底。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "door-section"
+              ]
+            },
+            "door-section": {
+              "type": "Section",
+              "props": {
+                "title": "门口补拍 · 分阶段状态",
+                "description": "模拟观察 watch-01 · 已结束；返回已完成（completed）",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "door-stack"
+              ]
+            },
+            "door-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "image-card",
+                "status-callout",
+                "stages-card",
+                "fields-card",
+                "notes-card",
+                "fallback-card"
+              ]
+            },
+            "image-card": {
+              "type": "Card",
+              "props": {
+                "title": "画面区",
+                "variant": "outlined"
+              },
+              "children": [
+                "image-stack"
+              ]
+            },
+            "image-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "door-image",
+                "image-meta",
+                "image-path"
+              ]
+            },
+            "door-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-door-new/content",
+                "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+                "caption": "960×540 · 本次补拍的最新观察图",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "image-meta": {
+              "type": "Text",
+              "props": {
+                "content": "图像信息：960×540 · 本次补拍的最新观察图",
+                "variant": "muted"
+              }
+            },
+            "image-path": {
+              "type": "Text",
+              "props": {
+                "content": "路径出处：business_data.image → /api/media/bench05-img-door-new/content",
+                "variant": "muted"
+              }
+            },
+            "status-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "success",
+                "title": "观察与返回",
+                "description": "模拟观察 watch-01 · 已结束；返回已完成（completed）。状态更新：返回状态已更新。",
+                "showIcon": true
+              }
+            },
+            "stages-card": {
+              "type": "Card",
+              "props": {
+                "title": "分阶段状态（business_data.stages）",
+                "variant": "outlined"
+              },
+              "children": [
+                "stages-stack"
+              ]
+            },
+            "stages-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "stages-steps",
+                "stages-table"
+              ]
+            },
+            "stages-steps": {
+              "type": "Steps",
+              "props": {
+                "current": 4,
+                "direction": "vertical",
+                "items": [
+                  {
+                    "title": "1 补拍门口",
+                    "description": "已取得最新门口图像",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "2 给你看画面",
+                    "description": "补拍图见上方（状态：已展示）",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "3 结束观察",
+                    "description": "观察 watch-01 已模拟结束",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "4 返回",
+                    "description": "模拟返回已完成",
+                    "status": "finish"
+                  }
+                ]
+              }
+            },
+            "stages-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "步骤",
+                  "名称",
+                  "状态",
+                  "说明",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "补拍门口",
+                    "已完成",
+                    "已取得最新门口图像",
+                    "business_data.stages[0]"
+                  ],
+                  [
+                    "2",
+                    "给你看画面",
+                    "已展示",
+                    "补拍图见上方",
+                    "business_data.stages[1]"
+                  ],
+                  [
+                    "3",
+                    "结束观察",
+                    "已完成",
+                    "观察 watch-01 已模拟结束",
+                    "business_data.stages[2]"
+                  ],
+                  [
+                    "4",
+                    "返回",
+                    "已完成",
+                    "模拟返回已完成",
+                    "business_data.stages[3]"
+                  ]
+                ]
+              }
+            },
+            "fields-card": {
+              "type": "Card",
+              "props": {
+                "title": "关键字段（逐项）",
+                "variant": "outlined"
+              },
+              "children": [
+                "fields-descriptions"
+              ]
+            },
+            "fields-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "business_data 字段",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "title（business_data.title）",
+                    "value": "门口补拍 · 分阶段状态"
+                  },
+                  {
+                    "label": "observation（business_data.observation）",
+                    "value": "模拟观察 watch-01 · 已结束"
+                  },
+                  {
+                    "label": "return（business_data.return）",
+                    "value": "已完成（completed）"
+                  },
+                  {
+                    "label": "updated（business_data.updated）",
+                    "value": "返回状态已更新"
+                  },
+                  {
+                    "label": "image（business_data.image）",
+                    "value": "/api/media/bench05-img-door-new/content"
+                  },
+                  {
+                    "label": "image_meta（business_data.image_meta）",
+                    "value": "960×540 · 本次补拍的最新观察图"
+                  },
+                  {
+                    "label": "alt（business_data.alt）",
+                    "value": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture"
+                  }
+                ]
+              }
+            },
+            "notes-card": {
+              "type": "Card",
+              "props": {
+                "title": "备注",
+                "variant": "filled"
+              },
+              "children": [
+                "notes-list"
+              ]
+            },
+            "notes-list": {
+              "type": "List",
+              "props": {
+                "title": "business_data.notes",
+                "items": [
+                  {
+                    "title": "补拍只用本次最新门口视角，未用旧图代替",
+                    "status": "info"
+                  },
+                  {
+                    "title": "本次为模拟观察，无其他真实业务动作",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "无备注"
+              }
+            },
+            "fallback-card": {
+              "type": "Card",
+              "props": {
+                "title": "完整文字兜底",
+                "variant": "outlined"
+              },
+              "children": [
+                "fallback-code"
+              ]
+            },
+            "fallback-code": {
+              "type": "CodeBlock",
+              "props": {
+                "code": "门口补拍 · 分阶段状态\n模拟观察 watch-01 · 已结束\n返回：已完成（completed）\n状态更新：返回状态已更新\n画面：/api/media/bench05-img-door-new/content\n图像信息：960×540 · 本次补拍的最新观察图\n替代文本：MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\n分阶段状态：\n1 补拍门口 — 已完成 — 已取得最新门口图像（business_data.stages[0]）\n2 给你看画面 — 已展示 — 补拍图见上方（business_data.stages[1]）\n3 结束观察 — 已完成 — 观察 watch-01 已模拟结束（business_data.stages[2]）\n4 返回 — 已完成 — 模拟返回已完成（business_data.stages[3]）\n备注：\n- 补拍只用本次最新门口视角，未用旧图代替（business_data.notes[0]）\n- 本次为模拟观察，无其他真实业务动作（business_data.notes[1]）",
+                "language": "text",
+                "showLineNumbers": false,
+                "wrap": true,
+                "maxHeight": "md"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+            "image": "/api/media/bench05-img-door-new/content",
+            "image_meta": "960×540 · 本次补拍的最新观察图",
+            "notes": [
+              "补拍只用本次最新门口视角，未用旧图代替",
+              "本次为模拟观察，无其他真实业务动作"
+            ],
+            "observation": "模拟观察 watch-01 · 已结束",
+            "return": "已完成（completed）",
+            "stages": [
+              {
+                "detail": "已取得最新门口图像",
+                "name": "补拍门口",
+                "status": "已完成",
+                "step": "1"
+              },
+              {
+                "detail": "补拍图见上方",
+                "name": "给你看画面",
+                "status": "已展示",
+                "step": "2"
+              },
+              {
+                "detail": "观察 watch-01 已模拟结束",
+                "name": "结束观察",
+                "status": "已完成",
+                "step": "3"
+              },
+              {
+                "detail": "模拟返回已完成",
+                "name": "返回",
+                "status": "已完成",
+                "step": "4"
+              }
+            ],
+            "title": "门口补拍 · 分阶段状态",
+            "updated": "返回状态已更新"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_QXGvpx8cwqzdGPBsU79b4658"
+      },
+      "toolCallId": "call_00_ET_QXGvpx8cwqzdGPBsU79b4658",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "430d3401-670a-456e-8f31-85e9668f7b78"
+    }
+  },
+  {
+    "call_seq": 121,
+    "result_seq": 122,
+    "call": {
+      "turn": 5,
+      "step": 2,
+      "callId": "call_00_CFAC7DmKxmbNWFSx2hFQ0901",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"alt\": \"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\", \"image\": \"/api/media/bench05-img-door-new/content\", \"image_meta\": \"960×540 · 本次补拍的最新观察图\", \"image_status\": \"本次补拍画面，仍为最新观察\", \"late_event\": {\"detail\": \"它产生于结束观察之前，比本次补拍更早；该条目未提供图像，不拿补拍图代替它的画面\", \"door\": \"门打开\", \"name\": \"旧观察：门打开\", \"timing\": \"产生于结束观察之前（晚到）\"}, \"notes\": [\"时间顺序：旧观察（门打开）→ 本次补拍画面（最新）→ 结束观察已完成 → 返回已完成\", \"本次为模拟观察，无其他真实业务动作\"], \"observation\": \"模拟观察 watch-01 · 已结束\", \"return\": \"已完成（completed）\", \"stages\": [{\"detail\": \"已取得最新门口图像\", \"name\": \"补拍门口\", \"status\": \"已完成\", \"step\": \"1\"}, {\"detail\": \"最新画面见上方\", \"name\": \"给你看画面\", \"status\": \"已展示\", \"step\": \"2\"}, {\"detail\": \"观察已模拟结束\", \"name\": \"结束观察\", \"status\": \"已完成\", \"step\": \"3\"}, {\"detail\": \"模拟返回已完成\", \"name\": \"返回\", \"status\": \"已完成\", \"step\": \"4\"}], \"title\": \"门口补拍 · 分阶段状态\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"「门口补拍 · 分阶段状态」信息卡。顶部：标题、模拟观察 watch-01 已结束、返回已完成。画面区用 Image 组件展示本次补拍门口图（同源 path），并注明这是最新观察。中部四步状态全部完成（补拍门口、给你看画面、结束观察、返回）。下方新增一个「晚到的旧观察」小节：名称为“旧观察：门打开”，标注产生于结束观察之前、属于晚到信息；说明它比本次补拍更早，未提供图像，不用补拍图充当它的画面。底部备注：给出时间顺序，并声明本次为模拟观察、无其他真实业务动作。附完整文字兜底。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "header",
+                "imageCard",
+                "stepsSection",
+                "lateSection",
+                "notesSection",
+                "fallbackSection"
+              ]
+            },
+            "header": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "titleHeading",
+                "observationText",
+                "returnText"
+              ]
+            },
+            "titleHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "门口补拍 · 分阶段状态",
+                "level": "h2"
+              }
+            },
+            "observationText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/observation"
+                },
+                "variant": "default"
+              }
+            },
+            "returnText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/return"
+                },
+                "variant": "success"
+              }
+            },
+            "imageCard": {
+              "type": "Card",
+              "props": {
+                "title": "最新观察画面",
+                "variant": "outlined"
+              },
+              "children": [
+                "imageStack"
+              ]
+            },
+            "imageStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "doorImage",
+                "imageStatusText",
+                "imageMetaText",
+                "imageSourceText"
+              ]
+            },
+            "doorImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-door-new/content",
+                "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+                "caption": "本次补拍的最新观察图",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "imageStatusText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/image_status"
+                },
+                "variant": "success"
+              }
+            },
+            "imageMetaText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/image_meta"
+                },
+                "variant": "muted"
+              }
+            },
+            "imageSourceText": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.image、business_data.image_meta、business_data.image_status",
+                "variant": "muted"
+              }
+            },
+            "stepsSection": {
+              "type": "Section",
+              "props": {
+                "title": "分阶段状态",
+                "description": "四步状态全部完成",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "stepsStack"
+              ]
+            },
+            "stepsStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "stagesSteps",
+                "stagesTable"
+              ]
+            },
+            "stagesSteps": {
+              "type": "Steps",
+              "props": {
+                "current": 4,
+                "direction": "vertical",
+                "items": [
+                  {
+                    "title": "1. 补拍门口",
+                    "description": "已取得最新门口图像 · 已完成",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "2. 给你看画面",
+                    "description": "最新画面见上方 · 已展示",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "3. 结束观察",
+                    "description": "观察已模拟结束 · 已完成",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "4. 返回",
+                    "description": "模拟返回已完成 · 已完成",
+                    "status": "finish"
+                  }
+                ]
+              }
+            },
+            "stagesTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "步骤",
+                  "阶段",
+                  "状态",
+                  "说明",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "补拍门口",
+                    "已完成",
+                    "已取得最新门口图像",
+                    "business_data.stages[0]"
+                  ],
+                  [
+                    "2",
+                    "给你看画面",
+                    "已展示",
+                    "最新画面见上方",
+                    "business_data.stages[1]"
+                  ],
+                  [
+                    "3",
+                    "结束观察",
+                    "已完成",
+                    "观察已模拟结束",
+                    "business_data.stages[2]"
+                  ],
+                  [
+                    "4",
+                    "返回",
+                    "已完成",
+                    "模拟返回已完成",
+                    "business_data.stages[3]"
+                  ]
+                ]
+              }
+            },
+            "lateSection": {
+              "type": "Section",
+              "props": {
+                "title": "晚到的旧观察",
+                "description": "晚到信息：产生于结束观察之前",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "lateStack"
+              ]
+            },
+            "lateStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "lateDescriptions",
+                "lateCallout"
+              ]
+            },
+            "lateDescriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "旧观察：门打开",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "名称",
+                    "value": "旧观察：门打开"
+                  },
+                  {
+                    "label": "门状态",
+                    "value": "门打开"
+                  },
+                  {
+                    "label": "时间",
+                    "value": "产生于结束观察之前（晚到）"
+                  },
+                  {
+                    "label": "信息类型",
+                    "value": "晚到信息"
+                  },
+                  {
+                    "label": "图像",
+                    "value": "未提供图像，不拿补拍图代替它的画面"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "它产生于结束观察之前，比本次补拍更早"
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.late_event"
+                  }
+                ]
+              }
+            },
+            "lateCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "晚到信息",
+                "description": "它产生于结束观察之前，比本次补拍更早；该条目未提供图像，不拿补拍图代替它的画面",
+                "showIcon": true
+              }
+            },
+            "notesSection": {
+              "type": "Section",
+              "props": {
+                "title": "备注",
+                "description": "时间顺序与模拟声明",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "notesList"
+              ]
+            },
+            "notesList": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "时间顺序：旧观察（门打开）→ 本次补拍画面（最新）→ 结束观察已完成 → 返回已完成",
+                    "description": "出处：business_data.notes[0]",
+                    "status": "info"
+                  },
+                  {
+                    "title": "本次为模拟观察，无其他真实业务动作",
+                    "description": "出处：business_data.notes[1]",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无备注"
+              }
+            },
+            "fallbackSection": {
+              "type": "Section",
+              "props": {
+                "title": "完整文字兜底",
+                "description": "包含全部字段与出处的文字版本",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "fallbackStack"
+              ]
+            },
+            "fallbackStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "fallbackText1",
+                "fallbackText2",
+                "fallbackText3",
+                "fallbackText4",
+                "fallbackText5",
+                "fallbackText6",
+                "fallbackText7",
+                "fallbackText8"
+              ]
+            },
+            "fallbackText1": {
+              "type": "Text",
+              "props": {
+                "content": "标题：门口补拍 · 分阶段状态",
+                "variant": "default"
+              }
+            },
+            "fallbackText2": {
+              "type": "Text",
+              "props": {
+                "content": "观察：模拟观察 watch-01 · 已结束；返回：已完成（completed）。",
+                "variant": "default"
+              }
+            },
+            "fallbackText3": {
+              "type": "Text",
+              "props": {
+                "content": "最新观察：本次补拍门口图（同源 path /api/media/bench05-img-door-new/content）；图像说明：960×540 · 本次补拍的最新观察图；状态：本次补拍画面，仍为最新观察。",
+                "variant": "default"
+              }
+            },
+            "fallbackText4": {
+              "type": "Text",
+              "props": {
+                "content": "分阶段状态：1. 补拍门口 — 已完成 — 已取得最新门口图像；2. 给你看画面 — 已展示 — 最新画面见上方；3. 结束观察 — 已完成 — 观察已模拟结束；4. 返回 — 已完成 — 模拟返回已完成。",
+                "variant": "default"
+              }
+            },
+            "fallbackText5": {
+              "type": "Text",
+              "props": {
+                "content": "晚到的旧观察：名称 旧观察：门打开；门状态 门打开；时间 产生于结束观察之前（晚到）；信息类型 晚到信息；说明 它产生于结束观察之前，比本次补拍更早；图像 未提供图像，不拿补拍图代替它的画面。",
+                "variant": "default"
+              }
+            },
+            "fallbackText6": {
+              "type": "Text",
+              "props": {
+                "content": "备注：时间顺序：旧观察（门打开）→ 本次补拍画面（最新）→ 结束观察已完成 → 返回已完成。",
+                "variant": "default"
+              }
+            },
+            "fallbackText7": {
+              "type": "Text",
+              "props": {
+                "content": "声明：本次为模拟观察，无其他真实业务动作。",
+                "variant": "warning"
+              }
+            },
+            "fallbackText8": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data（title、observation、return、image、image_meta、image_status、stages、late_event、notes）。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+            "image": "/api/media/bench05-img-door-new/content",
+            "image_meta": "960×540 · 本次补拍的最新观察图",
+            "image_status": "本次补拍画面，仍为最新观察",
+            "late_event": {
+              "detail": "它产生于结束观察之前，比本次补拍更早；该条目未提供图像，不拿补拍图代替它的画面",
+              "door": "门打开",
+              "name": "旧观察：门打开",
+              "timing": "产生于结束观察之前（晚到）"
+            },
+            "notes": [
+              "时间顺序：旧观察（门打开）→ 本次补拍画面（最新）→ 结束观察已完成 → 返回已完成",
+              "本次为模拟观察，无其他真实业务动作"
+            ],
+            "observation": "模拟观察 watch-01 · 已结束",
+            "return": "已完成（completed）",
+            "stages": [
+              {
+                "detail": "已取得最新门口图像",
+                "name": "补拍门口",
+                "status": "已完成",
+                "step": "1"
+              },
+              {
+                "detail": "最新画面见上方",
+                "name": "给你看画面",
+                "status": "已展示",
+                "step": "2"
+              },
+              {
+                "detail": "观察已模拟结束",
+                "name": "结束观察",
+                "status": "已完成",
+                "step": "3"
+              },
+              {
+                "detail": "模拟返回已完成",
+                "name": "返回",
+                "status": "已完成",
+                "step": "4"
+              }
+            ],
+            "title": "门口补拍 · 分阶段状态"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_CFAC7DmKxmbNWFSx2hFQ0901"
+      },
+      "toolCallId": "call_00_CFAC7DmKxmbNWFSx2hFQ0901",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "fd42addc-5ae6-45ea-ad02-3c44099286d3"
+    }
+  }
+]

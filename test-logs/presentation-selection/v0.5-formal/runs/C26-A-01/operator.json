@@ -1,0 +1,10 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C26",
+    "facts": "进入图书馆需来访预约；是否获准以馆方答复为准。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true
+}

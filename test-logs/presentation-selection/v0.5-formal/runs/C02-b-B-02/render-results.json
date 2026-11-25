@@ -1,0 +1,113 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_2e3YRkWLuSLqIx2h6wrk5165",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"user_query\": \"用简洁卡片回答「进校后能否直接去图书馆」。卡片标题为「进校后能否直接去图书馆」，以列表形式逐条呈现事实：1) 不能直接进馆，进入图书馆需来访预约，是否获准以馆方答复为准；2) 图书馆设有讨论室；3) 白板、投屏、开放时间暂无材料，暂不确认。不使用表单，不生成任何富组件，只做文字卡片与列表。\", \"business_data\": {\"title\": \"进校后能否直接去图书馆\", \"answer\": \"不建议直接前往，需先办理来访预约\", \"points\": [{\"label\": \"入馆方式\", \"text\": \"进入图书馆需来访预约，是否获准以馆方答复为准。\"}, {\"label\": \"馆内设施\", \"text\": \"图书馆有讨论室。\"}, {\"label\": \"暂无信息\", \"text\": \"白板、投屏、开放时间均未知，暂不做判断。\"}], \"fallback_text\": \"进校后不建议直接去图书馆：进入图书馆需来访预约，能否获准以馆方答复为准。馆内设有讨论室；白板、投屏与开放时间暂无材料可确认。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "进校后能否直接去图书馆",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "answer",
+                "facts"
+              ]
+            },
+            "answer": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/answer"
+                },
+                "variant": "default"
+              }
+            },
+            "facts": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "入馆方式",
+                    "description": "进入图书馆需来访预约，是否获准以馆方答复为准。"
+                  },
+                  {
+                    "title": "馆内设施",
+                    "description": "图书馆有讨论室。"
+                  },
+                  {
+                    "title": "暂无信息",
+                    "description": "白板、投屏、开放时间均未知，暂不做判断。"
+                  }
+                ],
+                "emptyText": "暂无材料"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "进校后能否直接去图书馆",
+            "answer": "不建议直接前往，需先办理来访预约",
+            "points": [
+              {
+                "label": "入馆方式",
+                "text": "进入图书馆需来访预约，是否获准以馆方答复为准。"
+              },
+              {
+                "label": "馆内设施",
+                "text": "图书馆有讨论室。"
+              },
+              {
+                "label": "暂无信息",
+                "text": "白板、投屏、开放时间均未知，暂不做判断。"
+              }
+            ],
+            "fallback_text": "进校后不建议直接去图书馆：进入图书馆需来访预约，能否获准以馆方答复为准。馆内设有讨论室；白板、投屏与开放时间暂无材料可确认。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_2e3YRkWLuSLqIx2h6wrk5165"
+      },
+      "toolCallId": "call_00_2e3YRkWLuSLqIx2h6wrk5165",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "7a661f8f-78c9-4751-9bf8-06a8483adb46"
+    }
+  }
+]

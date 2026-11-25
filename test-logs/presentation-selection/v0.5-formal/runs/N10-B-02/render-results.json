@@ -1,0 +1,58 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_ZNJJCZzEiNiUAOv2KGn58831",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\", \"MapPreview\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"静态配送示意页，仅作静态示意图，不做实时追踪、不开始配送。从上到下：1) 标题与醒目静态提示「静态示意 · 无实时定位 · 不配送」；2) 用 Image 组件显示给定仓网底图（src 使用 business_data.image 的完整 URL，alt 使用 business_data.alt），图下方注明这是同一张静态底图；3) 用 MapPreview 组件在同一示意坐标系上画三个标记点与两段路线：标记 courier(10,80)、pickup(35,80)、destination(35,20)，route 依次为 courier→pickup→destination 两段；MapPreview 不设自定义底图参数，仅用给定归一坐标与 route；4) 下方文字列出示意格坐标 courier=(0,0)、pickup=(2,0)、destination=(2,3)，单位示意格，并说明换算为归一坐标 (10,80)/(35,80)/(35,20) 仅为排版示意，非真实地理或实时定位。所有数字只用 business_data 中的值，不新增地址、时间或追踪信息。\", \"business_data\": {\"title\": \"静态示意：快递员 → 收件点 → 目的地\", \"static_notice\": \"静态示意 · 无真实实时定位 · 不开始配送\", \"image\": \"http://127.0.0.1:3080/api/media/bench05-warehouse-map/content\", \"alt\": \"MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture\", \"image_caption\": \"给定仓网底图（静态平面图，与下方示意图使用同一底图）\", \"markers\": [{\"id\": \"courier\", \"label\": \"快递员\", \"x\": 10, \"y\": 80}, {\"id\": \"pickup\", \"label\": \"收件点\", \"x\": 35, \"y\": 80}, {\"id\": \"destination\", \"label\": \"目的地\", \"x\": 35, \"y\": 20}], \"route\": [[10, 80], [35, 80], [35, 20]], \"route_legs\": [{\"from\": \"courier\", \"to\": \"pickup\", \"description\": \"第一段：快递员 → 收件点，沿同一横向格线向右 2 格\"}, {\"from\": \"pickup\", \"to\": \"destination\", \"description\": \"第二段：收件点 → 目的地，沿纵向格线向上 3 格\"}], \"grid_coords\": [{\"id\": \"courier\", \"label\": \"快递员\", \"grid\": \"(0,0)\"}, {\"id\": \"pickup\", \"label\": \"收件点\", \"grid\": \"(2,0)\"}, {\"id\": \"destination\", \"label\": \"目的地\", \"grid\": \"(2,3)\"}], \"normalized_coords\": \"MapPreview 归一坐标：courier=(10,80)、pickup=(35,80)、destination=(35,20)\", \"unit_note\": \"单位为示意格，仅表示相对位置，非真实地理坐标\", \"footer\": \"此为静态示意，不含实时追踪，也不会发起任何配送动作。\"}}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ZNJJCZzEiNiUAOv2KGn58831"
+      },
+      "toolCallId": "call_00_ZNJJCZzEiNiUAOv2KGn58831",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: tool call timed out after 180000ms"
+        }
+      ],
+      "isError": true,
+      "id": "3514758d-d033-4974-89c7-496990987851"
+    }
+  },
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_TZRtnuTIm6MfjyHt3LB29656",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture\", \"image\": \"http://127.0.0.1:3080/api/media/bench05-warehouse-map/content\", \"route\": [[10, 80], [35, 80], [35, 20]], \"markers\": [{\"id\": \"courier\", \"label\": \"快递员\", \"x\": 10, \"y\": 80}, {\"id\": \"pickup\", \"label\": \"收件点\", \"x\": 35, \"y\": 80}, {\"id\": \"destination\", \"label\": \"目的地\", \"x\": 35, \"y\": 20}], \"title\": \"静态示意：快递员 → 收件点 → 目的地\", \"notice\": \"静态示意 · 无实时定位 · 不配送\", \"image_caption\": \"给定仓网底图（同一静态平面图）\", \"coords_text\": \"示意格：courier=(0,0)、pickup=(2,0)、destination=(2,3)；归一坐标：(10,80)、(35,80)、(35,20)；单位示意格，非真实地理\"}, \"components\": [\"Image\", \"MapPreview\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"静态示意图页。顶部标题与「静态示意·无实时定位·不配送」提示；用 Image 显示 business_data.image 的底图（alt 用 business_data.alt）；再用 MapPreview 按 business_data.markers 与 route 画三点与两段路线（不设自定义底图参数）；底部文字列 business_data.coords_text。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_TZRtnuTIm6MfjyHt3LB29656"
+      },
+      "toolCallId": "call_00_TZRtnuTIm6MfjyHt3LB29656",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: tool call timed out after 180000ms"
+        }
+      ],
+      "isError": true,
+      "id": "9a9517b5-1004-4e5d-9397-285e97bc25ec"
+    }
+  }
+]

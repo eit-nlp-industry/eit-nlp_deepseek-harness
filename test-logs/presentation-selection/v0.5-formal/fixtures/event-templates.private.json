@@ -1,0 +1,459 @@
+{
+  "C09": {
+    "candidate": {
+      "facts": "同一候选person-a再次出现，对应已确认昵称小张；固定识别结果，仅通知，不建新档。",
+      "assets": [
+        {
+          "id": "bench05-person-a",
+          "file": "bench05-person-a.png",
+          "alt": "MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture",
+          "source_id": "person-a",
+          "url": "http://127.0.0.1:3080/api/media/bench05-person-a/content",
+          "path": "/api/media/bench05-person-a/content",
+          "sha256": "8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "event_id": "e-rec-01",
+      "candidate_id": "person-a",
+      "name": "小张"
+    },
+    "repeat": {
+      "facts": "同一候选person-a仍在视野，重复相同业务事件，无新请求。",
+      "assets": [
+        {
+          "id": "bench05-person-a",
+          "file": "bench05-person-a.png",
+          "alt": "MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture",
+          "source_id": "person-a",
+          "url": "http://127.0.0.1:3080/api/media/bench05-person-a/content",
+          "path": "/api/media/bench05-person-a/content",
+          "sha256": "8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "event_id": "e-rec-01",
+      "candidate_id": "person-a",
+      "name": "小张"
+    }
+  },
+  "C10": {
+    "following": {
+      "facts": "模拟跟随已开始，follow-01，目标person-guide。",
+      "assets": [],
+      "simulated": true,
+      "status": "following",
+      "task_id": "follow-01",
+      "target": "person-guide"
+    },
+    "lost": {
+      "facts": "person-guide已离开视野，模拟跟随已停止，等待进一步处理。",
+      "assets": [],
+      "simulated": true,
+      "status": "stopped_target_lost",
+      "task_id": "follow-01",
+      "target": "person-guide"
+    }
+  },
+  "C11": {
+    "paused": {
+      "facts": "follow-01已模拟暂停，目标仍为person-guide。",
+      "assets": [],
+      "simulated": true,
+      "status": "paused",
+      "task_id": "follow-01",
+      "target": "person-guide"
+    },
+    "continued": {
+      "facts": "follow-01已模拟继续跟随同一目标person-guide。",
+      "assets": [],
+      "simulated": true,
+      "status": "following",
+      "task_id": "follow-01",
+      "target": "person-guide"
+    }
+  },
+  "C12": {
+    "message_sent": {
+      "facts": "已按用户确认向person-a模拟转达“我马上就到”；不向任何真人发送消息。",
+      "assets": [],
+      "simulated": true,
+      "status": "simulated_message_sent",
+      "target": "person-a",
+      "message": "我马上就到"
+    }
+  },
+  "C14": {
+    "right": {
+      "facts": "14:01右侧新观察，固定结论：有2个空位。只是当前观察，不等于预订。",
+      "assets": [
+        {
+          "id": "bench05-img-right",
+          "file": "bench05-img-right.png",
+          "alt": "MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture",
+          "source_id": "img-right",
+          "url": "http://127.0.0.1:3080/api/media/bench05-img-right/content",
+          "path": "/api/media/bench05-img-right/content",
+          "sha256": "5ceb1c86d80c273693963e51434a27852e315146bebaaf9a3684ee44576d87e3",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "asset_id": "img-right",
+      "view": "right",
+      "observed_at": "14:01",
+      "empty_seats": 2
+    }
+  },
+  "C15": {
+    "near": {
+      "facts": "同一候选parcel-3726近景，尾号3726。",
+      "assets": [
+        {
+          "id": "bench05-img-near",
+          "file": "bench05-img-near.png",
+          "alt": "MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture",
+          "source_id": "img-near",
+          "url": "http://127.0.0.1:3080/api/media/bench05-img-near/content",
+          "path": "/api/media/bench05-img-near/content",
+          "sha256": "e957159ba866a87b47ec27051ebdf0e09fd59517e08bd759cac42d7b1573f6a5",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "candidate_id": "parcel-3726",
+      "view": "near"
+    },
+    "side": {
+      "facts": "同一候选parcel-3726侧景，尚未获用户确认。",
+      "assets": [
+        {
+          "id": "bench05-img-side",
+          "file": "bench05-img-side.png",
+          "alt": "MOCK PARCEL SIDE; SAME parcel-3726 | SIDE; synthetic fixture",
+          "source_id": "img-side",
+          "url": "http://127.0.0.1:3080/api/media/bench05-img-side/content",
+          "path": "/api/media/bench05-img-side/content",
+          "sha256": "df486514c7ecacbd6486ecbb9868b6a5394b0bd93df962302d9044882cc275c4",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "candidate_id": "parcel-3726",
+      "view": "side"
+    }
+  },
+  "C16": {
+    "prepared": {
+      "facts": "模拟已到office-zw门口、敲门、等待老师放好文件；现在doc-01已放妥，发布待确认文件图，交接尚未完成。",
+      "assets": [
+        {
+          "id": "bench05-doc-01",
+          "file": "bench05-doc-01.png",
+          "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture",
+          "source_id": "doc-01",
+          "url": "http://127.0.0.1:3080/api/media/bench05-doc-01/content",
+          "path": "/api/media/bench05-doc-01/content",
+          "sha256": "0b03c85dfff96d94a9b9cb57877cfef6b49950b14a851e213750ae1d335b04de",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "status": "ready_for_confirmation",
+      "candidate_id": "doc-01"
+    },
+    "handover": {
+      "facts": "用户确认doc-01后，模拟交接完成；不代表真实取物。",
+      "assets": [],
+      "simulated": true,
+      "status": "simulated_handover_complete",
+      "candidate_id": "doc-01"
+    }
+  },
+  "C17-a": {
+    "closed": {
+      "facts": "虚拟计时第2分钟，门仍关闭，观察期限5分钟。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "door-closed-at-2",
+      "clock_minutes": 2,
+      "door": "closed"
+    },
+    "repeat": {
+      "facts": "虚拟计时仍为第2分钟，同一业务观测重复，门仍关闭。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "door-closed-at-2",
+      "clock_minutes": 2,
+      "door": "closed"
+    },
+    "opened": {
+      "facts": "虚拟计时第3分钟观察到门打开。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "door-opened-at-3",
+      "clock_minutes": 3,
+      "door": "open"
+    }
+  },
+  "C17-b": {
+    "closed": {
+      "facts": "虚拟计时第2分钟，门仍关闭，观察继续。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "door-closed-at-2",
+      "clock_minutes": 2,
+      "door": "closed"
+    },
+    "expired": {
+      "facts": "虚拟计时满5分钟，期间没有观察到门打开，观察已结束。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "watch-expired",
+      "clock_minutes": 5,
+      "door": "closed",
+      "monitoring_status": "ended"
+    }
+  },
+  "C18": {
+    "photo": {
+      "facts": "按用户要求补拍门口，这是最新图像。",
+      "assets": [
+        {
+          "id": "bench05-img-door-new",
+          "file": "bench05-img-door-new.png",
+          "alt": "MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture",
+          "source_id": "img-door-new",
+          "url": "http://127.0.0.1:3080/api/media/bench05-img-door-new/content",
+          "path": "/api/media/bench05-img-door-new/content",
+          "sha256": "bbed56e912957f22af711cd42e87babdccc780cd1fa1cd14feaf5f3a2f48b37d",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "asset_id": "img-door-new",
+      "status": "new_photo"
+    },
+    "stopped": {
+      "facts": "观察watch-01已模拟结束，正在返回。",
+      "assets": [],
+      "simulated": true,
+      "monitoring_status": "ended",
+      "return_status": "returning"
+    },
+    "returned": {
+      "facts": "模拟返回已完成。",
+      "assets": [],
+      "simulated": true,
+      "monitoring_status": "ended",
+      "return_status": "completed"
+    },
+    "late": {
+      "facts": "晚到的旧观察：门打开；产生于结束观察之前。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "old-door-open",
+      "event_before_monitor_end": true,
+      "door": "open"
+    }
+  },
+  "C21": {
+    "blocked": {
+      "facts": "模拟导航遇door-1关闭，已停止；没有返回可用替代路线。",
+      "assets": [
+        {
+          "id": "bench05-img-door",
+          "file": "bench05-img-door.png",
+          "alt": "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+          "source_id": "img-door",
+          "url": "http://127.0.0.1:3080/api/media/bench05-img-door/content",
+          "path": "/api/media/bench05-img-door/content",
+          "sha256": "c369682198bea1e413f3b9cccdf6d581ad40466f1e6dba90a4ea11315fa036a2",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "status": "stopped",
+      "obstacle": "door-1_closed",
+      "alternative_route": null
+    }
+  },
+  "C22": {
+    "near": {
+      "facts": "YSJ-07近景，设备仍不出水。",
+      "assets": [
+        {
+          "id": "bench05-repair-near",
+          "file": "bench05-repair-near.png",
+          "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+          "source_id": "repair-near",
+          "url": "http://127.0.0.1:3080/api/media/bench05-repair-near/content",
+          "path": "/api/media/bench05-repair-near/content",
+          "sha256": "4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "device_id": "YSJ-07",
+      "view": "near"
+    },
+    "side": {
+      "facts": "YSJ-07另一侧图。现已发布正面、近景、侧面三图。",
+      "assets": [
+        {
+          "id": "bench05-repair-front",
+          "file": "bench05-repair-front.png",
+          "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+          "source_id": "repair-front",
+          "url": "http://127.0.0.1:3080/api/media/bench05-repair-front/content",
+          "path": "/api/media/bench05-repair-front/content",
+          "sha256": "b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "id": "bench05-repair-near",
+          "file": "bench05-repair-near.png",
+          "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+          "source_id": "repair-near",
+          "url": "http://127.0.0.1:3080/api/media/bench05-repair-near/content",
+          "path": "/api/media/bench05-repair-near/content",
+          "sha256": "4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "id": "bench05-repair-side",
+          "file": "bench05-repair-side.png",
+          "alt": "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture",
+          "source_id": "repair-side",
+          "url": "http://127.0.0.1:3080/api/media/bench05-repair-side/content",
+          "path": "/api/media/bench05-repair-side/content",
+          "sha256": "7927ee2291dd11d9c44443f2f879c98ee3f387bd4818dd860e69b1ec0b4e3884",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "device_id": "YSJ-07",
+      "view": "side"
+    }
+  },
+  "C25-a": {
+    "result": {
+      "facts": "handshake-01模拟结果：成功。未控制真实机器人。",
+      "assets": [],
+      "simulated": true,
+      "task_id": "handshake-01",
+      "status": "succeeded"
+    }
+  },
+  "C25-b": {
+    "result": {
+      "facts": "handshake-01模拟结果：失败，原因target_unreachable。未控制真实机器人。",
+      "assets": [],
+      "simulated": true,
+      "task_id": "handshake-01",
+      "status": "failed",
+      "reason": "target_unreachable"
+    }
+  },
+  "N06": {
+    "other_views": {
+      "facts": "item-lamp-01背面和边角细节已发布。固定观察结论仅为边角有一道划痕；成因、发生时间与退货政策未知。",
+      "assets": [
+        {
+          "id": "bench05-lamp-back",
+          "file": "bench05-lamp-back.png",
+          "alt": "MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture",
+          "source_id": "lamp-back",
+          "url": "http://127.0.0.1:3080/api/media/bench05-lamp-back/content",
+          "path": "/api/media/bench05-lamp-back/content",
+          "sha256": "c78125dc5e880906054a28d216dfd287535ec16975d24f3fbb9936358f5fa552",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "id": "bench05-lamp-detail",
+          "file": "bench05-lamp-detail.png",
+          "alt": "MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture",
+          "source_id": "lamp-detail",
+          "url": "http://127.0.0.1:3080/api/media/bench05-lamp-detail/content",
+          "path": "/api/media/bench05-lamp-detail/content",
+          "sha256": "ed6da4b77bf5d796fe12a47c3082d3f398d1e73c8a1218b36c35da0287300427",
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "simulated": true,
+      "item_id": "item-lamp-01",
+      "observation": "边角有一道划痕"
+    }
+  },
+  "N11": {
+    "paused": {
+      "facts": "job-convert-01模拟暂停，10个文件中已完成3个。",
+      "assets": [],
+      "simulated": true,
+      "job_id": "job-convert-01",
+      "status": "paused",
+      "completed_count": 3,
+      "total": 10
+    },
+    "continued": {
+      "facts": "job-convert-01模拟继续，目前完成4个。",
+      "assets": [],
+      "simulated": true,
+      "job_id": "job-convert-01",
+      "status": "running",
+      "completed_count": 4,
+      "total": 10
+    },
+    "failed": {
+      "facts": "job-convert-01失败，已完成4/10；doc-05无效，错误INVALID_FILE。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "e-fail-01",
+      "job_id": "job-convert-01",
+      "status": "failed",
+      "completed_count": 4,
+      "total": 10,
+      "failed_file": "doc-05",
+      "error": "INVALID_FILE"
+    },
+    "ended": {
+      "facts": "监测已结束，不等于文件处理成功。",
+      "assets": [],
+      "simulated": true,
+      "job_id": "job-convert-01",
+      "monitoring_status": "ended",
+      "status": "failed",
+      "completed_count": 4,
+      "total": 10
+    },
+    "late": {
+      "facts": "晚到旧失败事件e-fail-01，与此前相同；产生于结束监测前。",
+      "assets": [],
+      "simulated": true,
+      "event_id": "e-fail-01",
+      "event_before_monitor_end": true,
+      "job_id": "job-convert-01",
+      "status": "failed",
+      "completed_count": 4,
+      "total": 10,
+      "failed_file": "doc-05",
+      "error": "INVALID_FILE"
+    }
+  }
+}

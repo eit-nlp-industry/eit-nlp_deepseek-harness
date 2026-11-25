@@ -1,0 +1,290 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_W5lGYNQDXcUhmqbWJBim6476",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"user_query\": \"用两张并列的比较卡片做结构化推荐，不加预约表单。顶部放一句结论式摘要：明晚（11月7日）19:00–20:00，4人试讲需要投屏+白板，首选 lib-room。卡片1「lib-room（推荐）」逐项列出：容量6人（可容纳4人）、投屏有、白板有、19:00–20:00 空闲、匹配度：投屏+白板+时段全部满足。卡片2「college-room（备选）」列出：容量4人（刚好坐满）、投屏有、白板未知、明晚该时段是否空闲未确认、距离更近、匹配度：白板与时段两项待确认。每张卡片用清晰标签行展示「容量／投屏／白板／时段／位置」，推荐卡片加醒目标记。底部加一行提示：选择哪个场地请告诉我，确认后再看是否要登记，此处不含预约操作。\", \"business_data\": {\"标题\": \"明晚4人试讲场地比较\", \"摘要\": \"明晚即 2026年11月7日 19:00–20:00，4人试讲，需投屏 + 白板。首推 lib-room：条件全部满足。\", \"需求\": {\"日期\": \"2026-11-07（明晚）\", \"时间\": \"19:00–20:00，一小时\", \"人数\": 4, \"必需设施\": [\"投屏\", \"白板\"]}, \"选项\": [{\"名称\": \"lib-room\", \"标记\": \"推荐\", \"容量\": \"6人（容纳4人有余量）\", \"投屏\": \"有\", \"白板\": \"有\", \"时段\": \"19:00–20:00 空闲\", \"位置\": \"材料未给出距离信息\", \"匹配结论\": \"投屏、白板、时段三项全部满足\"}, {\"名称\": \"college-room\", \"标记\": \"备选\", \"容量\": \"4人（刚好坐满）\", \"投屏\": \"有\", \"白板\": \"未知\", \"时段\": \"明晚19:00–20:00 是否空闲未确认\", \"位置\": \"距离更近\", \"匹配结论\": \"白板、时段两项待确认\"}], \"提示\": \"选哪个场地请告诉我；确认后再讨论是否需要登记，此卡片不含预约操作。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "heading",
+                "summary",
+                "requirements-card",
+                "options-grid",
+                "hint"
+              ]
+            },
+            "heading": {
+              "type": "Heading",
+              "props": {
+                "text": "明晚4人试讲场地比较",
+                "level": "h1"
+              }
+            },
+            "summary": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/摘要"
+                },
+                "variant": "default"
+              }
+            },
+            "requirements-card": {
+              "type": "Card",
+              "props": {
+                "title": "试讲需求",
+                "variant": "outlined"
+              },
+              "children": [
+                "requirements-desc"
+              ]
+            },
+            "requirements-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "日期",
+                    "value": "2026-11-07（明晚）"
+                  },
+                  {
+                    "label": "时间",
+                    "value": "19:00–20:00，一小时"
+                  },
+                  {
+                    "label": "人数",
+                    "value": 4
+                  },
+                  {
+                    "label": "必需设施",
+                    "value": "投屏 + 白板"
+                  }
+                ]
+              }
+            },
+            "options-grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "card-lib",
+                "card-college"
+              ]
+            },
+            "card-lib": {
+              "type": "Card",
+              "props": {
+                "title": "lib-room（推荐）",
+                "variant": "outlined"
+              },
+              "children": [
+                "lib-stack"
+              ]
+            },
+            "lib-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "lib-badge",
+                "lib-desc"
+              ]
+            },
+            "lib-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "推荐",
+                "variant": "success"
+              }
+            },
+            "lib-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "容量",
+                    "value": "6人（容纳4人有余量）"
+                  },
+                  {
+                    "label": "投屏",
+                    "value": "有"
+                  },
+                  {
+                    "label": "白板",
+                    "value": "有"
+                  },
+                  {
+                    "label": "时段",
+                    "value": "19:00–20:00 空闲"
+                  },
+                  {
+                    "label": "位置",
+                    "value": "材料未给出距离信息"
+                  },
+                  {
+                    "label": "匹配度",
+                    "value": "投屏、白板、时段三项全部满足"
+                  }
+                ]
+              }
+            },
+            "card-college": {
+              "type": "Card",
+              "props": {
+                "title": "college-room（备选）",
+                "variant": "default"
+              },
+              "children": [
+                "college-stack"
+              ]
+            },
+            "college-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "college-badge",
+                "college-desc"
+              ]
+            },
+            "college-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "备选",
+                "variant": "default"
+              }
+            },
+            "college-desc": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "容量",
+                    "value": "4人（刚好坐满）"
+                  },
+                  {
+                    "label": "投屏",
+                    "value": "有"
+                  },
+                  {
+                    "label": "白板",
+                    "value": "未知"
+                  },
+                  {
+                    "label": "时段",
+                    "value": "明晚19:00–20:00 是否空闲未确认"
+                  },
+                  {
+                    "label": "位置",
+                    "value": "距离更近"
+                  },
+                  {
+                    "label": "匹配度",
+                    "value": "白板、时段两项待确认"
+                  }
+                ]
+              }
+            },
+            "hint": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/提示"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "明晚4人试讲场地比较",
+            "摘要": "明晚即 2026年11月7日 19:00–20:00，4人试讲，需投屏 + 白板。首推 lib-room：条件全部满足。",
+            "需求": {
+              "日期": "2026-11-07（明晚）",
+              "时间": "19:00–20:00，一小时",
+              "人数": 4,
+              "必需设施": [
+                "投屏",
+                "白板"
+              ]
+            },
+            "选项": [
+              {
+                "名称": "lib-room",
+                "标记": "推荐",
+                "容量": "6人（容纳4人有余量）",
+                "投屏": "有",
+                "白板": "有",
+                "时段": "19:00–20:00 空闲",
+                "位置": "材料未给出距离信息",
+                "匹配结论": "投屏、白板、时段三项全部满足"
+              },
+              {
+                "名称": "college-room",
+                "标记": "备选",
+                "容量": "4人（刚好坐满）",
+                "投屏": "有",
+                "白板": "未知",
+                "时段": "明晚19:00–20:00 是否空闲未确认",
+                "位置": "距离更近",
+                "匹配结论": "白板、时段两项待确认"
+              }
+            ],
+            "提示": "选哪个场地请告诉我；确认后再讨论是否需要登记，此卡片不含预约操作。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_W5lGYNQDXcUhmqbWJBim6476"
+      },
+      "toolCallId": "call_00_W5lGYNQDXcUhmqbWJBim6476",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "bed9032c-59a6-45e4-bcef-9b7331505586"
+    }
+  }
+]

@@ -1,0 +1,306 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 Workflow 追加分支编辑器测评 刚刚":
+    - generic: 进行中
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 刚刚
+  - treeitem "进行中 Workflow编辑器材料呈现测评 刚刚":
+    - generic: 进行中
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 报销流程草稿编辑保存 1分钟":
+    - generic: 已完成
+    - generic: 报销流程草稿编辑保存
+    - generic: 1分钟
+  - treeitem "已完成 报销流程整理与草稿保存 1分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 1分钟
+  - treeitem "Workflow材料取送流程测评 1分钟" [selected]:
+    - generic: Workflow材料取送流程测评
+    - generic: 1分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 2分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 2分钟
+  - treeitem "已完成 监测文件处理任务失败通知 3分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 3分钟
+  - treeitem "已完成 文件处理任务监测模拟 3分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 3分钟
+  - treeitem "饮水机不出水照片评测 4分钟":
+    - generic: 饮水机不出水照片评测
+    - generic: 4分钟
+  - treeitem "已完成 平面图快递路线静态示意 6分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 6分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 6分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 6分钟
+  - treeitem "已完成 三项工作排期草稿确认 7分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 7分钟
+  - treeitem "已完成 安排三项工作并确认草稿 7分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 7分钟
+  - treeitem "已完成 会议室预约改期草稿 9分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 9分钟
+  - treeitem "已完成 会议室预约改期草稿测评 9分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 9分钟
+  - treeitem "已完成 售后申请草稿填写与确认 10分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 10分钟
+  - treeitem "已完成 售后申请草稿填写测评 10分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 10分钟
+  - treeitem "已完成 商品退货多视角图片呈现 11分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 11分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 12分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 12分钟
+  - treeitem "食堂导航状态卡片呈现 12分钟":
+    - generic: 食堂导航状态卡片呈现
+    - generic: 12分钟
+  - treeitem "已完成 包裹照片确认对象状态 13分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 13分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 15分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 15分钟
+  - treeitem "测评 C21-B-01 食堂导航 17分钟":
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 17分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 17分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 17分钟
+  - treeitem "已完成 活动需求确认与汇总 17分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 17分钟
+  - treeitem "已完成 活动需求确认测评 18分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 18分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: Workflow材料取送流程测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 C23-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C23-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C23-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：以后找林老师拿材料，先到门口敲门，等老师放好，拍给我确认，再送回来。 指定呈现方式：Workflow可编辑流程并实际保存回传。必须实际调用render_ui；事实来自本例材料。本题需要Workflow：用intent=rich_content并省略不受支持的components枚举，在user_query要求Workflow编辑器。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。 Workflow接入规范：根Stack内放Workflow和独立保存Button两个兄弟节点；Workflow(mode=edit)用$bindState绑定/_ui/workflow，初始化完整workflow-v1文档；保存发workflow.save，payload.workflow用$state读取最新文档，parameters为对象。不要$ref，不用静态步骤或组件嵌套伪装编辑器。
+- generic: 13:53
+- button "复制":
+- status: 已完成
+- button "已完成，用时 1分32秒":
+  - generic: 已完成，用时 1分32秒
+- paragraph: 我先加载本例的固定材料。
+- paragraph: 上面的页面就是可以真正编辑的流程草稿：四个步骤都能改标题、改说明、增删和调整顺序，下面的「保存流程草稿」按钮是单独一个，改完后点它就会把当前版本存为草稿。
+- paragraph: 文字版保底内容：
+- list:
+  - listitem: 流程编号 wf-material-v1（到林老师门口，然后敲门等待材料放好，然后拍图等我确认，最后确认后送回）
+- list:
+  - listitem: 到林老师门口，在门外停下。
+  - listitem: 敲门，等老师把材料放好，再上前取材料。
+  - listitem: 取到材料后拍照发给我，等我的确认再继续。
+  - listitem: 收到我的确认后，把材料送回。
+- paragraph: 另外有两点需要说明：
+- list:
+  - listitem: 等待上限你还没有指定，可以在第 3 步的说明里补上具体时长（比如最多等 10 分钟，超时就先联系你）。
+  - listitem: 这里保存的只是模拟草稿，不会真的去取送材料，也不会长期记住；你下次重新打开时，还是要看这份草稿。
+- paragraph: 你改好并点「保存流程草稿」后，我再按你的实际提交内容确认保存结果；现在还没有保存。
+- alert:
+  - img "info-circle":
+  - generic: 保存范围
+  - generic: 本页只保存模拟草稿，不执行、无永久记忆。
+- region "林老师材料取送流程":
+  - heading "林老师材料取送流程" [level=3]
+  - button "编辑名称"
+  - button "撤销"
+  - button "重做" [disabled]
+  - text: 编辑草稿 · 分支完成后继续后续步骤
+  - list:
+    - button "01 · 步骤 到林老师门口 走到林老师门口，在门外停下。":
+      - generic: 01 · 步骤
+      - strong: 到林老师门口
+      - generic: 走到林老师门口，在门外停下。
+    - button "移动 到林老师门口": ⠿
+    - button "菜单 到林老师门口": ⋮
+    - text: ↓
+    - button "02 · 步骤 敲门等材料放好 敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。" [pressed]:
+      - generic: 02 · 步骤
+      - strong: 敲门等材料放好
+      - generic: 敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。
+    - button "移动 敲门等材料放好": ⠿
+    - button "菜单 敲门等材料放好" [expanded]: ⋮
+    - generic "节点操作":
+      - button "编辑节点"
+      - button "上移"
+      - button "下移"
+      - button "删除节点"
+    - text: ↓
+    - button "03 · 步骤 拍图发我确认 取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。":
+      - generic: 03 · 步骤
+      - strong: 拍图发我确认
+      - generic: 取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。
+    - button "移动 拍图发我确认": ⠿
+    - button "菜单 拍图发我确认": ⋮
+    - text: ↓
+    - button "04 · 步骤 确认后送回 收到我的确认后，把材料送回。":
+      - generic: 04 · 步骤
+      - strong: 确认后送回
+      - generic: 收到我的确认后，把材料送回。
+    - button "移动 确认后送回": ⠿
+    - button "菜单 确认后送回": ⋮
+    - text: ↓
+  - button "＋ 新增步骤"
+  - button "＋ 新增条件"
+- button "保存流程草稿" [active]:
+  - generic: 保存流程草稿
+- generic: 流程 wf-material-v1：1) 到林老师门口；2) 敲门并等待老师把材料放好；3) 取到材料后拍照发我确认；4) 我确认后再送回。等待上限未指定，可在步骤说明中补充。保存的只是模拟草稿，不执行真实取送，也不做永久保存。
+- generic: 组件未注册
+- generic: 已提交，等待继续回答
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 14.1K tok":
+  - generic: 用量 14.1K tok
+- generic: 13:55
+- generic: 我已提交编辑后的流程
+- generic: 13:56
+- button "复制":
+- status: 已完成
+- button "已完成，用时 30秒":
+  - generic: 已完成，用时 30秒
+- region "林老师材料取送流程":
+  - heading "林老师材料取送流程" [level=3]
+  - button "编辑名称"
+  - button "撤销" [disabled]
+  - button "重做" [disabled]
+  - text: 编辑草稿 · 分支完成后继续后续步骤
+  - list:
+    - button "01 · 步骤 到林老师门口 走到林老师门口，在门外停下。":
+      - generic: 01 · 步骤
+      - strong: 到林老师门口
+      - generic: 走到林老师门口，在门外停下。
+    - button "移动 到林老师门口": ⠿
+    - button "菜单 到林老师门口": ⋮
+    - text: ↓
+    - button "02 · 步骤 敲门等材料放好 敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。":
+      - generic: 02 · 步骤
+      - strong: 敲门等材料放好
+      - generic: 敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。
+    - button "移动 敲门等材料放好": ⠿
+    - button "菜单 敲门等材料放好": ⋮
+    - text: ↓
+    - button "03 · 步骤 拍图发我确认 取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。":
+      - generic: 03 · 步骤
+      - strong: 拍图发我确认
+      - generic: 取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。
+    - button "移动 拍图发我确认": ⠿
+    - button "菜单 拍图发我确认": ⋮
+    - text: ↓
+    - button "04 · 步骤 确认后送回 收到我的确认后，把材料送回。":
+      - generic: 04 · 步骤
+      - strong: 确认后送回
+      - generic: 收到我的确认后，把材料送回。
+    - button "移动 确认后送回": ⠿
+    - button "菜单 确认后送回": ⋮
+    - text: ↓
+  - button "＋ 新增步骤"
+  - button "＋ 新增条件"
+- button "保存流程":
+  - generic: 保存流程
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 19.6K tok":
+  - generic: 用量 19.6K tok
+- generic: 13:56
+- button "回到底部":
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 1%":
+  - generic: 1%

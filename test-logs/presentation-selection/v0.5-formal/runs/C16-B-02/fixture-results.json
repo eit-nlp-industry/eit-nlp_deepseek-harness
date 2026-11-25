@@ -1,0 +1,144 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C16-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_Qo7D7v6h86XkwYVt9m0k6897"
+      },
+      "toolCallId": "call_00_ET_Qo7D7v6h86XkwYVt9m0k6897",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C16\",\"facts\":\"模拟地点office-zw，老师办公室。待取文件候选doc-01尚未完成交接准备；到门口、放好、图像发布和交接状态仅依据随后模拟事件。不联系真人。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "9cef785e-05e3-4912-85fa-c3050b0a1786"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C16-B-02"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_WkxuN64yuPksi4gpbCsQ6775"
+      },
+      "toolCallId": "call_00_WkxuN64yuPksi4gpbCsQ6775",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C16\",\"facts\":\"模拟地点office-zw，老师办公室。待取文件候选doc-01尚未完成交接准备；到门口、放好、图像发布和交接状态仅依据随后模拟事件。不联系真人。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "b0099ff5-c020-4130-b69c-5a33028cc083"
+    }
+  },
+  {
+    "call": {
+      "seq": 52,
+      "arguments": {
+        "action": "read",
+        "run_id": "C16-B-02"
+      }
+    },
+    "result_seq": 53,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_f7BNvkrI6CPFF8ufns943767"
+      },
+      "toolCallId": "call_00_f7BNvkrI6CPFF8ufns943767",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C16\",\"facts\":\"模拟已到office-zw门口、敲门、等待老师放好文件；现在doc-01已放妥，发布待确认文件图，交接尚未完成。\",\"assets\":[{\"id\":\"bench05-doc-01\",\"file\":\"bench05-doc-01.png\",\"alt\":\"MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture\",\"source_id\":\"doc-01\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-doc-01/content\",\"path\":\"/api/media/bench05-doc-01/content\",\"sha256\":\"0b03c85dfff96d94a9b9cb57877cfef6b49950b14a851e213750ae1d335b04de\",\"width\":960,\"height\":540}],\"status\":\"ready_for_confirmation\",\"candidate_id\":\"doc-01\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "aeaee6ab-dc60-40d1-99fa-272e3454451e"
+    }
+  },
+  {
+    "call": {
+      "seq": 70,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C16-B-02",
+        "values": {
+          "candidate_id": "doc-01",
+          "asset_id": "bench05-doc-01",
+          "user_confirmation": "就是这个文件。",
+          "confirmed": true,
+          "handover_action": "确认取走 doc-01"
+        }
+      }
+    },
+    "result_seq": 71,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_y2aZm2b75Gp4V6Yj3REr4445"
+      },
+      "toolCallId": "call_00_y2aZm2b75Gp4V6Yj3REr4445",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "1a02c19f-8bbb-4543-a033-59d09d81fb49"
+    }
+  },
+  {
+    "call": {
+      "seq": 91,
+      "arguments": {
+        "action": "read",
+        "run_id": "C16-B-02"
+      }
+    },
+    "result_seq": 92,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_0w2iKhFLb6HMistP6Hc94271"
+      },
+      "toolCallId": "call_00_0w2iKhFLb6HMistP6Hc94271",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C16\",\"facts\":\"用户确认doc-01后，模拟交接完成；不代表真实取物。\",\"assets\":[],\"status\":\"simulated_handover_complete\",\"candidate_id\":\"doc-01\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "e67aaa41-5f2b-47de-8afe-d872d01a6be1"
+    }
+  }
+]

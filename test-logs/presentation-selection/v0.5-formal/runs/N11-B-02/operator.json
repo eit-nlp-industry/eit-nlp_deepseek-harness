@@ -1,0 +1,93 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "N11",
+    "facts": "晚到旧失败事件e-fail-01，与此前相同；产生于结束监测前。",
+    "assets": [],
+    "job_id": "job-convert-01",
+    "status": "failed",
+    "completed_count": 4,
+    "total": 10,
+    "event_id": "e-fail-01",
+    "failed_file": "doc-05",
+    "error": "INVALID_FILE",
+    "monitoring_status": "ended",
+    "event_before_monitor_end": true
+  },
+  "events": [
+    {
+      "id": "N11-B-02-paused",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "job-convert-01模拟暂停，10个文件中已完成3个。",
+        "assets": [],
+        "simulated": true,
+        "job_id": "job-convert-01",
+        "status": "paused",
+        "completed_count": 3,
+        "total": 10
+      }
+    },
+    {
+      "id": "N11-B-02-continued",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "job-convert-01模拟继续，目前完成4个。",
+        "assets": [],
+        "simulated": true,
+        "job_id": "job-convert-01",
+        "status": "running",
+        "completed_count": 4,
+        "total": 10
+      }
+    },
+    {
+      "id": "N11-B-02-failed",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "job-convert-01失败，已完成4/10；doc-05无效，错误INVALID_FILE。",
+        "assets": [],
+        "simulated": true,
+        "event_id": "e-fail-01",
+        "job_id": "job-convert-01",
+        "status": "failed",
+        "completed_count": 4,
+        "total": 10,
+        "failed_file": "doc-05",
+        "error": "INVALID_FILE"
+      }
+    },
+    {
+      "id": "N11-B-02-ended",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "监测已结束，不等于文件处理成功。",
+        "assets": [],
+        "simulated": true,
+        "job_id": "job-convert-01",
+        "monitoring_status": "ended",
+        "status": "failed",
+        "completed_count": 4,
+        "total": 10
+      }
+    },
+    {
+      "id": "N11-B-02-late",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "晚到旧失败事件e-fail-01，与此前相同；产生于结束监测前。",
+        "assets": [],
+        "simulated": true,
+        "event_id": "e-fail-01",
+        "event_before_monitor_end": true,
+        "job_id": "job-convert-01",
+        "status": "failed",
+        "completed_count": 4,
+        "total": 10,
+        "failed_file": "doc-05",
+        "error": "INVALID_FILE"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

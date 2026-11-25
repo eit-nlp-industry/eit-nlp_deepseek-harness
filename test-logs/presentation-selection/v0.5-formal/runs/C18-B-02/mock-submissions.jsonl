@@ -1,0 +1,2 @@
+{"at":"2026-11-19T13:24:25.416Z","session_id":"session-12d511dc-13a5-42a6-90e6-db939dae7cda","values":{"request":"补拍门口","target":"门口","observe_id":"watch-01","sequence":["补拍门口","用户查看照片","结束观察","返回"],"stop_after_view":true}}
+{"at":"2026-11-19T13:32:06.521Z","session_id":"session-12d511dc-13a5-42a6-90e6-db939dae7cda","values":{"observe_id":"watch-01","action":"结束观察并返回","confirmed_by_user":true,"viewed_photo_asset_id":"img-door-new","steps":["end_observation","return"]}}

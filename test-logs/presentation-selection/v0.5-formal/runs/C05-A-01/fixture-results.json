@@ -1,0 +1,62 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C05-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_S0YW3a01Kta1S0B5U2P23434"
+      },
+      "toolCallId": "call_00_ET_S0YW3a01Kta1S0B5U2P23434",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C05\",\"facts\":\"当前2026-11-06，周六为11月7日。用户和两位朋友共3人，下午具体时段未知。备注：带两位校外朋友参观。只做预约草稿，不实际预约或审批。字段date/slot/people/note。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "f33267bf-f674-4c6a-a6bc-bbffd44cee3a"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "run_id": "C05-A-01",
+        "action": "submit",
+        "values": {
+          "date": "2026-11-07",
+          "slot": "14:00–15:00",
+          "people": 3,
+          "note": "带两位校外朋友参观"
+        }
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_4GcAk53gw3xdjT0UzBHU3312"
+      },
+      "toolCallId": "call_00_4GcAk53gw3xdjT0UzBHU3312",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"date\":\"2026-11-07\",\"slot\":\"14:00–15:00\",\"people\":3,\"note\":\"带两位校外朋友参观\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "e3af39b8-5f39-4509-a1a0-de80b6a40db9"
+    }
+  }
+]

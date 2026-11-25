@@ -1,0 +1,110 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C11-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_7w4Sy9xCY7ss8hXMdwyl4768"
+      },
+      "toolCallId": "call_00_ET_7w4Sy9xCY7ss8hXMdwyl4768",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"任务follow-01，目标person-guide，模拟状态following。暂停、继续的结果以随后模拟回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "b951fc61-8d99-4745-a39b-1712d5bd6d02"
+    }
+  },
+  {
+    "call": {
+      "seq": 34,
+      "arguments": {
+        "run_id": "C11-A-01",
+        "action": "read"
+      }
+    },
+    "result_seq": 35,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_rSqiigcbZQE34sY9rGzl1294"
+      },
+      "toolCallId": "call_00_rSqiigcbZQE34sY9rGzl1294",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"follow-01已模拟暂停，目标仍为person-guide。\",\"assets\":[],\"status\":\"paused\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "ee3e499a-42a4-425a-859b-50cfa2577edb"
+    }
+  },
+  {
+    "call": {
+      "seq": 49,
+      "arguments": {
+        "action": "read",
+        "run_id": "C11-A-01"
+      }
+    },
+    "result_seq": 50,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_PBB3AWVWHoHpw6IuoV5I3191"
+      },
+      "toolCallId": "call_00_PBB3AWVWHoHpw6IuoV5I3191",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"follow-01已模拟暂停，目标仍为person-guide。\",\"assets\":[],\"status\":\"paused\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "02063fec-5b20-4433-b770-1ed87a542be4"
+    }
+  },
+  {
+    "call": {
+      "seq": 64,
+      "arguments": {
+        "action": "read",
+        "run_id": "C11-A-01"
+      }
+    },
+    "result_seq": 65,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_aBHN520gCLubkX9pT6zx6647"
+      },
+      "toolCallId": "call_00_aBHN520gCLubkX9pT6zx6647",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"follow-01已模拟继续跟随同一目标person-guide。\",\"assets\":[],\"status\":\"following\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "4eced071-7a8a-4052-a57f-c40889bc9773"
+    }
+  }
+]

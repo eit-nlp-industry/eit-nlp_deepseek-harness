@@ -1,0 +1,59 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C04-c-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_nrh0wwWAjFcswpemV5IY1729"
+      },
+      "toolCallId": "call_00_ET_nrh0wwWAjFcswpemV5IY1729",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C04-c\",\"facts\":\"讲座活动形式尚未确认，真实选项为线上和线下。可推荐或预选线下，但推荐和预选不等于用户提交；必须允许用户修改后明确提交。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "6cbef600-0a92-4add-8c4a-4b12c906d77d"
+    }
+  },
+  {
+    "call": {
+      "seq": 36,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C04-c-B-01",
+        "values": {
+          "lecture_format": "online"
+        }
+      }
+    },
+    "result_seq": 37,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_QGFMFihc5aVP3VzBkTYj9693"
+      },
+      "toolCallId": "call_00_QGFMFihc5aVP3VzBkTYj9693",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "1267cb17-c26e-42c4-8872-137680b78c59"
+    }
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N09-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_zn8AIdhVcZiK0CMzyHD87731"
+      },
+      "toolCallId": "call_00_ET_zn8AIdhVcZiK0CMzyHD87731",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N09\",\"facts\":\"稳定ID review=审阅需求、report=整理报告、client=客户沟通；初始review/report/client。仅保存排序草稿，不实际创建任务或联系客户。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "f63430c8-ac4c-4958-8637-931e5bb654dd"
+    }
+  },
+  {
+    "call": {
+      "seq": 34,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N09-A-01",
+        "values": {
+          "order": [
+            "client",
+            "review",
+            "report"
+          ],
+          "items": [
+            {
+              "id": "client",
+              "title": "客户沟通",
+              "position": 1
+            },
+            {
+              "id": "review",
+              "title": "审阅需求",
+              "position": 2
+            },
+            {
+              "id": "report",
+              "title": "整理报告",
+              "position": 3
+            }
+          ]
+        }
+      }
+    },
+    "result_seq": 35,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_vGl4OQPjbTkQoxlAKYbr7792"
+      },
+      "toolCallId": "call_00_vGl4OQPjbTkQoxlAKYbr7792",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"order\":[\"client\",\"review\",\"report\"],\"items\":[{\"id\":\"client\",\"title\":\"客户沟通\",\"position\":1},{\"id\":\"review\",\"title\":\"审阅需求\",\"position\":2},{\"id\":\"report\",\"title\":\"整理报告\",\"position\":3}]}}}"
+        }
+      ],
+      "isError": false,
+      "id": "96830b9c-4854-4c86-adc9-b53e177a946b"
+    }
+  }
+]

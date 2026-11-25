@@ -1,0 +1,26 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C12",
+    "facts": "已按用户确认向person-a模拟转达“我马上就到”；不向任何真人发送消息。",
+    "assets": [],
+    "status": "simulated_message_sent",
+    "target": "person-a",
+    "message": "我马上就到"
+  },
+  "events": [
+    {
+      "id": "C12-B-01-message_sent",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "已按用户确认向person-a模拟转达“我马上就到”；不向任何真人发送消息。",
+        "assets": [],
+        "simulated": true,
+        "status": "simulated_message_sent",
+        "target": "person-a",
+        "message": "我马上就到"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

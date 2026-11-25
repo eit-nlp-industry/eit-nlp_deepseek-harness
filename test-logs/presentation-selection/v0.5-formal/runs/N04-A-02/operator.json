@@ -1,0 +1,10 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "N04",
+    "facts": "用途purpose和人数people未知；形式format仅线上/线下，未知；用途自由文字、人数正整数。不设推荐默认值，收齐后只汇总。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true
+}

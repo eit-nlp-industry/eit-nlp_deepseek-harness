@@ -1,0 +1,128 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "N08-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_rVRr35tFlYApGKbuqN169223"
+      },
+      "toolCallId": "call_00_ET_rVRr35tFlYApGKbuqN169223",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N08\",\"facts\":\"初始草稿room=R-01,date=2026-11-23,slot=14:00–15:00,people=6；其他时段可用性未知，以模拟提交响应为准；只改草稿，不实际预约。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "a34935e2-1b93-4cc9-8a8c-3a9c759510fb"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "N08-A-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_lMxhvpAL8wBMGAbm8KLz9952"
+      },
+      "toolCallId": "call_00_lMxhvpAL8wBMGAbm8KLz9952",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N08\",\"facts\":\"初始草稿room=R-01,date=2026-11-23,slot=14:00–15:00,people=6；其他时段可用性未知，以模拟提交响应为准；只改草稿，不实际预约。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "78b29166-7665-42df-9c46-082e3a82b45a"
+    }
+  },
+  {
+    "call": {
+      "seq": 31,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N08-A-01",
+        "values": {
+          "room": "R-01",
+          "date": "2026-11-23",
+          "slot": "16:00–17:00",
+          "people": 6,
+          "change_from": "14:00–15:00",
+          "change_to": "16:00–17:00",
+          "action": "draft_update"
+        }
+      }
+    },
+    "result_seq": 32,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_WrN5W8aTyE9BN9AuIDuC6552"
+      },
+      "toolCallId": "call_00_WrN5W8aTyE9BN9AuIDuC6552",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"conflict\",\"available_slots\":[\"17:00–18:00\",\"18:00–19:00\"],\"simulated\":true,\"real_operation\":false,\"submitted\":{\"room\":\"R-01\",\"date\":\"2026-11-23\",\"slot\":\"16:00–17:00\",\"people\":6,\"change_from\":\"14:00–15:00\",\"change_to\":\"16:00–17:00\",\"action\":\"draft_update\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "42967f4d-0850-45e0-8893-7bb264f502f5"
+    }
+  },
+  {
+    "call": {
+      "seq": 43,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N08-A-01",
+        "values": {
+          "action": "draft_update",
+          "change_from": "14:00–15:00",
+          "change_to": "17:00–18:00",
+          "date": "2026-11-23",
+          "people": 6,
+          "room": "R-01",
+          "slot": "17:00–18:00"
+        }
+      }
+    },
+    "result_seq": 44,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_USuJVf8F15MNB5Qy8Yay4780"
+      },
+      "toolCallId": "call_00_USuJVf8F15MNB5Qy8Yay4780",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"action\":\"draft_update\",\"change_from\":\"14:00–15:00\",\"change_to\":\"17:00–18:00\",\"date\":\"2026-11-23\",\"people\":6,\"room\":\"R-01\",\"slot\":\"17:00–18:00\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "3ef433f1-36d3-4c35-927e-82beeb235280"
+    }
+  }
+]

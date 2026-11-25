@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 5,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "短答区分支付128元成功与结算pending，没有交易动作或多余追问。"
+}

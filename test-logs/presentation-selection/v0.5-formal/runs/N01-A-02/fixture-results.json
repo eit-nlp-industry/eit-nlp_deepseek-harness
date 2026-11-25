@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N01-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_FgUkdhaBQQ645Gx3FSkf8392"
+      },
+      "toolCallId": "call_00_ET_FgUkdhaBQQ645Gx3FSkf8392",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N01\",\"facts\":\"模拟订单pay-order-01，payment_status=succeeded，金额128.00元；settlement_status=pending。支付与结算不同，不发起付款或查真实金融系统。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "69da2b94-0491-452c-8f3d-e84cf8d79d36"
+    }
+  }
+]

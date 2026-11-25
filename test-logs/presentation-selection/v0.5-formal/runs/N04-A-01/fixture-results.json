@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 21,
+      "arguments": {
+        "run_id": "N04-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 22,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_siunlz56WRLQR6iJOElw1032"
+      },
+      "toolCallId": "call_00_ET_siunlz56WRLQR6iJOElw1032",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N04\",\"facts\":\"用途purpose和人数people未知；形式format仅线上/线下，未知；用途自由文字、人数正整数。不设推荐默认值，收齐后只汇总。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "824cb28c-dadc-4ad8-8072-f4d84a834cca"
+    }
+  }
+]

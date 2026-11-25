@@ -1,0 +1,344 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_Im862CobvdW6l29R08g67375",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"user_query\": \"页面分三块，全部用普通文字与基础表单组件呈现，不使用任何富组件（不需要 Image、ImageUpload、Tabs、MapPreview、SortableSequence、Collapsible、CodeBlock）。第一块「冲突说明」：用标题+要点列表写明——草稿时段 2026-11-07 19:00–20:00 于 19:00 开始，不满足你要求的“20:00 之后开始”，因此旧时段不能直接沿用；同时你已取消白板，设备仅保留投屏，需与你确认。第二块「草稿要点」：以小标签或列表展示日期 2026-11-07、场地 四明书院、人数 4 人、设备 投屏（白板已取消）、原时长 1 小时。第三块「选择替代时段」表单：一个单选组选择期望开始时间（20:00 开始、20:30 开始、21:00 开始、其他开始时间）；一个时长选择（1 小时、1.5 小时、2 小时）；一个可填写“其他开始时间”的文本输入；一个可选备注输入；一个提交按钮。表单上方必须显著提示：这些时段是否可用尚未确认，需按你的选择提交后由场地回复，本页不代替你接受任何时段。页面底部放一段文字兜底，重复冲突结论、草稿要点与可选时段说明，确保不看表单也能读懂。\", \"business_data\": {\"title\": \"时间冲突：需要重新选择开始时间\", \"conflict_heading\": \"冲突说明\", \"conflict_points\": [\"草稿时段为 2026-11-07 19:00–20:00，19:00 即开始，不满足“20:00 之后开始”的新要求。\", \"旧时段不能直接沿用，也不能由我默认替你接受任何替代时段。\", \"你已取消白板，设备由“白板+投屏”改为仅投屏，请在提交前确认这一变更。\"], \"draft_heading\": \"当前草稿要点\", \"draft_date\": \"2026-11-07\", \"draft_venue\": \"四明书院\", \"draft_people\": \"4 人\", \"draft_equipment\": \"投屏（白板已取消）\", \"draft_duration\": \"原时长 1 小时\", \"unknown_notice\": \"注意：20:00 之后各时段是否可用尚未确认，需要按你的选择提交后由场地回复；本页不预设、不预报结果。\", \"form_heading\": \"选择合法的替代时段（20:00 之后开始）\", \"start_time_field\": \"期望开始时间\", \"start_time_options\": [\"20:00 开始\", \"20:30 开始\", \"21:00 开始\", \"其他开始时间\"], \"custom_time_field\": \"其他开始时间（如 21:30）\", \"duration_field\": \"时长\", \"duration_options\": [\"1 小时\", \"1.5 小时\", \"2 小时\"], \"note_field\": \"备注（可选）\", \"submit_label\": \"按上述选择提交\", \"fallback_text\": \"冲突：草稿为 2026-11-07 19:00–20:00，19:00 开始，不满足“20:00 之后”的要求，旧时段不可直接沿用，也不会默认替你接受替代时段。草稿要点：日期 2026-11-07；场地 四明书院；人数 4 人；设备仅投屏（白板已取消）；原时长 1 小时。可选替代开始时间：20:00、20:30、21:00 或其他 20:00 之后的时间，时长可选 1、1.5 或 2 小时；这些时段是否可用尚未确认，提交后由场地回复。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page_title",
+                "conflict_section",
+                "draft_section",
+                "form_section",
+                "fallback_section"
+              ]
+            },
+            "page_title": {
+              "type": "Heading",
+              "props": {
+                "text": "时间冲突：需要重新选择开始时间",
+                "level": "h1"
+              }
+            },
+            "conflict_section": {
+              "type": "Section",
+              "props": {
+                "title": "冲突说明",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "conflict_points_stack"
+              ]
+            },
+            "conflict_points_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "conflict_point_1",
+                "conflict_point_2",
+                "conflict_point_3"
+              ]
+            },
+            "conflict_point_1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_points/0"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict_point_2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_points/1"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict_point_3": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conflict_points/2"
+                },
+                "variant": "default"
+              }
+            },
+            "draft_section": {
+              "type": "Section",
+              "props": {
+                "title": "当前草稿要点",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "draft_grid"
+              ]
+            },
+            "draft_grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "draft_badge_date",
+                "draft_badge_venue",
+                "draft_badge_people",
+                "draft_badge_equipment",
+                "draft_badge_duration"
+              ]
+            },
+            "draft_badge_date": {
+              "type": "Badge",
+              "props": {
+                "label": "日期：2026-11-07",
+                "variant": "default"
+              }
+            },
+            "draft_badge_venue": {
+              "type": "Badge",
+              "props": {
+                "label": "场地：四明书院",
+                "variant": "info"
+              }
+            },
+            "draft_badge_people": {
+              "type": "Badge",
+              "props": {
+                "label": "人数：4 人",
+                "variant": "default"
+              }
+            },
+            "draft_badge_equipment": {
+              "type": "Badge",
+              "props": {
+                "label": "设备：投屏（白板已取消）",
+                "variant": "warning"
+              }
+            },
+            "draft_badge_duration": {
+              "type": "Badge",
+              "props": {
+                "label": "原时长：1 小时",
+                "variant": "default"
+              }
+            },
+            "form_section": {
+              "type": "Section",
+              "props": {
+                "title": "选择合法的替代时段（20:00 之后开始）",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "unknown_callout",
+                "filter_form",
+                "submit_button"
+              ]
+            },
+            "unknown_callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "时段可用性尚未确认",
+                "description": "注意：20:00 之后各时段是否可用尚未确认，需要按你的选择提交后由场地回复；本页不预设、不预报结果，也不代替你接受任何时段。",
+                "showIcon": true
+              }
+            },
+            "filter_form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "start_time",
+                    "label": "期望开始时间",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "20:00 开始",
+                          "label": "20:00 开始"
+                        },
+                        {
+                          "value": "20:30 开始",
+                          "label": "20:30 开始"
+                        },
+                        {
+                          "value": "21:00 开始",
+                          "label": "21:00 开始"
+                        },
+                        {
+                          "value": "其他开始时间",
+                          "label": "其他开始时间"
+                        }
+                      ]
+                    },
+                    "placeholder": "请选择期望开始时间"
+                  },
+                  {
+                    "type": "select",
+                    "key": "duration",
+                    "label": "时长",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "1 小时",
+                          "label": "1 小时"
+                        },
+                        {
+                          "value": "1.5 小时",
+                          "label": "1.5 小时"
+                        },
+                        {
+                          "value": "2 小时",
+                          "label": "2 小时"
+                        }
+                      ]
+                    },
+                    "placeholder": "请选择时长"
+                  },
+                  {
+                    "type": "input",
+                    "key": "custom_start_time",
+                    "label": "其他开始时间（如 21:30）",
+                    "placeholder": "如 21:30"
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "备注（可选）",
+                    "placeholder": "可填写补充说明"
+                  }
+                ]
+              }
+            },
+            "submit_button": {
+              "type": "Button",
+              "props": {
+                "label": "按上述选择提交",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "fallback_section": {
+              "type": "Section",
+              "props": {
+                "title": "兜底说明",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "fallback_text"
+              ]
+            },
+            "fallback_text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "时间冲突：需要重新选择开始时间",
+            "conflict_heading": "冲突说明",
+            "conflict_points": [
+              "草稿时段为 2026-11-07 19:00–20:00，19:00 即开始，不满足“20:00 之后开始”的新要求。",
+              "旧时段不能直接沿用，也不能由我默认替你接受任何替代时段。",
+              "你已取消白板，设备由“白板+投屏”改为仅投屏，请在提交前确认这一变更。"
+            ],
+            "draft_heading": "当前草稿要点",
+            "draft_date": "2026-11-07",
+            "draft_venue": "四明书院",
+            "draft_people": "4 人",
+            "draft_equipment": "投屏（白板已取消）",
+            "draft_duration": "原时长 1 小时",
+            "unknown_notice": "注意：20:00 之后各时段是否可用尚未确认，需要按你的选择提交后由场地回复；本页不预设、不预报结果。",
+            "form_heading": "选择合法的替代时段（20:00 之后开始）",
+            "start_time_field": "期望开始时间",
+            "start_time_options": [
+              "20:00 开始",
+              "20:30 开始",
+              "21:00 开始",
+              "其他开始时间"
+            ],
+            "custom_time_field": "其他开始时间（如 21:30）",
+            "duration_field": "时长",
+            "duration_options": [
+              "1 小时",
+              "1.5 小时",
+              "2 小时"
+            ],
+            "note_field": "备注（可选）",
+            "submit_label": "按上述选择提交",
+            "fallback_text": "冲突：草稿为 2026-11-07 19:00–20:00，19:00 开始，不满足“20:00 之后”的要求，旧时段不可直接沿用，也不会默认替你接受替代时段。草稿要点：日期 2026-11-07；场地 四明书院；人数 4 人；设备仅投屏（白板已取消）；原时长 1 小时。可选替代开始时间：20:00、20:30、21:00 或其他 20:00 之后的时间，时长可选 1、1.5 或 2 小时；这些时段是否可用尚未确认，提交后由场地回复。",
+            "form": {
+              "start_time": "",
+              "duration": "",
+              "custom_start_time": "",
+              "note": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Im862CobvdW6l29R08g67375"
+      },
+      "toolCallId": "call_00_Im862CobvdW6l29R08g67375",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "6466c842-c99b-4a9c-a707-ce37852df89f"
+    }
+  }
+]

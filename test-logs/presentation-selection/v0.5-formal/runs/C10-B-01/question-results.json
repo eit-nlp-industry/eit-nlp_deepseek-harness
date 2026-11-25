@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_24kO2qZSk62TdMVYG1Bq6283",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_follow\", \"header\": \"确认跟随\", \"question\": \"画面中的向导同学是当前唯一的向导候选人。是否确认把他设为跟随后 follow-01 的跟随对象？\", \"options\": [{\"label\": \"确认，跟随这位同学（推荐）\", \"description\": \"确认后才会提交这一选择；任务仍不会操作真实机器人，状态只按后续模拟事件更新。\"}, {\"label\": \"先不确认\", \"description\": \"保持现状，follow-01 继续处于未启动状态。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_24kO2qZSk62TdMVYG1Bq6283"
+      },
+      "toolCallId": "call_00_24kO2qZSk62TdMVYG1Bq6283",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_follow\",\"selected\":[\"确认，跟随这位同学（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "c3b7e3a5-af2a-44f4-833b-4e4a03dd0ae9"
+    }
+  }
+]

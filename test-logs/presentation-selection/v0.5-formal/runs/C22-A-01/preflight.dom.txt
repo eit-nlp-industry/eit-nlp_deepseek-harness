@@ -1,0 +1,251 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "新会话" [selected]:
+    - generic: 新会话
+  - treeitem "已完成 食堂导航门图测评 2分钟":
+    - generic: 已完成
+    - generic: 食堂导航门图测评
+    - generic: 2分钟
+  - treeitem "食堂导航原生门图测评 2分钟":
+    - generic: 食堂导航原生门图测评
+    - generic: 2分钟
+  - treeitem "已完成 图书馆导盲犬路线呈现测评 3分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线呈现测评
+    - generic: 3分钟
+  - treeitem "图书馆导盲犬路线测评 3分钟":
+    - generic: 图书馆导盲犬路线测评
+    - generic: 3分钟
+  - treeitem "已完成 补拍门口并结束观察 4分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 4分钟
+  - treeitem "图书馆用餐回程排序 4分钟":
+    - generic: 图书馆用餐回程排序
+    - generic: 4分钟
+  - treeitem "已完成 五分钟门开提醒测评 5分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 5分钟
+  - treeitem "已完成 图书馆用餐与回程排序 5分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐与回程排序
+    - generic: 5分钟
+  - treeitem "已完成 门开提醒：图像通知呈现 14分钟":
+    - generic: 已完成
+    - generic: 门开提醒：图像通知呈现
+    - generic: 14分钟
+  - treeitem "已完成 监视门开提醒呈现 20分钟":
+    - generic: 已完成
+    - generic: 监视门开提醒呈现
+    - generic: 20分钟
+  - treeitem "已完成 门口补拍并结束观察 23分钟":
+    - generic: 已完成
+    - generic: 门口补拍并结束观察
+    - generic: 23分钟
+  - treeitem "补拍门口并结束观察 23分钟":
+    - generic: 补拍门口并结束观察
+    - generic: 23分钟
+  - treeitem "已完成 门开五分钟提醒呈现测评 27分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒呈现测评
+    - generic: 27分钟
+  - treeitem "已完成 五分钟门开提醒测评 28分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 28分钟
+  - treeitem "门开五分钟提醒文字通知 28分钟":
+    - generic: 门开五分钟提醒文字通知
+    - generic: 28分钟
+  - treeitem "已完成 门开提醒固定材料测评 34分钟":
+    - generic: 已完成
+    - generic: 门开提醒固定材料测评
+    - generic: 34分钟
+  - treeitem "门开提醒测试 34分钟":
+    - generic: 门开提醒测试
+    - generic: 34分钟
+  - treeitem "已完成 文件交接呈现测评 C16-B-02 35分钟":
+    - generic: 已完成
+    - generic: 文件交接呈现测评 C16-B-02
+    - generic: 35分钟
+  - treeitem "已完成 全量正式呈现测评 C16-B-01 35分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-B-01
+    - generic: 35分钟
+  - treeitem "已完成 全量正式呈现测评 C16-A-02 38分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 38分钟
+  - treeitem "正式呈现测评 C16-A-01 38分钟":
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 38分钟
+  - treeitem "已完成 外卖取餐确认测评 42分钟":
+    - generic: 已完成
+    - generic: 外卖取餐确认测评
+    - generic: 42分钟
+  - treeitem "已完成 外卖取件模拟呈现 46分钟":
+    - generic: 已完成
+    - generic: 外卖取件模拟呈现
+    - generic: 46分钟
+  - treeitem "已完成 外卖取件图像确认测评 46分钟":
+    - generic: 已完成
+    - generic: 外卖取件图像确认测评
+    - generic: 46分钟
+  - treeitem "外卖取件确认测评 C15-A-01 48分钟":
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 48分钟
+  - treeitem "已完成 图书馆座位图像呈现测评 49分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像呈现测评
+    - generic: 49分钟
+  - treeitem "已完成 图书馆座位查询测评 50分钟":
+    - generic: 已完成
+    - generic: 图书馆座位查询测评
+    - generic: 50分钟
+  - treeitem "已完成 图书馆座位图像化呈现 50分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像化呈现
+    - generic: 50分钟
+  - treeitem "图书馆座位新视角图测评 50分钟":
+    - generic: 图书馆座位新视角图测评
+    - generic: 50分钟
+  - treeitem "安静读书地点推荐测评 53分钟":
+    - generic: 安静读书地点推荐测评
+    - generic: 53分钟
+  - treeitem "安静读书场所推荐测评 55分钟":
+    - generic: 安静读书场所推荐测评
+    - generic: 55分钟
+  - treeitem "已完成 安静读书地点推荐卡片 55分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片
+    - generic: 55分钟
+  - treeitem "已完成 安静读书地点推荐卡片测评 57分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片测评
+    - generic: 57分钟
+  - treeitem "已完成 图书馆找灰衣拉箱同学 57分钟":
+    - generic: 已完成
+    - generic: 图书馆找灰衣拉箱同学
+    - generic: 57分钟
+  - treeitem "图书馆入口找同学 59分钟":
+    - generic: 图书馆入口找同学
+    - generic: 59分钟
+  - treeitem "已完成 最小状态暂停展示 1小时":
+    - generic: 已完成
+    - generic: 最小状态暂停展示
+    - generic: 1小时
+  - treeitem "已完成 模拟暂停最小状态测试 1小时":
+    - generic: 已完成
+    - generic: 模拟暂停最小状态测试
+    - generic: 1小时
+  - treeitem "已完成 C12-B-01图书馆寻人呈现测评 1小时":
+    - generic: 已完成
+    - generic: C12-B-01图书馆寻人呈现测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆入口灰衣拉箱同学寻找 1小时":
+    - generic: 已完成
+    - generic: 图书馆入口灰衣拉箱同学寻找
+    - generic: 1小时
+  - treeitem "已完成 暂停等待控制回执测评 1小时":
+    - generic: 已完成
+    - generic: 暂停等待控制回执测评
+    - generic: 1小时
+  - treeitem "已完成 短暂停等用户取物 1小时":
+    - generic: 已完成
+    - generic: 短暂停等用户取物
+    - generic: 1小时
+  - treeitem "等待回答 跟随参观同学的图像状态呈现测评":
+    - generic: 等待回答
+    - generic: 跟随参观同学的图像状态呈现测评
+    - generic: 待回答
+  - treeitem "等待回答 跟着参观同学的状态展示":
+    - generic: 等待回答
+    - generic: 跟着参观同学的状态展示
+    - generic: 待回答
+  - treeitem "已完成 跟随参观同学的原生图像核对 1小时":
+    - generic: 已完成
+    - generic: 跟随参观同学的原生图像核对
+    - generic: 1小时
+  - treeitem "等待回答 跟着同学参观的测评任务":
+    - generic: 等待回答
+    - generic: 跟着同学参观的测评任务
+    - generic: 待回答
+  - treeitem "C09-B-02 固定材料初始化测评 1小时":
+    - generic: C09-B-02 固定材料初始化测评
+    - generic: 1小时
+  - treeitem "测评 C07-b 时间改约表单 1小时":
+    - generic: 测评 C07-b 时间改约表单
+    - generic: 1小时
+  - treeitem "已完成 C09-B-01 固定材料呈现测评 1小时":
+    - generic: 已完成
+    - generic: C09-B-01 固定材料呈现测评
+    - generic: 1小时
+  - treeitem "已完成 C09-A-02 benchmark fixture initialization 1小时":
+    - generic: 已完成
+    - generic: C09-A-02 benchmark fixture initialization
+    - generic: 1小时
+  - treeitem "已完成 C09-A-01固定材料初始化测评 1小时":
+    - generic: 已完成
+    - generic: C09-A-01固定材料初始化测评
+    - generic: 1小时
+  - button "展开其余 111 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - button "打开右侧边栏":
+- img "EIT-NLP"
+- generic: 我们开始吧
+- button "选择工作区":
+  - generic: 默认工作区
+- button "Component benchmark full v2":
+  - generic: Component benchmark full v2
+- textbox "请开始，描述你想要的任务"
+- generic: 请开始，描述你想要的任务
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:

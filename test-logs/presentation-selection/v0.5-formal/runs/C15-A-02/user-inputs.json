@@ -1,0 +1,42 @@
+[
+  {
+    "seq": 9,
+    "time": 1795091747212,
+    "source": {
+      "kind": "user",
+      "rpcId": "cb0e59b2-ef1f-4a9f-994f-d7ad942e2679",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "【全量正式呈现测评 C15-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C15-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C15-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：我的外卖在学校大门，帮我取一下，尾号3726。\n指定呈现方式：按用户要求原生图像+文字确认。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。"
+  },
+  {
+    "seq": 31,
+    "time": 1795091818223,
+    "source": {
+      "kind": "user",
+      "rpcId": "92fd6d5e-bb55-4fff-a9d2-cbff41ae98c0",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "先不确认，靠近一点让我看。"
+  },
+  {
+    "seq": 55,
+    "time": 1795091954591,
+    "source": {
+      "kind": "user",
+      "rpcId": "994b88bd-ff9c-4420-8cd4-dc9745ceaa86",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "先不确认，再看一下侧面。"
+  },
+  {
+    "seq": 79,
+    "time": 1795092098453,
+    "source": {
+      "kind": "user",
+      "rpcId": "89078a27-b376-4fd8-857e-d18fe89c8976",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "确认这是我的外卖，候选parcel-3726，尾号3726。"
+  }
+]

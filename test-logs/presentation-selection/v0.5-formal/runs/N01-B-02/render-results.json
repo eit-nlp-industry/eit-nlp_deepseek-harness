@@ -1,0 +1,110 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_QGhAWfIsb8FI8Jh33v7x2406",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"渲染一张简洁的订单支付状态卡片：标题为订单号 pay-order-01，金额 128.00 元；以两行状态条目分别显示「支付状态：支付成功」与「结算状态：结算待处理」，两行都完整保留、等权展示，不用成功/失败颜色弱化结算待处理；不包含表单、按钮或任何输入项。无需其他富组件。\", \"business_data\": {\"title\": \"订单支付状态\", \"order_id\": \"pay-order-01\", \"amount\": \"128.00 元\", \"status_items\": [{\"label\": \"支付状态\", \"value\": \"支付成功\"}, {\"label\": \"结算状态\", \"value\": \"结算待处理\"}], \"note\": \"支付已完成，结算仍在待处理状态，二者不同。\", \"fallback_text\": \"订单 pay-order-01，金额 128.00 元：支付状态为支付成功；结算状态为结算待处理。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "订单号 pay-order-01",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "details",
+                "note"
+              ]
+            },
+            "details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "金额",
+                    "value": "128.00 元"
+                  },
+                  {
+                    "label": "支付状态",
+                    "value": "支付成功"
+                  },
+                  {
+                    "label": "结算状态",
+                    "value": "结算待处理"
+                  }
+                ]
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": "支付已完成，结算仍在待处理状态，二者不同。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "订单支付状态",
+            "order_id": "pay-order-01",
+            "amount": "128.00 元",
+            "status_items": [
+              {
+                "label": "支付状态",
+                "value": "支付成功"
+              },
+              {
+                "label": "结算状态",
+                "value": "结算待处理"
+              }
+            ],
+            "note": "支付已完成，结算仍在待处理状态，二者不同。",
+            "fallback_text": "订单 pay-order-01，金额 128.00 元：支付状态为支付成功；结算状态为结算待处理。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_QGhAWfIsb8FI8Jh33v7x2406"
+      },
+      "toolCallId": "call_00_QGhAWfIsb8FI8Jh33v7x2406",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "b4c5cd37-0aaf-4204-8a1e-7c60bf50c3b6"
+    }
+  }
+]

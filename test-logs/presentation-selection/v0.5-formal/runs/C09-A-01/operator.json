@@ -1,0 +1,74 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C09",
+    "facts": "同一候选person-a仍在视野，重复相同业务事件，无新请求。",
+    "assets": [
+      {
+        "id": "bench05-person-a",
+        "file": "bench05-person-a.png",
+        "alt": "MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture",
+        "source_id": "person-a",
+        "url": "http://127.0.0.1:3080/api/media/bench05-person-a/content",
+        "path": "/api/media/bench05-person-a/content",
+        "sha256": "8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f",
+        "width": 960,
+        "height": 540
+      }
+    ],
+    "event_id": "e-rec-01",
+    "candidate_id": "person-a",
+    "name": "小张"
+  },
+  "events": [
+    {
+      "id": "C09-A-01-candidate",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "同一候选person-a再次出现，对应已确认昵称小张；固定识别结果，仅通知，不建新档。",
+        "assets": [
+          {
+            "id": "bench05-person-a",
+            "file": "bench05-person-a.png",
+            "alt": "MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture",
+            "source_id": "person-a",
+            "url": "http://127.0.0.1:3080/api/media/bench05-person-a/content",
+            "path": "/api/media/bench05-person-a/content",
+            "sha256": "8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "event_id": "e-rec-01",
+        "candidate_id": "person-a",
+        "name": "小张"
+      }
+    },
+    {
+      "id": "C09-A-01-repeat",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "同一候选person-a仍在视野，重复相同业务事件，无新请求。",
+        "assets": [
+          {
+            "id": "bench05-person-a",
+            "file": "bench05-person-a.png",
+            "alt": "MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture",
+            "source_id": "person-a",
+            "url": "http://127.0.0.1:3080/api/media/bench05-person-a/content",
+            "path": "/api/media/bench05-person-a/content",
+            "sha256": "8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "event_id": "e-rec-01",
+        "candidate_id": "person-a",
+        "name": "小张"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

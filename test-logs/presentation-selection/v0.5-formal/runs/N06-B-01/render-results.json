@@ -1,0 +1,929 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_Ao9zl2cxEFEINwEGI5b96634",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Tabs\", \"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"user_query\": \"用 Tabs 做三个可真实切换的标签页：「正面」「背面」「瑕疵细节」。每个标签页内放一个 Image。正面页 Image.props.src 使用 business_data.tabs[0].image 的 path 字符串 /api/media/bench05-lamp-front/content，alt 用给定描述；背面页与细节页的 image 为 null，在该页内醒目显示 state 文案说明图片未随材料发布，不要放任何占位图或用正面图充当。标签下方列出 notes 与 limitations 文字。\", \"business_data\": {\"item\": \"item-lamp-01\", \"title\": \"商品多视角核对：台灯 item-lamp-01\", \"subtitle\": \"以下图片均为合成测试材料，非真实商品照片。\", \"tabs\": [{\"label\": \"正面\", \"status\": \"已发布\", \"image\": \"/api/media/bench05-lamp-front/content\", \"alt\": \"MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture\", \"width\": 960, \"height\": 540, \"caption\": \"正面视角（bench05-lamp-front.png），可用于核对整体外观。\"}, {\"label\": \"背面\", \"status\": \"未发布\", \"image\": null, \"alt\": \"\", \"caption\": \"本案例材料中尚未发布背面图片，此页暂无图像可看。\"}, {\"label\": \"瑕疵细节\", \"status\": \"未发布\", \"image\": null, \"alt\": \"\", \"caption\": \"本案例材料中尚未发布瑕疵细节图片，此页暂无图像可看。\"}], \"notes\": [\"目前可核对的视角只有：正面（1 张）。\", \"背面、瑕疵细节两项视角未随材料发布，无法据此核对做工、配件或损伤位置。\", \"正面图仅显示商品外观，不包含使用痕迹、配件清单或包装信息。\"], \"limitations\": [\"商品政策（退换货规则）、损伤成因与发生时间均未知，无法判断是否符合退货条件。\", \"本页只做视角呈现，不构成退货资格结论。\"]}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "header",
+                "tabs",
+                "details-section",
+                "notes-section",
+                "limits-section"
+              ]
+            },
+            "header": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "page-heading",
+                "page-subtitle",
+                "item-desc"
+              ]
+            },
+            "page-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "商品多视角核对：台灯 item-lamp-01",
+                "level": "h1"
+              }
+            },
+            "page-subtitle": {
+              "type": "Text",
+              "props": {
+                "content": "以下图片均为合成测试材料，非真实商品照片。",
+                "variant": "muted"
+              }
+            },
+            "item-desc": {
+              "type": "Descriptions",
+              "props": {
+                "title": "商品信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "商品 ID",
+                    "value": "item-lamp-01"
+                  },
+                  {
+                    "label": "标题",
+                    "value": "商品多视角核对：台灯 item-lamp-01"
+                  },
+                  {
+                    "label": "副标题",
+                    "value": "以下图片均为合成测试材料，非真实商品照片。"
+                  },
+                  {
+                    "label": "数据出处",
+                    "value": "business_data（tabs、notes、limitations）"
+                  },
+                  {
+                    "label": "步骤说明",
+                    "value": "business_data 未包含步骤说明字段"
+                  }
+                ]
+              }
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "front",
+                    "label": "正面"
+                  },
+                  {
+                    "value": "back",
+                    "label": "背面"
+                  },
+                  {
+                    "value": "defect",
+                    "label": "瑕疵细节"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activeTab"
+                },
+                "defaultValue": "front",
+                "disabled": false
+              },
+              "children": [
+                "tab-front",
+                "tab-back",
+                "tab-defect"
+              ]
+            },
+            "tab-front": {
+              "type": "TabContent",
+              "props": {
+                "value": "front"
+              },
+              "children": [
+                "front-stack"
+              ]
+            },
+            "front-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "front-image",
+                "front-fields"
+              ]
+            },
+            "front-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-front/content",
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "caption": "正面视角（bench05-lamp-front.png），可用于核对整体外观。",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "front-fields": {
+              "type": "Descriptions",
+              "props": {
+                "title": "正面视角字段",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "视角",
+                    "value": "正面"
+                  },
+                  {
+                    "label": "状态",
+                    "value": "已发布"
+                  },
+                  {
+                    "label": "图片路径",
+                    "value": "/api/media/bench05-lamp-front/content"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture"
+                  },
+                  {
+                    "label": "宽度",
+                    "value": 960
+                  },
+                  {
+                    "label": "高度",
+                    "value": 540
+                  },
+                  {
+                    "label": "说明",
+                    "value": "正面视角（bench05-lamp-front.png），可用于核对整体外观。"
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.tabs[0]"
+                  }
+                ]
+              }
+            },
+            "tab-back": {
+              "type": "TabContent",
+              "props": {
+                "value": "back"
+              },
+              "children": [
+                "back-stack"
+              ]
+            },
+            "back-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "back-callout",
+                "back-fields",
+                "back-state-text",
+                "back-no-placeholder"
+              ]
+            },
+            "back-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "背面图片未发布",
+                "description": "本案例材料中尚未发布背面图片，此页暂无图像可看。",
+                "showIcon": true
+              }
+            },
+            "back-fields": {
+              "type": "Descriptions",
+              "props": {
+                "title": "背面视角字段",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "视角",
+                    "value": "背面"
+                  },
+                  {
+                    "label": "状态",
+                    "value": "未发布"
+                  },
+                  {
+                    "label": "图片路径",
+                    "value": "null"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "（空）"
+                  },
+                  {
+                    "label": "宽度",
+                    "value": "未提供"
+                  },
+                  {
+                    "label": "高度",
+                    "value": "未提供"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "本案例材料中尚未发布背面图片，此页暂无图像可看。"
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.tabs[1]"
+                  }
+                ]
+              }
+            },
+            "back-state-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/1/caption"
+                },
+                "variant": "default"
+              }
+            },
+            "back-no-placeholder": {
+              "type": "Text",
+              "props": {
+                "content": "本页未放置占位图，也未使用正面图片替代。",
+                "variant": "muted"
+              }
+            },
+            "tab-defect": {
+              "type": "TabContent",
+              "props": {
+                "value": "defect"
+              },
+              "children": [
+                "defect-stack"
+              ]
+            },
+            "defect-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "defect-callout",
+                "defect-fields",
+                "defect-state-text",
+                "defect-no-placeholder"
+              ]
+            },
+            "defect-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "瑕疵细节图片未发布",
+                "description": "本案例材料中尚未发布瑕疵细节图片，此页暂无图像可看。",
+                "showIcon": true
+              }
+            },
+            "defect-fields": {
+              "type": "Descriptions",
+              "props": {
+                "title": "瑕疵细节视角字段",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "视角",
+                    "value": "瑕疵细节"
+                  },
+                  {
+                    "label": "状态",
+                    "value": "未发布"
+                  },
+                  {
+                    "label": "图片路径",
+                    "value": "null"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "（空）"
+                  },
+                  {
+                    "label": "宽度",
+                    "value": "未提供"
+                  },
+                  {
+                    "label": "高度",
+                    "value": "未提供"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "本案例材料中尚未发布瑕疵细节图片，此页暂无图像可看。"
+                  },
+                  {
+                    "label": "出处",
+                    "value": "business_data.tabs[2]"
+                  }
+                ]
+              }
+            },
+            "defect-state-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/2/caption"
+                },
+                "variant": "default"
+              }
+            },
+            "defect-no-placeholder": {
+              "type": "Text",
+              "props": {
+                "content": "本页未放置占位图，也未使用正面图片替代。",
+                "variant": "muted"
+              }
+            },
+            "details-section": {
+              "type": "Section",
+              "props": {
+                "title": "数据明细",
+                "description": "逐项对照 tabs 字段、状态、尺寸与出处；数值与说明均来自 business_data。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "tabs-table"
+              ]
+            },
+            "tabs-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "标签页",
+                  "状态",
+                  "图片路径",
+                  "alt",
+                  "宽度",
+                  "高度",
+                  "说明",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "正面",
+                    "已发布",
+                    "/api/media/bench05-lamp-front/content",
+                    "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                    "960",
+                    "540",
+                    "正面视角（bench05-lamp-front.png），可用于核对整体外观。",
+                    "business_data.tabs[0]"
+                  ],
+                  [
+                    "背面",
+                    "未发布",
+                    "null",
+                    "（空）",
+                    "未提供",
+                    "未提供",
+                    "本案例材料中尚未发布背面图片，此页暂无图像可看。",
+                    "business_data.tabs[1]"
+                  ],
+                  [
+                    "瑕疵细节",
+                    "未发布",
+                    "null",
+                    "（空）",
+                    "未提供",
+                    "未提供",
+                    "本案例材料中尚未发布瑕疵细节图片，此页暂无图像可看。",
+                    "business_data.tabs[2]"
+                  ]
+                ]
+              }
+            },
+            "notes-section": {
+              "type": "Section",
+              "props": {
+                "title": "备注",
+                "description": "business_data.notes 逐项列出",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "notes-list"
+              ]
+            },
+            "notes-list": {
+              "type": "List",
+              "props": {
+                "title": "备注列表",
+                "items": [
+                  {
+                    "title": "目前可核对的视角只有：正面（1 张）。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "背面、瑕疵细节两项视角未随材料发布，无法据此核对做工、配件或损伤位置。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "正面图仅显示商品外观，不包含使用痕迹、配件清单或包装信息。",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无备注"
+              }
+            },
+            "limits-section": {
+              "type": "Section",
+              "props": {
+                "title": "限制",
+                "description": "business_data.limitations 逐项列出",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "limits-list"
+              ]
+            },
+            "limits-list": {
+              "type": "List",
+              "props": {
+                "title": "限制列表",
+                "items": [
+                  {
+                    "title": "商品政策（退换货规则）、损伤成因与发生时间均未知，无法判断是否符合退货条件。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "本页只做视角呈现，不构成退货资格结论。",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无限制"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "item": "item-lamp-01",
+            "title": "商品多视角核对：台灯 item-lamp-01",
+            "subtitle": "以下图片均为合成测试材料，非真实商品照片。",
+            "tabs": [
+              {
+                "label": "正面",
+                "status": "已发布",
+                "image": "/api/media/bench05-lamp-front/content",
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "width": 960,
+                "height": 540,
+                "caption": "正面视角（bench05-lamp-front.png），可用于核对整体外观。"
+              },
+              {
+                "label": "背面",
+                "status": "未发布",
+                "image": null,
+                "alt": "",
+                "caption": "本案例材料中尚未发布背面图片，此页暂无图像可看。"
+              },
+              {
+                "label": "瑕疵细节",
+                "status": "未发布",
+                "image": null,
+                "alt": "",
+                "caption": "本案例材料中尚未发布瑕疵细节图片，此页暂无图像可看。"
+              }
+            ],
+            "notes": [
+              "目前可核对的视角只有：正面（1 张）。",
+              "背面、瑕疵细节两项视角未随材料发布，无法据此核对做工、配件或损伤位置。",
+              "正面图仅显示商品外观，不包含使用痕迹、配件清单或包装信息。"
+            ],
+            "limitations": [
+              "商品政策（退换货规则）、损伤成因与发生时间均未知，无法判断是否符合退货条件。",
+              "本页只做视角呈现，不构成退货资格结论。"
+            ],
+            "_ui": {
+              "activeTab": "front"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Ao9zl2cxEFEINwEGI5b96634"
+      },
+      "toolCallId": "call_00_Ao9zl2cxEFEINwEGI5b96634",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "46ce379c-f10d-48ee-8de5-dc8444abec72"
+    }
+  },
+  {
+    "call_seq": 44,
+    "result_seq": 45,
+    "call": {
+      "turn": 1,
+      "step": 5,
+      "callId": "call_00_v2ccvX3ZgOlasIuj4MMg1963",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"item\": \"item-lamp-01\", \"limitations\": [\"固定观察结论只有一项：边角有一道划痕；划痕的成因与发生时间未知。\", \"商品退换政策未知，本页不判断是否符合退货条件。\", \"画面为合成测试材料，不代表真实商品照片。\"], \"notes\": [\"三个视角均已就绪：正面、背面、边角瑕疵细节，各 1 张，均为 960×540。\", \"已发布的固定观察结论：边角有一道划痕（细节图对应此位置）。\", \"材料未说明划痕何时形成、如何形成，也未提供包装、配件或功能状态图。\"], \"subtitle\": \"三个视角均为合成测试材料，非真实商品照片。\", \"tabs\": [{\"alt\": \"MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture\", \"caption\": \"正面视角：核对整体外观与对称性。\", \"height\": 540, \"image\": \"/api/media/bench05-lamp-front/content\", \"label\": \"正面\", \"status\": \"已发布\", \"width\": 960}, {\"alt\": \"MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture\", \"caption\": \"背面视角：核对背部结构与装配部位。\", \"height\": 540, \"image\": \"/api/media/bench05-lamp-back/content\", \"label\": \"背面\", \"status\": \"已发布\", \"width\": 960}, {\"alt\": \"MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture\", \"caption\": \"瑕疵细节：边角划痕特写（固定观察结论：边角有一道划痕）。\", \"height\": 540, \"image\": \"/api/media/bench05-lamp-detail/content\", \"label\": \"瑕疵细节\", \"status\": \"已发布\", \"width\": 960}], \"title\": \"商品多视角核对：台灯 item-lamp-01\"}, \"components\": [\"Tabs\", \"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"scene\": \"kb\", \"user_query\": \"更新同一张卡片：用 Tabs 做三个可真实切换的标签页「正面」「背面」「瑕疵细节」，每个标签页内一个 Image。Image.props.src 分别取 business_data.tabs[0..2].image 的 path 字符串，alt 用给定描述，不要复用同一张图。标签页下方逐条列出 notes 与 limitations 文字。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "layout"
+              ]
+            },
+            "layout": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "heading",
+                "subtitleText",
+                "productInfo",
+                "imageSection",
+                "notesSection",
+                "limitationsSection",
+                "metaSection"
+              ]
+            },
+            "heading": {
+              "type": "Heading",
+              "props": {
+                "text": "商品多视角核对：台灯 item-lamp-01",
+                "level": "h1"
+              }
+            },
+            "subtitleText": {
+              "type": "Text",
+              "props": {
+                "content": "三个视角均为合成测试材料，非真实商品照片。",
+                "variant": "muted"
+              }
+            },
+            "productInfo": {
+              "type": "Descriptions",
+              "props": {
+                "title": "商品信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "商品标识",
+                    "value": "item-lamp-01"
+                  },
+                  {
+                    "label": "标题",
+                    "value": "商品多视角核对：台灯 item-lamp-01"
+                  },
+                  {
+                    "label": "副标题",
+                    "value": "三个视角均为合成测试材料，非真实商品照片。"
+                  }
+                ]
+              }
+            },
+            "imageSection": {
+              "type": "Section",
+              "props": {
+                "title": "多视角图片",
+                "description": "切换标签页查看三个视角；每页一张图。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "tabs"
+              ]
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "front",
+                    "label": "正面"
+                  },
+                  {
+                    "value": "back",
+                    "label": "背面"
+                  },
+                  {
+                    "value": "detail",
+                    "label": "瑕疵细节"
+                  }
+                ],
+                "defaultValue": "front",
+                "disabled": false
+              },
+              "children": [
+                "tabFront",
+                "tabBack",
+                "tabDetail"
+              ]
+            },
+            "tabFront": {
+              "type": "TabContent",
+              "props": {
+                "value": "front"
+              },
+              "children": [
+                "imgFront"
+              ]
+            },
+            "imgFront": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-front/content",
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "caption": "正面视角：核对整体外观与对称性。",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "tabBack": {
+              "type": "TabContent",
+              "props": {
+                "value": "back"
+              },
+              "children": [
+                "imgBack"
+              ]
+            },
+            "imgBack": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-back/content",
+                "alt": "MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture",
+                "caption": "背面视角：核对背部结构与装配部位。",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "tabDetail": {
+              "type": "TabContent",
+              "props": {
+                "value": "detail"
+              },
+              "children": [
+                "imgDetail"
+              ]
+            },
+            "imgDetail": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-detail/content",
+                "alt": "MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture",
+                "caption": "瑕疵细节：边角划痕特写（固定观察结论：边角有一道划痕）。",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "notesSection": {
+              "type": "Section",
+              "props": {
+                "title": "notes（说明）",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "notesList"
+              ]
+            },
+            "notesList": {
+              "type": "List",
+              "props": {
+                "title": "说明条目",
+                "items": [
+                  {
+                    "title": "三个视角均已就绪：正面、背面、边角瑕疵细节，各 1 张，均为 960×540。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "已发布的固定观察结论：边角有一道划痕（细节图对应此位置）。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "材料未说明划痕何时形成、如何形成，也未提供包装、配件或功能状态图。",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无说明"
+              }
+            },
+            "limitationsSection": {
+              "type": "Section",
+              "props": {
+                "title": "limitations（限制）",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "limitationsList"
+              ]
+            },
+            "limitationsList": {
+              "type": "List",
+              "props": {
+                "title": "限制与未知",
+                "items": [
+                  {
+                    "title": "固定观察结论只有一项：边角有一道划痕；划痕的成因与发生时间未知。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "商品退换政策未知，本页不判断是否符合退货条件。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "画面为合成测试材料，不代表真实商品照片。",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无限制说明"
+              }
+            },
+            "metaSection": {
+              "type": "Section",
+              "props": {
+                "title": "标签页字段对照",
+                "description": "逐项列出每个标签页的状态、图注、替代文本、尺寸与图片路径。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "metaTable"
+              ]
+            },
+            "metaTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "标签",
+                  "状态",
+                  "图注",
+                  "替代文本",
+                  "宽度",
+                  "高度",
+                  "图片路径"
+                ],
+                "rows": [
+                  [
+                    "正面",
+                    "已发布",
+                    "正面视角：核对整体外观与对称性。",
+                    "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                    "960",
+                    "540",
+                    "/api/media/bench05-lamp-front/content"
+                  ],
+                  [
+                    "背面",
+                    "已发布",
+                    "背面视角：核对背部结构与装配部位。",
+                    "MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture",
+                    "960",
+                    "540",
+                    "/api/media/bench05-lamp-back/content"
+                  ],
+                  [
+                    "瑕疵细节",
+                    "已发布",
+                    "瑕疵细节：边角划痕特写（固定观察结论：边角有一道划痕）。",
+                    "MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture",
+                    "960",
+                    "540",
+                    "/api/media/bench05-lamp-detail/content"
+                  ]
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "item": "item-lamp-01",
+            "limitations": [
+              "固定观察结论只有一项：边角有一道划痕；划痕的成因与发生时间未知。",
+              "商品退换政策未知，本页不判断是否符合退货条件。",
+              "画面为合成测试材料，不代表真实商品照片。"
+            ],
+            "notes": [
+              "三个视角均已就绪：正面、背面、边角瑕疵细节，各 1 张，均为 960×540。",
+              "已发布的固定观察结论：边角有一道划痕（细节图对应此位置）。",
+              "材料未说明划痕何时形成、如何形成，也未提供包装、配件或功能状态图。"
+            ],
+            "subtitle": "三个视角均为合成测试材料，非真实商品照片。",
+            "tabs": [
+              {
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "caption": "正面视角：核对整体外观与对称性。",
+                "height": 540,
+                "image": "/api/media/bench05-lamp-front/content",
+                "label": "正面",
+                "status": "已发布",
+                "width": 960
+              },
+              {
+                "alt": "MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture",
+                "caption": "背面视角：核对背部结构与装配部位。",
+                "height": 540,
+                "image": "/api/media/bench05-lamp-back/content",
+                "label": "背面",
+                "status": "已发布",
+                "width": 960
+              },
+              {
+                "alt": "MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture",
+                "caption": "瑕疵细节：边角划痕特写（固定观察结论：边角有一道划痕）。",
+                "height": 540,
+                "image": "/api/media/bench05-lamp-detail/content",
+                "label": "瑕疵细节",
+                "status": "已发布",
+                "width": 960
+              }
+            ],
+            "title": "商品多视角核对：台灯 item-lamp-01"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_v2ccvX3ZgOlasIuj4MMg1963"
+      },
+      "toolCallId": "call_00_v2ccvX3ZgOlasIuj4MMg1963",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "d4a455b2-d722-4169-9916-51eafe5e8497"
+    }
+  }
+]

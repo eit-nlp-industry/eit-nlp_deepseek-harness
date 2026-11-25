@@ -1,0 +1,3480 @@
+{
+  "version": "0.5-review",
+  "status": "awaiting_final_checklist_confirmation",
+  "categories": [
+    {
+      "id": "G01",
+      "title": "简短回答与执行回执",
+      "transfer_candidate_input": "费用已经支付成功了吗？只根据给定支付状态简短回答。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C25",
+        "C26"
+      ],
+      "non_campus_card_id": "N01"
+    },
+    {
+      "id": "G02",
+      "title": "信息介绍与分层浏览",
+      "transfer_candidate_input": "介绍三个企业服务套餐，先概览，再按需看适用范围与限制。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C01",
+        "C02"
+      ],
+      "non_campus_card_id": "N02"
+    },
+    {
+      "id": "G03",
+      "title": "条件筛选、比较与推荐",
+      "transfer_candidate_input": "从给定笔记本清单中推荐6000元以内、轻于1.5kg、适合出差的一款。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C03",
+        "C13"
+      ],
+      "non_campus_card_id": "N03"
+    },
+    {
+      "id": "G04",
+      "title": "澄清需求与收集偏好",
+      "transfer_candidate_input": "帮我安排一次活动；先确认用途、人数和线上或线下。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C04"
+      ],
+      "non_campus_card_id": "N04"
+    },
+    {
+      "id": "G05",
+      "title": "对象识别与确认",
+      "transfer_candidate_input": "展示待寄出的包裹照片和订单尾号，让我确认是不是这一件。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C08",
+        "C09",
+        "C12",
+        "C15",
+        "C16"
+      ],
+      "non_campus_card_id": "N05"
+    },
+    {
+      "id": "G06",
+      "title": "证据查看与多视角核对",
+      "transfer_candidate_input": "展示商品正面、背面和瑕疵细节，让我核对是否需要退货。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C14"
+      ],
+      "non_campus_card_id": "N06"
+    },
+    {
+      "id": "G07",
+      "title": "结构化信息采集与提交",
+      "transfer_candidate_input": "填写售后申请：订单号、故障描述、联系人及已有照片，提交前可检查。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C05",
+        "C22"
+      ],
+      "non_campus_card_id": "N07"
+    },
+    {
+      "id": "G08",
+      "title": "多轮修改、冲突与恢复",
+      "transfer_candidate_input": "修改会议室预约时间；目标时段约满，只能在返回的替代时段中重新选择。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C06",
+        "C07"
+      ],
+      "non_campus_card_id": "N08"
+    },
+    {
+      "id": "G09",
+      "title": "顺序编排与方案调整",
+      "transfer_candidate_input": "安排三个工作事项，并让我把客户沟通调整到第一项。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C19"
+      ],
+      "non_campus_card_id": "N09"
+    },
+    {
+      "id": "G10",
+      "title": "空间位置与路线表达",
+      "transfer_candidate_input": "根据给定平面图说明快递员、收件点和目的地的位置及路线。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C20",
+        "C21"
+      ],
+      "non_campus_card_id": "N10"
+    },
+    {
+      "id": "G11",
+      "title": "任务状态、控制与事件通知",
+      "transfer_candidate_input": "监测文件处理任务，失败时通知；用户可以暂停、继续或结束监测。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C10",
+        "C11",
+        "C17",
+        "C18"
+      ],
+      "non_campus_card_id": "N11"
+    },
+    {
+      "id": "G12",
+      "title": "流程表达与编辑",
+      "transfer_candidate_input": "整理报销步骤，补充“材料不齐退回补充”的条件分支，允许编辑并保存。",
+      "transfer_status": "included_in_current_test_plan_not_executed",
+      "campus_card_ids": [
+        "C23",
+        "C24"
+      ],
+      "non_campus_card_id": "N12"
+    }
+  ],
+  "cards": [
+    {
+      "id": "C01",
+      "category_id": "G02",
+      "title": "多地点入校介绍",
+      "trace_reference": "案例1 U11/R45",
+      "fixed_materials": "三地点：lib图书馆，安静阅读区，设讨论室，入馆需预约且以馆方答复为准；canteen食堂，提供午餐，其余营业时间未知；college四明书院，可公共交流，投屏设备未知。每处配一张不同且标明MOCK的图片。",
+      "A": "Markdown分节+同源图片",
+      "B": "Tabs分类+Image；允许简洁正文",
+      "acceptance": "三个地点均有说明；预约和未知信息不丢失；切换分类可发现。",
+      "subcases": [
+        {
+          "id": "C01",
+          "input": "刚来东方理工，先给我介绍一下图书馆、吃饭的地方和四明书院。",
+          "actions": "切换三地点/阅读三节，确认都可找到；不要求A提供标签页。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C02",
+      "category_id": "G02",
+      "title": "单地点追问",
+      "trace_reference": "案例1 U56/R66；案例2 U58/R68",
+      "fixed_materials": "讨论室存在；入馆需预约且是否获准以馆方答复为准；白板、投屏、开放时间均未知。两个问题从独立会话开始，分别注入同一份图书馆背景。",
+      "A": "简短文字/Markdown",
+      "B": "简洁display卡片，不使用表单",
+      "acceptance": "回答讨论场所和进入条件；没有资料的设备和预约细则标明未知。",
+      "subcases": [
+        {
+          "id": "C02-a",
+          "input": "图书馆有可以讨论的地方吗？",
+          "actions": "无需追加用户动作。"
+        },
+        {
+          "id": "C02-b",
+          "input": "进校后可以直接去图书馆吗？",
+          "actions": "无需追加用户动作。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C03",
+      "category_id": "G03",
+      "title": "试讲场地推荐及质疑",
+      "trace_reference": "案例11&12 U9/U58，R45/R51",
+      "fixed_materials": "时钟2026-11-06 12:00，Asia/Shanghai。需求为11月7日19:00–20:00、4人、投屏和白板。lib-room可容6人、具备两种设备、该时段空闲；college-room距离更近、容4人、投屏有、白板未知；canteen无讨论场地。不给真实距离数值。",
+      "A": "Markdown比较表+理由",
+      "B": "结构化推荐/比较卡片；不擅自弹预约表",
+      "acceptance": "逐项处理人数、时段、设备；解释近处为何未选；未知不能当作具备；是否直接给预约表按统一业务政策判定。",
+      "subcases": [
+        {
+          "id": "C03",
+          "input": "明晚七点四个人试讲一小时，需要投屏和白板，哪里合适?",
+          "actions": "首轮推荐后追问“书院离我更近啊，为什么不去那里”，只依据固定资料解释。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C04",
+      "category_id": "G04",
+      "title": "需求不足时只补问关键偏好",
+      "trace_reference": "新增对照",
+      "fixed_materials": "a：用途未知，用户答“想安静读书”，随后根据C01资料推荐。b：半日游偏好字段为上午/下午、地点多选、补充文字。c：活动形式仅线上/线下，推荐线下只是建议；先等待不提交，再明确选线上。",
+      "A": "ask_user_question收集必要偏好",
+      "B": "轻量form；选项与固定数据一致",
+      "acceptance": "只问影响选择的信息；不编造用户用途；回答后继续；不能把未答视为选择或授权。",
+      "subcases": [
+        {
+          "id": "C04-a",
+          "input": "帮我找个地方。",
+          "actions": "用户答“想安静读书”，继续给推荐。"
+        },
+        {
+          "id": "C04-b",
+          "input": "校园半日游先确认上午还是下午、愿意去哪些地点，可多选图书馆/食堂/四明书院，其他想法我自行补充。",
+          "actions": "选择下午、食堂和四明书院；补充“少走路”，提交。"
+        },
+        {
+          "id": "C04-c",
+          "input": "请让我选择线上或线下讲座；如推荐线下，把它放第一项。",
+          "actions": "先不提交，确认未自动采用推荐；再明确选择线上并提交。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C05",
+      "category_id": "G07",
+      "title": "校园来访预约",
+      "trace_reference": "案例2 U9/R51",
+      "fixed_materials": "时钟2026-11-06，周六为2026-11-07。用户和两位朋友共3人；下午时段未指定，必须由用户补充14:00–15:00；备注“带两位校外朋友参观”。仅草稿回执，不进行实际预约或审批。",
+      "A": "文字/原生提问补齐时段，Markdown核对并文字确认",
+      "B": "预填DynamicForm，补齐后提交草稿",
+      "acceptance": "说明要求；按基准政策提供预约草稿；日期11月7日、人数口径为同行总数3；不声称已经获准。",
+      "subcases": [
+        {
+          "id": "C05",
+          "input": "周六下午带两位校外朋友来参观学校，要提前办什么?",
+          "actions": "补充时段14:00–15:00→核对并提交，回执共3人，且未实际预约。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C06",
+      "category_id": "G08",
+      "title": "多轮修改与提交",
+      "trace_reference": "案例2 U79/U96，R83失败/R89成功",
+      "fixed_materials": "独立注入C05的未提交草稿：2026-11-07、14:00–15:00、3人、带两位校外朋友参观；用户修改为10:00–11:00，去掉图书馆，备注改为“带两位校外朋友逛校园，之后吃午饭”。仅草稿回执。",
+      "A": "Markdown草稿，文字修改并确认",
+      "B": "更新预填DynamicForm后实际提交",
+      "acceptance": "保留已知值，更新时段和备注；提交后进入业务处理；不重复弹同表；原始错字保留为鲁棒性变体。",
+      "subcases": [
+        {
+          "id": "C06",
+          "input": "那就不去图书馆了，只逛一个小时左右，早上10点开始，然后吃午饭。",
+          "actions": "文字/界面改为10:00–11:00、去掉图书馆、更新备注→实际确认提交。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C07",
+      "category_id": "G08",
+      "title": "改条件、冲突与可选时段",
+      "trace_reference": "案例11&12 U67/U84/U101，R77/R94",
+      "fixed_materials": "初始需求2026-11-07、19:00–20:00、4人、白板+投屏。用户取消白板并改到20点后；第一次草稿提交20:00–21:00，固定冲突回放，只剩14:00–15:00、16:00–17:00可选，无晚间选项。a用户明确接受16:00–17:00；b拒绝下午，保持未提交。接受也只形成草稿回执。",
+      "A": "冲突说明+原生选项/文字确认",
+      "B": "冲突说明+合法替代时段表单，不能默认替用户接受",
+      "acceptance": "条件更新准确；冲突后解释替代时段在下午、已偏离晚间需求，不默认替用户接受；仅提供真实可选时段；用户选择后才提交。",
+      "subcases": [
+        {
+          "id": "C07-a",
+          "input": "那就不用白板了，时间也改到8点之后。",
+          "actions": "提交20:00–21:00→回放冲突→用户明确改为16:00–17:00并提交草稿。"
+        },
+        {
+          "id": "C07-b",
+          "input": "那就不用白板了，时间也改到8点之后。",
+          "actions": "提交20:00–21:00→回放冲突→用户答“下午不行，先不要提交”，保持未提交。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C08",
+      "category_id": "G05",
+      "title": "记住用户并确认",
+      "trace_reference": "案例3-1 U77/U164，R111",
+      "fixed_materials": "纯合成人物person-a、person-b同帧并带可见ID，目标为person-a、昵称小张；确认后仅模拟状态记录，不做生物识别或真实建档。",
+      "A": "原生MOCK图片+文字确认",
+      "B": "Image+确认提示；与同一person-a绑定",
+      "acceptance": "展示所确认的人物；确认前后状态清楚；不把整帧其他人误认作对象。",
+      "subcases": [
+        {
+          "id": "C08",
+          "input": "记住我，我叫小张。",
+          "actions": "明确确认person-a；检查确认前未记为已确认，确认后仅模拟记人。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C09",
+      "category_id": "G05",
+      "title": "重逢识别的主动呈现",
+      "trace_reference": "案例3-2 R38，无对应新用户请求",
+      "fixed_materials": "独立装载已确认person-a=小张的模拟资料；环境事件含person-a候选和参考图，相同事件ID e-rec-01重复一次，无新用户消息。识别结果由夹具给定，不测识别准确率。",
+      "A": "原生MOCK图片+简短事件通知",
+      "B": "Image+简短事件通知；不制造新用户输入",
+      "acceptance": "作为事件驱动任务评估；展示对应参考图；不伪造用户发起的请求；没有新目标时不反复打扰。",
+      "subcases": [
+        {
+          "id": "C09",
+          "input": "无新用户消息。环境事件：e-rec-01，person-a候选出现；识别结果由固定回放给定。",
+          "actions": "注入原生环境事件及相同事件ID的重复事件；不发送用户提问。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C10",
+      "category_id": "G11",
+      "title": "跟随指定人物",
+      "trace_reference": "案例4 U24/R52",
+      "fixed_materials": "合成人物person-guide为唯一指定向导。事件序列：候选待确认→用户确认→模拟跟随中→目标丢失且模拟停止。每状态带稳定目标ID。",
+      "A": "原生图像核对+文字任务状态",
+      "B": "Image+状态展示；不增加真实机器人控制",
+      "acceptance": "目标确认信息可理解；状态与工具返回一致；目标丢失时说明并停止或等待既定处理。",
+      "subcases": [
+        {
+          "id": "C10",
+          "input": "跟着这位带我们参观的同学。",
+          "actions": "用户确认person-guide后回放跟随中、丢失和停止；不执行真实跟随。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C11",
+      "category_id": "G11",
+      "title": "暂停与继续",
+      "trace_reference": "案例4 U97/U160，R268",
+      "fixed_materials": "独立注入任务follow-01、目标person-guide、模拟跟随中；用户暂停后回放paused；用户继续后回放following，沿用同一任务和目标。",
+      "A": "简短文字控制回执",
+      "B": "最小状态display；生成不能延后模拟暂停处理",
+      "acceptance": "及时处理暂停；继续沿用原目标；不因生成额外卡片阻塞停止命令；无必要不重新收集偏好。",
+      "subcases": [
+        {
+          "id": "C11",
+          "input": "停一下，我拿个东西。",
+          "actions": "发送“停一下，我拿个东西。”→模拟暂停；再“继续吧。”→模拟继续。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C12",
+      "category_id": "G05",
+      "title": "找同学并传话",
+      "trace_reference": "案例6 U44/U195，R120",
+      "fixed_materials": "图书馆入口固定两名合成候选：person-a灰衣拉箱，person-b蓝衣背包；图像标MOCK。用户确认person-a后仅模拟传话回执，不发送真实消息。",
+      "A": "原生图片+必要确认",
+      "B": "Image+必要确认提示",
+      "acceptance": "特征与图片对应；用户确认后才指向该人传话；不把找到候选当作身份已确认。",
+      "subcases": [
+        {
+          "id": "C12",
+          "input": "我约的同学在图书馆入口，灰衣服、拉箱子，帮我找一下。",
+          "actions": "用户确认“就是他，告诉他我马上就到”；回放模拟传话结果，仅核对person-a。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C13",
+      "category_id": "G03",
+      "title": "找安静阅读地点",
+      "trace_reference": "案例5 U46，R144/R228",
+      "fixed_materials": "固定两地点资料与同一时刻观察结论：lib-reading安静且有座；college-lounge现场活动中、嘈杂。照片均MOCK，不能由模型重新做视觉推断。",
+      "A": "Markdown推荐+两张原生证据图",
+      "B": "推荐卡片+Image；保留观察时间",
+      "acceptance": "区分静态介绍与当前现场；解释所选地点；图像能帮助用户核对；不要求用户先选展示方式。",
+      "subcases": [
+        {
+          "id": "C13",
+          "input": "帮我找个安静的地方，我想读会书。",
+          "actions": "回放两处现场结论后给推荐，说明不选college-lounge的原因。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C14",
+      "category_id": "G06",
+      "title": "查看座位并调整观察方向",
+      "trace_reference": "案例10 U77/U228，R186/R308",
+      "fixed_materials": "两张MOCK座位图片：img-left在14:00左侧，夹具结论满座；img-right在14:01右侧，夹具结论有2个空位。只能表示当前观察，不等于已预订。",
+      "A": "按新视角追加原生图片和简短结论",
+      "B": "Image更新/追加；明确视角与时间",
+      "acceptance": "右侧观察更新图像和描述；旧图不冒充新图；不能由照片断言座位已被预订或占有。",
+      "subcases": [
+        {
+          "id": "C14",
+          "input": "去图书馆看看有没有座位。",
+          "actions": "首图后发送“去右边看一下”，回放14:01新图和结论。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C15",
+      "category_id": "G05",
+      "title": "取外卖、多视角确认",
+      "trace_reference": "案例7 U55/U162/U264/U368，R142/R233/R326/R387/R475",
+      "fixed_materials": "parcel-3726候选，尾号3726，初始待确认；同一物体MOCK远景img-far、近景img-near、侧景img-side，均带资产ID和视角。确认后只记录对话内候选状态，不实际取送。",
+      "A": "按用户要求原生图像+文字确认",
+      "B": "Image多轮展示；仅确认当前候选",
+      "acceptance": "新旧视角对应；尾号和用户确认不丢失；未确认不声称拿对；回程状态需有工具事实。",
+      "subcases": [
+        {
+          "id": "C15",
+          "input": "我的外卖在学校大门，帮我取一下，尾号3726。",
+          "actions": "展示远景→用户要求靠近→近景→要求侧面→侧景→用户确认。仅记录parcel-3726状态。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C16",
+      "category_id": "G05",
+      "title": "办公室取文件",
+      "trace_reference": "案例8 U44/U448，R395/R537",
+      "fixed_materials": "模拟地点office-zw；文档doc-01为待确认文件。回放到门口→敲门→等待放好→发布MOCK文件图→用户确认。只有另给模拟交接完成事件时才能称交接完成。",
+      "A": "原生文件图+阶段文字",
+      "B": "Image+交接阶段说明",
+      "acceptance": "地点与人不混淆；按既定交接规则展示待确认文件；未确认或未放妥不声称完成。",
+      "subcases": [
+        {
+          "id": "C16",
+          "input": "张伟老师说文件准备好了，去他的办公室帮我拿一下。",
+          "actions": "模拟准备完成后展示doc-01；用户答“就是这个文件”，随后回放模拟交接状态。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C17",
+      "category_id": "G11",
+      "title": "观察五分钟，开门通知",
+      "trace_reference": "案例9 U66/R234",
+      "fixed_materials": "模拟观察watch-01，期限5分钟，初始门关闭。a：第2分钟相同关闭状态两次，第3分钟打开；b：5分钟始终关闭，到期结束。采用虚拟事件时钟，不真实睡眠5分钟。",
+      "A": "文字通知；必要时原生MOCK证据图",
+      "B": "简洁display/图像通知；不按每帧重复生成",
+      "acceptance": "给定观察目标和期限；无变化不反复生成；事件或到期时说明；不把自动帧当作新用户指令。",
+      "subcases": [
+        {
+          "id": "C17-a",
+          "input": "留意五分钟，门开了告诉我。",
+          "actions": "注入关闭重复事件→第3分钟打开；只通知一次开门。"
+        },
+        {
+          "id": "C17-b",
+          "input": "留意五分钟，门开了告诉我。",
+          "actions": "注入持续关闭→5分钟到期；说明期间未观察到开门并结束。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C18",
+      "category_id": "G11",
+      "title": "补拍并结束观察返回",
+      "trace_reference": "案例9 U300/R310",
+      "fixed_materials": "独立注入watch-01进行中；用户补拍后回放img-door-new，再回放观察结束和返回中，最后返回完成。结束后重复旧开门事件应被忽略。",
+      "A": "原生补拍图+停止/返回状态文字",
+      "B": "Image+分阶段状态展示",
+      "acceptance": "先后顺序正确；补拍图片可核对；结束后不继续通知旧观察；回程状态准确。",
+      "subcases": [
+        {
+          "id": "C18",
+          "input": "帮我补拍一下门口，我看看。然后结束观察，回来吧。",
+          "actions": "发送“帮我补拍一下门口，我看看。然后结束观察，回来吧。”；注入补拍、停止、返回事件，再注入旧事件。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C19",
+      "category_id": "G09",
+      "title": "行程编排及改顺序",
+      "trace_reference": "案例13 U11/U50，R39/R54",
+      "fixed_materials": "稳定地点ID lib/canteen/college，初始顺序lib→canteen→college；用户改为canteen→lib→college；college的地图位置未确认。保存仅草稿，不启动导航。",
+      "A": "Markdown有序列表，文字改序并确认保存",
+      "B": "SortableSequence实际拖动+应用；按稳定ID回传",
+      "acceptance": "三地点无丢失；改为食堂→图书馆→书院；应用事件回传实体顺序；规划不等于开始导航。",
+      "subcases": [
+        {
+          "id": "C19",
+          "input": "图书馆、吃饭、回四明书院，帮我排一下。",
+          "actions": "把食堂移到第一位，再确认保存。A文字改序；B真实拖动后点应用，检查保存值为canteen/lib/college。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C20",
+      "category_id": "G10",
+      "title": "叫狗接人并带路",
+      "trace_reference": "案例1 U77/R101",
+      "fixed_materials": "固定合成平面图，user=(2,2)、robot=(0,2)、lib=(6,2)，两段路线robot→user→lib；坐标单位为示意格，非真实定位。仅静态示意，不设实时SSE。",
+      "A": "同一底图原生图片+两段文字路线",
+      "B": "MapPreview静态示意，真实点位与路线渲染",
+      "acceptance": "区分狗到用户与用户到目的地两段；路线和标注匹配；未开始时不能声称已执行；静态图不冒充实时追踪。",
+      "subcases": [
+        {
+          "id": "C20",
+          "input": "我想先去图书馆，叫一只狗来带我吧。",
+          "actions": "检查同一底图中的三点和两段路线，不启动导航。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C21",
+      "category_id": "G10",
+      "title": "门关闭导致带路受阻",
+      "trace_reference": "案例13 U65/R134",
+      "fixed_materials": "独立注入去食堂模拟导航中，门door-1关闭、固定结果为已停止，无替代路线结果；附同一张MOCK关闭门图。不得声称已改道或到达。",
+      "A": "原生门图+停止原因",
+      "B": "Image/状态卡片+停止原因，不编造绕行",
+      "acceptance": "图像和原因一致；区分已停止、计划改道、正在改道；无替代路径证据不得声称已改道。",
+      "subcases": [
+        {
+          "id": "C21",
+          "input": "可以，带我去食堂吧。",
+          "actions": "发送“可以，带我去食堂吧。”；模拟返回门关闭、已停止；不给替代路线。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C22",
+      "category_id": "G07",
+      "title": "故障拍照到报修",
+      "trace_reference": "案例14 U55/U241/U479/U636，R164/R402/R605/R640",
+      "fixed_materials": "设备YSJ-07，位置“教学楼一层东侧”，故障“不出水”，备注“昨天也这样”；MOCK正面/近景/侧面共3图，各有稳定图片ID。联系人未提供，用户随后填“测试联系人A”；仅模拟反馈草稿提交，不生成真实工单。",
+      "A": "三张原生图+Markdown草稿，文字修改提交",
+      "B": "Tabs/Image+DynamicForm，保留3个资产关联",
+      "acceptance": "三图都可查看且对应视角；地点、故障、备注预填；未提供的联系人留空；提交回传保留图片关联；不虚构报修成功。",
+      "subcases": [
+        {
+          "id": "C22",
+          "input": "饮水机不出水，先拍一张照片给我。",
+          "actions": "正面→近景→另一侧；用户要求将三图放入反馈单并备注“昨天也这样”，补测试联系人A后确认提交。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C23",
+      "category_id": "G12",
+      "title": "沉淀取材料流程",
+      "trace_reference": "案例15 U9/R27",
+      "fixed_materials": "流程wf-material-v1：到林老师门口→敲门并等待材料放好→拍图等待用户确认→确认后送回。用户将等待上限设为2分钟后保存草稿；模拟保存返回version=2，不执行流程、不写永久记忆。",
+      "A": "Markdown步骤和条件，文字编辑确认保存",
+      "B": "Workflow可编辑流程并实际保存回传",
+      "acceptance": "四步及确认顺序完整；能编辑并保存回传；不得把界面保存称作已永久记住或已执行。",
+      "subcases": [
+        {
+          "id": "C23",
+          "input": "以后找林老师拿材料，先到门口敲门，等老师放好，拍给我确认，再送回来。",
+          "actions": "将等待上限改为2分钟→保存草稿；必须有对应保存回传。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C24",
+      "category_id": "G12",
+      "title": "追加老师不在分支",
+      "trace_reference": "案例15 U39/R44",
+      "fixed_materials": "独立注入C23已保存草稿。追加“老师不在”分支：通知用户→结束；老师在才继续等待材料、拍照、确认、送回。模拟保存version=3；不在分支不得进入拍照送回共用步骤。",
+      "A": "Markdown条件分支，文字修改确认保存",
+      "B": "Workflow追加条件分支并保存回传",
+      "acceptance": "不在分支应通知并结束或按约定返回，不再无条件进入等材料/拍材料；有向路径语义正确；不能只看图形好看。",
+      "subcases": [
+        {
+          "id": "C24",
+          "input": "老师不在就告诉我，不需要一直在那等。",
+          "actions": "发送“老师不在就告诉我，不需要一直在那等。”→保存；审计在/不在两条有向路径。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C25",
+      "category_id": "G01",
+      "title": "握手",
+      "trace_reference": "案例3-2 U91",
+      "fixed_materials": "只回放模拟动作结果，不调用机器人。a：handshake-01 status=succeeded；b：同一动作status=failed，原因target_unreachable。用户需求相同。",
+      "A": "简短文字回执",
+      "B": "最小display状态卡片，禁止再次发起动作",
+      "acceptance": "根据给定模拟结果准确回执，成功/失败不混淆；不再次发起握手，不增加表单。",
+      "subcases": [
+        {
+          "id": "C25-a",
+          "input": "握个手吧。",
+          "actions": "只接收模拟成功结果，生成回执。"
+        },
+        {
+          "id": "C25-b",
+          "input": "握个手吧。",
+          "actions": "只接收模拟失败结果，准确说明未完成。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "C26",
+      "category_id": "G01",
+      "title": "一句话校园问答",
+      "trace_reference": "新增负例对照",
+      "fixed_materials": "进入图书馆需来访预约；是否获准以馆方答复为准。问题为“图书馆是否需要预约？请简短回答。”不使用“禁止界面”与B指定组件相冲突的措辞。",
+      "A": "简短文字回答",
+      "B": "简洁display卡片，保留两条必要条件",
+      "acceptance": "短答完整表达需预约与以馆方答复为准两条条件；不新增事实、不提问；B允许指定卡片。",
+      "subcases": [
+        {
+          "id": "C26",
+          "input": "图书馆是否需要预约？请简短回答。",
+          "actions": "无追加用户动作，短答须含两条条件。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "id": "N01",
+      "category_id": "G01",
+      "title": "支付结果简短回执",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "构造订单pay-order-01；支付状态payment_status=succeeded；金额128.00元；商户结算状态settlement_status=pending。只有支付成功被确认，不能据此声称商户结算到账。所有状态为模拟回放，不执行付款或查询金融系统。",
+      "A": "一至两句文字准确区分支付与结算，不提问。",
+      "B": "简洁display状态卡片，完整保留支付成功与结算待处理，不生成表单。",
+      "acceptance": "说明本次支付已成功；结算仍待处理，不将支付成功等同商户已到账；不发起新付款、不虚构交易凭证或到账时间",
+      "required_facts": [
+        "说明本次支付已成功",
+        "结算仍待处理，不将支付成功等同商户已到账",
+        "不发起新付款、不虚构交易凭证或到账时间"
+      ],
+      "asset_requirements": [
+        "模拟订单状态JSON，绑定pay-order-01"
+      ],
+      "subcases": [
+        {
+          "id": "N01",
+          "input": "费用已经支付成功了吗？只根据给定支付状态简短回答。",
+          "actions": "收到固定状态后只回复，无用户追加动作。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N02",
+      "category_id": "G02",
+      "title": "服务套餐概览与详情",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "三个虚构套餐：plan-basic基础版，99元/月、最多5名成员、邮件支持、无数据导出；plan-team团队版，299元/月、最多20名成员、邮件与在线支持、支持CSV导出；plan-enterprise企业版，价格需询价、成员上限和导出能力均未知、提供专属支持。以上为完整数据，不推断未提供的安全或合规能力。",
+      "A": "Markdown对比表与分节详情；通过文字追问继续。",
+      "B": "Tabs/Collapsible套餐浏览，内容来自同一固定数据；真实切换/展开可见团队版详情。",
+      "acceptance": "三个套餐名称、价格口径、成员上限、支持与导出信息不串项；企业版需询价、未知项保持未知；团队版对应20人和CSV导出；不得把基础版无导出限制套给团队版",
+      "required_facts": [
+        "三个套餐名称、价格口径、成员上限、支持与导出信息不串项",
+        "企业版需询价、未知项保持未知",
+        "团队版对应20人和CSV导出；不得把基础版无导出限制套给团队版"
+      ],
+      "asset_requirements": [
+        "固定套餐JSON，稳定ID plan-basic/plan-team/plan-enterprise",
+        "无需图片；标签/折叠操作DOM证据"
+      ],
+      "subcases": [
+        {
+          "id": "N02",
+          "input": "介绍这三个企业服务套餐，先给概览，再让我按需看适用范围与限制。",
+          "actions": "初始查看三个套餐概览→用户请求查看团队版的适用范围和导出限制。A通过文字追问；B先切换团队版/展开详情，再发送同一追问，让模型续接回答。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N03",
+      "category_id": "G03",
+      "title": "多条件商品比较与推荐",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "均为虚构机型，非购买建议：model-a售价5899元、1.30kg、标称续航10小时；model-b售价5599元、1.70kg、14小时；model-c售价6399元、1.20kg、12小时；model-d售价5999元、1.49kg、8小时。价格≤6000、重量<1.5为硬条件；合格后按续航降序选取。",
+      "A": "Markdown比较表+简短推荐理由。",
+      "B": "Table/比较卡片+推荐结论；不要求尚未确认的本地筛选引擎。",
+      "acceptance": "A和D满足硬条件，B超重，C超预算；推荐A并说明其续航长于D；追问后仍解释B超重，不因单项续航改选B；不虚构实测续航",
+      "required_facts": [
+        "A和D满足硬条件，B超重，C超预算",
+        "推荐A并说明其续航长于D",
+        "追问后仍解释B超重，不因单项续航改选B；不虚构实测续航"
+      ],
+      "asset_requirements": [
+        "四条机型JSON；字段price_cny/weight_kg/battery_hours/ID"
+      ],
+      "subcases": [
+        {
+          "id": "N03",
+          "input": "从给定笔记本清单中选一款6000元以内、轻于1.5kg、适合出差的机型。先满足价格和重量，再优先续航，解释为什么没选其他款。",
+          "actions": "首轮推荐后追问“B续航更长，为什么不选B？”，仅根据固定数据解释。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N04",
+      "category_id": "G04",
+      "title": "活动需求批量澄清",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "用途、人数、形式均未知；形式真实选项只有线上/线下；用途自由文本、人数为正整数。固定用户答复：产品培训、12人、线上。不设推荐默认值。",
+      "A": "原生ask_user_question多题，人数和用途可用自定义文字，不伪装有数字控件。",
+      "B": "三字段form：purpose用途、people人数、format形式；真实选择并提交。",
+      "acceptance": "未作答前不假定用途或人数，不把默认值算提交；实际回传产品培训/12/线上三项，回执一致；不再重复询问已知三项，不生成真实活动或发送邀请",
+      "required_facts": [
+        "未作答前不假定用途或人数，不把默认值算提交",
+        "实际回传产品培训/12/线上三项，回执一致",
+        "不再重复询问已知三项，不生成真实活动或发送邀请"
+      ],
+      "asset_requirements": [
+        "固定选项与三字段定义",
+        "两组实际提交值和Host续接证据"
+      ],
+      "subcases": [
+        {
+          "id": "N04",
+          "input": "帮我安排一次活动；先确认用途、人数和线上或线下，收齐后只汇总需求，不开始安排。",
+          "actions": "一次收集用途、人数、形式；填写“产品培训”“12”“线上”后提交；模型只回执三项，不继续追问地点预算。A使用原生多题/自由回答；B填写三字段表单。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N05",
+      "category_id": "G05",
+      "title": "待寄包裹对象确认",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "唯一候选parcel-8241，订单尾号8241，初始pending_confirmation；一张带MOCK、候选ID和尾号的构造图片img-parcel-8241。不判断真实外观，不连接物流系统。",
+      "A": "原生Markdown图片+简短确认提示。",
+      "B": "Image+简短确认提示，完整显示同一图，固定src、准确alt。",
+      "acceptance": "两组图片同字节、可加载且尾号可见；确认前待确认，确认后绑定parcel-8241而非校园parcel-3726；不声称已寄出、已取件或生成运单",
+      "required_facts": [
+        "两组图片同字节、可加载且尾号可见",
+        "确认前待确认，确认后绑定parcel-8241而非校园parcel-3726",
+        "不声称已寄出、已取件或生成运单"
+      ],
+      "asset_requirements": [
+        "1张MOCK包裹图及同源URL、尺寸、SHA256"
+      ],
+      "subcases": [
+        {
+          "id": "N05",
+          "input": "展示待寄出的包裹照片和订单尾号，让我确认是不是这一件；确认后只记录对象状态，不寄件。",
+          "actions": "图片实际加载后，用户回复“是这件，确认”；只记录parcel-8241为用户已确认。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N06",
+      "category_id": "G06",
+      "title": "商品多视角证据核对",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "虚构商品item-lamp-01；三张不同MOCK图：lamp-front正面、lamp-back背面、lamp-detail边角细节。固定观察说明仅为“边角有一道划痕”；损伤成因、发生时间及商家政策未知。不据此作退货资格判断。",
+      "A": "原生连续图片、视角标题与简短证据说明。",
+      "B": "Tabs/Image多视角展示，真实切换可找到正面、背面、细节；按同一追问续接。",
+      "acceptance": "三张图不重复冒充不同视角，均绑定item-lamp-01；划痕为固定观察结论，不虚构识别结果或成因；最终仅记录申请意向，不声称已退货或符合未提供政策",
+      "required_facts": [
+        "三张图不重复冒充不同视角，均绑定item-lamp-01",
+        "划痕为固定观察结论，不虚构识别结果或成因",
+        "最终仅记录申请意向，不声称已退货或符合未提供政策"
+      ],
+      "asset_requirements": [
+        "3张不同视角MOCK图，固定资产ID、说明和哈希"
+      ],
+      "subcases": [
+        {
+          "id": "N06",
+          "input": "展示这件商品的正面、背面和瑕疵细节，让我核对后决定是否申请退货。",
+          "actions": "先展示正面→用户要求“看背面和瑕疵细节”→展示剩余两图→用户答“记录为我想申请退货，先不提交申请”。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N07",
+      "category_id": "G07",
+      "title": "售后草稿采集与提交",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "四字段order_id=SO-2048、issue=无法开机、contact=测试联系人A、photos=[after-front,after-port]；两图均MOCK。无真实电话号码或地址。草稿提交回放仅status=draft_received，不是工单创建成功。",
+      "A": "原生图片+Markdown完整草稿，通过文字修改、确认与模拟接收回执。",
+      "B": "DynamicForm+两张Image或Tabs；四字段预填，真实编辑并提交，保留图片ID。",
+      "acceptance": "已知值完整，不重复索要订单或故障；实际提交联系人B，订单SO-2048、故障和两个资产ID不丢失；状态仅草稿已接收，不虚构工单号、受理或维修完成",
+      "required_facts": [
+        "已知值完整，不重复索要订单或故障",
+        "实际提交联系人B，订单SO-2048、故障和两个资产ID不丢失",
+        "状态仅草稿已接收，不虚构工单号、受理或维修完成"
+      ],
+      "asset_requirements": [
+        "2张MOCK售后图片",
+        "四字段与资产ID关联定义；draft_received模拟接收结果"
+      ],
+      "subcases": [
+        {
+          "id": "N07",
+          "input": "帮我填写售后申请草稿：订单SO-2048，故障是无法开机，联系人测试联系人A，附上给定两张照片；先让我核对修改，提交后只回执，不创建真实工单。",
+          "actions": "核对预填值→联系人改为“测试联系人B”→提交草稿；A文字修改确认，B编辑联系人后点击提交；回执包含新联系人和两张图片关联。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N08",
+      "category_id": "G08",
+      "title": "会议室冲突与改选恢复",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "独立初始草稿：room=R-01、date=2026-11-23、slot=14:00–15:00、people=6。提交16:00–17:00时模拟冲突；仅返回17:00–18:00和18:00–19:00；不返回其他时段。整个过程只编辑草稿，最终draft_received，不实际预约。",
+      "A": "文字修改+冲突说明+原生时段选项，用户明确选后回执。",
+      "B": "预填form+冲突提示+只含两个合法时段的Select，用户选择后提交。",
+      "acceptance": "先前16:00–17:00未成功，不默认替用户接受替代时段；最终回执R-01/2026-11-23/17:00–18:00/6人；失败后原字段不丢、不重复弹旧草稿、不声称真实预约成功",
+      "required_facts": [
+        "先前16:00–17:00未成功，不默认替用户接受替代时段",
+        "最终回执R-01/2026-11-23/17:00–18:00/6人",
+        "失败后原字段不丢、不重复弹旧草稿、不声称真实预约成功"
+      ],
+      "asset_requirements": [
+        "初始草稿JSON、固定冲突响应和draft_received响应",
+        "真实时段选择与Host回传"
+      ],
+      "subcases": [
+        {
+          "id": "N08",
+          "input": "把会议室R-01在2026年11月23日的预约草稿，从14点到15点改到16点到17点；如果约满，先列出真实替代时段让我选。",
+          "actions": "改16:00–17:00并提交草稿→注入冲突→用户明确选17:00–18:00并提交→返回草稿接收。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N09",
+      "category_id": "G09",
+      "title": "工作事项重新排序",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "稳定实体ID：review=审阅需求、report=整理报告、client=客户沟通；初始顺序review/report/client。只保存排序草稿，不建立实际任务或联系客户。",
+      "A": "Markdown有序列表+文字调整并确认保存。",
+      "B": "SortableSequence真实拖动和应用，回传稳定实体ID及完整顺序。",
+      "acceptance": "最终client/review/report，三项不丢、不重复；名称与实体ID绑定正确，其他两项相对顺序保留；区分排序草稿已保存与工作已开始/客户已联系",
+      "required_facts": [
+        "最终client/review/report，三项不丢、不重复",
+        "名称与实体ID绑定正确，其他两项相对顺序保留",
+        "区分排序草稿已保存与工作已开始/客户已联系"
+      ],
+      "asset_requirements": [
+        "三个实体及初始顺序JSON",
+        "排序保存适配与应用事件证据"
+      ],
+      "subcases": [
+        {
+          "id": "N09",
+          "input": "安排这三个工作事项：审阅需求、整理报告、客户沟通。先按这个顺序列出，再让我调整并保存草稿。",
+          "actions": "初始展示后用户要求“把客户沟通放第一项，其余相对顺序不变”；A文字改序并确认，B拖动client到第一位并点击应用；模拟保存后回执。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N10",
+      "category_id": "G10",
+      "title": "配送平面位置与两段路线",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "构造仓储平面图，非真实位置：courier=(0,0)、pickup=(2,0)、destination=(2,3)；路线两段courier→pickup、pickup→destination，分别沿给定网格直线。单位为示意格，不是米；没有实时位置端点。",
+      "A": "同一底图的原生图片+两段位置路线文字。",
+      "B": "MapPreview静态底图、三点标记、两段路线；不添加虚构实时追踪。",
+      "acceptance": "三实体位置、两段顺序和端点准确，不跳过pickup；不将示意格当实际距离，不称定位实时更新；追问后仍明确未配送、无到达证据",
+      "required_facts": [
+        "三实体位置、两段顺序和端点准确，不跳过pickup",
+        "不将示意格当实际距离，不称定位实时更新",
+        "追问后仍明确未配送、无到达证据"
+      ],
+      "asset_requirements": [
+        "固定MOCK平面底图及点位/折线路径数据",
+        "MapPreview对该底图坐标的适配证据"
+      ],
+      "subcases": [
+        {
+          "id": "N10",
+          "input": "根据给定平面图，说明快递员先到收件点，再到目的地的位置和路线。只作静态示意，不开始配送。",
+          "actions": "展示三点和两段路线后，用户追问“现在已经送到了吗？”；回答只是规划示意，没有执行或到达证据。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N11",
+      "category_id": "G11",
+      "title": "文件处理状态与失败通知",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "job-convert-01，共10个文件；事件running/completed_count=3→用户暂停→paused/3→用户继续→running/4→failed/4，error=INVALID_FILE，failed_file=doc-05；用户结束监测后重复同一失败事件e-fail-01。暂停和继续只作用于模拟任务，结束监测不等于任务成功。",
+      "A": "简洁文字状态和一次失败通知；沿用同一任务ID。",
+      "B": "display状态卡片/状态时间线，显示相同模拟状态，不生成多余输入表单。",
+      "acceptance": "顺序为运行→暂停→继续→失败→结束监测，计数3/4不误作全部10个完成；失败对象doc-05、错误码和job ID不串；失败只通知一次；结束后旧事件不重新通知，也不宣称文件处理成功",
+      "required_facts": [
+        "顺序为运行→暂停→继续→失败→结束监测，计数3/4不误作全部10个完成",
+        "失败对象doc-05、错误码和job ID不串",
+        "失败只通知一次；结束后旧事件不重新通知，也不宣称文件处理成功"
+      ],
+      "asset_requirements": [
+        "固定事件ID和虚拟时钟的状态序列",
+        "用户控制与模拟响应适配，重复事件注入"
+      ],
+      "subcases": [
+        {
+          "id": "N11",
+          "input": "监测这个文件处理任务，失败时通知我；我可以暂停、继续或结束监测。只使用模拟状态，不处理真实文件。",
+          "actions": "看到运行状态后用户“暂停”→回放paused；再“继续”→回放running；随后失败事件通知一次；用户“结束监测”→停止通知，再注入同ID旧失败事件。两组控制均通过用户消息和模拟结果完成，B不假装有未实现控制按钮。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    },
+    {
+      "id": "N12",
+      "category_id": "G12",
+      "title": "报销流程条件分支编辑",
+      "trace_reference": "新增非校园构造对照，非trace原文",
+      "scenario_domain": "non_campus",
+      "fixed_materials": "虚构流程expense-flow-v1：填写申请→检查材料→财务审核→通知审核结果。新增分支：材料齐全才进入财务审核；材料不齐则通知申请人补充，补齐后回到材料检查。用户再将补充期限设为3个工作日；模拟保存返回version=2。无自动付款节点。",
+      "A": "Markdown步骤与条件分支+文字编辑确认保存。",
+      "B": "Workflow可编辑流程及真实保存回传，不用静态图片冒充编辑器。",
+      "acceptance": "材料不齐不能直达财务审核；补齐后回到检查，齐全才审核；保存草稿保留3个工作日和version=2，节点语义完整；不宣称已审核、永久记住或已付款；无无条件跳过补充的路径",
+      "required_facts": [
+        "材料不齐不能直达财务审核；补齐后回到检查，齐全才审核",
+        "保存草稿保留3个工作日和version=2，节点语义完整",
+        "不宣称已审核、永久记住或已付款；无无条件跳过补充的路径"
+      ],
+      "asset_requirements": [
+        "固定流程节点/边/条件JSON及保存版本响应",
+        "Workflow编辑、保存与模型续接链路"
+      ],
+      "subcases": [
+        {
+          "id": "N12",
+          "input": "把这个报销流程整理出来，并补充“材料不齐退回补充”的分支，让我编辑后保存草稿，不执行真实审批或付款。",
+          "actions": "展示并编辑分支→将补充期限设置为3个工作日→确认保存；A用文字修改确认，B在Workflow编辑并实际保存回传；审计材料齐全和不齐两条有向路径。"
+        }
+      ],
+      "fixture_status": "specification_only_not_materialized",
+      "runtime_gate": "requires_preflight",
+      "all_run_status": "not_started"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "C01",
+      "card_id": "C01",
+      "category_id": "G02",
+      "input": "刚来东方理工，先给我介绍一下图书馆、吃饭的地方和四明书院。",
+      "actions": "切换三地点/阅读三节，确认都可找到；不要求A提供标签页。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C02-a",
+      "card_id": "C02",
+      "category_id": "G02",
+      "input": "图书馆有可以讨论的地方吗？",
+      "actions": "无需追加用户动作。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C02-b",
+      "card_id": "C02",
+      "category_id": "G02",
+      "input": "进校后可以直接去图书馆吗？",
+      "actions": "无需追加用户动作。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C03",
+      "card_id": "C03",
+      "category_id": "G03",
+      "input": "明晚七点四个人试讲一小时，需要投屏和白板，哪里合适?",
+      "actions": "首轮推荐后追问“书院离我更近啊，为什么不去那里”，只依据固定资料解释。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C04-a",
+      "card_id": "C04",
+      "category_id": "G04",
+      "input": "帮我找个地方。",
+      "actions": "用户答“想安静读书”，继续给推荐。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C04-b",
+      "card_id": "C04",
+      "category_id": "G04",
+      "input": "校园半日游先确认上午还是下午、愿意去哪些地点，可多选图书馆/食堂/四明书院，其他想法我自行补充。",
+      "actions": "选择下午、食堂和四明书院；补充“少走路”，提交。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C04-c",
+      "card_id": "C04",
+      "category_id": "G04",
+      "input": "请让我选择线上或线下讲座；如推荐线下，把它放第一项。",
+      "actions": "先不提交，确认未自动采用推荐；再明确选择线上并提交。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C05",
+      "card_id": "C05",
+      "category_id": "G07",
+      "input": "周六下午带两位校外朋友来参观学校，要提前办什么?",
+      "actions": "补充时段14:00–15:00→核对并提交，回执共3人，且未实际预约。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C06",
+      "card_id": "C06",
+      "category_id": "G08",
+      "input": "那就不去图书馆了，只逛一个小时左右，早上10点开始，然后吃午饭。",
+      "actions": "文字/界面改为10:00–11:00、去掉图书馆、更新备注→实际确认提交。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C07-a",
+      "card_id": "C07",
+      "category_id": "G08",
+      "input": "那就不用白板了，时间也改到8点之后。",
+      "actions": "提交20:00–21:00→回放冲突→用户明确改为16:00–17:00并提交草稿。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C07-b",
+      "card_id": "C07",
+      "category_id": "G08",
+      "input": "那就不用白板了，时间也改到8点之后。",
+      "actions": "提交20:00–21:00→回放冲突→用户答“下午不行，先不要提交”，保持未提交。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C08",
+      "card_id": "C08",
+      "category_id": "G05",
+      "input": "记住我，我叫小张。",
+      "actions": "明确确认person-a；检查确认前未记为已确认，确认后仅模拟记人。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C09",
+      "card_id": "C09",
+      "category_id": "G05",
+      "input": "无新用户消息。环境事件：e-rec-01，person-a候选出现；识别结果由固定回放给定。",
+      "actions": "注入原生环境事件及相同事件ID的重复事件；不发送用户提问。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C10",
+      "card_id": "C10",
+      "category_id": "G11",
+      "input": "跟着这位带我们参观的同学。",
+      "actions": "用户确认person-guide后回放跟随中、丢失和停止；不执行真实跟随。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C11",
+      "card_id": "C11",
+      "category_id": "G11",
+      "input": "停一下，我拿个东西。",
+      "actions": "发送“停一下，我拿个东西。”→模拟暂停；再“继续吧。”→模拟继续。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C12",
+      "card_id": "C12",
+      "category_id": "G05",
+      "input": "我约的同学在图书馆入口，灰衣服、拉箱子，帮我找一下。",
+      "actions": "用户确认“就是他，告诉他我马上就到”；回放模拟传话结果，仅核对person-a。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C13",
+      "card_id": "C13",
+      "category_id": "G03",
+      "input": "帮我找个安静的地方，我想读会书。",
+      "actions": "回放两处现场结论后给推荐，说明不选college-lounge的原因。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C14",
+      "card_id": "C14",
+      "category_id": "G06",
+      "input": "去图书馆看看有没有座位。",
+      "actions": "首图后发送“去右边看一下”，回放14:01新图和结论。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C15",
+      "card_id": "C15",
+      "category_id": "G05",
+      "input": "我的外卖在学校大门，帮我取一下，尾号3726。",
+      "actions": "展示远景→用户要求靠近→近景→要求侧面→侧景→用户确认。仅记录parcel-3726状态。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C16",
+      "card_id": "C16",
+      "category_id": "G05",
+      "input": "张伟老师说文件准备好了，去他的办公室帮我拿一下。",
+      "actions": "模拟准备完成后展示doc-01；用户答“就是这个文件”，随后回放模拟交接状态。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C17-a",
+      "card_id": "C17",
+      "category_id": "G11",
+      "input": "留意五分钟，门开了告诉我。",
+      "actions": "注入关闭重复事件→第3分钟打开；只通知一次开门。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C17-b",
+      "card_id": "C17",
+      "category_id": "G11",
+      "input": "留意五分钟，门开了告诉我。",
+      "actions": "注入持续关闭→5分钟到期；说明期间未观察到开门并结束。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C18",
+      "card_id": "C18",
+      "category_id": "G11",
+      "input": "帮我补拍一下门口，我看看。然后结束观察，回来吧。",
+      "actions": "发送“帮我补拍一下门口，我看看。然后结束观察，回来吧。”；注入补拍、停止、返回事件，再注入旧事件。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C19",
+      "card_id": "C19",
+      "category_id": "G09",
+      "input": "图书馆、吃饭、回四明书院，帮我排一下。",
+      "actions": "把食堂移到第一位，再确认保存。A文字改序；B真实拖动后点应用，检查保存值为canteen/lib/college。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C20",
+      "card_id": "C20",
+      "category_id": "G10",
+      "input": "我想先去图书馆，叫一只狗来带我吧。",
+      "actions": "检查同一底图中的三点和两段路线，不启动导航。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C21",
+      "card_id": "C21",
+      "category_id": "G10",
+      "input": "可以，带我去食堂吧。",
+      "actions": "发送“可以，带我去食堂吧。”；模拟返回门关闭、已停止；不给替代路线。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C22",
+      "card_id": "C22",
+      "category_id": "G07",
+      "input": "饮水机不出水，先拍一张照片给我。",
+      "actions": "正面→近景→另一侧；用户要求将三图放入反馈单并备注“昨天也这样”，补测试联系人A后确认提交。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C23",
+      "card_id": "C23",
+      "category_id": "G12",
+      "input": "以后找林老师拿材料，先到门口敲门，等老师放好，拍给我确认，再送回来。",
+      "actions": "将等待上限改为2分钟→保存草稿；必须有对应保存回传。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C24",
+      "card_id": "C24",
+      "category_id": "G12",
+      "input": "老师不在就告诉我，不需要一直在那等。",
+      "actions": "发送“老师不在就告诉我，不需要一直在那等。”→保存；审计在/不在两条有向路径。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C25-a",
+      "card_id": "C25",
+      "category_id": "G01",
+      "input": "握个手吧。",
+      "actions": "只接收模拟成功结果，生成回执。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C25-b",
+      "card_id": "C25",
+      "category_id": "G01",
+      "input": "握个手吧。",
+      "actions": "只接收模拟失败结果，准确说明未完成。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "C26",
+      "card_id": "C26",
+      "category_id": "G01",
+      "input": "图书馆是否需要预约？请简短回答。",
+      "actions": "无追加用户动作，短答须含两条条件。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "status": "awaiting_confirmation",
+      "scenario_domain": "campus_trace_derived"
+    },
+    {
+      "case_id": "N01",
+      "card_id": "N01",
+      "category_id": "G01",
+      "input": "费用已经支付成功了吗？只根据给定支付状态简短回答。",
+      "actions": "收到固定状态后只回复，无用户追加动作。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N02",
+      "card_id": "N02",
+      "category_id": "G02",
+      "input": "介绍这三个企业服务套餐，先给概览，再让我按需看适用范围与限制。",
+      "actions": "初始查看三个套餐概览→用户请求查看团队版的适用范围和导出限制。A通过文字追问；B先切换团队版/展开详情，再发送同一追问，让模型续接回答。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N03",
+      "card_id": "N03",
+      "category_id": "G03",
+      "input": "从给定笔记本清单中选一款6000元以内、轻于1.5kg、适合出差的机型。先满足价格和重量，再优先续航，解释为什么没选其他款。",
+      "actions": "首轮推荐后追问“B续航更长，为什么不选B？”，仅根据固定数据解释。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N04",
+      "card_id": "N04",
+      "category_id": "G04",
+      "input": "帮我安排一次活动；先确认用途、人数和线上或线下，收齐后只汇总需求，不开始安排。",
+      "actions": "一次收集用途、人数、形式；填写“产品培训”“12”“线上”后提交；模型只回执三项，不继续追问地点预算。A使用原生多题/自由回答；B填写三字段表单。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N05",
+      "card_id": "N05",
+      "category_id": "G05",
+      "input": "展示待寄出的包裹照片和订单尾号，让我确认是不是这一件；确认后只记录对象状态，不寄件。",
+      "actions": "图片实际加载后，用户回复“是这件，确认”；只记录parcel-8241为用户已确认。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N06",
+      "card_id": "N06",
+      "category_id": "G06",
+      "input": "展示这件商品的正面、背面和瑕疵细节，让我核对后决定是否申请退货。",
+      "actions": "先展示正面→用户要求“看背面和瑕疵细节”→展示剩余两图→用户答“记录为我想申请退货，先不提交申请”。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N07",
+      "card_id": "N07",
+      "category_id": "G07",
+      "input": "帮我填写售后申请草稿：订单SO-2048，故障是无法开机，联系人测试联系人A，附上给定两张照片；先让我核对修改，提交后只回执，不创建真实工单。",
+      "actions": "核对预填值→联系人改为“测试联系人B”→提交草稿；A文字修改确认，B编辑联系人后点击提交；回执包含新联系人和两张图片关联。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N08",
+      "card_id": "N08",
+      "category_id": "G08",
+      "input": "把会议室R-01在2026年11月23日的预约草稿，从14点到15点改到16点到17点；如果约满，先列出真实替代时段让我选。",
+      "actions": "改16:00–17:00并提交草稿→注入冲突→用户明确选17:00–18:00并提交→返回草稿接收。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N09",
+      "card_id": "N09",
+      "category_id": "G09",
+      "input": "安排这三个工作事项：审阅需求、整理报告、客户沟通。先按这个顺序列出，再让我调整并保存草稿。",
+      "actions": "初始展示后用户要求“把客户沟通放第一项，其余相对顺序不变”；A文字改序并确认，B拖动client到第一位并点击应用；模拟保存后回执。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N10",
+      "card_id": "N10",
+      "category_id": "G10",
+      "input": "根据给定平面图，说明快递员先到收件点，再到目的地的位置和路线。只作静态示意，不开始配送。",
+      "actions": "展示三点和两段路线后，用户追问“现在已经送到了吗？”；回答只是规划示意，没有执行或到达证据。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N11",
+      "card_id": "N11",
+      "category_id": "G11",
+      "input": "监测这个文件处理任务，失败时通知我；我可以暂停、继续或结束监测。只使用模拟状态，不处理真实文件。",
+      "actions": "看到运行状态后用户“暂停”→回放paused；再“继续”→回放running；随后失败事件通知一次；用户“结束监测”→停止通知，再注入同ID旧失败事件。两组控制均通过用户消息和模拟结果完成，B不假装有未实现控制按钮。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    },
+    {
+      "case_id": "N12",
+      "card_id": "N12",
+      "category_id": "G12",
+      "input": "把这个报销流程整理出来，并补充“材料不齐退回补充”的分支，让我编辑后保存草稿，不执行真实审批或付款。",
+      "actions": "展示并编辑分支→将补充期限设置为3个工作日→确认保存；A用文字修改确认，B在Workflow编辑并实际保存回传；审计材料齐全和不齐两条有向路径。",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "repeats": 2,
+      "scenario_domain": "non_campus",
+      "status": "awaiting_confirmation"
+    }
+  ],
+  "planned_runs": 176,
+  "autonomous_selection": false,
+  "cross_model": false,
+  "proposed_rubric": {
+    "version": "0.5-review",
+    "status": "awaiting_user_confirmation",
+    "weights_proposed": {
+      "factual_completeness": 60,
+      "readability": 25,
+      "state": 15
+    },
+    "cost_scored": false,
+    "independent_hard_checks": [
+      "事实关键项",
+      "真实交互提交回传",
+      "对象/字段/实体ID绑定",
+      "输出要求遵循"
+    ],
+    "remarks": "事实与完成合并后重新评审；不直接平均旧分数。生成耗时与tokens保留为观测。"
+  },
+  "cross_domain_candidates_included_in_run_count": true,
+  "repeats_per_arm": 2,
+  "campus_cases": 32,
+  "non_campus_cases": 12,
+  "campus_runs": 128,
+  "non_campus_runs": 48,
+  "run_matrix": [
+    {
+      "run_id": "C01-A-01",
+      "case_id": "C01",
+      "card_id": "C01",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C01-B-01",
+      "case_id": "C01",
+      "card_id": "C01",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C01-B-02",
+      "case_id": "C01",
+      "card_id": "C01",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C01-A-02",
+      "case_id": "C01",
+      "card_id": "C01",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-a-B-01",
+      "case_id": "C02-a",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-a-A-01",
+      "case_id": "C02-a",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-a-A-02",
+      "case_id": "C02-a",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-a-B-02",
+      "case_id": "C02-a",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-b-A-01",
+      "case_id": "C02-b",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-b-B-01",
+      "case_id": "C02-b",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-b-B-02",
+      "case_id": "C02-b",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C02-b-A-02",
+      "case_id": "C02-b",
+      "card_id": "C02",
+      "category_id": "G02",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C03-B-01",
+      "case_id": "C03",
+      "card_id": "C03",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C03-A-01",
+      "case_id": "C03",
+      "card_id": "C03",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C03-A-02",
+      "case_id": "C03",
+      "card_id": "C03",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C03-B-02",
+      "case_id": "C03",
+      "card_id": "C03",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-a-A-01",
+      "case_id": "C04-a",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-a-B-01",
+      "case_id": "C04-a",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-a-B-02",
+      "case_id": "C04-a",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-a-A-02",
+      "case_id": "C04-a",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-b-B-01",
+      "case_id": "C04-b",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-b-A-01",
+      "case_id": "C04-b",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-b-A-02",
+      "case_id": "C04-b",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-b-B-02",
+      "case_id": "C04-b",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-c-A-01",
+      "case_id": "C04-c",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-c-B-01",
+      "case_id": "C04-c",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-c-B-02",
+      "case_id": "C04-c",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C04-c-A-02",
+      "case_id": "C04-c",
+      "card_id": "C04",
+      "category_id": "G04",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C05-B-01",
+      "case_id": "C05",
+      "card_id": "C05",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C05-A-01",
+      "case_id": "C05",
+      "card_id": "C05",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C05-A-02",
+      "case_id": "C05",
+      "card_id": "C05",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C05-B-02",
+      "case_id": "C05",
+      "card_id": "C05",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C06-A-01",
+      "case_id": "C06",
+      "card_id": "C06",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C06-B-01",
+      "case_id": "C06",
+      "card_id": "C06",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C06-B-02",
+      "case_id": "C06",
+      "card_id": "C06",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C06-A-02",
+      "case_id": "C06",
+      "card_id": "C06",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-a-B-01",
+      "case_id": "C07-a",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-a-A-01",
+      "case_id": "C07-a",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-a-A-02",
+      "case_id": "C07-a",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-a-B-02",
+      "case_id": "C07-a",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-b-A-01",
+      "case_id": "C07-b",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-b-B-01",
+      "case_id": "C07-b",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-b-B-02",
+      "case_id": "C07-b",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C07-b-A-02",
+      "case_id": "C07-b",
+      "card_id": "C07",
+      "category_id": "G08",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C08-B-01",
+      "case_id": "C08",
+      "card_id": "C08",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C08-A-01",
+      "case_id": "C08",
+      "card_id": "C08",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C08-A-02",
+      "case_id": "C08",
+      "card_id": "C08",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C08-B-02",
+      "case_id": "C08",
+      "card_id": "C08",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C09-A-01",
+      "case_id": "C09",
+      "card_id": "C09",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C09-B-01",
+      "case_id": "C09",
+      "card_id": "C09",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C09-B-02",
+      "case_id": "C09",
+      "card_id": "C09",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C09-A-02",
+      "case_id": "C09",
+      "card_id": "C09",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C10-B-01",
+      "case_id": "C10",
+      "card_id": "C10",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C10-A-01",
+      "case_id": "C10",
+      "card_id": "C10",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C10-A-02",
+      "case_id": "C10",
+      "card_id": "C10",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C10-B-02",
+      "case_id": "C10",
+      "card_id": "C10",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C11-A-01",
+      "case_id": "C11",
+      "card_id": "C11",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C11-B-01",
+      "case_id": "C11",
+      "card_id": "C11",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C11-B-02",
+      "case_id": "C11",
+      "card_id": "C11",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C11-A-02",
+      "case_id": "C11",
+      "card_id": "C11",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C12-B-01",
+      "case_id": "C12",
+      "card_id": "C12",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C12-A-01",
+      "case_id": "C12",
+      "card_id": "C12",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C12-A-02",
+      "case_id": "C12",
+      "card_id": "C12",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C12-B-02",
+      "case_id": "C12",
+      "card_id": "C12",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C13-A-01",
+      "case_id": "C13",
+      "card_id": "C13",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C13-B-01",
+      "case_id": "C13",
+      "card_id": "C13",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C13-B-02",
+      "case_id": "C13",
+      "card_id": "C13",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C13-A-02",
+      "case_id": "C13",
+      "card_id": "C13",
+      "category_id": "G03",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C14-B-01",
+      "case_id": "C14",
+      "card_id": "C14",
+      "category_id": "G06",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C14-A-01",
+      "case_id": "C14",
+      "card_id": "C14",
+      "category_id": "G06",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C14-A-02",
+      "case_id": "C14",
+      "card_id": "C14",
+      "category_id": "G06",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C14-B-02",
+      "case_id": "C14",
+      "card_id": "C14",
+      "category_id": "G06",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C15-A-01",
+      "case_id": "C15",
+      "card_id": "C15",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C15-B-01",
+      "case_id": "C15",
+      "card_id": "C15",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C15-B-02",
+      "case_id": "C15",
+      "card_id": "C15",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C15-A-02",
+      "case_id": "C15",
+      "card_id": "C15",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C16-B-01",
+      "case_id": "C16",
+      "card_id": "C16",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C16-A-01",
+      "case_id": "C16",
+      "card_id": "C16",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C16-A-02",
+      "case_id": "C16",
+      "card_id": "C16",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C16-B-02",
+      "case_id": "C16",
+      "card_id": "C16",
+      "category_id": "G05",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-a-A-01",
+      "case_id": "C17-a",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-a-B-01",
+      "case_id": "C17-a",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-a-B-02",
+      "case_id": "C17-a",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-a-A-02",
+      "case_id": "C17-a",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-b-B-01",
+      "case_id": "C17-b",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-b-A-01",
+      "case_id": "C17-b",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-b-A-02",
+      "case_id": "C17-b",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C17-b-B-02",
+      "case_id": "C17-b",
+      "card_id": "C17",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C18-A-01",
+      "case_id": "C18",
+      "card_id": "C18",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C18-B-01",
+      "case_id": "C18",
+      "card_id": "C18",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C18-B-02",
+      "case_id": "C18",
+      "card_id": "C18",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C18-A-02",
+      "case_id": "C18",
+      "card_id": "C18",
+      "category_id": "G11",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C19-B-01",
+      "case_id": "C19",
+      "card_id": "C19",
+      "category_id": "G09",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C19-A-01",
+      "case_id": "C19",
+      "card_id": "C19",
+      "category_id": "G09",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C19-A-02",
+      "case_id": "C19",
+      "card_id": "C19",
+      "category_id": "G09",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C19-B-02",
+      "case_id": "C19",
+      "card_id": "C19",
+      "category_id": "G09",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C20-A-01",
+      "case_id": "C20",
+      "card_id": "C20",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C20-B-01",
+      "case_id": "C20",
+      "card_id": "C20",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C20-B-02",
+      "case_id": "C20",
+      "card_id": "C20",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C20-A-02",
+      "case_id": "C20",
+      "card_id": "C20",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C21-B-01",
+      "case_id": "C21",
+      "card_id": "C21",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C21-A-01",
+      "case_id": "C21",
+      "card_id": "C21",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C21-A-02",
+      "case_id": "C21",
+      "card_id": "C21",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C21-B-02",
+      "case_id": "C21",
+      "card_id": "C21",
+      "category_id": "G10",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C22-A-01",
+      "case_id": "C22",
+      "card_id": "C22",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C22-B-01",
+      "case_id": "C22",
+      "card_id": "C22",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C22-B-02",
+      "case_id": "C22",
+      "card_id": "C22",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C22-A-02",
+      "case_id": "C22",
+      "card_id": "C22",
+      "category_id": "G07",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C23-B-01",
+      "case_id": "C23",
+      "card_id": "C23",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C23-A-01",
+      "case_id": "C23",
+      "card_id": "C23",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C23-A-02",
+      "case_id": "C23",
+      "card_id": "C23",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C23-B-02",
+      "case_id": "C23",
+      "card_id": "C23",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C24-A-01",
+      "case_id": "C24",
+      "card_id": "C24",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C24-B-01",
+      "case_id": "C24",
+      "card_id": "C24",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C24-B-02",
+      "case_id": "C24",
+      "card_id": "C24",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C24-A-02",
+      "case_id": "C24",
+      "card_id": "C24",
+      "category_id": "G12",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-a-B-01",
+      "case_id": "C25-a",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-a-A-01",
+      "case_id": "C25-a",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-a-A-02",
+      "case_id": "C25-a",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-a-B-02",
+      "case_id": "C25-a",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-b-A-01",
+      "case_id": "C25-b",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-b-B-01",
+      "case_id": "C25-b",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-b-B-02",
+      "case_id": "C25-b",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C25-b-A-02",
+      "case_id": "C25-b",
+      "card_id": "C25",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C26-B-01",
+      "case_id": "C26",
+      "card_id": "C26",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C26-A-01",
+      "case_id": "C26",
+      "card_id": "C26",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C26-A-02",
+      "case_id": "C26",
+      "card_id": "C26",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "C26-B-02",
+      "case_id": "C26",
+      "card_id": "C26",
+      "category_id": "G01",
+      "scenario_domain": "campus_trace_derived",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N01-A-01",
+      "case_id": "N01",
+      "card_id": "N01",
+      "category_id": "G01",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N01-B-01",
+      "case_id": "N01",
+      "card_id": "N01",
+      "category_id": "G01",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N01-B-02",
+      "case_id": "N01",
+      "card_id": "N01",
+      "category_id": "G01",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N01-A-02",
+      "case_id": "N01",
+      "card_id": "N01",
+      "category_id": "G01",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N02-B-01",
+      "case_id": "N02",
+      "card_id": "N02",
+      "category_id": "G02",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N02-A-01",
+      "case_id": "N02",
+      "card_id": "N02",
+      "category_id": "G02",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N02-A-02",
+      "case_id": "N02",
+      "card_id": "N02",
+      "category_id": "G02",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N02-B-02",
+      "case_id": "N02",
+      "card_id": "N02",
+      "category_id": "G02",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N03-A-01",
+      "case_id": "N03",
+      "card_id": "N03",
+      "category_id": "G03",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N03-B-01",
+      "case_id": "N03",
+      "card_id": "N03",
+      "category_id": "G03",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N03-B-02",
+      "case_id": "N03",
+      "card_id": "N03",
+      "category_id": "G03",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N03-A-02",
+      "case_id": "N03",
+      "card_id": "N03",
+      "category_id": "G03",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N04-B-01",
+      "case_id": "N04",
+      "card_id": "N04",
+      "category_id": "G04",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N04-A-01",
+      "case_id": "N04",
+      "card_id": "N04",
+      "category_id": "G04",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N04-A-02",
+      "case_id": "N04",
+      "card_id": "N04",
+      "category_id": "G04",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N04-B-02",
+      "case_id": "N04",
+      "card_id": "N04",
+      "category_id": "G04",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N05-A-01",
+      "case_id": "N05",
+      "card_id": "N05",
+      "category_id": "G05",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N05-B-01",
+      "case_id": "N05",
+      "card_id": "N05",
+      "category_id": "G05",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N05-B-02",
+      "case_id": "N05",
+      "card_id": "N05",
+      "category_id": "G05",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N05-A-02",
+      "case_id": "N05",
+      "card_id": "N05",
+      "category_id": "G05",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N06-B-01",
+      "case_id": "N06",
+      "card_id": "N06",
+      "category_id": "G06",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N06-A-01",
+      "case_id": "N06",
+      "card_id": "N06",
+      "category_id": "G06",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N06-A-02",
+      "case_id": "N06",
+      "card_id": "N06",
+      "category_id": "G06",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N06-B-02",
+      "case_id": "N06",
+      "card_id": "N06",
+      "category_id": "G06",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N07-A-01",
+      "case_id": "N07",
+      "card_id": "N07",
+      "category_id": "G07",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N07-B-01",
+      "case_id": "N07",
+      "card_id": "N07",
+      "category_id": "G07",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N07-B-02",
+      "case_id": "N07",
+      "card_id": "N07",
+      "category_id": "G07",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N07-A-02",
+      "case_id": "N07",
+      "card_id": "N07",
+      "category_id": "G07",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N08-B-01",
+      "case_id": "N08",
+      "card_id": "N08",
+      "category_id": "G08",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N08-A-01",
+      "case_id": "N08",
+      "card_id": "N08",
+      "category_id": "G08",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N08-A-02",
+      "case_id": "N08",
+      "card_id": "N08",
+      "category_id": "G08",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N08-B-02",
+      "case_id": "N08",
+      "card_id": "N08",
+      "category_id": "G08",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N09-A-01",
+      "case_id": "N09",
+      "card_id": "N09",
+      "category_id": "G09",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N09-B-01",
+      "case_id": "N09",
+      "card_id": "N09",
+      "category_id": "G09",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N09-B-02",
+      "case_id": "N09",
+      "card_id": "N09",
+      "category_id": "G09",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N09-A-02",
+      "case_id": "N09",
+      "card_id": "N09",
+      "category_id": "G09",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N10-B-01",
+      "case_id": "N10",
+      "card_id": "N10",
+      "category_id": "G10",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N10-A-01",
+      "case_id": "N10",
+      "card_id": "N10",
+      "category_id": "G10",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N10-A-02",
+      "case_id": "N10",
+      "card_id": "N10",
+      "category_id": "G10",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N10-B-02",
+      "case_id": "N10",
+      "card_id": "N10",
+      "category_id": "G10",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N11-A-01",
+      "case_id": "N11",
+      "card_id": "N11",
+      "category_id": "G11",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N11-B-01",
+      "case_id": "N11",
+      "card_id": "N11",
+      "category_id": "G11",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N11-B-02",
+      "case_id": "N11",
+      "card_id": "N11",
+      "category_id": "G11",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N11-A-02",
+      "case_id": "N11",
+      "card_id": "N11",
+      "category_id": "G11",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N12-B-01",
+      "case_id": "N12",
+      "card_id": "N12",
+      "category_id": "G12",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N12-A-01",
+      "case_id": "N12",
+      "card_id": "N12",
+      "category_id": "G12",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 1,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N12-A-02",
+      "case_id": "N12",
+      "card_id": "N12",
+      "category_id": "G12",
+      "scenario_domain": "non_campus",
+      "arm": "A",
+      "repeat": 2,
+      "status": "not_started"
+    },
+    {
+      "run_id": "N12-B-02",
+      "case_id": "N12",
+      "card_id": "N12",
+      "category_id": "G12",
+      "scenario_domain": "non_campus",
+      "arm": "B",
+      "repeat": 2,
+      "status": "not_started"
+    }
+  ]
+}

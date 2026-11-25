@@ -1,0 +1,457 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 工作流条件分支测评呈现 刚刚":
+    - generic: 进行中
+    - generic: 工作流条件分支测评呈现
+    - generic: 刚刚
+  - treeitem "进行中 Workflow 追加分支编辑器测评 刚刚":
+    - generic: 进行中
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 刚刚
+  - treeitem "已完成 Workflow编辑器材料呈现测评 刚刚":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 报销流程草稿编辑保存 1分钟":
+    - generic: 已完成
+    - generic: 报销流程草稿编辑保存
+    - generic: 1分钟
+  - treeitem "已完成 报销流程整理与草稿保存 1分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 1分钟
+  - treeitem "已完成 Workflow材料取送流程测评 1分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 1分钟
+  - treeitem "饮水机维修照片呈现测评 2分钟" [selected]:
+    - generic: 饮水机维修照片呈现测评
+    - generic: 2分钟
+  - treeitem "已完成 监测文件处理任务失败通知 3分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 3分钟
+  - treeitem "已完成 文件处理任务监测模拟 3分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 3分钟
+  - treeitem "已完成 饮水机不出水照片评测 5分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 5分钟
+  - treeitem "已完成 平面图快递路线静态示意 6分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 6分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 6分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 6分钟
+  - treeitem "已完成 三项工作排期草稿确认 8分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 8分钟
+  - treeitem "已完成 安排三项工作并确认草稿 8分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 8分钟
+  - treeitem "已完成 会议室预约改期草稿 9分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 9分钟
+  - treeitem "已完成 会议室预约改期草稿测评 9分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 9分钟
+  - treeitem "已完成 售后申请草稿填写与确认 10分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 10分钟
+  - treeitem "已完成 售后申请草稿填写测评 10分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 10分钟
+  - treeitem "已完成 商品退货多视角图片呈现 11分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 11分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "食堂路线状态卡片呈现 12分钟":
+    - generic: 食堂路线状态卡片呈现
+    - generic: 12分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 12分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 12分钟
+  - treeitem "已完成 包裹照片确认对象状态 14分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 14分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 15分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 15分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 17分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 17分钟
+  - treeitem "带用户去食堂的状态卡片测评 18分钟":
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 18分钟
+  - treeitem "已完成 活动需求确认与汇总 18分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 18分钟
+  - treeitem "已完成 活动需求确认测评 18分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 18分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 饮水机维修照片呈现测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+  - button "跳转到第 3 轮"
+  - button "跳转到第 4 轮"
+  - button "跳转到第 5 轮"
+- generic: 【全量正式呈现测评 C22-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C22-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C22-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：饮水机不出水，先拍一张照片给我。 指定呈现方式：Tabs/Image+DynamicForm，保留3个资产关联。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:48
+- button "复制":
+- status: 已完成
+- button "已完成，用时 4分25秒":
+  - generic: 已完成，用时 4分25秒
+- paragraph: 我先加载本例的固定材料。
+- group "问题与回答":
+  - term:
+    - generic: 备注
+    - generic: 反馈草稿里要写什么备注？（例如出水口无水流、面板是否亮灯、已做的检查；留空则不写）
+  - definition: 已跳过
+  - term:
+    - generic: 联系人
+    - generic: 请提供联系人（材料里没有，需要你填写后才能提交草稿）
+  - definition: 已跳过
+  - generic: 13:52
+  - button "复制":
+- paragraph: 正面照片（YSJ-07 饮水机）：
+- list:
+  - strong: 设备
+  - text: ：YSJ-07，教学楼一层东侧
+  - strong: 故障
+  - text: ：不出水
+  - strong: 现场照片（正面）
+  - text: ：
+  - code: /api/media/bench05-repair-front/content
+  - text: ，960×540
+  - strong: 图片地址
+  - text: ：
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-front/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+  - strong: 图片说明
+  - text: ：MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture
+- paragraph:
+  - text: 与本次报修关联的图片共有 3 个位置：目前只有
+  - strong: 正面
+  - text: 这一张已经提供；第 2、3 张关联图
+  - strong: 尚未提供
+  - text: ，因此暂时没有可看的图像，我也不会把正面这张图当作其他视角来展示。
+- paragraph:
+  - text: 关于反馈草稿：备注和联系人都还没填。材料里没有提供联系人，而且你刚才也跳过了这两项，所以草稿
+  - strong: 没有提交
+  - text: ，也没有创建工单。如果你需要，我可以按你给出的内容再补交一次；不过请先告诉我备注和联系人。
+- heading "饮水机不上水 · 现场照片" [level=1]
+- generic: 设备与故障信息
+- generic: 组件未注册
+- generic: 与本次报修关联的图片共 3 个位置，目前仅正面照片已提供，其余两张尚未提供，不以上图代替其他视角。
+- tablist "内容页签":
+  - tab "正面（已提供）" [selected]
+  - tab "关联图 2"
+  - tab "关联图 3"
+- tabpanel "正面（已提供）":
+  - figure "正面（已提供）":
+    - button "预览 MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture":
+      - img "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture"
+    - generic: 正面（已提供）
+  - generic: 组件未注册
+- heading "兜底文字" [level=3]
+- generic: 设备 YSJ-07（教学楼一层东侧）不出水。已提供正面照片一张（960×540，文件 bench05-repair-front.png）。第 2、3 张关联图片尚未提供，暂无图可看。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 23.2K tok":
+  - generic: 用量 23.2K tok
+- generic: 13:52
+- generic: 靠近一点拍给我看看，暂不提交。
+- generic: 13:53
+- button "复制":
+- status: 已完成
+- button "已完成，用时 6秒":
+  - generic: 已完成，用时 6秒
+- paragraph:
+  - text: 这个暂时做不到：目前材料里只有
+  - strong: 一张
+  - text: 照片，就是刚才那张正面图（960×540，文件
+  - code: bench05-repair-front.png
+  - text: ），后面没有发布近景或其他视角的图，所以我没法给你一张“更近”的新照片；我也不会把这张正面图裁切或放大后，当成新拍的近景来给你看。
+- paragraph: 现在能选的：
+- list:
+  - strong: 你那边再拍一张近景
+  - text: ：对准出水口/按钮面板，拍好后发我，我就把它作为第 2 张关联图挂在这台设备（YSJ-07）上；
+  - strong: 先把同一张正面图放大显示
+  - text: ：我会明确标注“同一张正面照放大，不是新视角”，方便你先看清水嘴和面板位置；
+  - strong: 等后续图像发布
+  - text: ：一旦有新的视角图，我再补进那 3 个关联位置里。
+- paragraph:
+  - text: 草稿方面已按你说的
+  - strong: 保持未提交
+  - text: ，没有创建任何工单，备注和联系人也仍是空的。你想选哪一种？
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 13K tok":
+  - generic: 用量 13K tok
+- generic: 13:53
+- button "收到执行请求 13:53":
+  - generic: 收到执行请求
+  - time: 13:53
+- status: 已完成
+- button "已完成，用时 49秒":
+  - generic: 已完成，用时 49秒
+- paragraph: 近景图已经发布，设备仍然是 YSJ-07，位置在教学楼一层东侧，故障仍然是不出水。
+- list:
+  - strong: 近景（新）
+  - text: ：拍摄方向对准出水口，文件是
+  - code: bench05-repair-near.png
+  - text: ，960×540 地址：
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-near/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-near/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-near/content
+  - strong: 正面（原有）
+  - text: ：文件是
+  - code: bench05-repair-front.png
+  - text: ，960×540 地址：
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-front/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+  - strong: 第 3 个关联位置
+  - text: ：尚未提供，暂时没有可看的图像
+- paragraph:
+  - text: 这三个关联位置分别对应近景、正面和第三张图，目前已经提供两张。报修反馈草稿按你的要求
+  - strong: 仍未提交
+  - text: ，没有创建任何工单；备注和联系人也仍然是空的。等你需要提交的时候，请告诉我备注和联系人。
+- heading "饮水机不出水 · 现场图像（共 3 个关联位置）" [level=1]
+- generic: 近景图已发布，对准出水口；正面图仍保留在同一组标签页中，第三张关联图尚未提供。
+- generic: 组件未注册
+- tablist "内容页签":
+  - tab "近景（已提供）" [selected]
+  - tab "正面（已提供（旧图））"
+  - tab "关联图 3"
+- tabpanel "近景（已提供）":
+  - figure "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture · 960 × 540 · 已提供":
+    - button "预览 MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture":
+      - img "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture"
+    - generic: MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture · 960 × 540 · 已提供
+  - generic: 状态：已提供 · 尺寸：960 × 540 · 路径：/api/media/bench05-repair-near/content
+- generic: 备注：草稿保持未提交
+- generic: 设备 YSJ-07（教学楼一层东侧）仍不出水。现有两张图：近景图 bench05-repair-near.png（出水口特写，960×540）、正面图 bench05-repair-front.png（960×540）。第三张关联图尚未提供。报修反馈草稿仍未提交。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 16K tok":
+  - generic: 用量 16K tok
+- generic: 13:54
+- generic: 再拍一下另一侧，暂不提交。
+- generic: 13:55
+- button "复制":
+- status: 已完成
+- button "已完成，用时 2秒":
+  - generic: 已完成，用时 2秒
+- paragraph: 这一侧暂时还没拍到：目前这台设备只有两张可用图像。
+- list:
+  - strong: 近景
+  - text: （出水口）：
+  - code: bench05-repair-near.png
+  - text: ，960×540
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-near/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-near/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-near/content
+  - strong: 正面
+  - text: ：
+  - code: bench05-repair-front.png
+  - text: ，960×540
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-front/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+  - strong: 另一侧（侧面/背面）
+  - text: ：尚未提供，因此没有可看的图像；我也不会拿近景或正面图冒充另一侧。
+- paragraph: 等你那边拍到另一侧后发给我，我会把它放进第 3 个关联位置，这一组图就齐了。
+- paragraph:
+  - text: 报修反馈草稿按你说的
+  - strong: 保持未提交
+  - text: ，没有创建工单；备注和联系人仍为空。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 16.8K tok":
+  - generic: 用量 16.8K tok
+- generic: 13:55
+- button "收到执行请求 13:56":
+  - generic: 收到执行请求
+  - time: 13:56
+- status: 已完成
+- button "已完成，用时 47秒":
+  - generic: 已完成，用时 47秒
+- paragraph: 另一侧已经拍到，同一台设备 YSJ-07 的三个关联位置现在都齐了；它的位置是教学楼一层东侧，故障仍是不出水。
+- list:
+  - strong: 侧面（新）
+  - text: ：
+  - code: bench05-repair-side.png
+  - text: ，960×540
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-side/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-side/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-side/content
+  - strong: 近景
+  - text: ：
+  - code: bench05-repair-near.png
+  - text: ，960×540（出水口特写）
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-near/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-near/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-near/content
+  - strong: 正面
+  - text: ：
+  - code: bench05-repair-front.png
+  - text: ，960×540
+  - link "http://127.0.0.1:3080/api/media/bench05-repair-front/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+    - text: http://127.0.0.1:3080/api/media/bench05-repair-front/content
+- paragraph: 三张图分别对应侧面、近景和正面，用的都是独立图像，没有拿一张图重复充数。
+- paragraph:
+  - text: 报修反馈草稿按你的要求
+  - strong: 仍未提交
+  - text: ，没有创建任何工单；备注和联系人还是空的。等你要提交时，请把备注和联系人给我，我再补交草稿。
+- heading "饮水机不出水 · 现场图像（3 个关联位置均已提供）" [level=1]
+- heading "设备与故障信息" [level=2]
+- generic: 组件未注册
+- alert:
+  - img "exclamation-circle":
+  - generic: 报修反馈草稿
+  - generic: 报修反馈草稿保持未提交，未创建工单
+- generic "补充说明"
+- heading "三张关联图对照" [level=2]
+- table:
+  - rowgroup:
+    - row "关联位置 状态 尺寸 图片路径":
+      - columnheader "关联位置"
+      - columnheader "状态"
+      - columnheader "尺寸"
+      - columnheader "图片路径"
+  - rowgroup:
+    - row "侧面（已提供） 已提供 960 × 540 /api/media/bench05-repair-side/content":
+      - cell "侧面（已提供）"
+      - cell "已提供"
+      - cell "960 × 540"
+      - cell "/api/media/bench05-repair-side/content"
+    - row "近景（已提供） 已提供 960 × 540 /api/media/bench05-repair-near/content":
+      - cell "近景（已提供）"
+      - cell "已提供"
+      - cell "960 × 540"
+      - cell "/api/media/bench05-repair-near/content"
+    - row "正面（已提供） 已提供 960 × 540 /api/media/bench05-repair-front/content":
+      - cell "正面（已提供）"
+      - cell "已提供"
+      - cell "960 × 540"
+      - cell "/api/media/bench05-repair-front/content"
+- heading "关联图像" [level=2]
+- tablist "内容页签":
+  - tab "侧面（已提供）"
+  - tab "近景（已提供）" [active] [selected]
+  - tab "正面（已提供）"
+- tabpanel "近景（已提供）":
+  - figure "960 × 540":
+    - button "预览 MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture":
+      - img "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture"
+    - generic: 960 × 540
+  - generic: 已提供
+  - generic: 尺寸
+  - generic: 960 × 540
+  - generic "图像路径与画面说明"
+- heading "奰底文字" [level=2]
+- generic: 设备 YSJ-07（教学楼一层东侧）仍不出水。三张关联图均已提供：侧面 bench05-repair-side.png、近景 bench05-repair-near.png、正面 bench05-repair-front.png，尺寸均为 960×540。报修反馈草稿未提交。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 19.8K tok":
+  - generic: 用量 19.8K tok
+- generic: 13:57
+- button "回到底部":
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 1%":
+  - generic: 1%

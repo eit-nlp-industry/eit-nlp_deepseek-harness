@@ -1,0 +1,50 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C17-a",
+    "facts": "虚拟计时第3分钟观察到门打开。",
+    "assets": [],
+    "event_id": "door-opened-at-3",
+    "clock_minutes": 3,
+    "door": "open"
+  },
+  "events": [
+    {
+      "id": "C17-a-A-02-closed",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "虚拟计时第2分钟，门仍关闭，观察期限5分钟。",
+        "assets": [],
+        "simulated": true,
+        "event_id": "door-closed-at-2",
+        "clock_minutes": 2,
+        "door": "closed"
+      }
+    },
+    {
+      "id": "C17-a-A-02-repeat",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "虚拟计时仍为第2分钟，同一业务观测重复，门仍关闭。",
+        "assets": [],
+        "simulated": true,
+        "event_id": "door-closed-at-2",
+        "clock_minutes": 2,
+        "door": "closed"
+      }
+    },
+    {
+      "id": "C17-a-A-02-opened",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "虚拟计时第3分钟观察到门打开。",
+        "assets": [],
+        "simulated": true,
+        "event_id": "door-opened-at-3",
+        "clock_minutes": 3,
+        "door": "open"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

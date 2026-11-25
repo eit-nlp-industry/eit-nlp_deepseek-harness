@@ -1,0 +1,6 @@
+{"at": "2026-11-20T06:24:41.375280+00:00", "stage": "paused", "release": "environment_event"}
+{"at": "2026-11-20T06:29:04.433309+00:00", "stage": "continued", "release": "environment_event"}
+{"at": "2026-11-20T06:35:07.138460+00:00", "stage": "failed", "release": "environment_event"}
+{"at": "2026-11-20T06:38:22.343629+00:00", "stage": "ended", "release": "environment_event"}
+{"at": "2026-11-20T06:41:42.262550+00:00", "stage": "late", "release": "environment_event"}
+{"at": "2026-11-20T06:42:42.260489+00:00", "action": "stop_fixture_driver_after_final_capture", "business_event": false}

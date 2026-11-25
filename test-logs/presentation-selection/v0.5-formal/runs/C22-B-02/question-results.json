@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_6jFmdy02OUhlfouzauAC6501",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"note\", \"header\": \"备注\", \"question\": \"反馈草稿里要写什么备注？（例如出水口无水流、面板是否亮灯、已做的检查；留空则不写）\"}, {\"id\": \"contact\", \"header\": \"联系人\", \"question\": \"请提供联系人（材料里没有，需要你填写后才能提交草稿）\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_6jFmdy02OUhlfouzauAC6501"
+      },
+      "toolCallId": "call_00_6jFmdy02OUhlfouzauAC6501",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"note\",\"selected\":[]},{\"id\":\"contact\",\"selected\":[]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "9a6f2993-db54-4d4d-8edf-e23fae28f451"
+    }
+  }
+]

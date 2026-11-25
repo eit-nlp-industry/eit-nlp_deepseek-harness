@@ -1,0 +1,52 @@
+[
+  {
+    "seq": 9,
+    "time": 1795153673043,
+    "source": {
+      "kind": "user",
+      "rpcId": "8dc44d1c-ccb5-47ef-8eaa-e24220fec0e0",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "【全量正式呈现测评 C22-B-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C22-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C22-B-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：饮水机不出水，先拍一张照片给我。\n指定呈现方式：Tabs/Image+DynamicForm，保留3个资产关联。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。"
+  },
+  {
+    "seq": 33,
+    "time": 1795153735763,
+    "source": {
+      "kind": "user",
+      "rpcId": "77f7f287-7172-4487-ac47-65fe2c751d89",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "靠近一点拍给我看看，暂不提交。"
+  },
+  {
+    "seq": 53,
+    "time": 1795153807490,
+    "source": {
+      "kind": "user",
+      "rpcId": "3e844463-66a6-4464-bc34-1d1a9b179564",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "再拍一下另一侧，暂不提交。"
+  },
+  {
+    "seq": 73,
+    "time": 1795153917000,
+    "source": {
+      "kind": "user",
+      "rpcId": "2eaf288b-b2d4-4ae6-b700-bd66c3f439d4",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "把这三张图都放进反馈单，备注“昨天也这样”，先不提交。"
+  },
+  {
+    "seq": 84,
+    "time": 1795153979664,
+    "source": {
+      "kind": "user",
+      "rpcId": "49bf4836-3718-440a-bd3d-59d955682505",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "用户已提交表单：\n设备编号：YSJ-07\n位置：教学楼一层东侧\n故障现象：不出水\n备注：昨天也这样\n联系人：测试联系人A"
+  }
+]

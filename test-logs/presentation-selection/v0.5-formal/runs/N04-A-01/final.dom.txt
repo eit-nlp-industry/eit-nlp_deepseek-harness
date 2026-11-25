@@ -1,0 +1,134 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 测评 C21-B-01 食堂导航 刚刚":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 刚刚
+  - treeitem "已完成 带用户去食堂的状态卡片测评 1分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 1分钟
+  - treeitem "已完成 活动需求确认与汇总 1分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 1分钟
+  - treeitem "活动需求确认测评 1分钟" [selected]:
+    - generic: 活动需求确认测评
+    - generic: 1分钟
+  - treeitem "6000元内轻薄本推荐比较 16小时":
+    - generic: 6000元内轻薄本推荐比较
+    - generic: 16小时
+  - treeitem "6000元内轻薄本推荐测评 16小时":
+    - generic: 6000元内轻薄本推荐测评
+    - generic: 16小时
+  - button "展开其余 182 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 活动需求确认测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N04-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N04-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N04-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：帮我安排一次活动；先确认用途、人数和线上或线下，收齐后只汇总需求，不开始安排。 指定呈现方式：原生ask_user_question多题，人数和用途可用自定义文字，不伪装有数字控件。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:39
+- button "复制":
+- status: 已完成
+- button "已完成，用时 1分38秒":
+  - generic: 已完成，用时 1分38秒
+- paragraph: 我先取得本例的固定材料。
+- group "问题与回答":
+  - term:
+    - generic: 用途
+    - generic: 这次活动的用途是什么？（请用文字填写，例如团建、生日聚会、客户答谢等）
+  - definition: 产品培训
+  - term:
+    - generic: 人数
+    - generic: 预计参加人数是多少？（请用文字填写具体数字）
+  - definition: "12"
+  - term:
+    - generic: 形式
+    - generic: 活动采取哪种形式？
+  - definition: 线上
+  - generic: 13:41
+  - button "复制":
+- paragraph: 已收到你给出的信息，需求汇总如下：
+- table:
+  - rowgroup:
+    - row "项目 内容":
+      - columnheader "项目"
+      - columnheader "内容"
+  - rowgroup:
+    - row "活动用途 产品培训":
+      - cell "活动用途"
+      - cell "产品培训"
+    - row "参加人数 12 人":
+      - cell "参加人数"
+      - cell "12 人"
+    - row "活动形式 线上":
+      - cell "活动形式"
+      - cell "线上"
+- paragraph: 目前只完成了需求汇总，尚未开始任何活动安排。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 8.1K tok":
+  - generic: 用量 8.1K tok
+- generic: 13:41
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

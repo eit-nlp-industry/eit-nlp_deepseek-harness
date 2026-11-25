@@ -1,0 +1,149 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_oecHHABcxOW7hNlcN2nt3935",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"components\": [\"Image\"], \"business_data\": {\"image\": \"/api/media/bench05-person-pair/content\", \"alt\": \"MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture\", \"title\": \"确认要记住的候选人\", \"nickname\": \"小张\", \"target\": \"person-a（灰色衣着 + 手提箱）\", \"other\": \"person-b（蓝色衣着 + 背包）\", \"prompt\": \"请确认：是否把昵称「小张」与 person-a（灰色衣着 + 手提箱）绑定？\", \"note\": \"这张图为本题提供的合成对照材料，仅用于区分 person-a 与 person-b，不是真人照片。\", \"status\": \"尚未确认\"}, \"user_query\": \"展示一张候选人对照图（使用材料给定的同源 path 字符串，alt 原样保留），图下用简短文字说明：昵称「小张」拟绑定 person-a（灰色衣着 + 手提箱），另一位为 person-b（蓝色衣着 + 背包）；并给出确认提示「请确认是否把昵称小张与 person-a 绑定」，说明当前状态为尚未确认、该图为合成对照材料。只使用 Image 组件，不添加其他富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "pair-image",
+                "nickname",
+                "target",
+                "other",
+                "prompt",
+                "status",
+                "note",
+                "image-path",
+                "image-alt"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "确认要记住的候选人",
+                "level": "h1"
+              }
+            },
+            "pair-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-pair/content",
+                "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+                "caption": "合成对照材料：person-a（灰色衣着 + 手提箱） | person-b（蓝色衣着 + 背包）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "nickname": {
+              "type": "Text",
+              "props": {
+                "content": "昵称：小张",
+                "variant": "default"
+              }
+            },
+            "target": {
+              "type": "Text",
+              "props": {
+                "content": "拟绑定：person-a（灰色衣着 + 手提箱）",
+                "variant": "default"
+              }
+            },
+            "other": {
+              "type": "Text",
+              "props": {
+                "content": "另一位：person-b（蓝色衣着 + 背包）",
+                "variant": "default"
+              }
+            },
+            "prompt": {
+              "type": "Text",
+              "props": {
+                "content": "确认提示：请确认：是否把昵称小张与 person-a（灰色衣着 + 手提箱）绑定？",
+                "variant": "default"
+              }
+            },
+            "status": {
+              "type": "Text",
+              "props": {
+                "content": "当前状态：尚未确认",
+                "variant": "warning"
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": "说明：这张图为本题提供的合成对照材料，仅用于区分 person-a 与 person-b，不是真人照片。",
+                "variant": "muted"
+              }
+            },
+            "image-path": {
+              "type": "Text",
+              "props": {
+                "content": "图片来源（同源路径）：/api/media/bench05-person-pair/content",
+                "variant": "muted"
+              }
+            },
+            "image-alt": {
+              "type": "Text",
+              "props": {
+                "content": "替代文本（alt，原样保留）：MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "image": "/api/media/bench05-person-pair/content",
+            "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+            "title": "确认要记住的候选人",
+            "nickname": "小张",
+            "target": "person-a（灰色衣着 + 手提箱）",
+            "other": "person-b（蓝色衣着 + 背包）",
+            "prompt": "请确认：是否把昵称「小张」与 person-a（灰色衣着 + 手提箱）绑定？",
+            "note": "这张图为本题提供的合成对照材料，仅用于区分 person-a 与 person-b，不是真人照片。",
+            "status": "尚未确认"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_oecHHABcxOW7hNlcN2nt3935"
+      },
+      "toolCallId": "call_00_oecHHABcxOW7hNlcN2nt3935",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5090cd3c-3ab8-437f-a9a2-a0d8817304fb"
+    }
+  }
+]

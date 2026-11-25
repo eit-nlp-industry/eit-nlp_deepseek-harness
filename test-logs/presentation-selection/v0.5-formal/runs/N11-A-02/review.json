@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "区分请求待生效与事件结果，暂停/恢复/失败/监测结束及旧事件去重正确；失败通知把事件ID e-fail-01误标为失败时间。"
+}

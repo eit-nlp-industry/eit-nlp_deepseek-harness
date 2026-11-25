@@ -1,0 +1,131 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 食堂路线状态卡片呈现 刚刚":
+    - generic: 进行中
+    - generic: 食堂路线状态卡片呈现
+    - generic: 刚刚
+  - treeitem "进行中 食堂导航状态卡片呈现 刚刚":
+    - generic: 进行中
+    - generic: 食堂导航状态卡片呈现
+    - generic: 刚刚
+  - treeitem "已完成 商品退货多视角图片呈现 刚刚":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 刚刚
+  - treeitem "商品退货多视角图片呈现测评 刚刚" [selected]:
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 刚刚
+  - treeitem "包裹照片确认对象状态 1分钟":
+    - generic: 包裹照片确认对象状态
+    - generic: 1分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 2分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 2分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 4分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 4分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 5分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 5分钟
+  - treeitem "已完成 活动需求确认与汇总 5分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 5分钟
+  - button "展开其余 185 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 商品退货多视角图片呈现测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N06-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N06-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N06-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：展示这件商品的正面、背面和瑕疵细节，让我核对后决定是否申请退货。 指定呈现方式：原生连续图片、视角标题与简短证据说明。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:45
+- button "复制":
+- status: 已完成
+- button "已完成，用时 7秒":
+  - generic: 已完成，用时 7秒
+- paragraph: 我先获取该商品当前的固定材料。
+- heading "正面视角（FRONT）" [level=2]
+- paragraph:
+  - 'button "查看大图: MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture"':
+    - img "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture"
+- list:
+  - listitem: 图源标注：MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture（这是模拟材料，不是实拍件）
+  - listitem: 证据说明：这是商品 item-lamp-01 的正面整体视图，尺寸 960×540。从这张图只能看到正面外观，看不出背面结构和瑕疵细节。
+- heading "背面视角（BACK）" [level=2]
+- list:
+  - listitem: 目前没有可用的背面图片，所以无法展示，我也不推测背面的情况。
+- heading "瑕疵细节（DETAIL）" [level=2]
+- list:
+  - listitem: 目前没有可用的瑕疵细节图片，所以无法展示瑕疵位置、程度和成因。
+  - listitem: 此外，这件商品的退货政策、损伤成因和发生时间都还不明确，因此现在还不能判断是否符合退货条件。
+- paragraph: —
+- paragraph: 现有材料只能支持你核对正面外观；背面和瑕疵细节这两组视角还没有出来。需要我等这两组视角的图出来再继续核对，还是先根据正面图记录你的初步判断？等材料齐了，我再按顺序补齐呈现，再根据你的结论处理退货申请。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 5.3K tok":
+  - generic: 用量 5.3K tok
+- generic: 13:45
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

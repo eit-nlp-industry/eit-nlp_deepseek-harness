@@ -1,0 +1,296 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_OqvKDJUA2tsgu196l0RK0499",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"components\": [\"Tabs\", \"Image\"], \"user_query\": \"填写“售后申请草稿”表单，标题为“售后申请草稿 · SO-2048”，顶部一行说明“以下为预填草稿，请核对并可直接修改后提交；提交仅生成模拟回执，不创建真实工单。”表单包含四个可编辑字段：1) 订单号 预填 \\\"SO-2048\\\"；2) 故障描述 预填 \\\"无法开机\\\"；3) 联系人 预填 \\\"测试联系人A\\\"；4) 图片ID 预填 \\\"bench05-after-front, bench05-after-port\\\"（可编辑文本）。表单下方用 Tabs 组件展示两张随附照片：第一个标签“正面图”内放 Image 组件，src 为 \\\"/api/media/bench05-after-front/content\\\"；第二个标签“接口侧面图”内放 Image 组件，src 为 \\\"/api/media/bench05-after-port/content\\\"。每个标签下用小字注明对应 alt 说明。底部提示“两张图片均为模拟素材，仅供核对”。\", \"business_data\": {\"title\": \"售后申请草稿 · SO-2048\", \"intro\": \"以下为预填草稿，请核对并可直接修改后提交；提交仅生成模拟回执，不创建真实工单。\", \"fields\": [{\"name\": \"order_id\", \"label\": \"订单号\", \"value\": \"SO-2048\", \"editable\": true}, {\"name\": \"issue\", \"label\": \"故障描述\", \"value\": \"无法开机\", \"editable\": true}, {\"name\": \"contact\", \"label\": \"联系人\", \"value\": \"测试联系人A\", \"editable\": true}, {\"name\": \"photo_ids\", \"label\": \"图片ID\", \"value\": \"bench05-after-front, bench05-after-port\", \"editable\": true}], \"tabs\": [{\"label\": \"正面图\", \"image\": {\"src\": \"/api/media/bench05-after-front/content\", \"alt\": \"MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture\"}, \"note\": \"图片ID：bench05-after-front\"}, {\"label\": \"接口侧面图\", \"image\": {\"src\": \"/api/media/bench05-after-port/content\", \"alt\": \"MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture\"}, \"note\": \"图片ID：bench05-after-port\"}], \"footer_note\": \"两张图片均为模拟素材，仅供核对。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "pageTitle",
+                "introText",
+                "formCard",
+                "photosSection",
+                "footerNote"
+              ]
+            },
+            "pageTitle": {
+              "type": "Heading",
+              "props": {
+                "text": "售后申请草稿 · SO-2048",
+                "level": "h1"
+              }
+            },
+            "introText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/intro"
+                },
+                "variant": "default"
+              }
+            },
+            "formCard": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "formStack"
+              ]
+            },
+            "formStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "draftForm",
+                "submitAction"
+              ]
+            },
+            "draftForm": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "input",
+                    "key": "order_id",
+                    "label": "订单号",
+                    "value": "SO-2048"
+                  },
+                  {
+                    "type": "input",
+                    "key": "issue",
+                    "label": "故障描述",
+                    "value": "无法开机"
+                  },
+                  {
+                    "type": "input",
+                    "key": "contact",
+                    "label": "联系人",
+                    "value": "测试联系人A"
+                  },
+                  {
+                    "type": "input",
+                    "key": "photo_ids",
+                    "label": "图片ID",
+                    "value": "bench05-after-front, bench05-after-port"
+                  }
+                ]
+              }
+            },
+            "submitAction": {
+              "type": "Button",
+              "props": {
+                "label": "提交草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "aftersales.draft.submit"
+                  }
+                }
+              }
+            },
+            "photosSection": {
+              "type": "Section",
+              "props": {
+                "title": "随附照片",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "photosTabs"
+              ]
+            },
+            "photosTabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "front",
+                    "label": "正面图"
+                  },
+                  {
+                    "value": "port",
+                    "label": "接口侧面图"
+                  }
+                ],
+                "defaultValue": "front",
+                "disabled": false
+              },
+              "children": [
+                "frontPane",
+                "portPane"
+              ]
+            },
+            "frontPane": {
+              "type": "TabContent",
+              "props": {
+                "value": "front"
+              },
+              "children": [
+                "frontImage",
+                "frontNote"
+              ]
+            },
+            "frontImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-after-front/content",
+                "alt": "MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "4:3",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "frontNote": {
+              "type": "Text",
+              "props": {
+                "content": "图片ID：bench05-after-front",
+                "variant": "muted"
+              }
+            },
+            "portPane": {
+              "type": "TabContent",
+              "props": {
+                "value": "port"
+              },
+              "children": [
+                "portImage",
+                "portNote"
+              ]
+            },
+            "portImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-after-port/content",
+                "alt": "MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "4:3",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "portNote": {
+              "type": "Text",
+              "props": {
+                "content": "图片ID：bench05-after-port",
+                "variant": "muted"
+              }
+            },
+            "footerNote": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/footer_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "售后申请草稿 · SO-2048",
+            "intro": "以下为预填草稿，请核对并可直接修改后提交；提交仅生成模拟回执，不创建真实工单。",
+            "fields": [
+              {
+                "name": "order_id",
+                "label": "订单号",
+                "value": "SO-2048",
+                "editable": true
+              },
+              {
+                "name": "issue",
+                "label": "故障描述",
+                "value": "无法开机",
+                "editable": true
+              },
+              {
+                "name": "contact",
+                "label": "联系人",
+                "value": "测试联系人A",
+                "editable": true
+              },
+              {
+                "name": "photo_ids",
+                "label": "图片ID",
+                "value": "bench05-after-front, bench05-after-port",
+                "editable": true
+              }
+            ],
+            "tabs": [
+              {
+                "label": "正面图",
+                "image": {
+                  "src": "/api/media/bench05-after-front/content",
+                  "alt": "MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture"
+                },
+                "note": "图片ID：bench05-after-front"
+              },
+              {
+                "label": "接口侧面图",
+                "image": {
+                  "src": "/api/media/bench05-after-port/content",
+                  "alt": "MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture"
+                },
+                "note": "图片ID：bench05-after-port"
+              }
+            ],
+            "footer_note": "两张图片均为模拟素材，仅供核对。",
+            "form": {
+              "order_id": "SO-2048",
+              "issue": "无法开机",
+              "contact": "测试联系人A",
+              "photo_ids": "bench05-after-front, bench05-after-port"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_OqvKDJUA2tsgu196l0RK0499"
+      },
+      "toolCallId": "call_00_OqvKDJUA2tsgu196l0RK0499",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "b4782bc1-0053-4713-a152-11564c3f272f"
+    }
+  }
+]

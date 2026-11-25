@@ -1,0 +1,102 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_kirhcQtnjOuWcwvCscwc6449",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"user_query\": \"用一张简洁卡片回答\\\"图书馆是否需要预约\\\"。卡片标题为\\\"图书馆入馆预约\\\"，正文列出两条必要条件：1. 进入图书馆需来访预约；2. 是否获准以馆方答复为准。不要添加其他条目、按钮或表单。\", \"business_data\": {\"title\": \"图书馆入馆预约\", \"summary\": \"需要预约。\", \"conditions\": [\"进入图书馆需来访预约。\", \"是否获准以馆方答复为准。\"], \"fallback_text\": \"需要预约：进入图书馆需来访预约；是否获准以馆方答复为准。\"}, \"locale\": \"zh-CN\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "图书馆入馆预约",
+                "variant": "outlined"
+              },
+              "children": [
+                "summary",
+                "conditions"
+              ]
+            },
+            "summary": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/summary"
+                },
+                "variant": "default"
+              }
+            },
+            "conditions": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "condition-1",
+                "condition-2"
+              ]
+            },
+            "condition-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conditions/0"
+                },
+                "variant": "default"
+              }
+            },
+            "condition-2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conditions/1"
+                },
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "图书馆入馆预约",
+            "summary": "需要预约。",
+            "conditions": [
+              "进入图书馆需来访预约。",
+              "是否获准以馆方答复为准。"
+            ],
+            "fallback_text": "需要预约：进入图书馆需来访预约；是否获准以馆方答复为准。"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_kirhcQtnjOuWcwvCscwc6449"
+      },
+      "toolCallId": "call_00_kirhcQtnjOuWcwvCscwc6449",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5b946826-5eee-4231-86b2-bd85765b46ce"
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_u0ORDFfolvgCAUS3hd9r4877",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"slot\", \"header\": \"补齐时段\", \"question\": \"11月7日（周六）下午，你想把参观预约在哪个时段？（目前只确定是下午，具体时间还需要你确认）\", \"options\": [{\"label\": \"14:00–15:30\", \"description\": \"午后早些开始，结束时间较早。\"}, {\"label\": \"15:30–17:00\", \"description\": \"避开正午，接近傍晚结束。\"}, {\"label\": \"14:30–16:30\", \"description\": \"两小时整段，覆盖中间时段。\"}, {\"label\": \"其他时段（我来填写）\", \"description\": \"如学校有固定时段要求，可直接告诉我具体起止时间。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_u0ORDFfolvgCAUS3hd9r4877"
+      },
+      "toolCallId": "call_00_u0ORDFfolvgCAUS3hd9r4877",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"slot\",\"selected\":[],\"custom\":\"14:00–15:00\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "3a35307b-f3d5-4b94-8402-f4a2aa3eece1"
+    }
+  }
+]

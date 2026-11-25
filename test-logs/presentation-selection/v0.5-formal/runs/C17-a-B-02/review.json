@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 2,
+  "state": 4,
+  "presentation": "partial",
+  "reason": "第3分钟开门后通知，重复关闭事件未重复生成；最终卡片可见，但大量business_data字段及出处重复展示。"
+}

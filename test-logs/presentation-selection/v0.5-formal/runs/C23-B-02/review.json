@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 3,
+  "presentation": "pass",
+  "reason": "真实节点编辑2分钟并保存完整四步文档，模拟version2正确；初始大量字段/事件配置表和未注册组件，最终仅编辑器未明确呈现保存回执，旧提示残留。"
+}

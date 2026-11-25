@@ -1,0 +1,158 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_9wAbyqlcFBGlx3MGB6972900",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"user_query\": \"渲染一个预填的 DynamicForm（动态表单），包含四个字段并已按新需求预填：日期 date（2026-11-07）、时间段 slot（10:00–11:00，约逛一小时）、人数 people（3）、备注 note（只逛约一小时，10点开始，之后吃午饭；不去图书馆）。表单只含这四个字段，不要加入其他富组件。表单下方附一段纯文字兜底说明，复述同样的四项内容，方便无法渲染时阅读。用户确认提交后按用户实际填写的值提交。\", \"business_data\": {\"title\": \"调整后的行程草稿\", \"description\": \"已按“不去图书馆、只逛一小时、10点开始、之后吃午饭”更新预填。原草稿：2026-11-07 14:00–15:00，3人，带两位校外朋友参观，含图书馆。请核对后提交。\", \"fields\": [{\"name\": \"date\", \"label\": \"日期\", \"type\": \"date\", \"value\": \"2026-11-07\"}, {\"name\": \"slot\", \"label\": \"时间段\", \"type\": \"text\", \"value\": \"10:00–11:00\", \"hint\": \"约一小时\"}, {\"name\": \"people\", \"label\": \"人数\", \"type\": \"number\", \"value\": 3}, {\"name\": \"note\", \"label\": \"备注\", \"type\": \"textarea\", \"value\": \"只逛约一小时，10点开始，之后吃午饭；不去图书馆\"}], \"submit_label\": \"提交草稿\", \"fallback_text\": \"草稿（未提交）：日期 2026-11-07；时间段 10:00–11:00（约一小时）；人数 3；备注：只逛约一小时，10点开始，之后吃午饭；不去图书馆。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "form",
+                "submit",
+                "fallback"
+              ]
+            },
+            "form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "date",
+                    "key": "date",
+                    "label": "日期",
+                    "value": "2026-11-07",
+                    "disabled": false
+                  },
+                  {
+                    "type": "input",
+                    "key": "slot",
+                    "label": "时间段",
+                    "value": "10:00–11:00",
+                    "disabled": false,
+                    "placeholder": "约一小时"
+                  },
+                  {
+                    "type": "inputNumber",
+                    "key": "people",
+                    "label": "人数",
+                    "value": 3,
+                    "disabled": false
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "备注",
+                    "value": "只逛约一小时，10点开始，之后吃午饭；不去图书馆",
+                    "disabled": false
+                  }
+                ]
+              }
+            },
+            "submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "fallback": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "调整后的行程草稿",
+            "description": "已按“不去图书馆、只逛一小时、10点开始、之后吃午饭”更新预填。原草稿：2026-11-07 14:00–15:00，3人，带两位校外朋友参观，含图书馆。请核对后提交。",
+            "fields": [
+              {
+                "name": "date",
+                "label": "日期",
+                "type": "date",
+                "value": "2026-11-07"
+              },
+              {
+                "name": "slot",
+                "label": "时间段",
+                "type": "text",
+                "value": "10:00–11:00",
+                "hint": "约一小时"
+              },
+              {
+                "name": "people",
+                "label": "人数",
+                "type": "number",
+                "value": 3
+              },
+              {
+                "name": "note",
+                "label": "备注",
+                "type": "textarea",
+                "value": "只逛约一小时，10点开始，之后吃午饭；不去图书馆"
+              }
+            ],
+            "submit_label": "提交草稿",
+            "fallback_text": "草稿（未提交）：日期 2026-11-07；时间段 10:00–11:00（约一小时）；人数 3；备注：只逛约一小时，10点开始，之后吃午饭；不去图书馆。",
+            "form": {
+              "date": "2026-11-07",
+              "slot": "10:00–11:00",
+              "people": 3,
+              "note": "只逛约一小时，10点开始，之后吃午饭；不去图书馆"
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_9wAbyqlcFBGlx3MGB6972900"
+      },
+      "toolCallId": "call_00_9wAbyqlcFBGlx3MGB6972900",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "e00ea928-e3aa-4f5d-82c8-c0524f58db1c"
+    }
+  }
+]

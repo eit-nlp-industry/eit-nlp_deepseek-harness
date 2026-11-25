@@ -1,0 +1,137 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C11-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_JVCM7E1Fv0wfbheXuXaM6668"
+      },
+      "toolCallId": "call_00_ET_JVCM7E1Fv0wfbheXuXaM6668",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"任务follow-01，目标person-guide，模拟状态following。暂停、继续的结果以随后模拟回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "fd077078-5dcf-47d1-8532-7e62ef07f8c4"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C11-B-02"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_wjGOis6N3Xdx32psd7ar4380"
+      },
+      "toolCallId": "call_00_wjGOis6N3Xdx32psd7ar4380",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"任务follow-01，目标person-guide，模拟状态following。暂停、继续的结果以随后模拟回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "0ef1fb62-466c-44d2-975d-954b52002fe1"
+    }
+  },
+  {
+    "call": {
+      "seq": 46,
+      "arguments": {
+        "action": "read",
+        "run_id": "C11-B-02"
+      }
+    },
+    "result_seq": 47,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_io7neIn01rLh5PsSDPbe7740"
+      },
+      "toolCallId": "call_00_io7neIn01rLh5PsSDPbe7740",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"follow-01已模拟暂停，目标仍为person-guide。\",\"assets\":[],\"status\":\"paused\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "16bf997c-6182-4aa2-a941-7dd1a05a5fe5"
+    }
+  },
+  {
+    "call": {
+      "seq": 67,
+      "arguments": {
+        "action": "read",
+        "run_id": "C11-B-02"
+      }
+    },
+    "result_seq": 68,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_7FlJ2XDSoYpm6mgx89dv0564"
+      },
+      "toolCallId": "call_00_7FlJ2XDSoYpm6mgx89dv0564",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"follow-01已模拟暂停，目标仍为person-guide。\",\"assets\":[],\"status\":\"paused\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "44a646a9-75bf-4569-b0dd-e8f275f576a6"
+    }
+  },
+  {
+    "call": {
+      "seq": 88,
+      "arguments": {
+        "action": "read",
+        "run_id": "C11-B-02"
+      }
+    },
+    "result_seq": 89,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_SlnwLsO1aiQxMMFTsL7F2810"
+      },
+      "toolCallId": "call_00_SlnwLsO1aiQxMMFTsL7F2810",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C11\",\"facts\":\"follow-01已模拟继续跟随同一目标person-guide。\",\"assets\":[],\"status\":\"following\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "9e42d97c-d223-4eb8-8312-a0b04fd6d805"
+    }
+  }
+]

@@ -1,0 +1,6105 @@
+[
+  {
+    "run_id": "C01-A-01",
+    "session_id": "session-1a6fb412-7d9c-45e8-8215-8dd867094085",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5375,
+    "render_ms": 0,
+    "active_ms": 5375,
+    "usage": {
+      "inputTokens": 738,
+      "outputTokens": 448,
+      "cacheReadTokens": 3968,
+      "cacheWriteTokens": 0,
+      "totalTokens": 5154
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C01-A-02",
+    "session_id": "session-117f32ca-4394-40c0-96df-94d258242e31",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5437,
+    "render_ms": 0,
+    "active_ms": 5437,
+    "usage": {
+      "inputTokens": 738,
+      "outputTokens": 578,
+      "cacheReadTokens": 3968,
+      "cacheWriteTokens": 0,
+      "totalTokens": 5284
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C01-B-01",
+    "session_id": "session-d2f0d7d4-728d-4d67-b281-61a12f9752c4",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 10124,
+    "render_ms": 15411,
+    "active_ms": 25535,
+    "usage": {
+      "inputTokens": 1042,
+      "outputTokens": 1135,
+      "cacheReadTokens": 7040,
+      "cacheWriteTokens": 0,
+      "totalTokens": 9217
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C01-B-02",
+    "session_id": "session-f9a02c3f-ff13-44ab-8fa7-a2e0fd4dbcec",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 9060,
+    "render_ms": 44011,
+    "active_ms": 53071,
+    "usage": {
+      "inputTokens": 1018,
+      "outputTokens": 1128,
+      "cacheReadTokens": 7296,
+      "cacheWriteTokens": 0,
+      "totalTokens": 9442
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-a-A-01",
+    "session_id": "session-a9286754-c296-4e27-956f-555ce2667b40",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 2262,
+    "render_ms": 0,
+    "active_ms": 2262,
+    "usage": {
+      "inputTokens": 455,
+      "outputTokens": 155,
+      "cacheReadTokens": 3840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4450
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-a-A-02",
+    "session_id": "session-38283c22-9ba3-4fed-aa78-7248c60862ee",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 2286,
+    "render_ms": 0,
+    "active_ms": 2286,
+    "usage": {
+      "inputTokens": 462,
+      "outputTokens": 178,
+      "cacheReadTokens": 3840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4480
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-a-B-01",
+    "session_id": "session-3909378f-f3ea-41db-ad01-f162848dae7b",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5966,
+    "render_ms": 33913,
+    "active_ms": 39879,
+    "usage": {
+      "inputTokens": 845,
+      "outputTokens": 754,
+      "cacheReadTokens": 6400,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7999
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-a-B-02",
+    "session_id": "session-3e46ce40-721e-42f3-be6f-02458c8edf51",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 4419,
+    "render_ms": 27422,
+    "active_ms": 31841,
+    "usage": {
+      "inputTokens": 702,
+      "outputTokens": 503,
+      "cacheReadTokens": 6272,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7477
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-b-A-01",
+    "session_id": "session-67514c95-2120-465a-9332-6a8d97e50bdb",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 3062,
+    "render_ms": 0,
+    "active_ms": 3062,
+    "usage": {
+      "inputTokens": 463,
+      "outputTokens": 237,
+      "cacheReadTokens": 3840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4540
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-b-A-02",
+    "session_id": "session-f0b021d1-cadc-4a2e-928c-0274eccd4e43",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 2997,
+    "render_ms": 0,
+    "active_ms": 2997,
+    "usage": {
+      "inputTokens": 457,
+      "outputTokens": 210,
+      "cacheReadTokens": 3840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4507
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-b-B-01",
+    "session_id": "session-6134bdb3-e5db-4212-8e55-c3c9b5404550",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5104,
+    "render_ms": 15519,
+    "active_ms": 20623,
+    "usage": {
+      "inputTokens": 743,
+      "outputTokens": 664,
+      "cacheReadTokens": 6400,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7807
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C02-b-B-02",
+    "session_id": "session-c0edf361-a302-44b7-86a0-a87e0f30ceae",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 6090,
+    "render_ms": 31199,
+    "active_ms": 37289,
+    "usage": {
+      "inputTokens": 732,
+      "outputTokens": 812,
+      "cacheReadTokens": 6528,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8072
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C03-A-01",
+    "session_id": "session-a49d44f8-062d-4cd0-a7ce-d6cd6f11d3d0",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 16669,
+    "render_ms": 0,
+    "active_ms": 16669,
+    "usage": {
+      "inputTokens": 894,
+      "outputTokens": 2069,
+      "cacheReadTokens": 10496,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13459
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C03-A-02",
+    "session_id": "session-e563995c-501c-4bc6-add4-a8842061989d",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 18461,
+    "render_ms": 0,
+    "active_ms": 18461,
+    "usage": {
+      "inputTokens": 1216,
+      "outputTokens": 2398,
+      "cacheReadTokens": 13696,
+      "cacheWriteTokens": 0,
+      "totalTokens": 17310
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C03-B-01",
+    "session_id": "session-1166b47a-1a51-499f-ba52-a0352db87b69",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 18158,
+    "render_ms": 37722,
+    "active_ms": 55880,
+    "usage": {
+      "inputTokens": 1130,
+      "outputTokens": 2555,
+      "cacheReadTokens": 13696,
+      "cacheWriteTokens": 0,
+      "totalTokens": 17381
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C03-B-02",
+    "session_id": "session-666e54e2-1834-4fdc-9ce0-1d7c830de576",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 14163,
+    "render_ms": 29274,
+    "active_ms": 43437,
+    "usage": {
+      "inputTokens": 1178,
+      "outputTokens": 1901,
+      "cacheReadTokens": 10368,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13447
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-a-A-01",
+    "session_id": "session-c4406c4c-4e17-4c46-ae0d-a00ef252cf19",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 7182,
+    "render_ms": 0,
+    "active_ms": 7182,
+    "usage": {
+      "inputTokens": 581,
+      "outputTokens": 709,
+      "cacheReadTokens": 6400,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7690
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-a-A-02",
+    "session_id": "session-620b944c-849a-43c4-921b-2657cf960775",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5021,
+    "render_ms": 0,
+    "active_ms": 5021,
+    "usage": {
+      "inputTokens": 470,
+      "outputTokens": 396,
+      "cacheReadTokens": 6272,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7138
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-a-B-01",
+    "session_id": "session-00761dc4-bf95-4965-a3a7-a9a4524ff767",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 7939,
+    "render_ms": 20524,
+    "active_ms": 28463,
+    "usage": {
+      "inputTokens": 611,
+      "outputTokens": 1051,
+      "cacheReadTokens": 6656,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8318
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-a-B-02",
+    "session_id": "session-a399eb83-10a4-4d92-ac72-c6bbebdf485c",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 11248,
+    "render_ms": 64875,
+    "active_ms": 76123,
+    "usage": {
+      "inputTokens": 763,
+      "outputTokens": 1381,
+      "cacheReadTokens": 9344,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11488
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-b-A-01",
+    "session_id": "session-a22a63dd-7241-450b-b04e-103a308a8493",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 10149,
+    "render_ms": 0,
+    "active_ms": 10149,
+    "usage": {
+      "inputTokens": 1013,
+      "outputTokens": 1101,
+      "cacheReadTokens": 12032,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14146
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 2,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-b-A-02",
+    "session_id": "session-0a43b40d-9f78-480b-878c-b00ac3ea20a1",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 6738,
+    "render_ms": 0,
+    "active_ms": 6738,
+    "usage": {
+      "inputTokens": 888,
+      "outputTokens": 725,
+      "cacheReadTokens": 8832,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10445
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-b-B-01",
+    "session_id": "session-c883b04a-b5d6-4de2-8469-16e13cb2f662",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10251,
+    "render_ms": 18361,
+    "active_ms": 28612,
+    "usage": {
+      "inputTokens": 1172,
+      "outputTokens": 1117,
+      "cacheReadTokens": 12032,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14321
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-b-B-02",
+    "session_id": "session-d51ce7ad-ff4b-46e1-80d2-e467ccf9a134",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 9383,
+    "render_ms": 19659,
+    "active_ms": 29042,
+    "usage": {
+      "inputTokens": 962,
+      "outputTokens": 1100,
+      "cacheReadTokens": 9728,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11790
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-c-A-01",
+    "session_id": "session-28de902a-90a3-4bae-9cc2-ce9cef2a6a37",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 10398,
+    "render_ms": 0,
+    "active_ms": 10398,
+    "usage": {
+      "inputTokens": 1018,
+      "outputTokens": 1341,
+      "cacheReadTokens": 9088,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11447
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-c-A-02",
+    "session_id": "session-5a2e830a-bd49-45f4-aa33-0a37189c9602",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5034,
+    "render_ms": 0,
+    "active_ms": 5034,
+    "usage": {
+      "inputTokens": 1129,
+      "outputTokens": 499,
+      "cacheReadTokens": 8192,
+      "cacheWriteTokens": 0,
+      "totalTokens": 9820
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-c-B-01",
+    "session_id": "session-21165a04-5e03-4a6d-a4e2-1b436cb7dc7c",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 7406,
+    "render_ms": 18366,
+    "active_ms": 25772,
+    "usage": {
+      "inputTokens": 1043,
+      "outputTokens": 746,
+      "cacheReadTokens": 8960,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10749
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C04-c-B-02",
+    "session_id": "session-8e55d76f-7069-4a99-945e-fdc23ee23e65",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 12899,
+    "render_ms": 56801,
+    "active_ms": 69700,
+    "usage": {
+      "inputTokens": 1009,
+      "outputTokens": 1160,
+      "cacheReadTokens": 9728,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11897
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C05-A-01",
+    "session_id": "session-7721ad7b-05a1-4a09-993f-b94f64f887af",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 12785,
+    "render_ms": 0,
+    "active_ms": 12785,
+    "usage": {
+      "inputTokens": 1110,
+      "outputTokens": 1578,
+      "cacheReadTokens": 13440,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16128
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C05-A-02",
+    "session_id": "session-23046d1e-0b18-47b5-a640-94179b017830",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8515,
+    "render_ms": 0,
+    "active_ms": 8515,
+    "usage": {
+      "inputTokens": 1290,
+      "outputTokens": 1060,
+      "cacheReadTokens": 11904,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14254
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C05-B-01",
+    "session_id": "session-65c1e46f-a419-4635-bdf0-eda007105966",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 11095,
+    "render_ms": 45084,
+    "active_ms": 56179,
+    "usage": {
+      "inputTokens": 1183,
+      "outputTokens": 1697,
+      "cacheReadTokens": 13184,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16064
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C05-B-02",
+    "session_id": "session-1509a7c5-9aec-4850-bfab-1461b5c25f69",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 7669,
+    "render_ms": 33138,
+    "active_ms": 40807,
+    "usage": {
+      "inputTokens": 825,
+      "outputTokens": 1149,
+      "cacheReadTokens": 6016,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7990
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C06-A-01",
+    "session_id": "session-270f98c3-d32b-46c5-bbc4-2fd169e168ce",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 9128,
+    "render_ms": 0,
+    "active_ms": 9128,
+    "usage": {
+      "inputTokens": 1115,
+      "outputTokens": 1267,
+      "cacheReadTokens": 9856,
+      "cacheWriteTokens": 0,
+      "totalTokens": 12238
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C06-A-02",
+    "session_id": "session-f42fbae5-b169-4d41-9a27-bffb397a3dc0",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8689,
+    "render_ms": 0,
+    "active_ms": 8689,
+    "usage": {
+      "inputTokens": 1281,
+      "outputTokens": 1043,
+      "cacheReadTokens": 11776,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14100
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C06-B-01",
+    "session_id": "session-283f7d85-d00d-4d92-b224-47e32ce386bd",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 9311,
+    "render_ms": 28905,
+    "active_ms": 38216,
+    "usage": {
+      "inputTokens": 1118,
+      "outputTokens": 1390,
+      "cacheReadTokens": 10240,
+      "cacheWriteTokens": 0,
+      "totalTokens": 12748
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C06-B-02",
+    "session_id": "session-f12b4986-9207-4379-afe6-25add1549233",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8291,
+    "render_ms": 32385,
+    "active_ms": 40676,
+    "usage": {
+      "inputTokens": 1095,
+      "outputTokens": 1270,
+      "cacheReadTokens": 10112,
+      "cacheWriteTokens": 0,
+      "totalTokens": 12477
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-a-A-01",
+    "session_id": "session-8bb0441a-cab4-4ba1-b5fb-5bff46582afa",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 17588,
+    "render_ms": 0,
+    "active_ms": 17588,
+    "usage": {
+      "inputTokens": 1746,
+      "outputTokens": 2636,
+      "cacheReadTokens": 22912,
+      "cacheWriteTokens": 0,
+      "totalTokens": 27294
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 2,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-a-A-02",
+    "session_id": "session-ea947be3-b755-4eb5-99f3-209dcabbbab3",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 19438,
+    "render_ms": 0,
+    "active_ms": 19438,
+    "usage": {
+      "inputTokens": 1590,
+      "outputTokens": 2921,
+      "cacheReadTokens": 23680,
+      "cacheWriteTokens": 0,
+      "totalTokens": 28191
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 2,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-a-B-01",
+    "session_id": "session-4a7b713e-1715-495a-8a83-7422016bea27",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 32955,
+    "render_ms": 331858,
+    "active_ms": 364813,
+    "usage": {
+      "inputTokens": 2045,
+      "outputTokens": 5372,
+      "cacheReadTokens": 37120,
+      "cacheWriteTokens": 0,
+      "totalTokens": 44537
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 3,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-a-B-02",
+    "session_id": "session-0d09273b-95d4-4337-917d-c1f6ccdb028f",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 31957,
+    "render_ms": 147529,
+    "active_ms": 179486,
+    "usage": {
+      "inputTokens": 1750,
+      "outputTokens": 5300,
+      "cacheReadTokens": 35840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 42890
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 3,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-b-A-01",
+    "session_id": "session-3c13873b-cbc4-4854-b74f-a2b19ba38ba7",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 18000,
+    "render_ms": 0,
+    "active_ms": 18000,
+    "usage": {
+      "inputTokens": 1258,
+      "outputTokens": 2409,
+      "cacheReadTokens": 14848,
+      "cacheWriteTokens": 0,
+      "totalTokens": 18515
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 2,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-b-A-02",
+    "session_id": "session-031c138b-798d-4f49-968c-bc050a553d95",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 17498,
+    "render_ms": 0,
+    "active_ms": 17498,
+    "usage": {
+      "inputTokens": 1508,
+      "outputTokens": 2186,
+      "cacheReadTokens": 17280,
+      "cacheWriteTokens": 0,
+      "totalTokens": 20974
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 2,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-b-B-01",
+    "session_id": "session-0a7eef5c-ae14-4c9a-b552-f85d5f51b1ce",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 26484,
+    "render_ms": 113157,
+    "active_ms": 139641,
+    "usage": {
+      "inputTokens": 1374,
+      "outputTokens": 4031,
+      "cacheReadTokens": 20224,
+      "cacheWriteTokens": 0,
+      "totalTokens": 25629
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C07-b-B-02",
+    "session_id": "session-2f3c0936-a127-4094-a54c-6b31e5583851",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 24692,
+    "render_ms": 64360,
+    "active_ms": 89052,
+    "usage": {
+      "inputTokens": 1274,
+      "outputTokens": 3972,
+      "cacheReadTokens": 19200,
+      "cacheWriteTokens": 0,
+      "totalTokens": 24446
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 1,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C08-A-01",
+    "session_id": "session-39e012de-2363-49b9-b96a-20b8d66ed7f5",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8596,
+    "render_ms": 0,
+    "active_ms": 8596,
+    "usage": {
+      "inputTokens": 1093,
+      "outputTokens": 1003,
+      "cacheReadTokens": 9216,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11312
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C08-A-02",
+    "session_id": "session-5711a379-6602-48ef-a8b1-52bba4eb7b61",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 8480,
+    "render_ms": 0,
+    "active_ms": 8480,
+    "usage": {
+      "inputTokens": 1203,
+      "outputTokens": 987,
+      "cacheReadTokens": 9216,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11406
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C08-B-01",
+    "session_id": "session-29b3f28a-cf98-417d-ac8b-a65f76ae1ca7",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 11423,
+    "render_ms": 11973,
+    "active_ms": 23396,
+    "usage": {
+      "inputTokens": 1280,
+      "outputTokens": 1404,
+      "cacheReadTokens": 13696,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16380
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C08-B-02",
+    "session_id": "session-1e5f1aa1-1080-4e9c-8c3c-315d9652029a",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 12783,
+    "render_ms": 50015,
+    "active_ms": 62798,
+    "usage": {
+      "inputTokens": 1207,
+      "outputTokens": 1741,
+      "cacheReadTokens": 14080,
+      "cacheWriteTokens": 0,
+      "totalTokens": 17028
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C09-A-01",
+    "session_id": "session-a28c623d-dc41-47b7-8198-57f0892f3f67",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 8995,
+    "render_ms": 0,
+    "active_ms": 8995,
+    "usage": {
+      "inputTokens": 1631,
+      "outputTokens": 753,
+      "cacheReadTokens": 12416,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14800
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C09-A-02",
+    "session_id": "session-ac2f45fd-72e5-4fb8-8cbd-69e770a4733d",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 8211,
+    "render_ms": 0,
+    "active_ms": 8211,
+    "usage": {
+      "inputTokens": 1404,
+      "outputTokens": 467,
+      "cacheReadTokens": 8832,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10703
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C09-B-01",
+    "session_id": "session-3943d9c1-51bc-4294-bd37-d5f88518c5f2",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 12024,
+    "render_ms": 23009,
+    "active_ms": 35033,
+    "usage": {
+      "inputTokens": 1535,
+      "outputTokens": 1384,
+      "cacheReadTokens": 13312,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16231
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C09-B-02",
+    "session_id": "session-ed177d4a-0bc8-40f3-a367-3f31219a5129",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 15533,
+    "render_ms": 134483,
+    "active_ms": 150016,
+    "usage": {
+      "inputTokens": 1844,
+      "outputTokens": 2085,
+      "cacheReadTokens": 18048,
+      "cacheWriteTokens": 0,
+      "totalTokens": 21977
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C10-A-01",
+    "session_id": "session-f888d0aa-de7a-43b1-8c5a-80be202ee5e2",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 2,
+    "model_ms": 18138,
+    "render_ms": 0,
+    "active_ms": 18138,
+    "usage": {
+      "inputTokens": 1687,
+      "outputTokens": 2167,
+      "cacheReadTokens": 20480,
+      "cacheWriteTokens": 0,
+      "totalTokens": 24334
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C10-A-02",
+    "session_id": "session-2e1f7f4e-0acc-435c-921f-5cc054b192df",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 14842,
+    "render_ms": 0,
+    "active_ms": 14842,
+    "usage": {
+      "inputTokens": 1933,
+      "outputTokens": 1550,
+      "cacheReadTokens": 23552,
+      "cacheWriteTokens": 0,
+      "totalTokens": 27035
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C10-B-01",
+    "session_id": "session-59a7446e-3b04-4215-9d59-7795e0c7d4ff",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 2,
+    "model_ms": 25171,
+    "render_ms": 100982,
+    "active_ms": 126153,
+    "usage": {
+      "inputTokens": 2701,
+      "outputTokens": 3239,
+      "cacheReadTokens": 40448,
+      "cacheWriteTokens": 0,
+      "totalTokens": 46388
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question"
+    ],
+    "render_calls": 3,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C10-B-02",
+    "session_id": "session-1edab3c3-a95e-49f7-8449-38d9947feec1",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 2,
+    "model_ms": 34244,
+    "render_ms": 114819,
+    "active_ms": 149063,
+    "usage": {
+      "inputTokens": 2345,
+      "outputTokens": 5024,
+      "cacheReadTokens": 49152,
+      "cacheWriteTokens": 0,
+      "totalTokens": 56521
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "ask_user_question"
+    ],
+    "render_calls": 4,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C11-A-01",
+    "session_id": "session-d7d3d7ff-04ff-42a7-926e-40bddccab31c",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 10069,
+    "render_ms": 0,
+    "active_ms": 10069,
+    "usage": {
+      "inputTokens": 1609,
+      "outputTokens": 755,
+      "cacheReadTokens": 19840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 22204
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C11-A-02",
+    "session_id": "session-fd62c6f0-e902-4316-8d6b-b787fdadac53",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 7335,
+    "render_ms": 0,
+    "active_ms": 7335,
+    "usage": {
+      "inputTokens": 1162,
+      "outputTokens": 362,
+      "cacheReadTokens": 10752,
+      "cacheWriteTokens": 0,
+      "totalTokens": 12276
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C11-B-01",
+    "session_id": "session-305fecf9-6ba3-40be-81b7-c6af5c0c5579",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 21792,
+    "render_ms": 51228,
+    "active_ms": 73020,
+    "usage": {
+      "inputTokens": 2130,
+      "outputTokens": 2050,
+      "cacheReadTokens": 28160,
+      "cacheWriteTokens": 0,
+      "totalTokens": 32340
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 4,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C11-B-02",
+    "session_id": "session-68efa9f8-216a-4ce0-bf87-36f9027c2457",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 25755,
+    "render_ms": 49800,
+    "active_ms": 75555,
+    "usage": {
+      "inputTokens": 3099,
+      "outputTokens": 2040,
+      "cacheReadTokens": 41856,
+      "cacheWriteTokens": 0,
+      "totalTokens": 46995
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 4,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C12-A-01",
+    "session_id": "session-84cd7e89-03df-4718-b9cf-938a02b011cf",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 14658,
+    "render_ms": 0,
+    "active_ms": 14658,
+    "usage": {
+      "inputTokens": 1629,
+      "outputTokens": 1256,
+      "cacheReadTokens": 15872,
+      "cacheWriteTokens": 0,
+      "totalTokens": 18757
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C12-A-02",
+    "session_id": "session-4e46f02d-ebb9-47cd-8666-fa61bed569df",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 13153,
+    "render_ms": 0,
+    "active_ms": 13153,
+    "usage": {
+      "inputTokens": 1535,
+      "outputTokens": 1596,
+      "cacheReadTokens": 16640,
+      "cacheWriteTokens": 0,
+      "totalTokens": 19771
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C12-B-01",
+    "session_id": "session-8d12d3c3-974c-40ef-a57c-7380d7746278",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 20339,
+    "render_ms": 222019,
+    "active_ms": 242358,
+    "usage": {
+      "inputTokens": 1956,
+      "outputTokens": 2490,
+      "cacheReadTokens": 27904,
+      "cacheWriteTokens": 0,
+      "totalTokens": 32350
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 2,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C12-B-02",
+    "session_id": "session-56a893e3-acc0-476a-aefc-c92df5e64288",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 17442,
+    "render_ms": 38372,
+    "active_ms": 55814,
+    "usage": {
+      "inputTokens": 1400,
+      "outputTokens": 1893,
+      "cacheReadTokens": 17920,
+      "cacheWriteTokens": 0,
+      "totalTokens": 21213
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C13-A-01",
+    "session_id": "session-113ec069-2900-48a1-8340-31aacb331fce",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 3213,
+    "render_ms": 0,
+    "active_ms": 3213,
+    "usage": {
+      "inputTokens": 869,
+      "outputTokens": 408,
+      "cacheReadTokens": 3712,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4989
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C13-A-02",
+    "session_id": "session-fa180c0a-9a98-4f2c-a183-e3390a10b9e5",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 4696,
+    "render_ms": 0,
+    "active_ms": 4696,
+    "usage": {
+      "inputTokens": 872,
+      "outputTokens": 640,
+      "cacheReadTokens": 3712,
+      "cacheWriteTokens": 0,
+      "totalTokens": 5224
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C13-B-01",
+    "session_id": "session-a6ca8b16-b152-4fef-8b4a-028250342416",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 10685,
+    "render_ms": 35875,
+    "active_ms": 46560,
+    "usage": {
+      "inputTokens": 1046,
+      "outputTokens": 1124,
+      "cacheReadTokens": 7040,
+      "cacheWriteTokens": 0,
+      "totalTokens": 9210
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C13-B-02",
+    "session_id": "session-cfa77ba2-a453-4f3b-b637-02202d6d4f34",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 14941,
+    "render_ms": 205482,
+    "active_ms": 220423,
+    "usage": {
+      "inputTokens": 1163,
+      "outputTokens": 2224,
+      "cacheReadTokens": 11904,
+      "cacheWriteTokens": 0,
+      "totalTokens": 15291
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C14-A-01",
+    "session_id": "session-a1927ae7-66ab-4b0c-84c5-c41e0f930c80",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 9337,
+    "render_ms": 0,
+    "active_ms": 9337,
+    "usage": {
+      "inputTokens": 1807,
+      "outputTokens": 729,
+      "cacheReadTokens": 14592,
+      "cacheWriteTokens": 0,
+      "totalTokens": 17128
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C14-A-02",
+    "session_id": "session-3db1b537-5875-40f5-965a-e65d73f1411d",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 10512,
+    "render_ms": 0,
+    "active_ms": 10512,
+    "usage": {
+      "inputTokens": 1892,
+      "outputTokens": 1011,
+      "cacheReadTokens": 15744,
+      "cacheWriteTokens": 0,
+      "totalTokens": 18647
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C14-B-01",
+    "session_id": "session-43a0434b-57a1-449a-aaa1-dc1b38a31553",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 16013,
+    "render_ms": 39005,
+    "active_ms": 55018,
+    "usage": {
+      "inputTokens": 2696,
+      "outputTokens": 1739,
+      "cacheReadTokens": 27776,
+      "cacheWriteTokens": 0,
+      "totalTokens": 32211
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C14-B-02",
+    "session_id": "session-2d1d2698-2dda-43ff-93b1-b3c6fcba263d",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 22243,
+    "render_ms": 40801,
+    "active_ms": 63044,
+    "usage": {
+      "inputTokens": 2598,
+      "outputTokens": 3202,
+      "cacheReadTokens": 33792,
+      "cacheWriteTokens": 0,
+      "totalTokens": 39592
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C15-A-01",
+    "session_id": "session-2c4f2fde-4b00-4f00-9c16-bcb60ad6ce42",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 22390,
+    "render_ms": 0,
+    "active_ms": 22390,
+    "usage": {
+      "inputTokens": 3336,
+      "outputTokens": 2677,
+      "cacheReadTokens": 47872,
+      "cacheWriteTokens": 0,
+      "totalTokens": 53885
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 3,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C15-A-02",
+    "session_id": "session-57886974-1304-49a6-bf8c-909825973109",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 6,
+    "turns_ended": 6,
+    "model_ms": 18526,
+    "render_ms": 0,
+    "active_ms": 18526,
+    "usage": {
+      "inputTokens": 2945,
+      "outputTokens": 1993,
+      "cacheReadTokens": 34432,
+      "cacheWriteTokens": 0,
+      "totalTokens": 39370
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C15-B-01",
+    "session_id": "session-e1515c27-75cb-46c7-a406-42e983220ba7",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 32482,
+    "render_ms": 86904,
+    "active_ms": 119386,
+    "usage": {
+      "inputTokens": 4438,
+      "outputTokens": 4556,
+      "cacheReadTokens": 94592,
+      "cacheWriteTokens": 0,
+      "totalTokens": 103586
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 4,
+    "question_calls": 5,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C15-B-02",
+    "session_id": "session-eb2a7e70-27ee-47ac-ac8e-550ebfafc5a9",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 27431,
+    "render_ms": 144777,
+    "active_ms": 172208,
+    "usage": {
+      "inputTokens": 3806,
+      "outputTokens": 3390,
+      "cacheReadTokens": 62592,
+      "cacheWriteTokens": 0,
+      "totalTokens": 69788
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 4,
+    "question_calls": 3,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C16-A-01",
+    "session_id": "session-e66619d0-f8cd-489f-89e4-7ac6798088c2",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 19010,
+    "render_ms": 0,
+    "active_ms": 19010,
+    "usage": {
+      "inputTokens": 2098,
+      "outputTokens": 2441,
+      "cacheReadTokens": 30848,
+      "cacheWriteTokens": 0,
+      "totalTokens": 35387
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C16-A-02",
+    "session_id": "session-9746a149-3447-4a89-84a1-de868cc6074e",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 15806,
+    "render_ms": 0,
+    "active_ms": 15806,
+    "usage": {
+      "inputTokens": 2213,
+      "outputTokens": 1666,
+      "cacheReadTokens": 23168,
+      "cacheWriteTokens": 0,
+      "totalTokens": 27047
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C16-B-01",
+    "session_id": "session-225cfaa8-4167-4900-b97f-8a1dd5fe7128",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 29788,
+    "render_ms": 106072,
+    "active_ms": 135860,
+    "usage": {
+      "inputTokens": 2758,
+      "outputTokens": 3992,
+      "cacheReadTokens": 45568,
+      "cacheWriteTokens": 0,
+      "totalTokens": 52318
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 4,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C16-B-02",
+    "session_id": "session-76edc06a-5e77-46f7-b171-8eb91a6e8c73",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 47896,
+    "render_ms": 437537,
+    "active_ms": 485433,
+    "usage": {
+      "inputTokens": 3550,
+      "outputTokens": 6270,
+      "cacheReadTokens": 83456,
+      "cacheWriteTokens": 0,
+      "totalTokens": 93276
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 5,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-a-A-01",
+    "session_id": "session-ece0d1bc-0611-44ab-9600-220feb65db34",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 11380,
+    "render_ms": 0,
+    "active_ms": 11380,
+    "usage": {
+      "inputTokens": 1683,
+      "outputTokens": 782,
+      "cacheReadTokens": 13952,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16417
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 4,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-a-A-02",
+    "session_id": "session-ed811739-ba9f-45c0-adaa-55a83d48b2dd",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 12205,
+    "render_ms": 0,
+    "active_ms": 12205,
+    "usage": {
+      "inputTokens": 1607,
+      "outputTokens": 832,
+      "cacheReadTokens": 13824,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16263
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 4,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-a-B-01",
+    "session_id": "session-6b3cbcb1-bbb8-49d5-bc5c-bd7fc20a8c7a",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 23236,
+    "render_ms": 37116,
+    "active_ms": 60352,
+    "usage": {
+      "inputTokens": 1852,
+      "outputTokens": 2472,
+      "cacheReadTokens": 25472,
+      "cacheWriteTokens": 0,
+      "totalTokens": 29796
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 4,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-a-B-02",
+    "session_id": "session-4f75aac3-9271-4f97-8b9b-1dd5b693d8b4",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 4,
+    "turns_ended": 4,
+    "model_ms": 24145,
+    "render_ms": 232138,
+    "active_ms": 256283,
+    "usage": {
+      "inputTokens": 2114,
+      "outputTokens": 2078,
+      "cacheReadTokens": 28288,
+      "cacheWriteTokens": 0,
+      "totalTokens": 32480
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 3,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 4,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-b-A-01",
+    "session_id": "session-9975caec-989f-40d7-b200-7a84931e7c00",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 6809,
+    "render_ms": 0,
+    "active_ms": 6809,
+    "usage": {
+      "inputTokens": 1218,
+      "outputTokens": 432,
+      "cacheReadTokens": 10752,
+      "cacheWriteTokens": 0,
+      "totalTokens": 12402
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-b-A-02",
+    "session_id": "session-a0e61f75-245f-410f-9108-24924acb2ab4",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 5608,
+    "render_ms": 0,
+    "active_ms": 5608,
+    "usage": {
+      "inputTokens": 1207,
+      "outputTokens": 244,
+      "cacheReadTokens": 10496,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11947
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-b-B-01",
+    "session_id": "session-b1d7ad47-152f-4172-9a04-4750932a273d",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 16954,
+    "render_ms": 12371,
+    "active_ms": 29325,
+    "usage": {
+      "inputTokens": 1663,
+      "outputTokens": 1553,
+      "cacheReadTokens": 15744,
+      "cacheWriteTokens": 0,
+      "totalTokens": 18960
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C17-b-B-02",
+    "session_id": "session-67665a33-59d4-4e15-a2f7-0b917a6a3c53",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 16197,
+    "render_ms": 123371,
+    "active_ms": 139568,
+    "usage": {
+      "inputTokens": 1371,
+      "outputTokens": 1623,
+      "cacheReadTokens": 16896,
+      "cacheWriteTokens": 0,
+      "totalTokens": 19890
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C18-A-01",
+    "session_id": "session-c3bf0462-5f86-4886-a1b0-151622455207",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 5,
+    "turns_ended": 5,
+    "model_ms": 28376,
+    "render_ms": 0,
+    "active_ms": 28376,
+    "usage": {
+      "inputTokens": 1965,
+      "outputTokens": 2371,
+      "cacheReadTokens": 21120,
+      "cacheWriteTokens": 0,
+      "totalTokens": 25456
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 5,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C18-A-02",
+    "session_id": "session-0c68ccd3-7068-451b-8571-c96b37f8c9db",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 5,
+    "turns_ended": 5,
+    "model_ms": 23537,
+    "render_ms": 0,
+    "active_ms": 23537,
+    "usage": {
+      "inputTokens": 2802,
+      "outputTokens": 1689,
+      "cacheReadTokens": 25984,
+      "cacheWriteTokens": 0,
+      "totalTokens": 30475
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 6,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C18-B-01",
+    "session_id": "session-432561ed-9e1b-4cbb-9b7c-5c9b64d4731a",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 5,
+    "turns_ended": 5,
+    "model_ms": 52178,
+    "render_ms": 403044,
+    "active_ms": 455222,
+    "usage": {
+      "inputTokens": 3986,
+      "outputTokens": 7447,
+      "cacheReadTokens": 111104,
+      "cacheWriteTokens": 0,
+      "totalTokens": 122537
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 6,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 5,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C18-B-02",
+    "session_id": "session-12d511dc-13a5-42a6-90e6-db939dae7cda",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 5,
+    "turns_ended": 5,
+    "model_ms": 47058,
+    "render_ms": 334936,
+    "active_ms": 381994,
+    "usage": {
+      "inputTokens": 3605,
+      "outputTokens": 6857,
+      "cacheReadTokens": 101504,
+      "cacheWriteTokens": 0,
+      "totalTokens": 111966
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 3,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 5,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C19-A-01",
+    "session_id": "session-2c6cfa11-e86f-43f9-a00b-0485cadfbc2f",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 7956,
+    "render_ms": 0,
+    "active_ms": 7956,
+    "usage": {
+      "inputTokens": 1295,
+      "outputTokens": 896,
+      "cacheReadTokens": 11520,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13711
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C19-A-02",
+    "session_id": "session-86e1e1fb-70f0-4a95-9f74-fec6b7d5cfce",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 7615,
+    "render_ms": 0,
+    "active_ms": 7615,
+    "usage": {
+      "inputTokens": 1201,
+      "outputTokens": 788,
+      "cacheReadTokens": 11392,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13381
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C19-B-01",
+    "session_id": "session-837c3575-f74e-454d-9752-f555ddd0626f",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10578,
+    "render_ms": 48039,
+    "active_ms": 58617,
+    "usage": {
+      "inputTokens": 1149,
+      "outputTokens": 1637,
+      "cacheReadTokens": 10624,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13410
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C19-B-02",
+    "session_id": "session-ea6e1b7d-f781-4948-b5dd-deb73b8025da",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10367,
+    "render_ms": 16978,
+    "active_ms": 27345,
+    "usage": {
+      "inputTokens": 1110,
+      "outputTokens": 1790,
+      "cacheReadTokens": 11136,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14036
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C20-A-01",
+    "session_id": "session-0ea6db8d-ff8d-4e76-8b1a-8d598b1152a2",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5628,
+    "render_ms": 0,
+    "active_ms": 5628,
+    "usage": {
+      "inputTokens": 771,
+      "outputTokens": 766,
+      "cacheReadTokens": 3712,
+      "cacheWriteTokens": 0,
+      "totalTokens": 5249
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C20-A-02",
+    "session_id": "session-69a72426-09e4-4f65-be8e-28e36df11472",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 6794,
+    "render_ms": 0,
+    "active_ms": 6794,
+    "usage": {
+      "inputTokens": 1105,
+      "outputTokens": 892,
+      "cacheReadTokens": 6144,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8141
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C20-B-01",
+    "session_id": "session-6ddc6cc8-88b4-4f57-9125-d7eae23963dd",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 9941,
+    "render_ms": 41315,
+    "active_ms": 51256,
+    "usage": {
+      "inputTokens": 1039,
+      "outputTokens": 1662,
+      "cacheReadTokens": 7296,
+      "cacheWriteTokens": 0,
+      "totalTokens": 9997
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C20-B-02",
+    "session_id": "session-2580de3d-0f27-48fc-8db3-0366c72a5cd1",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 12930,
+    "render_ms": 360035,
+    "active_ms": 372965,
+    "usage": {
+      "inputTokens": 1457,
+      "outputTokens": 2328,
+      "cacheReadTokens": 14592,
+      "cacheWriteTokens": 0,
+      "totalTokens": 18377
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C21-A-01",
+    "session_id": "session-a1746b5c-7445-42eb-81aa-c04f50908edc",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 12628,
+    "render_ms": 0,
+    "active_ms": 12628,
+    "usage": {
+      "inputTokens": 1254,
+      "outputTokens": 1529,
+      "cacheReadTokens": 12800,
+      "cacheWriteTokens": 0,
+      "totalTokens": 15583
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C21-A-02",
+    "session_id": "session-010c269a-f8e9-4f22-b1e8-8c4dd6f9c41d",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8607,
+    "render_ms": 0,
+    "active_ms": 8607,
+    "usage": {
+      "inputTokens": 1126,
+      "outputTokens": 875,
+      "cacheReadTokens": 8832,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10833
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C21-B-01",
+    "session_id": "session-0f0b2e07-60a3-46df-93a5-ad2ceadf693c",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 15575,
+    "render_ms": 57933,
+    "active_ms": 73508,
+    "usage": {
+      "inputTokens": 1326,
+      "outputTokens": 1770,
+      "cacheReadTokens": 17664,
+      "cacheWriteTokens": 0,
+      "totalTokens": 20760
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C21-B-02",
+    "session_id": "session-c1b08c6a-14ed-4834-8407-c047960e8c88",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 17937,
+    "render_ms": 57336,
+    "active_ms": 75273,
+    "usage": {
+      "inputTokens": 1583,
+      "outputTokens": 2389,
+      "cacheReadTokens": 22528,
+      "cacheWriteTokens": 0,
+      "totalTokens": 26500
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C22-A-01",
+    "session_id": "session-8272747c-0fb6-44f0-bbb7-aaf2833bf605",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 23031,
+    "render_ms": 0,
+    "active_ms": 23031,
+    "usage": {
+      "inputTokens": 3103,
+      "outputTokens": 3512,
+      "cacheReadTokens": 42880,
+      "cacheWriteTokens": 0,
+      "totalTokens": 49495
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 3,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C22-A-02",
+    "session_id": "session-34155184-9918-4ef6-80a5-ba1eb4ed7b54",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 6,
+    "turns_ended": 6,
+    "model_ms": 23241,
+    "render_ms": 0,
+    "active_ms": 23241,
+    "usage": {
+      "inputTokens": 3006,
+      "outputTokens": 3476,
+      "cacheReadTokens": 41088,
+      "cacheWriteTokens": 0,
+      "totalTokens": 47570
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C22-B-01",
+    "session_id": "session-fe78db2b-e11b-4951-b415-fb384c4e351e",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 7,
+    "turns_ended": 7,
+    "model_ms": 38653,
+    "render_ms": 76479,
+    "active_ms": 115132,
+    "usage": {
+      "inputTokens": 2452,
+      "outputTokens": 6588,
+      "cacheReadTokens": 51200,
+      "cacheWriteTokens": 0,
+      "totalTokens": 60240
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 4,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C22-B-02",
+    "session_id": "session-4cfa0956-18ad-4469-9f12-05a480d9aba6",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 7,
+    "turns_ended": 7,
+    "model_ms": 51839,
+    "render_ms": 339222,
+    "active_ms": 391061,
+    "usage": {
+      "inputTokens": 4355,
+      "outputTokens": 7797,
+      "cacheReadTokens": 121472,
+      "cacheWriteTokens": 0,
+      "totalTokens": 133624
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 5,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 3,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C23-A-01",
+    "session_id": "session-88ab0f9e-c075-4b9e-aead-f8fe97a2406e",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 11081,
+    "render_ms": 0,
+    "active_ms": 11081,
+    "usage": {
+      "inputTokens": 1250,
+      "outputTokens": 1916,
+      "cacheReadTokens": 10240,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13406
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C23-A-02",
+    "session_id": "session-737878b5-62bf-4de3-a864-7c02a70eaba9",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 11955,
+    "render_ms": 0,
+    "active_ms": 11955,
+    "usage": {
+      "inputTokens": 1015,
+      "outputTokens": 1972,
+      "cacheReadTokens": 10752,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13739
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C23-B-01",
+    "session_id": "session-d66fe3a8-f112-4ad4-9a13-a328a90c37ab",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 23304,
+    "render_ms": 99517,
+    "active_ms": 122821,
+    "usage": {
+      "inputTokens": 2059,
+      "outputTokens": 3888,
+      "cacheReadTokens": 27776,
+      "cacheWriteTokens": 0,
+      "totalTokens": 33723
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C23-B-02",
+    "session_id": "session-adb86bd3-aa3e-4f69-a778-fca30cc065aa",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 25673,
+    "render_ms": 79434,
+    "active_ms": 105107,
+    "usage": {
+      "inputTokens": 1906,
+      "outputTokens": 4708,
+      "cacheReadTokens": 25984,
+      "cacheWriteTokens": 0,
+      "totalTokens": 32598
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C24-A-01",
+    "session_id": "session-61240a50-0005-4244-9b1c-bd06736d107f",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 11585,
+    "render_ms": 0,
+    "active_ms": 11585,
+    "usage": {
+      "inputTokens": 1321,
+      "outputTokens": 1887,
+      "cacheReadTokens": 13312,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16520
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C24-A-02",
+    "session_id": "session-d3091554-fa82-4d46-a407-732d10fa046a",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 8902,
+    "render_ms": 0,
+    "active_ms": 8902,
+    "usage": {
+      "inputTokens": 1233,
+      "outputTokens": 1200,
+      "cacheReadTokens": 12160,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14593
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C24-B-01",
+    "session_id": "session-ff754679-a24e-4c4f-afca-99f890c8eea9",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 32318,
+    "render_ms": 106708,
+    "active_ms": 139026,
+    "usage": {
+      "inputTokens": 2440,
+      "outputTokens": 5943,
+      "cacheReadTokens": 32896,
+      "cacheWriteTokens": 0,
+      "totalTokens": 41279
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C24-B-02",
+    "session_id": "session-b3051d5c-28fb-42ce-9887-e3ede2cedcb2",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 25281,
+    "render_ms": 55286,
+    "active_ms": 80567,
+    "usage": {
+      "inputTokens": 1748,
+      "outputTokens": 4616,
+      "cacheReadTokens": 20224,
+      "cacheWriteTokens": 0,
+      "totalTokens": 26588
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-a-A-01",
+    "session_id": "session-ed082058-b6c9-4404-9827-88f1829242ae",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 4582,
+    "render_ms": 0,
+    "active_ms": 4582,
+    "usage": {
+      "inputTokens": 934,
+      "outputTokens": 369,
+      "cacheReadTokens": 8448,
+      "cacheWriteTokens": 0,
+      "totalTokens": 9751
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-a-A-02",
+    "session_id": "session-16cff3d3-fb09-4514-a9d0-96815b67d2ba",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 5084,
+    "render_ms": 0,
+    "active_ms": 5084,
+    "usage": {
+      "inputTokens": 974,
+      "outputTokens": 522,
+      "cacheReadTokens": 8704,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10200
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-a-B-01",
+    "session_id": "session-1f302925-457c-4e9b-a9b2-2faf79b60f67",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10570,
+    "render_ms": 41538,
+    "active_ms": 52108,
+    "usage": {
+      "inputTokens": 1354,
+      "outputTokens": 1236,
+      "cacheReadTokens": 15360,
+      "cacheWriteTokens": 0,
+      "totalTokens": 17950
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-a-B-02",
+    "session_id": "session-563add66-1aed-475a-984a-85f7e0eae0cd",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 13504,
+    "render_ms": 29605,
+    "active_ms": 43109,
+    "usage": {
+      "inputTokens": 1437,
+      "outputTokens": 1722,
+      "cacheReadTokens": 16896,
+      "cacheWriteTokens": 0,
+      "totalTokens": 20055
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-b-A-01",
+    "session_id": "session-9ecc6e3d-917d-4f2e-bd0d-b8697df2b1b5",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 5287,
+    "render_ms": 0,
+    "active_ms": 5287,
+    "usage": {
+      "inputTokens": 1055,
+      "outputTokens": 560,
+      "cacheReadTokens": 8448,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10063
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-b-A-02",
+    "session_id": "session-e70c8ab4-bc64-4d73-8613-08b1d43dadba",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 4629,
+    "render_ms": 0,
+    "active_ms": 4629,
+    "usage": {
+      "inputTokens": 722,
+      "outputTokens": 566,
+      "cacheReadTokens": 6144,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7432
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-b-B-01",
+    "session_id": "session-866ff2d2-90db-4e5c-9b6b-bd9720d7f4fe",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10563,
+    "render_ms": 49164,
+    "active_ms": 59727,
+    "usage": {
+      "inputTokens": 1229,
+      "outputTokens": 1223,
+      "cacheReadTokens": 12288,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14740
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C25-b-B-02",
+    "session_id": "session-d226dd67-77b6-4326-af65-ce4c194076e5",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 12850,
+    "render_ms": 74499,
+    "active_ms": 87349,
+    "usage": {
+      "inputTokens": 1480,
+      "outputTokens": 1459,
+      "cacheReadTokens": 16128,
+      "cacheWriteTokens": 0,
+      "totalTokens": 19067
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C26-A-01",
+    "session_id": "session-c9631171-37a5-4275-951e-b5062391c523",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 1503,
+    "render_ms": 0,
+    "active_ms": 1503,
+    "usage": {
+      "inputTokens": 557,
+      "outputTokens": 111,
+      "cacheReadTokens": 3712,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4380
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C26-A-02",
+    "session_id": "session-91f7441c-31f1-42e6-8179-87fd6e16c289",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 2145,
+    "render_ms": 0,
+    "active_ms": 2145,
+    "usage": {
+      "inputTokens": 562,
+      "outputTokens": 167,
+      "cacheReadTokens": 3712,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4441
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C26-B-01",
+    "session_id": "session-60a88ecc-d0b0-4ce2-bb74-bd9a4bc338b2",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 4462,
+    "render_ms": 45705,
+    "active_ms": 50167,
+    "usage": {
+      "inputTokens": 864,
+      "outputTokens": 529,
+      "cacheReadTokens": 6144,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7537
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "C26-B-02",
+    "session_id": "session-5adaeb91-41da-4296-94a2-372c04653fef",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 4502,
+    "render_ms": 32686,
+    "active_ms": 37188,
+    "usage": {
+      "inputTokens": 812,
+      "outputTokens": 455,
+      "cacheReadTokens": 6144,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7411
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N01-A-01",
+    "session_id": "session-8c20ca77-f82c-48e5-9a32-d5132c6a4272",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 2065,
+    "render_ms": 0,
+    "active_ms": 2065,
+    "usage": {
+      "inputTokens": 610,
+      "outputTokens": 110,
+      "cacheReadTokens": 3712,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4432
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N01-A-02",
+    "session_id": "session-aa820288-0fce-4e45-93b0-7689f6da2540",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 2630,
+    "render_ms": 0,
+    "active_ms": 2630,
+    "usage": {
+      "inputTokens": 610,
+      "outputTokens": 125,
+      "cacheReadTokens": 3712,
+      "cacheWriteTokens": 0,
+      "totalTokens": 4447
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N01-B-01",
+    "session_id": "session-51fa1608-47f6-4e5c-bddc-f2de4cc275db",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 6000,
+    "render_ms": 17538,
+    "active_ms": 23538,
+    "usage": {
+      "inputTokens": 884,
+      "outputTokens": 601,
+      "cacheReadTokens": 6272,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7757
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N01-B-02",
+    "session_id": "session-eb212565-6ff2-4fba-9291-93371752986f",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5325,
+    "render_ms": 17317,
+    "active_ms": 22642,
+    "usage": {
+      "inputTokens": 861,
+      "outputTokens": 580,
+      "cacheReadTokens": 6272,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7713
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N02-A-01",
+    "session_id": "session-aca5b52c-544a-4294-8e5d-996186eaaa43",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 12052,
+    "render_ms": 0,
+    "active_ms": 12052,
+    "usage": {
+      "inputTokens": 1094,
+      "outputTokens": 1919,
+      "cacheReadTokens": 9984,
+      "cacheWriteTokens": 0,
+      "totalTokens": 12997
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N02-A-02",
+    "session_id": "session-3d39b6f3-125f-4780-a2fd-e20b5791fa8c",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 11022,
+    "render_ms": 0,
+    "active_ms": 11022,
+    "usage": {
+      "inputTokens": 1049,
+      "outputTokens": 1591,
+      "cacheReadTokens": 9344,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11984
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N02-B-01",
+    "session_id": "session-6e6079c0-e428-4215-a0ac-d9d7f65d4d36",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 15505,
+    "render_ms": 32658,
+    "active_ms": 48163,
+    "usage": {
+      "inputTokens": 1057,
+      "outputTokens": 2459,
+      "cacheReadTokens": 11520,
+      "cacheWriteTokens": 0,
+      "totalTokens": 15036
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N02-B-02",
+    "session_id": "session-1ac0c6f8-47f8-4912-8b2b-394c303411e0",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 21601,
+    "render_ms": 59812,
+    "active_ms": 81413,
+    "usage": {
+      "inputTokens": 1659,
+      "outputTokens": 3231,
+      "cacheReadTokens": 23424,
+      "cacheWriteTokens": 0,
+      "totalTokens": 28314
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N03-A-01",
+    "session_id": "session-5fe67a42-a065-4dfb-bef0-b3f7da834026",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10012,
+    "render_ms": 0,
+    "active_ms": 10012,
+    "usage": {
+      "inputTokens": 966,
+      "outputTokens": 1533,
+      "cacheReadTokens": 6528,
+      "cacheWriteTokens": 0,
+      "totalTokens": 9027
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N03-A-02",
+    "session_id": "session-04476d47-7008-47dc-bb6f-f76c7df535a5",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8071,
+    "render_ms": 0,
+    "active_ms": 8071,
+    "usage": {
+      "inputTokens": 958,
+      "outputTokens": 1310,
+      "cacheReadTokens": 6528,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8796
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N03-B-01",
+    "session_id": "session-7f2f97db-291c-4c5a-9b11-bd71a09dbe38",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 38277,
+    "render_ms": 36022,
+    "active_ms": 74299,
+    "usage": {
+      "inputTokens": 1046,
+      "outputTokens": 2578,
+      "cacheReadTokens": 11008,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14632
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N03-B-02",
+    "session_id": "session-b7df0973-ac4b-4760-827a-6ea9088bcc93",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 13510,
+    "render_ms": 145234,
+    "active_ms": 158744,
+    "usage": {
+      "inputTokens": 986,
+      "outputTokens": 2026,
+      "cacheReadTokens": 10752,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13764
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N04-A-01",
+    "session_id": "session-8382828c-cefb-4067-afd7-ab7876f239b6",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 16594,
+    "render_ms": 0,
+    "active_ms": 16594,
+    "usage": {
+      "inputTokens": 813,
+      "outputTokens": 1153,
+      "cacheReadTokens": 6144,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8110
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N04-A-02",
+    "session_id": "session-64101130-8809-4032-bb82-9c1fb0c509b5",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 10373,
+    "render_ms": 0,
+    "active_ms": 10373,
+    "usage": {
+      "inputTokens": 829,
+      "outputTokens": 749,
+      "cacheReadTokens": 6144,
+      "cacheWriteTokens": 0,
+      "totalTokens": 7722
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N04-B-01",
+    "session_id": "session-0b1e9d9e-3339-4e7e-93ee-0d32d23cdcd1",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10203,
+    "render_ms": 37409,
+    "active_ms": 47612,
+    "usage": {
+      "inputTokens": 1018,
+      "outputTokens": 852,
+      "cacheReadTokens": 9216,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11086
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N04-B-02",
+    "session_id": "session-c7830ecb-549a-4bed-9840-8a7b361fb1bc",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 15729,
+    "render_ms": 23956,
+    "active_ms": 39685,
+    "usage": {
+      "inputTokens": 1018,
+      "outputTokens": 949,
+      "cacheReadTokens": 9344,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11311
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N05-A-01",
+    "session_id": "session-9e29ca42-4aed-43a0-8c80-10dfd567933b",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 6385,
+    "render_ms": 0,
+    "active_ms": 6385,
+    "usage": {
+      "inputTokens": 1391,
+      "outputTokens": 569,
+      "cacheReadTokens": 11392,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13352
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N05-A-02",
+    "session_id": "session-f928d688-b98b-4360-88e3-360f2737c456",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 9251,
+    "render_ms": 0,
+    "active_ms": 9251,
+    "usage": {
+      "inputTokens": 1370,
+      "outputTokens": 1091,
+      "cacheReadTokens": 12544,
+      "cacheWriteTokens": 0,
+      "totalTokens": 15005
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N05-B-01",
+    "session_id": "session-0ea4230a-0b60-4578-8c3d-314f98111716",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 10550,
+    "render_ms": 20972,
+    "active_ms": 31522,
+    "usage": {
+      "inputTokens": 1506,
+      "outputTokens": 1412,
+      "cacheReadTokens": 13184,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16102
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N05-B-02",
+    "session_id": "session-7d2994d5-1e3f-4220-b123-2740d08abc74",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 18225,
+    "render_ms": 32185,
+    "active_ms": 50410,
+    "usage": {
+      "inputTokens": 1495,
+      "outputTokens": 1601,
+      "cacheReadTokens": 13440,
+      "cacheWriteTokens": 0,
+      "totalTokens": 16536
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N06-A-01",
+    "session_id": "session-92e18985-f307-4d7a-9ad2-8f2e6995f5f6",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 2,
+    "model_ms": 14658,
+    "render_ms": 0,
+    "active_ms": 14658,
+    "usage": {
+      "inputTokens": 1278,
+      "outputTokens": 1864,
+      "cacheReadTokens": 10496,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13638
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N06-A-02",
+    "session_id": "session-dd2f681c-ad4b-4aeb-8e39-62d56421696e",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 10319,
+    "render_ms": 0,
+    "active_ms": 10319,
+    "usage": {
+      "inputTokens": 1386,
+      "outputTokens": 1278,
+      "cacheReadTokens": 9472,
+      "cacheWriteTokens": 0,
+      "totalTokens": 12136
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N06-B-01",
+    "session_id": "session-4c0cd02f-a3c1-423e-bcc2-e46189cf33ae",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 48894,
+    "render_ms": 89838,
+    "active_ms": 138732,
+    "usage": {
+      "inputTokens": 2338,
+      "outputTokens": 3449,
+      "cacheReadTokens": 32384,
+      "cacheWriteTokens": 0,
+      "totalTokens": 38171
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N06-B-02",
+    "session_id": "session-a63451ac-26f5-4104-b652-4fef8564a78f",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 26293,
+    "render_ms": 64243,
+    "active_ms": 90536,
+    "usage": {
+      "inputTokens": 2332,
+      "outputTokens": 3697,
+      "cacheReadTokens": 32000,
+      "cacheWriteTokens": 0,
+      "totalTokens": 38029
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question"
+    ],
+    "render_calls": 2,
+    "question_calls": 2,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 2,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N07-A-01",
+    "session_id": "session-fcb8d56c-b16b-4797-9d89-ec9fe3b1d4aa",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 7584,
+    "render_ms": 0,
+    "active_ms": 7584,
+    "usage": {
+      "inputTokens": 1203,
+      "outputTokens": 801,
+      "cacheReadTokens": 9728,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11732
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N07-A-02",
+    "session_id": "session-26a89b1b-d88d-4c5c-8723-62f74ce3cb31",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 6781,
+    "render_ms": 0,
+    "active_ms": 6781,
+    "usage": {
+      "inputTokens": 1327,
+      "outputTokens": 820,
+      "cacheReadTokens": 9472,
+      "cacheWriteTokens": 0,
+      "totalTokens": 11619
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N07-B-01",
+    "session_id": "session-8d58aa26-1492-4f72-af51-933a1f52042d",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5768,
+    "render_ms": 31087,
+    "active_ms": 36855,
+    "usage": {
+      "inputTokens": 894,
+      "outputTokens": 967,
+      "cacheReadTokens": 3840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 5701
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N07-B-02",
+    "session_id": "session-4e076c83-af58-4ede-a2c7-2a284302aaab",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 5966,
+    "render_ms": 60131,
+    "active_ms": 66097,
+    "usage": {
+      "inputTokens": 886,
+      "outputTokens": 828,
+      "cacheReadTokens": 3840,
+      "cacheWriteTokens": 0,
+      "totalTokens": 5554
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N08-A-01",
+    "session_id": "session-93ea1951-1165-4910-a109-6651bed091f3",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 9666,
+    "render_ms": 0,
+    "active_ms": 9666,
+    "usage": {
+      "inputTokens": 1547,
+      "outputTokens": 1394,
+      "cacheReadTokens": 15744,
+      "cacheWriteTokens": 0,
+      "totalTokens": 18685
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N08-A-02",
+    "session_id": "session-bfb4f741-e616-41ed-825b-60116c5a4826",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 10656,
+    "render_ms": 0,
+    "active_ms": 10656,
+    "usage": {
+      "inputTokens": 1341,
+      "outputTokens": 1382,
+      "cacheReadTokens": 13184,
+      "cacheWriteTokens": 0,
+      "totalTokens": 15907
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N08-B-01",
+    "session_id": "session-287858e0-e69a-46e1-b418-3dc3d3062b43",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 15803,
+    "render_ms": 22254,
+    "active_ms": 38057,
+    "usage": {
+      "inputTokens": 1464,
+      "outputTokens": 2300,
+      "cacheReadTokens": 18048,
+      "cacheWriteTokens": 0,
+      "totalTokens": 21812
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N08-B-02",
+    "session_id": "session-0ff60675-64a3-4e31-8fe4-1fb0fbc8af75",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 3,
+    "turns_ended": 3,
+    "model_ms": 23566,
+    "render_ms": 107166,
+    "active_ms": 130732,
+    "usage": {
+      "inputTokens": 1747,
+      "outputTokens": 3536,
+      "cacheReadTokens": 26496,
+      "cacheWriteTokens": 0,
+      "totalTokens": 31779
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N09-A-01",
+    "session_id": "session-a949745e-e034-444c-8b27-a8bd895238d7",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 5947,
+    "render_ms": 0,
+    "active_ms": 5947,
+    "usage": {
+      "inputTokens": 1083,
+      "outputTokens": 640,
+      "cacheReadTokens": 8704,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10427
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N09-A-02",
+    "session_id": "session-bef99fe5-0211-4a37-8888-e3a320ee14cf",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 5408,
+    "render_ms": 0,
+    "active_ms": 5408,
+    "usage": {
+      "inputTokens": 1096,
+      "outputTokens": 545,
+      "cacheReadTokens": 8576,
+      "cacheWriteTokens": 0,
+      "totalTokens": 10217
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N09-B-01",
+    "session_id": "session-b32fa65d-d64d-43ef-b1b0-7121a65b31e0",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 12256,
+    "render_ms": 7825,
+    "active_ms": 20081,
+    "usage": {
+      "inputTokens": 1048,
+      "outputTokens": 1926,
+      "cacheReadTokens": 11776,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14750
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N09-B-02",
+    "session_id": "session-7359a668-9d00-49f8-a177-58aa94c700bf",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 6411,
+    "render_ms": 94639,
+    "active_ms": 101050,
+    "usage": {
+      "inputTokens": 913,
+      "outputTokens": 864,
+      "cacheReadTokens": 6656,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8433
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N10-A-01",
+    "session_id": "session-3f6ba188-fd78-419c-9213-77daf453e271",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8006,
+    "render_ms": 0,
+    "active_ms": 8006,
+    "usage": {
+      "inputTokens": 856,
+      "outputTokens": 929,
+      "cacheReadTokens": 6784,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8569
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N10-A-02",
+    "session_id": "session-35a5cdcc-ce69-45bd-9b22-0aeadd2bf7a8",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 8379,
+    "render_ms": 0,
+    "active_ms": 8379,
+    "usage": {
+      "inputTokens": 932,
+      "outputTokens": 992,
+      "cacheReadTokens": 6656,
+      "cacheWriteTokens": 0,
+      "totalTokens": 8580
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N10-B-01",
+    "session_id": "session-2af0d37c-a2f1-4782-a902-fa7eeaa2a6ad",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10594,
+    "render_ms": 59012,
+    "active_ms": 69606,
+    "usage": {
+      "inputTokens": 1145,
+      "outputTokens": 1729,
+      "cacheReadTokens": 11136,
+      "cacheWriteTokens": 0,
+      "totalTokens": 14010
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N10-B-02",
+    "session_id": "session-489dc994-dec8-4b3e-8d3f-3a402dd06f83",
+    "status": "partial",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 16957,
+    "render_ms": 360042,
+    "active_ms": 376999,
+    "usage": {
+      "inputTokens": 2297,
+      "outputTokens": 2666,
+      "cacheReadTokens": 20608,
+      "cacheWriteTokens": 0,
+      "totalTokens": 25571
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture"
+    ],
+    "render_calls": 2,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N11-A-01",
+    "session_id": "session-6cd1004e-ae82-4569-9e77-b439f10105be",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 9,
+    "turns_ended": 9,
+    "model_ms": 20378,
+    "render_ms": 0,
+    "active_ms": 20378,
+    "usage": {
+      "inputTokens": 2586,
+      "outputTokens": 1709,
+      "cacheReadTokens": 36736,
+      "cacheWriteTokens": 0,
+      "totalTokens": 41031
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 6,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N11-A-02",
+    "session_id": "session-a2ea3fdd-9966-4ff6-ad65-9e09472982ee",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 7,
+    "turns_ended": 7,
+    "model_ms": 17043,
+    "render_ms": 0,
+    "active_ms": 17043,
+    "usage": {
+      "inputTokens": 2724,
+      "outputTokens": 1931,
+      "cacheReadTokens": 38784,
+      "cacheWriteTokens": 0,
+      "totalTokens": 43439
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture",
+      "ask_user_question",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 2,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 6,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N11-B-01",
+    "session_id": "session-c013bda2-5da6-4151-bc9b-5ebe65f2c968",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 9,
+    "turns_ended": 9,
+    "model_ms": 77492,
+    "render_ms": 395345,
+    "active_ms": 472837,
+    "usage": {
+      "inputTokens": 5042,
+      "outputTokens": 9660,
+      "cacheReadTokens": 161536,
+      "cacheWriteTokens": 0,
+      "totalTokens": 176238
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "render_ui",
+      "render_ui"
+    ],
+    "render_calls": 9,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 6,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N11-B-02",
+    "session_id": "session-a6d2357a-9bcd-4aab-901e-ee06c0d04c19",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 9,
+    "turns_ended": 9,
+    "model_ms": 65975,
+    "render_ms": 770124,
+    "active_ms": 836099,
+    "usage": {
+      "inputTokens": 5541,
+      "outputTokens": 9147,
+      "cacheReadTokens": 200192,
+      "cacheWriteTokens": 0,
+      "totalTokens": 214880
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 8,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 6,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N12-A-01",
+    "session_id": "session-91433eff-71de-4034-92a4-24daa1b508ff",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10856,
+    "render_ms": 0,
+    "active_ms": 10856,
+    "usage": {
+      "inputTokens": 1269,
+      "outputTokens": 1523,
+      "cacheReadTokens": 12416,
+      "cacheWriteTokens": 0,
+      "totalTokens": 15208
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N12-A-02",
+    "session_id": "session-c279dafb-3c0e-4287-ad1c-0ea6fb1d9392",
+    "status": "pass",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 10816,
+    "render_ms": 0,
+    "active_ms": 10816,
+    "usage": {
+      "inputTokens": 1210,
+      "outputTokens": 1652,
+      "cacheReadTokens": 12544,
+      "cacheWriteTokens": 0,
+      "totalTokens": 15406
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "benchmark_fixture"
+    ],
+    "render_calls": 0,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N12-B-01",
+    "session_id": "session-b7266220-78cf-4c7b-8504-712d1ad4ee14",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 2,
+    "turns_ended": 2,
+    "model_ms": 27451,
+    "render_ms": 103502,
+    "active_ms": 130953,
+    "usage": {
+      "inputTokens": 2150,
+      "outputTokens": 4591,
+      "cacheReadTokens": 28288,
+      "cacheWriteTokens": 0,
+      "totalTokens": 35029
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui",
+      "ask_user_question",
+      "render_ui"
+    ],
+    "render_calls": 2,
+    "question_calls": 1,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  },
+  {
+    "run_id": "N12-B-02",
+    "session_id": "session-a066ebde-6963-4908-815f-88dcb48399fa",
+    "status": "fail",
+    "selected_preset": "component-benchmark-full-v2",
+    "model": {
+      "provider": "deepseek-official",
+      "model": "deepseek-flash",
+      "reasoningEffort": "high"
+    },
+    "turns_started": 1,
+    "turns_ended": 1,
+    "model_ms": 12645,
+    "render_ms": 118337,
+    "active_ms": 130982,
+    "usage": {
+      "inputTokens": 1167,
+      "outputTokens": 2021,
+      "cacheReadTokens": 10112,
+      "cacheWriteTokens": 0,
+      "totalTokens": 13300
+    },
+    "render_server_usage": "not_observed",
+    "tool_calls": [
+      "benchmark_fixture",
+      "benchmark_fixture",
+      "render_ui"
+    ],
+    "render_calls": 1,
+    "question_calls": 0,
+    "tools_schema_sha256": "13a577bfa9bde4ed9aa152e9990d6156be542e5206c5f11cb4278e44d4d9348d",
+    "environment_messages": 1,
+    "input_matches_frozen": true
+  }
+]

@@ -1,0 +1,1 @@
+{"visible": {"simulated": true, "state": "waiting", "fixture": "event-delivery-preflight"}, "events": [{"id": "preflight-door-open", "kind": "observation", "data": {"door": "open", "simulated": true}}]}

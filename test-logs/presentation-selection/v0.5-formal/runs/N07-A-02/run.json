@@ -1,0 +1,26 @@
+{
+  "run_id": "N07-A-02",
+  "case_id": "N07",
+  "card_id": "N07",
+  "category_id": "G07",
+  "scenario_domain": "non_campus",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 N07-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N07-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N07-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：帮我填写售后申请草稿：订单SO-2048，故障是无法开机，联系人测试联系人A，附上给定两张照片；先让我核对修改，提交后只回执，不创建真实工单。\n指定呈现方式：原生图片+Markdown完整草稿，通过文字修改、确认与模拟接收回执。。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "cf63bc4e471857fb84c0c373b9f2e915ee5dc9ee6e5131dd02ef450f7360841c",
+  "operator_actions": "核对预填值→联系人改为“测试联系人B”→提交草稿；A文字修改确认，B编辑联系人后点击提交；回执包含新联系人和两张图片关联。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T05:46:44.744Z",
+  "interactions": [
+    {
+      "at": "2026-11-20T05:47:37.557Z",
+      "type": "text",
+      "value": "联系人改为测试联系人B，保留两张照片，确认提交草稿。"
+    }
+  ],
+  "tab_id": "4",
+  "final_at": "2026-11-20T05:48:12.624Z",
+  "notes": "两图可核对，联系人实际修改为测试联系人B，提交保留after-front/after-port及SO-2048和故障，返回模拟草稿回执未建真实工单。"
+}

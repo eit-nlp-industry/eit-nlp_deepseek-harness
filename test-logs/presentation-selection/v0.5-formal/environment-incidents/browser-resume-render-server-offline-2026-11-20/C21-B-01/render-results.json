@@ -1,0 +1,368 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_0cwtZGFgHn90XYZoWc4D9262",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"渲染一张“前往食堂”状态卡片：标题“前往食堂”，状态为“前往中”，到达结论“尚未到达”，目的地“食堂（canteen）”，障碍信息“未知（尚未释放）”，停止原因“未知（尚未释放，以随后事件为准）”。不要出现绕行方案、替代路线或预计到达时间，未释放的事实一律标注为未知。卡片下方写一段文字兜底说明当前没有可用的实景图片。\", \"business_data\": {\"标题\": \"前往食堂\", \"状态\": \"前往中\", \"到达结论\": \"尚未到达（尚无到达结论）\", \"目的地\": \"食堂（canteen）\", \"障碍信息\": \"未知：尚未释放，以随后事件为准\", \"停止原因\": \"未知：当前没有已释放的停止原因\", \"绕行方案\": \"无（未提供，不作编造）\", \"实景图片\": \"本例材料未提供图片地址，因此不显示图片，也不使用相同图片代替其他视角\", \"说明\": \"本卡片为模拟环境状态，非真实导航或机器人控制\", \"文字兜底\": \"正在前往食堂，尚未到达；是否有障碍、是否会停下以及停止原因都还没有释放，需等待随后事件；目前没有可展示的实景图片。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "statusCard",
+                "fallbackText"
+              ]
+            },
+            "statusCard": {
+              "type": "Card",
+              "props": {
+                "title": "前往食堂",
+                "variant": "outlined"
+              },
+              "children": [
+                "statusSection"
+              ]
+            },
+            "statusSection": {
+              "type": "Section",
+              "props": {
+                "title": "状态详情",
+                "description": "逐项展示运行时状态字段与出处",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "statusList"
+              ]
+            },
+            "statusList": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "rowTitle",
+                "rowStatus",
+                "rowArrival",
+                "rowDestination",
+                "rowObstacle",
+                "rowStop",
+                "rowImage",
+                "rowNote"
+              ]
+            },
+            "rowTitle": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowTitleLabel",
+                "rowTitleValue"
+              ]
+            },
+            "rowTitleLabel": {
+              "type": "Text",
+              "props": {
+                "content": "标题（出处：/标题）",
+                "variant": "muted"
+              }
+            },
+            "rowTitleValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/标题"
+                },
+                "variant": "default"
+              }
+            },
+            "rowStatus": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowStatusLabel",
+                "rowStatusValue"
+              ]
+            },
+            "rowStatusLabel": {
+              "type": "Text",
+              "props": {
+                "content": "状态（出处：/状态）",
+                "variant": "muted"
+              }
+            },
+            "rowStatusValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/状态"
+                },
+                "variant": "default"
+              }
+            },
+            "rowArrival": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowArrivalLabel",
+                "rowArrivalValue"
+              ]
+            },
+            "rowArrivalLabel": {
+              "type": "Text",
+              "props": {
+                "content": "到达结论（出处：/到达结论）",
+                "variant": "muted"
+              }
+            },
+            "rowArrivalValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/到达结论"
+                },
+                "variant": "default"
+              }
+            },
+            "rowDestination": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowDestinationLabel",
+                "rowDestinationValue"
+              ]
+            },
+            "rowDestinationLabel": {
+              "type": "Text",
+              "props": {
+                "content": "目的地（出处：/目的地）",
+                "variant": "muted"
+              }
+            },
+            "rowDestinationValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/目的地"
+                },
+                "variant": "default"
+              }
+            },
+            "rowObstacle": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowObstacleLabel",
+                "rowObstacleValue"
+              ]
+            },
+            "rowObstacleLabel": {
+              "type": "Text",
+              "props": {
+                "content": "障碍信息（出处：/障碍信息）",
+                "variant": "muted"
+              }
+            },
+            "rowObstacleValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/障碍信息"
+                },
+                "variant": "warning"
+              }
+            },
+            "rowStop": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowStopLabel",
+                "rowStopValue"
+              ]
+            },
+            "rowStopLabel": {
+              "type": "Text",
+              "props": {
+                "content": "停止原因（出处：/停止原因）",
+                "variant": "muted"
+              }
+            },
+            "rowStopValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/停止原因"
+                },
+                "variant": "warning"
+              }
+            },
+            "rowImage": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowImageLabel",
+                "rowImageValue"
+              ]
+            },
+            "rowImageLabel": {
+              "type": "Text",
+              "props": {
+                "content": "实景图片（出处：/实景图片）",
+                "variant": "muted"
+              }
+            },
+            "rowImageValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/实景图片"
+                },
+                "variant": "muted"
+              }
+            },
+            "rowNote": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "rowNoteLabel",
+                "rowNoteValue"
+              ]
+            },
+            "rowNoteLabel": {
+              "type": "Text",
+              "props": {
+                "content": "说明（出处：/说明）",
+                "variant": "muted"
+              }
+            },
+            "rowNoteValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/说明"
+                },
+                "variant": "muted"
+              }
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/文字兜底"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "前往食堂",
+            "状态": "前往中",
+            "到达结论": "尚未到达（尚无到达结论）",
+            "目的地": "食堂（canteen）",
+            "障碍信息": "未知：尚未释放，以随后事件为准",
+            "停止原因": "未知：当前没有已释放的停止原因",
+            "绕行方案": "无（未提供，不作编造）",
+            "实景图片": "本例材料未提供图片地址，因此不显示图片，也不使用相同图片代替其他视角",
+            "说明": "本卡片为模拟环境状态，非真实导航或机器人控制",
+            "文字兜底": "正在前往食堂，尚未到达；是否有障碍、是否会停下以及停止原因都还没有释放，需等待随后事件；目前没有可展示的实景图片。"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_0cwtZGFgHn90XYZoWc4D9262"
+      },
+      "toolCallId": "call_00_0cwtZGFgHn90XYZoWc4D9262",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ec178baa-5e81-48a5-a04f-3c54ac6b9b05"
+    }
+  },
+  {
+    "call_seq": 61,
+    "result_seq": 62,
+    "call": {
+      "turn": 2,
+      "step": 3,
+      "callId": "call_00_ET_ybpZN6a6X3XCRsUagEvv2870",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"image\": \"/api/media/bench05-img-door/content\", \"alt\": \"MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture\", \"标题\": \"前往食堂：已停止\", \"状态\": \"已停止（stopped）\", \"目的地\": \"食堂（canteen）\", \"到达结论\": \"未到达\", \"停止原因\": \"前方 door-1 处于关闭状态（door-1_closed），无法通过\", \"替代路线\": \"无：未返回可用替代路线（alternative_route 为 null）\", \"说明\": \"图为材料给定的模拟门状态图，仅此一个视角；不推断其他视角，不编造绕行路线\", \"文字兜底\": \"前往食堂的模拟导航在 door-1 关闭处停止，尚未到达；系统没有返回可用替代路线，因此不提供绕行方案。图中为模拟的 closed 门状态。\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"渲染一张“前往食堂：已停止”状态卡片，包含一个实景图片区（Image 组件，src 使用给定的同源 path 字符串，alt 用给定描述），下方为状态字段：状态“已停止”、目的地“食堂（canteen）”、到达结论“未到达”、停止原因“door-1 关闭（door-1_closed）”、替代路线“无，未返回可用替代路线”。不要出现任何绕行建议、预计到达时间或未释放的信息；不要重复使用同一图片充当其他视角。卡片末尾附文字兜底段落。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_ybpZN6a6X3XCRsUagEvv2870"
+      },
+      "toolCallId": "call_00_ET_ybpZN6a6X3XCRsUagEvv2870",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面生成失败，已尝试 3 次：fetch failed。请用文字继续回答。不要把错误 JSON 展示给用户。"
+        }
+      ],
+      "isError": false,
+      "id": "de321584-2da8-413b-b23c-0f930cc6b14d"
+    }
+  }
+]

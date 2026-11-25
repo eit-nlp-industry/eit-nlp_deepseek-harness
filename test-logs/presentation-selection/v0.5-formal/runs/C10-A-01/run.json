@@ -1,0 +1,21 @@
+{
+  "run_id": "C10-A-01",
+  "case_id": "C10",
+  "card_id": "C10",
+  "category_id": "G11",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "A",
+  "repeat": 1,
+  "status": "partial",
+  "prompt": "【全量正式呈现测评 C10-A-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C10-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C10-A-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：跟着这位带我们参观的同学。\n指定呈现方式：原生图像核对+文字任务状态。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "8300cffac739c5599beaadee75bf520c7214892388459db88ecb3dc1952f02a8",
+  "operator_actions": "用户确认person-guide后回放跟随中、丢失和停止；不执行真实跟随。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T12:13:08.578Z",
+  "interactions": [],
+  "tab_id": "8",
+  "final_at": "2026-11-19T12:16:02.942Z",
+  "terminal_state": "awaiting_user_after_scripted_final_event",
+  "notes": "跟随中及丢失停止均按事件如实更新；最初确认前无图，之后才显示，丢失后又发原生问题并等待下一步，保留此终态不编造回答。来源路径尺寸及内部错误信息冗长。"
+}

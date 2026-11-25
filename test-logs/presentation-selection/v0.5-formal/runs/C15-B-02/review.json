@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 1,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "三视角最终图片均可加载，候选尾号正确，无实际取件误报；确认前新图不可见，最终卡仍写未确认，多处组件未注册及business_data明细外露。"
+}

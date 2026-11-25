@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 4,
+  "state": 3,
+  "presentation": "fail",
+  "reason": "两次180秒工具超时，最终没有图片或MapPreview，文字兜底完整保留三点坐标/两段路线及静态限制。追问开头没有送到与后文送达未知矛盾，并称刚才那张示意图但实际未显示。质量失败保留，不作为环境事故替换。"
+}

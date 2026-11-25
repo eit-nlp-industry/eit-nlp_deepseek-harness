@@ -1,0 +1,211 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_pywjFjskAhvcF2VIQPHS6590",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"轻量筛选表单：标题“帮我找个地方”。依次放四组字段：1) 活动形式，单选，选项“线上”“线下”；2) 半日游时段，单选，选项“上午”“下午”；3) 想去的地点，可多选，选项“图书馆”“食堂”“四明书院”；4) 补充想法，单行/多行文本，可留空。表单底部说明“图书馆适合安静阅读，四明书院可以公共交流。提交后会给出建议，建议仅供参考。”不使用任何图片、地图或折叠面板等富组件。\", \"business_data\": {\"title\": \"帮我找个地方\", \"fields\": [{\"name\": \"activity_form\", \"label\": \"活动形式\", \"type\": \"radio\", \"required\": true, \"options\": [\"线上\", \"线下\"]}, {\"name\": \"time_slot\", \"label\": \"半日游时段\", \"type\": \"radio\", \"required\": true, \"options\": [\"上午\", \"下午\"]}, {\"name\": \"places\", \"label\": \"想去的地点（可多选）\", \"type\": \"checkbox\", \"required\": true, \"multiple\": true, \"options\": [\"图书馆\", \"食堂\", \"四明书院\"]}, {\"name\": \"notes\", \"label\": \"补充想法\", \"type\": \"textarea\", \"required\": false, \"placeholder\": \"人数、用途或其他想法，可留空\"}], \"notes\": \"图书馆适合安静阅读，四明书院可以公共交流；食堂适合用餐补给。\", \"submit_label\": \"提交\", \"fallback_text\": \"也可以直接文字回复：活动形式（线上/线下）、半日游时段（上午/下午）、地点（图书馆/食堂/四明书院，可多选）、补充想法（可留空）。\", \"rich_components_needed\": \"无（本题仅需轻量表单字段，不使用 Image、ImageUpload、Tabs、MapPreview、SortableSequence、Collapsible、CodeBlock）\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "form",
+                "submit",
+                "footer"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "帮我找个地方",
+                "level": "h1"
+              }
+            },
+            "form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "activity_form",
+                    "label": "活动形式",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "线上",
+                          "label": "线上"
+                        },
+                        {
+                          "value": "线下",
+                          "label": "线下"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "select",
+                    "key": "time_slot",
+                    "label": "半日游时段",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "上午",
+                          "label": "上午"
+                        },
+                        {
+                          "value": "下午",
+                          "label": "下午"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "multipleSelect",
+                    "key": "places",
+                    "label": "想去的地点（可多选）",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "图书馆",
+                          "label": "图书馆"
+                        },
+                        {
+                          "value": "食堂",
+                          "label": "食堂"
+                        },
+                        {
+                          "value": "四明书院",
+                          "label": "四明书院"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "input",
+                    "key": "notes",
+                    "label": "补充想法",
+                    "placeholder": "人数、用途或其他想法，可留空"
+                  }
+                ]
+              }
+            },
+            "submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "footer": {
+              "type": "Text",
+              "props": {
+                "content": "图书馆适合安静阅读，四明书院可以公共交流。提交后会给出建议，建议仅供参考。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "帮我找个地方",
+            "fields": [
+              {
+                "name": "activity_form",
+                "label": "活动形式",
+                "type": "radio",
+                "required": true,
+                "options": [
+                  "线上",
+                  "线下"
+                ]
+              },
+              {
+                "name": "time_slot",
+                "label": "半日游时段",
+                "type": "radio",
+                "required": true,
+                "options": [
+                  "上午",
+                  "下午"
+                ]
+              },
+              {
+                "name": "places",
+                "label": "想去的地点（可多选）",
+                "type": "checkbox",
+                "required": true,
+                "multiple": true,
+                "options": [
+                  "图书馆",
+                  "食堂",
+                  "四明书院"
+                ]
+              },
+              {
+                "name": "notes",
+                "label": "补充想法",
+                "type": "textarea",
+                "required": false,
+                "placeholder": "人数、用途或其他想法，可留空"
+              }
+            ],
+            "notes": "图书馆适合安静阅读，四明书院可以公共交流；食堂适合用餐补给。",
+            "submit_label": "提交",
+            "fallback_text": "也可以直接文字回复：活动形式（线上/线下）、半日游时段（上午/下午）、地点（图书馆/食堂/四明书院，可多选）、补充想法（可留空）。",
+            "rich_components_needed": "无（本题仅需轻量表单字段，不使用 Image、ImageUpload、Tabs、MapPreview、SortableSequence、Collapsible、CodeBlock）",
+            "form": {
+              "activity_form": "",
+              "time_slot": "",
+              "places": [],
+              "notes": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_pywjFjskAhvcF2VIQPHS6590"
+      },
+      "toolCallId": "call_00_pywjFjskAhvcF2VIQPHS6590",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "1b5e1f86-15dc-4d5d-89a0-959339fc527d"
+    }
+  }
+]

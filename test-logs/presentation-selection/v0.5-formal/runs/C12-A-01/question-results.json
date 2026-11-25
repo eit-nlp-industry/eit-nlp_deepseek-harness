@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_jQSdIpyaaQFjOc8YCjNa6621",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"candidate\", \"header\": \"确认同学\", \"question\": \"画面中哪一位是你约好的同学？\", \"options\": [{\"label\": \"A：灰衣拉箱（推荐）\", \"description\": \"与“灰衣服、拉箱子”的描述完全吻合。\"}, {\"label\": \"B：蓝衣背包\", \"description\": \"颜色与携带物都与描述不同。\"}, {\"label\": \"都不是\", \"description\": \"两位都不符合，需要你再补充一个可识别的特征。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_jQSdIpyaaQFjOc8YCjNa6621"
+      },
+      "toolCallId": "call_00_jQSdIpyaaQFjOc8YCjNa6621",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"candidate\",\"selected\":[],\"custom\":\"确认是person-a（A），请转达我马上到。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "a55b4610-a876-412e-aa2f-ce073e893666"
+    }
+  }
+]

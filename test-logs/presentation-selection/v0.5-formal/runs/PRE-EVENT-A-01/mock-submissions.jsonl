@@ -1,0 +1,1 @@
+{"at":"2026-11-19T10:36:02.897Z","values":{"workflow":{"version":"workflow-v1","id":"pre-flow","title":"预检流程","steps":[{"id":"wait","type":"step","title":"等待材料","description":"最多2分钟"},{"id":"confirm","type":"step","title":"用户确认","description":"确认后结束"}],"parameters":{}},"parameters":{}}}

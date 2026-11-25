@@ -1,0 +1,69 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "N09-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 19,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_47M7mQNxKoynutNp1V504193"
+      },
+      "toolCallId": "call_00_ET_47M7mQNxKoynutNp1V504193",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N09\",\"facts\":\"稳定ID review=审阅需求、report=整理报告、client=客户沟通；初始review/report/client。仅保存排序草稿，不实际创建任务或联系客户。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "123ad745-e42f-451e-9c6f-1420620d0ca2"
+    }
+  },
+  {
+    "call": {
+      "seq": 34,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N09-A-02",
+        "values": {
+          "draft_type": "task_order",
+          "order": [
+            "client",
+            "review",
+            "report"
+          ],
+          "labels": [
+            "客户沟通",
+            "审阅需求",
+            "整理报告"
+          ]
+        }
+      }
+    },
+    "result_seq": 35,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_kDaOXssPnaAg9VjCJIG65714"
+      },
+      "toolCallId": "call_00_kDaOXssPnaAg9VjCJIG65714",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"draft_type\":\"task_order\",\"order\":[\"client\",\"review\",\"report\"],\"labels\":[\"客户沟通\",\"审阅需求\",\"整理报告\"]}}}"
+        }
+      ],
+      "isError": false,
+      "id": "a0db0979-340c-421f-aa1a-505d6aa547ba"
+    }
+  }
+]

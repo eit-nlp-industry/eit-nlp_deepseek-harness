@@ -1,0 +1,389 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "外卖取餐确认测评 1分钟" [selected]:
+    - generic: 外卖取餐确认测评
+    - generic: 1分钟
+  - treeitem "已完成 外卖取件模拟呈现 4分钟":
+    - generic: 已完成
+    - generic: 外卖取件模拟呈现
+    - generic: 4分钟
+  - treeitem "等待回答 外卖取件图像确认测评":
+    - generic: 等待回答
+    - generic: 外卖取件图像确认测评
+    - generic: 待回答
+  - treeitem "等待回答 外卖取件确认测评 C15-A-01":
+    - generic: 等待回答
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 待回答
+  - treeitem "已完成 图书馆座位图像呈现测评 6分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像呈现测评
+    - generic: 6分钟
+  - treeitem "图书馆座位查询测评 8分钟":
+    - generic: 图书馆座位查询测评
+    - generic: 8分钟
+  - treeitem "已完成 图书馆座位图像化呈现 8分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像化呈现
+    - generic: 8分钟
+  - treeitem "已完成 图书馆座位新视角图测评 8分钟":
+    - generic: 已完成
+    - generic: 图书馆座位新视角图测评
+    - generic: 8分钟
+  - treeitem "已完成 安静读书地点推荐测评 11分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐测评
+    - generic: 11分钟
+  - treeitem "已完成 安静读书场所推荐测评 12分钟":
+    - generic: 已完成
+    - generic: 安静读书场所推荐测评
+    - generic: 12分钟
+  - treeitem "已完成 安静读书地点推荐卡片 12分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片
+    - generic: 12分钟
+  - treeitem "已完成 安静读书地点推荐卡片测评 14分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片测评
+    - generic: 14分钟
+  - treeitem "图书馆找灰衣拉箱同学 14分钟":
+    - generic: 图书馆找灰衣拉箱同学
+    - generic: 14分钟
+  - treeitem "已完成 图书馆入口找同学 16分钟":
+    - generic: 已完成
+    - generic: 图书馆入口找同学
+    - generic: 16分钟
+  - treeitem "已完成 最小状态暂停展示 17分钟":
+    - generic: 已完成
+    - generic: 最小状态暂停展示
+    - generic: 17分钟
+  - treeitem "模拟暂停最小状态测试 17分钟":
+    - generic: 模拟暂停最小状态测试
+    - generic: 17分钟
+  - treeitem "已完成 C12-B-01图书馆寻人呈现测评 18分钟":
+    - generic: 已完成
+    - generic: C12-B-01图书馆寻人呈现测评
+    - generic: 18分钟
+  - treeitem "已完成 图书馆入口灰衣拉箱同学寻找 20分钟":
+    - generic: 已完成
+    - generic: 图书馆入口灰衣拉箱同学寻找
+    - generic: 20分钟
+  - treeitem "已完成 暂停等待控制回执测评 23分钟":
+    - generic: 已完成
+    - generic: 暂停等待控制回执测评
+    - generic: 23分钟
+  - treeitem "已完成 短暂停等用户取物 23分钟":
+    - generic: 已完成
+    - generic: 短暂停等用户取物
+    - generic: 23分钟
+  - treeitem "等待回答 跟随参观同学的图像状态呈现测评":
+    - generic: 等待回答
+    - generic: 跟随参观同学的图像状态呈现测评
+    - generic: 待回答
+  - treeitem "等待回答 跟着参观同学的状态展示":
+    - generic: 等待回答
+    - generic: 跟着参观同学的状态展示
+    - generic: 待回答
+  - treeitem "已完成 跟随参观同学的原生图像核对 27分钟":
+    - generic: 已完成
+    - generic: 跟随参观同学的原生图像核对
+    - generic: 27分钟
+  - treeitem "等待回答 跟着同学参观的测评任务":
+    - generic: 等待回答
+    - generic: 跟着同学参观的测评任务
+    - generic: 待回答
+  - treeitem "已完成 C09-B-02 固定材料初始化测评 30分钟":
+    - generic: 已完成
+    - generic: C09-B-02 固定材料初始化测评
+    - generic: 30分钟
+  - treeitem "已完成 测评 C07-b 时间改约表单 31分钟":
+    - generic: 已完成
+    - generic: 测评 C07-b 时间改约表单
+    - generic: 31分钟
+  - treeitem "C09-B-01 固定材料呈现测评 32分钟":
+    - generic: C09-B-01 固定材料呈现测评
+    - generic: 32分钟
+  - treeitem "已完成 C09-A-02 benchmark fixture initialization 32分钟":
+    - generic: 已完成
+    - generic: C09-A-02 benchmark fixture initialization
+    - generic: 32分钟
+  - treeitem "已完成 C09-A-01固定材料初始化测评 32分钟":
+    - generic: 已完成
+    - generic: C09-A-01固定材料初始化测评
+    - generic: 32分钟
+  - treeitem "记住用户小张的图片确认测评 35分钟":
+    - generic: 记住用户小张的图片确认测评
+    - generic: 35分钟
+  - treeitem "已完成 小张记忆与图像确认提示测评 35分钟":
+    - generic: 已完成
+    - generic: 小张记忆与图像确认提示测评
+    - generic: 35分钟
+  - treeitem "已完成 调整冲突说明与替代时段表单 35分钟":
+    - generic: 已完成
+    - generic: 调整冲突说明与替代时段表单
+    - generic: 35分钟
+  - treeitem "已完成 小张身份记忆测评 36分钟":
+    - generic: 已完成
+    - generic: 小张身份记忆测评
+    - generic: 36分钟
+  - treeitem "记住用户小张的测评 37分钟":
+    - generic: 记住用户小张的测评
+    - generic: 37分钟
+  - treeitem "已完成 评测呈现：冲突说明与替代时段表单 37分钟":
+    - generic: 已完成
+    - generic: 评测呈现：冲突说明与替代时段表单
+    - generic: 37分钟
+  - treeitem "已完成 用户改约8点后时段冲突呈现 38分钟":
+    - generic: 已完成
+    - generic: 用户改约8点后时段冲突呈现
+    - generic: 38分钟
+  - treeitem "会议室预订时间调整确认 40分钟":
+    - generic: 会议室预订时间调整确认
+    - generic: 40分钟
+  - treeitem "已完成 调整会议安排确认 40分钟":
+    - generic: 已完成
+    - generic: 调整会议安排确认
+    - generic: 40分钟
+  - treeitem "全量呈现测评 C07-a-A-02 44分钟":
+    - generic: 全量呈现测评 C07-a-A-02
+    - generic: 44分钟
+  - treeitem "已完成 时间改到8点后的需求确认 44分钟":
+    - generic: 已完成
+    - generic: 时间改到8点后的需求确认
+    - generic: 44分钟
+  - treeitem "已完成 更新草稿并提交 45分钟":
+    - generic: 已完成
+    - generic: 更新草稿并提交
+    - generic: 45分钟
+  - treeitem "调整图书馆行程安排 45分钟":
+    - generic: 调整图书馆行程安排
+    - generic: 45分钟
+  - treeitem "已完成 图书馆一小时行程草稿 45分钟":
+    - generic: 已完成
+    - generic: 图书馆一小时行程草稿
+    - generic: 45分钟
+  - treeitem "已完成 图书馆行程改为一小时 45分钟":
+    - generic: 已完成
+    - generic: 图书馆行程改为一小时
+    - generic: 45分钟
+  - treeitem "已完成 校外访客参观预约流程 47分钟":
+    - generic: 已完成
+    - generic: 校外访客参观预约流程
+    - generic: 47分钟
+  - treeitem "已完成 校外朋友参观预约咨询 47分钟":
+    - generic: 已完成
+    - generic: 校外朋友参观预约咨询
+    - generic: 47分钟
+  - treeitem "已完成 C05-B-01 访客参观预填表单测评 48分钟":
+    - generic: 已完成
+    - generic: C05-B-01 访客参观预填表单测评
+    - generic: 48分钟
+  - treeitem "校外访客参观审批预填表单 48分钟":
+    - generic: 校外访客参观审批预填表单
+    - generic: 48分钟
+  - treeitem "讲座线上线下选择呈现测评 49分钟":
+    - generic: 讲座线上线下选择呈现测评
+    - generic: 49分钟
+  - treeitem "已完成 讲座线上线下选择表单呈现 49分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下选择表单呈现
+    - generic: 49分钟
+  - button "展开其余 90 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 外卖取餐确认测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+  - button "跳转到第 3 轮"
+  - button "跳转到第 4 轮"
+  - button "跳转到第 5 轮"
+- generic: 【全量正式呈现测评 C15-A-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C15-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C15-A-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：我的外卖在学校大门，帮我取一下，尾号3726。 指定呈现方式：按用户要求原生图像+文字确认。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 20:35
+- button "复制":
+- status: 已完成
+- button "已完成，用时 5秒":
+  - generic: 已完成，用时 5秒
+- paragraph:
+  - text: 我找到了待确认的候选外卖：尾号
+  - strong: "3726"
+  - text: （候选包裹 parcel-3726）。目前只发布了远景图，近景和侧景还没有发布：
+- paragraph:
+  - 'button "查看大图: 外卖远景：尾号3726候选包裹 parcel-3726"':
+    - img "外卖远景：尾号3726候选包裹 parcel-3726"
+- paragraph:
+  - strong: 请确认：
+- list:
+  - listitem: 图中这份是否就是你的外卖（尾号 3726）？
+  - listitem: 确认后，我会继续处理取件；在你确认之前，我不会进行任何取件或提交。
+- paragraph: 另外，如果你需要靠更近的近景或侧景来核对，也可以告诉我。这两类图像目前都还未提供，等发布后我会一并展示。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 5.1K tok":
+  - generic: 用量 5.1K tok
+- generic: 20:35
+- generic: 先不确认，靠近一点让我看。
+- generic: 20:36
+- button "复制":
+- status: 已完成
+- button "已完成，用时 5秒":
+  - generic: 已完成，用时 5秒
+- paragraph:
+  - text: 目前还无法展示更近的画面：
+  - strong: 近景和侧景都还没有发布
+  - text: ，现在只有之前那张远景图。我不能用同一张远景图当作近景给你看，所以先如实说明。
+- paragraph: 现在状态：
+- list:
+  - text: 候选外卖：尾号 3726（parcel-3726），仍处于
+  - strong: 待确认
+  - text: ，我没有提交确认，也没有取件。
+  - listitem: 可用画面：只有远景图一张。
+- paragraph: 接下来可以这样选：
+- list:
+  - listitem: 等近景或侧景发布后，我再展示给你核对；
+  - listitem: 或者你直接根据现有远景做出判断，要不要确认。
+- paragraph: 你希望怎么继续？
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 6.7K tok":
+  - generic: 用量 6.7K tok
+- generic: 20:37
+- button "收到执行请求 20:38":
+  - generic: 收到执行请求
+  - time: 20:38
+- status: 已完成
+- button "已完成，用时 2秒":
+  - generic: 已完成，用时 2秒
+- paragraph:
+  - text: 近景已经发布，这是同一件候选外卖（parcel-3726，尾号
+  - strong: "3726"
+  - text: ）：
+- paragraph:
+  - 'button "查看大图: 外卖近景：尾号3726，候选包裹 parcel-3726"':
+    - img "外卖近景：尾号3726，候选包裹 parcel-3726"
+- paragraph:
+  - strong: 请看近景核对：
+- list:
+  - listitem: 候选：尾号 3726（parcel-3726）
+  - text: 当前状态：
+  - strong: 仍是待确认
+  - text: ；我没有提交确认，也没有取件。
+- paragraph: 如果这张没问题，请回复“确认”，我再继续。侧景目前仍未发布；如果你还想从侧面看一下，我也可以等侧景发布后再展示。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 4K tok":
+  - generic: 用量 4K tok
+- generic: 20:38
+- generic: 先不确认，再看一下侧面。
+- generic: 20:39
+- button "复制":
+- status: 已完成
+- button "已完成，用时 3秒":
+  - generic: 已完成，用时 3秒
+- paragraph: 侧景还没发布，现在看不了。我也不会用近景或者之前的远景当成侧景给你看。
+- paragraph: 当前情况：
+- list:
+  - text: 候选外卖：尾号 3726（parcel-3726），状态
+  - strong: 仍是待确认
+  - text: ，我没有提交确认，也没有取件。
+  - listitem: 目前能看到的画面：只有远景和近景两张；侧景还没有发布。
+- paragraph: 接下来我可以继续等侧景发布，发布后立刻给你看；如果你不想再等，也可以根据远景和近景直接告诉我确认还是取消。你希望怎么处理？
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 8.6K tok":
+  - generic: 用量 8.6K tok
+- generic: 20:39
+- button "收到执行请求 20:40":
+  - generic: 收到执行请求
+  - time: 20:40
+- status: 已完成
+- button "已完成，用时 2秒" [disabled]:
+  - generic: 已完成，用时 2秒
+- paragraph: 侧景已经发布了，是同一件候选外卖（parcel-3726）的侧面画面：
+- paragraph:
+  - 'button "查看大图: 外卖侧景：同一候选包裹 parcel-3726 的侧面"':
+    - img "外卖侧景：同一候选包裹 parcel-3726 的侧面"
+- paragraph: 现在这三个视角都看过了：远景、近景、侧景。目前的状态：
+- list:
+  - text: 候选：parcel-3726，尾号
+  - strong: "3726"
+  - text: 状态：
+  - strong: 还没确认
+  - text: ；我没有提交确认，也没有取件。
+- paragraph: 确认的话，请回复“确认”，我再继续下一步；如果不想用这份，也可以直接说取消。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 4.8K tok":
+  - generic: 用量 4.8K tok
+- generic: 20:40
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

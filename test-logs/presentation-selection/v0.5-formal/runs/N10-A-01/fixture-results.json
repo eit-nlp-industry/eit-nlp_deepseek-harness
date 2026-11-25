@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N10-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_6JMFAVpVDitpCp88ecgz7431"
+      },
+      "toolCallId": "call_00_ET_6JMFAVpVDitpCp88ecgz7431",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N10\",\"facts\":\"合成平面图courier=(0,0)、pickup=(2,0)、destination=(2,3)；两段courier→pickup→destination，单位示意格。MapPreview归一坐标courier=(10,80),pickup=(35,80),destination=(35,20)，非真实地理/实时定位；不配送。\",\"assets\":[{\"id\":\"bench05-warehouse-map\",\"file\":\"bench05-warehouse-map.png\",\"alt\":\"MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture\",\"source_id\":\"warehouse-map\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-warehouse-map/content\",\"path\":\"/api/media/bench05-warehouse-map/content\",\"sha256\":\"09fcc2c2e40ac4a73a86e3cde10f1c32098fb9c865883976dbb68192529db49f\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "43e840b1-0c19-4a50-85b8-9cf7b4eb4eaa"
+    }
+  }
+]

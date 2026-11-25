@@ -1,0 +1,20 @@
+{
+  "run_id": "C04-a-A-02",
+  "case_id": "C04-a",
+  "card_id": "C04",
+  "category_id": "G04",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C04-a-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C04-a-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C04-a-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：帮我找个地方。\n指定呈现方式：ask_user_question收集必要偏好。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "df63866388d7ac02919473305626ddae60f796815c5c4a3eb1ad21590a74b39c",
+  "operator_actions": "用户答“想安静读书”，继续给推荐。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T11:44:59.874Z",
+  "interactions": [],
+  "tab_id": "8",
+  "final_at": "2026-11-19T11:46:25.417Z",
+  "notes": "正确推荐图书馆；额外询问位置，跳过后未阻塞。"
+}

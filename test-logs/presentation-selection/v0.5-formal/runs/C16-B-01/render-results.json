@@ -1,0 +1,929 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_I1pfEJ7w5EqqHAHPYuhv9849",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"user_query\": \"展示“取件交接阶段说明”卡片：标题为【取件交接进度】，逐条列出：取件地点＝张伟老师的办公室（模拟地点 office-zw）；待取文件＝doc-01；当前阶段＝尚未完成交接准备，因此还不能取件；到门口、放好文件、交接图像发布与交接完成状态均需等模拟事件释放后才能更新，本卡不预报结果；图像说明＝材料暂未提供任何图像地址，故本轮不展示现场图，待图像发布事件释放后仅使用材料给出的地址展示。不添加任何其他富组件，不使用虚构图片链接或替代图。\", \"business_data\": {\"标题\": \"取件交接进度\", \"取件地点\": \"张伟老师的办公室（office-zw）\", \"待取文件\": \"doc-01\", \"当前阶段\": \"尚未完成交接准备——文件还没准备好交接，现在取件还不成立\", \"后续阶段待事件释放\": [\"到达办公室门口\", \"文件放好位置\", \"交接图像发布\", \"交接完成状态\"], \"图像说明\": \"本例材料暂未提供图像地址，本轮不展示现场图；待模拟的“图像发布”事件释放后，才使用材料给出的完整地址展示，绝不以其他图片冒充现场视角。\", \"下一步\": \"等待文件交接准备完成，或你告知其他安排后再继续。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "handover-card"
+              ]
+            },
+            "handover-card": {
+              "type": "Card",
+              "props": {
+                "title": "取件交接进度",
+                "variant": "outlined"
+              },
+              "children": [
+                "card-body"
+              ]
+            },
+            "card-body": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "location-row",
+                "file-row",
+                "stage-block",
+                "phases-heading",
+                "phase-1",
+                "phase-2",
+                "phase-3",
+                "phase-4",
+                "image-block",
+                "next-block",
+                "source-note"
+              ]
+            },
+            "location-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "location-label",
+                "location-value"
+              ]
+            },
+            "location-label": {
+              "type": "Text",
+              "props": {
+                "content": "取件地点：",
+                "variant": "muted"
+              }
+            },
+            "location-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/取件地点"
+                },
+                "variant": "default"
+              }
+            },
+            "file-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "file-label",
+                "file-value"
+              ]
+            },
+            "file-label": {
+              "type": "Text",
+              "props": {
+                "content": "待取文件：",
+                "variant": "muted"
+              }
+            },
+            "file-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/待取文件"
+                },
+                "variant": "default"
+              }
+            },
+            "stage-block": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "stretch"
+              },
+              "children": [
+                "stage-label",
+                "stage-value"
+              ]
+            },
+            "stage-label": {
+              "type": "Text",
+              "props": {
+                "content": "当前阶段：",
+                "variant": "muted"
+              }
+            },
+            "stage-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前阶段"
+                },
+                "variant": "default"
+              }
+            },
+            "phases-heading": {
+              "type": "Text",
+              "props": {
+                "content": "后续阶段（均需等待模拟事件释放后才能更新，本卡不预报结果）：",
+                "variant": "muted"
+              }
+            },
+            "phase-1": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "phase-1-number",
+                "phase-1-value"
+              ]
+            },
+            "phase-1-number": {
+              "type": "Text",
+              "props": {
+                "content": "1.",
+                "variant": "muted"
+              }
+            },
+            "phase-1-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/后续阶段待事件释放/0"
+                },
+                "variant": "default"
+              }
+            },
+            "phase-2": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "phase-2-number",
+                "phase-2-value"
+              ]
+            },
+            "phase-2-number": {
+              "type": "Text",
+              "props": {
+                "content": "2.",
+                "variant": "muted"
+              }
+            },
+            "phase-2-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/后续阶段待事件释放/1"
+                },
+                "variant": "default"
+              }
+            },
+            "phase-3": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "phase-3-number",
+                "phase-3-value"
+              ]
+            },
+            "phase-3-number": {
+              "type": "Text",
+              "props": {
+                "content": "3.",
+                "variant": "muted"
+              }
+            },
+            "phase-3-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/后续阶段待事件释放/2"
+                },
+                "variant": "default"
+              }
+            },
+            "phase-4": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "phase-4-number",
+                "phase-4-value"
+              ]
+            },
+            "phase-4-number": {
+              "type": "Text",
+              "props": {
+                "content": "4.",
+                "variant": "muted"
+              }
+            },
+            "phase-4-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/后续阶段待事件释放/3"
+                },
+                "variant": "default"
+              }
+            },
+            "image-block": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "stretch"
+              },
+              "children": [
+                "image-label",
+                "image-value"
+              ]
+            },
+            "image-label": {
+              "type": "Text",
+              "props": {
+                "content": "图像说明：",
+                "variant": "muted"
+              }
+            },
+            "image-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/图像说明"
+                },
+                "variant": "default"
+              }
+            },
+            "next-block": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "stretch"
+              },
+              "children": [
+                "next-label",
+                "next-value"
+              ]
+            },
+            "next-label": {
+              "type": "Text",
+              "props": {
+                "content": "下一步：",
+                "variant": "muted"
+              }
+            },
+            "next-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/下一步"
+                },
+                "variant": "default"
+              }
+            },
+            "source-note": {
+              "type": "Text",
+              "props": {
+                "content": "数据来源：business_data。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "取件交接进度",
+            "取件地点": "张伟老师的办公室（office-zw）",
+            "待取文件": "doc-01",
+            "当前阶段": "尚未完成交接准备——文件还没准备好交接，现在取件还不成立",
+            "后续阶段待事件释放": [
+              "到达办公室门口",
+              "文件放好位置",
+              "交接图像发布",
+              "交接完成状态"
+            ],
+            "图像说明": "本例材料暂未提供图像地址，本轮不展示现场图；待模拟的“图像发布”事件释放后，才使用材料给出的完整地址展示，绝不以其他图片冒充现场视角。",
+            "下一步": "等待文件交接准备完成，或你告知其他安排后再继续。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_I1pfEJ7w5EqqHAHPYuhv9849"
+      },
+      "toolCallId": "call_00_I1pfEJ7w5EqqHAHPYuhv9849",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "e5bd05b6-651f-4eff-900f-a7cf2a03ee97"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_00_NKaSMRn9bAlig1RMcAUB3606",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）\", \"image\": \"/api/media/bench05-doc-01/content\", \"交接阶段\": \"已到办公室门口、敲门，老师已把文件放好；文件图已发布，等你确认；交接尚未完成\", \"当前阶段\": \"待你确认文件\", \"图像来源\": \"材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）\", \"待取文件\": \"doc-01\", \"地点\": \"张伟老师办公室（office-zw）\", \"标题\": \"取件交接进度\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"展示一张 Image 组件，props.src 取 business_data.image 的固定 path 字符串 \\\"/api/media/bench05-doc-01/content\\\"，alt 用 business_data.alt；图片上方标注标题【取件交接进度】；图片下方用要点列出：地点＝张伟老师办公室（office-zw）、待取文件＝doc-01、当前阶段＝已到门口敲门、老师已放好文件、文件图已发布、交接尚未完成（待确认）；并附一句说明该图为模拟文件图，材料未提供其他视角。除 Image 外不加其他富组件，不引入其他图片或地址。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "image",
+                "details",
+                "note"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "取件交接进度",
+                "level": "h2"
+              }
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-doc-01/content",
+                "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "details": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "loc-row",
+                "file-row",
+                "current-row",
+                "handover-row",
+                "source-row"
+              ]
+            },
+            "loc-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "loc-label",
+                "loc-value"
+              ]
+            },
+            "loc-label": {
+              "type": "Text",
+              "props": {
+                "content": "• 地点＝",
+                "variant": "default"
+              }
+            },
+            "loc-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/地点"
+                },
+                "variant": "default"
+              }
+            },
+            "file-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "file-label",
+                "file-value"
+              ]
+            },
+            "file-label": {
+              "type": "Text",
+              "props": {
+                "content": "• 待取文件＝",
+                "variant": "default"
+              }
+            },
+            "file-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/待取文件"
+                },
+                "variant": "default"
+              }
+            },
+            "current-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "current-label",
+                "current-value"
+              ]
+            },
+            "current-label": {
+              "type": "Text",
+              "props": {
+                "content": "• 当前阶段＝",
+                "variant": "default"
+              }
+            },
+            "current-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前阶段"
+                },
+                "variant": "default"
+              }
+            },
+            "handover-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "handover-label",
+                "handover-value"
+              ]
+            },
+            "handover-label": {
+              "type": "Text",
+              "props": {
+                "content": "• 交接阶段＝",
+                "variant": "default"
+              }
+            },
+            "handover-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/交接阶段"
+                },
+                "variant": "default"
+              }
+            },
+            "source-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "source-label",
+                "source-value"
+              ]
+            },
+            "source-label": {
+              "type": "Text",
+              "props": {
+                "content": "• 图像来源＝",
+                "variant": "default"
+              }
+            },
+            "source-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/图像来源"
+                },
+                "variant": "default"
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": "说明：该图为模拟文件图，材料未提供其他视角。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）",
+            "image": "/api/media/bench05-doc-01/content",
+            "交接阶段": "已到办公室门口、敲门，老师已把文件放好；文件图已发布，等你确认；交接尚未完成",
+            "当前阶段": "待你确认文件",
+            "图像来源": "材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）",
+            "待取文件": "doc-01",
+            "地点": "张伟老师办公室（office-zw）",
+            "标题": "取件交接进度"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_NKaSMRn9bAlig1RMcAUB3606"
+      },
+      "toolCallId": "call_00_NKaSMRn9bAlig1RMcAUB3606",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "dea1796e-15fe-40b9-8e13-18c22f9757b4"
+    }
+  },
+  {
+    "call_seq": 64,
+    "result_seq": 65,
+    "call": {
+      "turn": 2,
+      "step": 4,
+      "callId": "call_00_fxnIwVP9y5e6jvMqsPhe0572",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）\", \"image\": \"/api/media/bench05-doc-01/content\", \"你已确认\": \"是——“就是这个文件。”\", \"图像来源\": \"材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）\", \"待取文件\": \"doc-01\", \"标题\": \"取件交接进度\", \"现在进行到\": \"已确认文件、已提交确认，正在等交接回执；回执未返回前不视为交接完成\", \"地点\": \"张伟老师办公室（office-zw）\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"保留同一张 Image 组件，props.src 仍为 business_data.image 的固定 path 字符串 \\\"/api/media/bench05-doc-01/content\\\"，alt 用 business_data.alt（不换图、不新增其他图片）；图片下方列出：地点＝张伟老师办公室（office-zw）、待取文件＝doc-01、你的确认＝“就是这个文件。”、当前环节＝已确认并提交确认，等待交接回执，尚未完成交接；再注明图像来源为材料给定的模拟文件图，无其他视角。除 Image 外不加其他富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "sec-main"
+              ]
+            },
+            "sec-main": {
+              "type": "Section",
+              "props": {
+                "title": "取件交接进度",
+                "description": "模拟文件图与取件交接状态的逐项展示",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "card-image",
+                "desc-fields",
+                "note-source"
+              ]
+            },
+            "card-image": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "img-doc"
+              ]
+            },
+            "img-doc": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-doc-01/content",
+                "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）",
+                "caption": "材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "desc-fields": {
+              "type": "Descriptions",
+              "props": {
+                "title": "字段逐项",
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "标题",
+                    "value": "取件交接进度"
+                  },
+                  {
+                    "label": "地点",
+                    "value": "张伟老师办公室（office-zw）"
+                  },
+                  {
+                    "label": "待取文件",
+                    "value": "doc-01"
+                  },
+                  {
+                    "label": "你的确认（你已确认）",
+                    "value": "是——“就是这个文件。”"
+                  },
+                  {
+                    "label": "当前环节（现在进行到）",
+                    "value": "已确认文件、已提交确认，正在等交接回执；回执未返回前不视为交接完成"
+                  },
+                  {
+                    "label": "图像来源",
+                    "value": "材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）"
+                  },
+                  {
+                    "label": "图片路径（image）",
+                    "value": "/api/media/bench05-doc-01/content"
+                  },
+                  {
+                    "label": "替代文本（alt）",
+                    "value": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）"
+                  }
+                ]
+              }
+            },
+            "note-source": {
+              "type": "Text",
+              "props": {
+                "content": "图像来源为材料给定的模拟文件图（bench05-doc-01.png），无其他视角。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）",
+            "image": "/api/media/bench05-doc-01/content",
+            "你已确认": "是——“就是这个文件。”",
+            "图像来源": "材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）",
+            "待取文件": "doc-01",
+            "标题": "取件交接进度",
+            "现在进行到": "已确认文件、已提交确认，正在等交接回执；回执未返回前不视为交接完成",
+            "地点": "张伟老师办公室（office-zw）"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_fxnIwVP9y5e6jvMqsPhe0572"
+      },
+      "toolCallId": "call_00_fxnIwVP9y5e6jvMqsPhe0572",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "b36b19a0-648e-41cd-81c0-66278502decc"
+    }
+  },
+  {
+    "call_seq": 79,
+    "result_seq": 80,
+    "call": {
+      "turn": 3,
+      "step": 1,
+      "callId": "call_00_x200Evyi9tXWeas44GHQ8667",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）\", \"image\": \"/api/media/bench05-doc-01/content\", \"交接状态\": \"模拟交接已完成（仅模拟环境内，不代表真实取物）\", \"图像来源\": \"材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）\", \"文件\": \"doc-01（你已确认）\", \"标题\": \"取件交接进度：已完成\", \"地点\": \"张伟老师办公室（office-zw）\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"保留同一张 Image 组件，props.src 仍为 business_data.image 的固定 path 字符串 \\\"/api/media/bench05-doc-01/content\\\"，alt 用 business_data.alt（不换图、不新增其他图片）；图片下方列出：地点＝张伟老师办公室（office-zw）、文件＝doc-01（你已确认）、交接状态＝已在模拟环境中完成交接，并注明仅为模拟，不代表真实取物；再注明图像来源为材料给定的模拟文件图。除 Image 外不加其他富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "pageTitle",
+                "contextNote",
+                "image",
+                "fieldsCard",
+                "simulationNote"
+              ]
+            },
+            "pageTitle": {
+              "type": "Heading",
+              "props": {
+                "text": "取件交接进度：已完成",
+                "level": "h1"
+              }
+            },
+            "contextNote": {
+              "type": "Text",
+              "props": {
+                "content": "以下按材料给定的 business_data 逐项展示；材料未提供独立步骤说明或对比字段。",
+                "variant": "muted"
+              }
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-doc-01/content",
+                "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "fieldsCard": {
+              "type": "Card",
+              "props": {
+                "title": "business_data 字段逐项展示",
+                "variant": "outlined"
+              },
+              "children": [
+                "fieldsStack"
+              ]
+            },
+            "fieldsStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "fieldTitle",
+                "fieldLocation",
+                "fieldFile",
+                "fieldStatus",
+                "fieldSource",
+                "fieldPath",
+                "fieldAlt"
+              ]
+            },
+            "fieldTitle": {
+              "type": "Text",
+              "props": {
+                "content": "标题：取件交接进度：已完成",
+                "variant": "default"
+              }
+            },
+            "fieldLocation": {
+              "type": "Text",
+              "props": {
+                "content": "地点：张伟老师办公室（office-zw）",
+                "variant": "default"
+              }
+            },
+            "fieldFile": {
+              "type": "Text",
+              "props": {
+                "content": "文件：doc-01（你已确认）",
+                "variant": "default"
+              }
+            },
+            "fieldStatus": {
+              "type": "Text",
+              "props": {
+                "content": "交接状态：模拟交接已完成（仅模拟环境内，不代表真实取物）",
+                "variant": "default"
+              }
+            },
+            "fieldSource": {
+              "type": "Text",
+              "props": {
+                "content": "图像来源：材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）",
+                "variant": "default"
+              }
+            },
+            "fieldPath": {
+              "type": "Text",
+              "props": {
+                "content": "图像路径：/api/media/bench05-doc-01/content",
+                "variant": "default"
+              }
+            },
+            "fieldAlt": {
+              "type": "Text",
+              "props": {
+                "content": "图像 alt：MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）",
+                "variant": "default"
+              }
+            },
+            "simulationNote": {
+              "type": "Text",
+              "props": {
+                "content": "仅为模拟，不代表真实取物。",
+                "variant": "warning"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK DOCUMENT; doc-01 | OFFICE ZW; synthetic fixture（模拟文件图，非真实现场）",
+            "image": "/api/media/bench05-doc-01/content",
+            "交接状态": "模拟交接已完成（仅模拟环境内，不代表真实取物）",
+            "图像来源": "材料给定：bench05-doc-01.png（doc-01，960×540，模拟文件图）",
+            "文件": "doc-01（你已确认）",
+            "标题": "取件交接进度：已完成",
+            "地点": "张伟老师办公室（office-zw）"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_x200Evyi9tXWeas44GHQ8667"
+      },
+      "toolCallId": "call_00_x200Evyi9tXWeas44GHQ8667",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "d06b1a21-ffa4-40a3-850c-7a59efcadcfa"
+    }
+  }
+]

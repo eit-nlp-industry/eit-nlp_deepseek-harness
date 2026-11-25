@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 5,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "同标准校准：不在分支虽通知并结束，且实际保存version3，但把“敲门等待材料”放在老师在/不在判断之前，老师不在时仍须先等待材料，未消除用户要避免的无条件等待；按有向路径核心验收失败。"
+}

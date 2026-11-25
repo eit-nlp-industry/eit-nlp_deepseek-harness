@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "N02-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 19,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_2CaVaAaMxrhvfBBLVhY01881"
+      },
+      "toolCallId": "call_00_ET_2CaVaAaMxrhvfBBLVhY01881",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N02\",\"facts\":\"虚构套餐plan-basic基础版：99元/月，5人，邮件支持，无导出；plan-team团队版：299元/月，20人，邮件+在线支持，支持CSV导出；plan-enterprise企业版：需询价，成员上限与导出未知，专属支持。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "6e2e4d58-1f2f-4660-ad83-ba88c66c8771"
+    }
+  }
+]

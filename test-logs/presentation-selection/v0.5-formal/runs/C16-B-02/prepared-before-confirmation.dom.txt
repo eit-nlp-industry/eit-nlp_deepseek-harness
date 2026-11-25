@@ -1,0 +1,330 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 【全量正式呈现测评 C17-a-B-01 刚刚":
+    - generic: 进行中
+    - generic: 【全量正式呈现测评 C17-a-B-01
+    - generic: 刚刚
+  - treeitem "已完成 五分钟门开提醒测评 1分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 1分钟
+  - treeitem "已完成 门开五分钟提醒文字通知 1分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒文字通知
+    - generic: 1分钟
+  - treeitem "已完成 门开提醒固定材料测评 7分钟":
+    - generic: 已完成
+    - generic: 门开提醒固定材料测评
+    - generic: 7分钟
+  - treeitem "已完成 门开提醒测试 7分钟":
+    - generic: 已完成
+    - generic: 门开提醒测试
+    - generic: 7分钟
+  - treeitem "等待回答 文件交接呈现测评 C16-B-02" [selected]:
+    - generic: 等待回答
+    - generic: 文件交接呈现测评 C16-B-02
+    - generic: 待回答
+  - treeitem "已完成 全量正式呈现测评 C16-B-01 8分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-B-01
+    - generic: 8分钟
+  - treeitem "已完成 全量正式呈现测评 C16-A-02 10分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 10分钟
+  - treeitem "已完成 正式呈现测评 C16-A-01 10分钟":
+    - generic: 已完成
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 10分钟
+  - treeitem "已完成 外卖取餐确认测评 15分钟":
+    - generic: 已完成
+    - generic: 外卖取餐确认测评
+    - generic: 15分钟
+  - treeitem "外卖取件模拟呈现 19分钟":
+    - generic: 外卖取件模拟呈现
+    - generic: 19分钟
+  - treeitem "已完成 外卖取件图像确认测评 19分钟":
+    - generic: 已完成
+    - generic: 外卖取件图像确认测评
+    - generic: 19分钟
+  - treeitem "已完成 外卖取件确认测评 C15-A-01 21分钟":
+    - generic: 已完成
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 21分钟
+  - treeitem "图书馆座位图像呈现测评 22分钟":
+    - generic: 图书馆座位图像呈现测评
+    - generic: 22分钟
+  - treeitem "已完成 图书馆座位查询测评 23分钟":
+    - generic: 已完成
+    - generic: 图书馆座位查询测评
+    - generic: 23分钟
+  - treeitem "已完成 图书馆座位图像化呈现 23分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像化呈现
+    - generic: 23分钟
+  - treeitem "已完成 图书馆座位新视角图测评 23分钟":
+    - generic: 已完成
+    - generic: 图书馆座位新视角图测评
+    - generic: 23分钟
+  - treeitem "已完成 安静读书地点推荐测评 26分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐测评
+    - generic: 26分钟
+  - treeitem "已完成 安静读书场所推荐测评 28分钟":
+    - generic: 已完成
+    - generic: 安静读书场所推荐测评
+    - generic: 28分钟
+  - treeitem "安静读书地点推荐卡片 28分钟":
+    - generic: 安静读书地点推荐卡片
+    - generic: 28分钟
+  - treeitem "安静读书地点推荐卡片测评 30分钟":
+    - generic: 安静读书地点推荐卡片测评
+    - generic: 30分钟
+  - treeitem "已完成 图书馆找灰衣拉箱同学 30分钟":
+    - generic: 已完成
+    - generic: 图书馆找灰衣拉箱同学
+    - generic: 30分钟
+  - treeitem "已完成 图书馆入口找同学 32分钟":
+    - generic: 已完成
+    - generic: 图书馆入口找同学
+    - generic: 32分钟
+  - treeitem "最小状态暂停展示 33分钟":
+    - generic: 最小状态暂停展示
+    - generic: 33分钟
+  - treeitem "已完成 模拟暂停最小状态测试 33分钟":
+    - generic: 已完成
+    - generic: 模拟暂停最小状态测试
+    - generic: 33分钟
+  - treeitem "已完成 C12-B-01图书馆寻人呈现测评 33分钟":
+    - generic: 已完成
+    - generic: C12-B-01图书馆寻人呈现测评
+    - generic: 33分钟
+  - treeitem "已完成 图书馆入口灰衣拉箱同学寻找 35分钟":
+    - generic: 已完成
+    - generic: 图书馆入口灰衣拉箱同学寻找
+    - generic: 35分钟
+  - treeitem "已完成 暂停等待控制回执测评 39分钟":
+    - generic: 已完成
+    - generic: 暂停等待控制回执测评
+    - generic: 39分钟
+  - treeitem "短暂停等用户取物 39分钟":
+    - generic: 短暂停等用户取物
+    - generic: 39分钟
+  - treeitem "等待回答 跟随参观同学的图像状态呈现测评":
+    - generic: 等待回答
+    - generic: 跟随参观同学的图像状态呈现测评
+    - generic: 待回答
+  - treeitem "等待回答 跟着参观同学的状态展示":
+    - generic: 等待回答
+    - generic: 跟着参观同学的状态展示
+    - generic: 待回答
+  - treeitem "已完成 跟随参观同学的原生图像核对 43分钟":
+    - generic: 已完成
+    - generic: 跟随参观同学的原生图像核对
+    - generic: 43分钟
+  - treeitem "等待回答 跟着同学参观的测评任务":
+    - generic: 等待回答
+    - generic: 跟着同学参观的测评任务
+    - generic: 待回答
+  - treeitem "已完成 C09-B-02 固定材料初始化测评 46分钟":
+    - generic: 已完成
+    - generic: C09-B-02 固定材料初始化测评
+    - generic: 46分钟
+  - treeitem "已完成 测评 C07-b 时间改约表单 47分钟":
+    - generic: 已完成
+    - generic: 测评 C07-b 时间改约表单
+    - generic: 47分钟
+  - treeitem "已完成 C09-B-01 固定材料呈现测评 47分钟":
+    - generic: 已完成
+    - generic: C09-B-01 固定材料呈现测评
+    - generic: 47分钟
+  - treeitem "已完成 C09-A-02 benchmark fixture initialization 48分钟":
+    - generic: 已完成
+    - generic: C09-A-02 benchmark fixture initialization
+    - generic: 48分钟
+  - treeitem "C09-A-01固定材料初始化测评 48分钟":
+    - generic: C09-A-01固定材料初始化测评
+    - generic: 48分钟
+  - treeitem "已完成 记住用户小张的图片确认测评 50分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的图片确认测评
+    - generic: 50分钟
+  - treeitem "已完成 小张记忆与图像确认提示测评 50分钟":
+    - generic: 已完成
+    - generic: 小张记忆与图像确认提示测评
+    - generic: 50分钟
+  - treeitem "调整冲突说明与替代时段表单 51分钟":
+    - generic: 调整冲突说明与替代时段表单
+    - generic: 51分钟
+  - treeitem "已完成 小张身份记忆测评 51分钟":
+    - generic: 已完成
+    - generic: 小张身份记忆测评
+    - generic: 51分钟
+  - treeitem "已完成 记住用户小张的测评 52分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的测评
+    - generic: 52分钟
+  - treeitem "已完成 评测呈现：冲突说明与替代时段表单 53分钟":
+    - generic: 已完成
+    - generic: 评测呈现：冲突说明与替代时段表单
+    - generic: 53分钟
+  - treeitem "用户改约8点后时段冲突呈现 54分钟":
+    - generic: 用户改约8点后时段冲突呈现
+    - generic: 54分钟
+  - treeitem "已完成 会议室预订时间调整确认 56分钟":
+    - generic: 已完成
+    - generic: 会议室预订时间调整确认
+    - generic: 56分钟
+  - treeitem "已完成 调整会议安排确认 56分钟":
+    - generic: 已完成
+    - generic: 调整会议安排确认
+    - generic: 56分钟
+  - treeitem "已完成 全量呈现测评 C07-a-A-02 1小时":
+    - generic: 已完成
+    - generic: 全量呈现测评 C07-a-A-02
+    - generic: 1小时
+  - treeitem "已完成 时间改到8点后的需求确认 1小时":
+    - generic: 已完成
+    - generic: 时间改到8点后的需求确认
+    - generic: 1小时
+  - treeitem "已完成 更新草稿并提交 1小时":
+    - generic: 已完成
+    - generic: 更新草稿并提交
+    - generic: 1小时
+  - button "展开其余 99 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 文件交接呈现测评 C16-B-02
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 C16-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C16-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C16-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：张伟老师说文件准备好了，去他的办公室帮我拿一下。 指定呈现方式：Image+交接阶段说明。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 20:47
+- button "复制":
+- status: 已完成
+- button "已完成，用时 3分37秒":
+  - generic: 已完成，用时 3分37秒
+- paragraph: 我先按你的要求获取这个案例的固定材料。
+- paragraph:
+  - strong: 张伟老师办公室 · 取件任务当前阶段：准备中（还不能去取）
+- list:
+  - strong: 地点
+  - text: ：张伟老师办公室（office-zw，模拟地点）
+  - strong: 待取文件
+  - text: ：候选文件 doc-01
+  - strong: 交接状态
+  - text: ：尚未完成交接准备，所以文件现在还不能取走
+  - strong: 到门口、取件、放好
+  - text: ：均尚未发生；也不会预报结果，取得怎样就按实际事件更新
+  - strong: 图像
+  - text: ：本例材料没有提供任何图片，也没有可用的图片地址，所以图像位暂时是空的，没有图片可展示，也没有用其他图代替
+- paragraph:
+  - strong: 下一步
+  - text: ：等交接准备完成，并且之后有实际的到门口与交接事件，再继续更新阶段和图像；在此之前不会有“已经拿到”的结论。
+- paragraph: 本次是模拟流程：不联系真人、不操作机器人、不产生真实业务动作。
+- generic: 取件任务 · 交接阶段
+- separator
+- generic: 准备中（尚未完成交接准备）
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 21.4K tok":
+  - generic: 用量 21.4K tok
+- generic: 20:51
+- button "收到执行请求 20:52":
+  - generic: 收到执行请求
+  - time: 20:52
+- text: 等待你的操作 · 张伟老师办公室门口的 doc-01 已放妥，待确认文件图也已发布（模拟文档图，960×540，sha256 0b03c85d…b04de）。请确认：这份就是你要取的文件吗？
+- 'button "思考 Now an event: arrived at door, doc-01 placed, image published, handover not yet completed, status ready_for_confirmation. So now I should present Image + handover stage, using the given URL, and ask user to confirm the handover (交接确认) — \"需要接收用户确认的草稿时，调用submit\" — need user confirmation before submit. So ask user whether the document is correct / confirm handover."':
+  - generic: 思考
+  - generic: "Now an event: arrived at door, doc-01 placed, image published, handover not yet completed, status ready_for_confirmation. So now I should present Image + handover stage, using the given URL, and ask user to confirm the handover (交接确认) — \"需要接收用户确认的草稿时，调用submit\" — need user confirmation before submit. So ask user whether the document is correct / confirm handover."
+- button "工具调用 benchmark_fixture · read":
+  - generic: 工具调用
+  - generic: benchmark_fixture · read
+- button "思考 Now render display with Image + handover stage, then ask user to confirm.":
+  - generic: 思考
+  - generic: Now render display with Image + handover stage, then ask user to confirm.
+- generic: 界面生成失败，已尝试 3 次：Model output is invalid after generation validation。请用文字继续回答。不要把错误 JSON 展示给用户。
+- 'button "思考 Image display failed. I should report honestly: image card couldn''t render; provide text with the image URL? Providing the URL as a link might be fine — it''s material-given. The fallback must be text."':
+  - generic: 思考
+  - generic: "Image display failed. I should report honestly: image card couldn't render; provide text with the image URL? Providing the URL as a link might be fine — it's material-given. The fallback must be text."
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "张伟老师办公室门口的 doc-01 已放妥，待确认文件图也已发布（模拟文档图，960×540，sha256 0b03c85d…b04de）。请确认：这份就是你要取的文件吗？":
+  - generic: 确认交接
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "张伟老师办公室门口的 doc-01 已放妥，待确认文件图也已发布（模拟文档图，960×540，sha256 0b03c85d…b04de）。请确认：这份就是你要取的文件吗？" [level=2]
+  - radiogroup:
+    - radio "确认，就是 doc-01":
+      - generic: "1"
+      - generic: 确认，就是 doc-01
+      - generic: 按 doc-01 提交交接确认；提交后会返回模拟结果，成功与否以结果为准。
+    - radio "先不确认，我要核对":
+      - generic: "2"
+      - generic: 先不确认，我要核对
+      - generic: 暂不提交，交接状态保持“尚未完成”，我等你进一步说明。
+    - textbox "输入你的答案"
+  - button "上一题" [disabled]:
+  - generic: 1 / 1
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交" [disabled]

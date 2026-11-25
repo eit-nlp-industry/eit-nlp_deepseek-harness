@@ -1,0 +1,232 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 测评C04-a-B-01：轻量form找地点 刚刚":
+    - generic: 已完成
+    - generic: 测评C04-a-B-01：轻量form找地点
+    - generic: 刚刚
+  - treeitem "协助用户寻找地点偏好 1分钟" [selected]:
+    - generic: 协助用户寻找地点偏好
+    - generic: 1分钟
+  - treeitem "已完成 全量呈现测评地点查找 1分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评地点查找
+    - generic: 1分钟
+  - treeitem "已完成 模拟环境地点查找测评 1分钟":
+    - generic: 已完成
+    - generic: 模拟环境地点查找测评
+    - generic: 1分钟
+  - treeitem "Benchmark fixture place-finding test 9分钟":
+    - generic: Benchmark fixture place-finding test
+    - generic: 9分钟
+  - treeitem "已完成 轻量表单选择地点测评 9分钟":
+    - generic: 已完成
+    - generic: 轻量表单选择地点测评
+    - generic: 9分钟
+  - treeitem "已完成 轻量form找地点测评 C04-a-B-01 9分钟":
+    - generic: 已完成
+    - generic: 轻量form找地点测评 C04-a-B-01
+    - generic: 9分钟
+  - treeitem "已完成 寻找地点的偏好确认测试 9分钟":
+    - generic: 已完成
+    - generic: 寻找地点的偏好确认测试
+    - generic: 9分钟
+  - treeitem "C03-B-02 场地推荐测评 13分钟":
+    - generic: C03-B-02 场地推荐测评
+    - generic: 13分钟
+  - treeitem "已完成 会议室投屏白板试讲安排 13分钟":
+    - generic: 已完成
+    - generic: 会议室投屏白板试讲安排
+    - generic: 13分钟
+  - treeitem "已完成 明晚试讲场地推荐比较 13分钟":
+    - generic: 已完成
+    - generic: 明晚试讲场地推荐比较
+    - generic: 13分钟
+  - treeitem "已完成 试讲场地推荐测评 13分钟":
+    - generic: 已完成
+    - generic: 试讲场地推荐测评
+    - generic: 13分钟
+  - treeitem "进校后能否直接去图书馆测评 19分钟":
+    - generic: 进校后能否直接去图书馆测评
+    - generic: 19分钟
+  - treeitem "已完成 进校后图书馆访问测评 19分钟":
+    - generic: 已完成
+    - generic: 进校后图书馆访问测评
+    - generic: 19分钟
+  - treeitem "已完成 图书馆入校访问测评 19分钟":
+    - generic: 已完成
+    - generic: 图书馆入校访问测评
+    - generic: 19分钟
+  - treeitem "已完成 进校后能否直接去图书馆 19分钟":
+    - generic: 已完成
+    - generic: 进校后能否直接去图书馆
+    - generic: 19分钟
+  - treeitem "图书馆讨论场所展示测评 22分钟":
+    - generic: 图书馆讨论场所展示测评
+    - generic: 22分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 22分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 22分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 22分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 22分钟
+  - treeitem "已完成 图书馆讨论空间简洁卡片 22分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间简洁卡片
+    - generic: 22分钟
+  - treeitem "东方理工校园设施介绍测评 26分钟":
+    - generic: 东方理工校园设施介绍测评
+    - generic: 26分钟
+  - treeitem "已完成 东方理工校园设施介绍呈现测评 26分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍呈现测评
+    - generic: 26分钟
+  - treeitem "已完成 东方理工校园信息介绍测评 26分钟":
+    - generic: 已完成
+    - generic: 东方理工校园信息介绍测评
+    - generic: 26分钟
+  - treeitem "已完成 东方理工校园设施介绍 27分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 27分钟
+  - treeitem "东方理工校园设施介绍测评 33分钟":
+    - generic: 东方理工校园设施介绍测评
+    - generic: 33分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 33分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 33分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 33分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 33分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 33分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 33分钟
+  - treeitem "东方理工校园设施介绍 37分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 37分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 37分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 37分钟
+  - treeitem "已完成 东方理工校园设施介绍 37分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 37分钟
+  - treeitem "已完成 东方理工校园设施介绍 37分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 37分钟
+  - treeitem "四会话隔离预检marker 39分钟":
+    - generic: 四会话隔离预检marker
+    - generic: 39分钟
+  - treeitem "已完成 四会话隔离预检测试 39分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 39分钟
+  - treeitem "已完成 预检调用初始化返回marker 41分钟":
+    - generic: 已完成
+    - generic: 预检调用初始化返回marker
+    - generic: 41分钟
+  - treeitem "已完成 四会话隔离预检初始化 43分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检初始化
+    - generic: 43分钟
+  - button "展开其余 48 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 协助用户寻找地点偏好
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C04-a-A-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C04-a-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C04-a-A-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：帮我找个地方。 指定呈现方式：ask_user_question收集必要偏好。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 19:45
+- button "复制":
+- status: 已完成
+- button "已完成，用时 50秒":
+  - generic: 已完成，用时 50秒
+- group "问题与回答":
+  - term:
+    - generic: 用途
+    - generic: 你主要想在这个地方做什么？
+  - definition: 想安静读书
+  - term:
+    - generic: 位置
+    - generic: 你希望在哪个区域或附近找？如果暂时没定，可跳过。
+  - definition: 已跳过
+  - generic: 19:45
+  - button "复制":
+- paragraph:
+  - text: 你想安静读书，那更适合去
+  - strong: 图书馆
+  - text: ：图书馆更适合安静阅读，可以满足你的需求。
+- paragraph: 四明书院更适合公共交流，不符合你想安静读书的用途，不优先推荐。
+- paragraph: 位置你还没定。如果你愿意，可以告诉我大致区域，我再帮你看看。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 7.1K tok":
+  - generic: 用量 7.1K tok
+- generic: 19:45
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

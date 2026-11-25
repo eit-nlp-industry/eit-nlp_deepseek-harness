@@ -1,0 +1,181 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_7bOq9HaDqHY03yGMsbl70931",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_pick_one\", \"locale\": \"zh-CN\", \"user_query\": \"渲染一个轻量单选表单，只有一个必选字段「讲座参与形式」，包含两个真实选项：第一项为「线下讲座」（标注“推荐”，默认预选），第二项为「线上讲座」；两项均可自由切换，另加一个备注文本框（可选，用于填写场次或特殊需求）。表单底部给出说明：当前为草稿，尚未提交，选择后需明确提交才生效。不要生成图片、地图、排序、折叠、标签页、代码块等其他 rich 组件。\", \"business_data\": {\"title\": \"请选择讲座参与形式\", \"description\": \"该讲座的举办形式尚未确认，您可在线下与线上之间自由选择。\", \"field\": {\"name\": \"讲座参与形式\", \"type\": \"single_select\", \"required\": true, \"options\": [{\"label\": \"线下讲座\", \"value\": \"offline\", \"recommended\": true, \"preselected\": true, \"order\": 1, \"note\": \"推荐，默认预选\"}, {\"label\": \"线上讲座\", \"value\": \"online\", \"recommended\": false, \"preselected\": false, \"order\": 2, \"note\": \"可随时改为此项\"}]}, \"optional_field\": {\"name\": \"备注（可选）\", \"type\": \"text\", \"placeholder\": \"如场次偏好或特殊需求\"}, \"submit_label\": \"确认提交选择\", \"status\": \"draft\", \"status_note\": \"当前仅为草稿：推荐与预选都不等于已提交，需您确认提交后才生效。\", \"warning\": \"提交前可任意修改选项。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Section",
+              "props": {
+                "title": "请选择讲座参与形式",
+                "description": "该讲座的举办形式尚未确认，您可在线下与线上之间自由选择。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "page-stack"
+              ]
+            },
+            "page-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "lecture-form",
+                "option-note",
+                "submit-button",
+                "draft-callout",
+                "draft-warning"
+              ]
+            },
+            "lecture-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "selected_id",
+                    "label": "讲座参与形式",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "offline",
+                          "label": "线下讲座"
+                        },
+                        {
+                          "value": "online",
+                          "label": "线上讲座"
+                        }
+                      ],
+                      "value": "offline"
+                    }
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "备注（可选）",
+                    "placeholder": "如场次偏好或特殊需求"
+                  }
+                ]
+              }
+            },
+            "option-note": {
+              "type": "Text",
+              "props": {
+                "content": "线下讲座为推荐项且默认预选；线上讲座可随时切换。",
+                "variant": "muted"
+              }
+            },
+            "submit-button": {
+              "type": "Button",
+              "props": {
+                "label": "确认提交选择",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "draft-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "description": "当前仅为草稿：推荐与预选都不等于已提交，需您确认提交后才生效。",
+                "showIcon": true
+              }
+            },
+            "draft-warning": {
+              "type": "Text",
+              "props": {
+                "content": "提交前可任意修改选项。",
+                "variant": "warning"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "请选择讲座参与形式",
+            "description": "该讲座的举办形式尚未确认，您可在线下与线上之间自由选择。",
+            "field": {
+              "name": "讲座参与形式",
+              "type": "single_select",
+              "required": true,
+              "options": [
+                {
+                  "label": "线下讲座",
+                  "value": "offline",
+                  "recommended": true,
+                  "preselected": true,
+                  "order": 1,
+                  "note": "推荐，默认预选"
+                },
+                {
+                  "label": "线上讲座",
+                  "value": "online",
+                  "recommended": false,
+                  "preselected": false,
+                  "order": 2,
+                  "note": "可随时改为此项"
+                }
+              ]
+            },
+            "optional_field": {
+              "name": "备注（可选）",
+              "type": "text",
+              "placeholder": "如场次偏好或特殊需求"
+            },
+            "submit_label": "确认提交选择",
+            "status": "draft",
+            "status_note": "当前仅为草稿：推荐与预选都不等于已提交，需您确认提交后才生效。",
+            "warning": "提交前可任意修改选项。",
+            "form": {
+              "selected_id": "",
+              "note": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_7bOq9HaDqHY03yGMsbl70931"
+      },
+      "toolCallId": "call_00_7bOq9HaDqHY03yGMsbl70931",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "1d413ff2-a049-4c26-b739-c090f2b52db1"
+    }
+  }
+]
