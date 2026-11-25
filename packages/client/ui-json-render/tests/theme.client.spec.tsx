@@ -15,6 +15,38 @@ afterEach(() => {
 })
 
 describe('themed json-render forms', () => {
+  it.each([2, 3])('stretches nested form containers and distributes %i distinct actions', (count) => {
+    vi.stubGlobal('matchMedia', (media: string) => ({
+      matches: false, media, onchange: null, addListener() {}, removeListener() {},
+      addEventListener() {}, removeEventListener() {}, dispatchEvent: () => false,
+    }))
+    const actions = ['提交草稿', '恢复初始内容', '跳过本条'].slice(0, count)
+    const payload: JsonRenderPayload = { format: 'json-render-v1', spec: { root: 'outer', elements: {
+      outer: { type: 'Stack', props: { direction: 'vertical', align: 'start' }, children: ['inner', 'actions'] },
+      inner: { type: 'Stack', props: { direction: 'vertical' }, children: ['fields'] },
+      fields: { type: 'DynamicForm', props: { fields: [{ type: 'input', key: 'contact', label: '联系人', value: '林晓' }] } },
+      actions: { type: 'Stack', props: { direction: 'horizontal' }, children: actions },
+      ...Object.fromEntries(actions.map((label, index) => [label, {
+        type: 'Button', props: { label, intent: index === 0 ? 'primary' : 'default', variant: index === 0 ? 'default' : 'outline' },
+      }])),
+    } } }
+    const { container } = render(<JsonRenderCard payload={payload} instanceId={`layout-${count}`} submitForm={vi.fn()} />)
+    const sheet = transform({ filename: 'JsonRenderRow.module.css',
+      code: readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../src/client/JsonRenderRow.module.css')), cssModules: true })
+    const style = document.createElement('style')
+    style.dataset.jsonRenderTestTheme = ''
+    style.textContent = sheet.code.toString().replaceAll(sheet.exports!.panel!.name, container.firstElementChild!.className)
+    document.head.append(style)
+    for (const stack of container.querySelectorAll('.eit-jr-stack--vertical')) {
+      expect(getComputedStyle(stack).width).toBe('100%')
+    }
+    expect(container.querySelectorAll('.ant-btn-primary')).toHaveLength(1)
+    expect(container.querySelectorAll('.ant-btn-default')).toHaveLength(count - 1)
+    const row = screen.getByRole('button', { name: '提交草稿' }).parentElement!
+    expect(getComputedStyle(row).width).toBe('100%')
+    expect(getComputedStyle(row).flexWrap).toBe('wrap')
+  })
+
   it('leaves nested image previews unframed while retaining unrelated detail cards', () => {
     const payload: JsonRenderPayload = {
       format: 'json-render-v1',

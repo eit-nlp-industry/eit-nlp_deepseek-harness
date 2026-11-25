@@ -4,7 +4,48 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import type { JsonRenderPayload } from '@eit/json-render-protocol'
 import { JsonRenderCard } from '../src/client/JsonRenderCard.tsx'
 
-afterEach(cleanup)
+afterEach(() => { cleanup(); vi.unstubAllGlobals() })
+
+it.each([
+  ['reset', '恢复初始内容'], ['submit', '确认草稿'], ['skip', '跳过本条'],
+  ['save_draft', '保存草稿'], ['cancel', '放弃草稿'], ['submit_and_add', '提交并新增'],
+])('sends %s with edited values without changing them locally', async (intent, label) => {
+  vi.stubGlobal('matchMedia', (media: string) => ({
+    matches: false, media, onchange: null, addListener() {}, removeListener() {},
+    addEventListener() {}, removeEventListener() {}, dispatchEvent: () => false,
+  }))
+  const submitForm = vi.fn<(text: string) => Promise<void>>().mockResolvedValue(undefined)
+  const actions = [{ intent: 'reset', label: '恢复初始内容' }, { intent: 'submit', label: '确认草稿' }, { intent: 'skip', label: '跳过本条' }]
+  if (!actions.some(action => action.intent === intent)) actions.push({ intent, label })
+  const payload: JsonRenderPayload = {
+    format: 'json-render-v1',
+    spec: { root: 'main', elements: {
+      main: { type: 'Stack', children: ['fields', 'actions'] },
+      fields: { type: 'DynamicForm', props: { fields: [
+        { type: 'inputNumber', key: 'quantity', label: '数量', value: 20 },
+        { type: 'input', key: 'contact', label: '联系人', value: '林晓' },
+      ] } },
+      actions: { type: 'Stack', props: { direction: 'horizontal' }, children: actions.map(action => action.intent) },
+      ...Object.fromEntries(actions.map(action => [action.intent, {
+        type: 'Button', props: { label: action.label },
+        on: { press: { action: 'form.submit', params: { extra: { form_action: action } } } },
+      }])),
+    } },
+  }
+  render(<JsonRenderCard payload={payload} instanceId={`actions-${intent}`} submitForm={submitForm} />)
+  expect(screen.queryByRole('combobox')).toBeNull()
+  for (const action of actions) expect(screen.getByRole('button', { name: action.label })).toBeTruthy()
+  fireEvent.change(screen.getByRole('spinbutton'), { target: { value: '30' } })
+  fireEvent.change(screen.getByRole('textbox'), { target: { value: intent === 'skip' ? '' : '陈晨' } })
+  fireEvent.click(screen.getByRole('button', { name: label }))
+  expect(await screen.findByText('已提交，等待继续回答')).toBeTruthy()
+  expect(submitForm).toHaveBeenCalledOnce()
+  const sent = submitForm.mock.calls[0]![0]
+  expect(sent).toContain(`用户选择的表单操作：${label}（${intent}）`)
+  expect(sent).toContain('数量：30')
+  expect(sent).toContain(intent === 'skip' ? '联系人：未填写' : '联系人：陈晨')
+  expect(screen.getByRole<HTMLInputElement>('spinbutton').value).toBe('30')
+})
 
 const workflow = {
   version: 'workflow-v1', id: 'materials', title: '取材料流程',
