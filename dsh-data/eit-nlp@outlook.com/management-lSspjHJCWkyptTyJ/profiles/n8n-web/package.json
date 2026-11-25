@@ -1,12 +1,17 @@
 {
   "name": "dsh-profile-n8n-web",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@local/dsh-finance-preset": "link:/data/dsh/eit-nlp@outlook.com/management-lSspjHJCWkyptTyJ/modes/finance-preset",
+    "@local/dsh-hr-preset": "link:/data/dsh/eit-nlp@outlook.com/management-lSspjHJCWkyptTyJ/modes/hr-preset"
+  },
   "dsh": {
     "profile": {
       "bundles": [
         "@deepseek-ai/dsh-base",
-        "@deepseek-ai/dsh-web-app"
+        "@deepseek-ai/dsh-web-app",
+        "@local/dsh-hr-preset",
+        "@local/dsh-finance-preset"
       ]
     }
   }

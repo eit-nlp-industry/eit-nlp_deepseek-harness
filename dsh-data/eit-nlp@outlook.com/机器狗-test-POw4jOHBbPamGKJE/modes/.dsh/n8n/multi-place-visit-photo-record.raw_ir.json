@@ -1,0 +1,614 @@
+{
+  "name": "multi-place-visit-photo-record",
+  "skill_id": "multi-place-visit-photo-record",
+  "notes": [
+    "Catalog lookups returned no results in this environment; node types used are the standard core types referenced by the skill's semantics (manual trigger, If, Set, HTTP Request, Agent).",
+    "The skill's per-place loop (navigate → wait for background Job completed → get_camera_frame → save) is expressed as a single ordered pass over the place list; the loop body is represented once with the place list carried in $json.places.",
+    "No trajectory events were provided, so every node and edge cites a SKILL.md line.",
+    "File-system operations (mktemp -d, cp) and the present tool have no catalog node; they are delegated to an Agent with needs_user_input for the workspace/credential."
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Start visit request",
+      "n8n_type": "n8n-nodes-base.manualTrigger",
+      "slots": {},
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "从用户请求取得有序地点列表"
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Resolve places on semantic map",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "places": "={{ $json.places }}"
+        },
+        "needs_user_input": [
+          "url"
+        ]
+      },
+      "tool": "search_ragflow_semantic_map",
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "在同一模型步骤中分别查询各地点的 `search_ragflow_semantic_map`"
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Keep unique matches and anchors",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "assignments": {
+          "places": "={{ $json.places }}",
+          "anchor_id": "={{ $json.anchor_id }}",
+          "place_name": "={{ $json.place_name }}"
+        },
+        "include_other_fields": true
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "一次保留全部地点的唯一匹配及 `anchor_id`、`place_name`，后续复用，不重复查询"
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Places uniquely determined?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.place_unresolved }}",
+        "op": "eq",
+        "right": true,
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "地点不能唯一确定时先询问，不猜测目标"
+      }
+    },
+    {
+      "id": "n5",
+      "name": "Ask user to clarify place",
+      "n8n_type": "@n8n/n8n-nodes-langchain.agent",
+      "slots": {
+        "prompt": "地点无法唯一确定。请向用户询问并确认目标地点，不要猜测。已解析结果：{{ JSON.stringify($json) }}",
+        "needs_user_input": [
+          "credential_name"
+        ]
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "地点不能唯一确定时先询问，不猜测目标"
+      }
+    },
+    {
+      "id": "n6",
+      "name": "Navigate to place",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "anchor_id": "={{ $json.anchor_id }}",
+          "place_name": "={{ $json.place_name }}"
+        },
+        "needs_user_input": [
+          "url"
+        ]
+      },
+      "tool": "navigate",
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "按顺序调用 `navigate`，沿用当前部署的 `anchor_id`、`place_name` 参数，不传 `scene_id`"
+      }
+    },
+    {
+      "id": "n7",
+      "name": "Navigation running?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.status }}",
+        "op": "eq",
+        "right": "running",
+        "type": "string"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "返回 `running` 后结束本轮，等待与该调用对应的后台 Job `completed` 通知"
+      }
+    },
+    {
+      "id": "n8n-nodes-base.wait",
+      "name": "Wait for background Job completed",
+      "n8n_type": "n8n-nodes-base.wait",
+      "slots": {
+        "resume": "webhook"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "等待与该调用对应的后台 Job `completed` 通知；不轮询、不重复提交"
+      }
+    },
+    {
+      "id": "n9",
+      "name": "Job completed successfully?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.job_status }}",
+        "op": "eq",
+        "right": "completed",
+        "type": "string"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "后台失败或状态未知时，不启动下一站"
+      }
+    },
+    {
+      "id": "n10",
+      "name": "Report background failure and stop",
+      "n8n_type": "@n8n/n8n-nodes-langchain.agent",
+      "slots": {
+        "prompt": "后台导航 Job 失败或状态未知，请报告工具返回结果并结束，不启动下一站、不重试。结果：{{ JSON.stringify($json) }}",
+        "needs_user_input": [
+          "credential_name"
+        ]
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "后台失败或状态未知时，不启动下一站"
+      }
+    },
+    {
+      "id": "n11",
+      "name": "Get camera frame",
+      "n8n_type": "n8n-nodes-base.httpRequest",
+      "slots": {
+        "method": "POST",
+        "url": "",
+        "json_body": {
+          "anchor_id": "={{ $json.anchor_id }}",
+          "place_name": "={{ $json.place_name }}"
+        },
+        "needs_user_input": [
+          "url"
+        ]
+      },
+      "tool": "get_camera_frame",
+      "source": {
+        "kind": "skill_line",
+        "locator": "14",
+        "quote": "收到完成通知后调用 `get_camera_frame`"
+      }
+    },
+    {
+      "id": "n12",
+      "name": "Keep frame_id, capture time, attachment ref",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "assignments": {
+          "frame_id": "={{ $json.frame_id }}",
+          "captured_at": "={{ $json.captured_at }}",
+          "attachment_ref": "={{ $json.attachment_ref }}",
+          "place_name": "={{ $json.place_name }}",
+          "anchor_id": "={{ $json.anchor_id }}"
+        },
+        "include_other_fields": true
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "14",
+        "quote": "使用该次结果中的附件引用保存图片，保留 `frame_id` 和原始采集时间"
+      }
+    },
+    {
+      "id": "n13",
+      "name": "Save photo into visit directory",
+      "n8n_type": "@n8n/n8n-nodes-langchain.agent",
+      "slots": {
+        "prompt": "在当前会话工作区执行一次 bash 调用：若 photos 目录不存在则创建；首次保存时用 mktemp -d photos/visit-XXXXXX 创建本次目录；从附件引用 sha256:HASH 提取完整 HASH，HH 为其前两位，源路径为 ../attachments/v1/objects/HH/HASH；按序号命名复制为 1.jpg、2.jpg 等；打印成功后的目录和文件路径。只执行一次复制并使用命令退出结果，不执行 ls/find/stat/date 或哈希命令，不去重。frame_id={{ $json.frame_id }}，原始采集时间={{ $json.captured_at }}，附件引用={{ $json.attachment_ref }}。",
+        "needs_user_input": [
+          "credential_name"
+        ]
+      },
+      "tool": "bash",
+      "source": {
+        "kind": "skill_line",
+        "locator": "22",
+        "quote": "首次保存时，在同一次 `bash` 调用内创建 `photos`、用 `mktemp -d photos/visit-XXXXXX` 创建本次目录、复制图片并打印成功后的目录和文件路径"
+      }
+    },
+    {
+      "id": "n14",
+      "name": "Save succeeded?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.save_ok }}",
+        "op": "eq",
+        "right": true,
+        "type": "boolean"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "保存失败则报告工具结果并结束，不搜索、不修复重试"
+      }
+    },
+    {
+      "id": "n15",
+      "name": "Report save failure and stop",
+      "n8n_type": "@n8n/n8n-nodes-langchain.agent",
+      "slots": {
+        "prompt": "图片保存失败，请报告工具返回结果并结束，不搜索、不修复重试。结果：{{ JSON.stringify($json) }}",
+        "needs_user_input": [
+          "credential_name"
+        ]
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "保存失败则报告工具结果并结束，不搜索、不修复重试"
+      }
+    },
+    {
+      "id": "n16",
+      "name": "Append station record",
+      "n8n_type": "n8n-nodes-base.set",
+      "slots": {
+        "assignments": {
+          "order": "={{ $json.order }}",
+          "place_name": "={{ $json.place_name }}",
+          "nav_result": "后台报告完成",
+          "frame_id": "={{ $json.frame_id }}",
+          "captured_at": "={{ $json.captured_at }}",
+          "photo_path": "={{ $json.photo_path }}"
+        },
+        "include_other_fields": true
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "保存结果返回后，在会话中追加本站记录，并直接发起下一站导航"
+      }
+    },
+    {
+      "id": "n17",
+      "name": "More places remaining?",
+      "n8n_type": "n8n-nodes-base.if",
+      "slots": {
+        "left": "={{ $json.remaining_places }}",
+        "op": "gt",
+        "right": 0,
+        "type": "number"
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "在会话中追加本站记录，并直接发起下一站导航"
+      }
+    },
+    {
+      "id": "n18",
+      "name": "Write visit-record.md",
+      "n8n_type": "@n8n/n8n-nodes-langchain.agent",
+      "slots": {
+        "prompt": "最后一站保存完成后，在本次照片目录中写 visit-record.md：只填一张表，列为 顺序 | 地点 | 导航结果 | frame_id | 原始采集时间 | 照片引用；导航结果写“后台报告完成”，照片写实际保存路径，图片链接使用 1.jpg 等相对路径；末尾保留一句“本记录未核验现场位置和照片当前性。”，不附加校验报告、证据讨论或改进建议。记录数据：{{ JSON.stringify($json) }}",
+        "needs_user_input": [
+          "credential_name"
+        ]
+      },
+      "tool": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "27",
+        "quote": "报告保存为本次照片目录中的 `visit-record.md`，图片链接使用 `1.jpg` 等相对路径"
+      }
+    },
+    {
+      "id": "n19",
+      "name": "Present report",
+      "n8n_type": "@n8n/n8n-nodes-langchain.agent",
+      "slots": {
+        "prompt": "调用 present 展示 visit-record.md 报告，然后用一两句中文说明后台完成数量及记录路径。报告内容：{{ JSON.stringify($json) }}",
+        "needs_user_input": [
+          "credential_name"
+        ]
+      },
+      "tool": "present",
+      "source": {
+        "kind": "skill_line",
+        "locator": "16",
+        "quote": "调用 `present` 展示报告，最后用一两句中文说明后台完成数量及记录路径"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "src": "n1",
+      "dst": "n2",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "从用户请求取得有序地点列表；在同一模型步骤中分别查询各地点的 `search_ragflow_semantic_map`"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e2",
+      "src": "n2",
+      "dst": "n3",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "一次保留全部地点的唯一匹配及 `anchor_id`、`place_name`，后续复用，不重复查询"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e3",
+      "src": "n3",
+      "dst": "n4",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "地点不能唯一确定时先询问，不猜测目标"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e4",
+      "src": "n4",
+      "dst": "n5",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "12",
+        "quote": "地点不能唯一确定时先询问，不猜测目标"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e5",
+      "src": "n4",
+      "dst": "n6",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "按顺序调用 `navigate`，沿用当前部署的 `anchor_id`、`place_name` 参数，不传 `scene_id`"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e6",
+      "src": "n6",
+      "dst": "n7",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "返回 `running` 后结束本轮，等待与该调用对应的后台 Job `completed` 通知"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e7",
+      "src": "n7",
+      "dst": "n8n-nodes-base.wait",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "等待与该调用对应的后台 Job `completed` 通知；不轮询、不重复提交"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e8",
+      "src": "n7",
+      "dst": "n9",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "后台失败或状态未知时，不启动下一站"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e9",
+      "src": "n8n-nodes-base.wait",
+      "dst": "n9",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "等待与该调用对应的后台 Job `completed` 通知"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e10",
+      "src": "n9",
+      "dst": "n10",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "13",
+        "quote": "后台失败或状态未知时，不启动下一站"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e11",
+      "src": "n9",
+      "dst": "n11",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "14",
+        "quote": "收到完成通知后调用 `get_camera_frame`"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e12",
+      "src": "n11",
+      "dst": "n12",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "14",
+        "quote": "使用该次结果中的附件引用保存图片，保留 `frame_id` 和原始采集时间"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e13",
+      "src": "n12",
+      "dst": "n13",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "22",
+        "quote": "首次保存时，在同一次 `bash` 调用内创建 `photos`、用 `mktemp -d photos/visit-XXXXXX` 创建本次目录、复制图片并打印成功后的目录和文件路径"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e14",
+      "src": "n13",
+      "dst": "n14",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "保存失败则报告工具结果并结束，不搜索、不修复重试"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e15",
+      "src": "n14",
+      "dst": "n15",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "保存失败则报告工具结果并结束，不搜索、不修复重试"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e16",
+      "src": "n14",
+      "dst": "n16",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "保存结果返回后，在会话中追加本站记录"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e17",
+      "src": "n16",
+      "dst": "n17",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "在会话中追加本站记录，并直接发起下一站导航"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e18",
+      "src": "n17",
+      "dst": "n6",
+      "predicate": "true",
+      "source": {
+        "kind": "skill_line",
+        "locator": "15",
+        "quote": "并直接发起下一站导航"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e19",
+      "src": "n17",
+      "dst": "n18",
+      "predicate": "false",
+      "source": {
+        "kind": "skill_line",
+        "locator": "16",
+        "quote": "最后一站保存完成后，写一份简短 Markdown 表格"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    },
+    {
+      "id": "e20",
+      "src": "n18",
+      "dst": "n19",
+      "predicate": null,
+      "source": {
+        "kind": "skill_line",
+        "locator": "16",
+        "quote": "调用 `present` 展示报告，最后用一两句中文说明后台完成数量及记录路径"
+      },
+      "allow_fill": false,
+      "status": "freeze"
+    }
+  ]
+}

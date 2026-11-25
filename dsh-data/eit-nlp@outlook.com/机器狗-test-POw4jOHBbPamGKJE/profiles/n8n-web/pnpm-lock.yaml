@@ -9,26 +9,26 @@ importers:
   .:
     dependencies:
       '@local/dsh-robot-dog-a-preset':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset
-        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-a-preset
+        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-a-preset
       '@local/dsh-robot-dog-job-preset':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset
-        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-a-preset
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-a-preset
+        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-a-preset
       '@local/dsh-robot-dog-test-preset':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-test-preset
-        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-test-preset
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-test-preset
+        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-test-preset
       '@local/dsh-robot-dog-v03-preset':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-preset
-        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-preset
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v03-preset
+        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v03-preset
       '@local/dsh-robot-dog-v03-vision-console':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-vision-console
-        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v03-vision-console
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v03-vision-console
+        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v03-vision-console
       '@local/dsh-robot-dog-v031-preset':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v031-preset
-        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-v031-preset
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v031-preset
+        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v031-preset
       '@local/dsh-robot-dog-vision-console':
-        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-vision-console
-        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/empty-workspace/robot-dog-vision-console
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-vision-console
+        version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-vision-console
       '@steven-stack-s/dsh-memos-local':
         specifier: 2.0.20-dsh.3
         version: 2.0.20-dsh.3(@deepseek-ai/schemastery@3.19.0)

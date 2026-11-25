@@ -1,0 +1,19 @@
+[
+  "/home/node/acceptance-defect-lab/baseline",
+  "/home/node/acceptance-defect-lab/defect-a",
+  "/home/node/acceptance-defect-lab/defect-b",
+  "/home/node/acceptance-defect-lab/defect-c",
+  "/home/node/acceptance-defect-lab/evidence-gap",
+  "/home/node/acceptance-defect-lab/revision-mismatch",
+  "/home/node/lab-baseline",
+  "/home/node/lab-defect-a",
+  "/home/node/lab-defect-b",
+  "/home/node/lab-defect-c",
+  "/home/node/lab-evidence-gap",
+  "/home/node/lab-revision-mismatch",
+  "/home/node/test",
+  "/home/node/test-prd",
+  "/home/node/test-two",
+  "/home/node/test3",
+  "/projects"
+]

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dev-acceptance-flow/flow",
+  "title": "Flow coordination record",
+  "description": "宿主协调状态。单文件覆盖写到 .flow/flow.json。不复制 tasks.json，不存验收结论正文。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "project_id",
+    "project_root",
+    "development_session_id",
+    "acceptance_session_id",
+    "flow_status",
+    "remediation_round",
+    "max_remediation_rounds",
+    "waiting_reason",
+    "updated_at"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "project_id": {
+      "$ref": "defs.schema.json#/$defs/projectId"
+    },
+    "project_root": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "目标项目绝对路径或宿主已解析的规范路径。"
+    },
+    "prd_relpath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "description": "本轮唯一规格 PRD 相对项目根的路径。缺省等价于 PRD.md；同目录多 PRD 时由 .active-prd 或开工参数指定。"
+    },
+    "development_session_id": {
+      "$ref": "defs.schema.json#/$defs/sessionId"
+    },
+    "acceptance_session_id": {
+      "description": "验收会话；开工时可 null，首次送验时由宿主懒创建。",
+      "oneOf": [
+        { "$ref": "defs.schema.json#/$defs/sessionId" },
+        { "type": "null" }
+      ]
+    },
+    "flow_status": {
+      "$ref": "defs.schema.json#/$defs/flowStatus"
+    },
+    "active_submission_id": {
+      "type": ["string", "null"],
+      "description": "当前待验收或正在整改所依据的 submission；无则 null。"
+    },
+    "active_review_id": {
+      "type": ["string", "null"],
+      "description": "针对 active_submission_id 的最新已采纳 review；无则 null。"
+    },
+    "remediation_round": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "已完成的整改轮次计数。initial 送验前为 0；每次 changes_required 进入 remediating 后 +1。"
+    },
+    "max_remediation_rounds": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 3,
+      "description": "自动整改上限；达到后进入 needs_manual。"
+    },
+    "waiting_reason": {
+      "$ref": "defs.schema.json#/$defs/waitingReason"
+    },
+    "waiting_detail": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "给用户看的阻塞说明；waiting_reason 为 none 时可省略。"
+    },
+    "last_event_id": {
+      "type": ["string", "null"],
+      "description": "最近已处理的交接事件 id，用于幂等去重。"
+    },
+    "processed_event_ids": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": "近期已处理事件的有界窗口；重复到达必须忽略。"
+    },
+    "updated_at": {
+      "$ref": "defs.schema.json#/$defs/isoDateTime"
+    }
+  }
+}

@@ -2,9 +2,9 @@
   "name": "dsh-profile-n8n-web",
   "private": true,
   "dependencies": {
-    "@local/dsh-aris-acceptance-preset": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/empty-workspace/aris-acceptance-preset",
-    "@local/dsh-development-preset": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/empty-workspace/development-preset",
-    "@local/dsh-dev-acceptance-flow": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/empty-workspace/dev-acceptance-flow"
+    "@local/dsh-aris-acceptance-preset": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/modes/aris-acceptance-preset",
+    "@local/dsh-development-preset": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/modes/development-preset",
+    "@local/dsh-dev-acceptance-flow": "link:/data/dsh/eit-nlp@outlook.com/Aris-sg3PqrXt033ICv8X/modes/dev-acceptance-flow"
   },
   "dsh": {
     "profile": {

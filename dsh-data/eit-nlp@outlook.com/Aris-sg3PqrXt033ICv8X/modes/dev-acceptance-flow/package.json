@@ -1,0 +1,38 @@
+{
+  "name": "@local/dsh-dev-acceptance-flow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./validate.js": "./validate.js",
+    "./transitions.js": "./transitions.js",
+    "./findings.js": "./findings.js",
+    "./store.js": "./store.js",
+    "./host-loop.js": "./host-loop.js",
+    "./outbox-consumer.js": "./outbox-consumer.js",
+    "./session-driver.js": "./session-driver.js",
+    "./sdk-session-driver.js": "./sdk-session-driver.js",
+    "./host-session-driver.js": "./host-session-driver.js",
+    "./prompt-templates.js": "./prompt-templates.js",
+    "./flow-host-bridge.js": "./flow-host-bridge.js",
+    "./start-project.js": "./start-project.js",
+    "./managed-roots.js": "./managed-roots.js",
+    "./ensure-acceptance-session.js": "./ensure-acceptance-session.js",
+    "./auto-bind-development.js": "./auto-bind-development.js",
+    "./active-prd.js": "./active-prd.js",
+    "./cli.js": "./cli.js"
+  },
+  "bin": {
+    "dev-acceptance-flow": "./cli.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.bridge.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 validator.test.js host-loop.test.js outbox-consumer.test.js sdk-session-driver.test.js start-project.test.js ensure-acceptance-session.test.js auto-bind-development.test.js active-prd.test.js",
+    "host": "node cli.js"
+  }
+}

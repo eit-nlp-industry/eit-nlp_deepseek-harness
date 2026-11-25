@@ -63,6 +63,7 @@ dsh-data/**/storages/
 dsh-data/**/.plugin-manager
 dsh-data/**/attachments/
 dsh-data/**/llm-deepseek/
+dsh-data/**/workspace/
 
 # DSH rules for 机器狗-test-POw4jOHBbPamGKJE
 dsh-data/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/runtime_data/

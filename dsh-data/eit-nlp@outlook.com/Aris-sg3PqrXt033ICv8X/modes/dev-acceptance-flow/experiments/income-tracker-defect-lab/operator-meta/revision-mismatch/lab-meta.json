@@ -1,0 +1,7 @@
+{
+  "variant": "revision-mismatch",
+  "project_root": "/home/node/acceptance-defect-lab/revision-mismatch",
+  "actual_git_head": "62f11c1aec1d2103ffb42ff40b385883762de167",
+  "submission_code_revision": "68a2cc13551ba027d9931e68e7bbadc8cd6d0dbb",
+  "prepared_at": "2026-11-23T09:54:41Z"
+}

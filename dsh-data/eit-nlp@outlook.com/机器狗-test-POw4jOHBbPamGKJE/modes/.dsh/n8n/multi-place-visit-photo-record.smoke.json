@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "id": "smoke-auto",
+      "_smoke": true,
+      "anchor_id": "S1",
+      "attachment_ref": 1,
+      "captured_at": 1,
+      "frame_id": "S1",
+      "job_status": 1,
+      "order": 1,
+      "photo_path": 1,
+      "place_name": 1,
+      "place_unresolved": 1,
+      "places": 1,
+      "remaining_places": 1,
+      "save_ok": false,
+      "status": "sample"
+    }
+  ]
+}

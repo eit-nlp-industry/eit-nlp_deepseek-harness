@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>研发—验收自动串通：方法与实现报告</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f7f5;
+      --fg: #1a1a1a;
+      --muted: #5c5c5c;
+      --card: #ffffff;
+      --stroke: #e2e2de;
+      --accent: #2563eb;
+      --code: #f0f0ec;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141414;
+        --fg: #ececec;
+        --muted: #a0a0a0;
+        --card: #1c1c1c;
+        --stroke: #2e2e2e;
+        --accent: #6b9fff;
+        --code: #242424;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+    }
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    h1 { font-size: 1.75rem; font-weight: 600; margin: 0 0 8px; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 32px 0 12px; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 20px 0 8px; }
+    p, li { color: var(--fg); }
+    .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+    .callout {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-left: 3px solid var(--accent);
+      padding: 12px 14px;
+      margin: 16px 0;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin: 16px 0 8px;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      padding: 12px;
+    }
+    .stat strong { display: block; font-size: 0.95rem; }
+    .stat span { color: var(--muted); font-size: 0.82rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      font-size: 0.9rem;
+      margin: 10px 0 16px;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--stroke);
+    }
+    th { font-weight: 600; background: var(--code); }
+    pre, code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.84rem;
+    }
+    pre {
+      background: var(--code);
+      border: 1px solid var(--stroke);
+      padding: 12px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .grid2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      padding: 12px 14px;
+    }
+    .card h3 { margin-top: 0; }
+    hr { border: none; border-top: 1px solid var(--stroke); margin: 28px 0; }
+    .print-hint { color: var(--muted); font-size: 0.82rem; }
+    @media print {
+      body { background: white; color: black; }
+      .print-hint { display: none; }
+      .callout, .stat, .card, table, pre { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>研发—验收自动串通：方法与实现报告</h1>
+    <p class="meta">
+      范围：modes/dev-acceptance-flow · 宿主协调层 · 2026-11-24<br />
+      权威细则：同目录 README.md / TRANSITIONS.md<br />
+      <span class="print-hint">浏览器打开本文件即可阅读；需要 PDF 时用「打印 → 另存为 PDF」。</span>
+    </p>
+
+    <div class="callout">
+      <strong>一句话</strong><br />
+      研发与验收不靠聊天口令交接；宿主用项目根下的 <code>.flow</code> 账本做状态机，用 outbox 把提示自动投进对应会话，实现「送验 → 验收 → 整改/交付」闭环。
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>文件账本</strong><span>.flow 为唯一协调源</span></div>
+      <div class="stat"><strong>双预设</strong><span>development + aris-acceptance</span></div>
+      <div class="stat"><strong>Outbox</strong><span>跨会话自动投递</span></div>
+      <div class="stat"><strong>粘性绑定</strong><span>中途不抢会话 / 不换 PRD</span></div>
+    </div>
+
+    <h2>1. 方法：为什么这样串通</h2>
+    <p>两边是独立 Agent 会话，不能共享内存。协调信息全部落在项目目录的 JSON 上：研发只写 submissions，验收只写 reviews，宿主只根据校验通过的事件迁移状态，并决定下一步要 prompt 谁。验收账本（acceptance-data）仅审计，不驱动放行。</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>研发侧契约</h3>
+        <ul>
+          <li>预设 development；phase 到 ACCEPTANCE_GATE</li>
+          <li>写出合法 .flow/submissions/*.json 才算送验</li>
+          <li>通过前不得进入 PACKAGE</li>
+          <li>整改认 finding id + remediation submission</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>验收侧契约</h3>
+        <ul>
+          <li>预设 aris-acceptance；对照 flow.prd_relpath</li>
+          <li>写出 .flow/reviews/*.json</li>
+          <li>verdict：passed / changes_required / blocked</li>
+          <li>blocked 不得记账本违约 fail</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>2. 状态机</h2>
+    <p>禁止用聊天口令驱动。重复 event_id 忽略；旧 submission 的 passed 不能放行新 active_submission_id。送验不能从 acceptance_passed 再发 initial。</p>
+    <pre>bootstrapping → developing → awaiting_acceptance
+                    │
+        ┌───────────┼───────────┐
+     blocked   changes_required  passed
+        │           │           │
+ awaiting_user  remediating  acceptance_passed
+                    │           │
+                 再送验     delivering → delivery_completed
+              超轮次 → needs_manual</pre>
+
+    <h2>3. 实现：宿主每轮做什么</h2>
+    <p><code>flow-host-bridge</code> 约每 2s：auto-bind → pending-start → runHostOnce → ensureAcceptance → consumeOutbox</p>
+    <table>
+      <thead><tr><th>模块</th><th>职责</th><th>要点</th></tr></thead>
+      <tbody>
+        <tr><td>flow-host-bridge.js</td><td>宿主插件入口</td><td>上述循环；同进程 sessionController.prompt</td></tr>
+        <tr><td>auto-bind-development.js</td><td>绑定研发会话</td><td>写 .flow；PRD 切换归档；中途钉死会话</td></tr>
+        <tr><td>ensure-acceptance-session.js</td><td>懒创建/粘性验收</td><td>仅送验需要时创建；存活则不改绑、不新建</td></tr>
+        <tr><td>host-loop + transitions</td><td>状态机与校验</td><td>合法迁移才改状态并写 outbox</td></tr>
+        <tr><td>outbox-consumer + prompt-templates</td><td>跨会话投递</td><td>动作变成 prompt 投到对应会话</td></tr>
+        <tr><td>active-prd + store</td><td>多 PRD 与落盘</td><td>.active-prd / archiveFlowRoot</td></tr>
+      </tbody>
+    </table>
+
+    <h3>推荐上手路径</h3>
+    <ol>
+      <li>Web UI 开 development 会话，cwd = 项目根；可选写 .active-prd</li>
+      <li>auto-bind bootstrap .flow（acceptance_session_id=null）</li>
+      <li>研发到 ACCEPTANCE_GATE 写出 submission</li>
+      <li>宿主采纳 → awaiting_acceptance，outbox prompt_acceptance</li>
+      <li>懒建/绑定验收并投递核查提示</li>
+      <li>review：passed → 交付提示；changes_required → remediating + 整改提示</li>
+      <li>整改后再送验；通过后 PACKAGE / delivering</li>
+    </ol>
+
+    <h2>4. Outbox</h2>
+    <table>
+      <thead><tr><th>动作</th><th>触发</th><th>投向</th></tr></thead>
+      <tbody>
+        <tr><td>prompt_development_start</td><td>新绑定 / 换 PRD</td><td>研发</td></tr>
+        <tr><td>prompt_acceptance</td><td>submission 被采纳</td><td>验收</td></tr>
+        <tr><td>prompt_development_remediation</td><td>changes_required</td><td>研发</td></tr>
+        <tr><td>prompt_development_delivery</td><td>passed</td><td>研发</td></tr>
+      </tbody>
+    </table>
+    <p>投递优先 outbox 里非占位的 session id，其次才用 flow 绑定。</p>
+
+    <h2>5. 会话粘性与多 PRD</h2>
+    <table>
+      <thead><tr><th>规则</th><th>保护条件</th><th>效果</th></tr></thead>
+      <tbody>
+        <tr><td>研发会话粘性</td><td>送验/整改/待确认/已通过/交付等</td><td>不抢绑到同目录新研发会话</td></tr>
+        <tr><td>验收会话粘性</td><td>已绑定且会话仍存活</td><td>不改绑、不新建第二个验收</td></tr>
+        <tr><td>Outbox 优先</td><td>action 非占位 session id</td><td>整改/验收跟原目标</td></tr>
+        <tr><td>PRD 自动归档</td><td>进行中拒绝；空闲/已通过可归档</td><td>.flow → .flow-archive-&lt;ts&gt; 后按 .active-prd 新开</td></tr>
+      </tbody>
+    </table>
+    <p>同目录多 PRD 为<strong>串行</strong>：每轮一份；要并行请用两个目录。project_id 默认带 PRD 后缀（PRD.md 除外）。</p>
+
+    <h2>6. 故障模式</h2>
+    <table>
+      <thead><tr><th>现象</th><th>根因</th><th>处理</th></tr></thead>
+      <tbody>
+        <tr><td>不能从 acceptance_passed 送验</td><td>旧周期未归档</td><td>改 .active-prd 自动归档，或 start --force</td></tr>
+        <tr><td>整改进另一研发会话</td><td>中途重绑 / 投递跟错 flow</td><td>粘性 + outbox 优先 action（已落地）</td></tr>
+        <tr><td>验收会话越开越多</td><td>重复 create / 排名改绑</td><td>存活 sticky；无送验需求不预绑</td></tr>
+        <tr><td>project_id 不一致</td><td>换 PRD 后 id 带后缀</td><td>submission 必须等于当前 flow.project_id</td></tr>
+      </tbody>
+    </table>
+
+    <h2>7. 运维</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>CLI</h3>
+        <pre>cli.js start [--force] [--prd]
+cli.js status / once / cycle / watch
+npm test --prefix …/dev-acceptance-flow</pre>
+      </div>
+      <div class="card">
+        <h3>观察点</h3>
+        <ul>
+          <li>flow_status + active_submission_id</li>
+          <li>host-journal：accepted / rejected / rebound</li>
+          <li>outbox-done 是否投递成功</li>
+          <li>会话标题：研发 · / 验收 · &lt;prd stem&gt;</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr />
+    <p class="meta">源码：modes/dev-acceptance-flow · 本 HTML 与 REPORT.md 内容一致，便于本机独立阅读与打印。</p>
+  </main>
+</body>
+</html>

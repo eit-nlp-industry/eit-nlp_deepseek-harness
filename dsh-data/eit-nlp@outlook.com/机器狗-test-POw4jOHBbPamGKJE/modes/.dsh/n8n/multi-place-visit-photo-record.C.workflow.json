@@ -1,0 +1,1483 @@
+{
+  "name": "[s2w-gate0] multi-place-visit-photo-record",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "id": "n-n1",
+      "name": "Start visit request",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "formTitle": "multi-place-visit-photo-record",
+        "formDescription": "Fields inferred from workflow expressions ($json.*).",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "anchor_id",
+              "fieldType": "text",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "attachment_ref",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "captured_at",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "frame_id",
+              "fieldType": "text",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "job_status",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "order",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "photo_path",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "place_name",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "place_unresolved",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "places",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "remaining_places",
+              "fieldType": "number",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "save_ok",
+              "fieldType": "checkbox",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "status",
+              "fieldType": "text",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {},
+        "responseMode": "onReceived",
+        "defineForm": "fields"
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.formTrigger",
+      "webhookId": "form-n1"
+    },
+    {
+      "id": "n-n2",
+      "name": "Resolve places on semantic map",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-places",
+              "name": "places",
+              "value": "={{ $json.places }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n3",
+      "name": "Keep unique matches and anchors",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-places",
+              "name": "places",
+              "value": "={{ $json.places }}",
+              "type": "string"
+            },
+            {
+              "id": "a-anchor_id",
+              "name": "anchor_id",
+              "value": "={{ $json.anchor_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-place_name",
+              "name": "place_name",
+              "value": "={{ $json.place_name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n4",
+      "name": "Places uniquely determined?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n4",
+              "leftValue": "={{ $json.place_unresolved }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n5",
+      "name": "Ask user to clarify place",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        1120,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "地点无法唯一确定。请向用户询问并确认目标地点，不要猜测。已解析结果：{{ JSON.stringify($json) }}"
+      },
+      "notes": "agent_fallback from @n8n/n8n-nodes-langchain.agent; requires model credential in n8n catalog: unknown n8n_type: @n8n/n8n-nodes-langchain.agent"
+    },
+    {
+      "id": "n-n6",
+      "name": "Navigate to place",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-anchor_id",
+              "name": "anchor_id",
+              "value": "={{ $json.anchor_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-place_name",
+              "name": "place_name",
+              "value": "={{ $json.place_name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n7",
+      "name": "Navigation running?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1560,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n7",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "running",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n8n-nodes-base.wait",
+      "name": "Wait for background Job completed",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1780,
+        300
+      ],
+      "parameters": {
+        "resume": "webhook",
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.wait",
+      "webhookId": "wait-n8n-nodes-base.wait"
+    },
+    {
+      "id": "n-n9",
+      "name": "Job completed successfully?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2000,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n9",
+              "leftValue": "={{ $json.job_status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n10",
+      "name": "Report background failure and stop",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        2220,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "后台导航 Job 失败或状态未知，请报告工具返回结果并结束，不启动下一站、不重试。结果：{{ JSON.stringify($json) }}"
+      },
+      "notes": "agent_fallback from @n8n/n8n-nodes-langchain.agent; requires model credential in n8n catalog: unknown n8n_type: @n8n/n8n-nodes-langchain.agent"
+    },
+    {
+      "id": "n-n11",
+      "name": "Get camera frame",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2440,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-anchor_id",
+              "name": "anchor_id",
+              "value": "={{ $json.anchor_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-place_name",
+              "name": "place_name",
+              "value": "={{ $json.place_name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n12",
+      "name": "Keep frame_id, capture time, attachment ref",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2660,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-frame_id",
+              "name": "frame_id",
+              "value": "={{ $json.frame_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-captured_at",
+              "name": "captured_at",
+              "value": "={{ $json.captured_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a-attachment_ref",
+              "name": "attachment_ref",
+              "value": "={{ $json.attachment_ref }}",
+              "type": "string"
+            },
+            {
+              "id": "a-place_name",
+              "name": "place_name",
+              "value": "={{ $json.place_name }}",
+              "type": "string"
+            },
+            {
+              "id": "a-anchor_id",
+              "name": "anchor_id",
+              "value": "={{ $json.anchor_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n13",
+      "name": "Save photo into visit directory",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        2880,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "在当前会话工作区执行一次 bash 调用：若 photos 目录不存在则创建；首次保存时用 mktemp -d photos/visit-XXXXXX 创建本次目录；从附件引用 sha256:HASH 提取完整 HASH，HH 为其前两位，源路径为 ../attachments/v1/objects/HH/HASH；按序号命名复制为 1.jpg、2.jpg 等；打印成功后的目录和文件路径。只执行一次复制并使用命令退出结果，不执行 ls/find/stat/date 或哈希命令，不去重。frame_id={{ $json.frame_id }}，原始采集时间={{ $json.captured_at }}，附件引用={{ $json.attachment_ref }}。"
+      },
+      "notes": "agent_fallback from @n8n/n8n-nodes-langchain.agent; requires model credential in n8n catalog: unknown n8n_type: @n8n/n8n-nodes-langchain.agent"
+    },
+    {
+      "id": "n-n14",
+      "name": "Save succeeded?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3100,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n14",
+              "leftValue": "={{ $json.save_ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n15",
+      "name": "Report save failure and stop",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        3320,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "图片保存失败，请报告工具返回结果并结束，不搜索、不修复重试。结果：{{ JSON.stringify($json) }}"
+      },
+      "notes": "agent_fallback from @n8n/n8n-nodes-langchain.agent; requires model credential in n8n catalog: unknown n8n_type: @n8n/n8n-nodes-langchain.agent"
+    },
+    {
+      "id": "n-n16",
+      "name": "Append station record",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3540,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a-order",
+              "name": "order",
+              "value": "={{ $json.order }}",
+              "type": "string"
+            },
+            {
+              "id": "a-place_name",
+              "name": "place_name",
+              "value": "={{ $json.place_name }}",
+              "type": "string"
+            },
+            {
+              "id": "a-nav_result",
+              "name": "nav_result",
+              "value": "后台报告完成",
+              "type": "string"
+            },
+            {
+              "id": "a-frame_id",
+              "name": "frame_id",
+              "value": "={{ $json.frame_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a-captured_at",
+              "name": "captured_at",
+              "value": "={{ $json.captured_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a-photo_path",
+              "name": "photo_path",
+              "value": "={{ $json.photo_path }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.set"
+    },
+    {
+      "id": "n-n17",
+      "name": "More places remaining?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3760,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "c-n17",
+              "leftValue": "={{ Number($json.remaining_places) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "notes": " catalog: unknown n8n_type: n8n-nodes-base.if"
+    },
+    {
+      "id": "n-n18",
+      "name": "Write visit-record.md",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        3980,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "最后一站保存完成后，在本次照片目录中写 visit-record.md：只填一张表，列为 顺序 | 地点 | 导航结果 | frame_id | 原始采集时间 | 照片引用；导航结果写“后台报告完成”，照片写实际保存路径，图片链接使用 1.jpg 等相对路径；末尾保留一句“本记录未核验现场位置和照片当前性。”，不附加校验报告、证据讨论或改进建议。记录数据：{{ JSON.stringify($json) }}"
+      },
+      "notes": "agent_fallback from @n8n/n8n-nodes-langchain.agent; requires model credential in n8n catalog: unknown n8n_type: @n8n/n8n-nodes-langchain.agent"
+    },
+    {
+      "id": "n-n19",
+      "name": "Present report",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        4200,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "调用 present 展示 visit-record.md 报告，然后用一两句中文说明后台完成数量及记录路径。报告内容：{{ JSON.stringify($json) }}"
+      },
+      "notes": "agent_fallback from @n8n/n8n-nodes-langchain.agent; requires model credential in n8n catalog: unknown n8n_type: @n8n/n8n-nodes-langchain.agent"
+    }
+  ],
+  "connections": {
+    "Start visit request": {
+      "main": [
+        [
+          {
+            "node": "Resolve places on semantic map",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve places on semantic map": {
+      "main": [
+        [
+          {
+            "node": "Keep unique matches and anchors",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep unique matches and anchors": {
+      "main": [
+        [
+          {
+            "node": "Places uniquely determined?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Places uniquely determined?": {
+      "main": [
+        [
+          {
+            "node": "Ask user to clarify place",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Navigate to place",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ask user to clarify place": {
+      "main": [
+        [
+          {
+            "node": "Navigate to place",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Navigate to place": {
+      "main": [
+        [
+          {
+            "node": "Navigation running?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Navigation running?": {
+      "main": [
+        [
+          {
+            "node": "Wait for background Job completed",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Job completed successfully?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for background Job completed": {
+      "main": [
+        [
+          {
+            "node": "Job completed successfully?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Job completed successfully?": {
+      "main": [
+        [
+          {
+            "node": "Get camera frame",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Report background failure and stop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get camera frame": {
+      "main": [
+        [
+          {
+            "node": "Keep frame_id, capture time, attachment ref",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep frame_id, capture time, attachment ref": {
+      "main": [
+        [
+          {
+            "node": "Save photo into visit directory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save photo into visit directory": {
+      "main": [
+        [
+          {
+            "node": "Save succeeded?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save succeeded?": {
+      "main": [
+        [
+          {
+            "node": "Append station record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Report save failure and stop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append station record": {
+      "main": [
+        [
+          {
+            "node": "More places remaining?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "More places remaining?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Write visit-record.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write visit-record.md": {
+      "main": [
+        [
+          {
+            "node": "Present report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "skill2workflow": true,
+    "skill_id": "multi-place-visit-photo-record",
+    "mapping": {
+      "structured_nodes": [
+        "Resolve places on semantic map",
+        "Keep unique matches and anchors",
+        "Places uniquely determined?",
+        "Navigate to place",
+        "Navigation running?",
+        "Wait for background Job completed",
+        "Job completed successfully?",
+        "Get camera frame",
+        "Keep frame_id, capture time, attachment ref",
+        "Save succeeded?",
+        "Append station record",
+        "More places remaining?"
+      ],
+      "agent_fallback_nodes": [
+        "Ask user to clarify place",
+        "Report background failure and stop",
+        "Save photo into visit directory",
+        "Report save failure and stop",
+        "Write visit-record.md",
+        "Present report"
+      ],
+      "structured_count": 12,
+      "agent_fallback_count": 6,
+      "all_agent_fallback": false
+    },
+    "fieldflow": [
+      {
+        "id": "n1",
+        "name": "Start visit request",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n2",
+        "name": "Resolve places on semantic map",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n3",
+        "name": "Keep unique matches and anchors",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n4",
+        "name": "Places uniquely determined?",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n5",
+        "name": "Ask user to clarify place",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n6",
+        "name": "Navigate to place",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n7",
+        "name": "Navigation running?",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n8n-nodes-base.wait",
+        "name": "Wait for background Job completed",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n9",
+        "name": "Job completed successfully?",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n10",
+        "name": "Report background failure and stop",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n11",
+        "name": "Get camera frame",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n12",
+        "name": "Keep frame_id, capture time, attachment ref",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n13",
+        "name": "Save photo into visit directory",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n14",
+        "name": "Save succeeded?",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n15",
+        "name": "Report save failure and stop",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n16",
+        "name": "Append station record",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "nav_result",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n17",
+        "name": "More places remaining?",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "nav_result",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "nav_result",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n18",
+        "name": "Write visit-record.md",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "nav_result",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "nav_result",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      },
+      {
+        "id": "n19",
+        "name": "Present report",
+        "in": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "nav_result",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "out": [
+          "anchor_id",
+          "attachment_ref",
+          "captured_at",
+          "frame_id",
+          "job_status",
+          "nav_result",
+          "order",
+          "photo_path",
+          "place_name",
+          "place_unresolved",
+          "places",
+          "remaining_places",
+          "save_ok",
+          "status"
+        ],
+        "missing": []
+      }
+    ]
+  }
+}

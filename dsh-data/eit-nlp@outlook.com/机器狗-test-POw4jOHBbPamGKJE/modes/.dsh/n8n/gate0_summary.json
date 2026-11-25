@@ -1,0 +1,106 @@
+{
+  "skill": "multi-place-visit-photo-record",
+  "extract": "agent",
+  "pathway": "C",
+  "report": {
+    "ok": true,
+    "scope": "provenance_only_not_semantic_verification",
+    "dropped": [],
+    "pending": [],
+    "frozen": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "e8",
+      "e9",
+      "e10",
+      "e11",
+      "e12",
+      "e13",
+      "e14",
+      "e15",
+      "e16",
+      "e17",
+      "e18",
+      "e19",
+      "e20"
+    ],
+    "errors": [],
+    "relocated": {}
+  },
+  "workflow_id": "vLTAQfNasP32tMDO",
+  "runs": [
+    {
+      "case_id": "smoke-auto",
+      "kind": "smoke",
+      "evaluation_split": "none",
+      "execution_id": "5939",
+      "status": "error",
+      "evaluation_version": 2,
+      "execution_ok": false,
+      "semantic_ok": null,
+      "oracle_scope": "output_contract",
+      "oracle_status": "unassessed",
+      "oracle_errors": [
+        "no output oracle"
+      ],
+      "observation": {},
+      "parsed_done": {},
+      "evaluation_node": "Places uniquely determined?",
+      "executed_nodes": [
+        "Start visit request",
+        "Resolve places on semantic map",
+        "Keep unique matches and anchors",
+        "Places uniquely determined?"
+      ],
+      "output_ok": null,
+      "branch_ok": null
+    }
+  ],
+  "mapping": {
+    "structured_nodes": [
+      "Resolve places on semantic map",
+      "Keep unique matches and anchors",
+      "Places uniquely determined?",
+      "Navigate to place",
+      "Navigation running?",
+      "Wait for background Job completed",
+      "Job completed successfully?",
+      "Get camera frame",
+      "Keep frame_id, capture time, attachment ref",
+      "Save succeeded?",
+      "Append station record",
+      "More places remaining?"
+    ],
+    "agent_fallback_nodes": [
+      "Ask user to clarify place",
+      "Report background failure and stop",
+      "Save photo into visit directory",
+      "Report save failure and stop",
+      "Write visit-record.md",
+      "Present report"
+    ],
+    "structured_count": 12,
+    "agent_fallback_count": 6,
+    "all_agent_fallback": false
+  },
+  "heldout": "smoke",
+  "validate": {
+    "ok": true,
+    "attempts": 1,
+    "issues": []
+  },
+  "passed": false,
+  "evaluation_version": 2,
+  "compile_passed": true,
+  "import_passed": true,
+  "execution_passed": false,
+  "semantic_passed": false,
+  "evaluation_split": "none",
+  "unassessed_count": 1,
+  "passed_structured": false
+}

@@ -1,6 +1,6 @@
 {
   "projectId": "qingdan",
-  "count": 3,
+  "count": 4,
   "pending": [
     {
       "id": "64f3f048-c7d8-4aaa-9337-3e17c81cae66",
@@ -28,6 +28,16 @@
       "errorId": "ff73f26d-7875-4bba-aa1b-474f68b74dbf",
       "count": 3,
       "reason": "execution-log.jsonl 不是合法 JSONL：首条为跨 8 行的美化 JSON，按行解析会失败；且首条时间 15:51 早于次条 15:50，时序倒置。执行证据可解析性与可信度不足，需重排并改为一行一条。",
+      "channel": "reserved",
+      "delivered": false,
+      "parentNotified": false
+    },
+    {
+      "id": "c26f3842-0ec9-4cde-8cbd-102fdefbf576",
+      "at": "2026-11-23T05:38:23.117Z",
+      "errorId": "6d02a082-ad11-4173-8ce5-3e1d538289ee",
+      "count": 4,
+      "reason": "REQ-006 整改未通过复测：src/lib/storage.ts 对数组中非法元素的处理仍是 filter 后保留合法项并回写，不是 PRD/A-11 要求的空列表处理；isTask 仍未校验标题非空与 ≤80 字符、createdAt 是否为 ISO 8601，损坏数据可保留空标题或超长标题。tests/storage.test.ts 第 49-63 行仍把“保留合法项”固化为期望，与 assumptions.md A-11、prd-audit F-04 及开发汇报“统一按空列表处理并覆盖为 []”的表述直接矛盾。sub-001 未声明 addresses_finding_ids，该历史问题在本轮仍存在。",
       "channel": "reserved",
       "delivered": false,
       "parentNotified": false

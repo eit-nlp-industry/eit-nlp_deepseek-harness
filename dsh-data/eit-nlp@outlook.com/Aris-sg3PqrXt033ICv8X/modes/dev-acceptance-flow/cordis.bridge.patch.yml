@@ -1,0 +1,12 @@
+# Optional in-process bridge. Disabled until projectRoots is configured.
+# Enable by adding this package to the profile bundles and overriding config
+# in profiles/<name>/cordis.patch.yml.
+# cli.js start also appends roots to managed-project-roots.json; bridge merges
+# those each tick and consumes .flow/pending-start.json to create sessions.
+- insert:
+    - id: flow-host-bridge
+      name: '@local/dsh-dev-acceptance-flow/flow-host-bridge.js'
+      config:
+        enabled: false
+        intervalMs: 2000
+        projectRoots: []

@@ -2,7 +2,7 @@
   "name": "dsh-profile-n8n-web",
   "private": true,
   "dependencies": {
-    "@local/dsh-v02-preset": "link:/data/dsh/eit-nlp@outlook.com/claratest_fyc-3Tjs3gjjIpBRZ9AC/empty-workspace/v02-preset"
+    "@local/dsh-v02-preset": "link:/data/dsh/eit-nlp@outlook.com/claratest_fyc-3Tjs3gjjIpBRZ9AC/modes/v02-preset"
   },
   "dsh": {
     "profile": {
