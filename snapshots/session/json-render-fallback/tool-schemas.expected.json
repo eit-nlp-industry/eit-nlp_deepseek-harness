@@ -21,22 +21,6 @@
       }
     },
     {
-      "name": "exit_plan_mode",
-      "description": "Use only in plan mode. Present your plan for the user's review and, on approval, leave plan mode. The user may approve (carry out the plan from your next step) or keep planning — their feedback comes back in the tool result; revise and present again.",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "plan": {
-            "type": "string",
-            "description": "The complete plan, as markdown, starting with a # heading that names it."
-          }
-        },
-        "required": [
-          "plan"
-        ]
-      }
-    },
-    {
       "name": "get_goal",
       "description": "Read the current session goal, including the id and revision that update_goal requires.",
       "parameters": {
@@ -98,7 +82,7 @@
     },
     {
       "name": "render_ui",
-      "description": "Render a json-render interface when a card, table, steps, or form would help the user. Forms must include a visible enabled Button with on.press action form.submit. Use the requested submit_label, otherwise 提交. Additional actions do not replace submit. Set submit_button=false only when the user explicitly requests no submit button or only other actions; otherwise omit it or set true. Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters. For mode \"display\", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request. answer_presentation defaults to \"replace\" for display: the interface must fully answer the request. Use \"supplement\" when the written answer contains necessary explanations or caveats absent from the interface. mode does not select the component catalog. Omit intent for an ordinary display so the server uses base. Use mode \"form\" with intent \"generic_filters\" or \"generic_pick_one\" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit. When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, CodeBlock, Workflow, or Chart, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead. For an image, set business_data.image.assetId to a catalog id. The host writes image.src, image.alt, and image.caption before the render call. Do not send a disk path, domain, credential, component, or type. ImageUpload only names uploadTarget; do not invent an endpoint or credential. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.",
+      "description": "Render a json-render interface when a card, table, steps, or form would help the user. Without form_actions, forms must include a visible enabled Button with on.press action form.submit. Use the requested submit_label, otherwise 提交. Set submit_button=false only when the user explicitly requests no submit button or only other actions; otherwise omit it or set true. When the user requests multiple form operations, declare the complete form_actions list with supported intent and faithful label. The host renders independent parallel Buttons and sends the clicked intent with current form values to the agent. Do not replace these operations with a selection field. form_actions overrides submit_button and submit_label; include submit when confirmation is required. Reset, skip, and cancel send intent without locally changing values or executing business operations. Use a Link for navigation. Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters. For mode \"display\", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request. answer_presentation defaults to \"replace\" for display: the interface must fully answer the request. Use \"supplement\" when the written answer contains necessary explanations or caveats absent from the interface. mode does not select the component catalog. Omit intent for an ordinary display so the server uses base. Use mode \"form\" with intent \"generic_filters\" or \"generic_pick_one\" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit. When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, CodeBlock, Workflow, or Chart, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead. For an image, set business_data.image.assetId to a catalog id. The host writes image.src, image.alt, and image.caption before the render call. Do not send a disk path, domain, credential, component, or type. ImageUpload only names uploadTarget; do not invent an endpoint or credential. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -113,6 +97,43 @@
           "user_query": {
             "type": "string",
             "description": "Layout instruction in the user language, at most 2000 characters. Put facts in business_data, not here."
+          },
+          "submit_button": {
+            "type": "boolean",
+            "description": "Form only. Defaults to true: add a missing submit button. Set false only when the user explicitly requests no submit button or only other actions."
+          },
+          "submit_label": {
+            "type": "string",
+            "description": "Form only. The submit button label requested by the user; defaults to 提交 for a host-added button."
+          },
+          "form_actions": {
+            "type": "array",
+            "description": "Form only. Complete independent button list in display order. Each intent occurs once with a non-empty label. Overrides default submit options; include submit if needed. Omit for the default single submit. These buttons send intent plus current form values to the agent; navigation uses Link.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "intent": {
+                  "type": "string",
+                  "enum": [
+                    "submit",
+                    "save_draft",
+                    "reset",
+                    "skip",
+                    "cancel",
+                    "submit_and_add"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "description": "Visible button text faithful to the requested operation."
+                }
+              },
+              "required": [
+                "intent",
+                "label"
+              ]
+            }
           },
           "answer_presentation": {
             "type": "string",
@@ -162,14 +183,6 @@
           },
           "business_data": {
             "description": "Structured facts and component data available to the interface. Required for display and form. Include the complete answer and data the components need. Show user-relevant facts; only show raw fields and technical details when the user requests them."
-          },
-          "submit_button": {
-            "type": "boolean",
-            "description": "Form only. Defaults to true: add a missing submit button. Set false only when the user explicitly requests no submit button or only other actions."
-          },
-          "submit_label": {
-            "type": "string",
-            "description": "Form only. The submit button label requested by the user; defaults to 提交 for a host-added button."
           }
         },
         "required": [

@@ -9,6 +9,7 @@
     { "path": "../../../vendor/cordis" },
     { "path": "../../../vendor/schemastery" },
     { "path": "../../core/tools" },
+    { "path": "../../core/system-prompt" },
     { "path": "../../util/values" }
   ]
 }

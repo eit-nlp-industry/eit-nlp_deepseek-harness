@@ -15,8 +15,8 @@
   en: 4e53164159b5ce41
   zh: 1e7d2e37b6eba4ea
 /deepseek-ai-dsh-client-ui-json-render/use-this-package:
-  en: 8ad754c797d20592
-  zh: c7b4853a186e6610
+  en: 142d689d53568430
+  zh: b29d7e2f90694d53
 /deepseek-ai-dsh-client-ui-json-render/model-experience:
   en: 39155e314462637d
   zh: 1e75bb18fb091fd7
@@ -26,6 +26,6 @@
 /deepseek-ai-dsh-client-ui-json-render/known-limitations-and-deferred-work:
   en: c73e723fc6a03e7a
   zh: f472fb5dc6988b50
-/deepseek-ai-dsh-client-ui-json-render/dev-note:
-  en: efc6bb653b9c71c4
-  zh: e81ad1eda0d324a4
+/deepseek-ai-dsh-client-ui-json-render/known-limitations-and-deferred-work/dev-note:
+  en: b7fbf1f393752f9b
+  zh: 25e979141fbe5501
