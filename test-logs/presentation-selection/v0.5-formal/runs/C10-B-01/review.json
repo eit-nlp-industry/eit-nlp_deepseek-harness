@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 1,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "确认前无Image，确认后才展示且大量business_data字段表外露；跟随中卡正确，丢失后又等原生选择，停止状态卡未在终态显示，旧跟随中卡仍可见。保留等待终态，不追加脚本外选择。"
+}

@@ -1,0 +1,164 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 平面图快递路线静态示意说明 刚刚":
+    - generic: 进行中
+    - generic: 平面图快递路线静态示意说明
+    - generic: 刚刚
+  - treeitem "平面图快递路线静态示意 刚刚" [selected]:
+    - generic: 平面图快递路线静态示意
+    - generic: 刚刚
+  - treeitem "进行中 饮水机不出水照片评测 1分钟":
+    - generic: 进行中
+    - generic: 饮水机不出水照片评测
+    - generic: 1分钟
+  - treeitem "三项工作排期草稿确认 1分钟":
+    - generic: 三项工作排期草稿确认
+    - generic: 1分钟
+  - treeitem "已完成 安排三项工作并确认草稿 1分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 1分钟
+  - treeitem "会议室预约改期草稿 2分钟":
+    - generic: 会议室预约改期草稿
+    - generic: 2分钟
+  - treeitem "已完成 会议室预约改期草稿测评 2分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 2分钟
+  - treeitem "进行中 饮水机维修照片呈现测评 2分钟":
+    - generic: 进行中
+    - generic: 饮水机维修照片呈现测评
+    - generic: 2分钟
+  - treeitem "售后申请草稿填写与确认 3分钟":
+    - generic: 售后申请草稿填写与确认
+    - generic: 3分钟
+  - treeitem "已完成 售后申请草稿填写测评 3分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 3分钟
+  - treeitem "商品退货多视角图片呈现 5分钟":
+    - generic: 商品退货多视角图片呈现
+    - generic: 5分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 5分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 5分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 5分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 5分钟
+  - treeitem "已完成 包裹照片确认对象状态 7分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 7分钟
+  - treeitem "确认包裹照片与订单尾号 8分钟":
+    - generic: 确认包裹照片与订单尾号
+    - generic: 8分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 10分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 10分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 11分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 11分钟
+  - treeitem "活动需求确认与汇总 11分钟":
+    - generic: 活动需求确认与汇总
+    - generic: 11分钟
+  - treeitem "已完成 活动需求确认测评 11分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 11分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 平面图快递路线静态示意
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N10-A-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N10-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N10-A-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：根据给定平面图，说明快递员先到收件点，再到目的地的位置和路线。只作静态示意，不开始配送。 指定呈现方式：同一底图的原生图片+两段位置路线文字。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:50
+- button "复制":
+- status: 已完成
+- button "已完成，用时 5秒":
+  - generic: 已完成，用时 5秒
+- paragraph: I'll start by loading this case's fixed materials.
+- paragraph:
+  - 'button "查看大图: MOCK WAREHOUSE GRID；STATIC｜NO LIVE LOCATION；synthetic fixture"':
+    - img "MOCK WAREHOUSE GRID；STATIC｜NO LIVE LOCATION；synthetic fixture"
+- paragraph:
+  - strong: 第一段（快递员 → 收件点）：
+  - text: 快递员当前位置在图上左下侧的起点格，示意坐标为 (0, 0)；收件点位于同一横向格线上、向东两个示意格处，坐标为 (2, 0)。对应在底图归一化坐标中，这两处分别是 (10, 80) 与 (35, 80)。路线为沿该横向格线由西向东直行约两个单位格，途中不拐弯，终点即收件点。
+- paragraph:
+  - strong: 第二段（收件点 → 目的地）：
+  - text: 从收件点 (2, 0) 出发，目的地在其正北方向三个示意格处，坐标为 (2, 3)；对应底图归一化坐标为 (35, 20)。路线为在收件点处由东西向转为南北向，沿同一纵向格线向北直行约三个单位格，途中不拐弯，即可到达目的地。全程为“先东行、后北行”的一次直角转向，两段路线的总长约为五个示意单位格。
+- paragraph: 以上仅为静态平面示意，未开始配送，不含实时定位或真实地理信息。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 5.2K tok":
+  - generic: 用量 5.2K tok
+- generic: 13:50
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

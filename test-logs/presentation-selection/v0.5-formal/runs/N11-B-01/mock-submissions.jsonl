@@ -1,0 +1,3 @@
+{"at":"2026-11-20T06:24:24.982Z","session_id":"session-c013bda2-5da6-4151-bc9b-5ebe65f2c968","values":{"job_id":"job-convert-01","requested_action":"pause_monitoring","scope":"monitoring_only"}}
+{"at":"2026-11-20T06:27:20.414Z","session_id":"session-c013bda2-5da6-4151-bc9b-5ebe65f2c968","values":{"job_id":"job-convert-01","requested_action":"resume_monitoring","scope":"monitoring_only"}}
+{"at":"2026-11-20T06:29:46.579Z","session_id":"session-c013bda2-5da6-4151-bc9b-5ebe65f2c968","values":{"job_id":"job-convert-01","requested_action":"end_monitoring","scope":"monitoring_only"}}

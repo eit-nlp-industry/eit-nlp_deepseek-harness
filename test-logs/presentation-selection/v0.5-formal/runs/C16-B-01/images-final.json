@@ -1,0 +1,17 @@
+[
+  {
+    "complete": true,
+    "src": "http://127.0.0.1:3080/api/media/bench05-doc-01/content",
+    "width": 960
+  },
+  {
+    "complete": true,
+    "src": "http://127.0.0.1:3080/api/media/bench05-doc-01/content",
+    "width": 960
+  },
+  {
+    "complete": true,
+    "src": "http://127.0.0.1:3080/api/media/bench05-doc-01/content",
+    "width": 960
+  }
+]

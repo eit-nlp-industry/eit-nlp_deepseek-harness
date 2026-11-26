@@ -1,0 +1,56 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C25-b-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_eXZEw3iJbZRys5Nrfmul4268"
+      },
+      "toolCallId": "call_00_ET_eXZEw3iJbZRys5Nrfmul4268",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C25-b\",\"facts\":\"本题不控制机器人；请求交由固定模拟结果回放。当前动作handshake-01状态pending，尚无成功或失败结果。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "72ac8034-03d6-48da-9b2c-02520bcde7ae"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "action": "read",
+        "run_id": "C25-b-B-02"
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_W9m07o8vK0VklOz7Iqam2211"
+      },
+      "toolCallId": "call_00_W9m07o8vK0VklOz7Iqam2211",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C25-b\",\"facts\":\"handshake-01模拟结果：失败，原因target_unreachable。未控制真实机器人。\",\"assets\":[],\"task_id\":\"handshake-01\",\"status\":\"failed\",\"reason\":\"target_unreachable\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "084c9816-6561-4a49-a752-867433e9435c"
+    }
+  }
+]

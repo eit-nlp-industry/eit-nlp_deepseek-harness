@@ -1,0 +1,17 @@
+[
+  {
+    "seq": 10,
+    "time": 1795088185924,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  }
+]

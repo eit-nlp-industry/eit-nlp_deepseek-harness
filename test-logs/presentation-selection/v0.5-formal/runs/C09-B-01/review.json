@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 2,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "环境触发Image实际加载，无新建档，重复事件不再渲染图片；路径和校验去重说明冗长，重复事件仍有文字推送。"
+}

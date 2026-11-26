@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_k7Cs49cfTmBIU9ZjcgmQ1256",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"format\", \"header\": \"活动形式\", \"question\": \"这次是线上还是线下进行？\", \"options\": [{\"label\": \"线下\", \"description\": \"需要实际到场，可以按场地安排\"}, {\"label\": \"线上\", \"description\": \"不占场地，地点只作参考\"}]}, {\"id\": \"period\", \"header\": \"时段\", \"question\": \"半日游安排在哪个时段？\", \"options\": [{\"label\": \"上午\", \"description\": \"上午出发，适合先安静后交流\"}, {\"label\": \"下午\", \"description\": \"下午出发，时间安排更从容\"}]}, {\"id\": \"places\", \"header\": \"地点偏好\", \"question\": \"想去哪些地方？（可多选）\", \"multi_select\": true, \"options\": [{\"label\": \"图书馆\", \"description\": \"环境安静，适合阅读\"}, {\"label\": \"食堂\", \"description\": \"可以边吃边聊\"}, {\"label\": \"四明书院\", \"description\": \"适合公共交流讨论\"}]}, {\"id\": \"notes\", \"header\": \"补充想法\", \"question\": \"还有什么补充要求吗？比如人数、想做的事、不能接受的安排。\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_k7Cs49cfTmBIU9ZjcgmQ1256"
+      },
+      "toolCallId": "call_00_k7Cs49cfTmBIU9ZjcgmQ1256",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: the user cancelled ask_user_question"
+        }
+      ],
+      "isError": true,
+      "id": "9f3aebe0-e25f-477e-9e54-7a1f54196748"
+    }
+  }
+]

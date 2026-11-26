@@ -1,0 +1,176 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C15-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_rkXObnCuagr4OlIzW2g80772"
+      },
+      "toolCallId": "call_00_ET_rkXObnCuagr4OlIzW2g80772",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"当前候选parcel-3726，订单尾号3726，初始待确认。当前视角远景img-far；近景和侧景尚未发布。不实际取送。\",\"assets\":[{\"id\":\"bench05-img-far\",\"file\":\"bench05-img-far.png\",\"alt\":\"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\",\"source_id\":\"img-far\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-far/content\",\"path\":\"/api/media/bench05-img-far/content\",\"sha256\":\"890c916a7d9a70f37079b6a60264e1ee04c0229d7ee469b9e2d12d26d530d9dd\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "6b627b15-c36f-4fd9-9b78-f1ed1e60ff81"
+    }
+  },
+  {
+    "call": {
+      "seq": 31,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-A-01"
+      }
+    },
+    "result_seq": 32,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Bd7hUZnkBgnZBkwKjbO45039"
+      },
+      "toolCallId": "call_00_Bd7hUZnkBgnZBkwKjbO45039",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"当前候选parcel-3726，订单尾号3726，初始待确认。当前视角远景img-far；近景和侧景尚未发布。不实际取送。\",\"assets\":[{\"id\":\"bench05-img-far\",\"file\":\"bench05-img-far.png\",\"alt\":\"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\",\"source_id\":\"img-far\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-far/content\",\"path\":\"/api/media/bench05-img-far/content\",\"sha256\":\"890c916a7d9a70f37079b6a60264e1ee04c0229d7ee469b9e2d12d26d530d9dd\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "20d97014-a0a7-48eb-9544-d690e8e506c7"
+    }
+  },
+  {
+    "call": {
+      "seq": 46,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-A-01"
+      }
+    },
+    "result_seq": 47,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_L2S9AN1L3U9DoAGTzTtk9923"
+      },
+      "toolCallId": "call_00_L2S9AN1L3U9DoAGTzTtk9923",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"同一候选parcel-3726近景，尾号3726。\",\"assets\":[{\"id\":\"bench05-img-near\",\"file\":\"bench05-img-near.png\",\"alt\":\"MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture\",\"source_id\":\"img-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-near/content\",\"path\":\"/api/media/bench05-img-near/content\",\"sha256\":\"e957159ba866a87b47ec27051ebdf0e09fd59517e08bd759cac42d7b1573f6a5\",\"width\":960,\"height\":540}],\"candidate_id\":\"parcel-3726\",\"view\":\"near\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "d40f18d5-40b4-42f8-8e52-92b1f7684292"
+    }
+  },
+  {
+    "call": {
+      "seq": 58,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-A-01"
+      }
+    },
+    "result_seq": 59,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_DBB2Aztn0QzEhkKEAmKu6056"
+      },
+      "toolCallId": "call_00_DBB2Aztn0QzEhkKEAmKu6056",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"同一候选parcel-3726近景，尾号3726。\",\"assets\":[{\"id\":\"bench05-img-near\",\"file\":\"bench05-img-near.png\",\"alt\":\"MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture\",\"source_id\":\"img-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-near/content\",\"path\":\"/api/media/bench05-img-near/content\",\"sha256\":\"e957159ba866a87b47ec27051ebdf0e09fd59517e08bd759cac42d7b1573f6a5\",\"width\":960,\"height\":540}],\"candidate_id\":\"parcel-3726\",\"view\":\"near\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "bcc21d50-fef5-4310-b717-2a8b62ece142"
+    }
+  },
+  {
+    "call": {
+      "seq": 73,
+      "arguments": {
+        "action": "read",
+        "run_id": "C15-A-01"
+      }
+    },
+    "result_seq": 74,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_0IeWOGFnjYpqi9dOuxLy7016"
+      },
+      "toolCallId": "call_00_ET_0IeWOGFnjYpqi9dOuxLy7016",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C15\",\"facts\":\"同一候选parcel-3726侧景，尚未获用户确认。\",\"assets\":[{\"id\":\"bench05-img-side\",\"file\":\"bench05-img-side.png\",\"alt\":\"MOCK PARCEL SIDE; SAME parcel-3726 | SIDE; synthetic fixture\",\"source_id\":\"img-side\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-side/content\",\"path\":\"/api/media/bench05-img-side/content\",\"sha256\":\"df486514c7ecacbd6486ecbb9868b6a5394b0bd93df962302d9044882cc275c4\",\"width\":960,\"height\":540}],\"candidate_id\":\"parcel-3726\",\"view\":\"side\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "3420b093-8b90-45a1-be9e-931450fb9cb9"
+    }
+  },
+  {
+    "call": {
+      "seq": 85,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C15-A-01",
+        "values": {
+          "candidate_id": "parcel-3726",
+          "order_suffix": "3726",
+          "pickup_location": "学校大门",
+          "user_confirmed": true,
+          "confirmed_by": "用户",
+          "views_reviewed": [
+            "img-far",
+            "img-near",
+            "img-side"
+          ]
+        }
+      }
+    },
+    "result_seq": 86,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_OP2JCjWM3nGNd2jssJtg6689"
+      },
+      "toolCallId": "call_00_OP2JCjWM3nGNd2jssJtg6689",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "19a07265-3efc-4ee2-b15c-89fa9bd28b81"
+    }
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 2,
+  "state": 3,
+  "presentation": "pass",
+  "reason": "真实Workflow及保存回传version3成立，但无条件“等待老师给材料”位于老师在/不在判断之前，老师不在仍须先等材料，核心路径不满足不再等待；最终未明确保存回执。"
+}

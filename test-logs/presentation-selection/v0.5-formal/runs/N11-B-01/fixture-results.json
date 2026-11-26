@@ -1,0 +1,179 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N11-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_4BAWblyOw9RHaKwMICJO7875"
+      },
+      "toolCallId": "call_00_ET_4BAWblyOw9RHaKwMICJO7875",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N11\",\"facts\":\"模拟job-convert-01，共10个文件，当前running，completed_count=3。后续暂停、继续、失败、结束监测均以模拟返回为准，不处理真实文件。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "bbf58417-f4c1-4d1d-b5db-d6844db0e54f"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "N11-B-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_EnoQ38FRgkXk9WGRdeMt7775"
+      },
+      "toolCallId": "call_00_EnoQ38FRgkXk9WGRdeMt7775",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N11\",\"facts\":\"模拟job-convert-01，共10个文件，当前running，completed_count=3。后续暂停、继续、失败、结束监测均以模拟返回为准，不处理真实文件。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "400ed0bd-1ff8-4338-8e28-e627444eaf3b"
+    }
+  },
+  {
+    "call": {
+      "seq": 46,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N11-B-01",
+        "values": {
+          "job_id": "job-convert-01",
+          "requested_action": "pause_monitoring",
+          "scope": "monitoring_only"
+        }
+      }
+    },
+    "result_seq": 47,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_VRkDN7mfZarfmsfQ0Twl7977"
+      },
+      "toolCallId": "call_00_VRkDN7mfZarfmsfQ0Twl7977",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "b6eae861-3d4f-41f8-ad70-c428eb43f5be"
+    }
+  },
+  {
+    "call": {
+      "seq": 52,
+      "arguments": {
+        "action": "read",
+        "run_id": "N11-B-01"
+      }
+    },
+    "result_seq": 53,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_X98FrK9UPzqKfFBghhDv2500"
+      },
+      "toolCallId": "call_00_X98FrK9UPzqKfFBghhDv2500",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N11\",\"facts\":\"模拟job-convert-01，共10个文件，当前running，completed_count=3。后续暂停、继续、失败、结束监测均以模拟返回为准，不处理真实文件。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "bfa35336-4640-43b4-af77-190ce3a72ae3"
+    }
+  },
+  {
+    "call": {
+      "seq": 88,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N11-B-01",
+        "values": {
+          "job_id": "job-convert-01",
+          "requested_action": "resume_monitoring",
+          "scope": "monitoring_only"
+        }
+      }
+    },
+    "result_seq": 89,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_fdVnRFtkf8uIZioSSp227882"
+      },
+      "toolCallId": "call_00_fdVnRFtkf8uIZioSSp227882",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "209b4c73-4577-4bdf-b7a3-881179310733"
+    }
+  },
+  {
+    "call": {
+      "seq": 139,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N11-B-01",
+        "values": {
+          "job_id": "job-convert-01",
+          "requested_action": "end_monitoring",
+          "scope": "monitoring_only"
+        }
+      }
+    },
+    "result_seq": 140,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_gkWIdIqgvOANZDwFy3wc9778"
+      },
+      "toolCallId": "call_00_gkWIdIqgvOANZDwFy3wc9778",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "692fee56-23e4-46c7-8c51-93925e2608c7"
+    }
+  }
+]

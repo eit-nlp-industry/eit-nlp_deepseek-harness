@@ -1,0 +1,273 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_sKqNR9rtvogXQNCX8leN7874",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"user_query\": \"渲染一张极简的状态卡片：标题「握手请求」，一行状态徽标「待处理 / pending」，说明文字为「当前动作 handshake-01 尚无成功或失败结果」，并以小字注明「固定模拟材料，不控制真实机器人」。不要放按钮、链接或任何可再次发起动作的控件；除状态卡片本身外不添加其他组件。\", \"business_data\": {\"title\": \"握手请求\", \"action_id\": \"handshake-01\", \"status\": \"pending\", \"status_label\": \"待处理\", \"description\": \"当前动作 handshake-01 状态为 pending，尚无成功或失败结果。\", \"note\": \"固定模拟材料，不连接真实系统，不控制机器人。\", \"fallback_text\": \"握手请求（handshake-01）：状态待处理（pending），尚无成功或失败结果。未执行任何真实动作。\"}, \"locale\": \"zh-CN\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "main-stack"
+              ]
+            },
+            "main-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "status-badge-row",
+                "status-description",
+                "status-note",
+                "status-details"
+              ]
+            },
+            "status-badge-row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "status-badge"
+              ]
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "待处理 / pending",
+                "variant": "default"
+              }
+            },
+            "status-description": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/description"
+                },
+                "variant": "default"
+              }
+            },
+            "status-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            },
+            "status-details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "动作 ID",
+                    "value": "handshake-01"
+                  },
+                  {
+                    "label": "状态值",
+                    "value": "pending"
+                  },
+                  {
+                    "label": "状态标签",
+                    "value": "待处理"
+                  },
+                  {
+                    "label": "兜底文案",
+                    "value": "握手请求（handshake-01）：状态待处理（pending），尚无成功或失败结果。未执行任何真实动作。"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "握手请求",
+            "action_id": "handshake-01",
+            "status": "pending",
+            "status_label": "待处理",
+            "description": "当前动作 handshake-01 状态为 pending，尚无成功或失败结果。",
+            "note": "固定模拟材料，不连接真实系统，不控制机器人。",
+            "fallback_text": "握手请求（handshake-01）：状态待处理（pending），尚无成功或失败结果。未执行任何真实动作。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_sKqNR9rtvogXQNCX8leN7874"
+      },
+      "toolCallId": "call_00_sKqNR9rtvogXQNCX8leN7874",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "791e2a05-38c8-4189-87ba-3d241c56480d"
+    }
+  },
+  {
+    "call_seq": 40,
+    "result_seq": 41,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_00_QiGhz3c7Cc2m4rbKXvia3076",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"action_id\": \"handshake-01\", \"description\": \"握手未能完成：目标不可达（target_unreachable）。\", \"fallback_text\": \"握手请求（handshake-01）：失败，原因 target_unreachable（目标不可达）。未控制真实机器人。\", \"note\": \"固定模拟结果，不连接真实系统，未控制真实机器人。\", \"reason\": \"target_unreachable\", \"reason_label\": \"目标不可达\", \"status\": \"failed\", \"status_label\": \"失败\", \"title\": \"握手请求\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"渲染一张极简结果状态卡片：标题「握手请求」，状态徽标「失败 / failed」（用警示色），说明文字「握手未能完成：目标不可达（target_unreachable）」，小字注明「固定模拟结果，未控制真实机器人」。不要出现按钮、链接或重试控件；除该状态卡片外不添加其他组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "statusBadge",
+                "statusDescription",
+                "statusNote",
+                "statusDetails"
+              ]
+            },
+            "statusBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "失败 / failed",
+                "variant": "warning"
+              }
+            },
+            "statusDescription": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/description"
+                },
+                "variant": "default"
+              }
+            },
+            "statusNote": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            },
+            "statusDetails": {
+              "type": "Descriptions",
+              "props": {
+                "title": "结果明细",
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "标题 title",
+                    "value": "握手请求"
+                  },
+                  {
+                    "label": "操作 ID action_id",
+                    "value": "handshake-01"
+                  },
+                  {
+                    "label": "状态 status",
+                    "value": "failed"
+                  },
+                  {
+                    "label": "状态标签 status_label",
+                    "value": "失败"
+                  },
+                  {
+                    "label": "原因 reason",
+                    "value": "target_unreachable"
+                  },
+                  {
+                    "label": "原因标签 reason_label",
+                    "value": "目标不可达"
+                  },
+                  {
+                    "label": "说明 description",
+                    "value": "握手未能完成：目标不可达（target_unreachable）。"
+                  },
+                  {
+                    "label": "回退文本 fallback_text",
+                    "value": "握手请求（handshake-01）：失败，原因 target_unreachable（目标不可达）。未控制真实机器人。"
+                  },
+                  {
+                    "label": "备注 note",
+                    "value": "固定模拟结果，不连接真实系统，未控制真实机器人。"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "action_id": "handshake-01",
+            "description": "握手未能完成：目标不可达（target_unreachable）。",
+            "fallback_text": "握手请求（handshake-01）：失败，原因 target_unreachable（目标不可达）。未控制真实机器人。",
+            "note": "固定模拟结果，不连接真实系统，未控制真实机器人。",
+            "reason": "target_unreachable",
+            "reason_label": "目标不可达",
+            "status": "failed",
+            "status_label": "失败",
+            "title": "握手请求"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_QiGhz3c7Cc2m4rbKXvia3076"
+      },
+      "toolCallId": "call_00_QiGhz3c7Cc2m4rbKXvia3076",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "0ede73ce-1550-4c61-92de-64e59d3d6c5b"
+    }
+  }
+]

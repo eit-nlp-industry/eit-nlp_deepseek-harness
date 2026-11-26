@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "合成人物图片实际加载，用户明确确认person-a后正确关联小张；未将缺少写入回执说成已保存。"
+}

@@ -1,0 +1,63 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "action": "initialize",
+        "run_id": "N05-B-01"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_265Y5XTJfHHTy1i3v6Mo3835"
+      },
+      "toolCallId": "call_00_ET_265Y5XTJfHHTy1i3v6Mo3835",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N05\",\"facts\":\"唯一候选parcel-8241，尾号8241，初始pending_confirmation。图像MOCK，用户确认后只记录状态，不寄件。\",\"assets\":[{\"id\":\"bench05-img-parcel-8241\",\"file\":\"bench05-img-parcel-8241.png\",\"alt\":\"MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture\",\"source_id\":\"img-parcel-8241\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-parcel-8241/content\",\"path\":\"/api/media/bench05-img-parcel-8241/content\",\"sha256\":\"f3c2235c40b1cfe400a7511f7de3bf6f2a7e0e62cf50f87354eddb202fe84fa0\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "0f372fae-2674-46d6-a83a-83458d73995c"
+    }
+  },
+  {
+    "call": {
+      "seq": 37,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N05-B-01",
+        "values": {
+          "candidate_id": "parcel-8241",
+          "order_tail": "8241",
+          "user_confirmation": "confirmed",
+          "record_only": "object_status",
+          "shipment": "not_requested"
+        }
+      }
+    },
+    "result_seq": 38,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_vjaxCh7ZQb1WxxxegGKQ4279"
+      },
+      "toolCallId": "call_00_vjaxCh7ZQb1WxxxegGKQ4279",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "d5b4baee-3dd9-4035-94f1-f4b9e8604b5d"
+    }
+  }
+]

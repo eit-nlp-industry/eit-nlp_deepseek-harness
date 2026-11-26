@@ -1,0 +1,27 @@
+[
+  {
+    "seq": 10,
+    "time": 1795091500006,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 46,
+    "time": 1795091667683,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C14-A-02-right",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C14-A-02-right\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"14:01右侧新观察，固定结论：有2个空位。只是当前观察，不等于预订。\",\"assets\":[{\"id\":\"bench05-img-right\",\"file\":\"bench05-img-right.png\",\"alt\":\"MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture\",\"source_id\":\"img-right\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-right/content\",\"path\":\"/api/media/bench05-img-right/content\",\"sha256\":\"5ceb1c86d80c273693963e51434a27852e315146bebaaf9a3684ee44576d87e3\",\"width\":960,\"height\":540}],\"simulated\":true,\"asset_id\":\"img-right\",\"view\":\"right\",\"observed_at\":\"14:01\",\"empty_seats\":2}}"
+  }
+]

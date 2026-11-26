@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 3,
+  "state": 3,
+  "presentation": "fail",
+  "reason": "虚拟第3分钟开门正确通知，重复事件未重调生成；两次render_ui有JSON但实际最终界面只见Markdown，未见动态卡。未给停止事件却称观察提前结束。"
+}

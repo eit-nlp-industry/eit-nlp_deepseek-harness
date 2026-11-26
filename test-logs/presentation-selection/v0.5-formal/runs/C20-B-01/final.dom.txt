@@ -1,0 +1,359 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 图书馆吃饭回合院排序 刚刚":
+    - generic: 已完成
+    - generic: 图书馆吃饭回合院排序
+    - generic: 刚刚
+  - treeitem "已完成 企业服务套餐概览介绍 刚刚":
+    - generic: 已完成
+    - generic: 企业服务套餐概览介绍
+    - generic: 刚刚
+  - treeitem "已完成 企业服务套餐介绍测评 刚刚":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 刚刚
+  - treeitem "已完成 费用支付状态简短确认 1分钟":
+    - generic: 已完成
+    - generic: 费用支付状态简短确认
+    - generic: 1分钟
+  - treeitem "已完成 费用支付状态问答测评 1分钟":
+    - generic: 已完成
+    - generic: 费用支付状态问答测评
+    - generic: 1分钟
+  - treeitem "图书馆地图预览测评 1分钟" [selected]:
+    - generic: 图书馆地图预览测评
+    - generic: 1分钟
+  - treeitem "已完成 图书馆预约简答测评 C26-A-02 1分钟":
+    - generic: 已完成
+    - generic: 图书馆预约简答测评 C26-A-02
+    - generic: 1分钟
+  - treeitem "已完成 图书馆预约测评 1分钟":
+    - generic: 已完成
+    - generic: 图书馆预约测评
+    - generic: 1分钟
+  - treeitem "已完成 图书馆路线排序测评 3分钟":
+    - generic: 已完成
+    - generic: 图书馆路线排序测评
+    - generic: 3分钟
+  - treeitem "已完成 握手需求简短文字回执 3分钟":
+    - generic: 已完成
+    - generic: 握手需求简短文字回执
+    - generic: 3分钟
+  - treeitem "已完成 握手请求简短回执 3分钟":
+    - generic: 已完成
+    - generic: 握手请求简短回执
+    - generic: 3分钟
+  - treeitem "已完成 测评场景握手回执 5分钟":
+    - generic: 已完成
+    - generic: 测评场景握手回执
+    - generic: 5分钟
+  - treeitem "已完成 握手需求简短回执测评 5分钟":
+    - generic: 已完成
+    - generic: 握手需求简短回执测评
+    - generic: 5分钟
+  - treeitem "已完成 老师不在告知流程确认 6分钟":
+    - generic: 已完成
+    - generic: 老师不在告知流程确认
+    - generic: 6分钟
+  - treeitem "已完成 条件分支文字修改确认 7分钟":
+    - generic: 已完成
+    - generic: 条件分支文字修改确认
+    - generic: 7分钟
+  - treeitem "已完成 林老师材料取送流程确认 8分钟":
+    - generic: 已完成
+    - generic: 林老师材料取送流程确认
+    - generic: 8分钟
+  - treeitem "已完成 林老师材料取送流程 9分钟":
+    - generic: 已完成
+    - generic: 林老师材料取送流程
+    - generic: 9分钟
+  - treeitem "已完成 饮水机不出水照片草稿测评 9分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片草稿测评
+    - generic: 9分钟
+  - treeitem "C18-B-02 门口补拍呈现测评 12分钟":
+    - generic: C18-B-02 门口补拍呈现测评
+    - generic: 12分钟
+  - treeitem "已完成 饮水机照片呈现测评 13分钟":
+    - generic: 已完成
+    - generic: 饮水机照片呈现测评
+    - generic: 13分钟
+  - treeitem "已完成 食堂导航门图测评 15分钟":
+    - generic: 已完成
+    - generic: 食堂导航门图测评
+    - generic: 15分钟
+  - treeitem "已完成 食堂导航原生门图测评 15分钟":
+    - generic: 已完成
+    - generic: 食堂导航原生门图测评
+    - generic: 15分钟
+  - treeitem "已完成 图书馆导盲犬路线呈现测评 17分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线呈现测评
+    - generic: 17分钟
+  - treeitem "已完成 图书馆导盲犬路线测评 17分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线测评
+    - generic: 17分钟
+  - treeitem "已完成 补拍门口并结束观察 18分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 18分钟
+  - treeitem "已完成 图书馆用餐回程排序 18分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐回程排序
+    - generic: 18分钟
+  - treeitem "五分钟门开提醒测评 18分钟":
+    - generic: 五分钟门开提醒测评
+    - generic: 18分钟
+  - treeitem "已完成 图书馆用餐与回程排序 18分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐与回程排序
+    - generic: 18分钟
+  - treeitem "已完成 门开提醒：图像通知呈现 27分钟":
+    - generic: 已完成
+    - generic: 门开提醒：图像通知呈现
+    - generic: 27分钟
+  - treeitem "监视门开提醒呈现 33分钟":
+    - generic: 监视门开提醒呈现
+    - generic: 33分钟
+  - treeitem "已完成 门口补拍并结束观察 36分钟":
+    - generic: 已完成
+    - generic: 门口补拍并结束观察
+    - generic: 36分钟
+  - treeitem "已完成 补拍门口并结束观察 36分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 36分钟
+  - treeitem "已完成 门开五分钟提醒呈现测评 40分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒呈现测评
+    - generic: 40分钟
+  - treeitem "已完成 五分钟门开提醒测评 42分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 42分钟
+  - treeitem "已完成 门开五分钟提醒文字通知 42分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒文字通知
+    - generic: 42分钟
+  - treeitem "已完成 门开提醒固定材料测评 47分钟":
+    - generic: 已完成
+    - generic: 门开提醒固定材料测评
+    - generic: 47分钟
+  - treeitem "已完成 门开提醒测试 47分钟":
+    - generic: 已完成
+    - generic: 门开提醒测试
+    - generic: 47分钟
+  - treeitem "文件交接呈现测评 C16-B-02 49分钟":
+    - generic: 文件交接呈现测评 C16-B-02
+    - generic: 49分钟
+  - treeitem "已完成 全量正式呈现测评 C16-B-01 49分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-B-01
+    - generic: 49分钟
+  - treeitem "已完成 全量正式呈现测评 C16-A-02 51分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 51分钟
+  - treeitem "已完成 正式呈现测评 C16-A-01 51分钟":
+    - generic: 已完成
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 51分钟
+  - treeitem "已完成 外卖取餐确认测评 55分钟":
+    - generic: 已完成
+    - generic: 外卖取餐确认测评
+    - generic: 55分钟
+  - treeitem "外卖取件模拟呈现 1小时":
+    - generic: 外卖取件模拟呈现
+    - generic: 1小时
+  - treeitem "已完成 外卖取件图像确认测评 1小时":
+    - generic: 已完成
+    - generic: 外卖取件图像确认测评
+    - generic: 1小时
+  - treeitem "已完成 外卖取件确认测评 C15-A-01 1小时":
+    - generic: 已完成
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 1小时
+  - treeitem "图书馆座位图像呈现测评 1小时":
+    - generic: 图书馆座位图像呈现测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位查询测评 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位查询测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位图像化呈现 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位图像化呈现
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位新视角图测评 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位新视角图测评
+    - generic: 1小时
+  - treeitem "已完成 安静读书地点推荐测评 1小时":
+    - generic: 已完成
+    - generic: 安静读书地点推荐测评
+    - generic: 1小时
+  - button "展开其余 131 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 图书馆地图预览测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C20-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C20-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C20-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：我想先去图书馆，叫一只狗来带我吧。 指定呈现方式：MapPreview静态示意，真实点位与路线渲染。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。 MapPreview是无自定义底图参数的示意图：另用Image显示给定同一底图，再用MapPreview画给定归一坐标和route；两者一起标明静态示意。不得虚构background等不支持的属性。
+- generic: 21:35
+- button "复制":
+- status: 已完成
+- button "已完成，用时 51秒":
+  - generic: 已完成，用时 51秒
+- paragraph: 我先加载本例的固定材料。
+- paragraph: 已按你的需求做了静态示意：狗先到你所在的位置，再带你一起去图书馆。
+- paragraph:
+  - strong: 文字兜底（与图中内容一致）
+- list:
+  - listitem: 狗（机器人）起点：格坐标 (0,2)，示意图坐标 (10,50)
+  - listitem: 你所在位置：格坐标 (2,2)，示意图坐标 (30,50)
+  - listitem: 图书馆：格坐标 (6,2)，示意图坐标 (70,50)
+  - listitem: 路线：robot → user → lib，也就是狗先从 (0,2) 出发，到 (2,2) 和你汇合，再一起前往图书馆 (6,2)
+  - listitem: 换算方式：x=10+10×格x，y=70-10×格y
+- paragraph:
+  - strong: 请注意
+  - text: ：上方地图是固定的静态示意，单位为示意格，
+  - strong: 没有实时定位
+  - text: ，也不代表地图上的真实位置与导航路线。目前还没有真的把狗叫过来，也没有任何预约或出行安排被实际执行。
+- paragraph: 如果你要我按这条「狗先来汇合、再一起去图书馆」的路线继续，告诉我一声；如果你更想直接去图书馆、不需要狗来接，也可以直接说，我会按你的选择重新示意。
+- heading "静态示意：狗先来接你，再一起前往图书馆" [level=1]
+- generic: MOCK CAMPUS GRID; STATIC ｜ 单位：示意格 ｜ 无实时定位
+- alert:
+  - img "info-circle":
+  - generic: 静态示意，无实时定位
+  - generic: 静态示意图，非实时地图；点位与路线为固定材料数值，没有实时定位。
+- heading "静态底图与点位路线（静态示意，无实时定位）" [level=2]
+- paragraph: MOCK CAMPUS GRID; STATIC ｜ 单位：示意格；无实时定位
+- generic: MOCK CAMPUS GRID; STATIC（静态示意）
+- figure:
+  - button "预览 MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture":
+    - img "MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture"
+- generic: 静态示意图，非实时地图；点位与路线为固定材料数值，没有实时定位。
+- generic: 点位与路线（静态示意，无实时定位）
+- figure "MOCK CAMPUS GRID; STATIC ｜ 静态示意，非实时地图，无实时定位":
+  - generic "园区地图视口":
+    - img "Mock 校园路线示意图":
+      - generic: 狗（机器人）起点
+      - generic: 你所在位置
+      - generic: 图书馆
+  - button "放大地图": ＋
+  - button "缩小地图" [disabled]: −
+  - button "全图" [active]
+  - generic: MOCK CAMPUS GRID; STATIC ｜ 静态示意，非实时地图，无实时定位
+- generic: 路线：robot → user → lib（狗先到你的位置，再一同前往图书馆）
+- generic: 以上路线为固定材料数值，仅作静态示意；不表示实时导航或已完成的行动。
+- heading "点位明细（静态示意，无实时定位）" [level=2]
+- paragraph: 逐项列出材料中的点位、格坐标、示意坐标与出处
+- table:
+  - rowgroup:
+    - row "点位 ID 名称 格坐标 示意 x 示意 y 出处":
+      - columnheader "点位 ID"
+      - columnheader "名称"
+      - columnheader "格坐标"
+      - columnheader "示意 x"
+      - columnheader "示意 y"
+      - columnheader "出处"
+  - rowgroup:
+    - row "robot 狗（机器人）起点 (0,2) 10 50 business_data.points[0]":
+      - cell "robot"
+      - cell "狗（机器人）起点"
+      - cell "(0,2)"
+      - cell "10"
+      - cell "50"
+      - cell "business_data.points[0]"
+    - row "user 你所在位置 (2,2) 30 50 business_data.points[1]":
+      - cell "user"
+      - cell "你所在位置"
+      - cell "(2,2)"
+      - cell "30"
+      - cell "50"
+      - cell "business_data.points[1]"
+    - row "lib 图书馆 (6,2) 70 50 business_data.points[2]":
+      - cell "lib"
+      - cell "图书馆"
+      - cell "(6,2)"
+      - cell "70"
+      - cell "50"
+      - cell "business_data.points[2]"
+- generic: 静态点位：狗（机器人）起点
+- generic: 组件未注册
+- generic: 静态点位：你所在位置
+- generic: 组件未注册
+- generic: 静态点位：图书馆
+- generic: 组件未注册
+- heading "步骤说明（静态示意，无实时定位）" [level=2]
+- paragraph: 材料步骤固定展示，非实时执行
+- generic: 组件未注册
+- generic "坐标换算与底图说明（静态示意，无实时定位）"
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 10K tok":
+  - generic: 用量 10K tok
+- generic: 21:36
+- button "回到底部":
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

@@ -1,0 +1,86 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_JgSJqvEUtOuRfryXSBhf2991",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_candidate\", \"header\": \"确认候选\", \"question\": \"当前候选 parcel-3726（订单尾号 3726，远景图）是否就是你的外卖？\", \"options\": [{\"label\": \"确认，就是这个（Recommended）\", \"description\": \"确认后我按此候选继续处理取件草稿，不会实际取送。\"}, {\"label\": \"不是这个\", \"description\": \"我会记录为不匹配，并等待其他候选或信息。\"}, {\"label\": \"先等近景/侧景再判断\", \"description\": \"当前仅发布远景，近景与侧景尚未提供，可稍后再看图确认。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_JgSJqvEUtOuRfryXSBhf2991"
+      },
+      "toolCallId": "call_00_JgSJqvEUtOuRfryXSBhf2991",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_candidate\",\"selected\":[],\"custom\":\"先不确认，靠近一点让我看。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "3dd83463-0edc-4c52-9029-5e6e45784d46"
+    }
+  },
+  {
+    "call_seq": 64,
+    "result_seq": 65,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ET_vAhrfKs5ktu3mOHb2ooY4169",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"确认候选\", \"id\": \"confirm_near\", \"options\": [{\"description\": \"确认后我按 parcel-3726 继续，不实际取送。\", \"label\": \"确认，就是这单（Recommended）\"}, {\"description\": \"我会记录为不匹配，等你补充其他信息。\", \"label\": \"不是这单\"}, {\"description\": \"当前还有侧景未发布，可等侧景再看。\", \"label\": \"再看侧景\"}], \"question\": \"这是同一候选 parcel-3726 的近景（尾号 3726）。现在能确认吗？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_vAhrfKs5ktu3mOHb2ooY4169"
+      },
+      "toolCallId": "call_00_ET_vAhrfKs5ktu3mOHb2ooY4169",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_near\",\"selected\":[],\"custom\":\"先不确认，再看一下侧面。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "aaf1adcf-9dff-44be-9334-6a4c28b41c42"
+    }
+  },
+  {
+    "call_seq": 91,
+    "result_seq": 92,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_ET_Z3KayopKHF8y6yWMO1B91045",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"确认候选\", \"id\": \"confirm_side\", \"options\": [{\"description\": \"确认后我按 parcel-3726 继续，不实际取送。\", \"label\": \"确认，就是这单（Recommended）\"}, {\"description\": \"我会记录为不匹配，等你补充其他信息。\", \"label\": \"不是这单\"}], \"question\": \"这是同一候选 parcel-3726 的侧景（尾号 3726）。远景、近景、侧景都已看过，可以确认吗？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_Z3KayopKHF8y6yWMO1B91045"
+      },
+      "toolCallId": "call_00_ET_Z3KayopKHF8y6yWMO1B91045",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_side\",\"selected\":[],\"custom\":\"确认这是我的外卖，候选parcel-3726，尾号3726。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "add10864-8e55-476a-bbcd-f9d2bdf7f684"
+    }
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 2,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "暂停3/10、继续4/10、doc-05 INVALID_FILE失败、结束监测及迟到e-fail-01去重的文字状态正确，未重启监测；但继续和最终卡片把4/10显示成4%而非40%，核心进度数值错误。时间线/详情组件多处未注册，大量技术字段表、旧卡片及无效控制提示干扰阅读。"
+}

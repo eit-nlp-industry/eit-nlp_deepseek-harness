@@ -1,0 +1,127 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C24-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_N1rojJHrerQlBzh3xOow1217"
+      },
+      "toolCallId": "call_00_ET_N1rojJHrerQlBzh3xOow1217",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C24\",\"facts\":\"独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "88dafbac-c7a9-443a-9990-4572d8f88300"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C24-A-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_SjhQbHfMgWRUmqUyHqTp6908"
+      },
+      "toolCallId": "call_00_SjhQbHfMgWRUmqUyHqTp6908",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C24\",\"facts\":\"独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "05b337bb-b2c5-4a8d-8f94-b32693704ade"
+    }
+  },
+  {
+    "call": {
+      "seq": 37,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C24-A-01",
+        "values": {
+          "case_id": "C24",
+          "draft_title": "到林老师处取材料（含老师在/不在分支）",
+          "save_mode": "仅保存草稿",
+          "steps": [
+            {
+              "no": 1,
+              "text": "走到林老师门口"
+            },
+            {
+              "no": 2,
+              "text": "敲门，等人应门"
+            },
+            {
+              "no": 3,
+              "text": "判断：林老师在吗？",
+              "branch": {
+                "teacher_absent": "通知你“林老师不在”，流程结束，不原地等待、不继续后续步骤",
+                "teacher_present": "进入“老师在”分支"
+              }
+            },
+            {
+              "no": 4,
+              "branch": "林老师在",
+              "text": "向老师说明来意，领取材料"
+            },
+            {
+              "no": 5,
+              "branch": "林老师在",
+              "text": "材料到手后拍照确认"
+            },
+            {
+              "no": 6,
+              "branch": "林老师在",
+              "text": "把材料送回"
+            }
+          ],
+          "notes": [
+            "领取、拍照确认、送回仅属于“老师在”分支，不作为无条件共用步骤",
+            "老师不在时不长时间等待，改为通知并结束",
+            "通知方式材料未给出，暂表述为“通知你”"
+          ],
+          "user_confirmed": true
+        }
+      }
+    },
+    "result_seq": 38,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_mSoWlwWhiresU1ePWjxJ8033"
+      },
+      "toolCallId": "call_00_mSoWlwWhiresU1ePWjxJ8033",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"version\":3,\"submitted\":{\"case_id\":\"C24\",\"draft_title\":\"到林老师处取材料（含老师在/不在分支）\",\"save_mode\":\"仅保存草稿\",\"steps\":[{\"no\":1,\"text\":\"走到林老师门口\"},{\"no\":2,\"text\":\"敲门，等人应门\"},{\"no\":3,\"text\":\"判断：林老师在吗？\",\"branch\":{\"teacher_absent\":\"通知你“林老师不在”，流程结束，不原地等待、不继续后续步骤\",\"teacher_present\":\"进入“老师在”分支\"}},{\"no\":4,\"branch\":\"林老师在\",\"text\":\"向老师说明来意，领取材料\"},{\"no\":5,\"branch\":\"林老师在\",\"text\":\"材料到手后拍照确认\"},{\"no\":6,\"branch\":\"林老师在\",\"text\":\"把材料送回\"}],\"notes\":[\"领取、拍照确认、送回仅属于“老师在”分支，不作为无条件共用步骤\",\"老师不在时不长时间等待，改为通知并结束\",\"通知方式材料未给出，暂表述为“通知你”\"],\"user_confirmed\":true}}}"
+        }
+      ],
+      "isError": false,
+      "id": "35c81a48-f9ec-4f6f-82a2-0eda265c62c9"
+    }
+  }
+]

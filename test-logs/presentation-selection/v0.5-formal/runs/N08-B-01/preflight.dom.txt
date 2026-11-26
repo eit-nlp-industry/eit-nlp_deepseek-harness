@@ -1,0 +1,243 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "新会话" [selected]:
+    - generic: 新会话
+  - treeitem "进行中 售后申请草稿动态表单测评 刚刚":
+    - generic: 进行中
+    - generic: 售后申请草稿动态表单测评
+    - generic: 刚刚
+  - treeitem "进行中 商品多视角展示评测 1分钟":
+    - generic: 进行中
+    - generic: 商品多视角展示评测
+    - generic: 1分钟
+  - treeitem "售后申请草稿表单呈现测评 1分钟":
+    - generic: 售后申请草稿表单呈现测评
+    - generic: 1分钟
+  - treeitem "已完成 包裹照片确认呈现测评 2分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认呈现测评
+    - generic: 2分钟
+  - treeitem "已完成 商品多视角展示测评 2分钟":
+    - generic: 已完成
+    - generic: 商品多视角展示测评
+    - generic: 2分钟
+  - treeitem "已完成 活动需求三字段表单确认 3分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 3分钟
+  - treeitem "已完成 活动需求三字段表单确认 3分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 3分钟
+  - treeitem "包裹照片确认组件测评 5分钟":
+    - generic: 包裹照片确认组件测评
+    - generic: 5分钟
+  - treeitem "已完成 企业服务套餐固定材料呈现测评 5分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐固定材料呈现测评
+    - generic: 5分钟
+  - treeitem "测试笔记本挑选呈现 5分钟":
+    - generic: 测试笔记本挑选呈现
+    - generic: 5分钟
+  - treeitem "已完成 6000元内出差笔记本推荐 5分钟":
+    - generic: 已完成
+    - generic: 6000元内出差笔记本推荐
+    - generic: 5分钟
+  - treeitem "已完成 企业服务套餐介绍测评 5分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 5分钟
+  - treeitem "已完成 支付状态简洁卡片呈现 12分钟":
+    - generic: 已完成
+    - generic: 支付状态简洁卡片呈现
+    - generic: 12分钟
+  - treeitem "已完成 支付状态卡片呈现测评 13分钟":
+    - generic: 已完成
+    - generic: 支付状态卡片呈现测评
+    - generic: 13分钟
+  - treeitem "已完成 图书馆预约必要吗（C26-B-02） 13分钟":
+    - generic: 已完成
+    - generic: 图书馆预约必要吗（C26-B-02）
+    - generic: 13分钟
+  - treeitem "已完成 图书馆预约简短问答 13分钟":
+    - generic: 已完成
+    - generic: 图书馆预约简短问答
+    - generic: 13分钟
+  - treeitem "握手交互状态卡片呈现 14分钟":
+    - generic: 握手交互状态卡片呈现
+    - generic: 14分钟
+  - treeitem "已完成 握手确认卡片呈现 15分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 15分钟
+  - treeitem "已完成 握手状态卡片渲染测评 15分钟":
+    - generic: 已完成
+    - generic: 握手状态卡片渲染测评
+    - generic: 15分钟
+  - treeitem "已完成 握手交互卡片呈现 15分钟":
+    - generic: 已完成
+    - generic: 握手交互卡片呈现
+    - generic: 15分钟
+  - treeitem "Workflow 追加分支编辑器测评 16分钟":
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 16分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 16分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 16分钟
+  - treeitem "已完成 工作流条件分支测评呈现 16分钟":
+    - generic: 已完成
+    - generic: 工作流条件分支测评呈现
+    - generic: 16分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 17分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 17分钟
+  - treeitem "报销流程草稿编辑保存 19分钟":
+    - generic: 报销流程草稿编辑保存
+    - generic: 19分钟
+  - treeitem "已完成 报销流程整理与草稿保存 19分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 19分钟
+  - treeitem "已完成 Workflow材料取送流程测评 20分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 20分钟
+  - treeitem "监测文件处理任务失败通知 21分钟":
+    - generic: 监测文件处理任务失败通知
+    - generic: 21分钟
+  - treeitem "已完成 文件处理任务监测模拟 22分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 22分钟
+  - treeitem "已完成 饮水机不出水照片评测 23分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 23分钟
+  - treeitem "平面图快递路线静态示意 25分钟":
+    - generic: 平面图快递路线静态示意
+    - generic: 25分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 25分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 25分钟
+  - treeitem "三项工作排期草稿确认 26分钟":
+    - generic: 三项工作排期草稿确认
+    - generic: 26分钟
+  - treeitem "已完成 安排三项工作并确认草稿 26分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 26分钟
+  - treeitem "会议室预约改期草稿 28分钟":
+    - generic: 会议室预约改期草稿
+    - generic: 28分钟
+  - treeitem "已完成 会议室预约改期草稿测评 28分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 28分钟
+  - treeitem "售后申请草稿填写与确认 28分钟":
+    - generic: 售后申请草稿填写与确认
+    - generic: 28分钟
+  - treeitem "已完成 售后申请草稿填写测评 28分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 28分钟
+  - treeitem "商品退货多视角图片呈现 30分钟":
+    - generic: 商品退货多视角图片呈现
+    - generic: 30分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 30分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 30分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 31分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 31分钟
+  - treeitem "已完成 包裹照片确认对象状态 32分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 32分钟
+  - treeitem "确认包裹照片与订单尾号 33分钟":
+    - generic: 确认包裹照片与订单尾号
+    - generic: 33分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 35分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 35分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 36分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 36分钟
+  - treeitem "活动需求确认与汇总 36分钟":
+    - generic: 活动需求确认与汇总
+    - generic: 36分钟
+  - treeitem "已完成 活动需求确认测评 36分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 36分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - button "打开右侧边栏":
+- img "EIT-NLP"
+- generic: 我们开始吧
+- button "选择工作区":
+  - generic: 默认工作区
+- button "Component benchmark full v2":
+  - generic: Component benchmark full v2
+- textbox "请开始，描述你想要的任务"
+- generic: 请开始，描述你想要的任务
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:

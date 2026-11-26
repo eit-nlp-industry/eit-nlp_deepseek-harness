@@ -1,0 +1,19 @@
+{
+  "assets": [
+    {
+      "id": "frame-c4d4805a435172351807",
+      "file": "nested/测试.png",
+      "alt": "测试"
+    },
+    {
+      "id": "frame-55653a4c2112b523eb6e",
+      "file": "nested/本地渲染测试.png",
+      "alt": "本地渲染测试"
+    },
+    {
+      "id": "benchmark-parcel-3726",
+      "file": "benchmark-parcel-3726.png",
+      "alt": "MOCK测试示意图：候选包裹parcel-3726，标签尾号3726；非真实照片"
+    }
+  ]
+}

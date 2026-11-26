@@ -1,0 +1,2104 @@
+{
+  "version": "0.6-suitability",
+  "assessment_kind": "expert_requirement_fit_reassessment_not_new_execution",
+  "created_date": "2026-11-24",
+  "case_count": 44,
+  "scores_per_case": 2,
+  "weights": [
+    {
+      "id": "coverage",
+      "label": "需求覆盖",
+      "weight": 35
+    },
+    {
+      "id": "operation",
+      "label": "操作方式匹配",
+      "weight": 25
+    },
+    {
+      "id": "review_edit",
+      "label": "核对与修改便利",
+      "weight": 20
+    },
+    {
+      "id": "organization",
+      "label": "信息组织",
+      "weight": 10
+    },
+    {
+      "id": "necessity",
+      "label": "使用负担与必要性",
+      "weight": 10
+    }
+  ],
+  "rows": [
+    {
+      "case_id": "C01",
+      "card_id": "C01",
+      "category_id": "G02",
+      "input": "刚来东方理工，先给我介绍一下图书馆、吃饭的地方和四明书院。",
+      "actions": "切换三地点/阅读三节，确认都可找到；不要求A提供标签页。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "多地点入校介绍",
+      "profile": "intro_images",
+      "recommendation_class": "conditional",
+      "recommendation": "原生图文分节；持续按地点浏览时用Tabs",
+      "case_reason": "三地点配三图，一次介绍原生已够；需要反复切换详情时动态更有价值。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 4,
+            "review_edit": 5,
+            "organization": 4,
+            "necessity": 5
+          },
+          "weighted_score": 93,
+          "reason": "分节与三张原生图片足够读完；持续来回浏览稍分散",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "Tabs可在地点之间直接切换，信息密度高时更清楚",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C01-A-01",
+        "C01-B-01",
+        "C01-B-02",
+        "C01-A-02"
+      ],
+      "delta_J_minus_A": 5
+    },
+    {
+      "case_id": "C02-a",
+      "card_id": "C02",
+      "category_id": "G02",
+      "input": "图书馆有可以讨论的地方吗？",
+      "actions": "无需追加用户动作。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "单地点追问",
+      "profile": "short",
+      "recommendation_class": "text",
+      "recommendation": "文字/Markdown",
+      "case_reason": "单地点讨论空间与进入条件的直接问答，没有额外操作。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "无额外输入或编辑要求，直接文字即可完整满足",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "动态卡片也能表达同样内容，但没有新增浏览/编辑能力",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C02-a-B-01",
+        "C02-a-A-01",
+        "C02-a-A-02",
+        "C02-a-B-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C02-b",
+      "card_id": "C02",
+      "category_id": "G02",
+      "input": "进校后可以直接去图书馆吗？",
+      "actions": "无需追加用户动作。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "单地点追问",
+      "profile": "short",
+      "recommendation_class": "text",
+      "recommendation": "文字/Markdown",
+      "case_reason": "只回答进入条件，不应为一句说明生成表单。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "无额外输入或编辑要求，直接文字即可完整满足",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "动态卡片也能表达同样内容，但没有新增浏览/编辑能力",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C02-b-A-01",
+        "C02-b-B-01",
+        "C02-b-B-02",
+        "C02-b-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C03",
+      "card_id": "C03",
+      "category_id": "G03",
+      "input": "明晚七点四个人试讲一小时，需要投屏和白板，哪里合适?",
+      "actions": "首轮推荐后追问“书院离我更近啊，为什么不去那里”，只依据固定资料解释。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "试讲场地推荐及质疑",
+      "profile": "compare",
+      "recommendation_class": "text",
+      "recommendation": "Markdown比较表+推荐理由",
+      "case_reason": "候选少且条件已给定；质疑推荐时解释硬条件，不应自动弹预约表。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "少量固定候选，一张Markdown比较表及理由即可",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "动态Table也适用，但没有改筛选条件或探索数据的要求",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C03-B-01",
+        "C03-A-01",
+        "C03-A-02",
+        "C03-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C04-a",
+      "card_id": "C04",
+      "category_id": "G04",
+      "input": "帮我找个地方。",
+      "actions": "用户答“想安静读书”，继续给推荐。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "需求不足时只补问关键偏好",
+      "profile": "choice",
+      "recommendation_class": "native",
+      "recommendation": "DSH原生提问",
+      "case_reason": "只缺用途，一个自由回答或少量选项即可补齐。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "原生单选/多选/自由回答已覆盖一次选择与提交",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "轻量动态表单也能完成，但没有业务整单编辑价值",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C04-a-A-01",
+        "C04-a-B-01",
+        "C04-a-B-02",
+        "C04-a-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C04-b",
+      "card_id": "C04",
+      "category_id": "G04",
+      "input": "校园半日游先确认上午还是下午、愿意去哪些地点，可多选图书馆/食堂/四明书院，其他想法我自行补充。",
+      "actions": "选择下午、食堂和四明书院；补充“少走路”，提交。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "需求不足时只补问关键偏好",
+      "profile": "preferences",
+      "recommendation_class": "conditional",
+      "recommendation": "默认原生多题；反复改偏好时用轻量表单",
+      "case_reason": "上午/下午、多选地点、补充文字是偏好采集，尚无正式业务整单；集中回看时动态略占优。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 4,
+            "organization": 4,
+            "necessity": 5
+          },
+          "weighted_score": 94,
+          "reason": "原生多题能收齐偏好；跨题回看修改略分散",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "一页集中核对三项更便利，但本例没有正式业务草稿或复杂联动",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C04-b-B-01",
+        "C04-b-A-01",
+        "C04-b-A-02",
+        "C04-b-B-02"
+      ],
+      "delta_J_minus_A": 4
+    },
+    {
+      "case_id": "C04-c",
+      "card_id": "C04",
+      "category_id": "G04",
+      "input": "请让我选择线上或线下讲座；如推荐线下，把它放第一项。",
+      "actions": "先不提交，确认未自动采用推荐；再明确选择线上并提交。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "需求不足时只补问关键偏好",
+      "profile": "choice",
+      "recommendation_class": "native",
+      "recommendation": "DSH原生单选",
+      "case_reason": "线上或线下二选一，推荐预选与实际提交分开即可。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "原生单选/多选/自由回答已覆盖一次选择与提交",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "轻量动态表单也能完成，但没有业务整单编辑价值",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C04-c-A-01",
+        "C04-c-B-01",
+        "C04-c-B-02",
+        "C04-c-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C05",
+      "card_id": "C05",
+      "category_id": "G07",
+      "input": "周六下午带两位校外朋友来参观学校，要提前办什么?",
+      "actions": "补充时段14:00–15:00→核对并提交，回执共3人，且未实际预约。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "校园来访预约",
+      "profile": "business_form",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render预约表单",
+      "case_reason": "本卡脚本进入日期、时段、人数、备注的预约草稿核对与提交；初始只咨询手续时先文字解释。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 3,
+            "organization": 4,
+            "necessity": 4
+          },
+          "weighted_score": 78,
+          "reason": "能通过对话完整完成，但日期/人数/备注等整单回看和局部修改分散",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "预填业务字段，集中核对/编辑后提交，DynamicForm有明确价值",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C05-B-01",
+        "C05-A-01",
+        "C05-A-02",
+        "C05-B-02"
+      ],
+      "delta_J_minus_A": 20
+    },
+    {
+      "case_id": "C06",
+      "card_id": "C06",
+      "category_id": "G08",
+      "input": "那就不去图书馆了，只逛一个小时左右，早上10点开始，然后吃午饭。",
+      "actions": "文字/界面改为10:00–11:00、去掉图书馆、更新备注→实际确认提交。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "多轮修改与提交",
+      "profile": "revise_form",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render修订后的预约草稿",
+      "case_reason": "已有预约需同时改时段、行程和备注并核对整单；仅报知一次修改结果时不必重绘全表。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 4,
+            "review_edit": 3,
+            "organization": 4,
+            "necessity": 5
+          },
+          "weighted_score": 85,
+          "reason": "自然语言可一次改多个值，但完整草稿回看与再编辑仍分散",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "已有多字段草稿，保留未改字段并展示可编辑修订稿更合适",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C06-A-01",
+        "C06-B-01",
+        "C06-B-02",
+        "C06-A-02"
+      ],
+      "delta_J_minus_A": 13
+    },
+    {
+      "case_id": "C07-a",
+      "card_id": "C07",
+      "category_id": "G08",
+      "input": "那就不用白板了，时间也改到8点之后。",
+      "actions": "提交20:00–21:00→回放冲突→用户明确改为16:00–17:00并提交草稿。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "改条件、冲突与可选时段",
+      "profile": "conflict_form",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render整单修改；原生询问是否接受替代",
+      "case_reason": "取消白板、改变时间并处理冲突涉及修订草稿；偏离晚间的下午选项必须另获用户选择。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 4,
+            "review_edit": 3,
+            "organization": 4,
+            "necessity": 4
+          },
+          "weighted_score": 83,
+          "reason": "取消设备、改时间、冲突改选可用对话完成，跨字段核对较费力",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "保留设备/时段等完整修订草稿，约束和可选值集中呈现",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C07-a-B-01",
+        "C07-a-A-01",
+        "C07-a-A-02",
+        "C07-a-B-02"
+      ],
+      "delta_J_minus_A": 15
+    },
+    {
+      "case_id": "C07-b",
+      "card_id": "C07",
+      "category_id": "G08",
+      "input": "那就不用白板了，时间也改到8点之后。",
+      "actions": "提交20:00–21:00→回放冲突→用户答“下午不行，先不要提交”，保持未提交。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "改条件、冲突与可选时段",
+      "profile": "choice",
+      "recommendation_class": "native",
+      "recommendation": "DSH原生替代选项；拒绝后文字回执",
+      "case_reason": "本分支最终只需确认是否接受下午；用户拒绝后停止，不再强迫填写预约表。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "原生单选/多选/自由回答已覆盖一次选择与提交",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "轻量动态表单也能完成，但没有业务整单编辑价值",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C07-b-A-01",
+        "C07-b-B-01",
+        "C07-b-B-02",
+        "C07-b-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C08",
+      "card_id": "C08",
+      "category_id": "G05",
+      "input": "记住我，我叫小张。",
+      "actions": "明确确认person-a；检查确认前未记为已确认，确认后仅模拟记人。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "记住用户并确认",
+      "profile": "image_confirm",
+      "recommendation_class": "native",
+      "recommendation": "原生图片+身份确认",
+      "case_reason": "确认一个候选是否本人，不需要业务多字段表单。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "原生图片先给证据，原生问题接一次确认，能力已足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "Image加确认也能满足，但不需要额外业务表单或图像操作",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C08-B-01",
+        "C08-A-01",
+        "C08-A-02",
+        "C08-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C09",
+      "card_id": "C09",
+      "category_id": "G05",
+      "input": "无新用户消息。环境事件：e-rec-01，person-a候选出现；识别结果由固定回放给定。",
+      "actions": "注入原生环境事件及相同事件ID的重复事件；不发送用户提问。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "重逢识别的主动呈现",
+      "profile": "image_notice",
+      "recommendation_class": "native",
+      "recommendation": "原生图片+简短通知",
+      "case_reason": "环境触发的重逢通知，没有新用户输入需要收集。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "已有图片/状态通知，原生图文即可表达；没有用户输入",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "动态Image/卡片可展示相同信息，但不新增必要交互",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C09-A-01",
+        "C09-B-01",
+        "C09-B-02",
+        "C09-A-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C10",
+      "card_id": "C10",
+      "category_id": "G11",
+      "input": "跟着这位带我们参观的同学。",
+      "actions": "用户确认person-guide后回放跟随中、丢失和停止；不执行真实跟随。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "跟随指定人物",
+      "profile": "state_photo",
+      "recommendation_class": "native",
+      "recommendation": "原生图片确认+文字跟随状态",
+      "case_reason": "确认向导后接收跟随/丢失/停止回执，不需要生成机器人控制面板。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "少量阶段状态与一张证据图，图文回执足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "状态卡可用，但没有持续操控面板或多任务对照要求",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C10-B-01",
+        "C10-A-01",
+        "C10-A-02",
+        "C10-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C11",
+      "card_id": "C11",
+      "category_id": "G11",
+      "input": "停一下，我拿个东西。",
+      "actions": "发送“停一下，我拿个东西。”→模拟暂停；再“继续吧。”→模拟继续。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "暂停与继续",
+      "profile": "event_notice",
+      "recommendation_class": "text",
+      "recommendation": "简短文字控制回执",
+      "case_reason": "暂停与继续的指令已由用户给出，不再额外询问同一意图。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "用户要事件发生时通知或一句控制回执，文字最直接",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "没有持续看板要求，动态界面不带来必要操作",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C11-A-01",
+        "C11-B-01",
+        "C11-B-02",
+        "C11-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C12",
+      "card_id": "C12",
+      "category_id": "G05",
+      "input": "我约的同学在图书馆入口，灰衣服、拉箱子，帮我找一下。",
+      "actions": "用户确认“就是他，告诉他我马上就到”；回放模拟传话结果，仅核对person-a。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "找同学并传话",
+      "profile": "image_confirm",
+      "recommendation_class": "native",
+      "recommendation": "原生候选图+必要确认",
+      "case_reason": "图中两名候选中确认灰衣拉箱者，原生选择足够。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "原生图片先给证据，原生问题接一次确认，能力已足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "Image加确认也能满足，但不需要额外业务表单或图像操作",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C12-B-01",
+        "C12-A-01",
+        "C12-A-02",
+        "C12-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C13",
+      "card_id": "C13",
+      "category_id": "G03",
+      "input": "帮我找个安静的地方，我想读会书。",
+      "actions": "回放两处现场结论后给推荐，说明不选college-lounge的原因。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "找安静阅读地点",
+      "profile": "image_recommend",
+      "recommendation_class": "native",
+      "recommendation": "原生证据图+简短推荐",
+      "case_reason": "固定两处观察证据足以解释安静地点推荐，没有交互筛选需求。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "两处固定观察和推荐，用原生图片及短说明便于直接对照",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "推荐卡与图片同样适合，但本例不需要用户切换条件",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C13-A-01",
+        "C13-B-01",
+        "C13-B-02",
+        "C13-A-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C14",
+      "card_id": "C14",
+      "category_id": "G06",
+      "input": "去图书馆看看有没有座位。",
+      "actions": "首图后发送“去右边看一下”，回放14:01新图和结论。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "查看座位并调整观察方向",
+      "profile": "two_views",
+      "recommendation_class": "native",
+      "recommendation": "原生左右图对照；动态并列图组可选",
+      "case_reason": "只有左/右两张、不同时间的证据；视角时间标签比Tabs本身更重要。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "只有左右两图，时间/视角标注后并列核对最直接",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "最小动态图组也可并列满足；原生能力已够，引入动态组件新增价值较小",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C14-B-01",
+        "C14-A-01",
+        "C14-A-02",
+        "C14-B-02"
+      ],
+      "delta_J_minus_A": -2
+    },
+    {
+      "case_id": "C15",
+      "card_id": "C15",
+      "category_id": "G05",
+      "input": "我的外卖在学校大门，帮我取一下，尾号3726。",
+      "actions": "展示远景→用户要求靠近→近景→要求侧面→侧景→用户确认。仅记录parcel-3726状态。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "取外卖、多视角确认",
+      "profile": "image_confirm",
+      "recommendation_class": "native",
+      "recommendation": "逐次原生图片+对象确认",
+      "case_reason": "远近侧三次追加证据，最后确认同一外卖；不是填写取件业务表。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "原生图片先给证据，原生问题接一次确认，能力已足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "Image加确认也能满足，但不需要额外业务表单或图像操作",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C15-A-01",
+        "C15-B-01",
+        "C15-B-02",
+        "C15-A-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C16",
+      "card_id": "C16",
+      "category_id": "G05",
+      "input": "张伟老师说文件准备好了，去他的办公室帮我拿一下。",
+      "actions": "模拟准备完成后展示doc-01；用户答“就是这个文件”，随后回放模拟交接状态。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "办公室取文件",
+      "profile": "state_photo",
+      "recommendation_class": "native",
+      "recommendation": "原生文件图+确认和交接回执",
+      "case_reason": "确认一份文件及交接阶段，不需要Workflow或业务表单。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "少量阶段状态与一张证据图，图文回执足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "状态卡可用，但没有持续操控面板或多任务对照要求",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C16-B-01",
+        "C16-A-01",
+        "C16-A-02",
+        "C16-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C17-a",
+      "card_id": "C17",
+      "category_id": "G11",
+      "input": "留意五分钟，门开了告诉我。",
+      "actions": "注入关闭重复事件→第3分钟打开；只通知一次开门。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "观察五分钟，开门通知",
+      "profile": "event_notice",
+      "recommendation_class": "text",
+      "recommendation": "一次开门文字通知；有证据时附原生图",
+      "case_reason": "观察五分钟的通知型需求，不等于用户要持续操作看板。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "用户要事件发生时通知或一句控制回执，文字最直接",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "没有持续看板要求，动态界面不带来必要操作",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C17-a-A-01",
+        "C17-a-B-01",
+        "C17-a-B-02",
+        "C17-a-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C17-b",
+      "card_id": "C17",
+      "category_id": "G11",
+      "input": "留意五分钟，门开了告诉我。",
+      "actions": "注入持续关闭→5分钟到期；说明期间未观察到开门并结束。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "观察五分钟，开门通知",
+      "profile": "event_notice",
+      "recommendation_class": "text",
+      "recommendation": "到期文字总结",
+      "case_reason": "到期未开门只需说明观察结果和监测结束。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "用户要事件发生时通知或一句控制回执，文字最直接",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "没有持续看板要求，动态界面不带来必要操作",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C17-b-B-01",
+        "C17-b-A-01",
+        "C17-b-A-02",
+        "C17-b-B-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C18",
+      "card_id": "C18",
+      "category_id": "G11",
+      "input": "帮我补拍一下门口，我看看。然后结束观察，回来吧。",
+      "actions": "发送“帮我补拍一下门口，我看看。然后结束观察，回来吧。”；注入补拍、停止、返回事件，再注入旧事件。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "补拍并结束观察返回",
+      "profile": "state_photo",
+      "recommendation_class": "native",
+      "recommendation": "原生补拍图+停止/返回状态",
+      "case_reason": "一次补拍和停止/返回反馈，保持阶段清楚即可。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "少量阶段状态与一张证据图，图文回执足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "状态卡可用，但没有持续操控面板或多任务对照要求",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C18-A-01",
+        "C18-B-01",
+        "C18-B-02",
+        "C18-A-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C19",
+      "card_id": "C19",
+      "category_id": "G09",
+      "input": "图书馆、吃饭、回四明书院，帮我排一下。",
+      "actions": "把食堂移到第一位，再确认保存。A文字改序；B真实拖动后点应用，检查保存值为canteen/lib/college。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "行程编排及改顺序",
+      "profile": "reorder",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render SortableSequence",
+      "case_reason": "该卡包含用户调整并保存顺序，直接试排与整体核对有价值；只要一次固定排序结果时文字即可。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 2,
+            "organization": 4,
+            "necessity": 5
+          },
+          "weighted_score": 76,
+          "reason": "文字能完整描述并保存目标顺序，但不能直接操控列表和试排",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "直接重排、保持全部条目、应用新顺序匹配方案调整目标",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C19-B-01",
+        "C19-A-01",
+        "C19-A-02",
+        "C19-B-02"
+      ],
+      "delta_J_minus_A": 22
+    },
+    {
+      "case_id": "C20",
+      "card_id": "C20",
+      "category_id": "G10",
+      "input": "我想先去图书馆，叫一只狗来带我吧。",
+      "actions": "检查同一底图中的三点和两段路线，不启动导航。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "叫狗接人并带路",
+      "profile": "static_map",
+      "recommendation_class": "native",
+      "recommendation": "固定原生地图+路线文字；交互地图另列条件",
+      "case_reason": "原题只作静态三点两段示意，没有点选、路线切换或实时位置需求。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "本例只需看同一静态底图和两段路线，原生图文已足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "MapPreview有缩放/点位组织价值，但本例未要求交互探索或实时定位",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C20-A-01",
+        "C20-B-01",
+        "C20-B-02",
+        "C20-A-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C21",
+      "card_id": "C21",
+      "category_id": "G10",
+      "input": "可以，带我去食堂吧。",
+      "actions": "发送“可以，带我去食堂吧。”；模拟返回门关闭、已停止；不给替代路线。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "门关闭导致带路受阻",
+      "profile": "state_photo",
+      "recommendation_class": "native",
+      "recommendation": "原生门图+停止原因",
+      "case_reason": "受阻原因和停止状态是回执，不因涉及导航就必须上地图。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "少量阶段状态与一张证据图，图文回执足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "状态卡可用，但没有持续操控面板或多任务对照要求",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C21-B-01",
+        "C21-A-01",
+        "C21-A-02",
+        "C21-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "C22",
+      "card_id": "C22",
+      "category_id": "G07",
+      "input": "饮水机不出水，先拍一张照片给我。",
+      "actions": "正面→近景→另一侧；用户要求将三图放入反馈单并备注“昨天也这样”，补测试联系人A后确认提交。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "故障拍照到报修",
+      "profile": "evidence_form",
+      "recommendation_class": "json_render",
+      "recommendation": "先原生看图；报修阶段json-render证据表单",
+      "case_reason": "拍一张图阶段无需表单；三图、设备、地点、故障、备注及联系人一起核对提交时表单收益明确。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 2,
+            "organization": 3,
+            "necessity": 4
+          },
+          "weighted_score": 72,
+          "reason": "能完整收齐并提交，但图片、设备、地点、故障、备注和联系人分散在对话，交叉核对成本高",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "三图证据与多字段反馈单绑定，集中核对、补填及提交更合适",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C22-A-01",
+        "C22-B-01",
+        "C22-B-02",
+        "C22-A-02"
+      ],
+      "delta_J_minus_A": 26
+    },
+    {
+      "case_id": "C23",
+      "card_id": "C23",
+      "category_id": "G12",
+      "input": "以后找林老师拿材料，先到门口敲门，等老师放好，拍给我确认，再送回来。",
+      "actions": "将等待上限改为2分钟→保存草稿；必须有对应保存回传。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "沉淀取材料流程",
+      "profile": "workflow",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render Workflow编辑器",
+      "case_reason": "需求已进入可复用流程编辑，修改等待参数并保存草稿，适合直接编辑对象。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 3,
+            "organization": 3,
+            "necessity": 4
+          },
+          "weighted_score": 76,
+          "reason": "文字能完整改步骤和条件，但不能直接编辑节点、整体检查后再保存",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "Workflow把步骤、参数、分支与保存置于同一编辑对象",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C23-B-01",
+        "C23-A-01",
+        "C23-A-02",
+        "C23-B-02"
+      ],
+      "delta_J_minus_A": 22
+    },
+    {
+      "case_id": "C24",
+      "card_id": "C24",
+      "category_id": "G12",
+      "input": "老师不在就告诉我，不需要一直在那等。",
+      "actions": "发送“老师不在就告诉我，不需要一直在那等。”→保存；审计在/不在两条有向路径。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "追加老师不在分支",
+      "profile": "branch_workflow",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render Workflow条件分支编辑",
+      "case_reason": "对已存流程增添不在场分支，需要回看在/不在两条完整路径。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 2,
+            "organization": 3,
+            "necessity": 4
+          },
+          "weighted_score": 72,
+          "reason": "条件分支与回流可完整用文字说明，但局部修改和跨路径核对困难",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "直接编辑分支、回看完整路径并保存，交互收益明确",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C24-A-01",
+        "C24-B-01",
+        "C24-B-02",
+        "C24-A-02"
+      ],
+      "delta_J_minus_A": 26
+    },
+    {
+      "case_id": "C25-a",
+      "card_id": "C25",
+      "category_id": "G01",
+      "input": "握个手吧。",
+      "actions": "只接收模拟成功结果，生成回执。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "握手",
+      "profile": "short",
+      "recommendation_class": "text",
+      "recommendation": "简短文字成功回执",
+      "case_reason": "单动作模拟成功，最终答案无需让用户再操作。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "无额外输入或编辑要求，直接文字即可完整满足",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "动态卡片也能表达同样内容，但没有新增浏览/编辑能力",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C25-a-B-01",
+        "C25-a-A-01",
+        "C25-a-A-02",
+        "C25-a-B-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C25-b",
+      "card_id": "C25",
+      "category_id": "G01",
+      "input": "握个手吧。",
+      "actions": "只接收模拟失败结果，准确说明未完成。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "握手",
+      "profile": "short",
+      "recommendation_class": "text",
+      "recommendation": "简短文字失败回执",
+      "case_reason": "单动作失败及原因，动态卡片没有必要交互。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "无额外输入或编辑要求，直接文字即可完整满足",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "动态卡片也能表达同样内容，但没有新增浏览/编辑能力",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C25-b-A-01",
+        "C25-b-B-01",
+        "C25-b-B-02",
+        "C25-b-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "C26",
+      "card_id": "C26",
+      "category_id": "G01",
+      "input": "图书馆是否需要预约？请简短回答。",
+      "actions": "无追加用户动作，短答须含两条条件。",
+      "scenario_domain": "campus_trace_derived",
+      "title": "一句话校园问答",
+      "profile": "short",
+      "recommendation_class": "text",
+      "recommendation": "一句话条件说明",
+      "case_reason": "明确要求简短，保留预约和批准条件即可。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "无额外输入或编辑要求，直接文字即可完整满足",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "动态卡片也能表达同样内容，但没有新增浏览/编辑能力",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "C26-B-01",
+        "C26-A-01",
+        "C26-A-02",
+        "C26-B-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "N01",
+      "card_id": "N01",
+      "category_id": "G01",
+      "input": "费用已经支付成功了吗？只根据给定支付状态简短回答。",
+      "actions": "收到固定状态后只回复，无用户追加动作。",
+      "scenario_domain": "non_campus",
+      "title": "支付结果简短回执",
+      "profile": "short",
+      "recommendation_class": "text",
+      "recommendation": "简短支付状态文字",
+      "case_reason": "支付成功与结算待处理是两条事实，不需要表单或状态看板。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "无额外输入或编辑要求，直接文字即可完整满足",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 2
+          },
+          "weighted_score": 94,
+          "reason": "动态卡片也能表达同样内容，但没有新增浏览/编辑能力",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N01-A-01",
+        "N01-B-01",
+        "N01-B-02",
+        "N01-A-02"
+      ],
+      "delta_J_minus_A": -6
+    },
+    {
+      "case_id": "N02",
+      "card_id": "N02",
+      "category_id": "G02",
+      "input": "介绍这三个企业服务套餐，先给概览，再让我按需看适用范围与限制。",
+      "actions": "初始查看三个套餐概览→用户请求查看团队版的适用范围和导出限制。A通过文字追问；B先切换团队版/展开详情，再发送同一追问，让模型续接回答。",
+      "scenario_domain": "non_campus",
+      "title": "服务套餐概览与详情",
+      "profile": "browse",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render Tabs/Collapsible",
+      "case_reason": "用户明确先概览、再自主按需看套餐范围与限制，切换/展开有直接用途。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 5,
+            "organization": 3,
+            "necessity": 5
+          },
+          "weighted_score": 86,
+          "reason": "文字能完整给出资料，但按需详情依靠长文或再次追问",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "明确需要概览后自主看详情，Tabs/Collapsible直接匹配浏览目标",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N02-B-01",
+        "N02-A-01",
+        "N02-A-02",
+        "N02-B-02"
+      ],
+      "delta_J_minus_A": 12
+    },
+    {
+      "case_id": "N03",
+      "card_id": "N03",
+      "category_id": "G03",
+      "input": "从给定笔记本清单中选一款6000元以内、轻于1.5kg、适合出差的机型。先满足价格和重量，再优先续航，解释为什么没选其他款。",
+      "actions": "首轮推荐后追问“B续航更长，为什么不选B？”，仅根据固定数据解释。",
+      "scenario_domain": "non_campus",
+      "title": "多条件商品比较与推荐",
+      "profile": "compare",
+      "recommendation_class": "text",
+      "recommendation": "Markdown比较表+筛选理由",
+      "case_reason": "四个固定候选、固定预算重量与续航优先级，不需要尚未要求的交互筛选器。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "少量固定候选，一张Markdown比较表及理由即可",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "动态Table也适用，但没有改筛选条件或探索数据的要求",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N03-A-01",
+        "N03-B-01",
+        "N03-B-02",
+        "N03-A-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "N04",
+      "card_id": "N04",
+      "category_id": "G04",
+      "input": "帮我安排一次活动；先确认用途、人数和线上或线下，收齐后只汇总需求，不开始安排。",
+      "actions": "一次收集用途、人数、形式；填写“产品培训”“12”“线上”后提交；模型只回执三项，不继续追问地点预算。A使用原生多题/自由回答；B填写三字段表单。",
+      "scenario_domain": "non_campus",
+      "title": "活动需求批量澄清",
+      "profile": "three_questions",
+      "recommendation_class": "native",
+      "recommendation": "DSH原生三题；一页轻量form也可",
+      "case_reason": "只收用途、人数、形式然后汇总，不创建可反复修改提交的业务申请单。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "三个独立未知信息，原生多题即可收齐，不需要整单反复编辑",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "三字段一页填写也适合；优势尚不足以要求专用业务表单",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N04-B-01",
+        "N04-A-01",
+        "N04-A-02",
+        "N04-B-02"
+      ],
+      "delta_J_minus_A": -2
+    },
+    {
+      "case_id": "N05",
+      "card_id": "N05",
+      "category_id": "G05",
+      "input": "展示待寄出的包裹照片和订单尾号，让我确认是不是这一件；确认后只记录对象状态，不寄件。",
+      "actions": "图片实际加载后，用户回复“是这件，确认”；只记录parcel-8241为用户已确认。",
+      "scenario_domain": "non_campus",
+      "title": "待寄包裹对象确认",
+      "profile": "image_confirm",
+      "recommendation_class": "native",
+      "recommendation": "原生包裹图+是否确认",
+      "case_reason": "一张图和一个是/否确认，不应升级成复杂表单。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "原生图片先给证据，原生问题接一次确认，能力已足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "Image加确认也能满足，但不需要额外业务表单或图像操作",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N05-A-01",
+        "N05-B-01",
+        "N05-B-02",
+        "N05-A-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "N06",
+      "card_id": "N06",
+      "category_id": "G06",
+      "input": "展示这件商品的正面、背面和瑕疵细节，让我核对后决定是否申请退货。",
+      "actions": "先展示正面→用户要求“看背面和瑕疵细节”→展示剩余两图→用户答“记录为我想申请退货，先不提交申请”。",
+      "scenario_domain": "non_campus",
+      "title": "商品多视角证据核对",
+      "profile": "three_views",
+      "recommendation_class": "conditional",
+      "recommendation": "原生并列图或Tabs；按核对方式选择",
+      "case_reason": "三个视角各有价值；同时比较选并列，逐角看细节选Tabs。退货意向仍用原生确认。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 4,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 95,
+          "reason": "三张原生图可并列核对，往返查找略多",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "动态呈现可按核对方式选择图组或Tabs；不能把Tabs隐藏其他图当作必然最优",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N06-B-01",
+        "N06-A-01",
+        "N06-A-02",
+        "N06-B-02"
+      ],
+      "delta_J_minus_A": 3
+    },
+    {
+      "case_id": "N07",
+      "card_id": "N07",
+      "category_id": "G07",
+      "input": "帮我填写售后申请草稿：订单SO-2048，故障是无法开机，联系人测试联系人A，附上给定两张照片；先让我核对修改，提交后只回执，不创建真实工单。",
+      "actions": "核对预填值→联系人改为“测试联系人B”→提交草稿；A文字修改确认，B编辑联系人后点击提交；回执包含新联系人和两张图片关联。",
+      "scenario_domain": "non_campus",
+      "title": "售后草稿采集与提交",
+      "profile": "business_form",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render售后申请表+附件",
+      "case_reason": "订单、故障、联系人和照片关联一起预填、核对、改联系人并提交，属于业务整单编辑。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 3,
+            "organization": 4,
+            "necessity": 4
+          },
+          "weighted_score": 78,
+          "reason": "能通过对话完整完成，但日期/人数/备注等整单回看和局部修改分散",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "预填业务字段，集中核对/编辑后提交，DynamicForm有明确价值",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N07-A-01",
+        "N07-B-01",
+        "N07-B-02",
+        "N07-A-02"
+      ],
+      "delta_J_minus_A": 20
+    },
+    {
+      "case_id": "N08",
+      "card_id": "N08",
+      "category_id": "G08",
+      "input": "把会议室R-01在2026年11月23日的预约草稿，从14点到15点改到16点到17点；如果约满，先列出真实替代时段让我选。",
+      "actions": "改16:00–17:00并提交草稿→注入冲突→用户明确选17:00–18:00并提交→返回草稿接收。",
+      "scenario_domain": "non_campus",
+      "title": "会议室冲突与改选恢复",
+      "profile": "single_slot",
+      "recommendation_class": "native",
+      "recommendation": "原生替代时段选择；整单编辑时再用json-render",
+      "case_reason": "本例仅改时段，日期房间人数已确定；冲突后只有两项可选，原生选择足够。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "本例仅改一个时段并在两项中选一项，原生提问已足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "整单表单也能做，但当前操作没有要求重填房间、日期和人数",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N08-B-01",
+        "N08-A-01",
+        "N08-A-02",
+        "N08-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "N09",
+      "card_id": "N09",
+      "category_id": "G09",
+      "input": "安排这三个工作事项：审阅需求、整理报告、客户沟通。先按这个顺序列出，再让我调整并保存草稿。",
+      "actions": "初始展示后用户要求“把客户沟通放第一项，其余相对顺序不变”；A文字改序并确认，B拖动client到第一位并点击应用；模拟保存后回执。",
+      "scenario_domain": "non_campus",
+      "title": "工作事项重新排序",
+      "profile": "reorder",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render SortableSequence",
+      "case_reason": "明确让用户调整和保存工作顺序，直接操控列表比反复描述位置更合适。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 2,
+            "organization": 4,
+            "necessity": 5
+          },
+          "weighted_score": 76,
+          "reason": "文字能完整描述并保存目标顺序，但不能直接操控列表和试排",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "直接重排、保持全部条目、应用新顺序匹配方案调整目标",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N09-A-01",
+        "N09-B-01",
+        "N09-B-02",
+        "N09-A-02"
+      ],
+      "delta_J_minus_A": 22
+    },
+    {
+      "case_id": "N10",
+      "card_id": "N10",
+      "category_id": "G10",
+      "input": "根据给定平面图，说明快递员先到收件点，再到目的地的位置和路线。只作静态示意，不开始配送。",
+      "actions": "展示三点和两段路线后，用户追问“现在已经送到了吗？”；回答只是规划示意，没有执行或到达证据。",
+      "scenario_domain": "non_campus",
+      "title": "配送平面位置与两段路线",
+      "profile": "static_map",
+      "recommendation_class": "native",
+      "recommendation": "原生静态平面图+两段路线",
+      "case_reason": "仅说明给定三点和静态路线，没有地图探索操作，不能凭Map组件名称加分。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 5
+          },
+          "weighted_score": 100,
+          "reason": "本例只需看同一静态底图和两段路线，原生图文已足够",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 3
+          },
+          "weighted_score": 96,
+          "reason": "MapPreview有缩放/点位组织价值，但本例未要求交互探索或实时定位",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N10-B-01",
+        "N10-A-01",
+        "N10-A-02",
+        "N10-B-02"
+      ],
+      "delta_J_minus_A": -4
+    },
+    {
+      "case_id": "N11",
+      "card_id": "N11",
+      "category_id": "G11",
+      "input": "监测这个文件处理任务，失败时通知我；我可以暂停、继续或结束监测。只使用模拟状态，不处理真实文件。",
+      "actions": "看到运行状态后用户“暂停”→回放paused；再“继续”→回放running；随后失败事件通知一次；用户“结束监测”→停止通知，再注入同ID旧失败事件。两组控制均通过用户消息和模拟结果完成，B不假装有未实现控制按钮。",
+      "scenario_domain": "non_campus",
+      "title": "文件处理状态与失败通知",
+      "profile": "job_monitor",
+      "recommendation_class": "conditional",
+      "recommendation": "默认文字通知；需要持续回看时用状态卡/时间线",
+      "case_reason": "一个任务的失败通知及对话控制原生可满足；长期停留看进度/历史时动态看板更有收益。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 4,
+            "organization": 4,
+            "necessity": 5
+          },
+          "weighted_score": 94,
+          "reason": "只监测一个任务、失败通知和对话控制，原生可完成；历史回看较分散",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "统一进度和时间线便于回看，持续查看时更合适；本例仍非必须",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N11-A-01",
+        "N11-B-01",
+        "N11-B-02",
+        "N11-A-02"
+      ],
+      "delta_J_minus_A": 4
+    },
+    {
+      "case_id": "N12",
+      "card_id": "N12",
+      "category_id": "G12",
+      "input": "把这个报销流程整理出来，并补充“材料不齐退回补充”的分支，让我编辑后保存草稿，不执行真实审批或付款。",
+      "actions": "展示并编辑分支→将补充期限设置为3个工作日→确认保存；A用文字修改确认，B在Workflow编辑并实际保存回传；审计材料齐全和不齐两条有向路径。",
+      "scenario_domain": "non_campus",
+      "title": "报销流程条件分支编辑",
+      "profile": "branch_workflow",
+      "recommendation_class": "json_render",
+      "recommendation": "json-render Workflow分支与期限编辑",
+      "case_reason": "要编辑报销流程、材料不齐回补分支和3工作日期限并保存，适合直接操作流程对象。",
+      "scope": "input_and_confirmed_business_script_not_arm_specific_component_prescription",
+      "scores": {
+        "A_native": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 3,
+            "review_edit": 2,
+            "organization": 3,
+            "necessity": 4
+          },
+          "weighted_score": 72,
+          "reason": "条件分支与回流可完整用文字说明，但局部修改和跨路径核对困难",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        },
+        "J_json_render": {
+          "dimensions": {
+            "coverage": 5,
+            "operation": 5,
+            "review_edit": 5,
+            "organization": 5,
+            "necessity": 4
+          },
+          "weighted_score": 98,
+          "reason": "直接编辑分支、回看完整路径并保存，交互收益明确",
+          "assumption": "correctly_working_minimal_presentation_not_observed_generation"
+        }
+      },
+      "v05_reference_run_ids": [
+        "N12-B-01",
+        "N12-A-01",
+        "N12-A-02",
+        "N12-B-02"
+      ],
+      "delta_J_minus_A": 26
+    }
+  ]
+}

@@ -1,0 +1,1077 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_60O24pJkAtQQvilFm5rD8944",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"用比较卡片（或表格）展示四款笔记本的选购对照，字段为：机型、价格、重量、标称续航、是否满足「6000元以内且轻于1.5kg」、结论。满足条件的机型置前并高亮。四款依次为 model-a（5899元、1.30kg、10小时，满足）、model-d（5999元、1.49kg、8小时，满足）、model-b（5599元、1.70kg、14小时，超出重量）、model-c（6399元、1.20kg、12小时，超出预算）。卡片下方给出推荐结论：推荐 model-a，理由为在同时满足价格与重量的机型中续航最长（10小时 > 8小时）。要求文字兜底清晰可读，不展示未确认事实。\", \"business_data\": {\"title\": \"出差笔记本选购对照（预算≤6000元、重量<1.5kg）\", \"criteria\": \"先过滤：价格≤6000元 且 重量<1.5kg；合格机型中优先续航更长者\", \"models\": [{\"name\": \"model-a\", \"price\": \"5899元\", \"weight\": \"1.30kg\", \"battery\": \"标称10小时\", \"qualifies\": \"满足价格与重量\", \"verdict\": \"推荐\"}, {\"name\": \"model-d\", \"price\": \"5999元\", \"weight\": \"1.49kg\", \"battery\": \"标称8小时\", \"qualifies\": \"满足价格与重量\", \"verdict\": \"备选（续航较短）\"}, {\"name\": \"model-b\", \"price\": \"5599元\", \"weight\": \"1.70kg\", \"battery\": \"标称14小时\", \"qualifies\": \"超出重量上限\", \"verdict\": \"不入选\"}, {\"name\": \"model-c\", \"price\": \"6399元\", \"weight\": \"1.20kg\", \"battery\": \"标称12小时\", \"qualifies\": \"超出预算\", \"verdict\": \"不入选\"}], \"recommendation\": {\"model\": \"model-a\", \"reason\": \"在价格≤6000元且重量<1.5kg的机型中续航最长（10小时，高于model-d的8小时）\"}, \"rejections\": [{\"model\": \"model-b\", \"reason\": \"1.70kg，超过1.5kg重量上限，先被淘汰（尽管续航14小时最长）\"}, {\"model\": \"model-c\", \"reason\": \"6399元，超出6000元预算，先被淘汰（尽管1.20kg最轻、续航12小时）\"}], \"note\": \"以上为固定材料中的虚构机型参数对照，非实际购买建议。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "titleHeading",
+                "criteriaCallout",
+                "stepsSection",
+                "modelsSection",
+                "recommendationSection",
+                "rejectionsSection",
+                "sourceSection"
+              ]
+            },
+            "titleHeading": {
+              "type": "Heading",
+              "props": {
+                "text": "出差笔记本选购对照（预算≤6000元、重量<1.5kg）",
+                "level": "h1"
+              }
+            },
+            "criteriaCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "筛选标准",
+                "description": "先过滤：价格≤6000元 且 重量<1.5kg；合格机型中优先续航更长者",
+                "showIcon": true
+              }
+            },
+            "stepsSection": {
+              "type": "Section",
+              "props": {
+                "title": "步骤说明",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "criteriaSteps"
+              ]
+            },
+            "criteriaSteps": {
+              "type": "Steps",
+              "props": {
+                "current": 3,
+                "direction": "horizontal",
+                "items": [
+                  {
+                    "title": "预算筛选",
+                    "description": "价格≤6000元",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "重量筛选",
+                    "description": "重量<1.5kg",
+                    "status": "finish"
+                  },
+                  {
+                    "title": "续航优先",
+                    "description": "合格机型中优先续航更长者",
+                    "status": "finish"
+                  }
+                ]
+              }
+            },
+            "modelsSection": {
+              "type": "Section",
+              "props": {
+                "title": "机型对照",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "modelsGrid"
+              ]
+            },
+            "modelsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "cardA",
+                "cardD",
+                "cardB",
+                "cardC"
+              ]
+            },
+            "cardA": {
+              "type": "Card",
+              "props": {
+                "title": "model-a",
+                "variant": "filled"
+              },
+              "children": [
+                "stackA"
+              ]
+            },
+            "stackA": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "aNameRow",
+                "aPriceRow",
+                "aWeightRow",
+                "aBatteryRow",
+                "aQualifiesRow",
+                "aVerdictRow"
+              ]
+            },
+            "aNameRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "aNameLabel",
+                "aNameValue"
+              ]
+            },
+            "aNameLabel": {
+              "type": "Text",
+              "props": {
+                "content": "机型：",
+                "variant": "muted"
+              }
+            },
+            "aNameValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/0/name"
+                },
+                "variant": "default"
+              }
+            },
+            "aPriceRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "aPriceLabel",
+                "aPriceValue"
+              ]
+            },
+            "aPriceLabel": {
+              "type": "Text",
+              "props": {
+                "content": "价格：",
+                "variant": "muted"
+              }
+            },
+            "aPriceValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/0/price"
+                },
+                "variant": "default"
+              }
+            },
+            "aWeightRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "aWeightLabel",
+                "aWeightValue"
+              ]
+            },
+            "aWeightLabel": {
+              "type": "Text",
+              "props": {
+                "content": "重量：",
+                "variant": "muted"
+              }
+            },
+            "aWeightValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/0/weight"
+                },
+                "variant": "default"
+              }
+            },
+            "aBatteryRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "aBatteryLabel",
+                "aBatteryValue"
+              ]
+            },
+            "aBatteryLabel": {
+              "type": "Text",
+              "props": {
+                "content": "标称续航：",
+                "variant": "muted"
+              }
+            },
+            "aBatteryValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/0/battery"
+                },
+                "variant": "default"
+              }
+            },
+            "aQualifiesRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "aQualifiesLabel",
+                "aQualifiesBadge"
+              ]
+            },
+            "aQualifiesLabel": {
+              "type": "Text",
+              "props": {
+                "content": "是否满足（≤6000元且<1.5kg）：",
+                "variant": "muted"
+              }
+            },
+            "aQualifiesBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "满足价格与重量",
+                "variant": "success"
+              }
+            },
+            "aVerdictRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "aVerdictLabel",
+                "aVerdictBadge"
+              ]
+            },
+            "aVerdictLabel": {
+              "type": "Text",
+              "props": {
+                "content": "结论：",
+                "variant": "muted"
+              }
+            },
+            "aVerdictBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "推荐",
+                "variant": "success"
+              }
+            },
+            "cardD": {
+              "type": "Card",
+              "props": {
+                "title": "model-d",
+                "variant": "filled"
+              },
+              "children": [
+                "stackD"
+              ]
+            },
+            "stackD": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "dNameRow",
+                "dPriceRow",
+                "dWeightRow",
+                "dBatteryRow",
+                "dQualifiesRow",
+                "dVerdictRow"
+              ]
+            },
+            "dNameRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "dNameLabel",
+                "dNameValue"
+              ]
+            },
+            "dNameLabel": {
+              "type": "Text",
+              "props": {
+                "content": "机型：",
+                "variant": "muted"
+              }
+            },
+            "dNameValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/1/name"
+                },
+                "variant": "default"
+              }
+            },
+            "dPriceRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "dPriceLabel",
+                "dPriceValue"
+              ]
+            },
+            "dPriceLabel": {
+              "type": "Text",
+              "props": {
+                "content": "价格：",
+                "variant": "muted"
+              }
+            },
+            "dPriceValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/1/price"
+                },
+                "variant": "default"
+              }
+            },
+            "dWeightRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "dWeightLabel",
+                "dWeightValue"
+              ]
+            },
+            "dWeightLabel": {
+              "type": "Text",
+              "props": {
+                "content": "重量：",
+                "variant": "muted"
+              }
+            },
+            "dWeightValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/1/weight"
+                },
+                "variant": "default"
+              }
+            },
+            "dBatteryRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "dBatteryLabel",
+                "dBatteryValue"
+              ]
+            },
+            "dBatteryLabel": {
+              "type": "Text",
+              "props": {
+                "content": "标称续航：",
+                "variant": "muted"
+              }
+            },
+            "dBatteryValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/1/battery"
+                },
+                "variant": "default"
+              }
+            },
+            "dQualifiesRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "dQualifiesLabel",
+                "dQualifiesBadge"
+              ]
+            },
+            "dQualifiesLabel": {
+              "type": "Text",
+              "props": {
+                "content": "是否满足（≤6000元且<1.5kg）：",
+                "variant": "muted"
+              }
+            },
+            "dQualifiesBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "满足价格与重量",
+                "variant": "success"
+              }
+            },
+            "dVerdictRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "dVerdictLabel",
+                "dVerdictBadge"
+              ]
+            },
+            "dVerdictLabel": {
+              "type": "Text",
+              "props": {
+                "content": "结论：",
+                "variant": "muted"
+              }
+            },
+            "dVerdictBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "备选（续航较短）",
+                "variant": "info"
+              }
+            },
+            "cardB": {
+              "type": "Card",
+              "props": {
+                "title": "model-b",
+                "variant": "outlined"
+              },
+              "children": [
+                "stackB"
+              ]
+            },
+            "stackB": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "bNameRow",
+                "bPriceRow",
+                "bWeightRow",
+                "bBatteryRow",
+                "bQualifiesRow",
+                "bVerdictRow"
+              ]
+            },
+            "bNameRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "bNameLabel",
+                "bNameValue"
+              ]
+            },
+            "bNameLabel": {
+              "type": "Text",
+              "props": {
+                "content": "机型：",
+                "variant": "muted"
+              }
+            },
+            "bNameValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/2/name"
+                },
+                "variant": "default"
+              }
+            },
+            "bPriceRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "bPriceLabel",
+                "bPriceValue"
+              ]
+            },
+            "bPriceLabel": {
+              "type": "Text",
+              "props": {
+                "content": "价格：",
+                "variant": "muted"
+              }
+            },
+            "bPriceValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/2/price"
+                },
+                "variant": "default"
+              }
+            },
+            "bWeightRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "bWeightLabel",
+                "bWeightValue"
+              ]
+            },
+            "bWeightLabel": {
+              "type": "Text",
+              "props": {
+                "content": "重量：",
+                "variant": "muted"
+              }
+            },
+            "bWeightValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/2/weight"
+                },
+                "variant": "default"
+              }
+            },
+            "bBatteryRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "bBatteryLabel",
+                "bBatteryValue"
+              ]
+            },
+            "bBatteryLabel": {
+              "type": "Text",
+              "props": {
+                "content": "标称续航：",
+                "variant": "muted"
+              }
+            },
+            "bBatteryValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/2/battery"
+                },
+                "variant": "default"
+              }
+            },
+            "bQualifiesRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "bQualifiesLabel",
+                "bQualifiesBadge"
+              ]
+            },
+            "bQualifiesLabel": {
+              "type": "Text",
+              "props": {
+                "content": "是否满足（≤6000元且<1.5kg）：",
+                "variant": "muted"
+              }
+            },
+            "bQualifiesBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "超出重量上限",
+                "variant": "danger"
+              }
+            },
+            "bVerdictRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "bVerdictLabel",
+                "bVerdictBadge"
+              ]
+            },
+            "bVerdictLabel": {
+              "type": "Text",
+              "props": {
+                "content": "结论：",
+                "variant": "muted"
+              }
+            },
+            "bVerdictBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "不入选",
+                "variant": "danger"
+              }
+            },
+            "cardC": {
+              "type": "Card",
+              "props": {
+                "title": "model-c",
+                "variant": "outlined"
+              },
+              "children": [
+                "stackC"
+              ]
+            },
+            "stackC": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "cNameRow",
+                "cPriceRow",
+                "cWeightRow",
+                "cBatteryRow",
+                "cQualifiesRow",
+                "cVerdictRow"
+              ]
+            },
+            "cNameRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "cNameLabel",
+                "cNameValue"
+              ]
+            },
+            "cNameLabel": {
+              "type": "Text",
+              "props": {
+                "content": "机型：",
+                "variant": "muted"
+              }
+            },
+            "cNameValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/3/name"
+                },
+                "variant": "default"
+              }
+            },
+            "cPriceRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "cPriceLabel",
+                "cPriceValue"
+              ]
+            },
+            "cPriceLabel": {
+              "type": "Text",
+              "props": {
+                "content": "价格：",
+                "variant": "muted"
+              }
+            },
+            "cPriceValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/3/price"
+                },
+                "variant": "default"
+              }
+            },
+            "cWeightRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "cWeightLabel",
+                "cWeightValue"
+              ]
+            },
+            "cWeightLabel": {
+              "type": "Text",
+              "props": {
+                "content": "重量：",
+                "variant": "muted"
+              }
+            },
+            "cWeightValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/3/weight"
+                },
+                "variant": "default"
+              }
+            },
+            "cBatteryRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "cBatteryLabel",
+                "cBatteryValue"
+              ]
+            },
+            "cBatteryLabel": {
+              "type": "Text",
+              "props": {
+                "content": "标称续航：",
+                "variant": "muted"
+              }
+            },
+            "cBatteryValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/models/3/battery"
+                },
+                "variant": "default"
+              }
+            },
+            "cQualifiesRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "cQualifiesLabel",
+                "cQualifiesBadge"
+              ]
+            },
+            "cQualifiesLabel": {
+              "type": "Text",
+              "props": {
+                "content": "是否满足（≤6000元且<1.5kg）：",
+                "variant": "muted"
+              }
+            },
+            "cQualifiesBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "超出预算",
+                "variant": "danger"
+              }
+            },
+            "cVerdictRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "cVerdictLabel",
+                "cVerdictBadge"
+              ]
+            },
+            "cVerdictLabel": {
+              "type": "Text",
+              "props": {
+                "content": "结论：",
+                "variant": "muted"
+              }
+            },
+            "cVerdictBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "不入选",
+                "variant": "danger"
+              }
+            },
+            "recommendationSection": {
+              "type": "Section",
+              "props": {
+                "title": "推荐结论",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "recModelRow",
+                "recCallout"
+              ]
+            },
+            "recModelRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "recLabel",
+                "recBadge"
+              ]
+            },
+            "recLabel": {
+              "type": "Text",
+              "props": {
+                "content": "推荐机型：",
+                "variant": "muted"
+              }
+            },
+            "recBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "model-a",
+                "variant": "success"
+              }
+            },
+            "recCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "success",
+                "title": "推荐 model-a",
+                "description": "在价格≤6000元且重量<1.5kg的机型中续航最长（10小时，高于model-d的8小时）",
+                "showIcon": true
+              }
+            },
+            "rejectionsSection": {
+              "type": "Section",
+              "props": {
+                "title": "未入选原因",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "rejectionsGrid"
+              ]
+            },
+            "rejectionsGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "rejectB",
+                "rejectC"
+              ]
+            },
+            "rejectB": {
+              "type": "Card",
+              "props": {
+                "title": "model-b",
+                "variant": "outlined"
+              },
+              "children": [
+                "rejectBText"
+              ]
+            },
+            "rejectBText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/rejections/0/reason"
+                },
+                "variant": "default"
+              }
+            },
+            "rejectC": {
+              "type": "Card",
+              "props": {
+                "title": "model-c",
+                "variant": "outlined"
+              },
+              "children": [
+                "rejectCText"
+              ]
+            },
+            "rejectCText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/rejections/1/reason"
+                },
+                "variant": "default"
+              }
+            },
+            "sourceSection": {
+              "type": "Section",
+              "props": {
+                "title": "出处",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "noteText"
+              ]
+            },
+            "noteText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "出差笔记本选购对照（预算≤6000元、重量<1.5kg）",
+            "criteria": "先过滤：价格≤6000元 且 重量<1.5kg；合格机型中优先续航更长者",
+            "models": [
+              {
+                "name": "model-a",
+                "price": "5899元",
+                "weight": "1.30kg",
+                "battery": "标称10小时",
+                "qualifies": "满足价格与重量",
+                "verdict": "推荐"
+              },
+              {
+                "name": "model-d",
+                "price": "5999元",
+                "weight": "1.49kg",
+                "battery": "标称8小时",
+                "qualifies": "满足价格与重量",
+                "verdict": "备选（续航较短）"
+              },
+              {
+                "name": "model-b",
+                "price": "5599元",
+                "weight": "1.70kg",
+                "battery": "标称14小时",
+                "qualifies": "超出重量上限",
+                "verdict": "不入选"
+              },
+              {
+                "name": "model-c",
+                "price": "6399元",
+                "weight": "1.20kg",
+                "battery": "标称12小时",
+                "qualifies": "超出预算",
+                "verdict": "不入选"
+              }
+            ],
+            "recommendation": {
+              "model": "model-a",
+              "reason": "在价格≤6000元且重量<1.5kg的机型中续航最长（10小时，高于model-d的8小时）"
+            },
+            "rejections": [
+              {
+                "model": "model-b",
+                "reason": "1.70kg，超过1.5kg重量上限，先被淘汰（尽管续航14小时最长）"
+              },
+              {
+                "model": "model-c",
+                "reason": "6399元，超出6000元预算，先被淘汰（尽管1.20kg最轻、续航12小时）"
+              }
+            ],
+            "note": "以上为固定材料中的虚构机型参数对照，非实际购买建议。"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_60O24pJkAtQQvilFm5rD8944"
+      },
+      "toolCallId": "call_00_60O24pJkAtQQvilFm5rD8944",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "aebc7292-53e6-4ed0-9c58-d48159868bd3"
+    }
+  }
+]

@@ -1,0 +1,147 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "新会话" [selected]:
+    - generic: 新会话
+  - treeitem "已完成 饮水机维修照片呈现测评 刚刚":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 监测文件处理任务失败通知 1分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 1分钟
+  - treeitem "文件处理任务监测模拟 1分钟":
+    - generic: 文件处理任务监测模拟
+    - generic: 1分钟
+  - treeitem "已完成 Workflow材料取送流程测评 2分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 2分钟
+  - treeitem "已完成 饮水机不出水照片评测 3分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 3分钟
+  - treeitem "已完成 平面图快递路线静态示意 4分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 4分钟
+  - treeitem "平面图快递路线静态示意说明 4分钟":
+    - generic: 平面图快递路线静态示意说明
+    - generic: 4分钟
+  - treeitem "已完成 三项工作排期草稿确认 5分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 5分钟
+  - treeitem "安排三项工作并确认草稿 5分钟":
+    - generic: 安排三项工作并确认草稿
+    - generic: 5分钟
+  - treeitem "已完成 会议室预约改期草稿 7分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 7分钟
+  - treeitem "会议室预约改期草稿测评 7分钟":
+    - generic: 会议室预约改期草稿测评
+    - generic: 7分钟
+  - treeitem "已完成 售后申请草稿填写与确认 8分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 8分钟
+  - treeitem "售后申请草稿填写测评 8分钟":
+    - generic: 售后申请草稿填写测评
+    - generic: 8分钟
+  - treeitem "已完成 商品退货多视角图片呈现 9分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 9分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 10分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 10分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 10分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 10分钟
+  - treeitem "包裹照片确认对象状态 12分钟":
+    - generic: 包裹照片确认对象状态
+    - generic: 12分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 13分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 13分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 15分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 15分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 16分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 16分钟
+  - treeitem "已完成 活动需求确认与汇总 16分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 16分钟
+  - button "展开其余 185 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - button "打开右侧边栏":
+- img "EIT-NLP"
+- generic: 我们开始吧
+- button "选择工作区":
+  - generic: 默认工作区
+- button "Component benchmark full v2":
+  - generic: Component benchmark full v2
+- textbox "请开始，描述你想要的任务"
+- generic: 请开始，描述你想要的任务
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:

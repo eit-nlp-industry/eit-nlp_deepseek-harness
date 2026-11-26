@@ -1,0 +1,91 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N05-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_YWDBuYBC9n0pnBm5V1us3617"
+      },
+      "toolCallId": "call_00_ET_YWDBuYBC9n0pnBm5V1us3617",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N05\",\"facts\":\"唯一候选parcel-8241，尾号8241，初始pending_confirmation。图像MOCK，用户确认后只记录状态，不寄件。\",\"assets\":[{\"id\":\"bench05-img-parcel-8241\",\"file\":\"bench05-img-parcel-8241.png\",\"alt\":\"MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture\",\"source_id\":\"img-parcel-8241\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-parcel-8241/content\",\"path\":\"/api/media/bench05-img-parcel-8241/content\",\"sha256\":\"f3c2235c40b1cfe400a7511f7de3bf6f2a7e0e62cf50f87354eddb202fe84fa0\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "1fe906d4-f165-49ba-9c54-f4f42978e2dd"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "N05-B-02"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_LvxV9bn8EEw7CKkGl4Yw5091"
+      },
+      "toolCallId": "call_00_LvxV9bn8EEw7CKkGl4Yw5091",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N05\",\"facts\":\"唯一候选parcel-8241，尾号8241，初始pending_confirmation。图像MOCK，用户确认后只记录状态，不寄件。\",\"assets\":[{\"id\":\"bench05-img-parcel-8241\",\"file\":\"bench05-img-parcel-8241.png\",\"alt\":\"MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture\",\"source_id\":\"img-parcel-8241\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-parcel-8241/content\",\"path\":\"/api/media/bench05-img-parcel-8241/content\",\"sha256\":\"f3c2235c40b1cfe400a7511f7de3bf6f2a7e0e62cf50f87354eddb202fe84fa0\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "bb9233b9-50d4-4cf8-80cb-463cceb44bfd"
+    }
+  },
+  {
+    "call": {
+      "seq": 42,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N05-B-02",
+        "values": {
+          "candidate_id": "parcel-8241",
+          "order_tail": "8241",
+          "confirmation": "是，就是这一件",
+          "image_asset_id": "bench05-img-parcel-8241",
+          "image_path": "/api/media/bench05-img-parcel-8241/content",
+          "requested_action": "仅记录对象状态，不寄件"
+        }
+      }
+    },
+    "result_seq": 43,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Iatp3Hcke9jvMevbYB2g6545"
+      },
+      "toolCallId": "call_00_Iatp3Hcke9jvMevbYB2g6545",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "a7606b6f-a99d-4cff-aaad-93df9a03cdfb"
+    }
+  }
+]

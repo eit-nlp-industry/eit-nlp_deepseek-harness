@@ -1,0 +1,885 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "文件处理任务状态监测 3分钟" [selected]:
+    - generic: 文件处理任务状态监测
+    - generic: 3分钟
+  - treeitem "已完成 文件处理任务监测状态卡片测评 4分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测状态卡片测评
+    - generic: 4分钟
+  - treeitem "已完成 报销流程Workflow编辑器测评 6分钟":
+    - generic: 已完成
+    - generic: 报销流程Workflow编辑器测评
+    - generic: 6分钟
+  - treeitem "已完成 报销流程 Workflow 编辑与保存 6分钟":
+    - generic: 已完成
+    - generic: 报销流程 Workflow 编辑与保存
+    - generic: 6分钟
+  - treeitem "已完成 快递静态路线示意图呈现 7分钟":
+    - generic: 已完成
+    - generic: 快递静态路线示意图呈现
+    - generic: 7分钟
+  - treeitem "已完成 会议室预约改期表单呈现 10分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期表单呈现
+    - generic: 10分钟
+  - treeitem "快递配送静态路线示意图 13分钟":
+    - generic: 快递配送静态路线示意图
+    - generic: 13分钟
+  - treeitem "已完成 SortableSequence 拖动排序草稿测评 14分钟":
+    - generic: 已完成
+    - generic: SortableSequence 拖动排序草稿测评
+    - generic: 14分钟
+  - treeitem "已完成 安排三个工作事项并保存草稿 15分钟":
+    - generic: 已完成
+    - generic: 安排三个工作事项并保存草稿
+    - generic: 15分钟
+  - treeitem "会议室预约改期草稿呈现 15分钟":
+    - generic: 会议室预约改期草稿呈现
+    - generic: 15分钟
+  - treeitem "已完成 商品多视角展示测评 16分钟":
+    - generic: 已完成
+    - generic: 商品多视角展示测评
+    - generic: 16分钟
+  - treeitem "已完成 售后申请草稿动态表单测评 18分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿动态表单测评
+    - generic: 18分钟
+  - treeitem "已完成 商品多视角展示评测 18分钟":
+    - generic: 已完成
+    - generic: 商品多视角展示评测
+    - generic: 18分钟
+  - treeitem "售后申请草稿表单呈现测评 18分钟":
+    - generic: 售后申请草稿表单呈现测评
+    - generic: 18分钟
+  - treeitem "已完成 包裹照片确认呈现测评 19分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认呈现测评
+    - generic: 19分钟
+  - treeitem "已完成 活动需求三字段表单确认 20分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 20分钟
+  - treeitem "已完成 活动需求三字段表单确认 21分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 21分钟
+  - treeitem "包裹照片确认组件测评 22分钟":
+    - generic: 包裹照片确认组件测评
+    - generic: 22分钟
+  - treeitem "已完成 企业服务套餐固定材料呈现测评 22分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐固定材料呈现测评
+    - generic: 22分钟
+  - treeitem "测试笔记本挑选呈现 22分钟":
+    - generic: 测试笔记本挑选呈现
+    - generic: 22分钟
+  - treeitem "已完成 6000元内出差笔记本推荐 23分钟":
+    - generic: 已完成
+    - generic: 6000元内出差笔记本推荐
+    - generic: 23分钟
+  - treeitem "已完成 企业服务套餐介绍测评 23分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 23分钟
+  - treeitem "已完成 支付状态简洁卡片呈现 29分钟":
+    - generic: 已完成
+    - generic: 支付状态简洁卡片呈现
+    - generic: 29分钟
+  - treeitem "已完成 支付状态卡片呈现测评 30分钟":
+    - generic: 已完成
+    - generic: 支付状态卡片呈现测评
+    - generic: 30分钟
+  - treeitem "已完成 图书馆预约必要吗（C26-B-02） 30分钟":
+    - generic: 已完成
+    - generic: 图书馆预约必要吗（C26-B-02）
+    - generic: 30分钟
+  - treeitem "已完成 图书馆预约简短问答 30分钟":
+    - generic: 已完成
+    - generic: 图书馆预约简短问答
+    - generic: 30分钟
+  - treeitem "握手交互状态卡片呈现 31分钟":
+    - generic: 握手交互状态卡片呈现
+    - generic: 31分钟
+  - treeitem "已完成 握手确认卡片呈现 32分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 32分钟
+  - treeitem "已完成 握手状态卡片渲染测评 32分钟":
+    - generic: 已完成
+    - generic: 握手状态卡片渲染测评
+    - generic: 32分钟
+  - treeitem "已完成 握手交互卡片呈现 32分钟":
+    - generic: 已完成
+    - generic: 握手交互卡片呈现
+    - generic: 32分钟
+  - treeitem "Workflow 追加分支编辑器测评 33分钟":
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 33分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 33分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 33分钟
+  - treeitem "已完成 工作流条件分支测评呈现 34分钟":
+    - generic: 已完成
+    - generic: 工作流条件分支测评呈现
+    - generic: 34分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 34分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 34分钟
+  - treeitem "报销流程草稿编辑保存 36分钟":
+    - generic: 报销流程草稿编辑保存
+    - generic: 36分钟
+  - treeitem "已完成 报销流程整理与草稿保存 36分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 36分钟
+  - treeitem "已完成 Workflow材料取送流程测评 37分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 37分钟
+  - treeitem "监测文件处理任务失败通知 39分钟":
+    - generic: 监测文件处理任务失败通知
+    - generic: 39分钟
+  - treeitem "已完成 文件处理任务监测模拟 39分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 39分钟
+  - treeitem "已完成 饮水机不出水照片评测 40分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 40分钟
+  - treeitem "平面图快递路线静态示意 42分钟":
+    - generic: 平面图快递路线静态示意
+    - generic: 42分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 42分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 42分钟
+  - treeitem "三项工作排期草稿确认 43分钟":
+    - generic: 三项工作排期草稿确认
+    - generic: 43分钟
+  - treeitem "已完成 安排三项工作并确认草稿 43分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 43分钟
+  - treeitem "会议室预约改期草稿 45分钟":
+    - generic: 会议室预约改期草稿
+    - generic: 45分钟
+  - treeitem "已完成 会议室预约改期草稿测评 45分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 45分钟
+  - treeitem "售后申请草稿填写与确认 45分钟":
+    - generic: 售后申请草稿填写与确认
+    - generic: 45分钟
+  - treeitem "已完成 售后申请草稿填写测评 45分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 45分钟
+  - treeitem "商品退货多视角图片呈现 47分钟":
+    - generic: 商品退货多视角图片呈现
+    - generic: 47分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - button "展开其余 192 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 文件处理任务状态监测
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+  - button "跳转到第 3 轮"
+  - button "跳转到第 4 轮"
+  - button "跳转到第 5 轮"
+  - button "跳转到第 6 轮"
+  - button "跳转到第 7 轮"
+  - button "跳转到第 8 轮"
+  - button "跳转到第 9 轮"
+- generic: 【全量正式呈现测评 N11-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N11-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N11-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：监测这个文件处理任务，失败时通知我；我可以暂停、继续或结束监测。只使用模拟状态，不处理真实文件。 指定呈现方式：display状态卡片/状态时间线，显示相同模拟状态，不生成多余输入表单。。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 14:21
+- button "复制":
+- status: 已完成
+- button "已完成，用时 2分11秒":
+  - generic: 已完成，用时 2分11秒
+- paragraph: 我先调取本题的固定材料。
+- paragraph:
+  - strong: 模拟监测状态（job-convert-01）
+- list:
+  - listitem: 总文件数：10；已完成：3；当前状态：running，进度 3/10
+  - listitem: 失败通知：已开启，但到目前为止没有出现失败，因此通知尚未触发
+  - listitem: 状态时间线：任务启动（已发生）→ 处理进行中（当前，已完成 3/10）→ 失败通知（等待中）→ 监测结束（未触发）
+- paragraph:
+  - text: 可执行操作：
+  - strong: 暂停监测、继续监测、结束监测
+  - text: ：你说明想执行哪一项，或者等待新的状态事件后，我再按实际返回的模拟状态更新卡片。
+- paragraph: 以上均为模拟数据，未处理任何真实文件；暂停、继续、失败或结束的结果尚未发生，我不会提前预告。
+- heading "文件处理任务监测" [level=3]
+- generic: 模拟状态 · 不处理真实文件
+- generic: 任务 ID：job-convert-01
+- generic: 数据来源：模拟监测状态
+- separator
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "3"
+- generic: 当前状态
+- generic: running
+- generic: 进度 3/10
+- generic "进度 3 / 10 30%":
+  - generic: 进度 3 / 10
+  - progressbar:
+    - generic "30%"
+- generic: 进度为 3 / 10（30%），停在 3/10，不预示后续成功。
+- heading "状态时间线" [level=2]
+- generic: 组件未注册
+- generic: 失败通知已开启；当前尚未出现失败，通知未触发。
+- heading "监测操作" [level=2]
+- button "暂停监测":
+  - generic: 暂停监测
+- button "继续监测":
+  - generic: 继续监测
+- button "结束监测":
+  - generic: 结束监测
+- alert:
+  - img "info-circle":
+  - generic: 状态以实际返回为准
+  - generic: 暂停、继续、失败、结束时均以实际返回的模拟状态为准；未发生的状态变化不做预告。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 11.4K tok":
+  - generic: 用量 11.4K tok
+- generic: 14:23
+- generic: 暂停任务。
+- generic: 14:24
+- button "复制":
+- status: 已完成
+- button "已完成，用时 49秒":
+  - generic: 已完成，用时 49秒
+- paragraph:
+  - strong: 暂停请求未获得结果回执，任务状态未变更
+- list:
+  - text: 任务：job-convert-01；当前状态仍为
+  - strong: running
+  - text: ；已完成 3/10 个文件
+  - listitem: 暂停请求已发出，但没有收到模拟结果的返回，因此不能确认暂停已生效，页面进度条仍停在 3/10
+  - listitem: 失败通知：无失败记录，尚未触发；监测仍在进行，尚未结束
+- paragraph: 后续操作可选：再次尝试暂停、继续监测、或结束监测；请告知你的选择，我会按实际返回的模拟状态更新卡片。全程仅为模拟状态，未处理任何真实文件。
+- generic: 文件处理任务监测 · 暂停待确认
+- generic: 模拟状态 · 不处理真实文件
+- generic: 任务 ID：job-convert-01
+- generic: 任务指标
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "3"
+- generic: 当前状态
+- generic: running（未变更）
+- generic: 处理进度
+- generic "3 / 10 30%":
+  - generic: 3 / 10
+  - progressbar
+- generic: 已完成 3 / 总文件数 10
+- generic: 状态时间线
+- generic: 组件未注册
+- generic: 可选操作
+- generic: 组件未注册
+- generic: 暂停结果尚未返回，任务状态仍为 running；不预设暂停已生效或后续成功。
+- generic "备用状态说明"
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 17.7K tok":
+  - generic: 用量 17.7K tok
+- generic: 14:25
+- button "收到执行请求 14:25":
+  - generic: 收到执行请求
+  - time: 14:25
+- status: 已完成
+- button "已完成，用时 1分7秒":
+  - generic: 已完成，用时 1分7秒
+- paragraph:
+  - strong: 状态更新：任务已暂停
+- list:
+  - text: job-convert-01：共 10 个文件，已完成
+  - strong: "3"
+  - text: ，当前状态
+  - strong: paused（已暂停）
+  - text: ，进度停在 3/10。
+  - listitem: 暂停前没有出现失败，失败通知尚未触发。
+  - listitem: 监测尚未结束，仍处于进行状态。
+- paragraph:
+  - text: 接下来可选：
+  - strong: 继续监测
+  - text: 或
+  - strong: 结束监测
+  - text: 。请告知你的选择；我会按实际返回的模拟状态更新卡片。以上为模拟状态，未处理任何真实文件。
+- generic: 文件处理任务监测 · 已暂停
+- generic: 模拟状态 · 不处理真实文件
+- generic: 任务 ID：job-convert-01
+- generic: 来源：business_data.title、business_data.simulated_badge、business_data.job_id
+- heading "任务指标" [level=3]
+- paragraph: 指标并排展示，数值来自 business_data.metrics。
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "3"
+- generic: 当前状态
+- generic: paused（已暂停）
+- generic: 来源：business_data.metrics
+- generic: 处理进度
+- generic "3 / 10 30%":
+  - generic: 3 / 10
+  - progressbar:
+    - generic "30%"
+- generic: 进度：3 / 10（已完成 3 个，共 10 个）
+- generic: 来源：business_data.progress（completed=3，total=10，text=3 / 10）
+- heading "状态时间线" [level=3]
+- paragraph: 按任务生命周期逐项展示节点、状态与说明。
+- generic: 组件未注册
+- generic: 来源：business_data.timeline（node、state、detail 逐项保留）
+- heading "原始状态摘要" [level=3]
+- paragraph: 来源：business_data.fallback_text
+- generic: job-convert-01 已模拟暂停，10 个文件中已完成 3 个；无失败记录，失败通知未触发，监测未结束。
+- generic: 可选操作
+- generic: 任务已暂停，进度停在 3/10；继续或结束后的状态以实际返回为准，不预告后续处理结果。
+- button "继续监测":
+  - generic: 继续监测
+- button "结束监测":
+  - generic: 结束监测
+- generic: 来源：business_data.controls、business_data.controls_note
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 12K tok":
+  - generic: 用量 12K tok
+- generic: 14:26
+- generic: 继续。
+- generic: 14:27
+- button "复制":
+- status: 已完成
+- button "已完成，用时 22秒":
+  - generic: 已完成，用时 22秒
+- paragraph:
+  - strong: 继续请求未获得结果回执，状态未变更
+- list:
+  - text: job-convert-01：总文件 10，已完成
+  - strong: "3"
+  - text: ，当前状态仍按最近记录显示为
+  - strong: paused
+  - text: ，进度停在 3/10
+  - listitem: 由于没有收到继续后的模拟结果，无法确认任务已恢复处理，我没有提前假设它会继续成功
+  - listitem: 失败通知：没有失败记录，尚未触发；监测仍在进行，尚未结束
+- paragraph: 可选：再次尝试继续、或结束监测。若你选择结束，我会按实际返回更新卡片。以上均为模拟状态，未处理任何真实文件。
+- heading "文件处理任务监测 · 继续待确认" [level=1]
+- generic: 模拟状态 · 不处理真实文件
+- generic: 任务 ID：job-convert-01
+- heading "任务指标" [level=3]
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "3"
+- generic: 当前状态
+- generic: paused（未变更）
+- heading "处理进度" [level=3]
+- generic "已完成 3 / 10 个文件 30%":
+  - generic: 已完成 3 / 10 个文件
+  - progressbar:
+    - generic "30%"
+- generic: 处理至 3/10 个文件后暂停，继续请求尚未带来状态变更。
+- heading "监测状态时间线" [level=3]
+- generic: 组件未注册
+- alert:
+  - img "exclamation-circle":
+  - generic: 当前判定：继续请求未获回执
+  - generic: 继续请求未获得回执，job-convert-01 仍显示为 paused，已完成 3/10 个文件，无失败记录，通知未触发。
+- heading "操作" [level=3]
+- button "再次尝试继续监测":
+  - generic: 再次尝试继续监测
+- button "结束监测":
+  - generic: 结束监测
+- generic: 继续请求未收到模拟结果回执，状态仍按最近已释放的记录显示为 paused；不预设已恢复处理或后续成功。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 20.8K tok":
+  - generic: 用量 20.8K tok
+- generic: 14:27
+- button "收到执行请求 14:27":
+  - generic: 收到执行请求
+  - time: 14:27
+- status: 已完成
+- button "已完成，用时 32秒":
+  - generic: 已完成，用时 32秒
+- paragraph:
+  - strong: 状态更新：任务已继续运行
+- list:
+  - text: job-convert-01：共 10 个文件，已完成
+  - strong: "4"
+  - text: 个，当前状态
+  - strong: running
+  - listitem: 进度：4/10；相比暂停时增加了 1 个文件
+  - listitem: 失败通知：目前没有失败记录，尚未触发
+  - listitem: 监测：仍在进行，尚未结束
+- paragraph:
+  - text: 接下来可以
+  - strong: 暂停监测
+  - text: 或
+  - strong: 结束监测
+  - text: ；也可以让它继续运行，等待下一次状态变化。目前尚未发生的结果不做提前说明。以上均为模拟状态，未处理任何真实文件。
+- heading "文件处理任务监测 · 运行中" [level=1]
+- generic: 模拟状态 · 不处理真实文件
+- generic: job-convert-01 已恢复运行，10 个文件中已完成 4 个，状态 running；无失败记录，通知未触发，监测未结束。
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "4"
+- generic: 当前状态
+- generic: running（已恢复）
+- generic: 处理进度
+- generic "4 / 10 4%":
+  - generic: 4 / 10
+  - progressbar:
+    - generic "4%"
+- generic: 状态时间线
+- generic: 组件未注册
+- generic: 可选操作
+- generic: 任务已恢复为 running，进度 4/10；后续暂停、失败或结束均以实际返回为准，不预告后续成功。
+- button "暂停监测":
+  - generic: 暂停监测
+- button "结束监测":
+  - generic: 结束监测
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 16.3K tok":
+  - generic: 用量 16.3K tok
+- generic: 14:28
+- button "收到执行请求 14:28":
+  - generic: 收到执行请求
+  - time: 14:28
+- status: 已完成
+- button "已完成，用时 36秒":
+  - generic: 已完成，用时 36秒
+- paragraph:
+  - strong: 失败通知：job-convert-01 处理失败
+- list:
+  - text: 当前状态：
+  - strong: failed
+  - text: ，进度停在
+  - strong: 4/10
+  - text: 失败文件：
+  - strong: doc-05
+  - text: ，错误码
+  - strong: INVALID_FILE
+  - text: （事件 e-fail-01）
+  - listitem: 失败通知已发出；监测仍处于开启状态，尚未结束
+- paragraph:
+  - text: 接下来你可以选择
+  - strong: 结束监测
+  - text: ，或者告诉我希望如何处理这个失败（例如是否重试）；是否重试以及重试结果均以实际返回为准，我不预设重试一定成功。以上为模拟状态，未处理任何真实文件。
+- heading "文件处理任务监测 · 已失败" [level=1]
+- generic: 模拟状态 · 不处理真实文件
+- heading "失败详情" [level=2]
+- alert:
+  - img "close-circle":
+  - generic: 任务处理失败
+  - generic: job-convert-01 处理失败：文件 doc-05 无效（错误码 INVALID_FILE）
+- generic: 组件未注册
+- heading "任务指标" [level=2]
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "4"
+- generic: 当前状态
+- generic: failed（失败）
+- heading "处理进度" [level=2]
+- generic "4 / 10 40%":
+  - generic: 4 / 10
+  - progressbar:
+    - img "close-circle":
+- generic: 任务已失败，进度停在 4/10。
+- heading "状态时间线" [level=2]
+- generic: 组件未注册
+- heading "通知文案" [level=2]
+- generic: 失败通知：job-convert-01 已失败，已完成 4/10 个文件，失败文件为 doc-05，错误码 INVALID_FILE。监测仍开启，可选择结束监测。
+- heading "操作" [level=2]
+- generic: 任务已失败，进度停在 4/10；失败通知已发出，后续是否重试或结束监测以你的选择为准，不预设重试会成功。
+- generic: 重新尝试暂停/继续前先确认处理方式
+- button "结束监测":
+  - generic: 结束监测
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 18.6K tok":
+  - generic: 用量 18.6K tok
+- generic: 14:29
+- generic: 结束监测。
+- generic: 14:29
+- button "复制":
+- status: 已完成
+- button "已完成，用时 1分8秒":
+  - generic: 已完成，用时 1分8秒
+- paragraph:
+  - strong: 结束监测请求未获得结果回执
+- list:
+  - text: 已为你提交结束监测请求，但没有收到任何模拟结果，因此
+  - strong: 无法确认监测是否已停止
+  - text: 。
+  - text: 本次任务最后确认的结果仍为失败：已完成
+  - strong: 4/10
+  - text: ，失败文件为
+  - strong: doc-05
+  - text: ，错误码
+  - strong: INVALID_FILE
+  - text: （事件 e-fail-01）。
+  - listitem: 我不会假设监测已经结束，也不会据此判定任务有其他结果。
+- paragraph: 你可以让我再次尝试结束监测，或等待环境返回实际状态；收到后我会按真实返回值更新卡片。以上均为模拟状态，未处理任何真实文件。
+- heading "文件处理任务监测 · 结束待确认" [level=1]
+- generic: 模拟状态 · 不处理真实文件
+- alert:
+  - img "close-circle":
+  - generic: 任务失败
+  - generic: doc-05 无效（INVALID_FILE） · 事件 e-fail-01 · 最终完成 4/10
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "4"
+- generic: 任务状态
+- generic: failed（失败）
+- generic: 任务状态详情
+- generic: 组件未注册
+- generic "已完成 4 / 10 40%":
+  - generic: 已完成 4 / 10
+  - progressbar:
+    - generic "40%"
+- generic: 组件未注册
+- generic: 结束监测
+- generic: 结束监测的请求未收到模拟结果回执，因此不能确认监测已停止；任务本次最终状态仍为 failed。
+- generic: 结束监测请求未获得回执，无法确认监测已停止；本次唯一已释放的最终结果为失败：doc-05 无效（INVALID_FILE），已完成 4/10。
+- button "再次尝试结束监测":
+  - generic: 再次尝试结束监测
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 30.6K tok":
+  - generic: 用量 30.6K tok
+- generic: 14:30
+- button "收到执行请求 14:30":
+  - generic: 收到执行请求
+  - time: 14:30
+- status: 已完成
+- button "已完成，用时 57秒":
+  - generic: 已完成，用时 57秒
+- paragraph:
+  - strong: 监测已结束，但这并不代表文件处理成功
+- list:
+  - text: 任务：job-convert-01；监测状态：
+  - strong: ended（已结束）
+  - text: ；任务状态：
+  - strong: failed（失败）
+  - text: 总文件数 10，已完成
+  - strong: "4"
+  - text: ，进度停在 4/10
+  - text: 失败信息：文件
+  - strong: doc-05
+  - text: 无效，错误码
+  - strong: INVALID_FILE
+  - text: （事件 e-fail-01）；失败通知已发出
+- paragraph: 以下是本次监测的完整过程：任务启动（10 个文件）→ 处理到 3/10 后暂停 → 继续处理到 4/10 → 处理失败（doc-05 无效）→ 失败通知已触发 → 监测结束。
+- paragraph: 监测现已停止更新。以上均为模拟状态，未处理任何真实文件；如需再次处理这些文件，需要另行发起。
+- heading "文件处理任务监测 · 监测已结束" [level=1]
+- generic: 模拟状态 · 不处理真实文件
+- alert:
+  - img "exclamation-circle":
+  - generic: 重要提示
+  - generic: 监测已结束，不等于文件处理成功
+- heading "任务指标" [level=3]
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "4"
+- generic: 任务状态
+- generic: failed（失败）
+- generic: 监测状态
+- generic: ended（已结束）
+- heading "处理进度" [level=3]
+- generic "4 / 10 40%":
+  - generic: 4 / 10
+  - progressbar
+- heading "失败详情" [level=3]
+- alert:
+  - img "close-circle":
+  - generic: 任务失败
+  - generic: 文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10；事件 e-fail-01。
+- generic: 组件未注册
+- heading "完整状态时间线" [level=2]
+- paragraph: 按发生顺序逐项列出
+- generic: 组件未注册
+- generic: 监测已结束，不再随任务状态变化更新；本页不提供输入控件或提交表单。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 23.1K tok":
+  - generic: 用量 23.1K tok
+- generic: 14:31
+- button "收到执行请求 14:32":
+  - generic: 收到执行请求
+  - time: 14:32
+- status: 已完成
+- button "已完成，用时 42秒":
+  - generic: 已完成，用时 42秒
+- paragraph:
+  - strong: 状态未变：收到的是晚到的重复失败事件
+- list:
+  - listitem: 该事件 e-fail-01 与之前收到的失败事件是同一个；它产生于监测结束前，内容一致（doc-05、INVALID_FILE、4/10）
+  - listitem: 已进行去重处理，没有再次重复提醒，也不会因此重新开启监测
+  - text: 当前状态仍为：监测
+  - strong: ended（已结束）
+  - text: ，任务
+  - strong: failed
+  - text: ，已完成
+  - strong: 4/10
+- paragraph: 因此无需任何操作。以上均为模拟状态，未处理任何真实文件。
+- heading "文件处理任务监测 · 监测已结束（状态未变）" [level=2]
+- paragraph: 状态未变：监测已结束，任务 job-convert-01 仍为 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。晚到的 e-fail-01 为同一事件，已去重。
+- generic: 模拟状态 · 不处理真实文件
+- generic: 总文件数
+- generic: "10"
+- generic: 已完成
+- generic: "4"
+- generic: 任务状态
+- generic: failed（失败）
+- generic: 监测状态
+- generic: ended（已结束）
+- generic: 任务进度（4 / 10）
+- generic "4 / 10 4%":
+  - generic: 4 / 10
+  - progressbar:
+    - img "close-circle":
+- alert:
+  - img "exclamation-circle":
+  - generic: 收到晚到事件 e-fail-01（已去重）
+  - generic: 收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。
+- generic: 失败详情
+- generic: 组件未注册
+- generic: 监测约束与去重结果
+- generic: 组件未注册
+- generic: 状态时间线
+- generic: 组件未注册
+- generic: business_data 逐项出处
+- table:
+  - rowgroup:
+    - row "字段出处 值 说明":
+      - columnheader "字段出处"
+      - columnheader "值"
+      - columnheader "说明"
+  - rowgroup:
+    - row "business_data.title 文件处理任务监测 · 监测已结束（状态未变） 标题":
+      - cell "business_data.title"
+      - cell "文件处理任务监测 · 监测已结束（状态未变）"
+      - cell "标题"
+    - row "business_data.simulated_badge 模拟状态 · 不处理真实文件 模拟标识":
+      - cell "business_data.simulated_badge"
+      - cell "模拟状态 · 不处理真实文件"
+      - cell "模拟标识"
+    - row "business_data.job_id job-convert-01 任务 ID":
+      - cell "business_data.job_id"
+      - cell "job-convert-01"
+      - cell "任务 ID"
+    - row "business_data.fallback_text 状态未变：监测已结束，任务 job-convert-01 仍为 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。晚到的 e-fail-01 为同一事件，已去重。 兜底说明":
+      - cell "business_data.fallback_text"
+      - cell "状态未变：监测已结束，任务 job-convert-01 仍为 failed，已完成 4/10，失败文件 doc-05（INVALID_FILE）。晚到的 e-fail-01 为同一事件，已去重。"
+      - cell "兜底说明"
+    - row "business_data.dedup_note 收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。 去重说明":
+      - cell "business_data.dedup_note"
+      - cell "收到晚到事件 e-fail-01（与先前同一失败事件，产生于监测结束前），内容一致，状态未变更。"
+      - cell "去重说明"
+    - row "business_data.controls_note 监测维持 ended，不重新开启；重复到达的失败事件已去重，未重复提醒。 控制说明":
+      - cell "business_data.controls_note"
+      - cell "监测维持 ended，不重新开启；重复到达的失败事件已去重，未重复提醒。"
+      - cell "控制说明"
+    - row "business_data.metrics[0].label 总文件数 指标标签":
+      - cell "business_data.metrics[0].label"
+      - cell "总文件数"
+      - cell "指标标签"
+    - row "business_data.metrics[0].value 10 指标值":
+      - cell "business_data.metrics[0].value"
+      - cell "10"
+      - cell "指标值"
+    - row "business_data.metrics[1].label 已完成 指标标签":
+      - cell "business_data.metrics[1].label"
+      - cell "已完成"
+      - cell "指标标签"
+    - row "business_data.metrics[1].value 4 指标值":
+      - cell "business_data.metrics[1].value"
+      - cell "4"
+      - cell "指标值"
+    - row "business_data.metrics[2].label 任务状态 指标标签":
+      - cell "business_data.metrics[2].label"
+      - cell "任务状态"
+      - cell "指标标签"
+    - row "business_data.metrics[2].value failed（失败） 指标值":
+      - cell "business_data.metrics[2].value"
+      - cell "failed（失败）"
+      - cell "指标值"
+    - row "business_data.monitoring_status ended（已结束） 监测状态":
+      - cell "business_data.monitoring_status"
+      - cell "ended（已结束）"
+      - cell "监测状态"
+    - row "business_data.progress.completed 4 进度完成数":
+      - cell "business_data.progress.completed"
+      - cell "4"
+      - cell "进度完成数"
+    - row "business_data.progress.total 10 进度总数":
+      - cell "business_data.progress.total"
+      - cell "10"
+      - cell "进度总数"
+    - row "business_data.progress.text 4 / 10 进度文本":
+      - cell "business_data.progress.text"
+      - cell "4 / 10"
+      - cell "进度文本"
+    - row "business_data.failure.failed_file doc-05 失败文件":
+      - cell "business_data.failure.failed_file"
+      - cell "doc-05"
+      - cell "失败文件"
+    - row "business_data.failure.error INVALID_FILE 错误码":
+      - cell "business_data.failure.error"
+      - cell "INVALID_FILE"
+      - cell "错误码"
+    - row "business_data.failure.event_id e-fail-01 失败事件 ID":
+      - cell "business_data.failure.event_id"
+      - cell "e-fail-01"
+      - cell "失败事件 ID"
+    - row "business_data.failure.message 文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10 失败消息":
+      - cell "business_data.failure.message"
+      - cell "文件 doc-05 无效（INVALID_FILE），任务失败，已完成 4/10"
+      - cell "失败消息"
+    - row "business_data.timeline[0].node 任务失败 时间线步骤":
+      - cell "business_data.timeline[0].node"
+      - cell "任务失败"
+      - cell "时间线步骤"
+    - row "business_data.timeline[0].state 已发生 时间线状态":
+      - cell "business_data.timeline[0].state"
+      - cell "已发生"
+      - cell "时间线状态"
+    - row "business_data.timeline[0].detail doc-05 无效，错误码 INVALID_FILE 时间线步骤说明":
+      - cell "business_data.timeline[0].detail"
+      - cell "doc-05 无效，错误码 INVALID_FILE"
+      - cell "时间线步骤说明"
+    - row "business_data.timeline[1].node 失败通知 时间线步骤":
+      - cell "business_data.timeline[1].node"
+      - cell "失败通知"
+      - cell "时间线步骤"
+    - row "business_data.timeline[1].state 已触发 时间线状态":
+      - cell "business_data.timeline[1].state"
+      - cell "已触发"
+      - cell "时间线状态"
+    - row "business_data.timeline[1].detail 失败通知已发出（事件 e-fail-01） 时间线步骤说明":
+      - cell "business_data.timeline[1].detail"
+      - cell "失败通知已发出（事件 e-fail-01）"
+      - cell "时间线步骤说明"
+    - row "business_data.timeline[2].node 监测结束 时间线步骤":
+      - cell "business_data.timeline[2].node"
+      - cell "监测结束"
+      - cell "时间线步骤"
+    - row "business_data.timeline[2].state 已结束 时间线状态":
+      - cell "business_data.timeline[2].state"
+      - cell "已结束"
+      - cell "时间线状态"
+    - row "business_data.timeline[2].detail 监测状态 ended，不再更新 时间线步骤说明":
+      - cell "business_data.timeline[2].detail"
+      - cell "监测状态 ended，不再更新"
+      - cell "时间线步骤说明"
+    - row "business_data.timeline[3].node 晚到旧失败事件 时间线步骤":
+      - cell "business_data.timeline[3].node"
+      - cell "晚到旧失败事件"
+      - cell "时间线步骤"
+    - row "business_data.timeline[3].state 已去重 时间线状态":
+      - cell "business_data.timeline[3].state"
+      - cell "已去重"
+      - cell "时间线状态"
+    - row "business_data.timeline[3].detail 事件 e-fail-01 重复到达，产生于监测结束前，已去重，状态未变更 时间线步骤说明":
+      - cell "business_data.timeline[3].detail"
+      - cell "事件 e-fail-01 重复到达，产生于监测结束前，已去重，状态未变更"
+      - cell "时间线步骤说明"
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 25.6K tok":
+  - generic: 用量 25.6K tok
+- generic: 14:33
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 1%":
+  - generic: 1%

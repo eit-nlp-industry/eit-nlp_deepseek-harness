@@ -1,0 +1,130 @@
+[
+  {
+    "category_id": "G01",
+    "title": "简短回答与执行回执",
+    "case_count": 4,
+    "A_mean": 100,
+    "J_mean": 94,
+    "recommendation_counts": {
+      "text": 4
+    }
+  },
+  {
+    "category_id": "G02",
+    "title": "信息介绍与分层浏览",
+    "case_count": 4,
+    "A_mean": 94.75,
+    "J_mean": 96,
+    "recommendation_counts": {
+      "conditional": 1,
+      "text": 2,
+      "json_render": 1
+    }
+  },
+  {
+    "category_id": "G03",
+    "title": "条件筛选、比较与推荐",
+    "case_count": 3,
+    "A_mean": 100,
+    "J_mean": 96,
+    "recommendation_counts": {
+      "text": 2,
+      "native": 1
+    }
+  },
+  {
+    "category_id": "G04",
+    "title": "澄清需求与收集偏好",
+    "case_count": 4,
+    "A_mean": 98.5,
+    "J_mean": 96,
+    "recommendation_counts": {
+      "native": 3,
+      "conditional": 1
+    }
+  },
+  {
+    "category_id": "G05",
+    "title": "对象识别与确认",
+    "case_count": 6,
+    "A_mean": 100,
+    "J_mean": 96,
+    "recommendation_counts": {
+      "native": 6
+    }
+  },
+  {
+    "category_id": "G06",
+    "title": "证据查看与多视角核对",
+    "case_count": 2,
+    "A_mean": 97.5,
+    "J_mean": 98,
+    "recommendation_counts": {
+      "native": 1,
+      "conditional": 1
+    }
+  },
+  {
+    "category_id": "G07",
+    "title": "结构化信息采集与提交",
+    "case_count": 3,
+    "A_mean": 76,
+    "J_mean": 98,
+    "recommendation_counts": {
+      "json_render": 3
+    }
+  },
+  {
+    "category_id": "G08",
+    "title": "多轮修改、冲突与恢复",
+    "case_count": 4,
+    "A_mean": 92,
+    "J_mean": 96.5,
+    "recommendation_counts": {
+      "json_render": 2,
+      "native": 2
+    }
+  },
+  {
+    "category_id": "G09",
+    "title": "顺序编排与方案调整",
+    "case_count": 2,
+    "A_mean": 76,
+    "J_mean": 98,
+    "recommendation_counts": {
+      "json_render": 2
+    }
+  },
+  {
+    "category_id": "G10",
+    "title": "空间位置与路线表达",
+    "case_count": 3,
+    "A_mean": 100,
+    "J_mean": 96,
+    "recommendation_counts": {
+      "native": 3
+    }
+  },
+  {
+    "category_id": "G11",
+    "title": "任务状态、控制与事件通知",
+    "case_count": 6,
+    "A_mean": 99,
+    "J_mean": 95.33,
+    "recommendation_counts": {
+      "native": 2,
+      "text": 3,
+      "conditional": 1
+    }
+  },
+  {
+    "category_id": "G12",
+    "title": "流程表达与编辑",
+    "case_count": 3,
+    "A_mean": 73.33,
+    "J_mean": 98,
+    "recommendation_counts": {
+      "json_render": 3
+    }
+  }
+]

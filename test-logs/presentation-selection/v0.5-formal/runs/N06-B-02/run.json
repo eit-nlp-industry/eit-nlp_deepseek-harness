@@ -1,0 +1,20 @@
+{
+  "run_id": "N06-B-02",
+  "case_id": "N06",
+  "card_id": "N06",
+  "category_id": "G06",
+  "scenario_domain": "non_campus",
+  "arm": "B",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 N06-B-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N06-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N06-B-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：展示这件商品的正面、背面和瑕疵细节，让我核对后决定是否申请退货。\n指定呈现方式：Tabs/Image多视角展示，真实切换可找到正面、背面、细节；按同一追问续接。。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "7eaf16609911cadc8388f6975f100ae99f5aa8ef0ca51344941b25f639e82ea2",
+  "operator_actions": "先展示正面→用户要求“看背面和瑕疵细节”→展示剩余两图→用户答“记录为我想申请退货，先不提交申请”。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T06:15:06.704Z",
+  "interactions": [],
+  "tab_id": "2",
+  "final_at": "2026-11-20T06:18:22.089Z",
+  "notes": "最终三个视角真实切换和正确独立图片均可见，划痕观察及未知政策保留，退货草稿未提交。两次原生提问阻塞display，要求决定退货时图片尚未可见；旧未发布状态表格与新表格并存，大量技术字段和重复内容。"
+}

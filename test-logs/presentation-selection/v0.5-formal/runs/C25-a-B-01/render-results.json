@@ -1,0 +1,305 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_mXn2WfdRCS8SgV4YpYJt1348",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"user_query\": \"渲染一张最小状态卡片，只显示一条动作状态：标题“握手请求”，状态标签“等待中（pending）”，说明当前尚无成功或失败结果，且不会再次发起动作。使用基础卡片与文本、徽标，不添加按钮或任何可执行控件，不添加图片（本例材料未提供图像地址）。\", \"business_data\": {\"title\": \"握手请求\", \"action_id\": \"handshake-01\", \"status_label\": \"等待中\", \"status_value\": \"pending\", \"message\": \"握手请求已记录，当前状态为 pending，尚无成功或失败结果。\", \"note\": \"此为固定材料呈现，不操作机器人，也不会再次发起动作。\", \"show_action_controls\": false}, \"components\": []}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "handshake-card"
+              ]
+            },
+            "handshake-card": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "handshake-content"
+              ]
+            },
+            "handshake-content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "status-badge",
+                "action-id-text",
+                "status-label-text",
+                "status-value-text",
+                "controls-text",
+                "message-text",
+                "note-text"
+              ]
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "等待中（pending）",
+                "variant": "warning"
+              }
+            },
+            "action-id-text": {
+              "type": "Text",
+              "props": {
+                "content": "action_id：handshake-01",
+                "variant": "muted"
+              }
+            },
+            "status-label-text": {
+              "type": "Text",
+              "props": {
+                "content": "status_label：等待中",
+                "variant": "muted"
+              }
+            },
+            "status-value-text": {
+              "type": "Text",
+              "props": {
+                "content": "status_value：pending",
+                "variant": "muted"
+              }
+            },
+            "controls-text": {
+              "type": "Text",
+              "props": {
+                "content": "show_action_controls：false",
+                "variant": "muted"
+              }
+            },
+            "message-text": {
+              "type": "Text",
+              "props": {
+                "content": "握手请求已记录，当前状态为 pending，尚无成功或失败结果。",
+                "variant": "default"
+              }
+            },
+            "note-text": {
+              "type": "Text",
+              "props": {
+                "content": "此为固定材料呈现，不操作机器人，也不会再次发起动作。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "握手请求",
+            "action_id": "handshake-01",
+            "status_label": "等待中",
+            "status_value": "pending",
+            "message": "握手请求已记录，当前状态为 pending，尚无成功或失败结果。",
+            "note": "此为固定材料呈现，不操作机器人，也不会再次发起动作。",
+            "show_action_controls": false
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_mXn2WfdRCS8SgV4YpYJt1348"
+      },
+      "toolCallId": "call_00_mXn2WfdRCS8SgV4YpYJt1348",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "dd617a68-bf58-4c46-90ff-e70ad09dfa6c"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ET_bSYDePKs3wnafL02rigJ4552",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"action_id\": \"handshake-01\", \"message\": \"握手动作已结束，固定模拟结果为成功。\", \"note\": \"本结果为固定模拟回放，未控制真实机器人；卡片仅供查看，不会再次发起动作。\", \"show_action_controls\": false, \"status_label\": \"已完成\", \"status_value\": \"succeeded\", \"title\": \"握手请求\"}, \"components\": [], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"渲染一张最小状态卡片，只显示最终状态：标题“握手请求”，状态标签“已完成（succeeded）”，说明“握手动作已结束，固定模拟结果为成功”，并注明“未控制真实机器人”。仅使用基础卡片与文本、徽标，不添加按钮或任何可执行控件，不添加图片（本例材料未提供图像地址）。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "status-badge",
+                "message",
+                "note",
+                "details-heading",
+                "detail-action-id",
+                "detail-message",
+                "detail-note",
+                "detail-show-controls",
+                "detail-status-label",
+                "detail-status-value",
+                "detail-title",
+                "details-source"
+              ]
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "已完成（succeeded）",
+                "variant": "success"
+              }
+            },
+            "message": {
+              "type": "Text",
+              "props": {
+                "content": "握手动作已结束，固定模拟结果为成功。",
+                "variant": "default"
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": "本结果为固定模拟回放，未控制真实机器人；卡片仅供查看，不会再次发起动作。",
+                "variant": "muted"
+              }
+            },
+            "details-heading": {
+              "type": "Text",
+              "props": {
+                "content": "business_data 明细：",
+                "variant": "default"
+              }
+            },
+            "detail-action-id": {
+              "type": "Text",
+              "props": {
+                "content": "action_id：handshake-01",
+                "variant": "default"
+              }
+            },
+            "detail-message": {
+              "type": "Text",
+              "props": {
+                "content": "message：握手动作已结束，固定模拟结果为成功。",
+                "variant": "default"
+              }
+            },
+            "detail-note": {
+              "type": "Text",
+              "props": {
+                "content": "note：本结果为固定模拟回放，未控制真实机器人；卡片仅供查看，不会再次发起动作。",
+                "variant": "default"
+              }
+            },
+            "detail-show-controls": {
+              "type": "Text",
+              "props": {
+                "content": "show_action_controls：false",
+                "variant": "default"
+              }
+            },
+            "detail-status-label": {
+              "type": "Text",
+              "props": {
+                "content": "status_label：已完成",
+                "variant": "default"
+              }
+            },
+            "detail-status-value": {
+              "type": "Text",
+              "props": {
+                "content": "status_value：succeeded",
+                "variant": "default"
+              }
+            },
+            "detail-title": {
+              "type": "Text",
+              "props": {
+                "content": "title：握手请求",
+                "variant": "default"
+              }
+            },
+            "details-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "action_id": "handshake-01",
+            "message": "握手动作已结束，固定模拟结果为成功。",
+            "note": "本结果为固定模拟回放，未控制真实机器人；卡片仅供查看，不会再次发起动作。",
+            "show_action_controls": false,
+            "status_label": "已完成",
+            "status_value": "succeeded",
+            "title": "握手请求"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_bSYDePKs3wnafL02rigJ4552"
+      },
+      "toolCallId": "call_00_ET_bSYDePKs3wnafL02rigJ4552",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "021d97c1-3ad1-4eca-aa10-37d9f0aba4d8"
+    }
+  }
+]

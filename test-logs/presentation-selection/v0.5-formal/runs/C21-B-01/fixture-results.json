@@ -1,0 +1,56 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C21-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_wgAbhA449NQT4zdVFX5h2627"
+      },
+      "toolCallId": "call_00_ET_wgAbhA449NQT4zdVFX5h2627",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C21\",\"facts\":\"当前模拟前往食堂，尚无到达结论；目的地canteen。障碍与停止状态以随后事件为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "c2456123-9f17-43c7-b911-97b204eb087c"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "action": "read",
+        "run_id": "C21-B-01"
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_owbLJ4Z9QLIPnjwknjNf1981"
+      },
+      "toolCallId": "call_00_owbLJ4Z9QLIPnjwknjNf1981",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C21\",\"facts\":\"模拟导航遇door-1关闭，已停止；没有返回可用替代路线。\",\"assets\":[{\"id\":\"bench05-img-door\",\"file\":\"bench05-img-door.png\",\"alt\":\"MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture\",\"source_id\":\"img-door\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-door/content\",\"path\":\"/api/media/bench05-img-door/content\",\"sha256\":\"c369682198bea1e413f3b9cccdf6d581ad40466f1e6dba90a4ea11315fa036a2\",\"width\":960,\"height\":540}],\"status\":\"stopped\",\"obstacle\":\"door-1_closed\",\"alternative_route\":null}}"
+        }
+      ],
+      "isError": false,
+      "id": "e8f72ca1-e05f-403f-b962-a9e3a0b807f2"
+    }
+  }
+]

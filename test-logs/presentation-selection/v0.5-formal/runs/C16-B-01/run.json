@@ -1,0 +1,20 @@
+{
+  "run_id": "C16-B-01",
+  "case_id": "C16",
+  "card_id": "C16",
+  "category_id": "G05",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "B",
+  "repeat": 1,
+  "status": "partial",
+  "prompt": "【全量正式呈现测评 C16-B-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C16-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C16-B-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：张伟老师说文件准备好了，去他的办公室帮我拿一下。\n指定呈现方式：Image+交接阶段说明。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "87afde5bfa98f71ae55549f53d2d35dbedf80542abb0df8d494c61eccf695dc6",
+  "operator_actions": "模拟准备完成后展示doc-01；用户答“就是这个文件”，随后回放模拟交接状态。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T12:47:50.792Z",
+  "interactions": [],
+  "tab_id": "6",
+  "final_at": "2026-11-19T12:56:38.574Z",
+  "notes": "交接完成严格等模拟事件，最终状态和Image正确；确认前无文件图，确认后旧卡仍要求确认，之后才恢复；多个重复卡及原始字段路径外露，曾有未注册组件。"
+}

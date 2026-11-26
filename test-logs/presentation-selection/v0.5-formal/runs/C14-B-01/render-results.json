@@ -1,0 +1,284 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_l4yjqlLJtw08lT7e7DNe6194",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"business_data\": {\"image\": \"/api/media/bench05-img-left/content\", \"alt\": \"模拟图书馆左侧区域，14:00，座位已满\", \"title\": \"图书馆座位情况\", \"viewpoint\": \"左侧视角\", \"time\": \"14:00\", \"conclusion\": \"满座\", \"note\": \"其他视角尚未观察，暂不能确认是否有其他空座\", \"simulated\": true}, \"user_query\": \"只展示一张图片：Image 组件，src 取 business_data.image 的固定字符串，alt 用 business_data.alt。图片下方用简单文字列出：视角＝左侧视角、时间＝14:00、观察结论＝满座；并加一行提示：其他视角尚未观察，暂不能确认是否有其他空座。不要放地图、表单、选项卡或其他组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "image",
+                "title",
+                "viewpoint",
+                "time",
+                "conclusion",
+                "note",
+                "alt",
+                "imagePath",
+                "simulated",
+                "source"
+              ]
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-left/content",
+                "alt": "模拟图书馆左侧区域，14:00，座位已满",
+                "fit": "contain",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "eager"
+              }
+            },
+            "title": {
+              "type": "Text",
+              "props": {
+                "content": "标题：图书馆座位情况",
+                "variant": "default"
+              }
+            },
+            "viewpoint": {
+              "type": "Text",
+              "props": {
+                "content": "视角：左侧视角",
+                "variant": "default"
+              }
+            },
+            "time": {
+              "type": "Text",
+              "props": {
+                "content": "时间：14:00",
+                "variant": "default"
+              }
+            },
+            "conclusion": {
+              "type": "Text",
+              "props": {
+                "content": "观察结论：满座",
+                "variant": "default"
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": "提示：其他视角尚未观察，暂不能确认是否有其他空座",
+                "variant": "warning"
+              }
+            },
+            "alt": {
+              "type": "Text",
+              "props": {
+                "content": "图片替代文本：模拟图书馆左侧区域，14:00，座位已满",
+                "variant": "muted"
+              }
+            },
+            "imagePath": {
+              "type": "Text",
+              "props": {
+                "content": "图片地址：/api/media/bench05-img-left/content",
+                "variant": "muted"
+              }
+            },
+            "simulated": {
+              "type": "Text",
+              "props": {
+                "content": "模拟数据：true",
+                "variant": "muted"
+              }
+            },
+            "source": {
+              "type": "Text",
+              "props": {
+                "content": "数据出处：business_data",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "image": "/api/media/bench05-img-left/content",
+            "alt": "模拟图书馆左侧区域，14:00，座位已满",
+            "title": "图书馆座位情况",
+            "viewpoint": "左侧视角",
+            "time": "14:00",
+            "conclusion": "满座",
+            "note": "其他视角尚未观察，暂不能确认是否有其他空座",
+            "simulated": true
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_l4yjqlLJtw08lT7e7DNe6194"
+      },
+      "toolCallId": "call_00_l4yjqlLJtw08lT7e7DNe6194",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "322b4617-08ab-436c-9e51-edacfea211aa"
+    }
+  },
+  {
+    "call_seq": 67,
+    "result_seq": 68,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_ET_7hJyeFF6EUbThLvy37gL1149",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"模拟图书馆右侧区域，14:01，2个空位\", \"conclusion\": \"有 2 个空位\", \"image\": \"/api/media/bench05-img-right/content\", \"note\": \"仅为 14:01 的即时观察，不等于已预订或已保留座位\", \"observed_at\": \"14:01\", \"simulated\": true, \"title\": \"图书馆座位：右侧新观察\", \"viewpoint\": \"右侧视角\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"追加展示一张图片：Image 组件，src 取 business_data.image 的固定字符串，alt 用 business_data.alt。图片下方用简单文字列出：视角＝右侧视角、时间＝14:01、观察结论＝有 2 个空位；再加一行提示：这仅是 14:01 的即时观察，不等于已预订或已保留。不要放地图、表单、选项卡或其他组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "image",
+                "viewpoint",
+                "time",
+                "conclusion",
+                "simulated",
+                "alt",
+                "source",
+                "note"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "图书馆座位：右侧新观察",
+                "level": "h1"
+              }
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-right/content",
+                "alt": "模拟图书馆右侧区域，14:01，2个空位",
+                "fit": "contain",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "viewpoint": {
+              "type": "Text",
+              "props": {
+                "content": "视角＝右侧视角",
+                "variant": "default"
+              }
+            },
+            "time": {
+              "type": "Text",
+              "props": {
+                "content": "时间＝14:01",
+                "variant": "default"
+              }
+            },
+            "conclusion": {
+              "type": "Text",
+              "props": {
+                "content": "观察结论＝有 2 个空位",
+                "variant": "default"
+              }
+            },
+            "simulated": {
+              "type": "Text",
+              "props": {
+                "content": "模拟＝是",
+                "variant": "muted"
+              }
+            },
+            "alt": {
+              "type": "Text",
+              "props": {
+                "content": "图像说明＝模拟图书馆右侧区域，14:01，2个空位",
+                "variant": "muted"
+              }
+            },
+            "source": {
+              "type": "Text",
+              "props": {
+                "content": "来源＝/api/media/bench05-img-right/content",
+                "variant": "muted"
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": "提示＝仅为 14:01 的即时观察，不等于已预订或已保留座位",
+                "variant": "warning"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "模拟图书馆右侧区域，14:01，2个空位",
+            "conclusion": "有 2 个空位",
+            "image": "/api/media/bench05-img-right/content",
+            "note": "仅为 14:01 的即时观察，不等于已预订或已保留座位",
+            "observed_at": "14:01",
+            "simulated": true,
+            "title": "图书馆座位：右侧新观察",
+            "viewpoint": "右侧视角"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_7hJyeFF6EUbThLvy37gL1149"
+      },
+      "toolCallId": "call_00_ET_7hJyeFF6EUbThLvy37gL1149",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "0d82c029-ab54-4b94-ac7d-4545c4512a93"
+    }
+  }
+]

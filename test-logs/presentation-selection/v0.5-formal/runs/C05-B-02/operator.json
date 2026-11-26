@@ -1,0 +1,17 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C05",
+    "facts": "当前2026-11-06，周六为11月7日。用户和两位朋友共3人，下午具体时段未知。备注：带两位校外朋友参观。只做预约草稿，不实际预约或审批。字段date/slot/people/note。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true,
+  "submission": {
+    "response": {
+      "status": "draft_received",
+      "simulated": true,
+      "real_operation": false
+    }
+  }
+}

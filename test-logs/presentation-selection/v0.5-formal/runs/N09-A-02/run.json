@@ -1,0 +1,26 @@
+{
+  "run_id": "N09-A-02",
+  "case_id": "N09",
+  "card_id": "N09",
+  "category_id": "G09",
+  "scenario_domain": "non_campus",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 N09-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N09-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N09-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：安排这三个工作事项：审阅需求、整理报告、客户沟通。先按这个顺序列出，再让我调整并保存草稿。\n指定呈现方式：Markdown有序列表+文字调整并确认保存。。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "35ae0a7e5a4631c93ae51122303b1d03c7c6fefb987c9927c1b5119d4ffee0fa",
+  "operator_actions": "初始展示后用户要求“把客户沟通放第一项，其余相对顺序不变”；A文字改序并确认，B拖动client到第一位并点击应用；模拟保存后回执。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T05:49:35.160Z",
+  "interactions": [
+    {
+      "at": "2026-11-20T05:50:05.102Z",
+      "type": "text",
+      "value": "把客户沟通移到第一位，其余顺序保持，确认保存草稿。"
+    }
+  ],
+  "tab_id": "4",
+  "final_at": "2026-11-20T05:50:46.072Z",
+  "notes": "三项按client/review/report调整并以稳定ID实际提交，原相对顺序保留，草稿回执且未创建任务或联系客户。"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "seq": 10,
+    "time": 1795090720580,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 37,
+    "time": 1795090917521,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C11-B-01-paused",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C11-B-01-paused\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"follow-01已模拟暂停，目标仍为person-guide。\",\"assets\":[],\"simulated\":true,\"status\":\"paused\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+  },
+  {
+    "seq": 67,
+    "time": 1795091107939,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C11-B-01-continued",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C11-B-01-continued\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"follow-01已模拟继续跟随同一目标person-guide。\",\"assets\":[],\"simulated\":true,\"status\":\"following\",\"task_id\":\"follow-01\",\"target\":\"person-guide\"}}"
+  }
+]

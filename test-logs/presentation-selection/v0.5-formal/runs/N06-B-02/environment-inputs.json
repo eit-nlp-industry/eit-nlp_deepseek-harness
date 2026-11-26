@@ -1,0 +1,27 @@
+[
+  {
+    "seq": 10,
+    "time": 1795155306982,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 61,
+    "time": 1795155464962,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "N06-B-02-other_views",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"N06-B-02-other_views\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"item-lamp-01背面和边角细节已发布。固定观察结论仅为边角有一道划痕；成因、发生时间与退货政策未知。\",\"assets\":[{\"id\":\"bench05-lamp-back\",\"file\":\"bench05-lamp-back.png\",\"alt\":\"MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture\",\"source_id\":\"lamp-back\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-lamp-back/content\",\"path\":\"/api/media/bench05-lamp-back/content\",\"sha256\":\"c78125dc5e880906054a28d216dfd287535ec16975d24f3fbb9936358f5fa552\",\"width\":960,\"height\":540},{\"id\":\"bench05-lamp-detail\",\"file\":\"bench05-lamp-detail.png\",\"alt\":\"MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture\",\"source_id\":\"lamp-detail\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-lamp-detail/content\",\"path\":\"/api/media/bench05-lamp-detail/content\",\"sha256\":\"ed6da4b77bf5d796fe12a47c3082d3f398d1e73c8a1218b36c35da0287300427\",\"width\":960,\"height\":540}],\"simulated\":true,\"item_id\":\"item-lamp-01\",\"observation\":\"边角有一道划痕\"}}"
+  }
+]

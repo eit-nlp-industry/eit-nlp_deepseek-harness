@@ -15,6 +15,7 @@ const ORDER_INCOMPLETE = '排序 ID 不完整，无法提交'
 const ORDER_DUPLICATE = '排序 ID 重复，无法提交'
 const ORDER_ITEMS = '缺少条目数据，无法提交'
 const ITEM_DUPLICATE = '条目 ID 重复，无法提交'
+const FORM_ACTION_INVALID = '表单操作信息不完整，无法发送。请重新生成表单后再试。'
 
 /** One sortable or business record identified by a non-empty id. */
 interface ItemRecord extends Record<string, unknown> {
@@ -75,7 +76,14 @@ export function businessDataFromToolArguments(raw: unknown): unknown {
 export function decideJsonRenderSubmit(event: JsonRenderEvent, sources: JsonRenderSubmitSources): JsonRenderSubmitDecision {
   const name = event.event.name
   if (name === 'form.submit') {
-    return { action: 'send', releaseOnSuccess: false, text: describeForm(formValues(event), sources.payload) }
+    const action = event.payload?.form_action
+    if (action !== undefined && (!isRecord(action) || !nonEmpty(action.intent) || !nonEmpty(action.label))) {
+      return { action: 'reject', notice: FORM_ACTION_INVALID }
+    }
+    const intro = isRecord(action)
+      ? `用户选择的表单操作：${String(action.label)}（${String(action.intent)}）\n请按此意图处理；以下是点击时的当前表单值，尚不代表真实业务操作已完成。`
+      : undefined
+    return { action: 'send', releaseOnSuccess: false, text: describeForm(formValues(event), sources.payload, intro) }
   }
   if (name === 'workflow.save') return workflowDecision(event.payload)
   if (name === 'route.order.apply') return orderDecision(event.payload, sources)
@@ -108,7 +116,7 @@ function userBody(intro: string, data: unknown): string {
   return `${intro}\n${JSON.stringify(data)}`
 }
 
-function describeForm(value: unknown, payload: JsonRenderPayload): string {
+function describeForm(value: unknown, payload: JsonRenderPayload, intro?: string): string {
   const labels = new Map<string, string>()
   for (const element of Object.values(payload.spec.elements)) {
     const props = element.props
@@ -128,9 +136,12 @@ function describeForm(value: unknown, payload: JsonRenderPayload): string {
       }
     }
   }
-  const root = payload.spec.elements[payload.spec.root]?.props
-  const title = isRecord(root) && typeof root.title === 'string' && root.title.trim() !== '' ? root.title : '表单'
-  const lines = [`用户已提交${title}：`]
+  const rootElement = payload.spec.elements[payload.spec.root]
+  const root = rootElement?.props
+  const content = payload.spec.elements[rootElement?.children?.[0] ?? '']?.props
+  const title = isRecord(root) && nonEmpty(root.title) ? root.title
+    : rootElement?.type === 'Stack' && isRecord(content) && nonEmpty(content.title) ? content.title : '表单'
+  const lines = [intro === undefined ? `用户已提交${title}：` : `${intro}\n当前${title}：`]
   const describe = (item: unknown, label: string, indent: string): string[] => {
     if (Array.isArray(item)) {
       return item.length === 0 ? [`${indent}${label}：无选项`]
@@ -142,7 +153,7 @@ function describeForm(value: unknown, payload: JsonRenderPayload): string {
         : [`${indent}${label}：`, ...entries.flatMap(([key, entry]) => describe(entry, key, `${indent}  `))]
     }
     const text = item === '' || item === undefined ? '未填写' : item === null ? '空值'
-      : typeof item === 'boolean' ? (item ? '是' : '否') : String(item)
+      : typeof item === 'boolean' ? (item ? '是' : '否') : typeof item === 'string' ? item : JSON.stringify(item)
     return [`${indent}${label}：${text}`]
   }
   if (isRecord(value) && Object.keys(value).length > 0) {

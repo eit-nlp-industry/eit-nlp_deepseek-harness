@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_niFK1JTvA5TtB9svlCiu0154",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_parcel\", \"header\": \"确认包裹\", \"question\": \"照片中的包裹（订单尾号 8241）就是待寄出的这一件吗？确认后仅记录对象状态，不会寄出。\", \"options\": [{\"label\": \"是，就是这一件\", \"description\": \"仅把该包裹标记为已确认为待寄出对象，不发起寄件。\"}, {\"label\": \"不是这一件\", \"description\": \"暂不确认，保留当前待确认状态。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_niFK1JTvA5TtB9svlCiu0154"
+      },
+      "toolCallId": "call_00_niFK1JTvA5TtB9svlCiu0154",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_parcel\",\"selected\":[\"是，就是这一件\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "a74e4d27-cfe5-42a4-99d3-4f51dd3ade37"
+    }
+  }
+]

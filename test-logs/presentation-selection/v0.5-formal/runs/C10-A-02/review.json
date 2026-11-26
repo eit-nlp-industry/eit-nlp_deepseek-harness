@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "确认前真实图片已加载，确认后未提前报启动；按环境事件更新跟随中与丢失停止，未虚报恢复。"
+}

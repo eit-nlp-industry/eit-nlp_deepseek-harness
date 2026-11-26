@@ -1,0 +1,17 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C07-a",
+    "facts": "独立初始需求：2026-11-07、19:00–20:00、4人、白板和投屏，场地四明书院。用户更新后仅编辑草稿；可用时段未知，以模拟提交返回为准，不实际预约。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true,
+  "submission": {
+    "response": {
+      "status": "draft_received",
+      "simulated": true,
+      "real_operation": false
+    }
+  }
+}

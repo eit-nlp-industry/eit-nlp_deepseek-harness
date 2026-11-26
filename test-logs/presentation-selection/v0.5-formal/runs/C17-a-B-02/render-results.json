@@ -1,0 +1,763 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_F6U3mlxoGxdfGmx10vNZ9304",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"components\": [\"Image\"], \"user_query\": \"显示一张简洁的监视卡片：标题“门口开门提醒”，用两三行文字说明监视编号 watch-01、监视期限 5 分钟、门当前状态“关闭”、状态“观察中，等待开门事件”。若材料提供了门口摄像头图像地址，则在其下方放一个 Image 组件（src 使用材料给的原样地址，alt 描述为门口视角画面）；当前材料未提供任何图像地址，因此不要生成 Image，也不要用占位图或示意图片代替。卡片底部用一行小字提示：门一旦打开会立刻通知；这只是模拟观察，未收到事件前不会宣称已开门。\", \"business_data\": {\"title\": \"门口开门提醒\", \"watch_id\": \"watch-01\", \"duration\": \"5 分钟\", \"door_state\": \"关闭\", \"status\": \"观察中，等待开门事件\", \"simulated\": true, \"image_available\": false, \"image_note\": \"本例材料未提供门口画面地址，暂无图像\", \"fallback_text\": \"门口开门提醒：监视 watch-01 已开始，期限 5 分钟，门当前为关闭状态，正在等待开门事件；门开后立即告知。\"}}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_F6U3mlxoGxdfGmx10vNZ9304"
+      },
+      "toolCallId": "call_00_F6U3mlxoGxdfGmx10vNZ9304",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面生成失败，已尝试 3 次：生成的界面缺少组件：Image。请用文字继续回答。不要把错误 JSON 展示给用户。"
+        }
+      ],
+      "isError": false,
+      "id": "ce1e099f-e091-4188-99a3-c0ac61afff1d"
+    }
+  },
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_JIZTz28Emk92ejRRa1tV0850",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"门口开门提醒\", \"watch_id\": \"watch-01\", \"duration\": \"5 分钟\", \"door_state\": \"关闭\", \"status\": \"观察中，等待开门事件\", \"simulated\": true, \"image_available\": false, \"image_note\": \"本例材料未提供门口画面地址，因此本次无图像，仅用文字通知\", \"fallback_text\": \"门口开门提醒：监视 watch-01 已开始，期限 5 分钟，门当前为关闭状态，正在等待开门事件；门开后立即告知。\"}, \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"显示一张简洁的纯文字提醒卡片：标题“门口开门提醒”，随后分行列出监视编号 watch-01、监视期限 5 分钟、门当前状态“关闭”、状态“观察中，等待开门事件”。标记为模拟观察。不生成任何图片组件或占位图，材料未提供画面地址时以文字兜底说明“暂无门口画面”。卡片底部小字：门一旦打开会立刻通知，未收到事件前不会宣称已开门。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "reminder-card"
+              ]
+            },
+            "reminder-card": {
+              "type": "Card",
+              "props": {
+                "title": "门口开门提醒",
+                "variant": "outlined"
+              },
+              "children": [
+                "card-stack"
+              ]
+            },
+            "card-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "sim-badge",
+                "data-table",
+                "no-image",
+                "bottom-note"
+              ]
+            },
+            "sim-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟观察",
+                "variant": "warning"
+              }
+            },
+            "data-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "字段",
+                  "值",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "标题",
+                    "门口开门提醒",
+                    "business_data.title"
+                  ],
+                  [
+                    "监视编号",
+                    "watch-01",
+                    "business_data.watch_id"
+                  ],
+                  [
+                    "监视期限",
+                    "5 分钟",
+                    "business_data.duration"
+                  ],
+                  [
+                    "门当前状态",
+                    "关闭",
+                    "business_data.door_state"
+                  ],
+                  [
+                    "状态",
+                    "观察中，等待开门事件",
+                    "business_data.status"
+                  ],
+                  [
+                    "模拟观察",
+                    "true",
+                    "business_data.simulated"
+                  ],
+                  [
+                    "画面可用",
+                    "false",
+                    "business_data.image_available"
+                  ],
+                  [
+                    "画面说明",
+                    "本例材料未提供门口画面地址，因此本次无图像，仅用文字通知",
+                    "business_data.image_note"
+                  ],
+                  [
+                    "画面兜底",
+                    "暂无门口画面",
+                    "business_data.image_available=false"
+                  ],
+                  [
+                    "兜底文本",
+                    "门口开门提醒：监视 watch-01 已开始，期限 5 分钟，门当前为关闭状态，正在等待开门事件；门开后立即告知。",
+                    "business_data.fallback_text"
+                  ]
+                ]
+              }
+            },
+            "no-image": {
+              "type": "Text",
+              "props": {
+                "content": "暂无门口画面",
+                "variant": "muted"
+              }
+            },
+            "bottom-note": {
+              "type": "Text",
+              "props": {
+                "content": "门一旦打开会立刻通知，未收到事件前不会宣称已开门。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "门口开门提醒",
+            "watch_id": "watch-01",
+            "duration": "5 分钟",
+            "door_state": "关闭",
+            "status": "观察中，等待开门事件",
+            "simulated": true,
+            "image_available": false,
+            "image_note": "本例材料未提供门口画面地址，因此本次无图像，仅用文字通知",
+            "fallback_text": "门口开门提醒：监视 watch-01 已开始，期限 5 分钟，门当前为关闭状态，正在等待开门事件；门开后立即告知。"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_JIZTz28Emk92ejRRa1tV0850"
+      },
+      "toolCallId": "call_00_JIZTz28Emk92ejRRa1tV0850",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ebb54f7d-af3f-4529-80ed-857f55a05713"
+    }
+  },
+  {
+    "call_seq": 70,
+    "result_seq": 71,
+    "call": {
+      "turn": 4,
+      "step": 1,
+      "callId": "call_00_VBzRPWrv5gkRNXmbwqwh3808",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"door_state\": \"已打开\", \"duration\": \"5 分钟\", \"elapsed\": \"第 3 分钟\", \"fallback_text\": \"门已经开了：监视 watch-01 在第 3 分钟观察到门打开。\", \"image_available\": false, \"image_note\": \"本次材料未提供门口画面，仅用文字通知\", \"simulated\": true, \"status\": \"开门事件已发生\", \"title\": \"门开了\", \"watch_id\": \"watch-01\"}, \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"显示一张简洁的开门通知卡片：大标题“门开了”，下面两行文字：监视 watch-01 在第 3 分钟观察到门打开；监视期限 5 分钟。标记为模拟观察。不生成图片组件，材料未提供画面地址，用一行小字说明本次无门口画面、仅文字通知。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title-heading",
+                "status-stack",
+                "notification-card",
+                "image-note",
+                "details-section"
+              ]
+            },
+            "title-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "门开了",
+                "level": "h1"
+              }
+            },
+            "status-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "badge-simulated",
+                "status-text"
+              ]
+            },
+            "badge-simulated": {
+              "type": "Badge",
+              "props": {
+                "label": "模拟观察",
+                "variant": "warning"
+              }
+            },
+            "status-text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/status"
+                },
+                "variant": "success"
+              }
+            },
+            "notification-card": {
+              "type": "Card",
+              "props": {
+                "title": "开门通知",
+                "variant": "outlined"
+              },
+              "children": [
+                "notification-stack"
+              ]
+            },
+            "notification-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "line-fallback",
+                "duration-stack"
+              ]
+            },
+            "line-fallback": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "default"
+              }
+            },
+            "duration-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "duration-label",
+                "duration-value"
+              ]
+            },
+            "duration-label": {
+              "type": "Text",
+              "props": {
+                "content": "监视期限",
+                "variant": "muted"
+              }
+            },
+            "duration-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/duration"
+                },
+                "variant": "default"
+              }
+            },
+            "image-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/image_note"
+                },
+                "variant": "muted"
+              }
+            },
+            "details-section": {
+              "type": "Section",
+              "props": {
+                "title": "业务数据逐项",
+                "description": "按字段保留值、对比字段和出处，不做摘要。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "data-stack"
+              ]
+            },
+            "data-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "row-title",
+                "row-status",
+                "row-door-state",
+                "row-watch-id",
+                "row-elapsed",
+                "row-duration",
+                "row-simulated",
+                "row-image-available",
+                "row-image-note",
+                "row-fallback-text"
+              ]
+            },
+            "row-title": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-title-label",
+                "row-title-value",
+                "row-title-source"
+              ]
+            },
+            "row-title-label": {
+              "type": "Text",
+              "props": {
+                "content": "title",
+                "variant": "muted"
+              }
+            },
+            "row-title-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/title"
+                },
+                "variant": "default"
+              }
+            },
+            "row-title-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.title",
+                "variant": "muted"
+              }
+            },
+            "row-status": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-status-label",
+                "row-status-value",
+                "row-status-source"
+              ]
+            },
+            "row-status-label": {
+              "type": "Text",
+              "props": {
+                "content": "status",
+                "variant": "muted"
+              }
+            },
+            "row-status-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/status"
+                },
+                "variant": "default"
+              }
+            },
+            "row-status-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.status",
+                "variant": "muted"
+              }
+            },
+            "row-door-state": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-door-state-label",
+                "row-door-state-value",
+                "row-door-state-source"
+              ]
+            },
+            "row-door-state-label": {
+              "type": "Text",
+              "props": {
+                "content": "door_state",
+                "variant": "muted"
+              }
+            },
+            "row-door-state-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/door_state"
+                },
+                "variant": "default"
+              }
+            },
+            "row-door-state-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.door_state",
+                "variant": "muted"
+              }
+            },
+            "row-watch-id": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-watch-id-label",
+                "row-watch-id-value",
+                "row-watch-id-source"
+              ]
+            },
+            "row-watch-id-label": {
+              "type": "Text",
+              "props": {
+                "content": "watch_id",
+                "variant": "muted"
+              }
+            },
+            "row-watch-id-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/watch_id"
+                },
+                "variant": "default"
+              }
+            },
+            "row-watch-id-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.watch_id",
+                "variant": "muted"
+              }
+            },
+            "row-elapsed": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-elapsed-label",
+                "row-elapsed-value",
+                "row-elapsed-source"
+              ]
+            },
+            "row-elapsed-label": {
+              "type": "Text",
+              "props": {
+                "content": "elapsed",
+                "variant": "muted"
+              }
+            },
+            "row-elapsed-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/elapsed"
+                },
+                "variant": "default"
+              }
+            },
+            "row-elapsed-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.elapsed",
+                "variant": "muted"
+              }
+            },
+            "row-duration": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-duration-label",
+                "row-duration-value",
+                "row-duration-source"
+              ]
+            },
+            "row-duration-label": {
+              "type": "Text",
+              "props": {
+                "content": "duration",
+                "variant": "muted"
+              }
+            },
+            "row-duration-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/duration"
+                },
+                "variant": "default"
+              }
+            },
+            "row-duration-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.duration",
+                "variant": "muted"
+              }
+            },
+            "row-simulated": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-simulated-label",
+                "row-simulated-value",
+                "row-simulated-source"
+              ]
+            },
+            "row-simulated-label": {
+              "type": "Text",
+              "props": {
+                "content": "simulated",
+                "variant": "muted"
+              }
+            },
+            "row-simulated-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/simulated"
+                },
+                "variant": "warning"
+              }
+            },
+            "row-simulated-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.simulated",
+                "variant": "muted"
+              }
+            },
+            "row-image-available": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-image-available-label",
+                "row-image-available-value",
+                "row-image-available-source"
+              ]
+            },
+            "row-image-available-label": {
+              "type": "Text",
+              "props": {
+                "content": "image_available",
+                "variant": "muted"
+              }
+            },
+            "row-image-available-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/image_available"
+                },
+                "variant": "default"
+              }
+            },
+            "row-image-available-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.image_available",
+                "variant": "muted"
+              }
+            },
+            "row-image-note": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-image-note-label",
+                "row-image-note-value",
+                "row-image-note-source"
+              ]
+            },
+            "row-image-note-label": {
+              "type": "Text",
+              "props": {
+                "content": "image_note",
+                "variant": "muted"
+              }
+            },
+            "row-image-note-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/image_note"
+                },
+                "variant": "default"
+              }
+            },
+            "row-image-note-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.image_note",
+                "variant": "muted"
+              }
+            },
+            "row-fallback-text": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "row-fallback-text-label",
+                "row-fallback-text-value",
+                "row-fallback-text-source"
+              ]
+            },
+            "row-fallback-text-label": {
+              "type": "Text",
+              "props": {
+                "content": "fallback_text",
+                "variant": "muted"
+              }
+            },
+            "row-fallback-text-value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "default"
+              }
+            },
+            "row-fallback-text-source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data.fallback_text",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "door_state": "已打开",
+            "duration": "5 分钟",
+            "elapsed": "第 3 分钟",
+            "fallback_text": "门已经开了：监视 watch-01 在第 3 分钟观察到门打开。",
+            "image_available": false,
+            "image_note": "本次材料未提供门口画面，仅用文字通知",
+            "simulated": true,
+            "status": "开门事件已发生",
+            "title": "门开了",
+            "watch_id": "watch-01"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_VBzRPWrv5gkRNXmbwqwh3808"
+      },
+      "toolCallId": "call_00_VBzRPWrv5gkRNXmbwqwh3808",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ed31d329-2f19-4d37-9c40-319d661f63a2"
+    }
+  }
+]

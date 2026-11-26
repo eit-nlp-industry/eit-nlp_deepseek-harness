@@ -1,0 +1,108 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C23-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_QfqKV2jlHwXzCavEwoIQ1005"
+      },
+      "toolCallId": "call_00_QfqKV2jlHwXzCavEwoIQ1005",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C23\",\"facts\":\"流程wf-material-v1：到林老师门口→敲门等待材料放好→拍图等待用户确认→确认后送回。等待上限未指定，可通过编辑步骤说明补充；只保存模拟草稿，不执行、无永久记忆。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "2cf712c0-ec09-4c06-ae54-7a3941ba2c5b"
+    }
+  },
+  {
+    "call": {
+      "seq": 40,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C23-B-02",
+        "values": {
+          "workflow": {
+            "schema": "workflow-v1",
+            "id": "wf-material-v1",
+            "name": "到林老师处取材料并送回",
+            "version": 2,
+            "status": "draft",
+            "variables": {},
+            "parameters": {},
+            "steps": [
+              {
+                "id": "s1",
+                "type": "action",
+                "title": "到林老师门口",
+                "description": "到达林老师门口。"
+              },
+              {
+                "id": "s2",
+                "type": "action",
+                "title": "敲门并等老师把材料放好",
+                "description": "先敲门；等林老师把材料放好后再取。等待上限为2分钟。"
+              },
+              {
+                "id": "s3",
+                "type": "action",
+                "title": "拍照发给用户确认",
+                "description": "拍下材料的照片发给用户，等待用户确认。"
+              },
+              {
+                "id": "s4",
+                "type": "action",
+                "title": "确认后送回",
+                "description": "用户确认后把材料送回。"
+              }
+            ],
+            "edges": [
+              {
+                "from": "s1",
+                "to": "s2"
+              },
+              {
+                "from": "s2",
+                "to": "s3"
+              },
+              {
+                "from": "s3",
+                "to": "s4"
+              }
+            ]
+          },
+          "parameters": {}
+        }
+      }
+    },
+    "result_seq": 41,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_LD71BORLyZEWL8dsa6ZY3306"
+      },
+      "toolCallId": "call_00_LD71BORLyZEWL8dsa6ZY3306",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"version\":2,\"submitted\":{\"workflow\":{\"schema\":\"workflow-v1\",\"id\":\"wf-material-v1\",\"name\":\"到林老师处取材料并送回\",\"version\":2,\"status\":\"draft\",\"variables\":{},\"parameters\":{},\"steps\":[{\"id\":\"s1\",\"type\":\"action\",\"title\":\"到林老师门口\",\"description\":\"到达林老师门口。\"},{\"id\":\"s2\",\"type\":\"action\",\"title\":\"敲门并等老师把材料放好\",\"description\":\"先敲门；等林老师把材料放好后再取。等待上限为2分钟。\"},{\"id\":\"s3\",\"type\":\"action\",\"title\":\"拍照发给用户确认\",\"description\":\"拍下材料的照片发给用户，等待用户确认。\"},{\"id\":\"s4\",\"type\":\"action\",\"title\":\"确认后送回\",\"description\":\"用户确认后把材料送回。\"}],\"edges\":[{\"from\":\"s1\",\"to\":\"s2\"},{\"from\":\"s2\",\"to\":\"s3\"},{\"from\":\"s3\",\"to\":\"s4\"}]},\"parameters\":{}}}}"
+        }
+      ],
+      "isError": false,
+      "id": "53fbad86-e5fc-4da5-818a-6860edf75f90"
+    }
+  }
+]

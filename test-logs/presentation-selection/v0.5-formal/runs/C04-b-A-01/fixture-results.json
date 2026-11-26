@@ -1,0 +1,64 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C04-b-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_WkdRMn6UPoMuxFDTprPT6481"
+      },
+      "toolCallId": "call_00_ET_WkdRMn6UPoMuxFDTprPT6481",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C04-b\",\"facts\":\"半日游偏好尚未提供：时段可选上午或下午；地点可多选图书馆、食堂、四明书院；另可填写补充想法。推荐只作建议，不等于提交。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "d30ba735-fc16-438c-90bd-9a9ec9a7561c"
+    }
+  },
+  {
+    "call": {
+      "seq": 37,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C04-b-A-01",
+        "values": {
+          "timeslot": "下午",
+          "places": [
+            "食堂",
+            "四明书院"
+          ],
+          "notes": "少走路"
+        }
+      }
+    },
+    "result_seq": 38,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_LwWB9MTLlUUkarTMCexN4386"
+      },
+      "toolCallId": "call_00_ET_LwWB9MTLlUUkarTMCexN4386",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "83571f98-43be-4d62-9c27-26b0bdd01df1"
+    }
+  }
+]

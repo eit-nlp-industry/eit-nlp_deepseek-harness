@@ -1,0 +1,290 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "图书馆路线排序测评 刚刚" [selected]:
+    - generic: 图书馆路线排序测评
+    - generic: 刚刚
+  - treeitem "已完成 测评场景握手回执 1分钟":
+    - generic: 已完成
+    - generic: 测评场景握手回执
+    - generic: 1分钟
+  - treeitem "已完成 握手需求简短回执测评 1分钟":
+    - generic: 已完成
+    - generic: 握手需求简短回执测评
+    - generic: 1分钟
+  - treeitem "已完成 老师不在告知流程确认 2分钟":
+    - generic: 已完成
+    - generic: 老师不在告知流程确认
+    - generic: 2分钟
+  - treeitem "已完成 条件分支文字修改确认 3分钟":
+    - generic: 已完成
+    - generic: 条件分支文字修改确认
+    - generic: 3分钟
+  - treeitem "已完成 林老师材料取送流程确认 4分钟":
+    - generic: 已完成
+    - generic: 林老师材料取送流程确认
+    - generic: 4分钟
+  - treeitem "已完成 林老师材料取送流程 5分钟":
+    - generic: 已完成
+    - generic: 林老师材料取送流程
+    - generic: 5分钟
+  - treeitem "已完成 饮水机不出水照片草稿测评 5分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片草稿测评
+    - generic: 5分钟
+  - treeitem "已完成 C18-B-02 门口补拍呈现测评 8分钟":
+    - generic: 已完成
+    - generic: C18-B-02 门口补拍呈现测评
+    - generic: 8分钟
+  - treeitem "已完成 饮水机照片呈现测评 9分钟":
+    - generic: 已完成
+    - generic: 饮水机照片呈现测评
+    - generic: 9分钟
+  - treeitem "已完成 食堂导航门图测评 11分钟":
+    - generic: 已完成
+    - generic: 食堂导航门图测评
+    - generic: 11分钟
+  - treeitem "已完成 食堂导航原生门图测评 11分钟":
+    - generic: 已完成
+    - generic: 食堂导航原生门图测评
+    - generic: 11分钟
+  - treeitem "已完成 图书馆导盲犬路线呈现测评 13分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线呈现测评
+    - generic: 13分钟
+  - treeitem "已完成 图书馆导盲犬路线测评 13分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线测评
+    - generic: 13分钟
+  - treeitem "补拍门口并结束观察 13分钟":
+    - generic: 补拍门口并结束观察
+    - generic: 13分钟
+  - treeitem "已完成 图书馆用餐回程排序 14分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐回程排序
+    - generic: 14分钟
+  - treeitem "已完成 五分钟门开提醒测评 14分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 14分钟
+  - treeitem "已完成 图书馆用餐与回程排序 14分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐与回程排序
+    - generic: 14分钟
+  - treeitem "门开提醒：图像通知呈现 23分钟":
+    - generic: 门开提醒：图像通知呈现
+    - generic: 23分钟
+  - treeitem "已完成 监视门开提醒呈现 29分钟":
+    - generic: 已完成
+    - generic: 监视门开提醒呈现
+    - generic: 29分钟
+  - treeitem "已完成 门口补拍并结束观察 32分钟":
+    - generic: 已完成
+    - generic: 门口补拍并结束观察
+    - generic: 32分钟
+  - treeitem "已完成 补拍门口并结束观察 32分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 32分钟
+  - treeitem "门开五分钟提醒呈现测评 36分钟":
+    - generic: 门开五分钟提醒呈现测评
+    - generic: 36分钟
+  - treeitem "已完成 五分钟门开提醒测评 38分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 38分钟
+  - treeitem "已完成 门开五分钟提醒文字通知 38分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒文字通知
+    - generic: 38分钟
+  - treeitem "已完成 门开提醒固定材料测评 43分钟":
+    - generic: 已完成
+    - generic: 门开提醒固定材料测评
+    - generic: 43分钟
+  - treeitem "已完成 门开提醒测试 43分钟":
+    - generic: 已完成
+    - generic: 门开提醒测试
+    - generic: 43分钟
+  - treeitem "已完成 文件交接呈现测评 C16-B-02 45分钟":
+    - generic: 已完成
+    - generic: 文件交接呈现测评 C16-B-02
+    - generic: 45分钟
+  - treeitem "全量正式呈现测评 C16-B-01 45分钟":
+    - generic: 全量正式呈现测评 C16-B-01
+    - generic: 45分钟
+  - treeitem "已完成 全量正式呈现测评 C16-A-02 47分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 47分钟
+  - treeitem "已完成 正式呈现测评 C16-A-01 47分钟":
+    - generic: 已完成
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 47分钟
+  - treeitem "已完成 外卖取餐确认测评 51分钟":
+    - generic: 已完成
+    - generic: 外卖取餐确认测评
+    - generic: 51分钟
+  - treeitem "已完成 外卖取件模拟呈现 56分钟":
+    - generic: 已完成
+    - generic: 外卖取件模拟呈现
+    - generic: 56分钟
+  - treeitem "外卖取件图像确认测评 56分钟":
+    - generic: 外卖取件图像确认测评
+    - generic: 56分钟
+  - treeitem "已完成 外卖取件确认测评 C15-A-01 57分钟":
+    - generic: 已完成
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 57分钟
+  - treeitem "已完成 图书馆座位图像呈现测评 58分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像呈现测评
+    - generic: 58分钟
+  - treeitem "已完成 图书馆座位查询测评 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位查询测评
+    - generic: 1小时
+  - treeitem "图书馆座位图像化呈现 1小时":
+    - generic: 图书馆座位图像化呈现
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位新视角图测评 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位新视角图测评
+    - generic: 1小时
+  - treeitem "已完成 安静读书地点推荐测评 1小时":
+    - generic: 已完成
+    - generic: 安静读书地点推荐测评
+    - generic: 1小时
+  - treeitem "已完成 安静读书场所推荐测评 1小时":
+    - generic: 已完成
+    - generic: 安静读书场所推荐测评
+    - generic: 1小时
+  - treeitem "已完成 安静读书地点推荐卡片 1小时":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片
+    - generic: 1小时
+  - treeitem "已完成 安静读书地点推荐卡片测评 1小时":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆找灰衣拉箱同学 1小时":
+    - generic: 已完成
+    - generic: 图书馆找灰衣拉箱同学
+    - generic: 1小时
+  - treeitem "已完成 图书馆入口找同学 1小时":
+    - generic: 已完成
+    - generic: 图书馆入口找同学
+    - generic: 1小时
+  - treeitem "已完成 最小状态暂停展示 1小时":
+    - generic: 已完成
+    - generic: 最小状态暂停展示
+    - generic: 1小时
+  - treeitem "已完成 模拟暂停最小状态测试 1小时":
+    - generic: 已完成
+    - generic: 模拟暂停最小状态测试
+    - generic: 1小时
+  - treeitem "C12-B-01图书馆寻人呈现测评 1小时":
+    - generic: C12-B-01图书馆寻人呈现测评
+    - generic: 1小时
+  - treeitem "图书馆入口灰衣拉箱同学寻找 1小时":
+    - generic: 图书馆入口灰衣拉箱同学寻找
+    - generic: 1小时
+  - treeitem "暂停等待控制回执测评 1小时":
+    - generic: 暂停等待控制回执测评
+    - generic: 1小时
+  - button "展开其余 121 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 图书馆路线排序测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C19-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C19-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C19-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：图书馆、吃饭、回四明书院，帮我排一下。 指定呈现方式：SortableSequence实际拖动+应用；按稳定ID回传。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。 排序接入规范：根Stack内放SortableSequence和独立应用Button两个兄弟节点；叶子SortableSequence不能承载按钮children。value用$bindState绑定/_ui/order，完整初始ID数组；应用发route.order.apply，order用$state读取最新值，保留全部items。
+- generic: 21:32
+- button "复制":
+- status: 已完成
+- button "已完成，用时 55秒":
+  - generic: 已完成，用时 55秒
+- paragraph: 我先查看这个案例当前的固定材料。
+- heading "调整你的行程顺序" [level=2]
+- generic: 拖动下面三个地点卡片排序，排好后点「应用顺序」。仅保存排序草稿，不导航。
+- paragraph: 拖动手柄排序，或聚焦手柄使用 ↑ ↓ / Home / End
+- list:
+  - generic: "01"
+  - strong: 图书馆
+  - button "移动 图书馆": ⠿
+  - generic: "02"
+  - strong: 食堂
+  - button "移动 食堂": ⠿
+  - generic: "03"
+  - strong: 四明书院
+  - button "移动 四明书院": ⠿
+- status
+- button "应用顺序":
+  - generic: 应用顺序
+- generic: 四明书院的地图位置尚未确认。
+- generic: 当前初始顺序：图书馆 → 食堂 → 四明书院。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支" [disabled]:
+- generic: 仅可从已完成轮次的最后一条消息分支
+- button "用量 5.6K tok":
+  - generic: 用量 5.6K tok
+- generic: 21:32
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

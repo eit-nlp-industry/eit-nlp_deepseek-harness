@@ -1,0 +1,808 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_jk2bfI7eo5ac8vcYAYH94146",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Tabs\", \"Image\"], \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"用 Tabs 展示商品的三个视角页签：正面、背面、瑕疵细节。每个页签内放一个 Image 组件展示该视角图片，并配简短说明。正面页签有已发布图片，使用材料给定路径；背面与瑕疵细节页签没有已发布图片，必须在页签内显示\\\"该视角图片尚未发布\\\"的占位说明，不得使用正面图片代替，也不显示任何图片地址。页签下方显示商品标识 item-lamp-01、当前可核对的视角数量，以及\\\"退货政策与损伤成因尚未发布，暂不判断退货资格\\\"。整体保留可读的文字兜底。\", \"business_data\": {\"商品\": \"item-lamp-01（虚构样例商品）\", \"标题\": \"商品视角核对：正面 / 背面 / 瑕疵细节\", \"页签\": [{\"名称\": \"正面\", \"状态\": \"已发布\", \"image\": \"/api/media/bench05-lamp-front/content\", \"alt\": \"MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture\", \"说明\": \"已发布的商品正面视角图（960×540）。\", \"尺寸\": \"960×540\"}, {\"名称\": \"背面\", \"状态\": \"尚未发布\", \"说明\": \"该视角图片尚未发布，暂无可核对的背面图像；不使用正面图代替。\"}, {\"名称\": \"瑕疵细节\", \"状态\": \"尚未发布\", \"说明\": \"该视角图片尚未发布，暂无可核对的瑕疵细节图像；不使用正面图代替。\"}], \"已可核对视角\": \"1 个（正面）\", \"未发布视角\": \"2 个（背面、瑕疵细节）\", \"退货提示\": \"商品退货政策、损伤成因与发生时间均未发布，因此不判断是否具备退货资格，也不预报申请结果。\", \"文字兜底\": \"正面视角图已可查看：路径 /api/media/bench05-lamp-front/content，替代文本 MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture，尺寸 960×540。背面与瑕疵细节两个视角尚未发布，目前无法提供图像，也无法据此评估瑕疵。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Section",
+              "props": {
+                "title": "商品视角核对：正面 / 背面 / 瑕疵细节",
+                "description": "逐项展示已发布与未发布视角；未发布视角不使用正面图代替。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "tabs",
+                "overviewCard",
+                "fallbackCard"
+              ]
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "front",
+                    "label": "正面"
+                  },
+                  {
+                    "value": "back",
+                    "label": "背面"
+                  },
+                  {
+                    "value": "detail",
+                    "label": "瑕疵细节"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activeTab"
+                },
+                "defaultValue": "front",
+                "disabled": false
+              },
+              "children": [
+                "frontPane",
+                "backPane",
+                "detailPane"
+              ]
+            },
+            "frontPane": {
+              "type": "TabContent",
+              "props": {
+                "value": "front"
+              },
+              "children": [
+                "frontStack"
+              ]
+            },
+            "frontStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "frontImage",
+                "frontInfo"
+              ]
+            },
+            "frontImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-front/content",
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "caption": "正面视角图（960×540）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "frontInfo": {
+              "type": "Descriptions",
+              "props": {
+                "title": "正面视角信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "视角",
+                    "value": "正面"
+                  },
+                  {
+                    "label": "状态",
+                    "value": "已发布"
+                  },
+                  {
+                    "label": "尺寸",
+                    "value": "960×540"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "已发布的商品正面视角图（960×540）。"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture"
+                  }
+                ]
+              }
+            },
+            "backPane": {
+              "type": "TabContent",
+              "props": {
+                "value": "back"
+              },
+              "children": [
+                "backStack"
+              ]
+            },
+            "backStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "backCallout",
+                "backInfo"
+              ]
+            },
+            "backCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "背面视角尚未发布",
+                "description": "该视角图片尚未发布，暂无可核对的背面图像；不使用正面图代替。",
+                "showIcon": true
+              }
+            },
+            "backInfo": {
+              "type": "Descriptions",
+              "props": {
+                "title": "背面视角信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "视角",
+                    "value": "背面"
+                  },
+                  {
+                    "label": "状态",
+                    "value": "尚未发布"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "该视角图片尚未发布，暂无可核对的背面图像；不使用正面图代替。"
+                  }
+                ]
+              }
+            },
+            "detailPane": {
+              "type": "TabContent",
+              "props": {
+                "value": "detail"
+              },
+              "children": [
+                "detailStack"
+              ]
+            },
+            "detailStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "detailCallout",
+                "detailInfo"
+              ]
+            },
+            "detailCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "瑕疵细节视角尚未发布",
+                "description": "该视角图片尚未发布，暂无可核对的瑕疵细节图像；不使用正面图代替。",
+                "showIcon": true
+              }
+            },
+            "detailInfo": {
+              "type": "Descriptions",
+              "props": {
+                "title": "瑕疵细节视角信息",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "视角",
+                    "value": "瑕疵细节"
+                  },
+                  {
+                    "label": "状态",
+                    "value": "尚未发布"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "该视角图片尚未发布，暂无可核对的瑕疵细节图像；不使用正面图代替。"
+                  }
+                ]
+              }
+            },
+            "overviewCard": {
+              "type": "Card",
+              "props": {
+                "title": "核对概览",
+                "variant": "outlined"
+              },
+              "children": [
+                "overviewStack"
+              ]
+            },
+            "overviewStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "overviewDescriptions",
+                "viewTable",
+                "returnCallout"
+              ]
+            },
+            "overviewDescriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "商品与视角数量",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "商品标识",
+                    "value": "item-lamp-01（虚构样例商品）"
+                  },
+                  {
+                    "label": "已可核对视角数量",
+                    "value": "1 个（正面）"
+                  },
+                  {
+                    "label": "未发布视角数量",
+                    "value": "2 个（背面、瑕疵细节）"
+                  },
+                  {
+                    "label": "数据出处",
+                    "value": "business_data 运行时状态"
+                  }
+                ]
+              }
+            },
+            "viewTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "视角",
+                  "状态",
+                  "说明",
+                  "尺寸"
+                ],
+                "rows": [
+                  [
+                    "正面",
+                    "已发布",
+                    "已发布的商品正面视角图（960×540）。",
+                    "960×540"
+                  ],
+                  [
+                    "背面",
+                    "尚未发布",
+                    "该视角图片尚未发布，暂无可核对的背面图像；不使用正面图代替。",
+                    "未提供"
+                  ],
+                  [
+                    "瑕疵细节",
+                    "尚未发布",
+                    "该视角图片尚未发布，暂无可核对的瑕疵细节图像；不使用正面图代替。",
+                    "未提供"
+                  ]
+                ]
+              }
+            },
+            "returnCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "退货资格暂不判断",
+                "description": "退货政策与损伤成因尚未发布，暂不判断退货资格。商品退货政策、损伤成因与发生时间均未发布，因此不判断是否具备退货资格，也不预报申请结果。",
+                "showIcon": true
+              }
+            },
+            "fallbackCard": {
+              "type": "Card",
+              "props": {
+                "title": "文字兜底",
+                "variant": "filled"
+              },
+              "children": [
+                "fallbackStack"
+              ]
+            },
+            "fallbackStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "fallbackText",
+                "fallbackSource"
+              ]
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/文字兜底"
+                },
+                "variant": "default"
+              }
+            },
+            "fallbackSource": {
+              "type": "Text",
+              "props": {
+                "content": "数据出处：business_data 运行时状态；字段逐项对应，未合并为摘要。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "商品": "item-lamp-01（虚构样例商品）",
+            "标题": "商品视角核对：正面 / 背面 / 瑕疵细节",
+            "页签": [
+              {
+                "名称": "正面",
+                "状态": "已发布",
+                "image": "/api/media/bench05-lamp-front/content",
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "说明": "已发布的商品正面视角图（960×540）。",
+                "尺寸": "960×540"
+              },
+              {
+                "名称": "背面",
+                "状态": "尚未发布",
+                "说明": "该视角图片尚未发布，暂无可核对的背面图像；不使用正面图代替。"
+              },
+              {
+                "名称": "瑕疵细节",
+                "状态": "尚未发布",
+                "说明": "该视角图片尚未发布，暂无可核对的瑕疵细节图像；不使用正面图代替。"
+              }
+            ],
+            "已可核对视角": "1 个（正面）",
+            "未发布视角": "2 个（背面、瑕疵细节）",
+            "退货提示": "商品退货政策、损伤成因与发生时间均未发布，因此不判断是否具备退货资格，也不预报申请结果。",
+            "文字兜底": "正面视角图已可查看：路径 /api/media/bench05-lamp-front/content，替代文本 MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture，尺寸 960×540。背面与瑕疵细节两个视角尚未发布，目前无法提供图像，也无法据此评估瑕疵。",
+            "_ui": {
+              "activeTab": "front"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_jk2bfI7eo5ac8vcYAYH94146"
+      },
+      "toolCallId": "call_00_jk2bfI7eo5ac8vcYAYH94146",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "68ba8546-8d56-4fda-bec8-016f0517b794"
+    }
+  },
+  {
+    "call_seq": 44,
+    "result_seq": 45,
+    "call": {
+      "turn": 1,
+      "step": 5,
+      "callId": "call_00_iBRz8hapaVJfiKnaHeB39409",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"components\": [\"Tabs\", \"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"用 Tabs 展示商品 item-lamp-01 的三个视角页签：正面、背面、瑕疵细节；现在三个视角图片均已发布。每个页签内放一个 Image 组件展示该页签对应的图片，并用一句简短说明标注视角名称与尺寸。三张图必须各自使用材料中的对应路径，不得互换或重复。瑕疵细节页签下方给出固定观察结论\\\"边角有一道划痕\\\"，并注明成因、发生时间与退货政策均未发布，因此不判断退货资格、不预报申请结果。整体保留可读的文字兜底。\", \"business_data\": {\"商品\": \"item-lamp-01（虚构样例商品）\", \"标题\": \"商品视角核对：正面 / 背面 / 瑕疵细节\", \"页签\": [{\"名称\": \"正面\", \"状态\": \"已发布\", \"image\": \"/api/media/bench05-lamp-front/content\", \"alt\": \"MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture\", \"说明\": \"商品正面视角，960×540。\", \"尺寸\": \"960×540\"}, {\"名称\": \"背面\", \"状态\": \"已发布\", \"image\": \"/api/media/bench05-lamp-back/content\", \"alt\": \"MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture\", \"说明\": \"商品背面视角，960×540。\", \"尺寸\": \"960×540\"}, {\"名称\": \"瑕疵细节\", \"状态\": \"已发布\", \"image\": \"/api/media/bench05-lamp-detail/content\", \"alt\": \"MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture\", \"说明\": \"边角划痕细节视角，960×540。\", \"尺寸\": \"960×540\"}], \"观察结论\": \"边角有一道划痕\", \"未发布信息\": [\"划痕成因\", \"划痕发生时间\", \"退货政策\"], \"退货提示\": \"材料仅给出边角有一道划痕的观察结论；成因、发生时间与退货政策未知，因此不判断是否具备退货资格，也不预报申请结果。\", \"文字兜底\": \"正面图：/api/media/bench05-lamp-front/content；背面图：/api/media/bench05-lamp-back/content；瑕疵细节图：/api/media/bench05-lamp-detail/content（均为 960×540）。固定观察结论：边角有一道划痕。成因、发生时间与退货政策未发布，暂不判断退货资格。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "subtitle",
+                "listSection",
+                "tabsSection",
+                "fallbackSection"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "商品视角核对：正面 / 背面 / 瑕疵细节",
+                "level": "h1"
+              }
+            },
+            "subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/商品"
+                },
+                "variant": "muted"
+              }
+            },
+            "listSection": {
+              "type": "Section",
+              "props": {
+                "title": "视角清单与发布状态",
+                "description": "来源字段：页签；数值与路径按材料逐项列出。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "listTable"
+              ]
+            },
+            "listTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "视角",
+                  "状态",
+                  "尺寸",
+                  "说明",
+                  "图片路径"
+                ],
+                "rows": [
+                  [
+                    "正面",
+                    "已发布",
+                    "960×540",
+                    "商品正面视角，960×540。",
+                    "/api/media/bench05-lamp-front/content"
+                  ],
+                  [
+                    "背面",
+                    "已发布",
+                    "960×540",
+                    "商品背面视角，960×540。",
+                    "/api/media/bench05-lamp-back/content"
+                  ],
+                  [
+                    "瑕疵细节",
+                    "已发布",
+                    "960×540",
+                    "边角划痕细节视角，960×540。",
+                    "/api/media/bench05-lamp-detail/content"
+                  ]
+                ]
+              }
+            },
+            "tabsSection": {
+              "type": "Section",
+              "props": {
+                "title": "视角页签",
+                "description": "切换查看正面、背面与瑕疵细节图片。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "tabs"
+              ]
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "front",
+                    "label": "正面"
+                  },
+                  {
+                    "value": "back",
+                    "label": "背面"
+                  },
+                  {
+                    "value": "detail",
+                    "label": "瑕疵细节"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activeTab"
+                },
+                "disabled": false
+              },
+              "children": [
+                "tabFront",
+                "tabBack",
+                "tabDetail"
+              ]
+            },
+            "tabFront": {
+              "type": "TabContent",
+              "props": {
+                "value": "front"
+              },
+              "children": [
+                "frontStack"
+              ]
+            },
+            "frontStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "frontImage",
+                "frontCaption"
+              ]
+            },
+            "frontImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-front/content",
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "frontCaption": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/页签/0/说明"
+                },
+                "variant": "default"
+              }
+            },
+            "tabBack": {
+              "type": "TabContent",
+              "props": {
+                "value": "back"
+              },
+              "children": [
+                "backStack"
+              ]
+            },
+            "backStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "backImage",
+                "backCaption"
+              ]
+            },
+            "backImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-back/content",
+                "alt": "MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "backCaption": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/页签/1/说明"
+                },
+                "variant": "default"
+              }
+            },
+            "tabDetail": {
+              "type": "TabContent",
+              "props": {
+                "value": "detail"
+              },
+              "children": [
+                "detailStack"
+              ]
+            },
+            "detailStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "detailImage",
+                "detailCaption",
+                "conclusionCallout",
+                "unpublishedList",
+                "returnNote"
+              ]
+            },
+            "detailImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lamp-detail/content",
+                "alt": "MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "detailCaption": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/页签/2/说明"
+                },
+                "variant": "default"
+              }
+            },
+            "conclusionCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "固定观察结论",
+                "description": "边角有一道划痕",
+                "showIcon": true
+              }
+            },
+            "unpublishedList": {
+              "type": "List",
+              "props": {
+                "title": "未发布信息",
+                "items": [
+                  {
+                    "title": "划痕成因",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "划痕发生时间",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "退货政策",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            },
+            "returnNote": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/退货提示"
+                },
+                "variant": "warning"
+              }
+            },
+            "fallbackSection": {
+              "type": "Section",
+              "props": {
+                "title": "文字兜底",
+                "description": "若图片预览不可用，可阅读以下文字记录。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "fallbackText"
+              ]
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/文字兜底"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "商品": "item-lamp-01（虚构样例商品）",
+            "标题": "商品视角核对：正面 / 背面 / 瑕疵细节",
+            "页签": [
+              {
+                "名称": "正面",
+                "状态": "已发布",
+                "image": "/api/media/bench05-lamp-front/content",
+                "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+                "说明": "商品正面视角，960×540。",
+                "尺寸": "960×540"
+              },
+              {
+                "名称": "背面",
+                "状态": "已发布",
+                "image": "/api/media/bench05-lamp-back/content",
+                "alt": "MOCK LAMP BACK; item-lamp-01 | BACK; synthetic fixture",
+                "说明": "商品背面视角，960×540。",
+                "尺寸": "960×540"
+              },
+              {
+                "名称": "瑕疵细节",
+                "状态": "已发布",
+                "image": "/api/media/bench05-lamp-detail/content",
+                "alt": "MOCK LAMP DETAIL; item-lamp-01 | CORNER SCRATCH; synthetic fixture",
+                "说明": "边角划痕细节视角，960×540。",
+                "尺寸": "960×540"
+              }
+            ],
+            "观察结论": "边角有一道划痕",
+            "未发布信息": [
+              "划痕成因",
+              "划痕发生时间",
+              "退货政策"
+            ],
+            "退货提示": "材料仅给出边角有一道划痕的观察结论；成因、发生时间与退货政策未知，因此不判断是否具备退货资格，也不预报申请结果。",
+            "文字兜底": "正面图：/api/media/bench05-lamp-front/content；背面图：/api/media/bench05-lamp-back/content；瑕疵细节图：/api/media/bench05-lamp-detail/content（均为 960×540）。固定观察结论：边角有一道划痕。成因、发生时间与退货政策未发布，暂不判断退货资格。",
+            "_ui": {
+              "activeTab": "front"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_iBRz8hapaVJfiKnaHeB39409"
+      },
+      "toolCallId": "call_00_iBRz8hapaVJfiKnaHeB39409",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "9afcf2ac-e41e-45dd-94b4-2fae36741ae1"
+    }
+  }
+]

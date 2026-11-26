@@ -616,6 +616,13 @@
   width: 100%;
 }
 
+.panel :global(.eit-jr-stack--vertical:has(.eit-jr-form)),
+.panel :global(.eit-jr-stack--vertical:has(.eit-jr-form-field)) {
+  align-self: stretch;
+  width: 100%;
+  min-width: 0;
+}
+
 .panel :global(.ant-form-item) {
   flex: none;
 }
@@ -799,7 +806,7 @@
   height: 44px;
   padding-inline: 20px;
   border-radius: var(--dsw-radius-md);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.02em;
   box-shadow: none !important;
   transition: background var(--ds-transition-duration-fast) var(--ds-ease-in-out), border-color var(--ds-transition-duration-fast) var(--ds-ease-in-out), color var(--ds-transition-duration-fast) var(--ds-ease-in-out);
@@ -871,6 +878,7 @@
 
 .panel :global(.eit-jr-stack--horizontal:has(> .eit-jr-button)) {
   width: 100%;
+  flex-wrap: wrap;
 }
 
 /* ── popups portalled into the panel ────────────────────────────────────── */

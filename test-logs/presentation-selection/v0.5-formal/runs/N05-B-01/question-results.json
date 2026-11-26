@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_HmmpwYlLzRsljCal0Glt2420",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_parcel\", \"header\": \"确认包裹\", \"question\": \"图中这件包裹，就是订单尾号 8241 待寄出的那一件吗？确认后我只记录对象状态，不会寄出。\", \"options\": [{\"label\": \"是，就是这一件\", \"description\": \"仅把 parcel-8241 标记为已确认为待寄出对象，不执行寄件。\"}, {\"label\": \"不是这一件\", \"description\": \"保持未确认状态，不记录为待寄出对象。\"}, {\"label\": \"图片没显示，我看不到\", \"description\": \"先不记录状态，稍后可重试展示图片。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_HmmpwYlLzRsljCal0Glt2420"
+      },
+      "toolCallId": "call_00_HmmpwYlLzRsljCal0Glt2420",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_parcel\",\"selected\":[],\"custom\":\"是这件，确认。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "20c39aff-3d54-488d-a9b5-7fc893a94999"
+    }
+  }
+]

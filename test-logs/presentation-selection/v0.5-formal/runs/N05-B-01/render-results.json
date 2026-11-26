@@ -1,0 +1,156 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_dgT9P8Up7KPGOyNvnc6J6143",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"answer_presentation\": \"replace\", \"locale\": \"zh-CN\", \"user_query\": \"只用 Image 组件完整展示待寄出包裹照片（保持完整不裁切），图片下方放一行简短确认提示文字：「订单尾号 8241 · 是否就是这一件？」并注明确认后只记录对象状态，不会寄出。页面上除 Image 外不要渲染其他富组件。\", \"business_data\": {\"title\": \"待寄出包裹（订单尾号 8241）\", \"image\": \"/api/media/bench05-img-parcel-8241/content\", \"alt\": \"MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture\", \"order_tail\": \"8241\", \"candidate_id\": \"parcel-8241\", \"status\": \"pending_confirmation\", \"prompt\": \"订单尾号 8241 · 是否就是这一件？\", \"note\": \"确认后只记录对象状态，不会寄出。\", \"fallback_text\": \"待寄出包裹照片（模拟图，MOCK PARCEL 8241）；唯一候选 parcel-8241，订单尾号 8241；当前状态：待确认。如图片未显示，可说明看不到图。确认后只记录对象状态，不寄件。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "title-data",
+                "parcel-image",
+                "confirm-line",
+                "order-tail-data",
+                "candidate-data",
+                "status-data",
+                "image-path-data",
+                "alt-data",
+                "prompt-data",
+                "note-data",
+                "fallback-data"
+              ]
+            },
+            "title-data": {
+              "type": "Text",
+              "props": {
+                "content": "标题（business_data.title）：待寄出包裹（订单尾号 8241）",
+                "variant": "default"
+              }
+            },
+            "parcel-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-parcel-8241/content",
+                "alt": "MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "eager"
+              }
+            },
+            "confirm-line": {
+              "type": "Text",
+              "props": {
+                "content": "订单尾号 8241 · 是否就是这一件？确认后只记录对象状态，不会寄出。",
+                "variant": "default"
+              }
+            },
+            "order-tail-data": {
+              "type": "Text",
+              "props": {
+                "content": "订单尾号（business_data.order_tail）：8241",
+                "variant": "muted"
+              }
+            },
+            "candidate-data": {
+              "type": "Text",
+              "props": {
+                "content": "候选对象 ID（business_data.candidate_id）：parcel-8241",
+                "variant": "muted"
+              }
+            },
+            "status-data": {
+              "type": "Text",
+              "props": {
+                "content": "状态（business_data.status）：pending_confirmation",
+                "variant": "muted"
+              }
+            },
+            "image-path-data": {
+              "type": "Text",
+              "props": {
+                "content": "图片地址（business_data.image）：/api/media/bench05-img-parcel-8241/content",
+                "variant": "muted"
+              }
+            },
+            "alt-data": {
+              "type": "Text",
+              "props": {
+                "content": "替代文本（business_data.alt）：MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture",
+                "variant": "muted"
+              }
+            },
+            "prompt-data": {
+              "type": "Text",
+              "props": {
+                "content": "提示（business_data.prompt）：订单尾号 8241 · 是否就是这一件？",
+                "variant": "muted"
+              }
+            },
+            "note-data": {
+              "type": "Text",
+              "props": {
+                "content": "备注（business_data.note）：确认后只记录对象状态，不会寄出。",
+                "variant": "muted"
+              }
+            },
+            "fallback-data": {
+              "type": "Text",
+              "props": {
+                "content": "图片未显示说明（business_data.fallback_text）：待寄出包裹照片（模拟图，MOCK PARCEL 8241）；唯一候选 parcel-8241，订单尾号 8241；当前状态：待确认。如图片未显示，可说明看不到图。确认后只记录对象状态，不寄件。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "待寄出包裹（订单尾号 8241）",
+            "image": "/api/media/bench05-img-parcel-8241/content",
+            "alt": "MOCK PARCEL 8241; CANDIDATE parcel-8241; synthetic fixture",
+            "order_tail": "8241",
+            "candidate_id": "parcel-8241",
+            "status": "pending_confirmation",
+            "prompt": "订单尾号 8241 · 是否就是这一件？",
+            "note": "确认后只记录对象状态，不会寄出。",
+            "fallback_text": "待寄出包裹照片（模拟图，MOCK PARCEL 8241）；唯一候选 parcel-8241，订单尾号 8241；当前状态：待确认。如图片未显示，可说明看不到图。确认后只记录对象状态，不寄件。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_dgT9P8Up7KPGOyNvnc6J6143"
+      },
+      "toolCallId": "call_00_dgT9P8Up7KPGOyNvnc6J6143",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "c2808c08-9b28-4efb-a879-d0fad468b2ba"
+    }
+  }
+]

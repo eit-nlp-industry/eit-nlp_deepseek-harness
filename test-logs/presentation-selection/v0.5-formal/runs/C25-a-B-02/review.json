@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 3,
+  "state": 5,
+  "presentation": "partial",
+  "reason": "同一动作从pending正确更新成功，未重发；文字与卡片重复，存在未注册组件。"
+}

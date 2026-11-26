@@ -1,0 +1,138 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base 工作区“est_knowledge_base”的操作 在“est_knowledge_base”中新建会话":
+    - generic: est_knowledge_base
+    - button "工作区“est_knowledge_base”的操作":
+    - button "在“est_knowledge_base”中新建会话":
+  - status
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "6000元内轻薄本推荐比较 15小时":
+    - generic: 6000元内轻薄本推荐比较
+    - generic: 15小时
+  - treeitem "6000元内轻薄本推荐测评 15小时":
+    - generic: 6000元内轻薄本推荐测评
+    - generic: 15小时
+  - treeitem "测评 C21-B-01 食堂导航 16小时":
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 16小时
+  - treeitem "企业服务套餐概览介绍 16小时":
+    - generic: 企业服务套餐概览介绍
+    - generic: 16小时
+  - treeitem "企业服务套餐介绍测评 16小时":
+    - generic: 企业服务套餐介绍测评
+    - generic: 16小时
+  - treeitem "图书馆地图预览测评 C20-B-02 16小时" [selected]:
+    - generic: 图书馆地图预览测评 C20-B-02
+    - generic: 16小时
+  - button "展开其余 179 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 图书馆地图预览测评 C20-B-02
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C20-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C20-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C20-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：我想先去图书馆，叫一只狗来带我吧。 指定呈现方式：MapPreview静态示意，真实点位与路线渲染。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。 MapPreview是无自定义底图参数的示意图：另用Image显示给定同一底图，再用MapPreview画给定归一坐标和route；两者一起标明静态示意。不得虚构background等不支持的属性。
+- generic: 11月19日 21:37
+- button "复制":
+- status: 已完成
+- button "已完成，用时 6分13秒":
+  - generic: 已完成，用时 6分13秒
+- paragraph: 我先获取本题的固定材料。
+- paragraph: 静态示意页面两次都没能加载出来（界面渲染请求超时），所以下面先用文字给你完整的图面信息：
+- paragraph:
+  - strong: 去图书馆 · 动线（静态示意，非实时定位）
+- list:
+  - listitem: 机器狗：(0,2)，图上位置 (10,50)
+  - listitem: 你：(2,2)，图上位置 (30,50)
+  - listitem: 图书馆：(6,2)，图上位置 (70,50)
+  - text: 路线：机器狗 → 你 → 图书馆，依次经过 (10,50) → (30,50) → (70,50)；单位是示意格，坐标按 x=10+10
+  - emphasis: x、y=70-10
+  - text: y 换算
+- paragraph:
+  - strong: 关于要显示的内容
+- list:
+  - text: 底图（假定材料提供的静态网格图）地址：
+  - code: /api/media/bench05-campus-map/content
+  - text: （完整地址：
+  - link "http://127.0.0.1:3080/api/media/bench05-campus-map/content":
+    - /url: http://127.0.0.1:3080/api/media/bench05-campus-map/content
+    - text: http://127.0.0.1:3080/api/media/bench05-campus-map/content
+  - text: ），图像说明为“MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture”。
+  - text: 示意页面需要由
+  - code: Image
+  - text: 和
+  - code: MapPreview
+  - text: 两部分组成：
+  - code: Image
+  - text: 显示上面这张底图，
+  - code: MapPreview
+  - text: 在同一坐标系里画出三个点和路线；这两部分是配套在一起的，只是现在没能正常显示。
+- paragraph:
+  - strong: 说明
+  - text: ：以上是固定材料生成的静态示意图，没有实时定位；机器狗带路这件事还没有真正派单，也还没有开始执行。如果你需要，我可以再试一次加载图形示意页面。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 18.4K tok":
+  - generic: 用量 18.4K tok
+- generic: 11月19日 21:44
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%
+- 'button "复制: D:\\work\\project\\est_knowledge_base"':
+  - generic: est_knowledge_base
+  - generic: D:\work\project\est_knowledge_base
+  - generic: 创建于 2026年10月15日 15:56

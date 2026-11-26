@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 5,
+  "presentation": "partial",
+  "reason": "四机型比较及两轮硬条件结论正确，实际表格可见。多个比较卡状态组件未注册，业务字段泄露且重复；追问断言真实续航差距会缩小但不会消失，固定材料不支持。"
+}

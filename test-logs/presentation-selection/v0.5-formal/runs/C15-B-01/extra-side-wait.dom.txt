@@ -1,0 +1,369 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 全量正式呈现测评 C16-A-02 刚刚":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 刚刚
+  - treeitem "已完成 正式呈现测评 C16-A-01 刚刚":
+    - generic: 已完成
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 刚刚
+  - treeitem "已完成 外卖取餐确认测评 1分钟":
+    - generic: 已完成
+    - generic: 外卖取餐确认测评
+    - generic: 1分钟
+  - treeitem "等待回答 外卖取件模拟呈现":
+    - generic: 等待回答
+    - generic: 外卖取件模拟呈现
+    - generic: 待回答
+  - treeitem "等待回答 外卖取件图像确认测评" [selected]:
+    - generic: 等待回答
+    - generic: 外卖取件图像确认测评
+    - generic: 待回答
+  - treeitem "已完成 外卖取件确认测评 C15-A-01 7分钟":
+    - generic: 已完成
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 7分钟
+  - treeitem "已完成 图书馆座位图像呈现测评 8分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像呈现测评
+    - generic: 8分钟
+  - treeitem "已完成 图书馆座位查询测评 10分钟":
+    - generic: 已完成
+    - generic: 图书馆座位查询测评
+    - generic: 10分钟
+  - treeitem "图书馆座位图像化呈现 10分钟":
+    - generic: 图书馆座位图像化呈现
+    - generic: 10分钟
+  - treeitem "已完成 图书馆座位新视角图测评 10分钟":
+    - generic: 已完成
+    - generic: 图书馆座位新视角图测评
+    - generic: 10分钟
+  - treeitem "已完成 安静读书地点推荐测评 13分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐测评
+    - generic: 13分钟
+  - treeitem "已完成 安静读书场所推荐测评 14分钟":
+    - generic: 已完成
+    - generic: 安静读书场所推荐测评
+    - generic: 14分钟
+  - treeitem "已完成 安静读书地点推荐卡片 14分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片
+    - generic: 14分钟
+  - treeitem "已完成 安静读书地点推荐卡片测评 16分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片测评
+    - generic: 16分钟
+  - treeitem "已完成 图书馆找灰衣拉箱同学 16分钟":
+    - generic: 已完成
+    - generic: 图书馆找灰衣拉箱同学
+    - generic: 16分钟
+  - treeitem "已完成 图书馆入口找同学 18分钟":
+    - generic: 已完成
+    - generic: 图书馆入口找同学
+    - generic: 18分钟
+  - treeitem "已完成 最小状态暂停展示 19分钟":
+    - generic: 已完成
+    - generic: 最小状态暂停展示
+    - generic: 19分钟
+  - treeitem "已完成 模拟暂停最小状态测试 19分钟":
+    - generic: 已完成
+    - generic: 模拟暂停最小状态测试
+    - generic: 19分钟
+  - treeitem "C12-B-01图书馆寻人呈现测评 19分钟":
+    - generic: C12-B-01图书馆寻人呈现测评
+    - generic: 19分钟
+  - treeitem "图书馆入口灰衣拉箱同学寻找 22分钟":
+    - generic: 图书馆入口灰衣拉箱同学寻找
+    - generic: 22分钟
+  - treeitem "暂停等待控制回执测评 25分钟":
+    - generic: 暂停等待控制回执测评
+    - generic: 25分钟
+  - treeitem "已完成 短暂停等用户取物 25分钟":
+    - generic: 已完成
+    - generic: 短暂停等用户取物
+    - generic: 25分钟
+  - treeitem "等待回答 跟随参观同学的图像状态呈现测评":
+    - generic: 等待回答
+    - generic: 跟随参观同学的图像状态呈现测评
+    - generic: 待回答
+  - treeitem "等待回答 跟着参观同学的状态展示":
+    - generic: 等待回答
+    - generic: 跟着参观同学的状态展示
+    - generic: 待回答
+  - treeitem "跟随参观同学的原生图像核对 29分钟":
+    - generic: 跟随参观同学的原生图像核对
+    - generic: 29分钟
+  - treeitem "等待回答 跟着同学参观的测评任务":
+    - generic: 等待回答
+    - generic: 跟着同学参观的测评任务
+    - generic: 待回答
+  - treeitem "已完成 C09-B-02 固定材料初始化测评 32分钟":
+    - generic: 已完成
+    - generic: C09-B-02 固定材料初始化测评
+    - generic: 32分钟
+  - treeitem "已完成 测评 C07-b 时间改约表单 33分钟":
+    - generic: 已完成
+    - generic: 测评 C07-b 时间改约表单
+    - generic: 33分钟
+  - treeitem "已完成 C09-B-01 固定材料呈现测评 34分钟":
+    - generic: 已完成
+    - generic: C09-B-01 固定材料呈现测评
+    - generic: 34分钟
+  - treeitem "C09-A-02 benchmark fixture initialization 34分钟":
+    - generic: C09-A-02 benchmark fixture initialization
+    - generic: 34分钟
+  - treeitem "已完成 C09-A-01固定材料初始化测评 34分钟":
+    - generic: 已完成
+    - generic: C09-A-01固定材料初始化测评
+    - generic: 34分钟
+  - treeitem "已完成 记住用户小张的图片确认测评 37分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的图片确认测评
+    - generic: 37分钟
+  - treeitem "小张记忆与图像确认提示测评 37分钟":
+    - generic: 小张记忆与图像确认提示测评
+    - generic: 37分钟
+  - treeitem "已完成 调整冲突说明与替代时段表单 37分钟":
+    - generic: 已完成
+    - generic: 调整冲突说明与替代时段表单
+    - generic: 37分钟
+  - treeitem "小张身份记忆测评 38分钟":
+    - generic: 小张身份记忆测评
+    - generic: 38分钟
+  - treeitem "已完成 记住用户小张的测评 39分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的测评
+    - generic: 39分钟
+  - treeitem "已完成 评测呈现：冲突说明与替代时段表单 39分钟":
+    - generic: 已完成
+    - generic: 评测呈现：冲突说明与替代时段表单
+    - generic: 39分钟
+  - treeitem "已完成 用户改约8点后时段冲突呈现 40分钟":
+    - generic: 已完成
+    - generic: 用户改约8点后时段冲突呈现
+    - generic: 40分钟
+  - treeitem "已完成 会议室预订时间调整确认 42分钟":
+    - generic: 已完成
+    - generic: 会议室预订时间调整确认
+    - generic: 42分钟
+  - treeitem "调整会议安排确认 42分钟":
+    - generic: 调整会议安排确认
+    - generic: 42分钟
+  - treeitem "已完成 全量呈现测评 C07-a-A-02 46分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评 C07-a-A-02
+    - generic: 46分钟
+  - treeitem "时间改到8点后的需求确认 46分钟":
+    - generic: 时间改到8点后的需求确认
+    - generic: 46分钟
+  - treeitem "更新草稿并提交 47分钟":
+    - generic: 更新草稿并提交
+    - generic: 47分钟
+  - treeitem "已完成 调整图书馆行程安排 47分钟":
+    - generic: 已完成
+    - generic: 调整图书馆行程安排
+    - generic: 47分钟
+  - treeitem "已完成 图书馆一小时行程草稿 47分钟":
+    - generic: 已完成
+    - generic: 图书馆一小时行程草稿
+    - generic: 47分钟
+  - treeitem "已完成 图书馆行程改为一小时 47分钟":
+    - generic: 已完成
+    - generic: 图书馆行程改为一小时
+    - generic: 47分钟
+  - treeitem "已完成 校外访客参观预约流程 49分钟":
+    - generic: 已完成
+    - generic: 校外访客参观预约流程
+    - generic: 49分钟
+  - treeitem "校外朋友参观预约咨询 49分钟":
+    - generic: 校外朋友参观预约咨询
+    - generic: 49分钟
+  - treeitem "已完成 C05-B-01 访客参观预填表单测评 50分钟":
+    - generic: 已完成
+    - generic: C05-B-01 访客参观预填表单测评
+    - generic: 50分钟
+  - treeitem "已完成 校外访客参观审批预填表单 50分钟":
+    - generic: 已完成
+    - generic: 校外访客参观审批预填表单
+    - generic: 50分钟
+  - button "展开其余 92 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 外卖取件图像确认测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 C15-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C15-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C15-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：我的外卖在学校大门，帮我取一下，尾号3726。 指定呈现方式：Image多轮展示；仅确认当前候选。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 20:36
+- button "复制":
+- status: 已完成
+- button "已完成，用时 2分54秒":
+  - generic: 已完成，用时 2分54秒
+- paragraph: 我先获取这个案例的材料。
+- group "问题与回答":
+  - term:
+    - generic: 确认候选
+    - generic: 远景图中的这个包裹是否为你的（当前候选 parcel-3726，尾号 3726）？
+  - definition: 先不确认，靠近一点让我看。
+  - generic: 20:38
+  - button "复制":
+- group "问题与回答":
+  - term:
+    - generic: 下一步
+    - generic: 近景画面目前还没有出来，你想怎么做？
+  - definition: 先不确认，等近景出来再看（推荐）
+  - generic: 20:39
+  - button "复制":
+- paragraph: 好的，先不确认，就这样保持当前状态。
+- list:
+  - text: 当前候选：parcel-3726（订单尾号 3726），状态为
+  - strong: 待确认
+  - text: 。我没有替你确认。
+  - listitem: 现在能看到的视角只有远景一张（img-far）；近景、侧景画面还没有发布，所以这次给不出放大画面，我也不会拿远景图冒充近景。
+  - listitem: 近景视角发布后，我再把新画面展示给你看，由你决定是否确认这个包裹。
+- paragraph: 你随时可以告诉我就按远景直接确认，或者取消这次取件；在那之前，我会继续等待。
+- heading "当前候选包裹" [level=1]
+- generic: 当前候选：parcel-3726（尾号 3726），状态：待你确认
+- generic: 远景图像
+- figure "当前视角：远景（img-far）":
+  - button "预览 MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture":
+    - img "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture"
+  - generic: 当前视角：远景（img-far）
+- generic: 近景与侧景图像尚未发布，暂无其他视角可展示
+- heading "候选包裹信息" [level=3]
+- paragraph: 逐项列出当前候选包裹的相关字段与取值。
+- generic: 组件未注册
+- heading "当前候选：parcel-3726（尾号 3726），仍待确认" [level=2]
+- figure:
+  - button "预览 MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture":
+    - img "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture"
+- generic: 仍为远景视角（img-far），未获得近景画面
+- generic: 近景与侧景视角尚未发布，暂无放大画面可展示
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 26.6K tok":
+  - generic: 用量 26.6K tok
+- generic: 20:39
+- button "收到执行请求 20:40":
+  - generic: 收到执行请求
+  - time: 20:40
+- button "思考 Near view released. Verify via read? We can read to confirm. Then display the near image in round 3, still only confirming current candidate, wait for user.":
+  - generic: 思考
+  - generic: Near view released. Verify via read? We can read to confirm. Then display the near image in round 3, still only confirming current candidate, wait for user.
+- button "工具调用 benchmark_fixture · read":
+  - generic: 工具调用
+  - generic: benchmark_fixture · read
+- generic: 界面已附在回答末尾。
+- button "提问 1/1 已回答":
+  - generic: 提问
+  - generic: 1/1 已回答
+- group "问题与回答":
+  - term:
+    - generic: 确认候选
+    - generic: 近景已到：包裹上能看到尾号 3726。这个 parcel-3726 是你的吗？
+  - definition: 先不确认，再看一下侧面。
+  - generic: 20:41
+  - button "复制":
+- button "思考 User wants side view. Not released. Read fixture? Event only released near. Read returns only released facts — near only. Side not available. Say honestly, offer to wait.":
+  - generic: 思考
+  - generic: User wants side view. Not released. Read fixture? Event only released near. Read returns only released facts — near only. Side not available. Say honestly, offer to wait.
+- button "工具调用 benchmark_fixture · read":
+  - generic: 工具调用
+  - generic: benchmark_fixture · read
+- 'button "思考 Confirmed: only near released now (far earlier no longer listed but still exists as previously released asset). Side view not available."':
+  - generic: 思考
+  - generic: "Confirmed: only near released now (far earlier no longer listed but still exists as previously released asset). Side view not available."
+- paragraph: 侧面画面还没有发布，现在能展示的仍然只有远景和近景两张，所以暂时给不了侧面视角。我不会把近景或远景图当作侧景来展示。
+- list:
+  - text: 当前候选：parcel-3726（订单尾号 3726），状态：
+  - strong: 待确认
+  - text: ，你还没有确认。
+- text: 等待你的操作 · 侧面视角还没有发布，你想等，还是先根据近景做决定？
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "侧面视角还没有发布，你想等，还是先根据近景做决定？":
+  - generic: 下一步
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "侧面视角还没有发布，你想等，还是先根据近景做决定？" [level=2]
+  - radiogroup:
+    - radio "等侧面画面出来再看" [checked]:
+      - generic: "1"
+      - generic: 等侧面画面出来再看
+      - generic: 推荐
+      - generic: 保持未确认，侧景发布后再展示。
+    - radio "不等了，按近景确认":
+      - generic: "2"
+      - generic: 不等了，按近景确认
+      - generic: 基于已有的远景和近景确认 candidate parcel-3726。
+    - radio "取消，不取了":
+      - generic: "3"
+      - generic: 取消，不取了
+      - generic: 不按这个候选继续。
+    - textbox "输入你的答案"
+  - button "上一题" [disabled]:
+  - generic: 1 / 1
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交"

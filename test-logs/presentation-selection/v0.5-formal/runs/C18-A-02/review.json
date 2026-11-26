@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "补拍图可见，停止与返回结果分别更新；晚到旧记录明确不代表当前状态，未恢复监测。"
+}

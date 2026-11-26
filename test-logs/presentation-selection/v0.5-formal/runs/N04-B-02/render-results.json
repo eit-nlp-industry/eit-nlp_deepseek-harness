@@ -1,0 +1,185 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_zoiZkRF9i2TB9mhuDX9x2896",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"user_query\": \"渲染一个包含三个字段的表单，用于确认活动需求：1) 用途 purpose，自由文字输入，不预填默认值；2) 人数 people，正整数数字输入，不预填默认值；3) 形式 format，在\\\"线上\\\"和\\\"线下\\\"两项中单选，不预选任何一项。表单提交按钮用于提交这三项真实取值。字段旁注明：收齐三项后只做需求汇总，不开始安排。不需要任何图片或其他富组件。\", \"business_data\": {\"title\": \"活动需求确认\", \"description\": \"请先填写以下三项信息：用途、人数、线上或线下。三项收齐后仅做需求汇总，不会开始安排。\", \"fields\": [{\"name\": \"purpose\", \"label\": \"用途\", \"type\": \"text\", \"placeholder\": \"请填写活动用途\", \"required\": true, \"value\": null}, {\"name\": \"people\", \"label\": \"人数\", \"type\": \"number\", \"placeholder\": \"请填写正整数人数\", \"min\": 1, \"step\": 1, \"required\": true, \"value\": null}, {\"name\": \"format\", \"label\": \"形式\", \"type\": \"single_select\", \"options\": [{\"label\": \"线上\", \"value\": \"线上\"}, {\"label\": \"线下\", \"value\": \"线下\"}], \"required\": true, \"value\": null}], \"submit_label\": \"提交\", \"note\": \"当前三项均未知，不设推荐默认值。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "heading",
+                "description",
+                "note",
+                "form",
+                "submit"
+              ]
+            },
+            "heading": {
+              "type": "Heading",
+              "props": {
+                "text": "活动需求确认",
+                "level": "h1"
+              }
+            },
+            "description": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/description"
+                },
+                "variant": "default"
+              }
+            },
+            "note": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "说明",
+                "description": "三项收齐后仅做需求汇总，不会开始安排。",
+                "showIcon": true
+              }
+            },
+            "form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "input",
+                    "key": "purpose",
+                    "label": "用途",
+                    "placeholder": "请填写活动用途"
+                  },
+                  {
+                    "type": "inputNumber",
+                    "key": "people",
+                    "label": "人数",
+                    "placeholder": "请填写正整数人数"
+                  },
+                  {
+                    "type": "select",
+                    "key": "format",
+                    "label": "形式",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "线上",
+                          "label": "线上"
+                        },
+                        {
+                          "value": "线下",
+                          "label": "线下"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "活动需求确认",
+            "description": "请先填写以下三项信息：用途、人数、线上或线下。三项收齐后仅做需求汇总，不会开始安排。",
+            "fields": [
+              {
+                "name": "purpose",
+                "label": "用途",
+                "type": "text",
+                "placeholder": "请填写活动用途",
+                "required": true,
+                "value": null
+              },
+              {
+                "name": "people",
+                "label": "人数",
+                "type": "number",
+                "placeholder": "请填写正整数人数",
+                "min": 1,
+                "step": 1,
+                "required": true,
+                "value": null
+              },
+              {
+                "name": "format",
+                "label": "形式",
+                "type": "single_select",
+                "options": [
+                  {
+                    "label": "线上",
+                    "value": "线上"
+                  },
+                  {
+                    "label": "线下",
+                    "value": "线下"
+                  }
+                ],
+                "required": true,
+                "value": null
+              }
+            ],
+            "submit_label": "提交",
+            "note": "当前三项均未知，不设推荐默认值。",
+            "form": {
+              "purpose": "",
+              "people": 0,
+              "format": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_zoiZkRF9i2TB9mhuDX9x2896"
+      },
+      "toolCallId": "call_00_zoiZkRF9i2TB9mhuDX9x2896",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "60e345a3-1e36-4488-aae5-35dde4c77f90"
+    }
+  }
+]

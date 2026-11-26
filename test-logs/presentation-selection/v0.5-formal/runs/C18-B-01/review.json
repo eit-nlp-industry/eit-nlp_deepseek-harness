@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 2,
+  "state": 2,
+  "presentation": "fail",
+  "reason": "补拍后的各轮均声称图片已展示，但实际DOM无IMG；只有初始旧状态卡片。停止、返回及旧事件文字结论正确，核心看图需求未完成。"
+}

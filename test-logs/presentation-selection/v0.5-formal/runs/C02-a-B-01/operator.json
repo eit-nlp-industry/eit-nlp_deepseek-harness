@@ -1,0 +1,10 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C02-a",
+    "facts": "图书馆有讨论室。进入图书馆需来访预约，是否获准以馆方答复为准。白板、投屏、开放时间均未知。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true
+}

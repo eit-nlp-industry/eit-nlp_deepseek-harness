@@ -1,0 +1,327 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_6Q9MqwcJBGXKcH4y7klC5520",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"business_data\": {\"title\": \"图书馆讨论空间\", \"answer\": \"有的，图书馆设有讨论室，可用于讨论。\", \"points\": [{\"label\": \"讨论空间\", \"value\": \"有讨论室\"}, {\"label\": \"入馆方式\", \"value\": \"需提前办理来访预约\"}, {\"label\": \"能否使用\", \"value\": \"以馆方答复为准\"}, {\"label\": \"白板\", \"value\": \"暂未知\"}, {\"label\": \"投屏\", \"value\": \"暂未知\"}, {\"label\": \"开放时间\", \"value\": \"暂未知\"}], \"note\": \"白板、投屏设备与开放时间目前没有确切信息，建议预约时一并向馆方确认。\"}, \"user_query\": \"简洁信息卡片，不使用表单。标题「图书馆讨论空间」，先用一句话给出结论：有讨论室。下面用三行要点展示：讨论空间=有讨论室；入馆方式=需提前办理来访预约；能否使用=以馆方答复为准。再以一行小字标注：白板、投屏、开放时间暂未知。底部一行提示：白板、投屏设备与开放时间目前没有确切信息，建议预约时一并向馆方确认。不放置任何图片、按钮或输入框。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "图书馆讨论空间",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "answer",
+                "keyPoints",
+                "unknownLine",
+                "divider",
+                "note"
+              ]
+            },
+            "answer": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/answer"
+                },
+                "variant": "default"
+              }
+            },
+            "keyPoints": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "point0",
+                "point1",
+                "point2"
+              ]
+            },
+            "point0": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "p0label",
+                "p0value"
+              ]
+            },
+            "p0label": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/0/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "p0value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/0/value"
+                },
+                "variant": "default"
+              }
+            },
+            "point1": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "p1label",
+                "p1value"
+              ]
+            },
+            "p1label": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/1/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "p1value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/1/value"
+                },
+                "variant": "default"
+              }
+            },
+            "point2": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "p2label",
+                "p2value"
+              ]
+            },
+            "p2label": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/2/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "p2value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/2/value"
+                },
+                "variant": "default"
+              }
+            },
+            "unknownLine": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "md",
+                "align": "center"
+              },
+              "children": [
+                "unknownWhiteboard",
+                "unknownProjection",
+                "unknownHours"
+              ]
+            },
+            "unknownWhiteboard": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "uwLabel",
+                "uwValue"
+              ]
+            },
+            "uwLabel": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/3/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "uwValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/3/value"
+                },
+                "variant": "muted"
+              }
+            },
+            "unknownProjection": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "upLabel",
+                "upValue"
+              ]
+            },
+            "upLabel": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/4/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "upValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/4/value"
+                },
+                "variant": "muted"
+              }
+            },
+            "unknownHours": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "uhLabel",
+                "uhValue"
+              ]
+            },
+            "uhLabel": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/5/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "uhValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/points/5/value"
+                },
+                "variant": "muted"
+              }
+            },
+            "divider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "图书馆讨论空间",
+            "answer": "有的，图书馆设有讨论室，可用于讨论。",
+            "points": [
+              {
+                "label": "讨论空间",
+                "value": "有讨论室"
+              },
+              {
+                "label": "入馆方式",
+                "value": "需提前办理来访预约"
+              },
+              {
+                "label": "能否使用",
+                "value": "以馆方答复为准"
+              },
+              {
+                "label": "白板",
+                "value": "暂未知"
+              },
+              {
+                "label": "投屏",
+                "value": "暂未知"
+              },
+              {
+                "label": "开放时间",
+                "value": "暂未知"
+              }
+            ],
+            "note": "白板、投屏设备与开放时间目前没有确切信息，建议预约时一并向馆方确认。"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_6Q9MqwcJBGXKcH4y7klC5520"
+      },
+      "toolCallId": "call_00_6Q9MqwcJBGXKcH4y7klC5520",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "e1f53dfc-4e14-48db-9f73-d997031014b5"
+    }
+  }
+]

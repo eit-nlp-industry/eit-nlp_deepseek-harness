@@ -1,0 +1,58 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_uk9d47vWSG6xTfzHs8si1398",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"components\": [\"Image\", \"MapPreview\"], \"user_query\": \"静态示意图页面，不含任何交互按钮。顶部用标题和一行醒目标注说明“静态示意 · 非实时定位”。先放置 Image 组件，src 使用同源 path 字符串 /api/media/bench05-campus-map/content，alt 为“MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture”，下方加图注“给定底图（静态示意）”。紧接着放置 MapPreview 组件，在同一个坐标系中画三个点位：机器狗(10,50)、你(30,50)、图书馆(70,50)，并画出路线 robot→user→lib，依次为 (10,50) → (30,50) → (70,50)；MapPreview 标题写“动线示意（静态网格）”，并注明坐标系按 x=10+10*x、y=70-10*y 换算、单位为示意格。Image 与 MapPreview 之间用同一段说明文字强调两者都是静态示意。页面底部保留完整文字兜底段落，逐条列出点位坐标、路线顺序、无实时定位与无真实调度，确保不依赖图形也能读懂。\", \"business_data\": {\"title\": \"去图书馆：机器狗带路动线（静态示意）\", \"static_badge\": \"静态示意 · 非实时定位\", \"simulated\": true, \"case_id\": \"C20\", \"image\": \"/api/media/bench05-campus-map/content\", \"alt\": \"MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture\", \"image_caption\": \"给定底图（静态示意）\", \"map_title\": \"动线示意（静态网格）\", \"coordinate_note\": \"MapPreview 坐标换算：x=10+10*x，y=70-10*y；单位为示意格\", \"points\": [{\"name\": \"机器狗\", \"key\": \"robot\", \"grid\": [0, 2], \"x\": 10, \"y\": 50, \"label\": \"机器狗 (0,2)\"}, {\"name\": \"你\", \"key\": \"user\", \"grid\": [2, 2], \"x\": 30, \"y\": 50, \"label\": \"你 (2,2)\"}, {\"name\": \"图书馆\", \"key\": \"lib\", \"grid\": [6, 2], \"x\": 70, \"y\": 50, \"label\": \"图书馆 (6,2)\"}], \"route\": [[10, 50], [30, 50], [70, 50]], \"route_labels\": [\"机器狗 (0,2)\", \"你 (2,2)\", \"图书馆 (6,2)\"], \"route_text\": \"机器狗 (0,2) → 你 (2,2) → 图书馆 (6,2)\", \"disclaimer\": \"本图为固定材料生成的静态示意图：没有实时定位，也没有真实调度或出行安排。\", \"fallback_text\": \"文字兜底：机器狗在 (0,2)，你在 (2,2)，图书馆在 (6,2)，单位为示意格。动线为机器狗 → 你 → 图书馆。图上坐标按 x=10+10*x、y=70-10*y 换算，依次为 (10,50)、(30,50)、(70,50)。底图与动线均为静态示意，不含实时定位，也未进行真实调度。\"}}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_uk9d47vWSG6xTfzHs8si1398"
+      },
+      "toolCallId": "call_00_uk9d47vWSG6xTfzHs8si1398",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: tool call timed out after 180000ms"
+        }
+      ],
+      "isError": true,
+      "id": "e11257ad-cf0e-4416-804b-254c90cb6a4e"
+    }
+  },
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_3joJzfdq6DHo3PJBPsp35427",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"alt\": \"MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture\", \"image\": \"/api/media/bench05-campus-map/content\", \"points\": [{\"label\": \"机器狗\", \"x\": 10, \"y\": 50}, {\"label\": \"你\", \"x\": 30, \"y\": 50}, {\"label\": \"图书馆\", \"x\": 70, \"y\": 50}], \"route\": [[10, 50], [30, 50], [70, 50]], \"static_badge\": \"静态示意 · 非实时定位\", \"text\": \"机器狗(0,2) → 你(2,2) → 图书馆(6,2)；坐标按 x=10+10*x、y=70-10*y；无实时定位。\"}, \"components\": [\"Image\", \"MapPreview\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"静态示意页面。先用 Image 显示给定底图，src 为同源 path 字符串 /api/media/bench05-campus-map/content，alt 为“MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture”。再用 MapPreview 在同一坐标系画出机器狗(10,50)、你(30,50)、图书馆(70,50) 与路线 (10,50)→(30,50)→(70,50)。两图均标注“静态示意 · 非实时定位”。底部保留文字兜底。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_3joJzfdq6DHo3PJBPsp35427"
+      },
+      "toolCallId": "call_00_3joJzfdq6DHo3PJBPsp35427",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: tool call timed out after 180000ms"
+        }
+      ],
+      "isError": true,
+      "id": "75e97c56-8a25-4164-abf6-d2faed8f1b8b"
+    }
+  }
+]

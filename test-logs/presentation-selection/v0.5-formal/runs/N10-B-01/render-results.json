@@ -1,0 +1,455 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_6Rfh9U1r4ilEs9waj3m59740",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\", \"MapPreview\"], \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"按顺序展示两块内容，均为静态示意。1) 先放一张 Image 组件，src 使用业务数据里给定的同源路径字符串 /api/media/bench05-warehouse-map/content，alt 使用给定文案，图下标注“合成平面图静态底图（MOCK WAREHOUSE GRID），非实时定位”。2) 再放一个 MapPreview 组件，用给定归一坐标（0-100 百分比）画三个标记：courier 快递员当前位置 (10,80)、pickup 收件点 (35,80)、destination 目的地 (35,20)；按顺序画两段路线：第一段 courier→pickup（自 (10,80) 到 (35,80)），第二段 pickup→destination（自 (35,80) 到 (35,20)）；路线与标记都要加文字标签。3) MapPreview 下方写清这是静态示意图、不添加实时追踪、不执行配送。地图本身不带自定义底图参数，底图由上面的 Image 提供，两者一起标明静态示意。全部事实与标签用中文，内容取业务数据。\", \"business_data\": {\"title\": \"快递取件路线静态示意\", \"subtitle\": \"合成平面图 · 单位示意格（courier=(0,0)、pickup=(2,0)、destination=(2,3)）\", \"notice\": \"静态示意图，非真实地理坐标，无实时定位/追踪，本页不执行任何配送动作。\", \"image\": \"/api/media/bench05-warehouse-map/content\", \"alt\": \"MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture\", \"image_caption\": \"合成平面图静态底图（MOCK WAREHOUSE GRID）：静态，无实时定位\", \"image_size\": \"960 × 540\", \"map_caption\": \"归一坐标静态示意（百分比坐标 0–100，非真实经纬度）\", \"points\": [{\"id\": \"courier\", \"label\": \"快递员当前位置\", \"x\": 10, \"y\": 80, \"description\": \"示意格坐标 (0,0)\"}, {\"id\": \"pickup\", \"label\": \"收件点\", \"x\": 35, \"y\": 80, \"description\": \"示意格坐标 (2,0)\"}, {\"id\": \"destination\", \"label\": \"目的地\", \"x\": 35, \"y\": 20, \"description\": \"示意格坐标 (2,3)\"}], \"routes\": [{\"id\": \"leg1\", \"order\": 1, \"from\": \"courier\", \"to\": \"pickup\", \"from_point\": {\"x\": 10, \"y\": 80}, \"to_point\": {\"x\": 35, \"y\": 80}, \"label\": \"第一段：快递员 → 收件点（向东 2 格）\"}, {\"id\": \"leg2\", \"order\": 2, \"from\": \"pickup\", \"to\": \"destination\", \"from_point\": {\"x\": 35, \"y\": 80}, \"to_point\": {\"x\": 35, \"y\": 20}, \"label\": \"第二段：收件点 → 目的地（向北 3 格）\"}], \"total_units\": \"共 5 个示意格（2 + 3）\", \"other_rich_components_needed\": []}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page_heading",
+                "page_subtitle",
+                "page_notice",
+                "block1_section",
+                "block2_section",
+                "data_source_section"
+              ]
+            },
+            "page_heading": {
+              "type": "Heading",
+              "props": {
+                "text": "快递取件路线静态示意",
+                "level": "h1"
+              }
+            },
+            "page_subtitle": {
+              "type": "Text",
+              "props": {
+                "content": "合成平面图 · 单位示意格（courier=(0,0)、pickup=(2,0)、destination=(2,3)）",
+                "variant": "muted"
+              }
+            },
+            "page_notice": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "静态说明",
+                "description": "静态示意图，非真实地理坐标，无实时定位/追踪，本页不执行任何配送动作。",
+                "showIcon": true
+              }
+            },
+            "block1_section": {
+              "type": "Section",
+              "props": {
+                "title": "1) 合成平面图静态底图",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "block1_stack"
+              ]
+            },
+            "block1_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "warehouse_image",
+                "image_details"
+              ]
+            },
+            "warehouse_image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-warehouse-map/content",
+                "alt": "MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture",
+                "caption": "合成平面图静态底图（MOCK WAREHOUSE GRID）：静态，无实时定位",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "image_details": {
+              "type": "Descriptions",
+              "props": {
+                "title": "底图字段",
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "图像路径",
+                    "value": "/api/media/bench05-warehouse-map/content"
+                  },
+                  {
+                    "label": "替代文本（alt）",
+                    "value": "MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture"
+                  },
+                  {
+                    "label": "图像尺寸",
+                    "value": "960 × 540"
+                  },
+                  {
+                    "label": "图注",
+                    "value": "合成平面图静态底图（MOCK WAREHOUSE GRID）：静态，无实时定位"
+                  }
+                ]
+              }
+            },
+            "block2_section": {
+              "type": "Section",
+              "props": {
+                "title": "2) 归一坐标路线示意",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "block2_stack"
+              ]
+            },
+            "block2_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "route_map",
+                "map_static_notice",
+                "map_bottom_note",
+                "route_list",
+                "points_table",
+                "routes_table"
+              ]
+            },
+            "route_map": {
+              "type": "MapPreview",
+              "props": {
+                "places": [
+                  {
+                    "id": "courier",
+                    "label": "快递员当前位置",
+                    "x": 10,
+                    "y": 80
+                  },
+                  {
+                    "id": "pickup",
+                    "label": "收件点",
+                    "x": 35,
+                    "y": 80
+                  },
+                  {
+                    "id": "destination",
+                    "label": "目的地",
+                    "x": 35,
+                    "y": 20
+                  }
+                ],
+                "route": [
+                  "courier",
+                  "pickup",
+                  "destination"
+                ],
+                "markerSize": 28,
+                "caption": "归一坐标静态示意（百分比坐标 0–100，非真实经纬度）"
+              }
+            },
+            "map_static_notice": {
+              "type": "Text",
+              "props": {
+                "content": "静态示意图，非真实地理坐标，无实时定位/追踪，本页不执行任何配送动作。",
+                "variant": "warning"
+              }
+            },
+            "map_bottom_note": {
+              "type": "Text",
+              "props": {
+                "content": "底图由上方 Image 提供；MapPreview 仅叠加归一坐标标记与路线，二者共同构成静态示意。",
+                "variant": "muted"
+              }
+            },
+            "route_list": {
+              "type": "List",
+              "props": {
+                "title": "路线分段（按顺序）",
+                "items": [
+                  {
+                    "title": "第一段：快递员 → 收件点（向东 2 格）",
+                    "description": "起点 courier (10,80) → 终点 pickup (35,80)",
+                    "status": "info"
+                  },
+                  {
+                    "title": "第二段：收件点 → 目的地（向北 3 格）",
+                    "description": "起点 pickup (35,80) → 终点 destination (35,20)",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无路线数据"
+              }
+            },
+            "points_table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "点位 ID",
+                  "标签",
+                  "x",
+                  "y",
+                  "示意格坐标/说明"
+                ],
+                "rows": [
+                  [
+                    "courier",
+                    "快递员当前位置",
+                    "10",
+                    "80",
+                    "示意格坐标 (0,0)"
+                  ],
+                  [
+                    "pickup",
+                    "收件点",
+                    "35",
+                    "80",
+                    "示意格坐标 (2,0)"
+                  ],
+                  [
+                    "destination",
+                    "目的地",
+                    "35",
+                    "20",
+                    "示意格坐标 (2,3)"
+                  ]
+                ]
+              }
+            },
+            "routes_table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "顺序",
+                  "路线段 ID",
+                  "起点",
+                  "终点",
+                  "起点坐标",
+                  "终点坐标",
+                  "标签"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "leg1",
+                    "courier",
+                    "pickup",
+                    "(10,80)",
+                    "(35,80)",
+                    "第一段：快递员 → 收件点（向东 2 格）"
+                  ],
+                  [
+                    "2",
+                    "leg2",
+                    "pickup",
+                    "destination",
+                    "(35,80)",
+                    "(35,20)",
+                    "第二段：收件点 → 目的地（向北 3 格）"
+                  ]
+                ]
+              }
+            },
+            "data_source_section": {
+              "type": "Section",
+              "props": {
+                "title": "业务数据字段与出处",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "data_source_stack"
+              ]
+            },
+            "data_source_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "source_text",
+                "scalar_descriptions",
+                "source_note"
+              ]
+            },
+            "source_text": {
+              "type": "Text",
+              "props": {
+                "content": "以下字段均来自 business_data：title、subtitle、notice、image、alt、image_caption、image_size、map_caption、points、routes、total_units。",
+                "variant": "muted"
+              }
+            },
+            "scalar_descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "标量字段",
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "标题（title）",
+                    "value": "快递取件路线静态示意"
+                  },
+                  {
+                    "label": "副标题（subtitle）",
+                    "value": "合成平面图 · 单位示意格（courier=(0,0)、pickup=(2,0)、destination=(2,3)）"
+                  },
+                  {
+                    "label": "静态说明（notice）",
+                    "value": "静态示意图，非真实地理坐标，无实时定位/追踪，本页不执行任何配送动作。"
+                  },
+                  {
+                    "label": "图像路径（image）",
+                    "value": "/api/media/bench05-warehouse-map/content"
+                  },
+                  {
+                    "label": "替代文本（alt）",
+                    "value": "MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture"
+                  },
+                  {
+                    "label": "图注（image_caption）",
+                    "value": "合成平面图静态底图（MOCK WAREHOUSE GRID）：静态，无实时定位"
+                  },
+                  {
+                    "label": "图像尺寸（image_size）",
+                    "value": "960 × 540"
+                  },
+                  {
+                    "label": "地图图注（map_caption）",
+                    "value": "归一坐标静态示意（百分比坐标 0–100，非真实经纬度）"
+                  },
+                  {
+                    "label": "总示意格（total_units）",
+                    "value": "共 5 个示意格（2 + 3）"
+                  }
+                ]
+              }
+            },
+            "source_note": {
+              "type": "Text",
+              "props": {
+                "content": "出处：以上内容逐项取自 business_data；未添加实时追踪、真实地理坐标或配送执行。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "快递取件路线静态示意",
+            "subtitle": "合成平面图 · 单位示意格（courier=(0,0)、pickup=(2,0)、destination=(2,3)）",
+            "notice": "静态示意图，非真实地理坐标，无实时定位/追踪，本页不执行任何配送动作。",
+            "image": "/api/media/bench05-warehouse-map/content",
+            "alt": "MOCK WAREHOUSE GRID; STATIC | NO LIVE LOCATION; synthetic fixture",
+            "image_caption": "合成平面图静态底图（MOCK WAREHOUSE GRID）：静态，无实时定位",
+            "image_size": "960 × 540",
+            "map_caption": "归一坐标静态示意（百分比坐标 0–100，非真实经纬度）",
+            "points": [
+              {
+                "id": "courier",
+                "label": "快递员当前位置",
+                "x": 10,
+                "y": 80,
+                "description": "示意格坐标 (0,0)"
+              },
+              {
+                "id": "pickup",
+                "label": "收件点",
+                "x": 35,
+                "y": 80,
+                "description": "示意格坐标 (2,0)"
+              },
+              {
+                "id": "destination",
+                "label": "目的地",
+                "x": 35,
+                "y": 20,
+                "description": "示意格坐标 (2,3)"
+              }
+            ],
+            "routes": [
+              {
+                "id": "leg1",
+                "order": 1,
+                "from": "courier",
+                "to": "pickup",
+                "from_point": {
+                  "x": 10,
+                  "y": 80
+                },
+                "to_point": {
+                  "x": 35,
+                  "y": 80
+                },
+                "label": "第一段：快递员 → 收件点（向东 2 格）"
+              },
+              {
+                "id": "leg2",
+                "order": 2,
+                "from": "pickup",
+                "to": "destination",
+                "from_point": {
+                  "x": 35,
+                  "y": 80
+                },
+                "to_point": {
+                  "x": 35,
+                  "y": 20
+                },
+                "label": "第二段：收件点 → 目的地（向北 3 格）"
+              }
+            ],
+            "total_units": "共 5 个示意格（2 + 3）",
+            "other_rich_components_needed": []
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_6Rfh9U1r4ilEs9waj3m59740"
+      },
+      "toolCallId": "call_00_6Rfh9U1r4ilEs9waj3m59740",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "8a304771-231e-4e1c-adc3-d6e16941d927"
+    }
+  }
+]

@@ -1,0 +1,309 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 C18-B-02 门口补拍呈现测评 刚刚":
+    - generic: 进行中
+    - generic: C18-B-02 门口补拍呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 饮水机不出水照片草稿测评 刚刚":
+    - generic: 已完成
+    - generic: 饮水机不出水照片草稿测评
+    - generic: 刚刚
+  - treeitem "等待回答 饮水机照片呈现测评" [selected]:
+    - generic: 等待回答
+    - generic: 饮水机照片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂导航门图测评 2分钟":
+    - generic: 已完成
+    - generic: 食堂导航门图测评
+    - generic: 2分钟
+  - treeitem "食堂导航原生门图测评 2分钟":
+    - generic: 食堂导航原生门图测评
+    - generic: 2分钟
+  - treeitem "已完成 图书馆导盲犬路线呈现测评 4分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线呈现测评
+    - generic: 4分钟
+  - treeitem "图书馆导盲犬路线测评 4分钟":
+    - generic: 图书馆导盲犬路线测评
+    - generic: 4分钟
+  - treeitem "进行中 补拍门口并结束观察 5分钟":
+    - generic: 进行中
+    - generic: 补拍门口并结束观察
+    - generic: 5分钟
+  - treeitem "图书馆用餐回程排序 5分钟":
+    - generic: 图书馆用餐回程排序
+    - generic: 5分钟
+  - treeitem "已完成 五分钟门开提醒测评 6分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 6分钟
+  - treeitem "已完成 图书馆用餐与回程排序 6分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐与回程排序
+    - generic: 6分钟
+  - treeitem "已完成 门开提醒：图像通知呈现 15分钟":
+    - generic: 已完成
+    - generic: 门开提醒：图像通知呈现
+    - generic: 15分钟
+  - treeitem "已完成 监视门开提醒呈现 21分钟":
+    - generic: 已完成
+    - generic: 监视门开提醒呈现
+    - generic: 21分钟
+  - treeitem "已完成 门口补拍并结束观察 24分钟":
+    - generic: 已完成
+    - generic: 门口补拍并结束观察
+    - generic: 24分钟
+  - treeitem "补拍门口并结束观察 24分钟":
+    - generic: 补拍门口并结束观察
+    - generic: 24分钟
+  - treeitem "已完成 门开五分钟提醒呈现测评 27分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒呈现测评
+    - generic: 27分钟
+  - treeitem "已完成 五分钟门开提醒测评 29分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 29分钟
+  - treeitem "门开五分钟提醒文字通知 29分钟":
+    - generic: 门开五分钟提醒文字通知
+    - generic: 29分钟
+  - treeitem "已完成 门开提醒固定材料测评 35分钟":
+    - generic: 已完成
+    - generic: 门开提醒固定材料测评
+    - generic: 35分钟
+  - treeitem "门开提醒测试 35分钟":
+    - generic: 门开提醒测试
+    - generic: 35分钟
+  - treeitem "已完成 文件交接呈现测评 C16-B-02 36分钟":
+    - generic: 已完成
+    - generic: 文件交接呈现测评 C16-B-02
+    - generic: 36分钟
+  - treeitem "已完成 全量正式呈现测评 C16-B-01 36分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-B-01
+    - generic: 36分钟
+  - treeitem "已完成 全量正式呈现测评 C16-A-02 38分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 38分钟
+  - treeitem "正式呈现测评 C16-A-01 38分钟":
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 38分钟
+  - treeitem "已完成 外卖取餐确认测评 42分钟":
+    - generic: 已完成
+    - generic: 外卖取餐确认测评
+    - generic: 42分钟
+  - treeitem "已完成 外卖取件模拟呈现 47分钟":
+    - generic: 已完成
+    - generic: 外卖取件模拟呈现
+    - generic: 47分钟
+  - treeitem "已完成 外卖取件图像确认测评 47分钟":
+    - generic: 已完成
+    - generic: 外卖取件图像确认测评
+    - generic: 47分钟
+  - treeitem "外卖取件确认测评 C15-A-01 48分钟":
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 48分钟
+  - treeitem "已完成 图书馆座位图像呈现测评 50分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像呈现测评
+    - generic: 50分钟
+  - treeitem "已完成 图书馆座位查询测评 51分钟":
+    - generic: 已完成
+    - generic: 图书馆座位查询测评
+    - generic: 51分钟
+  - treeitem "已完成 图书馆座位图像化呈现 51分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像化呈现
+    - generic: 51分钟
+  - treeitem "图书馆座位新视角图测评 51分钟":
+    - generic: 图书馆座位新视角图测评
+    - generic: 51分钟
+  - treeitem "安静读书地点推荐测评 54分钟":
+    - generic: 安静读书地点推荐测评
+    - generic: 54分钟
+  - treeitem "安静读书场所推荐测评 55分钟":
+    - generic: 安静读书场所推荐测评
+    - generic: 55分钟
+  - treeitem "已完成 安静读书地点推荐卡片 56分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片
+    - generic: 56分钟
+  - treeitem "已完成 安静读书地点推荐卡片测评 58分钟":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片测评
+    - generic: 58分钟
+  - treeitem "已完成 图书馆找灰衣拉箱同学 58分钟":
+    - generic: 已完成
+    - generic: 图书馆找灰衣拉箱同学
+    - generic: 58分钟
+  - treeitem "图书馆入口找同学 1小时":
+    - generic: 图书馆入口找同学
+    - generic: 1小时
+  - treeitem "已完成 最小状态暂停展示 1小时":
+    - generic: 已完成
+    - generic: 最小状态暂停展示
+    - generic: 1小时
+  - treeitem "已完成 模拟暂停最小状态测试 1小时":
+    - generic: 已完成
+    - generic: 模拟暂停最小状态测试
+    - generic: 1小时
+  - treeitem "已完成 C12-B-01图书馆寻人呈现测评 1小时":
+    - generic: 已完成
+    - generic: C12-B-01图书馆寻人呈现测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆入口灰衣拉箱同学寻找 1小时":
+    - generic: 已完成
+    - generic: 图书馆入口灰衣拉箱同学寻找
+    - generic: 1小时
+  - treeitem "已完成 暂停等待控制回执测评 1小时":
+    - generic: 已完成
+    - generic: 暂停等待控制回执测评
+    - generic: 1小时
+  - treeitem "已完成 短暂停等用户取物 1小时":
+    - generic: 已完成
+    - generic: 短暂停等用户取物
+    - generic: 1小时
+  - treeitem "等待回答 跟随参观同学的图像状态呈现测评":
+    - generic: 等待回答
+    - generic: 跟随参观同学的图像状态呈现测评
+    - generic: 待回答
+  - treeitem "等待回答 跟着参观同学的状态展示":
+    - generic: 等待回答
+    - generic: 跟着参观同学的状态展示
+    - generic: 待回答
+  - treeitem "已完成 跟随参观同学的原生图像核对 1小时":
+    - generic: 已完成
+    - generic: 跟随参观同学的原生图像核对
+    - generic: 1小时
+  - treeitem "等待回答 跟着同学参观的测评任务":
+    - generic: 等待回答
+    - generic: 跟着同学参观的测评任务
+    - generic: 待回答
+  - treeitem "C09-B-02 固定材料初始化测评 1小时":
+    - generic: C09-B-02 固定材料初始化测评
+    - generic: 1小时
+  - treeitem "测评 C07-b 时间改约表单 1小时":
+    - generic: 测评 C07-b 时间改约表单
+    - generic: 1小时
+  - button "展开其余 114 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 饮水机照片呈现测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C22-A-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C22-A-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C22-A-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：饮水机不出水，先拍一张照片给我。 指定呈现方式：三张原生图+Markdown草稿，文字修改提交。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 21:23
+- button "复制":
+- paragraph: 我先取出本例的固定材料。
+- button "工具调用 benchmark_fixture · C22-A-01":
+  - generic: 工具调用
+  - generic: benchmark_fixture · C22-A-01
+- 'button "思考 The current released material only has one image: front view. Other views not released. The user asked \"先拍一张照片给我\" — take one photo. And specified presentation: three native images + Markdown draft. But only one image released. We must not fabricate other views, not use the same image to impersonate other views."':
+  - generic: 思考
+  - generic: "The current released material only has one image: front view. Other views not released. The user asked \"先拍一张照片给我\" — take one photo. And specified presentation: three native images + Markdown draft. But only one image released. We must not fabricate other views, not use the same image to impersonate other views."
+- paragraph: 目前材料中只有一张可用照片（正面视角）。另外两个视角尚未提供，因此我没有用同一张图充当其他视角，也不会预告它们何时可用。
+- paragraph:
+  - strong: 正面照片（YSJ-07 饮水机）
+- paragraph:
+  - 'button "查看大图: MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER"':
+    - img "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER"
+- paragraph:
+  - strong: 反馈草稿（Markdown）
+- generic: markdown
+- button "自动换行" [pressed]:
+- button "复制":
+- code:
+  - generic: "# 饮水机不出水报修（反馈草稿）"
+  - generic: "- 设备编号：YSJ-07"
+  - generic: "- 位置：教学楼一层东侧"
+  - generic: "- 故障现象：不出水"
+  - generic: "- 照片：正面图 1 张（bench05-repair-front，960×540）"
+  - generic: "- 其他视角照片：暂未提供"
+  - generic: "- 联系方式/联系人：未提供"
+  - generic: "- 备注：（待补充）"
+  - generic: "> 本内容为反馈草稿，尚未创建真实工单。"
+- paragraph: 我可以按上面的草稿原样提交，也可以先根据你补充的内容修改。
+- text: 等待你的操作 · 这份反馈草稿（YSJ-07、教学楼一层东侧、不出水）是否按现状提交？如需修改，请直接告诉我要改的文字（备注、联系人等）。
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "这份反馈草稿（YSJ-07、教学楼一层东侧、不出水）是否按现状提交？如需修改，请直接告诉我要改的文字（备注、联系人等）。":
+  - generic: 确认提交
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "这份反馈草稿（YSJ-07、教学楼一层东侧、不出水）是否按现状提交？如需修改，请直接告诉我要改的文字（备注、联系人等）。" [level=2]
+  - radiogroup:
+    - radio "按草稿现状提交" [checked]:
+      - generic: "1"
+      - generic: 按草稿现状提交
+      - generic: 推荐
+      - generic: 以现有信息提交反馈草稿，备注和联系人留空。
+    - radio "先修改草稿文字":
+      - generic: "2"
+      - generic: 先修改草稿文字
+      - generic: 你补充或修改备注、联系人等内容后，我再更新草稿并等你确认。
+    - radio "暂不提交":
+      - generic: "3"
+      - generic: 暂不提交
+      - generic: 只保留当前照片和草稿，不做任何提交。
+    - textbox "输入你的答案"
+  - button "上一题" [disabled]:
+  - generic: 1 / 1
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交"

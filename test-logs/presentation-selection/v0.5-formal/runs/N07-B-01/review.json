@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 4,
+  "state": 1,
+  "presentation": "partial",
+  "reason": "两张图片可真实切换，订单/故障预填、联系人实际改为B；点击确认提交草稿后无Host用户消息、无fixture submit、无回执。JSON使用普通Input/TextArea加未接通的after_sales_draft.submit事件，未生成要求的DynamicForm，核心提交链路失败。"
+}

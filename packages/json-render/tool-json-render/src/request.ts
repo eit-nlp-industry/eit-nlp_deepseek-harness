@@ -1,11 +1,12 @@
 /**
  * HTTP client for one json-render server call, with a fixed attempt budget.
- * The server is the v0.2.7 `POST /v1/render` contract: format, user_query,
+ * The server is the v0.2.8 `POST /v1/render` contract: format, user_query,
  * business_data, optional prompt_mode, and context.locale / context.intent.
  * Host mode is not a server field and does not select the catalog.
  */
 
 import { isJsonValue, type JsonValue } from '@deepseek-ai/dsh-util-values'
+import { formActionError, withFormActions, type FormAction } from './form-actions.ts'
 import { canonicalImageSrc, normalizeImageBusinessData, referencesImage, type MediaAssetRecord } from './media.ts'
 
 export const RENDER_UI_MAX_ATTEMPTS = 3
@@ -13,7 +14,7 @@ export const RENDER_UI_MAX_ATTEMPTS = 3
 export const RENDER_UI_FORMAT = 'json-render-v1'
 
 /** Release of the json-render server and Generation SDK this host calls. */
-export const JSON_RENDER_RELEASE = 'v0.2.7'
+export const JSON_RENDER_RELEASE = 'v0.2.8'
 
 export const FORM_INTENTS = ['generic_filters', 'generic_pick_one'] as const
 
@@ -59,6 +60,8 @@ export interface RenderUiArgs {
   submit_button?: boolean
   /** Label for a submit button added by the host. */
   submit_label?: string
+  /** Complete host-owned action bar. Overrides submit_button and submit_label when present. */
+  form_actions?: readonly FormAction[]
 }
 
 export interface RenderRoute {
@@ -75,10 +78,22 @@ export interface RenderUiSuccess {
   payload: JsonValue
 }
 
+/** Rejected generation data for correction; it must never be rendered as a successful UI. */
+export type RenderUiGenerationFailure = {
+  code: 'MODEL_OUTPUT_INVALID'
+  stage: 'parse' | 'validation'
+  requestId?: string
+  diagnostics: { issues: { code: string; message: string; path?: string }[] }
+  rawOutput?: string
+  invalidPayload?: JsonValue
+}
+
 export interface RenderUiFailure {
   ok: false
   mode: RenderUiMode
   message: string
+  /** Structured diagnostics supplied by a compatible render server. */
+  error?: RenderUiGenerationFailure
 }
 
 export type RenderUiResult = RenderUiSuccess | RenderUiFailure
@@ -150,6 +165,11 @@ export function selectRenderRoute(args: RenderUiArgs): RenderRoute {
 
 /** Reject calls that the server would refuse, before any HTTP attempt. */
 export function formRequestError(args: RenderUiArgs): string | undefined {
+  if (args.form_actions !== undefined) {
+    if (args.mode !== 'form') return 'form_actions 仅用于 form 模式。'
+    const error = formActionError(args.form_actions)
+    if (error !== undefined) return error
+  }
   if (args.prompt_mode !== undefined && args.prompt_mode !== 'full' && args.prompt_mode !== 'progressive') {
     return 'prompt_mode 只能是 full 或 progressive。'
   }
@@ -170,9 +190,11 @@ export function formRequestError(args: RenderUiArgs): string | undefined {
 /** Layout text plus a display hint, kept inside the server's 2000-character limit. */
 export function renderUserQuery(args: RenderUiArgs): string {
   const query = args.user_query.trim()
-  const contentHint = args.mode === 'display' ? DISPLAY_DETAIL_HINT : args.submit_button === false
-    ? '用户明确不需要默认提交按钮。请遵循用户指定的操作，不要额外添加提交按钮。'
-    : `表单必须包含一个可见且可用的提交 Button，通过 on.press 绑定 form.submit。${args.submit_label ? `提交按钮名称：${args.submit_label}。` : '用户指定按钮名称时使用该名称，否则使用“提交”。'}其他操作按钮不能代替提交按钮，除非用户明确要求不提供提交。`
+  const contentHint = args.mode === 'display' ? DISPLAY_DETAIL_HINT : args.form_actions !== undefined
+    ? '宿主将按 form_actions 统一添加独立并列按钮。只生成表单内容和必要链接，不要生成 Button，不要生成操作选择字段（Select/Radio），不要添加本地重置或取消逻辑。'
+    : args.submit_button === false
+      ? '用户明确不需要默认提交按钮。请遵循用户指定的操作，不要额外添加提交按钮。'
+      : `表单必须包含一个可见且可用的提交 Button，通过 on.press 绑定 form.submit。${args.submit_label ? `提交按钮名称：${args.submit_label}。` : '用户指定按钮名称时使用该名称，否则使用“提交”。'}其他操作按钮不能代替提交按钮，除非用户明确要求不提供提交。`
   const components = [...new Set(args.components?.filter(name => RICH_COMPONENT_NAMES.has(name)) ?? [])]
   const hint = components.length === 0 ? contentHint : `请使用这些组件：${components.join('、')}。\n${contentHint}`
   const room = USER_QUERY_MAX_CHARS - hint.length - 1
@@ -187,6 +209,7 @@ function jsonObject(value: JsonValue | undefined): value is JsonObject {
 }
 
 function ensureFormSubmit(payload: JsonValue, args: RenderUiArgs): JsonValue {
+  if (args.mode === 'form' && args.form_actions !== undefined) return withFormActions(payload, args.form_actions)
   if (args.mode !== 'form' || args.submit_button === false) return payload
   if (!jsonObject(payload) || !jsonObject(payload.spec)) throw new Error('表单缺少 spec')
   const spec = payload.spec
@@ -357,6 +380,7 @@ function validationFailure(body: unknown, mode: RenderUiMode): RenderUiFailure |
   const diagnostics = asObject(error.diagnostics)
   const issues = Array.isArray(diagnostics?.issues) ? diagnostics.issues.slice(0, 8) : []
   const details: string[] = []
+  const structuredIssues: RenderUiGenerationFailure['diagnostics']['issues'] = []
   for (const value of issues) {
     const issue = asObject(value)
     if (issue === undefined) continue
@@ -364,10 +388,25 @@ function validationFailure(body: unknown, mode: RenderUiMode): RenderUiFailure |
     const path = safeIssue(issue.path)
     const reason = typeof issue.message === 'string' ? safeIssue(issue.message.slice(0, 120)) : undefined
     if (code !== undefined && reason !== undefined) details.push(`${code}${path === undefined ? '' : ` at ${path}`}: ${reason}`)
+    if (code !== undefined && typeof issue.message === 'string') {
+      structuredIssues.push({ code, message: issue.message.slice(0, 300),
+        ...typeof issue.path === 'string' ? { path: issue.path.slice(0, 300) } : {},
+      })
+    }
   }
+  const stage = error.stage
+  const invalidPayload = error.invalidPayload
+  const failure: RenderUiGenerationFailure | undefined = stage === 'parse' || stage === 'validation' ? {
+    code: 'MODEL_OUTPUT_INVALID', stage,
+    ...requestId === undefined ? {} : { requestId },
+    diagnostics: { issues: structuredIssues },
+    ...typeof error.rawOutput === 'string' ? { rawOutput: error.rawOutput } : {},
+    ...stage === 'validation' && isJsonValue(invalidPayload) ? { invalidPayload: invalidPayload as JsonValue } : {},
+  } : undefined
   return {
     ok: false,
     mode,
+    ...failure === undefined ? {} : { error: failure },
     message: `界面生成校验失败：MODEL_OUTPUT_INVALID${requestId === undefined ? '' : `（requestId: ${requestId}）`}。${details.length === 0 ? '' : `诊断：${details.join('；')}。`}请根据诊断修正请求后至多再调用一次；无法修正时用文字回答。不要原样重试，也不要向用户展示错误码或诊断 JSON。`,
   }
 }

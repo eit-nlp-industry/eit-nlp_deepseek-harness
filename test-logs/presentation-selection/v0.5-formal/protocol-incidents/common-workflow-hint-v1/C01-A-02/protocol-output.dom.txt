@@ -1,0 +1,167 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "东方理工校园设施介绍 1分钟" [selected]:
+    - generic: 东方理工校园设施介绍
+    - generic: 1分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 1分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 1分钟
+  - treeitem "已完成 东方理工校园设施介绍 1分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 1分钟
+  - treeitem "已完成 东方理工校园设施介绍 2分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 2分钟
+  - treeitem "四会话隔离预检marker 4分钟":
+    - generic: 四会话隔离预检marker
+    - generic: 4分钟
+  - treeitem "已完成 四会话隔离预检测试 4分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 4分钟
+  - treeitem "已完成 预检调用初始化返回marker 5分钟":
+    - generic: 已完成
+    - generic: 预检调用初始化返回marker
+    - generic: 5分钟
+  - treeitem "已完成 四会话隔离预检初始化 7分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检初始化
+    - generic: 7分钟
+  - button "展开其余 48 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 东方理工校园设施介绍
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C01-A-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C01-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C01-A-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：刚来东方理工，先给我介绍一下图书馆、吃饭的地方和四明书院。 指定呈现方式：Markdown分节+同源图片。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 19:08
+- button "复制":
+- status: 已完成
+- button "已完成，用时 6秒":
+  - generic: 已完成，用时 6秒
+- paragraph: 我先获取本案例的固定材料。
+- heading "东方理工 · 校园三处初识" [level=2]
+- paragraph: 下面的内容来自当前已发布的固定材料；材料中没有提到的信息，我按“未知”处理，不作推测。
+- separator
+- heading "📚 图书馆" [level=3]
+- list:
+  - strong: 安静阅读区
+  - text: ：馆内有可供安静阅读的区域。
+  - strong: 讨论室
+  - text: ：馆内另设有讨论室，适合小组交流。
+  - strong: 入馆需预约
+  - text: ，且预约能否成功、具体要求，都以图书馆方面的答复为准。
+- paragraph:
+  - 'button "查看大图: MOCK LIBRARY; READING / DISCUSSION; synthetic fixture"':
+    - img "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture"
+- separator
+- heading "🍽️ 食堂" [level=3]
+- list:
+  - strong: 提供午餐
+  - text: 。
+  - listitem: 除午餐以外的其他营业时间目前未公布，尚不明确，建议到现场或以食堂公告为准。
+- paragraph:
+  - 'button "查看大图: MOCK CANTEEN; LUNCH AREA; synthetic fixture"':
+    - img "MOCK CANTEEN; LUNCH AREA; synthetic fixture"
+- separator
+- heading "🏛️ 四明书院" [level=3]
+- list:
+  - strong: 公共交流空间
+  - text: ：书院设有公共交流空间，可用于日常会面与交流。
+  - strong: 投屏设备
+  - text: ：是否有、如何使用，目前未知；如需用于展示，建议提前向书院确认。
+- paragraph:
+  - 'button "查看大图: MOCK COLLEGE; COMMON AREA; synthetic fixture"':
+    - img "MOCK COLLEGE; COMMON AREA; synthetic fixture"
+- separator
+- paragraph:
+  - strong: 小结
+- table:
+  - rowgroup:
+    - row "场所 可以确定 尚不明确":
+      - columnheader "场所"
+      - columnheader "可以确定"
+      - columnheader "尚不明确"
+  - rowgroup:
+    - row "图书馆 安静阅读区、讨论室；入馆需预约 预约的具体规则（以馆方答复为准）":
+      - cell "图书馆"
+      - cell "安静阅读区、讨论室；入馆需预约"
+      - cell "预约的具体规则（以馆方答复为准）"
+    - row "食堂 提供午餐 午餐以外的营业时间":
+      - cell "食堂"
+      - cell "提供午餐"
+      - cell "午餐以外的营业时间"
+    - row "四明书院 公共交流空间 投屏设备情况":
+      - cell "四明书院"
+      - cell "公共交流空间"
+      - cell "投屏设备情况"
+- paragraph: 如果你想进一步了解某处的具体位置、开放时间或预约方式，告诉我你最关心哪一处，我会基于能查到的信息帮你梳理。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 5.3K tok":
+  - generic: 用量 5.3K tok
+- generic: 19:08
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

@@ -1,0 +1,370 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_XfXbEJHexWRtiwIUKV4G9636",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"components\": [\"Tabs\", \"Image\"], \"user_query\": \"售后申请草稿表单，标题「售后申请草稿（可核对修改）」。先显示一行说明：以下为可编辑草稿，提交后仅生成模拟回执，不创建真实工单。表单含四个字段，全部已按材料预填、可编辑：1) 订单号 order_id，预填 SO-2048；2) 故障描述 issue，预填「无法开机」；3) 联系人 contact，预填「测试联系人A」；4) 附件照片 photos，用 Tabs 组件分两页展示：第一页标签「正面（after-front）」放 Image 组件，src 为 /api/media/bench05-after-front/content，alt 为「MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture」；第二页标签「接口（after-port）」放 Image 组件，src 为 /api/media/bench05-after-port/content，alt 为「MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture」。两张图片下方分别标注图片ID：bench05-after-front、bench05-after-port，并提示图片为固定材料、不替换其他视角。字段下方放提交按钮，文案「确认提交草稿」。整体用中文，简洁清晰。\", \"business_data\": {\"title\": \"售后申请草稿（可核对修改）\", \"subtitle\": \"可编辑草稿；提交后仅返回模拟回执，不创建真实工单\", \"draft\": true, \"fields\": [{\"name\": \"order_id\", \"label\": \"订单号\", \"value\": \"SO-2048\", \"editable\": true, \"required\": true}, {\"name\": \"issue\", \"label\": \"故障描述\", \"value\": \"无法开机\", \"editable\": true, \"required\": true}, {\"name\": \"contact\", \"label\": \"联系人\", \"value\": \"测试联系人A\", \"editable\": true, \"required\": true}, {\"name\": \"photos\", \"label\": \"附件照片\", \"editable\": false, \"value\": [\"bench05-after-front\", \"bench05-after-port\"], \"note\": \"固定材料照片，保留原图片ID，不用同图冒充其他视角\"}], \"images\": [{\"id\": \"bench05-after-front\", \"tab\": \"正面（after-front）\", \"src\": \"/api/media/bench05-after-front/content\", \"alt\": \"MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture\", \"caption\": \"图片ID：bench05-after-front\"}, {\"id\": \"bench05-after-port\", \"tab\": \"接口（after-port）\", \"src\": \"/api/media/bench05-after-port/content\", \"alt\": \"MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture\", \"caption\": \"图片ID：bench05-after-port\"}], \"submit_label\": \"确认提交草稿\", \"notes\": [\"本案材料不含联系电话与地址\", \"图片为标注为 MOCK 的构造材料\"]}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "main-title",
+                "main-intro",
+                "form-card",
+                "notes-text"
+              ]
+            },
+            "main-title": {
+              "type": "Heading",
+              "props": {
+                "text": "售后申请草稿（可核对修改）",
+                "level": "h1"
+              }
+            },
+            "main-intro": {
+              "type": "Text",
+              "props": {
+                "content": "以下为可编辑草稿，提交后仅生成模拟回执，不创建真实工单。",
+                "variant": "default"
+              }
+            },
+            "form-card": {
+              "type": "Card",
+              "props": {
+                "title": "售后申请信息",
+                "variant": "outlined"
+              },
+              "children": [
+                "form-stack"
+              ]
+            },
+            "form-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "field-order",
+                "field-issue",
+                "field-contact",
+                "field-photos",
+                "submit-button"
+              ]
+            },
+            "field-order": {
+              "type": "FormField",
+              "props": {
+                "label": "订单号"
+              },
+              "children": [
+                "input-order"
+              ]
+            },
+            "input-order": {
+              "type": "Input",
+              "props": {
+                "fieldKey": "order_id",
+                "placeholder": "请输入订单号",
+                "inputType": "text",
+                "disabled": false,
+                "value": {
+                  "$bindState": "/_ui/draft/order_id"
+                }
+              }
+            },
+            "field-issue": {
+              "type": "FormField",
+              "props": {
+                "label": "故障描述"
+              },
+              "children": [
+                "textarea-issue"
+              ]
+            },
+            "textarea-issue": {
+              "type": "TextArea",
+              "props": {
+                "fieldKey": "issue",
+                "placeholder": "请描述故障现象",
+                "value": {
+                  "$bindState": "/_ui/draft/issue"
+                },
+                "disabled": false,
+                "rows": 3,
+                "showCount": false
+              }
+            },
+            "field-contact": {
+              "type": "FormField",
+              "props": {
+                "label": "联系人"
+              },
+              "children": [
+                "input-contact"
+              ]
+            },
+            "input-contact": {
+              "type": "Input",
+              "props": {
+                "fieldKey": "contact",
+                "placeholder": "请输入联系人",
+                "inputType": "text",
+                "disabled": false,
+                "value": {
+                  "$bindState": "/_ui/draft/contact"
+                }
+              }
+            },
+            "field-photos": {
+              "type": "FormField",
+              "props": {
+                "label": "附件照片"
+              },
+              "children": [
+                "photos-wrap"
+              ]
+            },
+            "photos-wrap": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "photos-tabs",
+                "photos-note"
+              ]
+            },
+            "photos-tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "after-front",
+                    "label": "正面（after-front）"
+                  },
+                  {
+                    "value": "after-port",
+                    "label": "接口（after-port）"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activePhotoTab"
+                },
+                "disabled": false
+              },
+              "children": [
+                "tab-front",
+                "tab-port"
+              ]
+            },
+            "tab-front": {
+              "type": "TabContent",
+              "props": {
+                "value": "after-front"
+              },
+              "children": [
+                "front-stack"
+              ]
+            },
+            "front-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "front-image"
+              ]
+            },
+            "front-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-after-front/content",
+                "alt": "MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "4:3",
+                "preview": true,
+                "loading": "lazy",
+                "caption": "图片ID：bench05-after-front"
+              }
+            },
+            "tab-port": {
+              "type": "TabContent",
+              "props": {
+                "value": "after-port"
+              },
+              "children": [
+                "port-stack"
+              ]
+            },
+            "port-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "port-image"
+              ]
+            },
+            "port-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-after-port/content",
+                "alt": "MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "4:3",
+                "preview": true,
+                "loading": "lazy",
+                "caption": "图片ID：bench05-after-port"
+              }
+            },
+            "photos-note": {
+              "type": "Text",
+              "props": {
+                "content": "图片为固定材料、不替换其他视角。",
+                "variant": "muted"
+              }
+            },
+            "submit-button": {
+              "type": "Button",
+              "props": {
+                "label": "确认提交草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "after_sales_draft.submit",
+                    "payload": {
+                      "draft": true
+                    }
+                  }
+                }
+              }
+            },
+            "notes-text": {
+              "type": "Text",
+              "props": {
+                "content": "说明：本案材料不含联系电话与地址；图片为标注为 MOCK 的构造材料。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "售后申请草稿（可核对修改）",
+            "subtitle": "可编辑草稿；提交后仅返回模拟回执，不创建真实工单",
+            "draft": true,
+            "fields": [
+              {
+                "name": "order_id",
+                "label": "订单号",
+                "value": "SO-2048",
+                "editable": true,
+                "required": true
+              },
+              {
+                "name": "issue",
+                "label": "故障描述",
+                "value": "无法开机",
+                "editable": true,
+                "required": true
+              },
+              {
+                "name": "contact",
+                "label": "联系人",
+                "value": "测试联系人A",
+                "editable": true,
+                "required": true
+              },
+              {
+                "name": "photos",
+                "label": "附件照片",
+                "editable": false,
+                "value": [
+                  "bench05-after-front",
+                  "bench05-after-port"
+                ],
+                "note": "固定材料照片，保留原图片ID，不用同图冒充其他视角"
+              }
+            ],
+            "images": [
+              {
+                "id": "bench05-after-front",
+                "tab": "正面（after-front）",
+                "src": "/api/media/bench05-after-front/content",
+                "alt": "MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture",
+                "caption": "图片ID：bench05-after-front"
+              },
+              {
+                "id": "bench05-after-port",
+                "tab": "接口（after-port）",
+                "src": "/api/media/bench05-after-port/content",
+                "alt": "MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture",
+                "caption": "图片ID：bench05-after-port"
+              }
+            ],
+            "submit_label": "确认提交草稿",
+            "notes": [
+              "本案材料不含联系电话与地址",
+              "图片为标注为 MOCK 的构造材料"
+            ],
+            "_ui": {
+              "activePhotoTab": "after-front",
+              "draft": {
+                "order_id": "SO-2048",
+                "issue": "无法开机",
+                "contact": "测试联系人A"
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_XfXbEJHexWRtiwIUKV4G9636"
+      },
+      "toolCallId": "call_00_XfXbEJHexWRtiwIUKV4G9636",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "85bd4a58-762b-4e06-a46d-b78c9b3c3060"
+    }
+  }
+]

@@ -1,0 +1,217 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_d3QL2ijNFLUs8xdYHfMk2834",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"replace\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"user_query\": \"简洁的门状态通知卡：标题「门状态提醒」，一行说明正在留意（观察编号 watch-01，期限 5 分钟），当前状态显示「门：关闭」，提示「开门时会提醒你」，并附一行文字兜底说明。不使用图片，因为本例材料未提供任何图像地址，不得虚构或以其他图冒充。不要按帧重复生成，只此一张状态卡。\", \"business_data\": {\"title\": \"门状态提醒\", \"watch_id\": \"watch-01\", \"duration\": \"5 分钟\", \"status_label\": \"门状态\", \"status_value\": \"关闭\", \"notify_rule\": \"开门时会提醒你\", \"progress\": \"观察进行中，尚未收到开门事件\", \"image_note\": \"本例材料未提供图像地址，故仅以文字呈现\", \"fallback_text\": \"门状态提醒：正在留意（观察编号 watch-01，期限 5 分钟）。当前门为关闭状态；一旦检测到开门将通知你。此结果来自固定模拟材料，尚无开门事件。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "statusCard",
+                "fieldsSection"
+              ]
+            },
+            "statusCard": {
+              "type": "Card",
+              "props": {
+                "title": "门状态提醒",
+                "variant": "outlined"
+              },
+              "children": [
+                "statusInner"
+              ]
+            },
+            "statusInner": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "statusMetrics",
+                "notifyCallout",
+                "fallbackText",
+                "extraDetails"
+              ]
+            },
+            "statusMetrics": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "metricStatus",
+                "metricWatch",
+                "metricDuration"
+              ]
+            },
+            "metricStatus": {
+              "type": "Metric",
+              "props": {
+                "label": "门状态",
+                "value": "关闭"
+              }
+            },
+            "metricWatch": {
+              "type": "Metric",
+              "props": {
+                "label": "观察编号",
+                "value": "watch-01"
+              }
+            },
+            "metricDuration": {
+              "type": "Metric",
+              "props": {
+                "label": "期限",
+                "value": "5 分钟"
+              }
+            },
+            "notifyCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "开门时会提醒你",
+                "description": "观察进行中，尚未收到开门事件",
+                "showIcon": true
+              }
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            },
+            "extraDetails": {
+              "type": "Collapsible",
+              "props": {
+                "title": "材料说明",
+                "summary": "关于图像与出处的补充",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "imageNoteText"
+              ]
+            },
+            "imageNoteText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/image_note"
+                },
+                "variant": "muted"
+              }
+            },
+            "fieldsSection": {
+              "type": "Section",
+              "props": {
+                "title": "数据明细",
+                "description": "以下字段逐项来自固定模拟材料",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "fieldsDesc"
+              ]
+            },
+            "fieldsDesc": {
+              "type": "Descriptions",
+              "props": {
+                "title": "提醒记录",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "标题",
+                    "value": "门状态提醒"
+                  },
+                  {
+                    "label": "观察编号",
+                    "value": "watch-01"
+                  },
+                  {
+                    "label": "期限",
+                    "value": "5 分钟"
+                  },
+                  {
+                    "label": "状态标签",
+                    "value": "门状态"
+                  },
+                  {
+                    "label": "状态值",
+                    "value": "关闭"
+                  },
+                  {
+                    "label": "通知规则",
+                    "value": "开门时会提醒你"
+                  },
+                  {
+                    "label": "进度说明",
+                    "value": "观察进行中，尚未收到开门事件"
+                  },
+                  {
+                    "label": "出处",
+                    "value": "固定模拟材料"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "门状态提醒",
+            "watch_id": "watch-01",
+            "duration": "5 分钟",
+            "status_label": "门状态",
+            "status_value": "关闭",
+            "notify_rule": "开门时会提醒你",
+            "progress": "观察进行中，尚未收到开门事件",
+            "image_note": "本例材料未提供图像地址，故仅以文字呈现",
+            "fallback_text": "门状态提醒：正在留意（观察编号 watch-01，期限 5 分钟）。当前门为关闭状态；一旦检测到开门将通知你。此结果来自固定模拟材料，尚无开门事件。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_d3QL2ijNFLUs8xdYHfMk2834"
+      },
+      "toolCallId": "call_00_d3QL2ijNFLUs8xdYHfMk2834",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "661419fb-62c9-4915-8cf5-e85acc8f176d"
+    }
+  }
+]

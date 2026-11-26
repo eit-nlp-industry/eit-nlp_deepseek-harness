@@ -1,0 +1,936 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_K4fhdwqyHV5GzYCgZBqG4298",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"components\": [\"Tabs\", \"Collapsible\"], \"intent\": \"rich_content\", \"scene\": \"kb\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"用 Tabs 组件做三个企业服务套餐的浏览：三个标签页分别为「基础版」「团队版」「企业版」，默认选中并实际停留在「团队版」，标签内容需可真实切换。每个标签页内先给一行概览（价格、成员上限、支持方式、数据导出），再用 Collapsible 组件放「适用范围与限制」，团队版默认展开显示详情，另外两版默认收起、可展开。所有内容来自同一份固定数据。企业版的成员上限与数据导出未公布，需明确标注为未知/需询价，不要猜测数值。\", \"business_data\": {\"title\": \"企业服务套餐概览\", \"subtitle\": \"共 3 个套餐，可切换标签查看适用范围与限制\", \"tabs\": [{\"id\": \"plan-basic\", \"label\": \"基础版\", \"selected\": false, \"overview\": {\"price\": \"99 元/月\", \"members\": \"5 人\", \"support\": \"邮件支持\", \"export\": \"无导出\"}, \"detail_title\": \"适用范围与限制\", \"detail_expanded\": false, \"detail\": [\"适用于 5 人以内的小团队日常协作。\", \"支持方式仅限邮件。\", \"不含数据导出能力，无法导出 CSV 等文件。\"]}, {\"id\": \"plan-team\", \"label\": \"团队版\", \"selected\": true, \"overview\": {\"price\": \"299 元/月\", \"members\": \"20 人\", \"support\": \"邮件 + 在线支持\", \"export\": \"支持 CSV 导出\"}, \"detail_title\": \"适用范围与限制（已展开）\", \"detail_expanded\": true, \"detail\": [\"适用于 20 人以内的成长型团队。\", \"支持方式为邮件 + 在线支持。\", \"支持 CSV 导出，便于做数据留存与二次分析。\", \"成员上限 20 人，超出需考虑其他套餐。\"]}, {\"id\": \"plan-enterprise\", \"label\": \"企业版\", \"selected\": false, \"overview\": {\"price\": \"需询价\", \"members\": \"未知（未公布）\", \"support\": \"专属支持\", \"export\": \"未知（未公布）\"}, \"detail_title\": \"适用范围与限制\", \"detail_expanded\": false, \"detail\": [\"价格需询价，无公开标价。\", \"成员上限未公布，需与销售确认。\", \"数据导出能力未公布，需与销售确认。\", \"提供专属支持。\"]}], \"notice\": \"企业版的成员上限与数据导出能力在当前材料中未公布，显示为「未知」，请勿据此推断。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "page-header",
+                "plan-tabs",
+                "enterprise-notice"
+              ]
+            },
+            "page-header": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "page-subtitle"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "企业服务套餐概览",
+                "level": "h1"
+              }
+            },
+            "page-subtitle": {
+              "type": "Text",
+              "props": {
+                "content": "共 3 个套餐，可切换标签查看适用范围与限制",
+                "variant": "muted"
+              }
+            },
+            "plan-tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "plan-basic",
+                    "label": "基础版",
+                    "disabled": false
+                  },
+                  {
+                    "value": "plan-team",
+                    "label": "团队版",
+                    "disabled": false
+                  },
+                  {
+                    "value": "plan-enterprise",
+                    "label": "企业版",
+                    "disabled": false
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activeTab"
+                },
+                "defaultValue": "plan-team",
+                "disabled": false
+              },
+              "children": [
+                "tab-basic",
+                "tab-team",
+                "tab-enterprise"
+              ]
+            },
+            "tab-basic": {
+              "type": "TabContent",
+              "props": {
+                "value": "plan-basic"
+              },
+              "children": [
+                "basic-stack"
+              ]
+            },
+            "basic-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "basic-overview",
+                "basic-detail"
+              ]
+            },
+            "basic-overview": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "99 元/月"
+                  },
+                  {
+                    "label": "成员上限",
+                    "value": "5 人"
+                  },
+                  {
+                    "label": "支持方式",
+                    "value": "邮件支持"
+                  },
+                  {
+                    "label": "数据导出",
+                    "value": "无导出"
+                  }
+                ]
+              }
+            },
+            "basic-detail": {
+              "type": "Collapsible",
+              "props": {
+                "title": "适用范围与限制",
+                "summary": "基础版 3 条说明",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "basic-detail-text"
+              ]
+            },
+            "basic-detail-text": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "basic-d1",
+                "basic-d2",
+                "basic-d3"
+              ]
+            },
+            "basic-d1": {
+              "type": "Text",
+              "props": {
+                "content": "适用于 5 人以内的小团队日常协作。",
+                "variant": "default"
+              }
+            },
+            "basic-d2": {
+              "type": "Text",
+              "props": {
+                "content": "支持方式仅限邮件。",
+                "variant": "default"
+              }
+            },
+            "basic-d3": {
+              "type": "Text",
+              "props": {
+                "content": "不含数据导出能力，无法导出 CSV 等文件。",
+                "variant": "default"
+              }
+            },
+            "tab-team": {
+              "type": "TabContent",
+              "props": {
+                "value": "plan-team"
+              },
+              "children": [
+                "team-stack"
+              ]
+            },
+            "team-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "team-overview",
+                "team-detail"
+              ]
+            },
+            "team-overview": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "299 元/月"
+                  },
+                  {
+                    "label": "成员上限",
+                    "value": "20 人"
+                  },
+                  {
+                    "label": "支持方式",
+                    "value": "邮件 + 在线支持"
+                  },
+                  {
+                    "label": "数据导出",
+                    "value": "支持 CSV 导出"
+                  }
+                ]
+              }
+            },
+            "team-detail": {
+              "type": "Collapsible",
+              "props": {
+                "title": "适用范围与限制（已展开）",
+                "summary": "团队版 4 条说明",
+                "defaultOpen": true,
+                "disabled": false
+              },
+              "children": [
+                "team-detail-text"
+              ]
+            },
+            "team-detail-text": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "team-d1",
+                "team-d2",
+                "team-d3",
+                "team-d4"
+              ]
+            },
+            "team-d1": {
+              "type": "Text",
+              "props": {
+                "content": "适用于 20 人以内的成长型团队。",
+                "variant": "default"
+              }
+            },
+            "team-d2": {
+              "type": "Text",
+              "props": {
+                "content": "支持方式为邮件 + 在线支持。",
+                "variant": "default"
+              }
+            },
+            "team-d3": {
+              "type": "Text",
+              "props": {
+                "content": "支持 CSV 导出，便于做数据留存与二次分析。",
+                "variant": "default"
+              }
+            },
+            "team-d4": {
+              "type": "Text",
+              "props": {
+                "content": "成员上限 20 人，超出需考虑其他套餐。",
+                "variant": "default"
+              }
+            },
+            "tab-enterprise": {
+              "type": "TabContent",
+              "props": {
+                "value": "plan-enterprise"
+              },
+              "children": [
+                "enterprise-stack"
+              ]
+            },
+            "enterprise-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "enterprise-overview",
+                "enterprise-detail"
+              ]
+            },
+            "enterprise-overview": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "需询价"
+                  },
+                  {
+                    "label": "成员上限",
+                    "value": "未知（未公布）"
+                  },
+                  {
+                    "label": "支持方式",
+                    "value": "专属支持"
+                  },
+                  {
+                    "label": "数据导出",
+                    "value": "未知（未公布）"
+                  }
+                ]
+              }
+            },
+            "enterprise-detail": {
+              "type": "Collapsible",
+              "props": {
+                "title": "适用范围与限制",
+                "summary": "企业版 4 条说明",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "enterprise-detail-text"
+              ]
+            },
+            "enterprise-detail-text": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "enterprise-d1",
+                "enterprise-d2",
+                "enterprise-d3",
+                "enterprise-d4"
+              ]
+            },
+            "enterprise-d1": {
+              "type": "Text",
+              "props": {
+                "content": "价格需询价，无公开标价。",
+                "variant": "default"
+              }
+            },
+            "enterprise-d2": {
+              "type": "Text",
+              "props": {
+                "content": "成员上限未公布，需与销售确认。",
+                "variant": "warning"
+              }
+            },
+            "enterprise-d3": {
+              "type": "Text",
+              "props": {
+                "content": "数据导出能力未公布，需与销售确认。",
+                "variant": "warning"
+              }
+            },
+            "enterprise-d4": {
+              "type": "Text",
+              "props": {
+                "content": "提供专属支持。",
+                "variant": "default"
+              }
+            },
+            "enterprise-notice": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "说明",
+                "description": "企业版的成员上限与数据导出能力在当前材料中未公布，显示为「未知」，请勿据此推断。",
+                "showIcon": true
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "企业服务套餐概览",
+            "subtitle": "共 3 个套餐，可切换标签查看适用范围与限制",
+            "tabs": [
+              {
+                "id": "plan-basic",
+                "label": "基础版",
+                "selected": false,
+                "overview": {
+                  "price": "99 元/月",
+                  "members": "5 人",
+                  "support": "邮件支持",
+                  "export": "无导出"
+                },
+                "detail_title": "适用范围与限制",
+                "detail_expanded": false,
+                "detail": [
+                  "适用于 5 人以内的小团队日常协作。",
+                  "支持方式仅限邮件。",
+                  "不含数据导出能力，无法导出 CSV 等文件。"
+                ]
+              },
+              {
+                "id": "plan-team",
+                "label": "团队版",
+                "selected": true,
+                "overview": {
+                  "price": "299 元/月",
+                  "members": "20 人",
+                  "support": "邮件 + 在线支持",
+                  "export": "支持 CSV 导出"
+                },
+                "detail_title": "适用范围与限制（已展开）",
+                "detail_expanded": true,
+                "detail": [
+                  "适用于 20 人以内的成长型团队。",
+                  "支持方式为邮件 + 在线支持。",
+                  "支持 CSV 导出，便于做数据留存与二次分析。",
+                  "成员上限 20 人，超出需考虑其他套餐。"
+                ]
+              },
+              {
+                "id": "plan-enterprise",
+                "label": "企业版",
+                "selected": false,
+                "overview": {
+                  "price": "需询价",
+                  "members": "未知（未公布）",
+                  "support": "专属支持",
+                  "export": "未知（未公布）"
+                },
+                "detail_title": "适用范围与限制",
+                "detail_expanded": false,
+                "detail": [
+                  "价格需询价，无公开标价。",
+                  "成员上限未公布，需与销售确认。",
+                  "数据导出能力未公布，需与销售确认。",
+                  "提供专属支持。"
+                ]
+              }
+            ],
+            "notice": "企业版的成员上限与数据导出能力在当前材料中未公布，显示为「未知」，请勿据此推断。",
+            "_ui": {
+              "activeTab": "plan-team"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_K4fhdwqyHV5GzYCgZBqG4298"
+      },
+      "toolCallId": "call_00_K4fhdwqyHV5GzYCgZBqG4298",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "a7a2ba29-05b4-488b-82ae-8658d5f16072"
+    }
+  },
+  {
+    "call_seq": 52,
+    "result_seq": 53,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_00_GUwlwgXM2RZk0jwZnNmf6225",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"notice\": \"企业版成员上限与数据导出未公布，标记为「未知」，不做推断。\", \"subtitle\": \"已切换到团队版标签，并展开「适用范围与限制」\", \"tabs\": [{\"detail\": [\"适用于 5 人以内的小团队日常协作。\", \"支持方式仅限邮件。\", \"不含数据导出能力，无法导出 CSV 等文件。\"], \"detail_expanded\": false, \"detail_title\": \"适用范围与限制\", \"id\": \"plan-basic\", \"label\": \"基础版\", \"overview\": {\"export\": \"无导出\", \"members\": \"5 人\", \"price\": \"99 元/月\", \"support\": \"邮件支持\"}, \"selected\": false}, {\"detail\": [\"适用于 20 人以内的成长型团队。\", \"成员上限 20 人，超出需改用其他套餐。\", \"支持方式为邮件 + 在线支持。\", \"支持 CSV 导出，可用于数据留存与二次分析。\", \"价格为 299 元/月，较基础版贵 200 元/月。\"], \"detail_expanded\": true, \"detail_title\": \"适用范围与限制（已展开）\", \"id\": \"plan-team\", \"label\": \"团队版\", \"overview\": {\"export\": \"支持 CSV 导出\", \"members\": \"20 人\", \"price\": \"299 元/月\", \"support\": \"邮件 + 在线支持\"}, \"selected\": true}, {\"detail\": [\"价格需询价，无公开标价。\", \"成员上限未公布，需与销售确认。\", \"数据导出能力未公布，需与销售确认。\", \"提供专属支持。\"], \"detail_expanded\": false, \"detail_title\": \"适用范围与限制\", \"id\": \"plan-enterprise\", \"label\": \"企业版\", \"overview\": {\"export\": \"未知（未公布）\", \"members\": \"未知（未公布）\", \"price\": \"需询价\", \"support\": \"专属支持\"}, \"selected\": false}], \"title\": \"企业服务套餐概览\"}, \"components\": [\"Tabs\", \"Collapsible\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"scene\": \"kb\", \"user_query\": \"用 Tabs + Collapsible 展示三个套餐：标签页为「基础版」「团队版」「企业版」，当前实际选中「团队版」。团队版标签内的 Collapsible「适用范围与限制」为展开状态，直接可见其全部详情条目；基础版与企业版的 Collapsible 默认收起，可点击展开。每个标签页保留概览（价格、成员上限、支持方式、数据导出）。企业版未知项标注「未知（未公布）」。内容来自同一份固定数据。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "page-header",
+                "plans-tabs"
+              ]
+            },
+            "page-header": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "page-subtitle",
+                "page-source",
+                "notice-callout"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "企业服务套餐概览",
+                "level": "h1"
+              }
+            },
+            "page-subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "page-source": {
+              "type": "Text",
+              "props": {
+                "content": "数据来源：同一份固定套餐数据",
+                "variant": "muted"
+              }
+            },
+            "notice-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "说明",
+                "description": "企业版成员上限与数据导出未公布，标记为「未知」，不做推断。",
+                "showIcon": true
+              }
+            },
+            "plans-tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "plan-basic",
+                    "label": "基础版"
+                  },
+                  {
+                    "value": "plan-team",
+                    "label": "团队版"
+                  },
+                  {
+                    "value": "plan-enterprise",
+                    "label": "企业版"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activeTab"
+                },
+                "defaultValue": "plan-team",
+                "disabled": false
+              },
+              "children": [
+                "tab-basic",
+                "tab-team",
+                "tab-enterprise"
+              ]
+            },
+            "tab-basic": {
+              "type": "TabContent",
+              "props": {
+                "value": "plan-basic"
+              },
+              "children": [
+                "basic-stack"
+              ]
+            },
+            "basic-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "basic-overview-desc",
+                "basic-collapsible"
+              ]
+            },
+            "basic-overview-desc": {
+              "type": "Descriptions",
+              "props": {
+                "title": "概览",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "99 元/月"
+                  },
+                  {
+                    "label": "成员上限",
+                    "value": "5 人"
+                  },
+                  {
+                    "label": "支持方式",
+                    "value": "邮件支持"
+                  },
+                  {
+                    "label": "数据导出",
+                    "value": "无导出"
+                  }
+                ]
+              }
+            },
+            "basic-collapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "适用范围与限制",
+                "summary": "默认收起，点击展开",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "basic-detail-list"
+              ]
+            },
+            "basic-detail-list": {
+              "type": "List",
+              "props": {
+                "title": "详情条目",
+                "items": [
+                  {
+                    "title": "适用于 5 人以内的小团队日常协作。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "支持方式仅限邮件。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "不含数据导出能力，无法导出 CSV 等文件。",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无详情"
+              }
+            },
+            "tab-team": {
+              "type": "TabContent",
+              "props": {
+                "value": "plan-team"
+              },
+              "children": [
+                "team-stack"
+              ]
+            },
+            "team-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "team-selected-badge",
+                "team-overview-desc",
+                "team-collapsible"
+              ]
+            },
+            "team-selected-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "当前选中",
+                "variant": "success"
+              }
+            },
+            "team-overview-desc": {
+              "type": "Descriptions",
+              "props": {
+                "title": "概览",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "299 元/月"
+                  },
+                  {
+                    "label": "成员上限",
+                    "value": "20 人"
+                  },
+                  {
+                    "label": "支持方式",
+                    "value": "邮件 + 在线支持"
+                  },
+                  {
+                    "label": "数据导出",
+                    "value": "支持 CSV 导出"
+                  }
+                ]
+              }
+            },
+            "team-collapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "适用范围与限制",
+                "summary": "当前已展开",
+                "defaultOpen": true,
+                "disabled": false
+              },
+              "children": [
+                "team-detail-list"
+              ]
+            },
+            "team-detail-list": {
+              "type": "List",
+              "props": {
+                "title": "详情条目",
+                "items": [
+                  {
+                    "title": "适用于 20 人以内的成长型团队。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "成员上限 20 人，超出需改用其他套餐。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "支持方式为邮件 + 在线支持。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "支持 CSV 导出，可用于数据留存与二次分析。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "价格为 299 元/月，较基础版贵 200 元/月。",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无详情"
+              }
+            },
+            "tab-enterprise": {
+              "type": "TabContent",
+              "props": {
+                "value": "plan-enterprise"
+              },
+              "children": [
+                "enterprise-stack"
+              ]
+            },
+            "enterprise-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "enterprise-overview-desc",
+                "enterprise-collapsible"
+              ]
+            },
+            "enterprise-overview-desc": {
+              "type": "Descriptions",
+              "props": {
+                "title": "概览",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "价格",
+                    "value": "需询价"
+                  },
+                  {
+                    "label": "成员上限",
+                    "value": "未知（未公布）"
+                  },
+                  {
+                    "label": "支持方式",
+                    "value": "专属支持"
+                  },
+                  {
+                    "label": "数据导出",
+                    "value": "未知（未公布）"
+                  }
+                ]
+              }
+            },
+            "enterprise-collapsible": {
+              "type": "Collapsible",
+              "props": {
+                "title": "适用范围与限制",
+                "summary": "默认收起，点击展开",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "enterprise-detail-list"
+              ]
+            },
+            "enterprise-detail-list": {
+              "type": "List",
+              "props": {
+                "title": "详情条目",
+                "items": [
+                  {
+                    "title": "价格需询价，无公开标价。",
+                    "status": "info"
+                  },
+                  {
+                    "title": "成员上限未公布，需与销售确认。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "数据导出能力未公布，需与销售确认。",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "提供专属支持。",
+                    "status": "info"
+                  }
+                ],
+                "emptyText": "暂无详情"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "notice": "企业版成员上限与数据导出未公布，标记为「未知」，不做推断。",
+            "subtitle": "已切换到团队版标签，并展开「适用范围与限制」",
+            "tabs": [
+              {
+                "detail": [
+                  "适用于 5 人以内的小团队日常协作。",
+                  "支持方式仅限邮件。",
+                  "不含数据导出能力，无法导出 CSV 等文件。"
+                ],
+                "detail_expanded": false,
+                "detail_title": "适用范围与限制",
+                "id": "plan-basic",
+                "label": "基础版",
+                "overview": {
+                  "export": "无导出",
+                  "members": "5 人",
+                  "price": "99 元/月",
+                  "support": "邮件支持"
+                },
+                "selected": false
+              },
+              {
+                "detail": [
+                  "适用于 20 人以内的成长型团队。",
+                  "成员上限 20 人，超出需改用其他套餐。",
+                  "支持方式为邮件 + 在线支持。",
+                  "支持 CSV 导出，可用于数据留存与二次分析。",
+                  "价格为 299 元/月，较基础版贵 200 元/月。"
+                ],
+                "detail_expanded": true,
+                "detail_title": "适用范围与限制（已展开）",
+                "id": "plan-team",
+                "label": "团队版",
+                "overview": {
+                  "export": "支持 CSV 导出",
+                  "members": "20 人",
+                  "price": "299 元/月",
+                  "support": "邮件 + 在线支持"
+                },
+                "selected": true
+              },
+              {
+                "detail": [
+                  "价格需询价，无公开标价。",
+                  "成员上限未公布，需与销售确认。",
+                  "数据导出能力未公布，需与销售确认。",
+                  "提供专属支持。"
+                ],
+                "detail_expanded": false,
+                "detail_title": "适用范围与限制",
+                "id": "plan-enterprise",
+                "label": "企业版",
+                "overview": {
+                  "export": "未知（未公布）",
+                  "members": "未知（未公布）",
+                  "price": "需询价",
+                  "support": "专属支持"
+                },
+                "selected": false
+              }
+            ],
+            "title": "企业服务套餐概览",
+            "_ui": {
+              "activeTab": "plan-team"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_GUwlwgXM2RZk0jwZnNmf6225"
+      },
+      "toolCallId": "call_00_GUwlwgXM2RZk0jwZnNmf6225",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "dfced6a4-c692-4e87-9dc7-4feaa8a8b74f"
+    }
+  }
+]

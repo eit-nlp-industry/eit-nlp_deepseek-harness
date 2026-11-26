@@ -1,0 +1,62 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C06-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_LmL4fFFi6TlDw0J4J4ty6685"
+      },
+      "toolCallId": "call_00_ET_LmL4fFFi6TlDw0J4J4ty6685",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C06\",\"facts\":\"独立初始未提交草稿：date=2026-11-07,slot=14:00–15:00,people=3,note=带两位校外朋友参观；原计划含图书馆。仅草稿，尚未提交。字段date/slot/people/note。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "add1ebab-6e16-4368-a83c-d3f843432111"
+    }
+  },
+  {
+    "call": {
+      "seq": 36,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C06-B-02",
+        "values": {
+          "date": "2026-11-07",
+          "slot": "10:00–11:00",
+          "people": 3,
+          "note": "带两位校外朋友逛校园，之后吃午饭。"
+        }
+      }
+    },
+    "result_seq": 37,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ofytxoOSTVKHbGMWtiZS5774"
+      },
+      "toolCallId": "call_00_ofytxoOSTVKHbGMWtiZS5774",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"date\":\"2026-11-07\",\"slot\":\"10:00–11:00\",\"people\":3,\"note\":\"带两位校外朋友逛校园，之后吃午饭。\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "b9b11a89-d5f9-4d0f-9536-3de6c5f5846a"
+    }
+  }
+]

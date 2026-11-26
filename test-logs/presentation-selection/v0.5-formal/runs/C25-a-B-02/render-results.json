@@ -1,0 +1,304 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_dGou4dIttpGhCgyVTkZW4594",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"用最小状态卡片展示本次握手请求。卡片标题「握手请求」；状态标签显示「处理中（pending）」；列出条目：动作编号 handshake-01、当前状态 pending、结果 尚未收到成功或失败、说明 本题不控制机器人，请求交由固定模拟结果回放。底部一行提示：请等待实际结果返回，页面不重复发起任何动作。整体简洁单卡片，无操作按钮。仅使用基础卡片与状态类组件，无需 Image、ImageUpload、Tabs、MapPreview、SortableSequence、Collapsible、CodeBlock 等富组件。\", \"business_data\": {\"title\": \"握手请求\", \"status_label\": \"处理中（pending）\", \"status_key\": \"pending\", \"rows\": [{\"label\": \"动作编号\", \"value\": \"handshake-01\"}, {\"label\": \"当前状态\", \"value\": \"pending\"}, {\"label\": \"结果\", \"value\": \"尚未收到成功或失败\"}, {\"label\": \"说明\", \"value\": \"本题不控制机器人；请求交由固定模拟结果回放。\"}], \"footer_note\": \"请等待实际结果返回；本卡片不会再次发起动作。\", \"simulated\": true, \"text_fallback\": \"握手请求状态：pending（动作编号 handshake-01）。目前尚未收到成功或失败结果。本题不控制机器人，请求交由固定模拟结果回放，请等待实际结果返回，页面不重复发起动作。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "statusLine",
+                "details",
+                "noteDivider",
+                "footer"
+              ]
+            },
+            "statusLine": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "statusCaption",
+                "statusBadge"
+              ]
+            },
+            "statusCaption": {
+              "type": "Text",
+              "props": {
+                "content": "状态",
+                "variant": "muted"
+              }
+            },
+            "statusBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "处理中（pending）",
+                "variant": "warning"
+              }
+            },
+            "details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "动作编号",
+                    "value": "handshake-01"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "pending"
+                  },
+                  {
+                    "label": "结果",
+                    "value": "尚未收到成功或失败"
+                  },
+                  {
+                    "label": "说明",
+                    "value": "本题不控制机器人；请求交由固定模拟结果回放。"
+                  }
+                ]
+              }
+            },
+            "noteDivider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "footer": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/footer_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "握手请求",
+            "status_label": "处理中（pending）",
+            "status_key": "pending",
+            "rows": [
+              {
+                "label": "动作编号",
+                "value": "handshake-01"
+              },
+              {
+                "label": "当前状态",
+                "value": "pending"
+              },
+              {
+                "label": "结果",
+                "value": "尚未收到成功或失败"
+              },
+              {
+                "label": "说明",
+                "value": "本题不控制机器人；请求交由固定模拟结果回放。"
+              }
+            ],
+            "footer_note": "请等待实际结果返回；本卡片不会再次发起动作。",
+            "simulated": true,
+            "text_fallback": "握手请求状态：pending（动作编号 handshake-01）。目前尚未收到成功或失败结果。本题不控制机器人，请求交由固定模拟结果回放，请等待实际结果返回，页面不重复发起动作。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_dGou4dIttpGhCgyVTkZW4594"
+      },
+      "toolCallId": "call_00_dGou4dIttpGhCgyVTkZW4594",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5c8d4af7-2c4f-44f7-a267-704eb480f362"
+    }
+  },
+  {
+    "call_seq": 46,
+    "result_seq": 47,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_E9rPdv9QtrxN2Y9C8cON2945",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"footer_note\": \"此为固定模拟环境回放结果，未控制真实机器人；本卡片不会再次发起动作。\", \"rows\": [{\"label\": \"动作编号\", \"value\": \"handshake-01\"}, {\"label\": \"当前状态\", \"value\": \"succeeded（成功）\"}, {\"label\": \"结果来源\", \"value\": \"固定模拟环境回放（simulated）\"}, {\"label\": \"真实机器人\", \"value\": \"未控制\"}], \"simulated\": true, \"status_key\": \"succeeded\", \"status_label\": \"已完成（succeeded）\", \"text_fallback\": \"握手请求状态：succeeded（成功），动作编号 handshake-01。该结果为固定模拟环境回放所得，未控制真实机器人。本卡片不会再次发起动作。\", \"title\": \"握手请求\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"将上一张最小状态卡片更新为已完成状态。卡片标题「握手请求」；状态标签显示「已完成（succeeded）」；列出条目：动作编号 handshake-01、当前状态 succeeded（成功）、结果来源 固定模拟环境回放（simulated）、真实机器人 未控制。底部一行提示：此为固定模拟环境回放结果，未控制真实机器人，本卡片不会再次发起动作。单卡片、简洁、无操作按钮，不重复发起任何动作。仅使用基础卡片与状态类组件，无需 Image、ImageUpload、Tabs、MapPreview、SortableSequence、Collapsible、CodeBlock 等富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "card"
+              ]
+            },
+            "card": {
+              "type": "Card",
+              "props": {
+                "title": "握手请求",
+                "variant": "outlined"
+              },
+              "children": [
+                "cardStack"
+              ]
+            },
+            "cardStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "statusBadge",
+                "details",
+                "divider",
+                "footer"
+              ]
+            },
+            "statusBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "已完成（succeeded）",
+                "variant": "success"
+              }
+            },
+            "details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "动作编号",
+                    "value": "handshake-01"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "succeeded（成功）"
+                  },
+                  {
+                    "label": "结果来源",
+                    "value": "固定模拟环境回放（simulated）"
+                  },
+                  {
+                    "label": "真实机器人",
+                    "value": "未控制"
+                  }
+                ]
+              }
+            },
+            "divider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "footer": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/footer_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "footer_note": "此为固定模拟环境回放结果，未控制真实机器人；本卡片不会再次发起动作。",
+            "rows": [
+              {
+                "label": "动作编号",
+                "value": "handshake-01"
+              },
+              {
+                "label": "当前状态",
+                "value": "succeeded（成功）"
+              },
+              {
+                "label": "结果来源",
+                "value": "固定模拟环境回放（simulated）"
+              },
+              {
+                "label": "真实机器人",
+                "value": "未控制"
+              }
+            ],
+            "simulated": true,
+            "status_key": "succeeded",
+            "status_label": "已完成（succeeded）",
+            "text_fallback": "握手请求状态：succeeded（成功），动作编号 handshake-01。该结果为固定模拟环境回放所得，未控制真实机器人。本卡片不会再次发起动作。",
+            "title": "握手请求"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_E9rPdv9QtrxN2Y9C8cON2945"
+      },
+      "toolCallId": "call_00_E9rPdv9QtrxN2Y9C8cON2945",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "06e6ee5e-8124-45d4-a28b-dd3e20d59310"
+    }
+  }
+]

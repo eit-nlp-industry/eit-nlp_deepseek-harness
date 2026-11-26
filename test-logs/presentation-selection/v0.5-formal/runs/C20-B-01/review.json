@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 4,
+  "presentation": "partial",
+  "reason": "固定底图Image和MapPreview三点可见，缩放工作；实际SVG仅点位无两段路线线条，内置校园背景与固定底图不同。文字说明两段关系正确；多处未注册组件及数据出处干扰。"
+}

@@ -1,0 +1,257 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_0qfm6p2Dvz2yNNFTBP431594",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"展示一张候选对照图（Image 组件，src 使用 materials 给定的同源 path 字符串，alt 使用材料原文），下方给出“记住我：小张”与候选 person-a 的绑定确认提示文字，并说明尚未保存、需用户确认。不要生成 Image 以外的任何 rich 组件。\", \"business_data\": {\"image\": \"/api/media/bench05-person-pair/content\", \"alt\": \"MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture\", \"title\": \"记住我：小张\", \"candidate\": \"候选 person-a\", \"nickname\": \"小张\", \"binding\": \"小张 → person-a\", \"confirm_prompt\": \"确认把昵称「小张」绑定到候选 person-a 吗？\", \"status\": \"尚未确认，未保存\", \"note\": \"图为合成候选对照材料：A = 灰色 + 箱子，B = 蓝色 + 包。仅记录模拟状态，不做真实建档。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "heading-main",
+                "image-card",
+                "confirm-card",
+                "details-card"
+              ]
+            },
+            "heading-main": {
+              "type": "Heading",
+              "props": {
+                "text": "候选对照与绑定确认",
+                "level": "h1"
+              }
+            },
+            "image-card": {
+              "type": "Card",
+              "props": {
+                "title": "候选对照图",
+                "variant": "outlined"
+              },
+              "children": [
+                "candidate-image",
+                "image-note"
+              ]
+            },
+            "candidate-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-pair/content",
+                "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+                "caption": "记住我：小张",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "image-note": {
+              "type": "Text",
+              "props": {
+                "content": "图为合成候选对照材料：A = 灰色 + 箱子，B = 蓝色 + 包。仅记录模拟状态，不做真实建档。",
+                "variant": "muted"
+              }
+            },
+            "confirm-card": {
+              "type": "Card",
+              "props": {
+                "title": "绑定确认",
+                "variant": "outlined"
+              },
+              "children": [
+                "confirm-stack"
+              ]
+            },
+            "confirm-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "confirm-heading",
+                "confirm-candidate",
+                "confirm-prompt",
+                "status-text",
+                "confirm-save-note"
+              ]
+            },
+            "confirm-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "记住我：小张",
+                "level": "h3"
+              }
+            },
+            "confirm-candidate": {
+              "type": "Text",
+              "props": {
+                "content": "候选：候选 person-a",
+                "variant": "default"
+              }
+            },
+            "confirm-prompt": {
+              "type": "Text",
+              "props": {
+                "content": "确认把昵称「小张」绑定到候选 person-a 吗？",
+                "variant": "default"
+              }
+            },
+            "status-text": {
+              "type": "Text",
+              "props": {
+                "content": "尚未确认，未保存",
+                "variant": "warning"
+              }
+            },
+            "confirm-save-note": {
+              "type": "Text",
+              "props": {
+                "content": "请确认后再保存。",
+                "variant": "muted"
+              }
+            },
+            "details-card": {
+              "type": "Card",
+              "props": {
+                "title": "business_data 逐项（字段与值）",
+                "variant": "outlined"
+              },
+              "children": [
+                "details-stack"
+              ]
+            },
+            "details-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "field-image",
+                "field-alt",
+                "field-title",
+                "field-candidate",
+                "field-nickname",
+                "field-binding",
+                "field-confirm-prompt",
+                "field-status",
+                "field-note"
+              ]
+            },
+            "field-image": {
+              "type": "Text",
+              "props": {
+                "content": "image：/api/media/bench05-person-pair/content",
+                "variant": "default"
+              }
+            },
+            "field-alt": {
+              "type": "Text",
+              "props": {
+                "content": "alt：MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+                "variant": "default"
+              }
+            },
+            "field-title": {
+              "type": "Text",
+              "props": {
+                "content": "title：记住我：小张",
+                "variant": "default"
+              }
+            },
+            "field-candidate": {
+              "type": "Text",
+              "props": {
+                "content": "candidate：候选 person-a",
+                "variant": "default"
+              }
+            },
+            "field-nickname": {
+              "type": "Text",
+              "props": {
+                "content": "nickname：小张",
+                "variant": "default"
+              }
+            },
+            "field-binding": {
+              "type": "Text",
+              "props": {
+                "content": "binding：小张 → person-a",
+                "variant": "default"
+              }
+            },
+            "field-confirm-prompt": {
+              "type": "Text",
+              "props": {
+                "content": "confirm_prompt：确认把昵称「小张」绑定到候选 person-a 吗？",
+                "variant": "default"
+              }
+            },
+            "field-status": {
+              "type": "Text",
+              "props": {
+                "content": "status：尚未确认，未保存",
+                "variant": "warning"
+              }
+            },
+            "field-note": {
+              "type": "Text",
+              "props": {
+                "content": "note：图为合成候选对照材料：A = 灰色 + 箱子，B = 蓝色 + 包。仅记录模拟状态，不做真实建档。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "image": "/api/media/bench05-person-pair/content",
+            "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+            "title": "记住我：小张",
+            "candidate": "候选 person-a",
+            "nickname": "小张",
+            "binding": "小张 → person-a",
+            "confirm_prompt": "确认把昵称「小张」绑定到候选 person-a 吗？",
+            "status": "尚未确认，未保存",
+            "note": "图为合成候选对照材料：A = 灰色 + 箱子，B = 蓝色 + 包。仅记录模拟状态，不做真实建档。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_0qfm6p2Dvz2yNNFTBP431594"
+      },
+      "toolCallId": "call_00_0qfm6p2Dvz2yNNFTBP431594",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "07b0be76-e0c3-47f1-a8e5-6a5a4cb6e74d"
+    }
+  }
+]

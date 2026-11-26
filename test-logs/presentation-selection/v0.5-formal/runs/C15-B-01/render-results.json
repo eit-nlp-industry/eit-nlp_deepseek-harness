@@ -1,0 +1,449 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_hGNjS941CQW4OcHYiNjC6259",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"user_query\": \"展示当前唯一候选包裹的远景图像：顶部用文字说明\\\"当前候选：parcel-3726（尾号 3726），状态：待你确认\\\"，中部放一个 Image 组件展示远景图，图片下方标注\\\"当前视角：远景（img-far）\\\"，再补充一行说明\\\"近景与侧景图像尚未发布，暂无其他视角可展示\\\"。不要添加地图、排序、折叠、标签页或上传等组件。\", \"business_data\": {\"title\": \"当前候选包裹\", \"candidate\": \"parcel-3726\", \"order_tail\": \"3726\", \"status\": \"待确认\", \"view_label\": \"当前视角：远景（img-far）\", \"image\": \"/api/media/bench05-img-far/content\", \"alt\": \"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\", \"view_note\": \"近景与侧景图像尚未发布，暂无其他视角可展示\", \"fallback_text\": \"当前候选包裹为 parcel-3726，订单尾号 3726，状态待确认；目前仅有远景图一张。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page-heading",
+                "candidate-banner",
+                "image-card",
+                "view-note",
+                "details-section"
+              ]
+            },
+            "page-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "当前候选包裹",
+                "level": "h1"
+              }
+            },
+            "candidate-banner": {
+              "type": "Text",
+              "props": {
+                "content": "当前候选：parcel-3726（尾号 3726），状态：待你确认",
+                "variant": "default"
+              }
+            },
+            "image-card": {
+              "type": "Card",
+              "props": {
+                "title": "远景图像",
+                "variant": "outlined"
+              },
+              "children": [
+                "far-image"
+              ]
+            },
+            "far-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-far/content",
+                "alt": "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture",
+                "caption": "当前视角：远景（img-far）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "view-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/view_note"
+                },
+                "variant": "muted"
+              }
+            },
+            "details-section": {
+              "type": "Section",
+              "props": {
+                "title": "候选包裹信息",
+                "description": "逐项列出当前候选包裹的相关字段与取值。",
+                "headingLevel": "h3",
+                "bordered": true
+              },
+              "children": [
+                "details-descriptions"
+              ]
+            },
+            "details-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "标题",
+                    "value": "当前候选包裹"
+                  },
+                  {
+                    "label": "候选包裹",
+                    "value": "parcel-3726"
+                  },
+                  {
+                    "label": "订单尾号",
+                    "value": "3726"
+                  },
+                  {
+                    "label": "状态",
+                    "value": "待确认"
+                  },
+                  {
+                    "label": "当前视角",
+                    "value": "当前视角：远景（img-far）"
+                  },
+                  {
+                    "label": "图像地址",
+                    "value": "/api/media/bench05-img-far/content"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture"
+                  },
+                  {
+                    "label": "视角说明",
+                    "value": "近景与侧景图像尚未发布，暂无其他视角可展示"
+                  },
+                  {
+                    "label": "备用说明",
+                    "value": "当前候选包裹为 parcel-3726，订单尾号 3726，状态待确认；目前仅有远景图一张。"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "当前候选包裹",
+            "candidate": "parcel-3726",
+            "order_tail": "3726",
+            "status": "待确认",
+            "view_label": "当前视角：远景（img-far）",
+            "image": "/api/media/bench05-img-far/content",
+            "alt": "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture",
+            "view_note": "近景与侧景图像尚未发布，暂无其他视角可展示",
+            "fallback_text": "当前候选包裹为 parcel-3726，订单尾号 3726，状态待确认；目前仅有远景图一张。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_hGNjS941CQW4OcHYiNjC6259"
+      },
+      "toolCallId": "call_00_hGNjS941CQW4OcHYiNjC6259",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "62c7e59c-c64b-4e32-bab7-7f0c7837f8f2"
+    }
+  },
+  {
+    "call_seq": 43,
+    "result_seq": 44,
+    "call": {
+      "turn": 1,
+      "step": 5,
+      "callId": "call_00_p9KzCVJeOtqhBT9bFIQ47665",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"scene\": \"kb\", \"user_query\": \"第二轮展示：说明用户希望放大查看，但近景图像尚未发布。顶部写\\\"当前候选：parcel-3726（尾号 3726），仍待确认\\\"，放一个 Image 组件，图片下方明确标注\\\"仍为远景视角（img-far），未获得近景画面\\\"，再用一行提示\\\"近景与侧景视角尚未发布，无法提供放大画面；本轮不重复使用远景图冒充近景\\\"。不添加其他组件。\", \"business_data\": {\"title\": \"当前候选包裹（仍为远景）\", \"candidate\": \"parcel-3726\", \"order_tail\": \"3726\", \"status\": \"待确认\", \"view_label\": \"仍为远景视角（img-far），未获得近景画面\", \"image\": \"/api/media/bench05-img-far/content\", \"alt\": \"MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture\", \"view_note\": \"近景与侧景视角尚未发布，暂无放大画面可展示\", \"fallback_text\": \"当前只有远景图一张，近景视角尚未发布，因此这次没有可展示的放大画面；候选仍是 parcel-3726（尾号 3726），尚未确认。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Section",
+              "props": {
+                "title": "当前候选：parcel-3726（尾号 3726），仍待确认",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "img-far",
+                "view-label",
+                "view-note"
+              ]
+            },
+            "img-far": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-far/content",
+                "alt": "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "eager"
+              }
+            },
+            "view-label": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/view_label"
+                },
+                "variant": "warning"
+              }
+            },
+            "view-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/view_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "当前候选包裹（仍为远景）",
+            "candidate": "parcel-3726",
+            "order_tail": "3726",
+            "status": "待确认",
+            "view_label": "仍为远景视角（img-far），未获得近景画面",
+            "image": "/api/media/bench05-img-far/content",
+            "alt": "MOCK PARCEL FAR; CANDIDATE parcel-3726; synthetic fixture",
+            "view_note": "近景与侧景视角尚未发布，暂无放大画面可展示",
+            "fallback_text": "当前只有远景图一张，近景视角尚未发布，因此这次没有可展示的放大画面；候选仍是 parcel-3726（尾号 3726），尚未确认。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_p9KzCVJeOtqhBT9bFIQ47665"
+      },
+      "toolCallId": "call_00_p9KzCVJeOtqhBT9bFIQ47665",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ec157bdf-d79b-4fa8-9695-ea9830d83f49"
+    }
+  },
+  {
+    "call_seq": 70,
+    "result_seq": 71,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_ET_g2DYdVbT0Whd8VanHdQU7073",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"scene\": \"kb\", \"user_query\": \"第三轮展示：近景画面已可用。顶部写\\\"当前候选：parcel-3726（订单尾号 3726），状态：待确认\\\"，中部放一个 Image 组件展示近景图，图片下方标注\\\"当前视角：近景（img-near），订单尾号 3726\\\"，并以一行文字说明\\\"这是新发布的近景画面，与之前的远景为不同视角\\\"。不添加其他组件。\", \"business_data\": {\"alt\": \"MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture\", \"candidate\": \"parcel-3726\", \"fallback_text\": \"近景画面已发布：图中为同一候选包裹 parcel-3726，订单尾号 3726，状态待确认。\", \"image\": \"/api/media/bench05-img-near/content\", \"order_tail\": \"3726\", \"status\": \"待确认\", \"title\": \"当前候选包裹（近景）\", \"view_label\": \"当前视角：近景（img-near），订单尾号 3726\", \"view_note\": \"这是新发布的近景画面，与之前的远景为不同视角\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "top",
+                "image",
+                "note"
+              ]
+            },
+            "top": {
+              "type": "Text",
+              "props": {
+                "content": "当前候选：parcel-3726（订单尾号 3726），状态：待确认",
+                "variant": "default"
+              }
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-near/content",
+                "alt": "MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture",
+                "caption": "当前视角：近景（img-near），订单尾号 3726",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/view_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture",
+            "candidate": "parcel-3726",
+            "fallback_text": "近景画面已发布：图中为同一候选包裹 parcel-3726，订单尾号 3726，状态待确认。",
+            "image": "/api/media/bench05-img-near/content",
+            "order_tail": "3726",
+            "status": "待确认",
+            "title": "当前候选包裹（近景）",
+            "view_label": "当前视角：近景（img-near），订单尾号 3726",
+            "view_note": "这是新发布的近景画面，与之前的远景为不同视角"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_g2DYdVbT0Whd8VanHdQU7073"
+      },
+      "toolCallId": "call_00_ET_g2DYdVbT0Whd8VanHdQU7073",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "c72b632a-1af3-4cbd-a155-3c993b0aa660"
+    }
+  },
+  {
+    "call_seq": 109,
+    "result_seq": 110,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_ET_CoiIZWVNt7zNyzsHCIdT8660",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK PARCEL SIDE; SAME parcel-3726 | SIDE; synthetic fixture\", \"candidate\": \"parcel-3726\", \"fallback_text\": \"侧景画面已发布：图中为同一候选包裹 parcel-3726 的侧面视角，尚未获你确认。\", \"image\": \"/api/media/bench05-img-side/content\", \"order_tail\": \"3726\", \"status\": \"尚未确认\", \"title\": \"当前候选包裹（侧景）\", \"view_label\": \"当前视角：侧景（img-side），同一候选 parcel-3726\", \"view_note\": \"这是新发布的侧面画面，与远景、近景为同一包裹的不同视角\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"scene\": \"kb\", \"user_query\": \"第四轮展示：侧面画面已可用。顶部写\\\"当前候选：parcel-3726（订单尾号 3726），状态：尚未确认\\\"，中部放一个 Image 组件展示侧景图，图片下方标注\\\"当前视角：侧景（img-side），同一候选 parcel-3726\\\"，再一行说明\\\"与远景、近景为同一包裹的不同视角\\\"。不添加其他组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "top",
+                "side-image",
+                "view-note"
+              ]
+            },
+            "top": {
+              "type": "Text",
+              "props": {
+                "content": "当前候选：parcel-3726（订单尾号 3726），状态：尚未确认",
+                "variant": "default"
+              }
+            },
+            "side-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-side/content",
+                "alt": "MOCK PARCEL SIDE; SAME parcel-3726 | SIDE; synthetic fixture",
+                "caption": "当前视角：侧景（img-side），同一候选 parcel-3726",
+                "fit": "contain",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "view-note": {
+              "type": "Text",
+              "props": {
+                "content": "与远景、近景为同一包裹的不同视角",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK PARCEL SIDE; SAME parcel-3726 | SIDE; synthetic fixture",
+            "candidate": "parcel-3726",
+            "fallback_text": "侧景画面已发布：图中为同一候选包裹 parcel-3726 的侧面视角，尚未获你确认。",
+            "image": "/api/media/bench05-img-side/content",
+            "order_tail": "3726",
+            "status": "尚未确认",
+            "title": "当前候选包裹（侧景）",
+            "view_label": "当前视角：侧景（img-side），同一候选 parcel-3726",
+            "view_note": "这是新发布的侧面画面，与远景、近景为同一包裹的不同视角"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_CoiIZWVNt7zNyzsHCIdT8660"
+      },
+      "toolCallId": "call_00_ET_CoiIZWVNt7zNyzsHCIdT8660",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "642d36c5-042c-45ff-9e85-4947cda92050"
+    }
+  }
+]

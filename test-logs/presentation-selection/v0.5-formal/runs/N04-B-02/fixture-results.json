@@ -1,0 +1,61 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N04-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_RIGR6bSIP61KsUlLhzbm7467"
+      },
+      "toolCallId": "call_00_ET_RIGR6bSIP61KsUlLhzbm7467",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N04\",\"facts\":\"用途purpose和人数people未知；形式format仅线上/线下，未知；用途自由文字、人数正整数。不设推荐默认值，收齐后只汇总。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "db8cfbfb-7591-432e-8e2d-a361cbf73316"
+    }
+  },
+  {
+    "call": {
+      "seq": 36,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N04-B-02",
+        "values": {
+          "purpose": "产品培训",
+          "people": 12,
+          "format": "线上"
+        }
+      }
+    },
+    "result_seq": 37,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_YpvPMKpCX2g4qyo8pzQo1209"
+      },
+      "toolCallId": "call_00_YpvPMKpCX2g4qyo8pzQo1209",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "0187c913-40be-491d-af21-52dc1332bd36"
+    }
+  }
+]

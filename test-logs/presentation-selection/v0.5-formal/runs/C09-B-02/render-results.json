@@ -1,0 +1,58 @@
+[
+  {
+    "call_seq": 34,
+    "result_seq": 35,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_00_PHOF9ij7rVantkoqvdGA0240",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"business_data\": {\"event_id\": \"e-rec-01\", \"title\": \"候选再次出现\", \"notice\": \"已确认昵称「小张」的候选 person-a 再次出现（固定模拟识别结果，仅通知，未新建档案）。\", \"candidate\": \"小张（person-a）\", \"status\": \"仅通知，不建新档\", \"simulated\": true, \"image\": \"http://127.0.0.1:3080/api/media/bench05-person-a/content\", \"alt\": \"MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture\", \"image_note\": \"合成示意素材：灰大衣、行李箱；非真实拍摄\", \"fallback_text\": \"事件 e-rec-01：已确认昵称「小张」的候选 person-a 再次出现。图片链接：http://127.0.0.1:3080/api/media/bench05-person-a/content（若图片无法显示，请以此链接和上方文字为准）。\"}, \"user_query\": \"展示一条简短的事件通知卡片：标题「候选再次出现」，说明候选小张（person-a）再次出现、本次仅为通知且不建新档，并标注为模拟材料。卡片内用 Image 组件展示该候选的固定图片，图片地址必须取 business_data.image 的原值，alt 取 business_data.alt。卡片底部保留一行文字兜底（business_data.fallback_text）。不添加其他组件。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_PHOF9ij7rVantkoqvdGA0240"
+      },
+      "toolCallId": "call_00_PHOF9ij7rVantkoqvdGA0240",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面生成失败，已尝试 3 次：Model output is invalid after generation validation。请用文字继续回答。不要把错误 JSON 展示给用户。"
+        }
+      ],
+      "isError": false,
+      "id": "f82fdcd7-3d9a-4610-a3b7-126ce86c0004"
+    }
+  },
+  {
+    "call_seq": 40,
+    "result_seq": 41,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_Da5TzYNJpObBQpPn1rYC2386",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"image\": \"http://127.0.0.1:3080/api/media/bench05-person-a/content\", \"alt\": \"MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"mode\": \"display\", \"user_query\": \"用 Image 组件展示固定图片，props.src 取 business_data.image 原值，alt 取 business_data.alt。仅此一个组件。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Da5TzYNJpObBQpPn1rYC2386"
+      },
+      "toolCallId": "call_00_Da5TzYNJpObBQpPn1rYC2386",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面生成失败，已尝试 3 次：Model output is invalid after generation validation。请用文字继续回答。不要把错误 JSON 展示给用户。"
+        }
+      ],
+      "isError": false,
+      "id": "a68c0d4c-097b-498c-a710-18c1d4cb0baa"
+    }
+  }
+]

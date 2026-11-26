@@ -1,0 +1,150 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_RgjTWI4CRyckUDe4n1bM9716",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"轻量表单：一个必填的单选字段「主要用途」，两个选项为「安静阅读」和「公共交流」，选项值必须与 business_data 完全一致；再提供一个可选的简短补充输入框「其他说明」。不要添加其他字段或地图、图片等组件。表单顶部显示标题和一句说明。提交按钮文案「查看建议」。\", \"business_data\": {\"title\": \"帮我找个地方\", \"description\": \"先确认用途，再据此给出建议；当前仅为建议，不代表已提交或已预约。\", \"fields\": [{\"name\": \"purpose\", \"label\": \"主要用途\", \"type\": \"radio\", \"required\": true, \"options\": [{\"label\": \"安静阅读\", \"value\": \"安静阅读\"}, {\"label\": \"公共交流\", \"value\": \"公共交流\"}]}, {\"name\": \"note\", \"label\": \"其他说明\", \"type\": \"text\", \"required\": false}], \"submit_label\": \"查看建议\", \"fallback_text\": \"如果表单未能显示，请直接回复你的用途：安静阅读，或公共交流。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "form-section"
+              ]
+            },
+            "form-section": {
+              "type": "Section",
+              "props": {
+                "title": "帮我找个地方",
+                "description": "先确认用途，再据此给出建议；当前仅为建议，不代表已提交或已预约。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "filters-form",
+                "submit-button"
+              ]
+            },
+            "filters-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "purpose",
+                    "label": "主要用途",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "安静阅读",
+                          "label": "安静阅读"
+                        },
+                        {
+                          "value": "公共交流",
+                          "label": "公共交流"
+                        }
+                      ]
+                    },
+                    "placeholder": "请选择主要用途"
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "其他说明",
+                    "placeholder": "可填写其他说明（可选）"
+                  }
+                ]
+              }
+            },
+            "submit-button": {
+              "type": "Button",
+              "props": {
+                "label": "查看建议",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "帮我找个地方",
+            "description": "先确认用途，再据此给出建议；当前仅为建议，不代表已提交或已预约。",
+            "fields": [
+              {
+                "name": "purpose",
+                "label": "主要用途",
+                "type": "radio",
+                "required": true,
+                "options": [
+                  {
+                    "label": "安静阅读",
+                    "value": "安静阅读"
+                  },
+                  {
+                    "label": "公共交流",
+                    "value": "公共交流"
+                  }
+                ]
+              },
+              {
+                "name": "note",
+                "label": "其他说明",
+                "type": "text",
+                "required": false
+              }
+            ],
+            "submit_label": "查看建议",
+            "fallback_text": "如果表单未能显示，请直接回复你的用途：安静阅读，或公共交流。",
+            "form": {
+              "purpose": "",
+              "note": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_RgjTWI4CRyckUDe4n1bM9716"
+      },
+      "toolCallId": "call_00_RgjTWI4CRyckUDe4n1bM9716",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "45e7a5ff-cf30-4e7e-b421-70bdb43d3304"
+    }
+  }
+]

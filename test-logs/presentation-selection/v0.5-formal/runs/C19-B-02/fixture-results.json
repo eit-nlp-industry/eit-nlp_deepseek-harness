@@ -1,0 +1,77 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C19-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 19,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_FtCSZzfqgkYffAJa7NwT4821"
+      },
+      "toolCallId": "call_00_ET_FtCSZzfqgkYffAJa7NwT4821",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C19\",\"facts\":\"稳定地点ID lib=图书馆、canteen=食堂、college=四明书院，初始lib/canteen/college。college地图位置尚未确认。只保存排序草稿，不导航。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "b535937c-395e-4bc1-90ff-da633038d5e7"
+    }
+  },
+  {
+    "call": {
+      "seq": 36,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C19-B-02",
+        "values": {
+          "order": [
+            "canteen",
+            "lib",
+            "college"
+          ],
+          "orderedItems": [
+            {
+              "id": "canteen",
+              "title": "食堂"
+            },
+            {
+              "id": "lib",
+              "title": "图书馆"
+            },
+            {
+              "id": "college",
+              "title": "四明书院"
+            }
+          ]
+        }
+      }
+    },
+    "result_seq": 37,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_irL55MyozCvukAg1mHJL1810"
+      },
+      "toolCallId": "call_00_irL55MyozCvukAg1mHJL1810",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"order\":[\"canteen\",\"lib\",\"college\"],\"orderedItems\":[{\"id\":\"canteen\",\"title\":\"食堂\"},{\"id\":\"lib\",\"title\":\"图书馆\"},{\"id\":\"college\",\"title\":\"四明书院\"}]}}}"
+        }
+      ],
+      "isError": false,
+      "id": "a03a2744-8e35-4289-b180-5f54d8340935"
+    }
+  }
+]

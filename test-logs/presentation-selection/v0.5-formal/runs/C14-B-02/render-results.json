@@ -1,0 +1,252 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_AgTQrQYbELyEYeiJGlPf5296",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"展示一张图书馆座位情况图片卡片：只使用 Image 组件呈现已回传的图片（/api/media/bench05-img-left/content，替代文本\\\"MOCK LIBRARY LEFT; 14:00 | FULL\\\"）。图片上方用标题写明视角与时间：\\\"图书馆 · 左侧视角 · 14:00\\\"；图片下方分三点列明固定材料事实：1) 视角：左侧（img-left）；2) 时间：14:00；3) 观察结论：满座。再标注一条提示：\\\"其他视角尚未观察，不能判断是否有空座或座位是否已被预订。\\\"不要生成其他 rich 组件，不要推测未观察区域的座位情况。\", \"business_data\": {\"title\": \"图书馆座位情况 · 左侧视角 14:00\", \"image\": \"/api/media/bench05-img-left/content\", \"alt\": \"MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture\", \"viewpoint\": \"左侧视角（img-left）\", \"time\": \"14:00\", \"observation\": \"左侧视角下已满座\", \"notice\": \"其他视角尚未观察，不能判断是否有空座或座位是否已被预订。\", \"source\": \"bench05-img-left\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "图书馆 · 左侧视角 · 14:00",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "image",
+                "fact1",
+                "fact2",
+                "fact3",
+                "notice",
+                "source"
+              ]
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-left/content",
+                "alt": "MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "fact1": {
+              "type": "Text",
+              "props": {
+                "content": "1) 视角：左侧视角（img-left）",
+                "variant": "default"
+              }
+            },
+            "fact2": {
+              "type": "Text",
+              "props": {
+                "content": "2) 时间：14:00",
+                "variant": "default"
+              }
+            },
+            "fact3": {
+              "type": "Text",
+              "props": {
+                "content": "3) 观察结论：左侧视角下已满座",
+                "variant": "default"
+              }
+            },
+            "notice": {
+              "type": "Text",
+              "props": {
+                "content": "其他视角尚未观察，不能判断是否有空座或座位是否已被预订。",
+                "variant": "warning"
+              }
+            },
+            "source": {
+              "type": "Text",
+              "props": {
+                "content": "出处：bench05-img-left",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "图书馆座位情况 · 左侧视角 14:00",
+            "image": "/api/media/bench05-img-left/content",
+            "alt": "MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture",
+            "viewpoint": "左侧视角（img-left）",
+            "time": "14:00",
+            "observation": "左侧视角下已满座",
+            "notice": "其他视角尚未观察，不能判断是否有空座或座位是否已被预订。",
+            "source": "bench05-img-left"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_AgTQrQYbELyEYeiJGlPf5296"
+      },
+      "toolCallId": "call_00_AgTQrQYbELyEYeiJGlPf5296",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "365e68a1-f474-4dab-9ef1-4049a52c0ba2"
+    }
+  },
+  {
+    "call_seq": 67,
+    "result_seq": 68,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_dkZI0P1YX1FvBQrzBYT70605",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"图书馆座位情况 · 按视角与时间更新\", \"images\": [{\"image\": \"/api/media/bench05-img-left/content\", \"alt\": \"MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture\", \"viewpoint\": \"左侧视角\", \"time\": \"14:00\", \"conclusion\": \"满座\"}, {\"image\": \"/api/media/bench05-img-right/content\", \"alt\": \"MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture\", \"viewpoint\": \"右侧视角\", \"time\": \"14:01\", \"conclusion\": \"有 2 个空位（仅为当时观察）\"}], \"left\": {\"viewpoint\": \"左侧视角\", \"time\": \"14:00\", \"conclusion\": \"满座\"}, \"right\": {\"viewpoint\": \"右侧视角\", \"time\": \"14:01\", \"conclusion\": \"有 2 个空位\", \"note\": \"只是 14:01 的当前观察，不代表已预订或为你保留\"}, \"notice\": \"两张图分别对应不同视角与时间：左侧 14:00 满座；右侧 14:01 观察到 2 个空位。空位为当时观察结果，不等于预订。\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"在原有左侧图片之后追加右侧新图片：用两个 Image 组件，先左后右，顺序为图片1（/api/media/bench05-img-left/content，替代文本\\\"MOCK LIBRARY LEFT; 14:00 | FULL\\\"）标注\\\"左侧视角 · 14:00 · 满座\\\"；图片2（/api/media/bench05-img-right/content，替代文本\\\"MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS\\\"）标注\\\"右侧视角 · 14:01 · 有 2 个空位\\\"。每张图下方分别写明视角、时间与观察结论。最后加一行提示：\\\"右侧空位为 14:01 的当前观察结果，不代表已预订或为你保留。\\\"只生成 Image 组件，两张图不得互相替代，不要推测未观察信息。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "imagePair",
+                "notice"
+              ]
+            },
+            "imagePair": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "imageLeft",
+                "imageRight"
+              ]
+            },
+            "imageLeft": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-left/content",
+                "alt": "MOCK LIBRARY LEFT; 14:00 | FULL",
+                "caption": "左侧视角 · 14:00 · 满座",
+                "fit": "cover",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "imageRight": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-right/content",
+                "alt": "MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS",
+                "caption": "右侧视角 · 14:01 · 有 2 个空位",
+                "fit": "cover",
+                "aspectRatio": "auto",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "notice": {
+              "type": "Text",
+              "props": {
+                "content": "右侧空位为 14:01 的当前观察结果，不代表已预订或为你保留。",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "图书馆座位情况 · 按视角与时间更新",
+            "images": [
+              {
+                "image": "/api/media/bench05-img-left/content",
+                "alt": "MOCK LIBRARY LEFT; 14:00 | FULL; synthetic fixture",
+                "viewpoint": "左侧视角",
+                "time": "14:00",
+                "conclusion": "满座"
+              },
+              {
+                "image": "/api/media/bench05-img-right/content",
+                "alt": "MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture",
+                "viewpoint": "右侧视角",
+                "time": "14:01",
+                "conclusion": "有 2 个空位（仅为当时观察）"
+              }
+            ],
+            "left": {
+              "viewpoint": "左侧视角",
+              "time": "14:00",
+              "conclusion": "满座"
+            },
+            "right": {
+              "viewpoint": "右侧视角",
+              "time": "14:01",
+              "conclusion": "有 2 个空位",
+              "note": "只是 14:01 的当前观察，不代表已预订或为你保留"
+            },
+            "notice": "两张图分别对应不同视角与时间：左侧 14:00 满座；右侧 14:01 观察到 2 个空位。空位为当时观察结果，不等于预订。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_dkZI0P1YX1FvBQrzBYT70605"
+      },
+      "toolCallId": "call_00_dkZI0P1YX1FvBQrzBYT70605",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5bd0a9be-58cf-45ac-b818-59da2e55c9f2"
+    }
+  }
+]

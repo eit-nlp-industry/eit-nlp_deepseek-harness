@@ -1,0 +1,20 @@
+{
+  "run_id": "N04-B-01",
+  "case_id": "N04",
+  "card_id": "N04",
+  "category_id": "G04",
+  "scenario_domain": "non_campus",
+  "arm": "B",
+  "repeat": 1,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 N04-B-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N04-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N04-B-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：帮我安排一次活动；先确认用途、人数和线上或线下，收齐后只汇总需求，不开始安排。\n指定呈现方式：三字段form：purpose用途、people人数、format形式；真实选择并提交。。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "8a1dd89d1704548bc3aff42e301052f9dae87d5b442b560d82fc09b0b63ef627",
+  "operator_actions": "一次收集用途、人数、形式；填写“产品培训”“12”“线上”后提交；模型只回执三项，不继续追问地点预算。A使用原生多题/自由回答；B填写三字段表单。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T06:11:13.533Z",
+  "interactions": [],
+  "tab_id": "3",
+  "final_at": "2026-11-20T06:13:34.867Z",
+  "notes": "实际三字段form填入产品培训/12/线上，Host回传与最终需求汇总一致，未开始安排。无须持久化却额外调用模拟提交并解释通道错误，表单保留已提交等待继续回答，增加噪声。"
+}

@@ -1,0 +1,93 @@
+[
+  {
+    "call_seq": 34,
+    "result_seq": 35,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_00_Hk8PCmv0krf6Unqqi19p1834",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"显示一张人物候选通知卡片：顶部为简短事件通知标题「候选出现」与一行说明；下方为 Image 组件，src 取 business_data.image 的固定字符串，alt 取 business_data.alt；图片下用小字标注「模拟合成材料，灰大衣 / 行李箱」及识别到的小张昵称。不要添加其他组件或按钮。\", \"business_data\": {\"image\": \"/api/media/bench05-person-a/content\", \"alt\": \"MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture\", \"title\": \"候选出现\", \"notice\": \"固定识别结果：同一候选 person-a 再次出现，对应已确认昵称「小张」；仅作通知，不新建档案。\", \"candidate_id\": \"person-a\", \"name\": \"小张\", \"context_note\": \"灰大衣 / 行李箱；模拟合成图像材料\", \"simulated\": true, \"fallback_text\": \"模拟事件 e-rec-01：候选 person-a（小张）出现，灰大衣、行李箱的合成图像一张，仅通知，不建新档。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "候选出现",
+                "variant": "outlined"
+              },
+              "children": [
+                "notice",
+                "image",
+                "caption"
+              ]
+            },
+            "notice": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notice"
+                },
+                "variant": "default"
+              }
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-person-a/content",
+                "alt": "MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "caption": {
+              "type": "Text",
+              "props": {
+                "content": "模拟合成材料，灰大衣 / 行李箱；识别昵称：小张",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "image": "/api/media/bench05-person-a/content",
+            "alt": "MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture",
+            "title": "候选出现",
+            "notice": "固定识别结果：同一候选 person-a 再次出现，对应已确认昵称「小张」；仅作通知，不新建档案。",
+            "candidate_id": "person-a",
+            "name": "小张",
+            "context_note": "灰大衣 / 行李箱；模拟合成图像材料",
+            "simulated": true,
+            "fallback_text": "模拟事件 e-rec-01：候选 person-a（小张）出现，灰大衣、行李箱的合成图像一张，仅通知，不建新档。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Hk8PCmv0krf6Unqqi19p1834"
+      },
+      "toolCallId": "call_00_Hk8PCmv0krf6Unqqi19p1834",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "f797ab64-8135-4c0f-a024-2cb02a9d5864"
+    }
+  }
+]

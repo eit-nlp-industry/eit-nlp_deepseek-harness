@@ -1,0 +1,10 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C21",
+    "facts": "当前模拟前往食堂，尚无到达结论；目的地canteen。障碍与停止状态以随后事件为准。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true
+}

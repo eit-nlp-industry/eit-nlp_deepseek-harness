@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 5,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "真实表单选择与补充提交后推荐正确；完成后表单仍显示等待继续回答。"
+}

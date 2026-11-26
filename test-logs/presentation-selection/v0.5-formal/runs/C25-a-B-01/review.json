@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 2,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "pending后根据成功事件更新正确，未重发动作；简单回执扩成字段明细及重复文字，包含show_action_controls等内部字段。"
+}

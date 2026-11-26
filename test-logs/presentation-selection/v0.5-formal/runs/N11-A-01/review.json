@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "同一任务暂停3/10、恢复4/10、doc-05失败与结束后旧事件均正确；暂停阶段将任务暂停称监测暂停，结束后仍文字复述旧失败但未恢复监测。"
+}

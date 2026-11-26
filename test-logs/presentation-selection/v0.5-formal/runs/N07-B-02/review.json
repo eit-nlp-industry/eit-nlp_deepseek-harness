@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 2,
+  "readability": 4,
+  "state": 1,
+  "presentation": "partial",
+  "reason": "两图真实切换、四字段预填及联系人B编辑成功；实际点击提交草稿后没有Host用户回传、后端提交或回执。可见表单没有形成已接通DynamicForm提交链，核心要求失败。"
+}

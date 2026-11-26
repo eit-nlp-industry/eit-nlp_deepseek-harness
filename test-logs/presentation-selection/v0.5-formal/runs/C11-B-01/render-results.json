@@ -1,0 +1,368 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_ZCyBHbCynlZl2ZHuvWFt2278",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"极简状态卡片：只显示一行标题“跟随任务状态”和三行键值——任务 follow-01、跟随对象 person-guide、当前状态 跟随中（模拟）；下方一行较小提示：“已收到暂停请求，暂停处理已提交，结果待模拟回放确认”。不要按钮、不要列表、不要图片、不要其他组件。\", \"business_data\": {\"simulated\": true, \"title\": \"跟随任务状态\", \"task_id\": \"follow-01\", \"target\": \"person-guide\", \"state\": \"跟随中（模拟）\", \"notice\": \"已收到暂停请求，暂停处理已提交，结果待模拟回放确认\", \"result\": \"未知（尚无模拟回放结果）\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "status",
+                "notice"
+              ]
+            },
+            "status": {
+              "type": "Descriptions",
+              "props": {
+                "title": "跟随任务状态",
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "任务",
+                    "value": "follow-01"
+                  },
+                  {
+                    "label": "跟随对象",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "跟随中（模拟）"
+                  }
+                ]
+              }
+            },
+            "notice": {
+              "type": "Text",
+              "props": {
+                "content": "已收到暂停请求，暂停处理已提交，结果待模拟回放确认",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "simulated": true,
+            "title": "跟随任务状态",
+            "task_id": "follow-01",
+            "target": "person-guide",
+            "state": "跟随中（模拟）",
+            "notice": "已收到暂停请求，暂停处理已提交，结果待模拟回放确认",
+            "result": "未知（尚无模拟回放结果）"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ZCyBHbCynlZl2ZHuvWFt2278"
+      },
+      "toolCallId": "call_00_ZCyBHbCynlZl2ZHuvWFt2278",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "2e08b841-9b19-413a-ae98-8f92f04ebae6"
+    }
+  },
+  {
+    "call_seq": 40,
+    "result_seq": 41,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_00_koQvuFSKbuzrZso4H0iP3097",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"notice\": \"暂停已生效，原地待命；等你回来后告知继续\", \"result\": \"已暂停（模拟）\", \"simulated\": true, \"state\": \"已暂停（模拟）\", \"target\": \"person-guide\", \"task_id\": \"follow-01\", \"title\": \"跟随任务状态\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"极简状态卡片：一行标题“跟随任务状态”，三行键值——任务 follow-01、跟随对象 person-guide、当前状态 已暂停（模拟）；下方较小提示：“暂停已生效，原地待命；等你回来后告知继续”。不要按钮、列表、图片或其他组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "跟随任务状态",
+                "variant": "outlined"
+              },
+              "children": [
+                "details",
+                "hint"
+              ]
+            },
+            "details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "任务",
+                    "value": "follow-01"
+                  },
+                  {
+                    "label": "跟随对象",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "已暂停（模拟）"
+                  }
+                ]
+              }
+            },
+            "hint": {
+              "type": "Text",
+              "props": {
+                "content": "暂停已生效，原地待命；等你回来后告知继续",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "notice": "暂停已生效，原地待命；等你回来后告知继续",
+            "result": "已暂停（模拟）",
+            "simulated": true,
+            "state": "已暂停（模拟）",
+            "target": "person-guide",
+            "task_id": "follow-01",
+            "title": "跟随任务状态"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_koQvuFSKbuzrZso4H0iP3097"
+      },
+      "toolCallId": "call_00_koQvuFSKbuzrZso4H0iP3097",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "0597a4e8-c92f-43e6-b7a1-24a54f6b75f1"
+    }
+  },
+  {
+    "call_seq": 55,
+    "result_seq": 56,
+    "call": {
+      "turn": 3,
+      "step": 1,
+      "callId": "call_00_MXZ0TedkhfU8pNJzH5150357",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"notice\": \"继续请求已发出，正在等待模拟回放确认\", \"result\": \"未知（尚无模拟回放结果）\", \"simulated\": true, \"state\": \"继续请求待确认（模拟；上一次已确认状态为已暂停）\", \"target\": \"person-guide\", \"task_id\": \"follow-01\", \"title\": \"跟随任务状态\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"极简状态卡片：一行标题“跟随任务状态”，四行键值——任务 follow-01、跟随对象 person-guide、当前状态 继续请求待确认（模拟；上一次已确认状态为已暂停）、结果 未知（尚无模拟回放结果）；下方较小提示：“继续请求已发出，正在等待模拟回放确认”。不要按钮、列表、图片或其他组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "跟随任务状态",
+                "variant": "default"
+              },
+              "children": [
+                "details",
+                "hint"
+              ]
+            },
+            "details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "任务",
+                    "value": "follow-01"
+                  },
+                  {
+                    "label": "跟随对象",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "继续请求待确认（模拟；上一次已确认状态为已暂停）"
+                  },
+                  {
+                    "label": "结果",
+                    "value": "未知（尚无模拟回放结果）"
+                  }
+                ]
+              }
+            },
+            "hint": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notice"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "notice": "继续请求已发出，正在等待模拟回放确认",
+            "result": "未知（尚无模拟回放结果）",
+            "simulated": true,
+            "state": "继续请求待确认（模拟；上一次已确认状态为已暂停）",
+            "target": "person-guide",
+            "task_id": "follow-01",
+            "title": "跟随任务状态"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_MXZ0TedkhfU8pNJzH5150357"
+      },
+      "toolCallId": "call_00_MXZ0TedkhfU8pNJzH5150357",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ee21457a-9279-4466-8db6-5f6d20d80bad"
+    }
+  },
+  {
+    "call_seq": 70,
+    "result_seq": 71,
+    "call": {
+      "turn": 4,
+      "step": 1,
+      "callId": "call_00_EH99QQNIhE3CqDTInWOo2015",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"notice\": \"已恢复跟随，目标是同一对象 person-guide\", \"result\": \"已恢复（模拟）\", \"simulated\": true, \"state\": \"跟随中（模拟）\", \"target\": \"person-guide\", \"task_id\": \"follow-01\", \"title\": \"跟随任务状态\"}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"极简状态卡片：一行标题“跟随任务状态”，三行键值——任务 follow-01、跟随对象 person-guide、当前状态 跟随中（模拟）；下方较小提示：“已恢复跟随，目标是同一对象 person-guide”。不要按钮、列表、图片或其他组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "跟随任务状态",
+                "variant": "outlined"
+              },
+              "children": [
+                "status-details",
+                "status-hint"
+              ]
+            },
+            "status-details": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 1,
+                "bordered": false,
+                "items": [
+                  {
+                    "label": "任务",
+                    "value": "follow-01"
+                  },
+                  {
+                    "label": "跟随对象",
+                    "value": "person-guide"
+                  },
+                  {
+                    "label": "当前状态",
+                    "value": "跟随中（模拟）"
+                  }
+                ]
+              }
+            },
+            "status-hint": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notice"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "notice": "已恢复跟随，目标是同一对象 person-guide",
+            "result": "已恢复（模拟）",
+            "simulated": true,
+            "state": "跟随中（模拟）",
+            "target": "person-guide",
+            "task_id": "follow-01",
+            "title": "跟随任务状态"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_EH99QQNIhE3CqDTInWOo2015"
+      },
+      "toolCallId": "call_00_EH99QQNIhE3CqDTInWOo2015",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5c1c7907-bc11-4d78-b083-ed94d793d323"
+    }
+  }
+]

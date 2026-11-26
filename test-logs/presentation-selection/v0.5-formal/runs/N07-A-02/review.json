@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "两图可核对，联系人实际修改为测试联系人B，提交保留after-front/after-port及SO-2048和故障，返回模拟草稿回执未建真实工单。"
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_NnVL9jsDjyIygFNAaSRa7065",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_candidate\", \"header\": \"确认候选\", \"question\": \"图书馆入口的这位同学，是否就是 A（灰色上衣、拉行李箱）？\", \"options\": [{\"label\": \"是 A（灰衣拉箱）（推荐）\", \"description\": \"与“灰衣服 + 拉箱子”完全一致，确认后我按 A 继续。\"}, {\"label\": \"是 B（蓝衣背包）\", \"description\": \"与描述不符，如选此项说明你的同学实际是蓝衣背包。\"}, {\"label\": \"都不是\", \"description\": \"两人都不符合，需要补充更多特征或再找。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_NnVL9jsDjyIygFNAaSRa7065"
+      },
+      "toolCallId": "call_00_NnVL9jsDjyIygFNAaSRa7065",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_candidate\",\"selected\":[],\"custom\":\"确认是person-a（A），请转达我马上到。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "2371e759-342e-44ea-8f5d-c7bd048ddf4a"
+    }
+  }
+]

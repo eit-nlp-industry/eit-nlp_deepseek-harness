@@ -1,0 +1,50 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C21",
+    "facts": "模拟导航遇door-1关闭，已停止；没有返回可用替代路线。",
+    "assets": [
+      {
+        "id": "bench05-img-door",
+        "file": "bench05-img-door.png",
+        "alt": "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+        "source_id": "img-door",
+        "url": "http://127.0.0.1:3080/api/media/bench05-img-door/content",
+        "path": "/api/media/bench05-img-door/content",
+        "sha256": "c369682198bea1e413f3b9cccdf6d581ad40466f1e6dba90a4ea11315fa036a2",
+        "width": 960,
+        "height": 540
+      }
+    ],
+    "status": "stopped",
+    "obstacle": "door-1_closed",
+    "alternative_route": null
+  },
+  "events": [
+    {
+      "id": "C21-A-02-blocked",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "模拟导航遇door-1关闭，已停止；没有返回可用替代路线。",
+        "assets": [
+          {
+            "id": "bench05-img-door",
+            "file": "bench05-img-door.png",
+            "alt": "MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture",
+            "source_id": "img-door",
+            "url": "http://127.0.0.1:3080/api/media/bench05-img-door/content",
+            "path": "/api/media/bench05-img-door/content",
+            "sha256": "c369682198bea1e413f3b9cccdf6d581ad40466f1e6dba90a4ea11315fa036a2",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "status": "stopped",
+        "obstacle": "door-1_closed",
+        "alternative_route": null
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

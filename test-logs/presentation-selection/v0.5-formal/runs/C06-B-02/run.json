@@ -1,0 +1,20 @@
+{
+  "run_id": "C06-B-02",
+  "case_id": "C06",
+  "card_id": "C06",
+  "category_id": "G08",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "B",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C06-B-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C06-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C06-B-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：那就不去图书馆了，只逛一个小时左右，早上10点开始，然后吃午饭。\n指定呈现方式：更新预填DynamicForm后实际提交。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "5b0f94dd682efdecb6ede11b7993b29e4cb07429733548cddbcba239c72aa5d4",
+  "operator_actions": "文字/界面改为10:00–11:00、去掉图书馆、更新备注→实际确认提交。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T11:54:14.433Z",
+  "interactions": [],
+  "tab_id": "7",
+  "final_at": "2026-11-19T11:56:12.678Z",
+  "notes": "字段真实提交后正确汇总；草稿未提交及旧备注静态说明未更新，与完成状态并列。"
+}

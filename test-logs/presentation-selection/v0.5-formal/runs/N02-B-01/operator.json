@@ -1,0 +1,10 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "N02",
+    "facts": "虚构套餐plan-basic基础版：99元/月，5人，邮件支持，无导出；plan-team团队版：299元/月，20人，邮件+在线支持，支持CSV导出；plan-enterprise企业版：需询价，成员上限与导出未知，专属支持。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true
+}

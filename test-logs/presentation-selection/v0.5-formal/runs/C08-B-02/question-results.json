@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_Tfp1RaFyHDEA6eFRFF4a5205",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_bind\", \"header\": \"确认绑定\", \"question\": \"确认把昵称「小张」绑定到候选 person-a 吗？确认后仅记录模拟状态，不做真实身份建档。\", \"options\": [{\"label\": \"确认绑定「小张」→ person-a（推荐）\", \"description\": \"按你的要求把昵称小张与候选 person-a 关联并记录模拟结果。\"}, {\"label\": \"先不绑定\", \"description\": \"不提交任何内容，昵称与候选的关联保持未保存状态。\"}, {\"label\": \"我要改成绑定 person-b\", \"description\": \"改选候选 person-b 后再确认提交。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Tfp1RaFyHDEA6eFRFF4a5205"
+      },
+      "toolCallId": "call_00_Tfp1RaFyHDEA6eFRFF4a5205",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_bind\",\"selected\":[\"确认绑定「小张」→ person-a（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "7246ab7d-d6ef-4060-9b8f-a7eac54ab84f"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "C22",
+  "facts": "设备YSJ-07，教学楼一层东侧，不出水；当前已提供正面repair-front图。其他视角尚未发布，备注和联系人未提供。只提交反馈草稿，不创建真实工单。",
+  "assets": [
+    {
+      "id": "bench05-repair-front",
+      "file": "bench05-repair-front.png",
+      "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+      "source_id": "repair-front",
+      "url": "http://127.0.0.1:3080/api/media/bench05-repair-front/content",
+      "path": "/api/media/bench05-repair-front/content",
+      "sha256": "b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

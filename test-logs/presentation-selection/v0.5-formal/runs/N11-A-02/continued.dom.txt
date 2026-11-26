@@ -1,0 +1,245 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 Workflow材料取送流程测评 刚刚":
+    - generic: 进行中
+    - generic: Workflow材料取送流程测评
+    - generic: 刚刚
+  - treeitem "已完成 文件处理任务监测模拟 刚刚":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 刚刚
+  - treeitem "进行中 饮水机维修照片呈现测评 刚刚":
+    - generic: 进行中
+    - generic: 饮水机维修照片呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 饮水机不出水照片评测 刚刚":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 刚刚
+  - treeitem "监测文件处理任务失败通知 2分钟" [selected]:
+    - generic: 监测文件处理任务失败通知
+    - generic: 2分钟
+  - treeitem "平面图快递路线静态示意 2分钟":
+    - generic: 平面图快递路线静态示意
+    - generic: 2分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 2分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 2分钟
+  - treeitem "三项工作排期草稿确认 3分钟":
+    - generic: 三项工作排期草稿确认
+    - generic: 3分钟
+  - treeitem "已完成 安排三项工作并确认草稿 3分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 3分钟
+  - treeitem "会议室预约改期草稿 5分钟":
+    - generic: 会议室预约改期草稿
+    - generic: 5分钟
+  - treeitem "已完成 会议室预约改期草稿测评 5分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 5分钟
+  - treeitem "售后申请草稿填写与确认 6分钟":
+    - generic: 售后申请草稿填写与确认
+    - generic: 6分钟
+  - treeitem "已完成 售后申请草稿填写测评 6分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 6分钟
+  - treeitem "商品退货多视角图片呈现 7分钟":
+    - generic: 商品退货多视角图片呈现
+    - generic: 7分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 8分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 8分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 8分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 8分钟
+  - treeitem "已完成 包裹照片确认对象状态 9分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 9分钟
+  - treeitem "确认包裹照片与订单尾号 11分钟":
+    - generic: 确认包裹照片与订单尾号
+    - generic: 11分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 13分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 13分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 13分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 13分钟
+  - treeitem "活动需求确认与汇总 14分钟":
+    - generic: 活动需求确认与汇总
+    - generic: 14分钟
+  - treeitem "已完成 活动需求确认测评 14分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 14分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 监测文件处理任务失败通知
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+  - button "跳转到第 3 轮"
+- generic: 【全量正式呈现测评 N11-A-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N11-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N11-A-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：监测这个文件处理任务，失败时通知我；我可以暂停、继续或结束监测。只使用模拟状态，不处理真实文件。 指定呈现方式：简洁文字状态和一次失败通知；沿用同一任务ID。。不要调用render_ui。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:51
+- button "复制":
+- status: 已完成
+- button "已完成，用时 36秒":
+  - generic: 已完成，用时 36秒
+- paragraph: 我会先读取这个用例固定材料的状态。
+- paragraph:
+  - strong: 任务 job-convert-01（模拟）
+- list:
+  - listitem: 状态：running（运行中）
+  - listitem: 进度：3 / 10 个文件已完成
+  - listitem: 结果：暂无失败，因此未发送通知
+  - listitem: 可用操作：暂停、继续、结束监测
+- paragraph: 监测已开启。任务失败时，我会用同一条任务 ID 发送一次通知；在收到你的选择或新的状态之前，不会预报成功。
+- group "问题与回答":
+  - term:
+    - generic: 任务 job-convert-01
+    - generic: 当前任务 job-convert-01 处于运行中（3/10 已完成）。你想怎么处理监测？
+  - definition: 暂停任务
+  - generic: 13:52
+  - button "复制":
+- paragraph:
+  - strong: 任务 job-convert-01（模拟）
+- list:
+  - listitem: 已记录你的选择：暂停任务
+  - listitem: 当前状态：running，3 / 10 已完成（尚未收到暂停生效的状态更新）
+  - listitem: 失败通知：无，因此没有发送
+- paragraph: 在当前状态切换为暂停之前，我不会把暂停当作已完成。暂停生效后，进度会停在当前值；你之后可以选择继续监测或结束监测。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 10.6K tok":
+  - generic: 用量 10.6K tok
+- generic: 13:52
+- button "收到执行请求 13:52":
+  - generic: 收到执行请求
+  - time: 13:52
+- status: 已完成
+- button "已完成，用时 35秒":
+  - generic: 已完成，用时 35秒
+- paragraph:
+  - strong: 任务 job-convert-01（模拟）
+- list:
+  - listitem: 状态：paused（已暂停）
+  - listitem: 进度：3 / 10 已完成，暂停期间不会推进
+  - listitem: 失败通知：无失败，因此未发送通知
+- paragraph: 监测仍在，使用同一任务 ID。
+- group "问题与回答":
+  - term:
+    - generic: job-convert-01 已暂停
+    - generic: job-convert-01 已暂停在 3/10。下一步怎么处理？
+  - definition: 继续任务（推荐）
+  - generic: 13:53
+  - button "复制":
+- paragraph:
+  - strong: 任务 job-convert-01（模拟）
+- list:
+  - listitem: 已记录你的选择：继续任务
+  - listitem: 当前状态：仍是 paused，3 / 10 已完成（尚未收到恢复运行的状态更新）
+  - listitem: 失败通知：无失败，因此未发送通知
+- paragraph: 等恢复运行的状态返回后，我会告诉你新的进度；如果这次恢复失败，我会发一次失败通知。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 10.8K tok":
+  - generic: 用量 10.8K tok
+- generic: 13:53
+- button "收到执行请求 13:53":
+  - generic: 收到执行请求
+  - time: 13:53
+- status: 已完成
+- button "已完成，用时 1秒":
+  - generic: 已完成，用时 1秒
+- paragraph:
+  - strong: 任务 job-convert-01（模拟）
+- list:
+  - listitem: 状态：running（已恢复运行）
+  - listitem: 进度：4 / 10 已完成
+  - listitem: 失败通知：目前无失败，因此未发送通知
+- paragraph: 我会继续按同一任务 ID 关注；如有失败，会发送一次失败通知；你也可以随时要求暂停、继续或结束监测。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 4K tok":
+  - generic: 用量 4K tok
+- generic: 13:53
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

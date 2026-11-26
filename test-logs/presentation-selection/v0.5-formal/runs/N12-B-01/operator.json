@@ -1,0 +1,18 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "N12",
+    "facts": "虚构expense-flow-v1：填写申请→检查材料→财务审核→通知结果。材料齐全才审核；不齐需通知补充，补齐后回到检查。补充期限未指定。只编辑保存草稿，不执行审批或付款。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true,
+  "submission": {
+    "response": {
+      "status": "draft_received",
+      "simulated": true,
+      "real_operation": false,
+      "version": 2
+    }
+  }
+}

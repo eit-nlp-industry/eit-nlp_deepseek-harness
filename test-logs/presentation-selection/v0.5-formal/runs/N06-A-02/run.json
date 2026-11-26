@@ -1,0 +1,26 @@
+{
+  "run_id": "N06-A-02",
+  "case_id": "N06",
+  "card_id": "N06",
+  "category_id": "G06",
+  "scenario_domain": "non_campus",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 N06-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N06-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N06-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：展示这件商品的正面、背面和瑕疵细节，让我核对后决定是否申请退货。\n指定呈现方式：原生连续图片、视角标题与简短证据说明。。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "217fbf5c20252a0ee42449649c6043fd8ef7f31432d841632e0956b480306540",
+  "operator_actions": "先展示正面→用户要求“看背面和瑕疵细节”→展示剩余两图→用户答“记录为我想申请退货，先不提交申请”。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-20T05:45:05.805Z",
+  "interactions": [
+    {
+      "at": "2026-11-20T05:46:11.658Z",
+      "type": "text",
+      "value": "我要申请退货，先不要提交。"
+    }
+  ],
+  "tab_id": "4",
+  "final_at": "2026-11-20T05:46:40.879Z",
+  "notes": "三图及对应视角完整，未知成因和政策不下结论，用户退货意向仅草稿未提交。"
+}

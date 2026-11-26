@@ -1,0 +1,225 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_a8OOvYSrraODTzR807W60921",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"components\": [\"Image\"], \"user_query\": \"门口补拍的分阶段状态卡：顶部标题与观察编号 watch-01；一个 Image 组件用于显示门口补拍画面（当前材料未释出图像，src 为空，仅显示待补拍提示与替代文字，不要编造图片地址）；下方以分阶段列表呈现四步：1 补拍门口（已提出，结果待回放确认）、2 你查看照片（等待图像）、3 结束观察（未执行，需你确认看完后再做）、4 返回（未执行）。每阶段显示状态标签与一句说明。底部固定文字兜底说明与“未预报成功”提示。\", \"business_data\": {\"title\": \"门口补拍 · 分阶段状态\", \"observation_id\": \"watch-01\", \"observation_status\": \"观察进行中\", \"door_state\": \"材料记录：门此前为关闭状态\", \"image\": null, \"image_alt\": \"门口补拍画面槽位（本例材料尚未释出图像）\", \"image_note\": \"本例材料未释放补拍图像，暂无可用画面与地址；图像释出后在此展示，不做推测。\", \"stages\": [{\"step\": 1, \"name\": \"补拍门口\", \"state\": \"已提出，结果待回放确认\", \"detail\": \"补拍请求已记录为待执行；能否成像、成像结果以随后的模拟事件回放为准。\"}, {\"step\": 2, \"name\": \"你查看照片\", \"state\": \"等待图像\", \"detail\": \"照片释出后先给你看，确认视角是否为门口。\"}, {\"step\": 3, \"name\": \"结束观察\", \"state\": \"未执行\", \"detail\": \"等你确认看完照片后再结束观察 watch-01。\"}, {\"step\": 4, \"name\": \"返回\", \"state\": \"未执行\", \"detail\": \"观察结束确认后才返回，不在未确认时提前回撤。\"}], \"fallback_text\": \"文字兜底：已收到“补拍门口→我看看→结束观察→回来”的要求；当前补拍画面尚未释出，结束观察与返回均未执行，等待你确认或事件回放结果。\"}}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_a8OOvYSrraODTzR807W60921"
+      },
+      "toolCallId": "call_00_a8OOvYSrraODTzR807W60921",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: tool call timed out after 180000ms"
+        }
+      ],
+      "isError": true,
+      "id": "a626c8cc-831b-404e-9547-178c46d7757d"
+    }
+  },
+  {
+    "call_seq": 43,
+    "result_seq": 44,
+    "call": {
+      "turn": 1,
+      "step": 5,
+      "callId": "call_00_BIXyelv9bPmDv5MAmQlo6167",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"门口补拍 · 分阶段状态\", \"observation_id\": \"watch-01\", \"image_pending\": true, \"image_note\": \"补拍画面尚未释出，暂无图像可用；释出后再展示。\", \"stages\": [\"① 补拍门口：已提出，结果待回放确认\", \"② 你查看照片：等待图像释出\", \"③ 结束观察：未执行，待你确认看完再做\", \"④ 返回：未执行\"], \"fallback_text\": \"画面未释出；结束观察与返回均未执行，等待你确认。\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"门口补拍状态卡：标题 + 观察编号 watch-01；一个 Image 组件作为门口补拍画面槽位（当前无图像地址，显示待补拍提示，不编造 src）；下方按顺序列出四个阶段并标注状态：补拍门口→你查看照片→结束观察→返回。保留文字兜底。\"}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_BIXyelv9bPmDv5MAmQlo6167"
+      },
+      "toolCallId": "call_00_BIXyelv9bPmDv5MAmQlo6167",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面生成失败，已尝试 3 次：Model output is invalid after generation validation。请用文字继续回答。不要把错误 JSON 展示给用户。"
+        }
+      ],
+      "isError": false,
+      "id": "b8c6c608-a839-4d7c-aee0-73ed502d77dc"
+    }
+  },
+  {
+    "call_seq": 64,
+    "result_seq": 65,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_L0GtVvpHAmzKPtdpdo4S1200",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"门口补拍 · 最新图像\", \"image\": \"/api/media/bench05-img-door-new/content\", \"alt\": \"补拍门口的最新观察画面（模拟固定材料）\", \"caption\": \"按你的要求补拍的门口画面，这是最新图像。\", \"stages\": [\"① 补拍门口：已完成，下方为最新图像\", \"② 你查看照片：现在可以看\", \"③ 结束观察（watch-01）：待你确认后进行中\", \"④ 返回：待观察结束后进行\"], \"note\": \"此前材料记录门为关闭状态；门前现状请以这张最新画面自行查看，我不额外推断。\", \"fallback_text\": \"补拍画面已收到：门口最新图像一张（960×540）。你可以看完后再告诉我是否结束观察并返回。\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"门口补拍结果卡：标题；一个 Image 组件展示补拍最新图像（src 用给定 path）；图下一句说明；再按顺序列出四个阶段状态：补拍门口已完成、你现在可查看、结束观察待确认、返回待执行；底部文字兜底。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "card"
+              ]
+            },
+            "card": {
+              "type": "Card",
+              "props": {
+                "title": "门口补拍 · 最新图像",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "image",
+                "captionText",
+                "stagesList",
+                "compareDescriptions",
+                "divider",
+                "fallbackText"
+              ]
+            },
+            "image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-img-door-new/content",
+                "alt": "补拍门口的最新观察画面（模拟固定材料）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "captionText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/caption"
+                },
+                "variant": "default"
+              }
+            },
+            "stagesList": {
+              "type": "List",
+              "props": {
+                "title": "阶段状态",
+                "items": [
+                  {
+                    "title": "① 补拍门口：已完成，下方为最新图像",
+                    "status": "success"
+                  },
+                  {
+                    "title": "② 你查看照片：现在可以看",
+                    "status": "info"
+                  },
+                  {
+                    "title": "③ 结束观察（watch-01）：待你确认后进行中",
+                    "status": "warning"
+                  },
+                  {
+                    "title": "④ 返回：待观察结束后进行",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无阶段状态"
+              }
+            },
+            "compareDescriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "对比与出处",
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "此前材料记录",
+                    "value": "门为关闭状态"
+                  },
+                  {
+                    "label": "门前现状",
+                    "value": "请以这张最新画面自行查看，我不额外推断。"
+                  }
+                ]
+              }
+            },
+            "divider": {
+              "type": "Divider"
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "门口补拍 · 最新图像",
+            "image": "/api/media/bench05-img-door-new/content",
+            "alt": "补拍门口的最新观察画面（模拟固定材料）",
+            "caption": "按你的要求补拍的门口画面，这是最新图像。",
+            "stages": [
+              "① 补拍门口：已完成，下方为最新图像",
+              "② 你查看照片：现在可以看",
+              "③ 结束观察（watch-01）：待你确认后进行中",
+              "④ 返回：待观察结束后进行"
+            ],
+            "note": "此前材料记录门为关闭状态；门前现状请以这张最新画面自行查看，我不额外推断。",
+            "fallback_text": "补拍画面已收到：门口最新图像一张（960×540）。你可以看完后再告诉我是否结束观察并返回。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_L0GtVvpHAmzKPtdpdo4S1200"
+      },
+      "toolCallId": "call_00_L0GtVvpHAmzKPtdpdo4S1200",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "31423a86-9a05-46ea-ba73-00274ccbf305"
+    }
+  }
+]

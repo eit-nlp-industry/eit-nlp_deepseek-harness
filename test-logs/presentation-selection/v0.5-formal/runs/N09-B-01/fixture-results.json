@@ -1,0 +1,77 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "N09-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_i2g8MyqpVyDYq5qfqLAR4912"
+      },
+      "toolCallId": "call_00_ET_i2g8MyqpVyDYq5qfqLAR4912",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N09\",\"facts\":\"稳定ID review=审阅需求、report=整理报告、client=客户沟通；初始review/report/client。仅保存排序草稿，不实际创建任务或联系客户。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "d6c0f71d-6d11-4a8a-8a5b-775870ab7ec0"
+    }
+  },
+  {
+    "call": {
+      "seq": 36,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N09-B-01",
+        "values": {
+          "order": [
+            "client",
+            "review",
+            "report"
+          ],
+          "orderedItems": [
+            {
+              "id": "client",
+              "title": "客户沟通"
+            },
+            {
+              "id": "review",
+              "title": "审阅需求"
+            },
+            {
+              "id": "report",
+              "title": "整理报告"
+            }
+          ]
+        }
+      }
+    },
+    "result_seq": 37,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_p9g0ZS7JJ7LrAoTGCV9a7989"
+      },
+      "toolCallId": "call_00_p9g0ZS7JJ7LrAoTGCV9a7989",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"order\":[\"client\",\"review\",\"report\"],\"orderedItems\":[{\"id\":\"client\",\"title\":\"客户沟通\"},{\"id\":\"review\",\"title\":\"审阅需求\"},{\"id\":\"report\",\"title\":\"整理报告\"}]}}}"
+        }
+      ],
+      "isError": false,
+      "id": "a02fe0dd-4fdc-4798-afd6-8f4d001b0acd"
+    }
+  }
+]

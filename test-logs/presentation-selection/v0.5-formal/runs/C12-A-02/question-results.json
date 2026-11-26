@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_yk8E4ZVOkaQNhQ8HeeOd9134",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_candidate\", \"header\": \"确认身份\", \"question\": \"画面左侧灰衣、拉箱子的人，是你约的同学吗？\", \"options\": [{\"label\": \"是，就是灰衣拉箱那位（推荐）\", \"description\": \"与您描述的灰衣服、拉箱子特征一致。\"}, {\"label\": \"不是，右侧蓝衣背包那位才对\", \"description\": \"改为按蓝衣、背背包的候选记录。\"}, {\"label\": \"都不像，需要再看别的画面\", \"description\": \"当前只有这一张素材，无法再提供其他视角。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_yk8E4ZVOkaQNhQ8HeeOd9134"
+      },
+      "toolCallId": "call_00_yk8E4ZVOkaQNhQ8HeeOd9134",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_candidate\",\"selected\":[],\"custom\":\"确认是person-a（A），请转达我马上到。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "296a332d-899f-4413-ac12-c74d79d514ab"
+    }
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C21-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_KhZaaBntdqd2U8TAllZk7315"
+      },
+      "toolCallId": "call_00_ET_KhZaaBntdqd2U8TAllZk7315",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C21\",\"facts\":\"当前模拟前往食堂，尚无到达结论；目的地canteen。障碍与停止状态以随后事件为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "f8d75ad4-f21d-4093-84fb-26971269bfbf"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C21-A-02"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_kpr8RU6NMfD7Qrc8h5TF7347"
+      },
+      "toolCallId": "call_00_kpr8RU6NMfD7Qrc8h5TF7347",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C21\",\"facts\":\"当前模拟前往食堂，尚无到达结论；目的地canteen。障碍与停止状态以随后事件为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "fa801404-03f7-44f5-b49a-e463bf818c3b"
+    }
+  }
+]

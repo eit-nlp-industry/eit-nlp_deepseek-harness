@@ -1,0 +1,37 @@
+[
+  {
+    "seq": 18,
+    "turn": 1,
+    "text": "我先取出本例的固定材料。"
+  },
+  {
+    "seq": 24,
+    "turn": 1,
+    "text": "目前材料中只有一张可用照片（正面视角）。另外两个视角尚未提供，因此我没有用同一张图充当其他视角，也不会预告它们何时可用。\n\n**正面照片（YSJ-07 饮水机）**\n\n![MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER](http://127.0.0.1:3080/api/media/bench05-repair-front/content)\n\n**反馈草稿（Markdown）**\n\n```markdown\n# 饮水机不出水报修（反馈草稿）\n\n- 设备编号：YSJ-07\n- 位置：教学楼一层东侧\n- 故障现象：不出水\n- 照片：正面图 1 张（bench05-repair-front，960×540）\n- 其他视角照片：暂未提供\n- 联系方式/联系人：未提供\n- 备注：（待补充）\n\n> 本内容为反馈草稿，尚未创建真实工单。\n```\n\n我可以按上面的草稿原样提交，也可以先根据你补充的内容修改。"
+  },
+  {
+    "seq": 30,
+    "turn": 1,
+    "text": "明白，暂不提交。\n\n不过近距离照片我这边拍不了：我没有摄像头或机器人可以控制，材料里也只提供了这一张正面图（YSJ-07 正面，960×540）。不会拿它放大或裁切后当作新的近距离视角，也不会虚构拍摄结果，所以近距离视角目前仍未知。\n\n当前状态：\n\n- 已提供：正面图 1 张（`http://127.0.0.1:3080/api/media/bench05-repair-front/content`）\n- 未提供：近距离 / 其他视角照片、备注、联系人\n- 反馈草稿：已就绪，**未提交**，也未创建任何真实工单\n\n等你这边有了近距离照片或其他补充信息后，我再把草稿更新好给你确认。"
+  },
+  {
+    "seq": 45,
+    "turn": 2,
+    "text": "近景照片已收到，设备仍然不出水。\n\n**近景（YSJ-07 出水口）**\n\n![MOCK YSJ-07 CLOSE; DISPENSER OUTLET](http://127.0.0.1:3080/api/media/bench05-repair-near/content)\n\n**正面（先前提供）**\n\n![MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER](http://127.0.0.1:3080/api/media/bench05-repair-front/content)\n\n**反馈草稿（Markdown，已加入近景）**\n\n```markdown\n# 饮水机不出水报修（反馈草稿）\n\n- 设备编号：YSJ-07\n- 位置：教学楼一层东侧\n- 故障现象：不出水（近景复核仍不出水）\n- 照片：正面图 1 张、近景图 1 张（960×540）\n- 其他视角照片：暂未提供\n- 联系方式/联系人：未提供\n- 备注：（待补充）\n\n> 本内容为反馈草稿，尚未创建真实工单。\n```\n\n草稿仍未提交，没有创建任何真实工单。"
+  },
+  {
+    "seq": 51,
+    "turn": 2,
+    "text": "明白，暂不提交。\n\n不过另一侧的照片我这边拍不出来：我没有摄像头或机器人可以控制，材料里目前只有正面图和近景图两个视角，没有侧面的照片。我不会虚构新地址，也不会把已有图裁切或翻转后假装成另一侧。因此，另一侧的视角仍未知。\n\n当前状态：\n\n- 已提供：正面图 1 张、近景图 1 张（都是 960×540）\n- 未提供：另一侧及其他视角照片、备注、联系人\n- 反馈草稿：已更新到“两张照片”版本，仍未提交，没有创建真实工单\n\n等另一侧的照片或其他补充信息到了，我再更新草稿给你确认。"
+  },
+  {
+    "seq": 66,
+    "turn": 3,
+    "text": "另一侧照片已经到了。现在正面、近景、侧面三个视角都齐了，它们都是 YSJ-07 的同一个设备。\n\n**正面**\n\n![MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER](http://127.0.0.1:3080/api/media/bench05-repair-front/content)\n\n**近景（出水口）**\n\n![MOCK YSJ-07 CLOSE; DISPENSER OUTLET](http://127.0.0.1:3080/api/media/bench05-repair-near/content)\n\n**侧面**\n\n![MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW](http://127.0.0.1:3080/api/media/bench05-repair-side/content)\n\n**反馈草稿（Markdown）**\n\n```markdown\n# 饮水机不出水报修（反馈草稿）\n\n- 设备编号：YSJ-07\n- 位置：教学楼一层东侧\n- 故障现象：不出水（近景复核仍不出水）\n- 照片：正面图 1 张、近景图 1 张、侧面图 1 张（均 960×540）\n- 联系方式/联系人：未提供\n- 备注：（待补充）\n\n> 本内容为反馈草稿，尚未创建真实工单。\n```\n\n草稿仍未提交，没有创建任何真实工单。"
+  },
+  {
+    "seq": 78,
+    "turn": 3,
+    "text": "反馈草稿已按你确认的内容提交，受理状态：草稿已接收，这次是模拟操作，尚未创建真实工单。\n\n**已提交内容**\n\n```markdown\n# 饮水机不出水报修（反馈草稿）\n\n- 设备编号：YSJ-07\n- 位置：教学楼一层东侧\n- 故障现象：不出水（近景复核仍不出水）\n- 照片（3 张，均 960×540）：\n  1. 正面图\n  2. 近景图（出水口）\n  3. 侧面图\n- 备注：昨天也这样\n- 联系人：测试联系人A\n\n> 草稿已接收，未创建真实工单。\n```\n\n**随单照片**\n\n正面\n![MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER](http://127.0.0.1:3080/api/media/bench05-repair-front/content)\n\n近景（出水口）\n![MOCK YSJ-07 CLOSE; DISPENSER OUTLET](http://127.0.0.1:3080/api/media/bench05-repair-near/content)\n\n侧面\n![MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW](http://127.0.0.1:3080/api/media/bench05-repair-side/content)"
+  }
+]

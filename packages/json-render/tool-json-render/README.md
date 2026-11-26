@@ -5,15 +5,18 @@ kind: "package-reference"
 
 # @deepseek-ai/dsh-tool-json-render
 
+English | [中文](README.zh.md)
+
 ## Summary
 
-Register `render_ui` on the host tool layer so every agent can request a json-render layout from the v0.2.7 server. Display calls continue the turn. Display requests ask for user-relevant content; raw fields, coordinates, runtime parameters, and detail tables are shown only when the user asks for them. Component data remains available for rendering. A successful form ends the turn. Form requests require a visible enabled submit button. After generation, the host preserves an existing reachable form.submit button or appends one with submit_label (default 提交). Set submit_button=false only when the user explicitly requests no submit action; it disables host insertion and instructs the renderer to omit the default button. These two host options are not sent as server API fields. Failures return text after at most three attempts. Exhausted generation validation stops immediately and returns filtered diagnostics to the model.
+Use `render_ui` to show complete displays and editable forms through a running v0.2.8 server. Displays continue the turn; successful forms wait for the user. Forms support a default submit or a declared set of independent operation buttons. The shared presentation Skill guides ordinary agents before tool selection. Generation failures preserve a written fallback and provide correction diagnostics.
 
 ## Table of Contents
 
 - [Use this package](#use-this-package)
 - [Model Experience](#model-experience)
 - [Known Limitations and Deferred Work](#known-limitations-and-deferred-work)
+- [Dev Note](#dev-note)
 
 -----
 
@@ -23,6 +26,10 @@ Register `render_ui` on the host tool layer so every agent can request a json-re
 List Chart in components to select rich_content for bar, line, or donut charts. Chart requires labels and named series whose values match the label count.
 
 Mount the plugin on the host, not inside one agent preset. Agents inherit the tool. A preset can remove it with `tools.restrict`. Change when the model calls it by editing `description`.
+
+The enabled host mount also supplies shared presentation guidance before any tool call. Ordinary presets inherit it even when they replace their persona, and no personal Skill installation or per-preset prompt is needed. Maintain the canonical [presentation Skill](skills/select-dsh-presentation/SKILL.md) and its references in this package; they ship in the published package and are included together in the prompt, so agents need neither a `skill` tool nor file tools to read them. Restart the host after installing a new package or changing these resources. Tool descriptions and schemas remain authoritative for available capabilities. Restricting `render_ui` does not grant an alternative rendering path; the shared guidance instructs the agent to use only available tools. Disabling this plugin removes both the tool and its guidance.
+
+The shared rules cover text, native questions, dynamic forms, browsing, ordering, workflows, stage changes and form buttons. They do not implement button handlers. A preset with `complete: true` deliberately replaces every other system section, including these rules; its author must include the desired guidance in that complete prompt or use an ordinary persona override.
 
 ```yaml
 - id: tool-json-render
@@ -38,9 +45,13 @@ Set `mediaRoot` to an absolute directory, or set `JSON_RENDER_MEDIA_ROOT` when `
 
 When `mediaRoot` is set and the Web server is present, the plugin registers `GET /api/media/<id>/content` on the page origin. The connection service applies the same login cookie and Host/Origin checks as other `/api` routes before the file is read. The response is the image bytes and an image `Content-Type`, or a short plain-text status. PNG, JPEG, GIF, and WebP are accepted after the file extension and the leading bytes agree. The handler resolves the real path, refuses directory traversal and links that leave the directory, and does not accept a path from the query string. `/api/file` remains a separate authenticated file route and is not an Image `src`. A deployment that already proxies `/api` to this host covers the media path. A deployment that serves the page from another origin must proxy `GET /api/media/` to the same host so the browser can send the login cookie. Do not put a bearer token in the URL.
 
-The json-render server must already be running at v0.2.7, the same release as the installed `@eit/json-render-*` packages. This package calls `POST /v1/render` with `format` `json-render-v1`, `user_query`, `business_data`, optional `prompt_mode` (`full` or `progressive`), and `context.locale` / `context.intent`. It does not send `mode`, `profile`, `catalog`, or `framework`. Omit `intent` for an ordinary display so the server uses base. `generic_filters` and `generic_pick_one` select the forms catalog. Listing `Image`, `ImageUpload`, `Tabs`, `MapPreview`, `SortableSequence`, `Collapsible`, `CodeBlock`, or `Workflow` in `components` selects `rich_content` for the whole layout and includes those requested component names in `user_query`. A direct Generation SDK call uses `baseRenderProfile`, `formsRenderProfile`, or `richRenderProfile` for that same choice and does not reuse the HTTP fields. An image call sends `context.intent` `rich_content` and `context.locale` `zh-CN`. `image.src` is the catalog path already stored in `business_data`, copied without a domain or encoding. `ImageUpload` only names `uploadTarget`.
+The json-render server must already be running at v0.2.8, the same release as the installed `@eit/json-render-*` packages. This package calls `POST /v1/render` with `format` `json-render-v1`, `user_query`, `business_data`, optional `prompt_mode` (`full` or `progressive`), and `context.locale` / `context.intent`. It does not send `mode`, `profile`, `catalog`, or `framework`. Omit `intent` for an ordinary display so the server uses base. `generic_filters` and `generic_pick_one` select the forms catalog. Listing `Image`, `ImageUpload`, `Tabs`, `MapPreview`, `SortableSequence`, `Collapsible`, `CodeBlock`, or `Workflow` in `components` selects `rich_content` for the whole layout and includes those requested component names in `user_query`. A direct Generation SDK call uses `baseRenderProfile`, `formsRenderProfile`, or `richRenderProfile` for that same choice and does not reuse the HTTP fields. An image call sends `context.intent` `rich_content` and `context.locale` `zh-CN`. `image.src` is the catalog path already stored in `business_data`, copied without a domain or encoding. `ImageUpload` only names `uploadTarget`.
 
 Display calls default to `answer_presentation: replace`: the interface must contain the complete answer. Use `supplement` when necessary explanations remain in the written answer. The model still writes a complete fallback, while the browser selects the visible answer from persisted result metadata. Forms always remain supplementary. Failed calls never declare a replacement.
+
+Without `form_actions`, the host retains a reachable enabled `form.submit` Button or adds one using `submit_label` (default “提交”). Set `submit_button=false` only for an explicit request without submit; it disables host insertion and asks the service to omit the default Button. These options are not server API fields.
+
+For multiple form operations, pass the complete `form_actions` list in display order, with one unique `intent` and a non-empty `label` per button. Supported intents are `submit`, `save_draft`, `reset`, `skip`, `cancel`, and `submit_and_add`. This list overrides `submit_button` and `submit_label`; include `submit` when confirmation is required. The host removes generated Buttons, preserves fields and links, and appends the declared parallel action bar. It asks the service not to generate Buttons or an operation-choice field. Only the layout instruction is sent to the render service; `form_actions` is a host option. Buttons use `form.submit` to collect current values and attach `{ form_action: { intent, label } }`; they do not reset fields or execute business operations locally. Deploy the matching client package to forward both the intent and values to the agent. An empty list, duplicate intent, blank label, or use in display mode is rejected before HTTP. Omit this parameter for the existing default single-submit behavior.
 
 <a id="model-experience"></a>
 ## Model Experience
@@ -49,21 +60,31 @@ Display calls default to `answer_presentation: replace`: the interface must cont
 
 #### What the model sees
 
-The tool description is the configured `description`, or the default that names `render_ui`, `display`, `form`, `business_data`, `generic_filters`, `generic_pick_one`, `rich_content`, `components`, `Image`, `assetId`, and `ask_user_question`. Display and form both require `business_data` with the detailed facts. For an image the model sets `business_data.image.assetId` and does not invent a URL. A successful result is one sentence, `界面已附上`, and does not include the payload. Generation validation failures preserve the error code, requestId, and filtered validation paths and reasons for the model. The model may make one corrected call or continue in text; it must not repeat the same request or expose diagnostic JSON to the user. Other failures tell the model to continue in text or supply the facts. The payload and the server profile are stored only as result metadata. Debug mode records `format`, `intent`, `prompt_mode`, error `code`, `requestId`, and safe diagnostics, and omits prompts, business data, secrets, and resource addresses.
+The tool description is the configured `description`, or the default that names `render_ui`, `display`, `form`, `business_data`, `generic_filters`, `generic_pick_one`, `rich_content`, `components`, `Image`, `assetId`, and `ask_user_question`. Display and form both require `business_data` with the detailed facts. For an image the model sets `business_data.image.assetId` and does not invent a URL. A successful result is one sentence, `界面已附上`, and does not include the payload. Compatible server validation failures carry a structured `error` with code, requestId, stage, and field issues. Parse failures preserve `rawOutput`; validation failures also preserve the rejected `invalidPayload`. Native results append this diagnostic JSON for correction and persist it as `renderFailure` metadata. Rejected data is not a successful UI payload and must not be rendered. The model may make one corrected call or continue in text; it must not repeat the same request or expose diagnostic JSON to the user. Other failures tell the model to continue in text or supply the facts. Successful payloads and the server profile are stored only as result metadata. Debug mode records `format`, `intent`, `prompt_mode`, error `code`, `requestId`, and safe diagnostics, and omits prompts, business data, secrets, and resource addresses.
 
 #### Token effect
 
-One tool schema is added for every agent that inherits `render_ui`. The model-facing result is a short sentence. The layout JSON is not copied into that sentence.
+One tool schema is added for every agent that inherits `render_ui`. The enabled mount adds the complete packaged Skill body and three reference documents to ordinary system prompts, including requests that ultimately use text or native questions; it makes no separate Skill-loading call. Successful results add a short sentence without layout JSON. Failure diagnostics include the rejected output and increase result tokens accordingly.
 
 #### KV Cache effect
 
-The description is fixed for the life of the mount. A result sentence extends the conversation without rewriting the prompt prefix.
+The description and shared guidance are fixed for the life of the mount. Updating the packaged guidance changes the prompt prefix after remount or restart. A result sentence extends the conversation without rewriting that prefix.
 
 ## Known Limitations and Deferred Work
 
 <a id="known-limitations-and-deferred-work"></a>
 
-- The server must be started separately at v0.2.7. This tool does not launch it. An older server has no `rich_content` catalog, so Image and the other rich components fail generation.
+- The server must be started separately at v0.2.8. This tool does not launch it. An older server has no `rich_content` catalog, so Image and the other rich components fail generation.
 - The image route is unmounted until `mediaRoot` or `JSON_RENDER_MEDIA_ROOT` names an absolute directory. The page and the API share one origin in the shipped Web profile. A split frontend must proxy `GET /api/media/` with the login cookie. Image load failures stay in the browser.
 - Form choices are `generic_filters` and `generic_pick_one`. Rich layouts use `rich_content`, which already includes base and form components.
-- Programmatic tool calling receives the canonical result, including a successful payload, while native function calling receives only the rendered sentence.
+- Programmatic tool calling receives the canonical result, including a successful payload or structured failure. Native function calling receives the sentence and available failure diagnostic JSON.
+
+<a id="dev-note"></a>
+### Dev Note
+
+<details>
+<summary>Maintainer context</summary>
+
+None.
+
+</details>

@@ -1,0 +1,6 @@
+{
+  "simulated": true,
+  "case_id": "N11",
+  "facts": "模拟job-convert-01，共10个文件，当前running，completed_count=3。后续暂停、继续、失败、结束监测均以模拟返回为准，不处理真实文件。",
+  "assets": []
+}

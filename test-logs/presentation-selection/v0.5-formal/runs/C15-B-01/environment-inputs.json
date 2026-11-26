@@ -1,0 +1,37 @@
+[
+  {
+    "seq": 10,
+    "time": 1795091808165,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 61,
+    "time": 1795092035293,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C15-B-01-near",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C15-B-01-near\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"同一候选parcel-3726近景，尾号3726。\",\"assets\":[{\"id\":\"bench05-img-near\",\"file\":\"bench05-img-near.png\",\"alt\":\"MOCK PARCEL NEAR; ORDER SUFFIX 3726; synthetic fixture\",\"source_id\":\"img-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-near/content\",\"path\":\"/api/media/bench05-img-near/content\",\"sha256\":\"e957159ba866a87b47ec27051ebdf0e09fd59517e08bd759cac42d7b1573f6a5\",\"width\":960,\"height\":540}],\"simulated\":true,\"candidate_id\":\"parcel-3726\",\"view\":\"near\"}}"
+  },
+  {
+    "seq": 100,
+    "time": 1795092237218,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C15-B-01-side",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C15-B-01-side\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"同一候选parcel-3726侧景，尚未获用户确认。\",\"assets\":[{\"id\":\"bench05-img-side\",\"file\":\"bench05-img-side.png\",\"alt\":\"MOCK PARCEL SIDE; SAME parcel-3726 | SIDE; synthetic fixture\",\"source_id\":\"img-side\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-side/content\",\"path\":\"/api/media/bench05-img-side/content\",\"sha256\":\"df486514c7ecacbd6486ecbb9868b6a5394b0bd93df962302d9044882cc275c4\",\"width\":960,\"height\":540}],\"simulated\":true,\"candidate_id\":\"parcel-3726\",\"view\":\"side\"}}"
+  }
+]

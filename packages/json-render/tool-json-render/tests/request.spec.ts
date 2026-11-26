@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { baseRenderProfile, formsRenderProfile } from '@eit/json-render-catalog'
+import { baseRenderProfile, formsRenderProfile, validateCatalogPayload } from '@eit/json-render-catalog'
 import { richRenderProfile } from '@eit/json-render-catalog/experimental'
 import { generationRenderProfile } from '../src/profile.ts'
 import {
@@ -30,6 +30,60 @@ function jsonResponse(status: number, body: unknown): Response {
 }
 
 describe('requestJsonRender', () => {
+  it('owns all declared form buttons and preserves fields and links', async () => {
+    const actions = [
+      { intent: 'reset' as const, label: '恢复初始内容' },
+      { intent: 'submit' as const, label: '确认草稿' },
+      { intent: 'skip' as const, label: '跳过本条' },
+    ]
+    const original = { format: 'json-render-v1', spec: { root: 'main', elements: {
+      main: { type: 'Stack', children: ['fields', 'generated', 'rules'] },
+      fields: { type: 'DynamicForm', props: { fields: [{ type: 'inputNumber', key: 'quantity', label: '数量', value: 20 }] } },
+      generated: { type: 'Button', props: { label: '提交' }, on: { press: { action: 'form.submit' } } },
+      rules: { type: 'Link', props: { href: 'https://example.com/rules', label: '规则详情' } },
+    } } }
+    const fetchImpl = vi.fn<typeof fetch>(async () => jsonResponse(200, original))
+    const result = await requestJsonRender({ baseUrl: 'http://localhost', timeoutMs: 1000,
+      args: { mode: 'form', intent: 'rich_content', user_query: '编辑草稿', business_data: { quantity: 20 }, form_actions: actions },
+      signal: new AbortController().signal, fetchImpl })
+    expect(result.ok).toBe(true)
+    if (!result.ok) throw new Error(result.message)
+    const rendered = result.payload as typeof original
+    const buttons = Object.values(rendered.spec.elements).filter(element => element.type === 'Button')
+    expect(buttons).toHaveLength(actions.length)
+    for (const [index, action] of actions.entries()) {
+      expect(buttons[index]).toMatchObject({
+        type: 'Button', props: { label: action.label, variant: action.intent === 'submit' ? 'default' : 'outline' },
+        on: { press: { action: 'form.submit', params: { extra: { form_action: action } } } },
+      })
+    }
+    expect(rendered.spec.elements.fields).toEqual(original.spec.elements.fields)
+    expect(rendered.spec.elements.rules).toEqual(original.spec.elements.rules)
+    expect(rendered.spec.elements.main.children).not.toContain('generated')
+    expect(rendered.spec.root).toBe('main')
+    expect(validateCatalogPayload(richRenderProfile.catalog, rendered)).toEqual({ success: true, issues: [] })
+    const body = JSON.parse(requestText(fetchImpl.mock.calls[0]?.[1]?.body)) as { user_query: string }
+    expect(body.user_query).toContain('不要生成 Button')
+    expect(body.user_query).toContain('不要生成操作选择字段')
+    expect(body).not.toHaveProperty('form_actions')
+  })
+
+  it.each([
+    { mode: 'display' as const, form_actions: [{ intent: 'submit' as const, label: '提交' }] },
+    { mode: 'form' as const, form_actions: [] },
+    { mode: 'form' as const, form_actions: [{ intent: 'skip' as const, label: ' ' }] },
+    { mode: 'form' as const, form_actions: [{ intent: 'skip' as const, label: '跳过' }, { intent: 'skip' as const, label: '略过' }] },
+  ])('rejects unusable form action declarations before HTTP: %j', async (overrides) => {
+    const fetchImpl = vi.fn<typeof fetch>()
+    const result = await requestJsonRender({ baseUrl: 'http://localhost', timeoutMs: 1000,
+      args: { user_query: '草稿', intent: 'generic_filters', business_data: { quantity: 20 }, ...overrides },
+      signal: new AbortController().signal, fetchImpl })
+    expect(result.ok).toBe(false)
+    expect(result.message).toContain('form_actions')
+    expect(fetchImpl).not.toHaveBeenCalled()
+  })
+
+
   it('carries requested rich components into the server generation prompt', () => {
     const query = renderUserQuery({ mode: 'display', user_query: '展示接驳车', components: ['MapPreview'], business_data: { places: [] } })
     expect(query).toContain('MapPreview')

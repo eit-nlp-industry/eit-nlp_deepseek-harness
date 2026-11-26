@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "C12",
+  "facts": "地点图书馆入口，两名合成候选：person-a灰衣拉箱，person-b蓝衣背包。初始尚未由用户确认；传话仅模拟，结果以回放为准。",
+  "assets": [
+    {
+      "id": "bench05-person-pair",
+      "file": "bench05-person-pair.png",
+      "alt": "MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture",
+      "source_id": "person-pair",
+      "url": "http://127.0.0.1:3080/api/media/bench05-person-pair/content",
+      "path": "/api/media/bench05-person-pair/content",
+      "sha256": "618f34452e8eb947b9d7c7a419c59782b42e321fb62d42e1bfaf16ffe4d2bf9e",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

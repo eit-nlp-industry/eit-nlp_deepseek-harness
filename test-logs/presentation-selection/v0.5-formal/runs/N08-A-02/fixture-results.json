@@ -1,0 +1,99 @@
+[
+  {
+    "call": {
+      "seq": 17,
+      "arguments": {
+        "run_id": "N08-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_KiF36mbIxNJRiqQRrS7N5566"
+      },
+      "toolCallId": "call_00_ET_KiF36mbIxNJRiqQRrS7N5566",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N08\",\"facts\":\"初始草稿room=R-01,date=2026-11-23,slot=14:00–15:00,people=6；其他时段可用性未知，以模拟提交响应为准；只改草稿，不实际预约。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "7a2d5589-d43f-4d7d-973f-d822765dd7c2"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N08-A-02",
+        "values": {
+          "room": "R-01",
+          "date": "2026-11-23",
+          "slot": "16:00–17:00",
+          "people": 6,
+          "change_from": "14:00–15:00",
+          "draft_only": true
+        }
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_iaE4STcsVTyXK2WatVTk8190"
+      },
+      "toolCallId": "call_00_iaE4STcsVTyXK2WatVTk8190",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"conflict\",\"available_slots\":[\"17:00–18:00\",\"18:00–19:00\"],\"simulated\":true,\"real_operation\":false,\"submitted\":{\"room\":\"R-01\",\"date\":\"2026-11-23\",\"slot\":\"16:00–17:00\",\"people\":6,\"change_from\":\"14:00–15:00\",\"draft_only\":true}}}"
+        }
+      ],
+      "isError": false,
+      "id": "cb94d001-3ad1-44fb-b957-a3a202c966bd"
+    }
+  },
+  {
+    "call": {
+      "seq": 37,
+      "arguments": {
+        "action": "submit",
+        "run_id": "N08-A-02",
+        "values": {
+          "change_from": "14:00–15:00",
+          "date": "2026-11-23",
+          "draft_only": true,
+          "people": 6,
+          "room": "R-01",
+          "slot": "17:00–18:00"
+        }
+      }
+    },
+    "result_seq": 38,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_HxIKBvEYglzNdBy9zohD8393"
+      },
+      "toolCallId": "call_00_HxIKBvEYglzNdBy9zohD8393",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"change_from\":\"14:00–15:00\",\"date\":\"2026-11-23\",\"draft_only\":true,\"people\":6,\"room\":\"R-01\",\"slot\":\"17:00–18:00\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "5154b038-8b54-4438-9e5b-aaf8078c467c"
+    }
+  }
+]

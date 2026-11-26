@@ -25,9 +25,13 @@ kind: "package-reference"
 
 将本包加入 Web 客户端组合。仅有单个成功结果且声明 `answer_presentation: replace` 时，该结果会替换已完成的收尾回答；该回答须包含一个文本块，并可附带推理块。没有可用的成功卡片时，保留文字回答。渲染异常时恢复原始 Markdown 及其链接和操作控件。文字回答仍保存在会话中，供复制和导出。多次结果、补充展示、表单、未显式声明展示方式的历史结果，以及包含其他块布局的回答，显示在文字下方。工具行只报告状态。
 
-基础和表单结果使用稳定的 Ant Design registry。rich 的 profile diagnostic 使用公开的 experimental registry，其中包含 Image、ImageUpload、Workflow 和 Chart。即使服务端没有提供 profile diagnostic，Chart 也会选择 rich registry。图表引擎使用已安装 ECharts 的官方预构建 ESM 发行文件。本插件将图表引擎打包进 client.js，因为 Client 加载器不会预加载同步共享分块。Workflow 支持本地编辑和撤销/重做。workflow.save 将编辑后的流程和参数整理为中文提纲，作为用户消息排队发送，并请 Agent 在下一条回复中渲染更新后的可编辑 Workflow。对话气泡只显示提交确认。route.order.apply 将提交的 ID 顺序与原始 payload 或该次调用 business_data 中的完整条目一起排队发送。workflow.change、workflow.select 和 route.order.change 不发送。保存或应用正在进行时，再次点击会被忽略；失败后编辑结果仍留在界面上，可以重试。workflow.execute 仍不接入，刷新后不保留编辑。上传目标来自宿主 adapter；payload 只写 `uploadTarget`。Vue 宿主使用同一 v0.2.7 版本的 Vue adapter，而不是这些 React 组件。渲染器将 Ant Design CSS 变量映射到宿主的语义主题变量。包含 Image 或 Workflow 元素的结果没有外层背景、边框或内边距。内容区仅含一个 Image 的 Card 和带边框的 Section 也不显示外框和水平内边距，并保留标题。内嵌图片统一使用无边框的 640 × 360 展示框，在窄容器中按 16:9 缩小；图片完整显示，不裁切或拉伸，加载失败时也保留同样的展示范围。预览关闭按钮显示叉号图标，并保留可访问的文字名称。其他结果使用圆角和轻阴影容器；根 Card 或带边框的 Section 共用该容器，不叠加第二层外框。TabContent 的直接子 Card 和带边框的 Section 也不显示外框。Tab 内的网格若将 Text 与 Card 或带边框的 Section 作为直接子项混排，则按数据顺序使用单列；纯卡片网格保留原有列数。卡片、表格、指标、步骤、提示和表单控件跟随宿主的明暗配色与字体设置。表单标签位于控件上方；字段保留自然高度，卡片内容有明确间距。下拉面板保留在主题容器内，宽表格独立滚动。窄屏下网格改为单列；减少动态效果的系统偏好会禁用局部动画。样式仅作用于本渲染器，无需修改已保存的界面数据或渲染服务。
+基础和表单结果使用稳定的 Ant Design registry。rich 的 profile diagnostic 使用公开的 experimental registry，其中包含 Image、ImageUpload、Workflow 和 Chart。即使服务端没有提供 profile diagnostic，Chart 也会选择 rich registry。图表引擎使用已安装 ECharts 的官方预构建 ESM 发行文件。本插件将图表引擎打包进 client.js，因为 Client 加载器不会预加载同步共享分块。Workflow 支持本地编辑和撤销/重做。workflow.save 将编辑后的流程和参数整理为中文提纲，作为用户消息排队发送，并请 Agent 在下一条回复中渲染更新后的可编辑 Workflow。对话气泡只显示提交确认。route.order.apply 将提交的 ID 顺序与原始 payload 或该次调用 business_data 中的完整条目一起排队发送。workflow.change、workflow.select 和 route.order.change 不发送。保存或应用正在进行时，再次点击会被忽略；失败后编辑结果仍留在界面上，可以重试。workflow.execute 仍不接入，刷新后不保留编辑。上传目标来自宿主 adapter；payload 只写 `uploadTarget`。Vue 宿主使用同一 v0.2.8 版本的 Vue adapter，而不是这些 React 组件。渲染器将 Ant Design CSS 变量映射到宿主的语义主题变量。包含 Image 或 Workflow 元素的结果没有外层背景、边框或内边距。内容区仅含一个 Image 的 Card 和带边框的 Section 也不显示外框和水平内边距，并保留标题。内嵌图片统一使用无边框的 640 × 360 展示框，在窄容器中按 16:9 缩小；图片完整显示，不裁切或拉伸，加载失败时也保留同样的展示范围。预览关闭按钮显示叉号图标，并保留可访问的文字名称。其他结果使用圆角和轻阴影容器；根 Card 或带边框的 Section 共用该容器，不叠加第二层外框。TabContent 的直接子 Card 和带边框的 Section 也不显示外框。Tab 内的网格若将 Text 与 Card 或带边框的 Section 作为直接子项混排，则按数据顺序使用单列；纯卡片网格保留原有列数。卡片、表格、指标、步骤、提示和表单控件跟随宿主的明暗配色与字体设置。表单标签位于控件上方；字段保留自然高度，卡片内容有明确间距。下拉面板保留在主题容器内，宽表格独立滚动。窄屏下网格改为单列；减少动态效果的系统偏好会禁用局部动画。样式仅作用于本渲染器，无需修改已保存的界面数据或渲染服务。
 
-实时 MapPreview 需要 json-render v0.2.7、tracking.source 为 robot-live、非空的 tracking.trackId，以及绑定到 /tracking/position 的 position。公开构建变量 DSH_CLIENT_MAP_LOCATION_URL 配置同源 SSE 接口（默认 /api/location），修改后需重新构建客户端。宿主须提供或代理该路由，发送 position 事件，包含 trackId、递增的安全整数 seq、0–100 的 x/y、idle/moving/arrived 状态和可选的 [0, 360) 范围内 heading。无效或过期帧会被忽略。每条消息的每个地图元素拥有独立连接，文本流结束后继续接收，应用 arrived 帧后关闭；切换轨迹、移除地图或卸载时也会关闭。位置帧更新原面板的状态，不修改 payload 或 key。同一面板中绑定 /tracking/position 的地图共用该位置。接口由宿主配置，不从模型数据读取。
+实时 MapPreview 需要 json-render v0.2.8、tracking.source 为 robot-live、非空的 tracking.trackId，以及绑定到 /tracking/position 的 position。公开构建变量 DSH_CLIENT_MAP_LOCATION_URL 配置同源 SSE 接口（默认 /api/location），修改后需重新构建客户端。宿主须提供或代理该路由，发送 position 事件，包含 trackId、递增的安全整数 seq、0–100 的 x/y、idle/moving/arrived 状态和可选的 [0, 360) 范围内 heading。无效或过期帧会被忽略。每条消息的每个地图元素拥有独立连接，文本流结束后继续接收，应用 arrived 帧后关闭；切换轨迹、移除地图或卸载时也会关闭。位置帧更新原面板的状态，不修改 payload 或 key。同一面板中绑定 /tracking/position 的地图共用该位置。接口由宿主配置，不从模型数据读取。
+
+`form.submit` 携带 `payload.form_action` 时，下一条用户消息同时包含其中的 `intent`、`label` 和当前 `payload.form` 值。重置、跳过、放弃是交给 Agent 处理当前草稿的请求，不代表本地已修改或真实业务已成功。配套工具包组装声明的动作按钮，横向按钮行在窄屏下换行。不根据文案猜测缺失或不完整的动作信息：声明了不完整元数据时拒绝发送并保留编辑；没有元数据的旧提交保持原行为。发送中忽略后续点击，发送失败保留草稿供重试。
+
+横向表单动作栏与字段同宽，按钮均分可用宽度，空间不足时换行。主提交、提交并新增或保存操作使用主按钮样式，其余操作使用描边按钮。
 
 <a id="model-experience"></a>
 ## 模型体验
@@ -45,7 +49,7 @@ kind: "package-reference"
 - 当前服务不会生成知识库业务组件。相对 Image `src` 使用页面源上的 `/api/media/<资源 ID>/content`。浏览器携带登录 cookie 加载该地址，不发送 Authorization。图片请求失败不会再次调用渲染服务。
 
 <a id="dev-note"></a>
-## 开发备注
+### 开发备注
 
 <details>
 <summary>维护者工作上下文</summary>

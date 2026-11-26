@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "实际确认前无图片，需先盲确认才在最终回答显示Image；已确认文案与卡片尚未确认矛盾，字段源路径等实现信息外露；最终图片已加载，映射正确。"
+}

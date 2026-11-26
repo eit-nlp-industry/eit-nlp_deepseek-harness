@@ -1,0 +1,27 @@
+[
+  {
+    "seq": 10,
+    "time": 1795091067875,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 49,
+    "time": 1795091233770,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C12-A-02-message_sent",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C12-A-02-message_sent\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"已按用户确认向person-a模拟转达“我马上就到”；不向任何真人发送消息。\",\"assets\":[],\"simulated\":true,\"status\":\"simulated_message_sent\",\"target\":\"person-a\",\"message\":\"我马上就到\"}}"
+  }
+]

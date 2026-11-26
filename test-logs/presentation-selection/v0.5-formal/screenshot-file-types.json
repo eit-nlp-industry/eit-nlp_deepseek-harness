@@ -1,0 +1,1937 @@
+{
+  "note": "Historical screenshot names use .png but bytes are JPEG; .jpg aliases preserve the exact bytes. MOCK PNG resources remain PNG.",
+  "aliases": [
+    {
+      "original": "preflight/map.png",
+      "jpeg": "preflight/map.jpg"
+    },
+    {
+      "original": "preflight/workflow-edited.png",
+      "jpeg": "preflight/workflow-edited.jpg"
+    },
+    {
+      "original": "preflight/workflow.png",
+      "jpeg": "preflight/workflow.jpg"
+    },
+    {
+      "original": "runs/C01-A-01/final.png",
+      "jpeg": "runs/C01-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C01-A-01/ready.png",
+      "jpeg": "runs/C01-A-01/ready.jpg"
+    },
+    {
+      "original": "runs/C01-A-02/final.png",
+      "jpeg": "runs/C01-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C01-A-02/ready.png",
+      "jpeg": "runs/C01-A-02/ready.jpg"
+    },
+    {
+      "original": "runs/C01-B-01/final.png",
+      "jpeg": "runs/C01-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C01-B-01/ready.png",
+      "jpeg": "runs/C01-B-01/ready.jpg"
+    },
+    {
+      "original": "runs/C01-B-01/tab-0.png",
+      "jpeg": "runs/C01-B-01/tab-0.jpg"
+    },
+    {
+      "original": "runs/C01-B-01/tab-1.png",
+      "jpeg": "runs/C01-B-01/tab-1.jpg"
+    },
+    {
+      "original": "runs/C01-B-01/tab-2.png",
+      "jpeg": "runs/C01-B-01/tab-2.jpg"
+    },
+    {
+      "original": "runs/C01-B-02/final.png",
+      "jpeg": "runs/C01-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C01-B-02/ready.png",
+      "jpeg": "runs/C01-B-02/ready.jpg"
+    },
+    {
+      "original": "runs/C01-B-02/tab-0.png",
+      "jpeg": "runs/C01-B-02/tab-0.jpg"
+    },
+    {
+      "original": "runs/C01-B-02/tab-1.png",
+      "jpeg": "runs/C01-B-02/tab-1.jpg"
+    },
+    {
+      "original": "runs/C01-B-02/tab-2.png",
+      "jpeg": "runs/C01-B-02/tab-2.jpg"
+    },
+    {
+      "original": "runs/C02-a-A-01/final.png",
+      "jpeg": "runs/C02-a-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C02-a-A-02/final.png",
+      "jpeg": "runs/C02-a-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C02-a-B-01/final.png",
+      "jpeg": "runs/C02-a-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C02-a-B-02/final.png",
+      "jpeg": "runs/C02-a-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C02-b-A-01/final.png",
+      "jpeg": "runs/C02-b-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C02-b-A-02/final.png",
+      "jpeg": "runs/C02-b-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C02-b-B-01/final.png",
+      "jpeg": "runs/C02-b-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C02-b-B-02/final.png",
+      "jpeg": "runs/C02-b-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C03-A-01/final.png",
+      "jpeg": "runs/C03-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C03-A-01/ready.png",
+      "jpeg": "runs/C03-A-01/ready.jpg"
+    },
+    {
+      "original": "runs/C03-A-02/final.png",
+      "jpeg": "runs/C03-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C03-A-02/ready.png",
+      "jpeg": "runs/C03-A-02/ready.jpg"
+    },
+    {
+      "original": "runs/C03-B-01/final.png",
+      "jpeg": "runs/C03-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C03-B-01/ready.png",
+      "jpeg": "runs/C03-B-01/ready.jpg"
+    },
+    {
+      "original": "runs/C03-B-02/final.png",
+      "jpeg": "runs/C03-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C03-B-02/ready.png",
+      "jpeg": "runs/C03-B-02/ready.jpg"
+    },
+    {
+      "original": "runs/C04-a-A-01/extra-question.png",
+      "jpeg": "runs/C04-a-A-01/extra-question.jpg"
+    },
+    {
+      "original": "runs/C04-a-A-01/final.png",
+      "jpeg": "runs/C04-a-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C04-a-A-01/ready.png",
+      "jpeg": "runs/C04-a-A-01/ready.jpg"
+    },
+    {
+      "original": "runs/C04-a-A-02/extra-question.png",
+      "jpeg": "runs/C04-a-A-02/extra-question.jpg"
+    },
+    {
+      "original": "runs/C04-a-A-02/final.png",
+      "jpeg": "runs/C04-a-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C04-a-A-02/ready.png",
+      "jpeg": "runs/C04-a-A-02/ready.jpg"
+    },
+    {
+      "original": "runs/C04-a-B-01/filled.png",
+      "jpeg": "runs/C04-a-B-01/filled.jpg"
+    },
+    {
+      "original": "runs/C04-a-B-01/final.png",
+      "jpeg": "runs/C04-a-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C04-a-B-02/filled.png",
+      "jpeg": "runs/C04-a-B-02/filled.jpg"
+    },
+    {
+      "original": "runs/C04-a-B-02/final.png",
+      "jpeg": "runs/C04-a-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C04-b-A-01/extra-confirmation.png",
+      "jpeg": "runs/C04-b-A-01/extra-confirmation.jpg"
+    },
+    {
+      "original": "runs/C04-b-A-01/filled.png",
+      "jpeg": "runs/C04-b-A-01/filled.jpg"
+    },
+    {
+      "original": "runs/C04-b-A-01/final.png",
+      "jpeg": "runs/C04-b-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C04-b-A-01/ready.png",
+      "jpeg": "runs/C04-b-A-01/ready.jpg"
+    },
+    {
+      "original": "runs/C04-b-A-02/filled.png",
+      "jpeg": "runs/C04-b-A-02/filled.jpg"
+    },
+    {
+      "original": "runs/C04-b-A-02/final.png",
+      "jpeg": "runs/C04-b-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C04-b-B-01/filled.png",
+      "jpeg": "runs/C04-b-B-01/filled.jpg"
+    },
+    {
+      "original": "runs/C04-b-B-01/final.png",
+      "jpeg": "runs/C04-b-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C04-b-B-02/filled.png",
+      "jpeg": "runs/C04-b-B-02/filled.jpg"
+    },
+    {
+      "original": "runs/C04-b-B-02/final.png",
+      "jpeg": "runs/C04-b-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C04-c-A-01/final.png",
+      "jpeg": "runs/C04-c-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C04-c-A-01/preselected-unsubmitted.png",
+      "jpeg": "runs/C04-c-A-01/preselected-unsubmitted.jpg"
+    },
+    {
+      "original": "runs/C04-c-A-02/final.png",
+      "jpeg": "runs/C04-c-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C04-c-A-02/preselected-unsubmitted.png",
+      "jpeg": "runs/C04-c-A-02/preselected-unsubmitted.jpg"
+    },
+    {
+      "original": "runs/C04-c-B-01/changed-online.png",
+      "jpeg": "runs/C04-c-B-01/changed-online.jpg"
+    },
+    {
+      "original": "runs/C04-c-B-01/final.png",
+      "jpeg": "runs/C04-c-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C04-c-B-01/unsubmitted.png",
+      "jpeg": "runs/C04-c-B-01/unsubmitted.jpg"
+    },
+    {
+      "original": "runs/C04-c-B-02/changed-online.png",
+      "jpeg": "runs/C04-c-B-02/changed-online.jpg"
+    },
+    {
+      "original": "runs/C04-c-B-02/claimed-preselected-unsubmitted.png",
+      "jpeg": "runs/C04-c-B-02/claimed-preselected-unsubmitted.jpg"
+    },
+    {
+      "original": "runs/C04-c-B-02/final.png",
+      "jpeg": "runs/C04-c-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C05-A-01/filled-slot.png",
+      "jpeg": "runs/C05-A-01/filled-slot.jpg"
+    },
+    {
+      "original": "runs/C05-A-01/final.png",
+      "jpeg": "runs/C05-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C05-A-02/filled-slot.png",
+      "jpeg": "runs/C05-A-02/filled-slot.jpg"
+    },
+    {
+      "original": "runs/C05-A-02/final.png",
+      "jpeg": "runs/C05-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C05-B-01/filled.png",
+      "jpeg": "runs/C05-B-01/filled.jpg"
+    },
+    {
+      "original": "runs/C05-B-01/final.png",
+      "jpeg": "runs/C05-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C05-B-02/final.png",
+      "jpeg": "runs/C05-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C05-B-02/missing-fixed-slot.png",
+      "jpeg": "runs/C05-B-02/missing-fixed-slot.jpg"
+    },
+    {
+      "original": "runs/C06-A-01/final.png",
+      "jpeg": "runs/C06-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C06-A-02/final.png",
+      "jpeg": "runs/C06-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C06-B-01/filled.png",
+      "jpeg": "runs/C06-B-01/filled.jpg"
+    },
+    {
+      "original": "runs/C06-B-01/final.png",
+      "jpeg": "runs/C06-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C06-B-02/filled.png",
+      "jpeg": "runs/C06-B-02/filled.jpg"
+    },
+    {
+      "original": "runs/C06-B-02/final.png",
+      "jpeg": "runs/C06-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C07-a-A-01/conflict.png",
+      "jpeg": "runs/C07-a-A-01/conflict.jpg"
+    },
+    {
+      "original": "runs/C07-a-A-01/final.png",
+      "jpeg": "runs/C07-a-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C07-a-A-02/conflict.png",
+      "jpeg": "runs/C07-a-A-02/conflict.jpg"
+    },
+    {
+      "original": "runs/C07-a-A-02/final.png",
+      "jpeg": "runs/C07-a-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C07-a-B-01/accepted-alternative.png",
+      "jpeg": "runs/C07-a-B-01/accepted-alternative.jpg"
+    },
+    {
+      "original": "runs/C07-a-B-01/final.png",
+      "jpeg": "runs/C07-a-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C07-a-B-01/first-filled.png",
+      "jpeg": "runs/C07-a-B-01/first-filled.jpg"
+    },
+    {
+      "original": "runs/C07-a-B-02/accepted-alternative.png",
+      "jpeg": "runs/C07-a-B-02/accepted-alternative.jpg"
+    },
+    {
+      "original": "runs/C07-a-B-02/final.png",
+      "jpeg": "runs/C07-a-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C07-a-B-02/first-filled.png",
+      "jpeg": "runs/C07-a-B-02/first-filled.jpg"
+    },
+    {
+      "original": "runs/C07-b-A-01/conflict.png",
+      "jpeg": "runs/C07-b-A-01/conflict.jpg"
+    },
+    {
+      "original": "runs/C07-b-A-01/final.png",
+      "jpeg": "runs/C07-b-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C07-b-A-02/conflict.png",
+      "jpeg": "runs/C07-b-A-02/conflict.jpg"
+    },
+    {
+      "original": "runs/C07-b-A-02/final.png",
+      "jpeg": "runs/C07-b-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C07-b-B-01/final.png",
+      "jpeg": "runs/C07-b-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C07-b-B-01/first-filled.png",
+      "jpeg": "runs/C07-b-B-01/first-filled.jpg"
+    },
+    {
+      "original": "runs/C07-b-B-01/reject-afternoon.png",
+      "jpeg": "runs/C07-b-B-01/reject-afternoon.jpg"
+    },
+    {
+      "original": "runs/C07-b-B-02/final.png",
+      "jpeg": "runs/C07-b-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C07-b-B-02/first-filled.png",
+      "jpeg": "runs/C07-b-B-02/first-filled.jpg"
+    },
+    {
+      "original": "runs/C07-b-B-02/native-fallback-conflict.png",
+      "jpeg": "runs/C07-b-B-02/native-fallback-conflict.jpg"
+    },
+    {
+      "original": "runs/C08-A-01/final.png",
+      "jpeg": "runs/C08-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C08-A-01/ready.png",
+      "jpeg": "runs/C08-A-01/ready.jpg"
+    },
+    {
+      "original": "runs/C08-A-02/final.png",
+      "jpeg": "runs/C08-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C08-A-02/ready.png",
+      "jpeg": "runs/C08-A-02/ready.jpg"
+    },
+    {
+      "original": "runs/C08-B-01/confirmation-before-image.png",
+      "jpeg": "runs/C08-B-01/confirmation-before-image.jpg"
+    },
+    {
+      "original": "runs/C08-B-01/final.png",
+      "jpeg": "runs/C08-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C08-B-02/confirmation-before-image.png",
+      "jpeg": "runs/C08-B-02/confirmation-before-image.jpg"
+    },
+    {
+      "original": "runs/C08-B-02/final.png",
+      "jpeg": "runs/C08-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C09-A-01/before-event.png",
+      "jpeg": "runs/C09-A-01/before-event.jpg"
+    },
+    {
+      "original": "runs/C09-A-01/candidate.png",
+      "jpeg": "runs/C09-A-01/candidate.jpg"
+    },
+    {
+      "original": "runs/C09-A-01/final.png",
+      "jpeg": "runs/C09-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C09-A-02/before-event.png",
+      "jpeg": "runs/C09-A-02/before-event.jpg"
+    },
+    {
+      "original": "runs/C09-A-02/candidate.png",
+      "jpeg": "runs/C09-A-02/candidate.jpg"
+    },
+    {
+      "original": "runs/C09-A-02/final.png",
+      "jpeg": "runs/C09-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C09-B-01/before-event.png",
+      "jpeg": "runs/C09-B-01/before-event.jpg"
+    },
+    {
+      "original": "runs/C09-B-01/candidate.png",
+      "jpeg": "runs/C09-B-01/candidate.jpg"
+    },
+    {
+      "original": "runs/C09-B-01/final.png",
+      "jpeg": "runs/C09-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C09-B-02/before-event.png",
+      "jpeg": "runs/C09-B-02/before-event.jpg"
+    },
+    {
+      "original": "runs/C09-B-02/candidate.png",
+      "jpeg": "runs/C09-B-02/candidate.jpg"
+    },
+    {
+      "original": "runs/C09-B-02/final.png",
+      "jpeg": "runs/C09-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C10-A-01/before-confirmation.png",
+      "jpeg": "runs/C10-A-01/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C10-A-01/final.png",
+      "jpeg": "runs/C10-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C10-A-01/following.png",
+      "jpeg": "runs/C10-A-01/following.jpg"
+    },
+    {
+      "original": "runs/C10-A-02/before-confirmation.png",
+      "jpeg": "runs/C10-A-02/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C10-A-02/final.png",
+      "jpeg": "runs/C10-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C10-A-02/following.png",
+      "jpeg": "runs/C10-A-02/following.jpg"
+    },
+    {
+      "original": "runs/C10-B-01/before-confirmation.png",
+      "jpeg": "runs/C10-B-01/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C10-B-01/final.png",
+      "jpeg": "runs/C10-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C10-B-01/following.png",
+      "jpeg": "runs/C10-B-01/following.jpg"
+    },
+    {
+      "original": "runs/C10-B-02/before-confirmation.png",
+      "jpeg": "runs/C10-B-02/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C10-B-02/confirmed-before-event.png",
+      "jpeg": "runs/C10-B-02/confirmed-before-event.jpg"
+    },
+    {
+      "original": "runs/C10-B-02/final.png",
+      "jpeg": "runs/C10-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C11-A-01/final.png",
+      "jpeg": "runs/C11-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C11-A-01/pause-request.png",
+      "jpeg": "runs/C11-A-01/pause-request.jpg"
+    },
+    {
+      "original": "runs/C11-A-01/paused.png",
+      "jpeg": "runs/C11-A-01/paused.jpg"
+    },
+    {
+      "original": "runs/C11-A-02/final.png",
+      "jpeg": "runs/C11-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C11-A-02/pause-request.png",
+      "jpeg": "runs/C11-A-02/pause-request.jpg"
+    },
+    {
+      "original": "runs/C11-A-02/paused.png",
+      "jpeg": "runs/C11-A-02/paused.jpg"
+    },
+    {
+      "original": "runs/C11-B-01/continue-request.png",
+      "jpeg": "runs/C11-B-01/continue-request.jpg"
+    },
+    {
+      "original": "runs/C11-B-01/final.png",
+      "jpeg": "runs/C11-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C11-B-01/pause-request.png",
+      "jpeg": "runs/C11-B-01/pause-request.jpg"
+    },
+    {
+      "original": "runs/C11-B-01/paused.png",
+      "jpeg": "runs/C11-B-01/paused.jpg"
+    },
+    {
+      "original": "runs/C11-B-02/continue-request.png",
+      "jpeg": "runs/C11-B-02/continue-request.jpg"
+    },
+    {
+      "original": "runs/C11-B-02/final.png",
+      "jpeg": "runs/C11-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C11-B-02/pause-request.png",
+      "jpeg": "runs/C11-B-02/pause-request.jpg"
+    },
+    {
+      "original": "runs/C11-B-02/paused.png",
+      "jpeg": "runs/C11-B-02/paused.jpg"
+    },
+    {
+      "original": "runs/C12-A-01/before-confirmation.png",
+      "jpeg": "runs/C12-A-01/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C12-A-01/final.png",
+      "jpeg": "runs/C12-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C12-A-02/before-confirmation.png",
+      "jpeg": "runs/C12-A-02/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C12-A-02/final.png",
+      "jpeg": "runs/C12-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C12-B-01/before-confirmation.png",
+      "jpeg": "runs/C12-B-01/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C12-B-01/final.png",
+      "jpeg": "runs/C12-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C12-B-02/before-confirmation.png",
+      "jpeg": "runs/C12-B-02/before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C12-B-02/confirmed-before-event.png",
+      "jpeg": "runs/C12-B-02/confirmed-before-event.jpg"
+    },
+    {
+      "original": "runs/C12-B-02/final.png",
+      "jpeg": "runs/C12-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C13-A-01/final.png",
+      "jpeg": "runs/C13-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C13-A-02/final.png",
+      "jpeg": "runs/C13-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C13-B-01/final.png",
+      "jpeg": "runs/C13-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C13-B-02/final.png",
+      "jpeg": "runs/C13-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C14-A-01/final.png",
+      "jpeg": "runs/C14-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C14-A-01/left.png",
+      "jpeg": "runs/C14-A-01/left.jpg"
+    },
+    {
+      "original": "runs/C14-A-02/final.png",
+      "jpeg": "runs/C14-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C14-A-02/left.png",
+      "jpeg": "runs/C14-A-02/left.jpg"
+    },
+    {
+      "original": "runs/C14-B-01/final.png",
+      "jpeg": "runs/C14-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C14-B-01/left.png",
+      "jpeg": "runs/C14-B-01/left.jpg"
+    },
+    {
+      "original": "runs/C14-B-02/final.png",
+      "jpeg": "runs/C14-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C14-B-02/left.png",
+      "jpeg": "runs/C14-B-02/left.jpg"
+    },
+    {
+      "original": "runs/C15-A-01/far.png",
+      "jpeg": "runs/C15-A-01/far.jpg"
+    },
+    {
+      "original": "runs/C15-A-01/final.png",
+      "jpeg": "runs/C15-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C15-A-01/near.png",
+      "jpeg": "runs/C15-A-01/near.jpg"
+    },
+    {
+      "original": "runs/C15-A-01/side.png",
+      "jpeg": "runs/C15-A-01/side.jpg"
+    },
+    {
+      "original": "runs/C15-A-02/far.png",
+      "jpeg": "runs/C15-A-02/far.jpg"
+    },
+    {
+      "original": "runs/C15-A-02/final.png",
+      "jpeg": "runs/C15-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C15-A-02/near.png",
+      "jpeg": "runs/C15-A-02/near.jpg"
+    },
+    {
+      "original": "runs/C15-A-02/side.png",
+      "jpeg": "runs/C15-A-02/side.jpg"
+    },
+    {
+      "original": "runs/C15-B-01/extra-side-wait.png",
+      "jpeg": "runs/C15-B-01/extra-side-wait.jpg"
+    },
+    {
+      "original": "runs/C15-B-01/extra-wait-question.png",
+      "jpeg": "runs/C15-B-01/extra-wait-question.jpg"
+    },
+    {
+      "original": "runs/C15-B-01/far-before-confirmation.png",
+      "jpeg": "runs/C15-B-01/far-before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C15-B-01/final.png",
+      "jpeg": "runs/C15-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C15-B-01/near-pending-confirmation.png",
+      "jpeg": "runs/C15-B-01/near-pending-confirmation.jpg"
+    },
+    {
+      "original": "runs/C15-B-01/side-pending-confirmation.png",
+      "jpeg": "runs/C15-B-01/side-pending-confirmation.jpg"
+    },
+    {
+      "original": "runs/C15-B-02/far-before-confirmation.png",
+      "jpeg": "runs/C15-B-02/far-before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C15-B-02/final.png",
+      "jpeg": "runs/C15-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C15-B-02/near-pending-confirmation.png",
+      "jpeg": "runs/C15-B-02/near-pending-confirmation.jpg"
+    },
+    {
+      "original": "runs/C15-B-02/side-pending-confirmation.png",
+      "jpeg": "runs/C15-B-02/side-pending-confirmation.jpg"
+    },
+    {
+      "original": "runs/C16-A-01/confirmed-before-handover.png",
+      "jpeg": "runs/C16-A-01/confirmed-before-handover.jpg"
+    },
+    {
+      "original": "runs/C16-A-01/final.png",
+      "jpeg": "runs/C16-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C16-A-01/prepared.png",
+      "jpeg": "runs/C16-A-01/prepared.jpg"
+    },
+    {
+      "original": "runs/C16-A-02/confirmed-before-handover.png",
+      "jpeg": "runs/C16-A-02/confirmed-before-handover.jpg"
+    },
+    {
+      "original": "runs/C16-A-02/final.png",
+      "jpeg": "runs/C16-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C16-A-02/prepared.png",
+      "jpeg": "runs/C16-A-02/prepared.jpg"
+    },
+    {
+      "original": "runs/C16-B-01/before-prepared.png",
+      "jpeg": "runs/C16-B-01/before-prepared.jpg"
+    },
+    {
+      "original": "runs/C16-B-01/confirmed-before-handover.png",
+      "jpeg": "runs/C16-B-01/confirmed-before-handover.jpg"
+    },
+    {
+      "original": "runs/C16-B-01/final.png",
+      "jpeg": "runs/C16-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C16-B-01/prepared-before-confirmation.png",
+      "jpeg": "runs/C16-B-01/prepared-before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C16-B-02/before-prepared.png",
+      "jpeg": "runs/C16-B-02/before-prepared.jpg"
+    },
+    {
+      "original": "runs/C16-B-02/confirmed-before-handover.png",
+      "jpeg": "runs/C16-B-02/confirmed-before-handover.jpg"
+    },
+    {
+      "original": "runs/C16-B-02/final.png",
+      "jpeg": "runs/C16-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C16-B-02/prepared-before-confirmation.png",
+      "jpeg": "runs/C16-B-02/prepared-before-confirmation.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-01/closed.png",
+      "jpeg": "runs/C17-a-A-01/closed.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-01/final.png",
+      "jpeg": "runs/C17-a-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-01/initial.png",
+      "jpeg": "runs/C17-a-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-01/repeat-closed.png",
+      "jpeg": "runs/C17-a-A-01/repeat-closed.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-02/closed.png",
+      "jpeg": "runs/C17-a-A-02/closed.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-02/final.png",
+      "jpeg": "runs/C17-a-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-02/initial.png",
+      "jpeg": "runs/C17-a-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C17-a-A-02/repeat-closed.png",
+      "jpeg": "runs/C17-a-A-02/repeat-closed.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-01/closed.png",
+      "jpeg": "runs/C17-a-B-01/closed.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-01/final.png",
+      "jpeg": "runs/C17-a-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-01/initial.png",
+      "jpeg": "runs/C17-a-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-01/repeat-closed.png",
+      "jpeg": "runs/C17-a-B-01/repeat-closed.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-02/closed.png",
+      "jpeg": "runs/C17-a-B-02/closed.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-02/final.png",
+      "jpeg": "runs/C17-a-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-02/initial.png",
+      "jpeg": "runs/C17-a-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C17-a-B-02/repeat-closed.png",
+      "jpeg": "runs/C17-a-B-02/repeat-closed.jpg"
+    },
+    {
+      "original": "runs/C17-b-A-01/closed.png",
+      "jpeg": "runs/C17-b-A-01/closed.jpg"
+    },
+    {
+      "original": "runs/C17-b-A-01/final.png",
+      "jpeg": "runs/C17-b-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C17-b-A-01/initial.png",
+      "jpeg": "runs/C17-b-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C17-b-A-02/closed.png",
+      "jpeg": "runs/C17-b-A-02/closed.jpg"
+    },
+    {
+      "original": "runs/C17-b-A-02/final.png",
+      "jpeg": "runs/C17-b-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C17-b-A-02/initial.png",
+      "jpeg": "runs/C17-b-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C17-b-B-01/final.png",
+      "jpeg": "runs/C17-b-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C17-b-B-02/final.png",
+      "jpeg": "runs/C17-b-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C17-b-B-02/initial.png",
+      "jpeg": "runs/C17-b-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C18-A-01/final.png",
+      "jpeg": "runs/C18-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C18-A-01/initial.png",
+      "jpeg": "runs/C18-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C18-A-01/photo.png",
+      "jpeg": "runs/C18-A-01/photo.jpg"
+    },
+    {
+      "original": "runs/C18-A-01/returned-before-late.png",
+      "jpeg": "runs/C18-A-01/returned-before-late.jpg"
+    },
+    {
+      "original": "runs/C18-A-01/stopped-returning.png",
+      "jpeg": "runs/C18-A-01/stopped-returning.jpg"
+    },
+    {
+      "original": "runs/C18-A-02/final.png",
+      "jpeg": "runs/C18-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C18-A-02/initial.png",
+      "jpeg": "runs/C18-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C18-A-02/photo.png",
+      "jpeg": "runs/C18-A-02/photo.jpg"
+    },
+    {
+      "original": "runs/C18-A-02/returned-before-late.png",
+      "jpeg": "runs/C18-A-02/returned-before-late.jpg"
+    },
+    {
+      "original": "runs/C18-A-02/stopped-returning.png",
+      "jpeg": "runs/C18-A-02/stopped-returning.jpg"
+    },
+    {
+      "original": "runs/C18-B-01/final.png",
+      "jpeg": "runs/C18-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C18-B-01/initial.png",
+      "jpeg": "runs/C18-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C18-B-01/photo.png",
+      "jpeg": "runs/C18-B-01/photo.jpg"
+    },
+    {
+      "original": "runs/C18-B-01/returned.png",
+      "jpeg": "runs/C18-B-01/returned.jpg"
+    },
+    {
+      "original": "runs/C18-B-01/stopped.png",
+      "jpeg": "runs/C18-B-01/stopped.jpg"
+    },
+    {
+      "original": "runs/C18-B-02/final.png",
+      "jpeg": "runs/C18-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C18-B-02/initial.png",
+      "jpeg": "runs/C18-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C18-B-02/photo-after-extra-confirm.png",
+      "jpeg": "runs/C18-B-02/photo-after-extra-confirm.jpg"
+    },
+    {
+      "original": "runs/C18-B-02/photo-before-extra-confirm.png",
+      "jpeg": "runs/C18-B-02/photo-before-extra-confirm.jpg"
+    },
+    {
+      "original": "runs/C18-B-02/returned.png",
+      "jpeg": "runs/C18-B-02/returned.jpg"
+    },
+    {
+      "original": "runs/C18-B-02/stopped.png",
+      "jpeg": "runs/C18-B-02/stopped.jpg"
+    },
+    {
+      "original": "runs/C19-A-01/final.png",
+      "jpeg": "runs/C19-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C19-A-01/initial.png",
+      "jpeg": "runs/C19-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C19-A-02/final.png",
+      "jpeg": "runs/C19-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C19-A-02/initial.png",
+      "jpeg": "runs/C19-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C19-B-01/final.png",
+      "jpeg": "runs/C19-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C19-B-01/initial.png",
+      "jpeg": "runs/C19-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C19-B-01/reordered.png",
+      "jpeg": "runs/C19-B-01/reordered.jpg"
+    },
+    {
+      "original": "runs/C19-B-02/final.png",
+      "jpeg": "runs/C19-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C19-B-02/initial.png",
+      "jpeg": "runs/C19-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C19-B-02/reordered.png",
+      "jpeg": "runs/C19-B-02/reordered.jpg"
+    },
+    {
+      "original": "runs/C20-A-01/final.png",
+      "jpeg": "runs/C20-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C20-A-02/final.png",
+      "jpeg": "runs/C20-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C20-B-01/final.png",
+      "jpeg": "runs/C20-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C20-B-01/initial.png",
+      "jpeg": "runs/C20-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C20-B-02/final.png",
+      "jpeg": "runs/C20-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C21-A-01/final.png",
+      "jpeg": "runs/C21-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C21-A-01/initial.png",
+      "jpeg": "runs/C21-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C21-A-02/final.png",
+      "jpeg": "runs/C21-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C21-A-02/initial.png",
+      "jpeg": "runs/C21-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C21-B-01/final.png",
+      "jpeg": "runs/C21-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C21-B-01/initial.png",
+      "jpeg": "runs/C21-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C21-B-02/final.png",
+      "jpeg": "runs/C21-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C21-B-02/initial.png",
+      "jpeg": "runs/C21-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C22-A-01/final.png",
+      "jpeg": "runs/C22-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C22-A-01/front.png",
+      "jpeg": "runs/C22-A-01/front.jpg"
+    },
+    {
+      "original": "runs/C22-A-01/near.png",
+      "jpeg": "runs/C22-A-01/near.jpg"
+    },
+    {
+      "original": "runs/C22-A-01/side.png",
+      "jpeg": "runs/C22-A-01/side.jpg"
+    },
+    {
+      "original": "runs/C22-A-02/final.png",
+      "jpeg": "runs/C22-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C22-A-02/front.png",
+      "jpeg": "runs/C22-A-02/front.jpg"
+    },
+    {
+      "original": "runs/C22-A-02/near.png",
+      "jpeg": "runs/C22-A-02/near.jpg"
+    },
+    {
+      "original": "runs/C22-A-02/side.png",
+      "jpeg": "runs/C22-A-02/side.jpg"
+    },
+    {
+      "original": "runs/C22-B-01/before-submit.png",
+      "jpeg": "runs/C22-B-01/before-submit.jpg"
+    },
+    {
+      "original": "runs/C22-B-01/draft-prefill.png",
+      "jpeg": "runs/C22-B-01/draft-prefill.jpg"
+    },
+    {
+      "original": "runs/C22-B-01/final.png",
+      "jpeg": "runs/C22-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C22-B-01/front.png",
+      "jpeg": "runs/C22-B-01/front.jpg"
+    },
+    {
+      "original": "runs/C22-B-01/near.png",
+      "jpeg": "runs/C22-B-01/near.jpg"
+    },
+    {
+      "original": "runs/C22-B-01/side.png",
+      "jpeg": "runs/C22-B-01/side.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/all-front-tab.png",
+      "jpeg": "runs/C22-B-02/all-front-tab.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/all-near-tab.png",
+      "jpeg": "runs/C22-B-02/all-near-tab.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/draft-no-form.png",
+      "jpeg": "runs/C22-B-02/draft-no-form.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/final.png",
+      "jpeg": "runs/C22-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/front-after-extra-questions.png",
+      "jpeg": "runs/C22-B-02/front-after-extra-questions.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/initial-hidden-image-question.png",
+      "jpeg": "runs/C22-B-02/initial-hidden-image-question.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/near.png",
+      "jpeg": "runs/C22-B-02/near.jpg"
+    },
+    {
+      "original": "runs/C22-B-02/side.png",
+      "jpeg": "runs/C22-B-02/side.jpg"
+    },
+    {
+      "original": "runs/C23-A-01/final.png",
+      "jpeg": "runs/C23-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C23-A-01/initial.png",
+      "jpeg": "runs/C23-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C23-A-02/final.png",
+      "jpeg": "runs/C23-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C23-A-02/initial.png",
+      "jpeg": "runs/C23-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C23-B-01/edited.png",
+      "jpeg": "runs/C23-B-01/edited.jpg"
+    },
+    {
+      "original": "runs/C23-B-01/final.png",
+      "jpeg": "runs/C23-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C23-B-01/initial.png",
+      "jpeg": "runs/C23-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C23-B-02/edited.png",
+      "jpeg": "runs/C23-B-02/edited.jpg"
+    },
+    {
+      "original": "runs/C23-B-02/final.png",
+      "jpeg": "runs/C23-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C23-B-02/initial.png",
+      "jpeg": "runs/C23-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C24-A-01/before-save.png",
+      "jpeg": "runs/C24-A-01/before-save.jpg"
+    },
+    {
+      "original": "runs/C24-A-01/final.png",
+      "jpeg": "runs/C24-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C24-A-02/before-save.png",
+      "jpeg": "runs/C24-A-02/before-save.jpg"
+    },
+    {
+      "original": "runs/C24-A-02/final.png",
+      "jpeg": "runs/C24-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C24-B-01/before-save.png",
+      "jpeg": "runs/C24-B-01/before-save.jpg"
+    },
+    {
+      "original": "runs/C24-B-01/final.png",
+      "jpeg": "runs/C24-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C24-B-02/before-save.png",
+      "jpeg": "runs/C24-B-02/before-save.jpg"
+    },
+    {
+      "original": "runs/C24-B-02/final.png",
+      "jpeg": "runs/C24-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C25-a-A-01/final.png",
+      "jpeg": "runs/C25-a-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C25-a-A-01/initial.png",
+      "jpeg": "runs/C25-a-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C25-a-A-02/final.png",
+      "jpeg": "runs/C25-a-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C25-a-A-02/initial.png",
+      "jpeg": "runs/C25-a-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C25-a-B-01/final.png",
+      "jpeg": "runs/C25-a-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C25-a-B-01/initial.png",
+      "jpeg": "runs/C25-a-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C25-a-B-02/final.png",
+      "jpeg": "runs/C25-a-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C25-a-B-02/initial.png",
+      "jpeg": "runs/C25-a-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C25-b-A-01/final.png",
+      "jpeg": "runs/C25-b-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C25-b-A-01/initial.png",
+      "jpeg": "runs/C25-b-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/C25-b-A-02/final.png",
+      "jpeg": "runs/C25-b-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C25-b-A-02/initial.png",
+      "jpeg": "runs/C25-b-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/C25-b-B-01/final.png",
+      "jpeg": "runs/C25-b-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C25-b-B-01/initial.png",
+      "jpeg": "runs/C25-b-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/C25-b-B-02/final.png",
+      "jpeg": "runs/C25-b-B-02/final.jpg"
+    },
+    {
+      "original": "runs/C25-b-B-02/initial.png",
+      "jpeg": "runs/C25-b-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/C26-A-01/final.png",
+      "jpeg": "runs/C26-A-01/final.jpg"
+    },
+    {
+      "original": "runs/C26-A-02/final.png",
+      "jpeg": "runs/C26-A-02/final.jpg"
+    },
+    {
+      "original": "runs/C26-B-01/final.png",
+      "jpeg": "runs/C26-B-01/final.jpg"
+    },
+    {
+      "original": "runs/C26-B-02/final.png",
+      "jpeg": "runs/C26-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N01-A-01/final.png",
+      "jpeg": "runs/N01-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N01-A-02/final.png",
+      "jpeg": "runs/N01-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N01-B-01/final.png",
+      "jpeg": "runs/N01-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N01-B-02/final.png",
+      "jpeg": "runs/N01-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N02-A-01/final.png",
+      "jpeg": "runs/N02-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N02-A-01/initial.png",
+      "jpeg": "runs/N02-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/N02-A-02/final.png",
+      "jpeg": "runs/N02-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N02-A-02/initial.png",
+      "jpeg": "runs/N02-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/N02-B-01/final.png",
+      "jpeg": "runs/N02-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N02-B-01/initial.png",
+      "jpeg": "runs/N02-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/N02-B-01/team-selected.png",
+      "jpeg": "runs/N02-B-01/team-selected.jpg"
+    },
+    {
+      "original": "runs/N02-B-02/final.png",
+      "jpeg": "runs/N02-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N02-B-02/initial-blocked.png",
+      "jpeg": "runs/N02-B-02/initial-blocked.jpg"
+    },
+    {
+      "original": "runs/N02-B-02/team-selected.png",
+      "jpeg": "runs/N02-B-02/team-selected.jpg"
+    },
+    {
+      "original": "runs/N03-A-01/final.png",
+      "jpeg": "runs/N03-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N03-A-01/initial.png",
+      "jpeg": "runs/N03-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/N03-A-02/final.png",
+      "jpeg": "runs/N03-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N03-A-02/initial.png",
+      "jpeg": "runs/N03-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/N03-B-01/final.png",
+      "jpeg": "runs/N03-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N03-B-01/initial.png",
+      "jpeg": "runs/N03-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/N03-B-02/final.png",
+      "jpeg": "runs/N03-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N03-B-02/initial.png",
+      "jpeg": "runs/N03-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/N04-A-01/final.png",
+      "jpeg": "runs/N04-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N04-A-01/initial.png",
+      "jpeg": "runs/N04-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/N04-A-02/final.png",
+      "jpeg": "runs/N04-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N04-A-02/initial.png",
+      "jpeg": "runs/N04-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/N04-B-01/final.png",
+      "jpeg": "runs/N04-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N04-B-01/form-before.png",
+      "jpeg": "runs/N04-B-01/form-before.jpg"
+    },
+    {
+      "original": "runs/N04-B-01/form-filled.png",
+      "jpeg": "runs/N04-B-01/form-filled.jpg"
+    },
+    {
+      "original": "runs/N04-B-02/final.png",
+      "jpeg": "runs/N04-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N04-B-02/form-before.png",
+      "jpeg": "runs/N04-B-02/form-before.jpg"
+    },
+    {
+      "original": "runs/N04-B-02/form-filled.png",
+      "jpeg": "runs/N04-B-02/form-filled.jpg"
+    },
+    {
+      "original": "runs/N05-A-01/before-confirm.png",
+      "jpeg": "runs/N05-A-01/before-confirm.jpg"
+    },
+    {
+      "original": "runs/N05-A-01/final.png",
+      "jpeg": "runs/N05-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N05-A-02/before-confirm.png",
+      "jpeg": "runs/N05-A-02/before-confirm.jpg"
+    },
+    {
+      "original": "runs/N05-A-02/final.png",
+      "jpeg": "runs/N05-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N05-B-01/after-confirm.png",
+      "jpeg": "runs/N05-B-01/after-confirm.jpg"
+    },
+    {
+      "original": "runs/N05-B-01/before-confirm-no-image.png",
+      "jpeg": "runs/N05-B-01/before-confirm-no-image.jpg"
+    },
+    {
+      "original": "runs/N05-B-01/final.png",
+      "jpeg": "runs/N05-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N05-B-02/before-confirm.png",
+      "jpeg": "runs/N05-B-02/before-confirm.jpg"
+    },
+    {
+      "original": "runs/N05-B-02/final.png",
+      "jpeg": "runs/N05-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N06-A-01/all-views.png",
+      "jpeg": "runs/N06-A-01/all-views.jpg"
+    },
+    {
+      "original": "runs/N06-A-01/final.png",
+      "jpeg": "runs/N06-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N06-A-01/front.png",
+      "jpeg": "runs/N06-A-01/front.jpg"
+    },
+    {
+      "original": "runs/N06-A-02/all-views.png",
+      "jpeg": "runs/N06-A-02/all-views.jpg"
+    },
+    {
+      "original": "runs/N06-A-02/final.png",
+      "jpeg": "runs/N06-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N06-A-02/front.png",
+      "jpeg": "runs/N06-A-02/front.jpg"
+    },
+    {
+      "original": "runs/N06-B-01/final.png",
+      "jpeg": "runs/N06-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N06-B-01/initial-blocked.png",
+      "jpeg": "runs/N06-B-01/initial-blocked.jpg"
+    },
+    {
+      "original": "runs/N06-B-01/three-back.png",
+      "jpeg": "runs/N06-B-01/three-back.jpg"
+    },
+    {
+      "original": "runs/N06-B-01/three-detail.png",
+      "jpeg": "runs/N06-B-01/three-detail.jpg"
+    },
+    {
+      "original": "runs/N06-B-01/three-front.png",
+      "jpeg": "runs/N06-B-01/three-front.jpg"
+    },
+    {
+      "original": "runs/N06-B-02/final.png",
+      "jpeg": "runs/N06-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N06-B-02/initial-blocked.png",
+      "jpeg": "runs/N06-B-02/initial-blocked.jpg"
+    },
+    {
+      "original": "runs/N06-B-02/three-back.png",
+      "jpeg": "runs/N06-B-02/three-back.jpg"
+    },
+    {
+      "original": "runs/N06-B-02/three-blocked.png",
+      "jpeg": "runs/N06-B-02/three-blocked.jpg"
+    },
+    {
+      "original": "runs/N06-B-02/three-detail.png",
+      "jpeg": "runs/N06-B-02/three-detail.jpg"
+    },
+    {
+      "original": "runs/N06-B-02/three-front.png",
+      "jpeg": "runs/N06-B-02/three-front.jpg"
+    },
+    {
+      "original": "runs/N07-A-01/draft.png",
+      "jpeg": "runs/N07-A-01/draft.jpg"
+    },
+    {
+      "original": "runs/N07-A-01/final.png",
+      "jpeg": "runs/N07-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N07-A-02/draft.png",
+      "jpeg": "runs/N07-A-02/draft.jpg"
+    },
+    {
+      "original": "runs/N07-A-02/final.png",
+      "jpeg": "runs/N07-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N07-B-01/edited.png",
+      "jpeg": "runs/N07-B-01/edited.jpg"
+    },
+    {
+      "original": "runs/N07-B-01/final.png",
+      "jpeg": "runs/N07-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N07-B-01/front.png",
+      "jpeg": "runs/N07-B-01/front.jpg"
+    },
+    {
+      "original": "runs/N07-B-01/port.png",
+      "jpeg": "runs/N07-B-01/port.jpg"
+    },
+    {
+      "original": "runs/N07-B-02/edited.png",
+      "jpeg": "runs/N07-B-02/edited.jpg"
+    },
+    {
+      "original": "runs/N07-B-02/final.png",
+      "jpeg": "runs/N07-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N07-B-02/front.png",
+      "jpeg": "runs/N07-B-02/front.jpg"
+    },
+    {
+      "original": "runs/N07-B-02/port.png",
+      "jpeg": "runs/N07-B-02/port.jpg"
+    },
+    {
+      "original": "runs/N08-A-01/conflict.png",
+      "jpeg": "runs/N08-A-01/conflict.jpg"
+    },
+    {
+      "original": "runs/N08-A-01/final.png",
+      "jpeg": "runs/N08-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N08-A-02/conflict.png",
+      "jpeg": "runs/N08-A-02/conflict.jpg"
+    },
+    {
+      "original": "runs/N08-A-02/final.png",
+      "jpeg": "runs/N08-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N08-B-01/alternative-selected.png",
+      "jpeg": "runs/N08-B-01/alternative-selected.jpg"
+    },
+    {
+      "original": "runs/N08-B-01/final.png",
+      "jpeg": "runs/N08-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N08-B-02/alternative-selected.png",
+      "jpeg": "runs/N08-B-02/alternative-selected.jpg"
+    },
+    {
+      "original": "runs/N08-B-02/final.png",
+      "jpeg": "runs/N08-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N08-B-02/initial-confirm.png",
+      "jpeg": "runs/N08-B-02/initial-confirm.jpg"
+    },
+    {
+      "original": "runs/N08-B-02/target-selected.png",
+      "jpeg": "runs/N08-B-02/target-selected.jpg"
+    },
+    {
+      "original": "runs/N09-A-01/final.png",
+      "jpeg": "runs/N09-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N09-A-01/initial.png",
+      "jpeg": "runs/N09-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/N09-A-02/final.png",
+      "jpeg": "runs/N09-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N09-A-02/initial.png",
+      "jpeg": "runs/N09-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/N09-B-01/final.png",
+      "jpeg": "runs/N09-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N09-B-01/initial.png",
+      "jpeg": "runs/N09-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/N09-B-01/reordered.png",
+      "jpeg": "runs/N09-B-01/reordered.jpg"
+    },
+    {
+      "original": "runs/N09-B-02/final.png",
+      "jpeg": "runs/N09-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N09-B-02/initial.png",
+      "jpeg": "runs/N09-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/N09-B-02/reordered.png",
+      "jpeg": "runs/N09-B-02/reordered.jpg"
+    },
+    {
+      "original": "runs/N10-A-01/final.png",
+      "jpeg": "runs/N10-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N10-A-01/initial.png",
+      "jpeg": "runs/N10-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/N10-A-02/final.png",
+      "jpeg": "runs/N10-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N10-A-02/initial.png",
+      "jpeg": "runs/N10-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/N10-B-01/final.png",
+      "jpeg": "runs/N10-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N10-B-01/initial-map.png",
+      "jpeg": "runs/N10-B-01/initial-map.jpg"
+    },
+    {
+      "original": "runs/N10-B-01/zoomed.png",
+      "jpeg": "runs/N10-B-01/zoomed.jpg"
+    },
+    {
+      "original": "runs/N10-B-02/fallback.png",
+      "jpeg": "runs/N10-B-02/fallback.jpg"
+    },
+    {
+      "original": "runs/N10-B-02/final.png",
+      "jpeg": "runs/N10-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/continue-request.png",
+      "jpeg": "runs/N11-A-01/continue-request.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/continued.png",
+      "jpeg": "runs/N11-A-01/continued.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/end-request.png",
+      "jpeg": "runs/N11-A-01/end-request.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/ended.png",
+      "jpeg": "runs/N11-A-01/ended.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/failed.png",
+      "jpeg": "runs/N11-A-01/failed.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/final.png",
+      "jpeg": "runs/N11-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/initial.png",
+      "jpeg": "runs/N11-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/pause-request.png",
+      "jpeg": "runs/N11-A-01/pause-request.jpg"
+    },
+    {
+      "original": "runs/N11-A-01/paused.png",
+      "jpeg": "runs/N11-A-01/paused.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/continue-request.png",
+      "jpeg": "runs/N11-A-02/continue-request.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/continued.png",
+      "jpeg": "runs/N11-A-02/continued.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/end-request.png",
+      "jpeg": "runs/N11-A-02/end-request.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/ended.png",
+      "jpeg": "runs/N11-A-02/ended.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/failed.png",
+      "jpeg": "runs/N11-A-02/failed.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/final.png",
+      "jpeg": "runs/N11-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/initial.png",
+      "jpeg": "runs/N11-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/pause-request.png",
+      "jpeg": "runs/N11-A-02/pause-request.jpg"
+    },
+    {
+      "original": "runs/N11-A-02/paused.png",
+      "jpeg": "runs/N11-A-02/paused.jpg"
+    },
+    {
+      "original": "runs/N11-B-01/continued-4-of-10.png",
+      "jpeg": "runs/N11-B-01/continued-4-of-10.jpg"
+    },
+    {
+      "original": "runs/N11-B-01/ended.png",
+      "jpeg": "runs/N11-B-01/ended.jpg"
+    },
+    {
+      "original": "runs/N11-B-01/failed.png",
+      "jpeg": "runs/N11-B-01/failed.jpg"
+    },
+    {
+      "original": "runs/N11-B-01/final.png",
+      "jpeg": "runs/N11-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N11-B-01/initial.png",
+      "jpeg": "runs/N11-B-01/initial.jpg"
+    },
+    {
+      "original": "runs/N11-B-01/late.png",
+      "jpeg": "runs/N11-B-01/late.jpg"
+    },
+    {
+      "original": "runs/N11-B-01/paused.png",
+      "jpeg": "runs/N11-B-01/paused.jpg"
+    },
+    {
+      "original": "runs/N11-B-02/continued.png",
+      "jpeg": "runs/N11-B-02/continued.jpg"
+    },
+    {
+      "original": "runs/N11-B-02/ended.png",
+      "jpeg": "runs/N11-B-02/ended.jpg"
+    },
+    {
+      "original": "runs/N11-B-02/failed.png",
+      "jpeg": "runs/N11-B-02/failed.jpg"
+    },
+    {
+      "original": "runs/N11-B-02/final.png",
+      "jpeg": "runs/N11-B-02/final.jpg"
+    },
+    {
+      "original": "runs/N11-B-02/initial.png",
+      "jpeg": "runs/N11-B-02/initial.jpg"
+    },
+    {
+      "original": "runs/N11-B-02/late.png",
+      "jpeg": "runs/N11-B-02/late.jpg"
+    },
+    {
+      "original": "runs/N11-B-02/paused.png",
+      "jpeg": "runs/N11-B-02/paused.jpg"
+    },
+    {
+      "original": "runs/N12-A-01/final.png",
+      "jpeg": "runs/N12-A-01/final.jpg"
+    },
+    {
+      "original": "runs/N12-A-01/initial.png",
+      "jpeg": "runs/N12-A-01/initial.jpg"
+    },
+    {
+      "original": "runs/N12-A-02/final.png",
+      "jpeg": "runs/N12-A-02/final.jpg"
+    },
+    {
+      "original": "runs/N12-A-02/initial.png",
+      "jpeg": "runs/N12-A-02/initial.jpg"
+    },
+    {
+      "original": "runs/N12-B-01/edited-3-days.png",
+      "jpeg": "runs/N12-B-01/edited-3-days.jpg"
+    },
+    {
+      "original": "runs/N12-B-01/editor-before.png",
+      "jpeg": "runs/N12-B-01/editor-before.jpg"
+    },
+    {
+      "original": "runs/N12-B-01/editor-blocked.png",
+      "jpeg": "runs/N12-B-01/editor-blocked.jpg"
+    },
+    {
+      "original": "runs/N12-B-01/final.png",
+      "jpeg": "runs/N12-B-01/final.jpg"
+    },
+    {
+      "original": "runs/N12-B-02/edited-3-days-no-save.png",
+      "jpeg": "runs/N12-B-02/edited-3-days-no-save.jpg"
+    },
+    {
+      "original": "runs/N12-B-02/editor-before.png",
+      "jpeg": "runs/N12-B-02/editor-before.jpg"
+    },
+    {
+      "original": "runs/N12-B-02/final.png",
+      "jpeg": "runs/N12-B-02/final.jpg"
+    },
+    {
+      "original": "protocol-incidents/common-workflow-hint-v1/C01-A-01/protocol-output.png",
+      "jpeg": "protocol-incidents/common-workflow-hint-v1/C01-A-01/protocol-output.jpg"
+    },
+    {
+      "original": "protocol-incidents/common-workflow-hint-v1/C01-A-02/protocol-output.png",
+      "jpeg": "protocol-incidents/common-workflow-hint-v1/C01-A-02/protocol-output.jpg"
+    },
+    {
+      "original": "protocol-incidents/common-workflow-hint-v1/C01-B-01/protocol-output.png",
+      "jpeg": "protocol-incidents/common-workflow-hint-v1/C01-B-01/protocol-output.jpg"
+    },
+    {
+      "original": "protocol-incidents/common-workflow-hint-v1/C01-B-02/protocol-output.png",
+      "jpeg": "protocol-incidents/common-workflow-hint-v1/C01-B-02/protocol-output.jpg"
+    },
+    {
+      "original": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-A-01/material-error.png",
+      "jpeg": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-A-01/material-error.jpg"
+    },
+    {
+      "original": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-A-02/material-error.png",
+      "jpeg": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-A-02/material-error.jpg"
+    },
+    {
+      "original": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-B-01/material-error.png",
+      "jpeg": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-B-01/material-error.jpg"
+    },
+    {
+      "original": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-B-02/material-error.png",
+      "jpeg": "protocol-incidents/c04-cross-subcase-material-v1/C04-a-B-02/material-error.jpg"
+    },
+    {
+      "original": "environment-incidents/singleton-binding-v1/C01-A-01/environment-error.png",
+      "jpeg": "environment-incidents/singleton-binding-v1/C01-A-01/environment-error.jpg"
+    },
+    {
+      "original": "environment-incidents/singleton-binding-v1/C01-A-02/environment-error.png",
+      "jpeg": "environment-incidents/singleton-binding-v1/C01-A-02/environment-error.jpg"
+    },
+    {
+      "original": "environment-incidents/singleton-binding-v1/C01-B-01/environment-error.png",
+      "jpeg": "environment-incidents/singleton-binding-v1/C01-B-01/environment-error.jpg"
+    },
+    {
+      "original": "environment-incidents/singleton-binding-v1/C01-B-02/environment-error.png",
+      "jpeg": "environment-incidents/singleton-binding-v1/C01-B-02/environment-error.jpg"
+    },
+    {
+      "original": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-01/environment-interruption.png",
+      "jpeg": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-01/environment-interruption.jpg"
+    },
+    {
+      "original": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-01/initial-resumed.png",
+      "jpeg": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-01/initial-resumed.jpg"
+    },
+    {
+      "original": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-02/environment-interruption.png",
+      "jpeg": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-02/environment-interruption.jpg"
+    },
+    {
+      "original": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-02/initial.png",
+      "jpeg": "environment-incidents/browser-resume-render-server-offline-2026-11-20/C21-B-02/initial.jpg"
+    }
+  ]
+}

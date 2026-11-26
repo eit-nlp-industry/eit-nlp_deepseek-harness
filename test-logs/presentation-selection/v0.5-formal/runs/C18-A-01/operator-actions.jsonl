@@ -1,0 +1,5 @@
+{"at": "2026-11-19T13:03:53.435257+00:00", "stage": "photo", "release": "environment_event"}
+{"at": "2026-11-19T13:06:16.831216+00:00", "stage": "stopped", "release": "environment_event"}
+{"at": "2026-11-19T13:09:45.249981+00:00", "stage": "returned", "release": "environment_event"}
+{"at": "2026-11-19T13:12:27.328242+00:00", "stage": "late", "release": "environment_event"}
+{"at": "2026-11-19T13:20:34.332024+00:00", "action": "stop_fixture_driver_after_final_capture", "business_event": false}

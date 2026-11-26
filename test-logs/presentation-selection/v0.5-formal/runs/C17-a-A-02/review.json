@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "虚拟时钟及剩余时间正确，第3分钟开门才通知，未伪造图像；重复关闭事件仍有文字推送。"
+}

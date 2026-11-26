@@ -1,0 +1,77 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C19-B-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_einkehi3oEVeYzFGInnn8429"
+      },
+      "toolCallId": "call_00_ET_einkehi3oEVeYzFGInnn8429",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C19\",\"facts\":\"稳定地点ID lib=图书馆、canteen=食堂、college=四明书院，初始lib/canteen/college。college地图位置尚未确认。只保存排序草稿，不导航。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "3df18411-e396-42e9-8614-2992baf38d08"
+    }
+  },
+  {
+    "call": {
+      "seq": 36,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C19-B-01",
+        "values": {
+          "order": [
+            "canteen",
+            "lib",
+            "college"
+          ],
+          "items": [
+            {
+              "id": "canteen",
+              "label": "食堂"
+            },
+            {
+              "id": "lib",
+              "label": "图书馆"
+            },
+            {
+              "id": "college",
+              "label": "四明书院"
+            }
+          ]
+        }
+      }
+    },
+    "result_seq": 37,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_gkYMqyxqq055bW176A0z8973"
+      },
+      "toolCallId": "call_00_gkYMqyxqq055bW176A0z8973",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"order\":[\"canteen\",\"lib\",\"college\"],\"items\":[{\"id\":\"canteen\",\"label\":\"食堂\"},{\"id\":\"lib\",\"label\":\"图书馆\"},{\"id\":\"college\",\"label\":\"四明书院\"}]}}}"
+        }
+      ],
+      "isError": false,
+      "id": "fc994ca4-5a35-4419-ba42-0c6fff12ea3f"
+    }
+  }
+]

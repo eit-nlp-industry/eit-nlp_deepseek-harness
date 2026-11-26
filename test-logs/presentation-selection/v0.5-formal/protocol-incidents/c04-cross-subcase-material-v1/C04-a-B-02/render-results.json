@@ -1,0 +1,245 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_BcXBc4z7ayj9JWQYuu1r1726",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"business_data\": {\"title\": \"帮你找个合适的地方\", \"subtitle\": \"先确认几个小选项，我再据此给建议\", \"fields\": [{\"name\": \"activity_form\", \"label\": \"活动形式\", \"type\": \"radio\", \"required\": true, \"options\": [\"线上\", \"线下\"]}, {\"name\": \"half_day_period\", \"label\": \"半日游时段\", \"type\": \"radio\", \"required\": false, \"options\": [\"上午\", \"下午\"]}, {\"name\": \"places\", \"label\": \"想去的场地（可多选）\", \"type\": \"multi_select\", \"required\": false, \"options\": [\"图书馆\", \"食堂\", \"四明书院\"]}, {\"name\": \"extra_notes\", \"label\": \"补充想法\", \"type\": \"text\", \"required\": false, \"placeholder\": \"例如人数、用途、预算、其他偏好\"}], \"hints\": [\"图书馆适合安静阅读\", \"四明书院可进行公共交流\"], \"unknown_note\": \"用途与人数尚未提供，可留空\", \"submit_label\": \"提交选项\", \"fallback_text\": \"选项：活动形式＝线上/线下；半日游时段＝上午/下午；地点（可多选）＝图书馆/食堂/四明书院；另可填写补充想法。图书馆安静阅读，四明书院可公共交流。\"}, \"user_query\": \"轻量表单：标题“帮你找个合适的地方”，一句说明“先确认几个小选项，我再据此给建议”。依次放置：活动形式单选（线上/线下，必填）；半日游时段单选（上午/下午）；地点多选（图书馆、食堂、四明书院）；补充想法文本输入框（提示可填人数、用途、预算等）。表单下方用小字提示“图书馆适合安静阅读”“四明书院可进行公共交流”，并注明用途与人数未提供可留空。提交按钮文字“提交选项”。整体保持简洁轻量，不使用图片、地图或标签页等富组件。\", \"components\": []}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "pageTitle",
+                "pageSubtitle",
+                "filterForm",
+                "submitBtn",
+                "hintOne",
+                "hintTwo",
+                "unknownNote"
+              ]
+            },
+            "pageTitle": {
+              "type": "Heading",
+              "props": {
+                "text": "帮你找个合适的地方",
+                "level": "h1"
+              }
+            },
+            "pageSubtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "filterForm": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "activity_form",
+                    "label": "活动形式（必填）",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "线上",
+                          "label": "线上"
+                        },
+                        {
+                          "value": "线下",
+                          "label": "线下"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "select",
+                    "key": "half_day_period",
+                    "label": "半日游时段",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "上午",
+                          "label": "上午"
+                        },
+                        {
+                          "value": "下午",
+                          "label": "下午"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "multipleSelect",
+                    "key": "places",
+                    "label": "想去的场地（可多选）",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "图书馆",
+                          "label": "图书馆"
+                        },
+                        {
+                          "value": "食堂",
+                          "label": "食堂"
+                        },
+                        {
+                          "value": "四明书院",
+                          "label": "四明书院"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "input",
+                    "key": "extra_notes",
+                    "label": "补充想法",
+                    "placeholder": "例如人数、用途、预算、其他偏好"
+                  }
+                ]
+              }
+            },
+            "submitBtn": {
+              "type": "Button",
+              "props": {
+                "label": "提交选项",
+                "variant": "default",
+                "intent": "primary",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "hintOne": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/hints/0"
+                },
+                "variant": "muted"
+              }
+            },
+            "hintTwo": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/hints/1"
+                },
+                "variant": "muted"
+              }
+            },
+            "unknownNote": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknown_note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "帮你找个合适的地方",
+            "subtitle": "先确认几个小选项，我再据此给建议",
+            "fields": [
+              {
+                "name": "activity_form",
+                "label": "活动形式",
+                "type": "radio",
+                "required": true,
+                "options": [
+                  "线上",
+                  "线下"
+                ]
+              },
+              {
+                "name": "half_day_period",
+                "label": "半日游时段",
+                "type": "radio",
+                "required": false,
+                "options": [
+                  "上午",
+                  "下午"
+                ]
+              },
+              {
+                "name": "places",
+                "label": "想去的场地（可多选）",
+                "type": "multi_select",
+                "required": false,
+                "options": [
+                  "图书馆",
+                  "食堂",
+                  "四明书院"
+                ]
+              },
+              {
+                "name": "extra_notes",
+                "label": "补充想法",
+                "type": "text",
+                "required": false,
+                "placeholder": "例如人数、用途、预算、其他偏好"
+              }
+            ],
+            "hints": [
+              "图书馆适合安静阅读",
+              "四明书院可进行公共交流"
+            ],
+            "unknown_note": "用途与人数尚未提供，可留空",
+            "submit_label": "提交选项",
+            "fallback_text": "选项：活动形式＝线上/线下；半日游时段＝上午/下午；地点（可多选）＝图书馆/食堂/四明书院；另可填写补充想法。图书馆安静阅读，四明书院可公共交流。",
+            "form": {
+              "activity_form": "",
+              "half_day_period": "",
+              "places": [],
+              "extra_notes": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_BcXBc4z7ayj9JWQYuu1r1726"
+      },
+      "toolCallId": "call_00_BcXBc4z7ayj9JWQYuu1r1726",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "a0b0c7ab-f95e-4cd1-b4ab-3a0464488377"
+    }
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "simulated": true,
+  "case_id": "N08",
+  "facts": "初始草稿room=R-01,date=2026-11-23,slot=14:00–15:00,people=6；其他时段可用性未知，以模拟提交响应为准；只改草稿，不实际预约。",
+  "assets": []
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_oPvus4sM1l3YhaEGWLyh4705",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"wait_limit\", \"header\": \"等待上限\", \"question\": \"敲门后等待老师放好材料，超过多久就先回来（或先联系你）？\", \"options\": [{\"label\": \"10 分钟（推荐）\", \"description\": \"常见门口等待时长，超时先返回并通知你。\"}, {\"label\": \"5 分钟\", \"description\": \"更短的等待，适合老师在办公室内的情况。\"}, {\"label\": \"不设上限，一直等到放好\", \"description\": \"会长时间停留在门口，可能需要你另行叫停。\"}, {\"label\": \"我自己填时间\", \"description\": \"直接告诉我具体分钟数。\"}]}, {\"id\": \"confirm_save\", \"header\": \"确认保存\", \"question\": \"是否按上面的草稿（含你选的等待上限）保存这份流程？\", \"options\": [{\"label\": \"按草稿保存（推荐）\", \"description\": \"保存为模拟草稿，不执行任何真实动作。\"}, {\"label\": \"我要先改文字\", \"description\": \"告诉我哪一步或哪条条件要改，我改完再给你确认。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_oPvus4sM1l3YhaEGWLyh4705"
+      },
+      "toolCallId": "call_00_oPvus4sM1l3YhaEGWLyh4705",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"wait_limit\",\"selected\":[],\"custom\":\"敲门后等待材料放好的上限设为2分钟，保存流程草稿，不执行。\"},{\"id\":\"confirm_save\",\"selected\":[\"按草稿保存（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "94b832ed-ad81-4eb9-8a2a-dc9fc311c61f"
+    }
+  }
+]

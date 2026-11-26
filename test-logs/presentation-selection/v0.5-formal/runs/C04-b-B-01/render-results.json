@@ -1,0 +1,227 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_xpGGX16z2kveiLt7aNLc7111",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"校园半日游偏好收集表单：包含一个单选组「时段」——选项为「上午」「下午」；一个多选组「愿意去的地点」——选项为「图书馆」「食堂」「四明书院」；一个多行文本输入框「其他想法」，供用户自行补充。顶部附简短说明。仅使用基础表单组件，不使用任何富组件。\", \"business_data\": {\"title\": \"校园半日游偏好\", \"description\": \"先确认时段（上午或下午），再勾选愿意去的地点（可多选），其他想法可自行填写。以下内容仅为你的选择草稿，提交前不会产生任何实际安排。\", \"fields\": [{\"id\": \"time_slot\", \"label\": \"时段\", \"type\": \"single_select\", \"required\": true, \"options\": [\"上午\", \"下午\"]}, {\"id\": \"places\", \"label\": \"愿意去的地点（可多选）\", \"type\": \"multi_select\", \"required\": true, \"options\": [\"图书馆\", \"食堂\", \"四明书院\"]}, {\"id\": \"notes\", \"label\": \"其他想法\", \"type\": \"textarea\", \"required\": false, \"placeholder\": \"可自行补充想去的其他地方或安排\"}], \"note\": \"地点目前只有图书馆、食堂、四明书院三个选项；推荐只作建议，不等于已提交。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "header",
+                "note",
+                "form_card"
+              ]
+            },
+            "header": {
+              "type": "Section",
+              "props": {
+                "title": "校园半日游偏好",
+                "description": "先确认时段（上午或下午），再勾选愿意去的地点（可多选），其他想法可自行填写。以下内容仅为你的选择草稿，提交前不会产生任何实际安排。",
+                "headingLevel": "h2",
+                "bordered": false
+              }
+            },
+            "note": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "选项说明",
+                "description": "地点目前只有图书馆、食堂、四明书院三个选项；推荐只作建议，不等于已提交。",
+                "showIcon": true
+              }
+            },
+            "form_card": {
+              "type": "Card",
+              "props": {
+                "title": "填写你的偏好",
+                "variant": "outlined"
+              },
+              "children": [
+                "form",
+                "notes_field",
+                "actions"
+              ]
+            },
+            "form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "time_slot",
+                    "label": "时段",
+                    "placeholder": "请选择时段",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "上午",
+                          "label": "上午"
+                        },
+                        {
+                          "value": "下午",
+                          "label": "下午"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "multipleSelect",
+                    "key": "places",
+                    "label": "愿意去的地点（可多选）",
+                    "placeholder": "请选择地点",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "图书馆",
+                          "label": "图书馆"
+                        },
+                        {
+                          "value": "食堂",
+                          "label": "食堂"
+                        },
+                        {
+                          "value": "四明书院",
+                          "label": "四明书院"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "notes_field": {
+              "type": "FormField",
+              "props": {
+                "label": "其他想法",
+                "description": "可自行补充想去的其他地方或安排"
+              },
+              "children": [
+                "notes_input"
+              ]
+            },
+            "notes_input": {
+              "type": "TextArea",
+              "props": {
+                "fieldKey": "notes",
+                "placeholder": "可自行补充想去的其他地方或安排",
+                "value": {
+                  "$bindState": "/_ui/notes"
+                },
+                "disabled": false,
+                "rows": 4,
+                "showCount": true
+              }
+            },
+            "actions": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "end"
+              },
+              "children": [
+                "submit"
+              ]
+            },
+            "submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交偏好",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "校园半日游偏好",
+            "description": "先确认时段（上午或下午），再勾选愿意去的地点（可多选），其他想法可自行填写。以下内容仅为你的选择草稿，提交前不会产生任何实际安排。",
+            "fields": [
+              {
+                "id": "time_slot",
+                "label": "时段",
+                "type": "single_select",
+                "required": true,
+                "options": [
+                  "上午",
+                  "下午"
+                ]
+              },
+              {
+                "id": "places",
+                "label": "愿意去的地点（可多选）",
+                "type": "multi_select",
+                "required": true,
+                "options": [
+                  "图书馆",
+                  "食堂",
+                  "四明书院"
+                ]
+              },
+              {
+                "id": "notes",
+                "label": "其他想法",
+                "type": "textarea",
+                "required": false,
+                "placeholder": "可自行补充想去的其他地方或安排"
+              }
+            ],
+            "note": "地点目前只有图书馆、食堂、四明书院三个选项；推荐只作建议，不等于已提交。",
+            "_ui": {
+              "notes": ""
+            },
+            "form": {
+              "time_slot": "",
+              "places": []
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_xpGGX16z2kveiLt7aNLc7111"
+      },
+      "toolCallId": "call_00_xpGGX16z2kveiLt7aNLc7111",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "73b6e7a5-eb80-48a9-a3b3-bfdd653760a7"
+    }
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "seq": 9,
+    "time": 1795154018786,
+    "source": {
+      "kind": "user",
+      "rpcId": "929152ad-50cd-4b73-9b5b-2197fcee87bc",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "【全量正式呈现测评 C23-B-01】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C23-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C23-B-01,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：以后找林老师拿材料，先到门口敲门，等老师放好，拍给我确认，再送回来。\n指定呈现方式：Workflow可编辑流程并实际保存回传。必须实际调用render_ui；事实来自本例材料。本题需要Workflow：用intent=rich_content并省略不受支持的components枚举，在user_query要求Workflow编辑器。展示保留文字兜底。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。\nWorkflow接入规范：根Stack内放Workflow和独立保存Button两个兄弟节点；Workflow(mode=edit)用$bindState绑定/_ui/workflow，初始化完整workflow-v1文档；保存发workflow.save，payload.workflow用$state读取最新文档，parameters为对象。不要$ref，不用静态步骤或组件嵌套伪装编辑器。"
+  },
+  {
+    "seq": 43,
+    "time": 1795154174822,
+    "source": {
+      "kind": "user",
+      "rpcId": "7261ec5f-96c3-46ff-a51c-8ed35bf0a0f6",
+      "clientTimeZone": "Asia/Shanghai"
+    },
+    "text": "我已提交编辑后的流程\n<!-- dsh:workflow-submit -->\n我确认提交以下编辑后的流程。请在下一条回复实际调用 render_ui，用 mode=\"display\"、components=[\"Workflow\"]、intent=\"rich_content\" 和 answer_presentation=\"replace\" 生成更新后的可编辑流程卡片。根据下文还原 workflow-v1 文档，保留流程 ID、步骤顺序、分支、说明和参数。把文档放入 business_data.workflow。将其初始化到 /_ui/workflow，Workflow 使用可编辑模式并通过 $bindState 绑定该路径。保留「保存流程」按钮，点击时发出 workflow.save，payload.workflow 从 /_ui/workflow 读取最新值，payload.parameters 使用下方参数。使用一个 Stack，只放 Workflow 和「保存流程」按钮。流程名称显示在编辑器内。\n\n流程名称：林老师材料取送流程\n流程 ID：wf-material-v1\n流程步骤\n1. 步骤：到林老师门口（ID：step-1）\n   说明：走到林老师门口，在门外停下。\n2. 步骤：敲门等材料放好（ID：step-2）\n   说明：敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。\n3. 步骤：拍图发我确认（ID：step-3）\n   说明：取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。\n4. 步骤：确认后送回（ID：step-4）\n   说明：收到我的确认后，把材料送回。\n\n流程参数：空对象"
+  }
+]

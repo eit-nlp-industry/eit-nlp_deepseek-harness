@@ -1,0 +1,20 @@
+{
+  "frozen_at": "2026-11-19T10:44:22.572001+00:00",
+  "run_count": 176,
+  "media_count": 28,
+  "preset": "component-benchmark-full-v2",
+  "model": "deepseek-flash",
+  "reasoning": "high",
+  "status": "ready_for_formal_execution",
+  "event_delivery": "verified",
+  "workflow_edit_save": "verified",
+  "sorting_apply": "verified_keyboard_home",
+  "map": "verified_schematic_plus_shared_image",
+  "preflight_session": "session-71c10c28-4d90-45d9-ad70-303edf0ed7c0",
+  "formal_started": 0,
+  "fixture_version": "0.2.0",
+  "session_isolation": "verified_four_actual_sessions",
+  "refrozen_at": "2026-11-19T11:07:53.584154+00:00",
+  "server_exec_session": 28344,
+  "environment_excluded_starts": 4
+}

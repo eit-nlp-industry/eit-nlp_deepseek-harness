@@ -1,0 +1,30 @@
+[
+  {
+    "run_id": "PRE-ISO-A-01",
+    "session_id": "session-6b9569c8-2344-4b32-bb21-3a8ee93046d1",
+    "own_marker": true,
+    "environment_events": 1,
+    "cross_session_leak": false
+  },
+  {
+    "run_id": "PRE-ISO-A-02",
+    "session_id": "session-7316a2fe-594d-4532-98e3-e32f859beaf3",
+    "own_marker": true,
+    "environment_events": 1,
+    "cross_session_leak": false
+  },
+  {
+    "run_id": "PRE-ISO-A-03",
+    "session_id": "session-cd6ca2f9-e5e8-4c5e-bdb6-97d9e73ef095",
+    "own_marker": true,
+    "environment_events": 0,
+    "cross_session_leak": false
+  },
+  {
+    "run_id": "PRE-ISO-A-04",
+    "session_id": "session-3c38e362-1662-4906-b244-7e49bc070cbe",
+    "own_marker": true,
+    "environment_events": 0,
+    "cross_session_leak": false
+  }
+]

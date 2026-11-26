@@ -1,0 +1,185 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "图书馆讨论场所展示测评 刚刚" [selected]:
+    - generic: 图书馆讨论场所展示测评
+    - generic: 刚刚
+  - treeitem "已完成 图书馆讨论空间咨询测评 刚刚":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 刚刚
+  - treeitem "已完成 图书馆讨论空间咨询测评 刚刚":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 刚刚
+  - treeitem "已完成 图书馆讨论空间简洁卡片 刚刚":
+    - generic: 已完成
+    - generic: 图书馆讨论空间简洁卡片
+    - generic: 刚刚
+  - treeitem "东方理工校园设施介绍测评 4分钟":
+    - generic: 东方理工校园设施介绍测评
+    - generic: 4分钟
+  - treeitem "已完成 东方理工校园设施介绍呈现测评 5分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍呈现测评
+    - generic: 5分钟
+  - treeitem "已完成 东方理工校园信息介绍测评 5分钟":
+    - generic: 已完成
+    - generic: 东方理工校园信息介绍测评
+    - generic: 5分钟
+  - treeitem "已完成 东方理工校园设施介绍 5分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 5分钟
+  - treeitem "东方理工校园设施介绍测评 11分钟":
+    - generic: 东方理工校园设施介绍测评
+    - generic: 11分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 11分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 11分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 11分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 11分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍 11分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍
+    - generic: 11分钟
+  - treeitem "东方理工校园设施介绍 15分钟":
+    - generic: 东方理工校园设施介绍
+    - generic: 15分钟
+  - treeitem "已完成 东方理工图书馆餐饮书院介绍呈现 15分钟":
+    - generic: 已完成
+    - generic: 东方理工图书馆餐饮书院介绍呈现
+    - generic: 15分钟
+  - treeitem "已完成 东方理工校园设施介绍 15分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 15分钟
+  - treeitem "已完成 东方理工校园设施介绍 15分钟":
+    - generic: 已完成
+    - generic: 东方理工校园设施介绍
+    - generic: 15分钟
+  - treeitem "四会话隔离预检marker 18分钟":
+    - generic: 四会话隔离预检marker
+    - generic: 18分钟
+  - treeitem "已完成 四会话隔离预检测试 18分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检测试
+    - generic: 18分钟
+  - treeitem "已完成 预检调用初始化返回marker 19分钟":
+    - generic: 已完成
+    - generic: 预检调用初始化返回marker
+    - generic: 19分钟
+  - treeitem "已完成 四会话隔离预检初始化 21分钟":
+    - generic: 已完成
+    - generic: 四会话隔离预检初始化
+    - generic: 21分钟
+  - button "展开其余 48 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 图书馆讨论场所展示测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 C02-a-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C02-a-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C02-a-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：图书馆有可以讨论的地方吗？ 指定呈现方式：简洁display卡片，不使用表单。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 19:23
+- button "复制":
+- status: 已完成
+- button "已完成，用时 32秒":
+  - generic: 已完成，用时 32秒
+- paragraph: 我会先加载本案例的固定材料。
+- paragraph:
+  - strong: 图书馆讨论空间
+- paragraph: 有的，图书馆设有讨论室，可以进行讨论。
+- paragraph:
+  - text: ⚠️
+  - strong: 温馨提示
+- list:
+  - listitem: 进入图书馆需要先进行来访预约。
+  - listitem: 是否获准入馆，以馆方的答复为准。
+- paragraph:
+  - text: ❓
+  - strong: 暂未确认
+- list:
+  - listitem: 白板配置情况：未知
+  - listitem: 投屏设备情况：未知
+  - listitem: 开放时间：未知
+- paragraph: 如果你需要，我可以帮你整理一份预约时需要向馆方确认的问题清单。
+- heading "图书馆讨论空间" [level=1]
+- generic: 图书馆有可以讨论的地方：设有讨论室。
+- heading "温馨提示" [level=2]
+- generic: 进入图书馆需进行来访预约。
+- generic: 是否获准以馆方答复为准。
+- heading "暂未确认" [level=2]
+- generic: 白板配置情况
+- generic: 未知
+- generic: 投屏设备情况
+- generic: 未知
+- generic: 开放时间
+- generic: 未知
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 7.5K tok":
+  - generic: 用量 7.5K tok
+- generic: 19:24
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "关闭门图实际显示，说明door-1关闭导致已停止、无替代路线、尚未到达；未编造改道。"
+}

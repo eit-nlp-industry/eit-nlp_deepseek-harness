@@ -1,0 +1,8 @@
+{
+  "nodes": [
+    "<g transform=\"translate(92,160)\"><circle r=\"4\" fill=\"#fff\" stroke=\"#168878\" stroke-width=\"2\"></circle><text y=\"-17\" text-anchor=\"middle\" fill=\"#263f38\" font-size=\"13\">狗（机器人）起点</text></g>",
+    "<g transform=\"translate(196,160)\"><circle r=\"4\" fill=\"#fff\" stroke=\"#168878\" stroke-width=\"2\"></circle><text y=\"-17\" text-anchor=\"middle\" fill=\"#263f38\" font-size=\"13\">你所在位置</text></g>",
+    "<g transform=\"translate(404,160)\"><circle r=\"4\" fill=\"#fff\" stroke=\"#168878\" stroke-width=\"2\"></circle><text y=\"-17\" text-anchor=\"middle\" fill=\"#263f38\" font-size=\"13\">图书馆</text></g>"
+  ],
+  "viewBox": "0 0 600 320"
+}

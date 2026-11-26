@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 5,
+  "state": 5,
+  "presentation": "fail",
+  "reason": "关闭进度与5分钟到期未开门结论正确；虽调用生成工具，实际页面仅文字，未见动态卡片。"
+}

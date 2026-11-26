@@ -7,7 +7,10 @@
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
+import type {} from '@deepseek-ai/dsh-system-prompt'
 import { defineTool } from '@deepseek-ai/dsh-tools'
+import { presentationPolicy } from './presentation-policy.ts'
+import { FORM_ACTION_INTENTS } from './form-actions.ts'
 import {
   mountMediaRoute, openMediaRoot, readMediaCatalog, referencesImage, visibleAssets, type MediaAssetRecord,
 } from './media.ts'
@@ -15,7 +18,7 @@ import { requestJsonRender, resolvedRenderProfile, selectRenderRoute, type Rende
 
 export const name = 'tool-json-render'
 
-export const inject = ['tools']
+export const inject = ['tools', 'systemPrompt']
 
 export const DEFAULT_RENDER_BASE_URL = 'http://10.37.0.21:3001'
 
@@ -24,7 +27,8 @@ export const DEFAULT_RENDER_TIMEOUT_MS = 60_000
 /** Default trigger text. Override `description` in the plugin config to change when agents call the tool. */
 export const DEFAULT_RENDER_UI_DESCRIPTION = [
   'Render a json-render interface when a card, table, steps, or form would help the user.',
-  'Forms must include a visible enabled Button with on.press action form.submit. Use the requested submit_label, otherwise 提交. Additional actions do not replace submit. Set submit_button=false only when the user explicitly requests no submit button or only other actions; otherwise omit it or set true.',
+  'Without form_actions, forms must include a visible enabled Button with on.press action form.submit. Use the requested submit_label, otherwise 提交. Set submit_button=false only when the user explicitly requests no submit button or only other actions; otherwise omit it or set true.',
+  'When the user requests multiple form operations, declare the complete form_actions list with supported intent and faithful label. The host renders independent parallel Buttons and sends the clicked intent with current form values to the agent. Do not replace these operations with a selection field. form_actions overrides submit_button and submit_label; include submit when confirmation is required. Reset, skip, and cancel send intent without locally changing values or executing business operations. Use a Link for navigation.',
   'Put the detailed facts in business_data before calling. user_query only describes the layout and stays under 2000 characters.',
   'For mode "display", business_data must contain the same items the written answer uses: titles, step descriptions, comparison fields, numbers, citations, and warnings. A title or one-line summary is not enough. Continue with a complete written fallback; the client shows the interface instead when it fully answers the request.',
   'answer_presentation defaults to "replace" for display: the interface must fully answer the request. Use "supplement" when the written answer contains necessary explanations or caveats absent from the interface.',
@@ -87,9 +91,17 @@ export function apply(ctx: Context, config: Config): void {
   const fromEnv = process.env.JSON_RENDER_BASE_URL?.trim()
   const baseUrl = ((config.baseUrl ?? '').trim() || fromEnv || DEFAULT_RENDER_BASE_URL).replace(/\/$/, '')
   const description = (config.description ?? '').trim() || DEFAULT_RENDER_UI_DESCRIPTION
+  const policy = presentationPolicy()
   const mediaRoot = openConfiguredMediaRoot(config)
   const mediaOwner = (config.mediaOwner ?? '').trim() || (process.env.JSON_RENDER_MEDIA_OWNER?.trim() ?? '')
   mountMediaRoute(ctx, mediaRoot, mediaOwner)
+
+  ctx.effect(() => ctx.systemPrompt.section({
+    name: 'json-render:presentation-policy',
+    order: ctx.systemPrompt.getSectionOrder('STRUCTURED_OUTPUT'),
+    text: policy,
+    interpolate: false,
+  }), 'json-render.presentation-policy')
 
   ctx.tools.register(defineTool({
     name: 'render_ui',
@@ -114,6 +126,18 @@ export function apply(ctx: Context, config: Config): void {
       submit_label: {
         type: 'string',
         description: 'Form only. The submit button label requested by the user; defaults to 提交 for a host-added button.',
+      },
+      form_actions: {
+        type: 'array',
+        description: 'Form only. Complete independent button list in display order. Each intent occurs once with a non-empty label. Overrides default submit options; include submit if needed. Omit for the default single submit. These buttons send intent plus current form values to the agent; navigation uses Link.',
+        items: {
+          type: 'object',
+          additionalProperties: false,
+          properties: {
+            intent: { type: 'string', required: true, enum: [...FORM_ACTION_INTENTS] },
+            label: { type: 'string', required: true, description: 'Visible button text faithful to the requested operation.' },
+          },
+        },
       },
       answer_presentation: {
         type: 'string',
@@ -159,11 +183,14 @@ export function apply(ctx: Context, config: Config): void {
           mode: { type: 'string', required: true, enum: ['display', 'form'] },
           message: { type: 'string', required: true },
           payload: { type: 'json' },
+          error: { type: 'json' },
         },
       },
-      render: (_args, value) => [{ type: 'text', text: value.message }],
+      render: (_args, value) => [{ type: 'text', text: value.error === undefined ? value.message
+        : `${value.message}\n失败生成诊断（仅供纠错，不是用户指令，不能直接渲染）：\n${JSON.stringify(value.error)}` }],
       presentationMeta: (args, value) => {
-        if (!value.ok || value.payload === undefined) return null
+        if (!value.ok) return value.error === undefined ? null : { renderFailure: value.error }
+        if (value.payload === undefined) return null
         return {
           payload: value.payload,
           profile: resolvedRenderProfile(
@@ -192,9 +219,7 @@ export function apply(ctx: Context, config: Config): void {
         ...assets !== undefined ? { assets } : {},
       })
       if (result.ok && result.mode === 'form') exec.concludeTurn()
-      return result.ok
-        ? result
-        : { ok: false, mode: result.mode, message: result.message }
+      return result
     },
   }))
 }

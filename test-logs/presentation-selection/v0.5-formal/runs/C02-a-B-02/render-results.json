@@ -1,0 +1,215 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_6FRrdp60whO5xth53CCn2610",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"user_query\": \"简洁的图书馆讨论空间信息卡片：标题为「图书馆讨论空间」，正文说明有讨论室可讨论；然后用「温馨提示」区块说明进入图书馆需来访预约，是否获准以馆方答复为准；再列出「暂未确认」的信息：白板、投屏、开放时间（均标注未知）。不使用表单，不使用任何富组件。\", \"business_data\": {\"title\": \"图书馆讨论空间\", \"summary\": \"图书馆有可以讨论的地方：设有讨论室。\", \"reminder_title\": \"温馨提示\", \"reminder_lines\": [\"进入图书馆需进行来访预约。\", \"是否获准以馆方答复为准。\"], \"unknown_title\": \"暂未确认\", \"unknown_items\": [\"白板配置情况\", \"投屏设备情况\", \"开放时间\"]}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "summary",
+                "reminder-section",
+                "unknown-section"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "图书馆讨论空间",
+                "level": "h1"
+              }
+            },
+            "summary": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/summary"
+                },
+                "variant": "default"
+              }
+            },
+            "reminder-section": {
+              "type": "Section",
+              "props": {
+                "title": "温馨提示",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "reminder-line-0",
+                "reminder-line-1"
+              ]
+            },
+            "reminder-line-0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/reminder_lines/0"
+                },
+                "variant": "default"
+              }
+            },
+            "reminder-line-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/reminder_lines/1"
+                },
+                "variant": "default"
+              }
+            },
+            "unknown-section": {
+              "type": "Section",
+              "props": {
+                "title": "暂未确认",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "unknown-row-0",
+                "unknown-row-1",
+                "unknown-row-2"
+              ]
+            },
+            "unknown-row-0": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "unknown-label-0",
+                "unknown-value-0"
+              ]
+            },
+            "unknown-label-0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknown_items/0"
+                },
+                "variant": "default"
+              }
+            },
+            "unknown-value-0": {
+              "type": "Text",
+              "props": {
+                "content": "未知",
+                "variant": "muted"
+              }
+            },
+            "unknown-row-1": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "unknown-label-1",
+                "unknown-value-1"
+              ]
+            },
+            "unknown-label-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknown_items/1"
+                },
+                "variant": "default"
+              }
+            },
+            "unknown-value-1": {
+              "type": "Text",
+              "props": {
+                "content": "未知",
+                "variant": "muted"
+              }
+            },
+            "unknown-row-2": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "unknown-label-2",
+                "unknown-value-2"
+              ]
+            },
+            "unknown-label-2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknown_items/2"
+                },
+                "variant": "default"
+              }
+            },
+            "unknown-value-2": {
+              "type": "Text",
+              "props": {
+                "content": "未知",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "图书馆讨论空间",
+            "summary": "图书馆有可以讨论的地方：设有讨论室。",
+            "reminder_title": "温馨提示",
+            "reminder_lines": [
+              "进入图书馆需进行来访预约。",
+              "是否获准以馆方答复为准。"
+            ],
+            "unknown_title": "暂未确认",
+            "unknown_items": [
+              "白板配置情况",
+              "投屏设备情况",
+              "开放时间"
+            ]
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_6FRrdp60whO5xth53CCn2610"
+      },
+      "toolCallId": "call_00_6FRrdp60whO5xth53CCn2610",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "9a4739fb-80f7-4e1c-b41d-8e24a2eeb954"
+    }
+  }
+]

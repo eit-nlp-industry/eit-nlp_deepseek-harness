@@ -1,0 +1,128 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "action": "initialize",
+        "run_id": "C22-A-02"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_CRKV9W7EsUvQdx4vmrLX7692"
+      },
+      "toolCallId": "call_00_ET_CRKV9W7EsUvQdx4vmrLX7692",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C22\",\"facts\":\"设备YSJ-07，教学楼一层东侧，不出水；当前已提供正面repair-front图。其他视角尚未发布，备注和联系人未提供。只提交反馈草稿，不创建真实工单。\",\"assets\":[{\"id\":\"bench05-repair-front\",\"file\":\"bench05-repair-front.png\",\"alt\":\"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\",\"source_id\":\"repair-front\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-front/content\",\"path\":\"/api/media/bench05-repair-front/content\",\"sha256\":\"b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "e7e2f51a-f7d4-4f23-ae3a-89333805ea3a"
+    }
+  },
+  {
+    "call": {
+      "seq": 34,
+      "arguments": {
+        "action": "read",
+        "run_id": "C22-A-02"
+      }
+    },
+    "result_seq": 35,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_yzMNYsmcimLRT1dwxTQ57986"
+      },
+      "toolCallId": "call_00_yzMNYsmcimLRT1dwxTQ57986",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C22\",\"facts\":\"设备YSJ-07，教学楼一层东侧，不出水；当前已提供正面repair-front图。其他视角尚未发布，备注和联系人未提供。只提交反馈草稿，不创建真实工单。\",\"assets\":[{\"id\":\"bench05-repair-front\",\"file\":\"bench05-repair-front.png\",\"alt\":\"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\",\"source_id\":\"repair-front\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-front/content\",\"path\":\"/api/media/bench05-repair-front/content\",\"sha256\":\"b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "e68cd03f-9e08-4795-84da-7d2f802f90ca"
+    }
+  },
+  {
+    "call": {
+      "seq": 58,
+      "arguments": {
+        "action": "read",
+        "run_id": "C22-A-02"
+      }
+    },
+    "result_seq": 59,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_m8p4QsbNdlrBrXPnD3nS0660"
+      },
+      "toolCallId": "call_00_m8p4QsbNdlrBrXPnD3nS0660",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C22\",\"facts\":\"YSJ-07近景，设备仍不出水。\",\"assets\":[{\"id\":\"bench05-repair-near\",\"file\":\"bench05-repair-near.png\",\"alt\":\"MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture\",\"source_id\":\"repair-near\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-repair-near/content\",\"path\":\"/api/media/bench05-repair-near/content\",\"sha256\":\"4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76\",\"width\":960,\"height\":540}],\"device_id\":\"YSJ-07\",\"view\":\"near\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "91506f9d-74db-423e-995a-091abdc4df63"
+    }
+  },
+  {
+    "call": {
+      "seq": 82,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C22-A-02",
+        "values": {
+          "device_id": "YSJ-07",
+          "location": "教学楼一层东侧",
+          "fault": "饮水机不出水",
+          "attachments": [
+            "bench05-repair-front.png",
+            "bench05-repair-near.png",
+            "bench05-repair-side.png"
+          ],
+          "attachment_views": [
+            "正面全貌",
+            "出水口近景",
+            "侧面"
+          ],
+          "remark": "昨天也这样",
+          "contact": "测试联系人A",
+          "type": "报修反馈草稿"
+        }
+      }
+    },
+    "result_seq": 83,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_XawScro6uTyihjSmOjjz3821"
+      },
+      "toolCallId": "call_00_XawScro6uTyihjSmOjjz3821",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"submitted\":{\"device_id\":\"YSJ-07\",\"location\":\"教学楼一层东侧\",\"fault\":\"饮水机不出水\",\"attachments\":[\"bench05-repair-front.png\",\"bench05-repair-near.png\",\"bench05-repair-side.png\"],\"attachment_views\":[\"正面全貌\",\"出水口近景\",\"侧面\"],\"remark\":\"昨天也这样\",\"contact\":\"测试联系人A\",\"type\":\"报修反馈草稿\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "912f1618-97ba-4aa3-83b7-52ddd5b1c1c1"
+    }
+  }
+]

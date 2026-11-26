@@ -1,0 +1,1277 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_ScxW5K5yDTegUJpeT9lI6151",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"rich_content\", \"components\": [\"Tabs\", \"Image\", \"DynamicForm\"], \"locale\": \"zh-CN\", \"scene\": \"kb\", \"answer_presentation\": \"supplement\", \"business_data\": {\"标题\": \"饮水机不出水 · 现场照片与反馈草稿\", \"设备\": \"YSJ-07\", \"位置\": \"教学楼一层东侧\", \"故障现象\": \"不出水\", \"照片状态\": \"仅正面照片已提供，其他视角尚未发布\", \"资产关联\": [{\"序号\": 1, \"关联项\": \"正面照片\", \"状态\": \"已提供\", \"alt\": \"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\", \"image\": \"/api/media/bench05-repair-front/content\", \"尺寸\": \"960×540\", \"校验\": \"sha256 b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b\"}, {\"序号\": 2, \"关联项\": \"其他视角照片 1\", \"状态\": \"尚未发布，等待补充\", \"image\": null}, {\"序号\": 3, \"关联项\": \"其他视角照片 2\", \"状态\": \"尚未发布，等待补充\", \"image\": null}], \"说明\": \"3 个资产关联位已保留；未发布视角不展示图像，也不以同一张照片替代其他视角。\", \"草稿字段\": [{\"字段\": \"设备编号\", \"建议值\": \"YSJ-07\"}, {\"字段\": \"位置\", \"建议值\": \"教学楼一层东侧\"}, {\"字段\": \"故障现象\", \"建议值\": \"不出水\"}, {\"字段\": \"备注\", \"建议值\": \"\", \"提示\": \"材料未提供，需用户自行填写\"}, {\"字段\": \"联系人\", \"建议值\": \"\", \"提示\": \"材料未提供，需用户自行填写\"}], \"提示\": \"草稿提交后仅生成模拟结果，不创建真实工单。\"}, \"user_query\": \"用 Tabs 组织页面，共两个标签页。第一个标签页「照片」：放一个 Image 组件，src 必须使用给定固定字符串 /api/media/bench05-repair-front/content，alt 使用给定描述；图片下方用文字说明这是 YSJ-07 正面照片（960×540）。然后再列出 3 个资产关联位：第 1 位为「正面照片·已提供」，第 2、3 位为「其他视角照片·尚未发布，等待补充」，未发布项只写状态、不放图片、不编造地址。第二个标签页「反馈草稿」：放一个 DynamicForm 组件，字段为设备编号(YSJ-07)、位置(教学楼一层东侧)、故障现象(不出水)、备注(空，需填写)、联系人(空，需填写)，并在表单上方提示「提交后仅生成模拟草稿结果，不创建真实工单」。整页保留一段文字兜底，说明当前只有正面一张照片可用。不要渲染其他未指定组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "_form_actions",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "tabs",
+                "fallback-note"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "饮水机不出水 · 现场照片与反馈草稿",
+                "level": "h1"
+              }
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "photos",
+                    "label": "照片"
+                  },
+                  {
+                    "value": "draft",
+                    "label": "反馈草稿"
+                  }
+                ],
+                "defaultValue": "photos",
+                "disabled": false
+              },
+              "children": [
+                "tab-photos",
+                "tab-draft"
+              ]
+            },
+            "tab-photos": {
+              "type": "TabContent",
+              "props": {
+                "value": "photos"
+              },
+              "children": [
+                "photos-stack"
+              ]
+            },
+            "photos-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "photo-image",
+                "photo-caption",
+                "asset-1",
+                "asset-2",
+                "asset-3",
+                "assets-note"
+              ]
+            },
+            "photo-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-front/content",
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "photo-caption": {
+              "type": "Text",
+              "props": {
+                "content": "YSJ-07 正面照片（960×540）",
+                "variant": "default"
+              }
+            },
+            "asset-1": {
+              "type": "Text",
+              "props": {
+                "content": "资产关联 1 · 正面照片 · 已提供",
+                "variant": "success"
+              }
+            },
+            "asset-2": {
+              "type": "Text",
+              "props": {
+                "content": "资产关联 2 · 其他视角照片 · 尚未发布，等待补充",
+                "variant": "muted"
+              }
+            },
+            "asset-3": {
+              "type": "Text",
+              "props": {
+                "content": "资产关联 3 · 其他视角照片 · 尚未发布，等待补充",
+                "variant": "muted"
+              }
+            },
+            "assets-note": {
+              "type": "Text",
+              "props": {
+                "content": "3 个资产关联位已保留；未发布视角不展示图像，也不以同一张照片替代其他视角。",
+                "variant": "muted"
+              }
+            },
+            "tab-draft": {
+              "type": "TabContent",
+              "props": {
+                "value": "draft"
+              },
+              "children": [
+                "draft-stack"
+              ]
+            },
+            "draft-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "draft-hint",
+                "draft-form"
+              ]
+            },
+            "draft-hint": {
+              "type": "Text",
+              "props": {
+                "content": "提交后仅生成模拟草稿结果，不创建真实工单",
+                "variant": "warning"
+              }
+            },
+            "draft-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "input",
+                    "key": "deviceNo",
+                    "label": "设备编号",
+                    "value": "YSJ-07"
+                  },
+                  {
+                    "type": "input",
+                    "key": "location",
+                    "label": "位置",
+                    "value": "教学楼一层东侧"
+                  },
+                  {
+                    "type": "input",
+                    "key": "fault",
+                    "label": "故障现象",
+                    "value": "不出水"
+                  },
+                  {
+                    "type": "input",
+                    "key": "remark",
+                    "label": "备注",
+                    "value": "",
+                    "placeholder": "材料未提供，需用户自行填写"
+                  },
+                  {
+                    "type": "input",
+                    "key": "contact",
+                    "label": "联系人",
+                    "value": "",
+                    "placeholder": "材料未提供，需用户自行填写"
+                  }
+                ]
+              }
+            },
+            "fallback-note": {
+              "type": "Text",
+              "props": {
+                "content": "当前仅正面一张照片可用；其他视角尚未发布，等待补充，未发布视角不展示图像。",
+                "variant": "muted"
+              }
+            },
+            "_form_actions_submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交",
+                "intent": "primary"
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "_form_actions_cancel": {
+              "type": "Button",
+              "props": {
+                "label": "取消",
+                "variant": "outline"
+              },
+              "on": {
+                "press": {
+                  "action": "form.cancel"
+                }
+              }
+            },
+            "_form_actions": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "align": "stretch",
+                "gap": "md"
+              },
+              "children": [
+                "main",
+                "_form_actions_submit",
+                "_form_actions_cancel"
+              ]
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "饮水机不出水 · 现场照片与反馈草稿",
+            "设备": "YSJ-07",
+            "位置": "教学楼一层东侧",
+            "故障现象": "不出水",
+            "照片状态": "仅正面照片已提供，其他视角尚未发布",
+            "资产关联": [
+              {
+                "序号": 1,
+                "关联项": "正面照片",
+                "状态": "已提供",
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "image": "/api/media/bench05-repair-front/content",
+                "尺寸": "960×540",
+                "校验": "sha256 b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b"
+              },
+              {
+                "序号": 2,
+                "关联项": "其他视角照片 1",
+                "状态": "尚未发布，等待补充",
+                "image": null
+              },
+              {
+                "序号": 3,
+                "关联项": "其他视角照片 2",
+                "状态": "尚未发布，等待补充",
+                "image": null
+              }
+            ],
+            "说明": "3 个资产关联位已保留；未发布视角不展示图像，也不以同一张照片替代其他视角。",
+            "草稿字段": [
+              {
+                "字段": "设备编号",
+                "建议值": "YSJ-07"
+              },
+              {
+                "字段": "位置",
+                "建议值": "教学楼一层东侧"
+              },
+              {
+                "字段": "故障现象",
+                "建议值": "不出水"
+              },
+              {
+                "字段": "备注",
+                "建议值": "",
+                "提示": "材料未提供，需用户自行填写"
+              },
+              {
+                "字段": "联系人",
+                "建议值": "",
+                "提示": "材料未提供，需用户自行填写"
+              }
+            ],
+            "提示": "草稿提交后仅生成模拟结果，不创建真实工单。",
+            "form": {
+              "deviceNo": "YSJ-07",
+              "location": "教学楼一层东侧",
+              "fault": "不出水",
+              "remark": "",
+              "contact": ""
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ScxW5K5yDTegUJpeT9lI6151"
+      },
+      "toolCallId": "call_00_ScxW5K5yDTegUJpeT9lI6151",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "d8f8f0c6-9b6b-4e38-b5ad-30248805cf5a"
+    }
+  },
+  {
+    "call_seq": 45,
+    "result_seq": 46,
+    "call": {
+      "turn": 3,
+      "step": 1,
+      "callId": "call_00_2oBH9BXsK1toTZDT4XPr9084",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"上传说明\": \"近景照片已发布，已归入第 2 个资产关联位；第 3 位仍等待其他视角，不以现有照片充替。\", \"位置\": \"教学楼一层东侧\", \"故障现象\": \"设备仍不出水\", \"标题\": \"YSJ-07 不出水 · 正面与近景照片\", \"草稿状态\": \"草稿未提交（按你的要求暂不提交），备注与联系人为空\", \"资产关联\": [{\"alt\": \"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\", \"image\": \"/api/media/bench05-repair-front/content\", \"关联项\": \"正面照片\", \"尺寸\": \"960×540\", \"序号\": 1, \"校验\": \"sha256 b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b\", \"状态\": \"已提供\"}, {\"alt\": \"MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture\", \"image\": \"/api/media/bench05-repair-near/content\", \"关联项\": \"近景照片（出水口特写）\", \"尺寸\": \"960×540\", \"序号\": 2, \"校验\": \"sha256 4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76\", \"状态\": \"已提供\"}, {\"image\": null, \"关联项\": \"其他视角照片\", \"序号\": 3, \"状态\": \"尚未发布，等待补充\"}], \"设备\": \"YSJ-07\", \"提示\": \"提交后仅生成模拟结果，不创建真实工单。\", \"草稿字段\": [{\"字段\": \"设备编号\", \"建议值\": \"YSJ-07\"}, {\"字段\": \"位置\", \"建议值\": \"教学楼一层东侧\"}, {\"字段\": \"故障现象\", \"建议值\": \"不出水\"}, {\"字段\": \"备注\", \"建议值\": \"\", \"提示\": \"材料未提供，需自行填写\"}, {\"字段\": \"联系人\", \"建议值\": \"\", \"提示\": \"材料未提供，需自行填写\"}]}, \"components\": [\"Tabs\", \"Image\", \"DynamicForm\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"form\", \"scene\": \"kb\", \"user_query\": \"用 Tabs 组织两个标签页。第一个标签页「照片」：先放一个 Image 组件展示近景照片，Image.props.src 必须是固定字符串 /api/media/bench05-repair-near/content，alt 用给定近景描述；再放第二个 Image 组件展示正面照片，src 必须是 /api/media/bench05-repair-front/content，alt 用给定正面描述。两张图旁分别标注：近景（出水口特写，960×540）、正面（960×540）。图下方列出 3 个资产关联位：第 1 位「正面照片·已提供」，第 2 位「近景照片·已提供」，第 3 位「其他视角照片·尚未发布，等待补充」——第 3 位只写状态，不放图片、不编造地址。第二个标签页「反馈草稿」：放一个 DynamicForm 组件，字段为设备编号(YSJ-07)、位置(教学楼一层东侧)、故障现象(不出水)、备注(空)、联系人(空)，表单上方标注「草稿未提交，提交后仅生成模拟结果，不创建真实工单」。保留一段文字兜底，说明近景照片已发布、第三视角仍缺。不渲染其他未指定组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "_form_actions",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "tabs"
+              ]
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "photos",
+                    "label": "照片"
+                  },
+                  {
+                    "value": "draft",
+                    "label": "反馈草稿"
+                  }
+                ],
+                "defaultValue": "photos",
+                "disabled": false
+              },
+              "children": [
+                "tab-photos",
+                "tab-draft"
+              ]
+            },
+            "tab-photos": {
+              "type": "TabContent",
+              "props": {
+                "value": "photos"
+              },
+              "children": [
+                "photos-stack"
+              ]
+            },
+            "photos-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "photo-grid",
+                "asset-list",
+                "photo-note"
+              ]
+            },
+            "photo-grid": {
+              "type": "Grid",
+              "props": {
+                "columns": 2,
+                "gap": "md",
+                "align": "start"
+              },
+              "children": [
+                "image-near",
+                "image-front"
+              ]
+            },
+            "image-near": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-near/content",
+                "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+                "caption": "近景（出水口特写，960×540）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "image-front": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-front/content",
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "caption": "正面（960×540）",
+                "fit": "contain",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "asset-list": {
+              "type": "List",
+              "props": {
+                "title": "资产关联位",
+                "items": [
+                  {
+                    "title": "第 1 位 · 正面照片·已提供",
+                    "description": "960×540",
+                    "status": "success"
+                  },
+                  {
+                    "title": "第 2 位 · 近景照片·已提供",
+                    "description": "近景（出水口特写，960×540）",
+                    "status": "success"
+                  },
+                  {
+                    "title": "第 3 位 · 其他视角照片·尚未发布，等待补充",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无资产关联位"
+              }
+            },
+            "photo-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/上传说明"
+                },
+                "variant": "muted"
+              }
+            },
+            "tab-draft": {
+              "type": "TabContent",
+              "props": {
+                "value": "draft"
+              },
+              "children": [
+                "draft-stack"
+              ]
+            },
+            "draft-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "draft-callout",
+                "draft-form"
+              ]
+            },
+            "draft-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "description": "草稿未提交，提交后仅生成模拟结果，不创建真实工单。",
+                "showIcon": true
+              }
+            },
+            "draft-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "input",
+                    "key": "device_no",
+                    "label": "设备编号",
+                    "value": "YSJ-07"
+                  },
+                  {
+                    "type": "input",
+                    "key": "location",
+                    "label": "位置",
+                    "value": "教学楼一层东侧"
+                  },
+                  {
+                    "type": "input",
+                    "key": "fault",
+                    "label": "故障现象",
+                    "value": "不出水"
+                  },
+                  {
+                    "type": "input",
+                    "key": "remark",
+                    "label": "备注",
+                    "placeholder": "材料未提供，需自行填写"
+                  },
+                  {
+                    "type": "input",
+                    "key": "contact",
+                    "label": "联系人",
+                    "placeholder": "材料未提供，需自行填写"
+                  }
+                ]
+              }
+            },
+            "_form_actions_submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交",
+                "intent": "primary"
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "_form_actions_cancel": {
+              "type": "Button",
+              "props": {
+                "label": "取消",
+                "variant": "outline"
+              },
+              "on": {
+                "press": {
+                  "action": "form.cancel"
+                }
+              }
+            },
+            "_form_actions": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "align": "stretch",
+                "gap": "md"
+              },
+              "children": [
+                "main",
+                "_form_actions_submit",
+                "_form_actions_cancel"
+              ]
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "上传说明": "近景照片已发布，已归入第 2 个资产关联位；第 3 位仍等待其他视角，不以现有照片充替。",
+            "位置": "教学楼一层东侧",
+            "故障现象": "设备仍不出水",
+            "标题": "YSJ-07 不出水 · 正面与近景照片",
+            "草稿状态": "草稿未提交（按你的要求暂不提交），备注与联系人为空",
+            "资产关联": [
+              {
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "image": "/api/media/bench05-repair-front/content",
+                "关联项": "正面照片",
+                "尺寸": "960×540",
+                "序号": 1,
+                "校验": "sha256 b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b",
+                "状态": "已提供"
+              },
+              {
+                "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+                "image": "/api/media/bench05-repair-near/content",
+                "关联项": "近景照片（出水口特写）",
+                "尺寸": "960×540",
+                "序号": 2,
+                "校验": "sha256 4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76",
+                "状态": "已提供"
+              },
+              {
+                "image": null,
+                "关联项": "其他视角照片",
+                "序号": 3,
+                "状态": "尚未发布，等待补充"
+              }
+            ],
+            "设备": "YSJ-07",
+            "提示": "提交后仅生成模拟结果，不创建真实工单。",
+            "草稿字段": [
+              {
+                "字段": "设备编号",
+                "建议值": "YSJ-07"
+              },
+              {
+                "字段": "位置",
+                "建议值": "教学楼一层东侧"
+              },
+              {
+                "字段": "故障现象",
+                "建议值": "不出水"
+              },
+              {
+                "字段": "备注",
+                "建议值": "",
+                "提示": "材料未提供，需自行填写"
+              },
+              {
+                "字段": "联系人",
+                "建议值": "",
+                "提示": "材料未提供，需自行填写"
+              }
+            ],
+            "form": {
+              "device_no": "YSJ-07",
+              "location": "教学楼一层东侧",
+              "fault": "不出水",
+              "remark": "",
+              "contact": ""
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_2oBH9BXsK1toTZDT4XPr9084"
+      },
+      "toolCallId": "call_00_2oBH9BXsK1toTZDT4XPr9084",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "ace75c5d-adef-4e52-839e-0c09c98be3fe"
+    }
+  },
+  {
+    "call_seq": 65,
+    "result_seq": 66,
+    "call": {
+      "turn": 5,
+      "step": 1,
+      "callId": "call_00_tmpFugPZmBYy4FJvqn9H6524",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"上传说明\": \"三张图互不替代：正面看整机、近景看出水口、侧面看机身另一侧。\", \"位置\": \"教学楼一层东侧\", \"故障现象\": \"设备不出水\", \"标题\": \"YSJ-07 不出水 · 正面／近景／侧面三图\", \"草稿字段\": [{\"字段\": \"设备编号\", \"建议值\": \"YSJ-07\"}, {\"字段\": \"位置\", \"建议值\": \"教学楼一层东侧\"}, {\"字段\": \"故障现象\", \"建议值\": \"不出水\"}, {\"字段\": \"备注\", \"建议值\": \"\", \"提示\": \"材料未提供，需自行填写\"}, {\"字段\": \"联系人\", \"建议值\": \"\", \"提示\": \"材料未提供，需自行填写\"}], \"草稿状态\": \"草稿未提交（按你的要求暂不提交），备注与联系人为空\", \"提示\": \"提交后仅生成模拟草稿结果，不创建真实工单。\", \"资产关联\": [{\"alt\": \"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\", \"image\": \"/api/media/bench05-repair-front/content\", \"关联项\": \"正面照片\", \"尺寸\": \"960×540\", \"序号\": 1, \"校验\": \"sha256 b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b\", \"状态\": \"已提供\"}, {\"alt\": \"MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture\", \"image\": \"/api/media/bench05-repair-near/content\", \"关联项\": \"近景照片（出水口特写）\", \"尺寸\": \"960×540\", \"序号\": 2, \"校验\": \"sha256 4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76\", \"状态\": \"已提供\"}, {\"alt\": \"MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture\", \"image\": \"/api/media/bench05-repair-side/content\", \"关联项\": \"侧面照片（另一侧）\", \"尺寸\": \"960×540\", \"序号\": 3, \"校验\": \"sha256 7927ee2291dd11d9c44443f2f879c98ee3f387bd4818dd860e69b1ec0b4e3884\", \"状态\": \"已提供\"}], \"设备\": \"YSJ-07\"}, \"components\": [\"Tabs\", \"Image\", \"DynamicForm\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"form\", \"scene\": \"kb\", \"user_query\": \"用 Tabs 组织两个标签页。第一个标签页「照片」：并排展示三个 Image 组件——第一张 src 必须是 /api/media/bench05-repair-side/content、alt 用给定侧面描述，标注「侧面（另一侧，960×540）」；第二张 src 必须是 /api/media/bench05-repair-near/content、alt 用给定近景描述，标注「近景（出水口特写，960×540）」；第三张 src 必须是 /api/media/bench05-repair-front/content、alt 用给定正面描述，标注「正面（960×540）」。图下方列出 3 个资产关联位，全部「已提供」：①正面照片 ②近景照片 ③侧面照片（另一侧）。第二个标签页「反馈草稿」：放一个 DynamicForm 组件，字段为设备编号(YSJ-07)、位置(教学楼一层东侧)、故障现象(不出水)、备注(空)、联系人(空)，表单上方标注「草稿未提交，提交后仅生成模拟结果，不创建真实工单」。保留一段文字兜底，说明三张图均已发布且互不替代。不渲染其他未指定组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "_form_actions",
+          "elements": {
+            "main": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "photos",
+                    "label": "照片"
+                  },
+                  {
+                    "value": "feedback",
+                    "label": "反馈草稿"
+                  }
+                ],
+                "defaultValue": "photos",
+                "disabled": false
+              },
+              "children": [
+                "tabPhotos",
+                "tabFeedback"
+              ]
+            },
+            "tabPhotos": {
+              "type": "TabContent",
+              "props": {
+                "value": "photos"
+              },
+              "children": [
+                "photoGrid",
+                "assetList",
+                "fallbackText"
+              ]
+            },
+            "photoGrid": {
+              "type": "Grid",
+              "props": {
+                "columns": 3,
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "imageSide",
+                "imageNear",
+                "imageFront"
+              ]
+            },
+            "imageSide": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-side/content",
+                "alt": "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture",
+                "caption": "侧面（另一侧，960×540）",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "imageNear": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-near/content",
+                "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+                "caption": "近景（出水口特写，960×540）",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "imageFront": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-front/content",
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "caption": "正面（960×540）",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "assetList": {
+              "type": "List",
+              "props": {
+                "title": "资产关联（3/3 已提供）",
+                "items": [
+                  {
+                    "title": "① 正面照片",
+                    "description": "960×540 · 已提供",
+                    "status": "success"
+                  },
+                  {
+                    "title": "② 近景照片（出水口特写）",
+                    "description": "960×540 · 已提供",
+                    "status": "success"
+                  },
+                  {
+                    "title": "③ 侧面照片（另一侧）",
+                    "description": "960×540 · 已提供",
+                    "status": "success"
+                  }
+                ],
+                "emptyText": "暂无资产关联"
+              }
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": "三张图均已发布且互不替代：正面看整机、近景看出水口、侧面看机身另一侧。",
+                "variant": "muted"
+              }
+            },
+            "tabFeedback": {
+              "type": "TabContent",
+              "props": {
+                "value": "feedback"
+              },
+              "children": [
+                "draftNotice",
+                "feedbackForm"
+              ]
+            },
+            "draftNotice": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "草稿未提交",
+                "description": "提交后仅生成模拟结果，不创建真实工单。",
+                "showIcon": true
+              }
+            },
+            "feedbackForm": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "input",
+                    "key": "deviceNo",
+                    "label": "设备编号",
+                    "value": "YSJ-07",
+                    "disabled": false
+                  },
+                  {
+                    "type": "input",
+                    "key": "location",
+                    "label": "位置",
+                    "value": "教学楼一层东侧",
+                    "disabled": false
+                  },
+                  {
+                    "type": "input",
+                    "key": "fault",
+                    "label": "故障现象",
+                    "value": "不出水",
+                    "disabled": false
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "备注",
+                    "value": "",
+                    "placeholder": "材料未提供，需自行填写",
+                    "disabled": false
+                  },
+                  {
+                    "type": "input",
+                    "key": "contact",
+                    "label": "联系人",
+                    "value": "",
+                    "placeholder": "材料未提供，需自行填写",
+                    "disabled": false
+                  }
+                ]
+              }
+            },
+            "_form_actions_submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交",
+                "intent": "primary"
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "_form_actions_cancel": {
+              "type": "Button",
+              "props": {
+                "label": "取消",
+                "variant": "outline"
+              },
+              "on": {
+                "press": {
+                  "action": "form.cancel"
+                }
+              }
+            },
+            "_form_actions": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "align": "stretch",
+                "gap": "md"
+              },
+              "children": [
+                "main",
+                "_form_actions_submit",
+                "_form_actions_cancel"
+              ]
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "上传说明": "三张图互不替代：正面看整机、近景看出水口、侧面看机身另一侧。",
+            "位置": "教学楼一层东侧",
+            "故障现象": "设备不出水",
+            "标题": "YSJ-07 不出水 · 正面／近景／侧面三图",
+            "草稿字段": [
+              {
+                "字段": "设备编号",
+                "建议值": "YSJ-07"
+              },
+              {
+                "字段": "位置",
+                "建议值": "教学楼一层东侧"
+              },
+              {
+                "字段": "故障现象",
+                "建议值": "不出水"
+              },
+              {
+                "字段": "备注",
+                "建议值": "",
+                "提示": "材料未提供，需自行填写"
+              },
+              {
+                "字段": "联系人",
+                "建议值": "",
+                "提示": "材料未提供，需自行填写"
+              }
+            ],
+            "草稿状态": "草稿未提交（按你的要求暂不提交），备注与联系人为空",
+            "提示": "提交后仅生成模拟草稿结果，不创建真实工单。",
+            "资产关联": [
+              {
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "image": "/api/media/bench05-repair-front/content",
+                "关联项": "正面照片",
+                "尺寸": "960×540",
+                "序号": 1,
+                "校验": "sha256 b17f2fe5d58e6a9cc50bb706f54107b6823a67e28b555e1500a44c5e8313bf0b",
+                "状态": "已提供"
+              },
+              {
+                "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+                "image": "/api/media/bench05-repair-near/content",
+                "关联项": "近景照片（出水口特写）",
+                "尺寸": "960×540",
+                "序号": 2,
+                "校验": "sha256 4be3980203a41e463bf2d252292de73e929219e4dd6fc06503c739989fe13b76",
+                "状态": "已提供"
+              },
+              {
+                "alt": "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture",
+                "image": "/api/media/bench05-repair-side/content",
+                "关联项": "侧面照片（另一侧）",
+                "尺寸": "960×540",
+                "序号": 3,
+                "校验": "sha256 7927ee2291dd11d9c44443f2f879c98ee3f387bd4818dd860e69b1ec0b4e3884",
+                "状态": "已提供"
+              }
+            ],
+            "设备": "YSJ-07",
+            "form": {
+              "deviceNo": "YSJ-07",
+              "location": "教学楼一层东侧",
+              "fault": "不出水",
+              "note": "",
+              "contact": ""
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_tmpFugPZmBYy4FJvqn9H6524"
+      },
+      "toolCallId": "call_00_tmpFugPZmBYy4FJvqn9H6524",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "452a6904-a63a-4d7f-9ff0-14d7d6065e4f"
+    }
+  },
+  {
+    "call_seq": 76,
+    "result_seq": 77,
+    "call": {
+      "turn": 6,
+      "step": 1,
+      "callId": "call_00_z1oZnSSWHsFlQJSxtLA27773",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"上传说明\": \"三张图已全部挂到反馈单的资产关联位；备注按你的要求填为「昨天也这样」，未经确认不会提交。\", \"位置\": \"教学楼一层东侧\", \"故障现象\": \"设备不出水\", \"标题\": \"YSJ-07 不出水 · 反馈单草稿（含三图）\", \"草稿字段\": [{\"字段\": \"设备编号\", \"建议值\": \"YSJ-07\"}, {\"字段\": \"位置\", \"建议值\": \"教学楼一层东侧\"}, {\"字段\": \"故障现象\", \"建议值\": \"不出水\"}, {\"字段\": \"备注\", \"建议值\": \"昨天也这样\"}, {\"字段\": \"联系人\", \"建议值\": \"\", \"提示\": \"材料未提供，需自行填写后才能提交\"}], \"草稿状态\": \"待你确认，未提交\", \"提交说明\": \"尚未提交；经你确认后才会生成模拟结果，且不创建真实工单。\", \"设备\": \"YSJ-07\", \"资产关联\": [{\"alt\": \"MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture\", \"image\": \"/api/media/bench05-repair-front/content\", \"关联项\": \"正面照片\", \"尺寸\": \"960×540\", \"序号\": 1, \"状态\": \"已提供・已入单\"}, {\"alt\": \"MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture\", \"image\": \"/api/media/bench05-repair-near/content\", \"关联项\": \"近景照片（出水口特写）\", \"尺寸\": \"960×540\", \"序号\": 2, \"状态\": \"已提供・已入单\"}, {\"alt\": \"MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture\", \"image\": \"/api/media/bench05-repair-side/content\", \"关联项\": \"侧面照片（另一侧）\", \"尺寸\": \"960×540\", \"序号\": 3, \"状态\": \"已提供・已入单\"}]}, \"components\": [\"Tabs\", \"Image\", \"DynamicForm\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"form\", \"scene\": \"kb\", \"user_query\": \"用 Tabs 组织两个标签页。第一个标签页「反馈草稿」：放一个 DynamicForm 组件，预填字段为设备编号(YSJ-07)、位置(教学楼一层东侧)、故障现象(不出水)、备注(昨天也这样)、联系人(空，需填写)，表单上方标注「待确认，未提交；提交后仅生成模拟结果，不创建真实工单」。第二个标签页「照片」：展示三个 Image 组件——src 分别为 /api/media/bench05-repair-front/content、/api/media/bench05-repair-near/content、/api/media/bench05-repair-side/content，alt 各用给定描述，标注「正面(960×540)」「近景·出水口特写(960×540)」「侧面·另一侧(960×540)」，并列出 3 个资产关联位，全部标记「已提供・已入单」。保留一段文字兜底，说明三张图均已挂入草稿、备注为「昨天也这样」、当前未提交。不渲染其他未指定组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "_form_actions",
+          "elements": {
+            "main": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "feedback-draft",
+                    "label": "反馈草稿"
+                  },
+                  {
+                    "value": "photos",
+                    "label": "照片"
+                  }
+                ],
+                "defaultValue": "feedback-draft",
+                "disabled": false
+              },
+              "children": [
+                "tab-feedback-draft",
+                "tab-photos"
+              ]
+            },
+            "tab-feedback-draft": {
+              "type": "TabContent",
+              "props": {
+                "value": "feedback-draft"
+              },
+              "children": [
+                "feedback-note",
+                "feedback-form"
+              ]
+            },
+            "feedback-note": {
+              "type": "Text",
+              "props": {
+                "content": "待确认，未提交；提交后仅生成模拟结果，不创建真实工单",
+                "variant": "warning"
+              }
+            },
+            "feedback-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "input",
+                    "key": "deviceNo",
+                    "label": "设备编号",
+                    "value": "YSJ-07"
+                  },
+                  {
+                    "type": "input",
+                    "key": "location",
+                    "label": "位置",
+                    "value": "教学楼一层东侧"
+                  },
+                  {
+                    "type": "input",
+                    "key": "fault",
+                    "label": "故障现象",
+                    "value": "不出水"
+                  },
+                  {
+                    "type": "input",
+                    "key": "remark",
+                    "label": "备注",
+                    "value": "昨天也这样"
+                  },
+                  {
+                    "type": "input",
+                    "key": "contact",
+                    "label": "联系人",
+                    "value": "",
+                    "placeholder": "请填写联系人"
+                  }
+                ]
+              }
+            },
+            "tab-photos": {
+              "type": "TabContent",
+              "props": {
+                "value": "photos"
+              },
+              "children": [
+                "photo-front",
+                "photo-near",
+                "photo-side",
+                "asset-slots",
+                "photo-fallback"
+              ]
+            },
+            "photo-front": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-front/content",
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "caption": "正面(960×540)",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "photo-near": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-near/content",
+                "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+                "caption": "近景·出水口特写(960×540)",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "photo-side": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-repair-side/content",
+                "alt": "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture",
+                "caption": "侧面·另一侧(960×540)",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "asset-slots": {
+              "type": "Text",
+              "props": {
+                "content": "资产关联位：\n1. 正面照片 · 960×540 · 已提供・已入单\n2. 近景照片（出水口特写） · 960×540 · 已提供・已入单\n3. 侧面照片（另一侧） · 960×540 · 已提供・已入单",
+                "variant": "default"
+              }
+            },
+            "photo-fallback": {
+              "type": "Text",
+              "props": {
+                "content": "三张图均已挂入草稿，备注为「昨天也这样」，当前未提交。",
+                "variant": "muted"
+              }
+            },
+            "_form_actions_submit": {
+              "type": "Button",
+              "props": {
+                "label": "提交",
+                "intent": "primary"
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "_form_actions_cancel": {
+              "type": "Button",
+              "props": {
+                "label": "取消",
+                "variant": "outline"
+              },
+              "on": {
+                "press": {
+                  "action": "form.cancel"
+                }
+              }
+            },
+            "_form_actions": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "align": "stretch",
+                "gap": "md"
+              },
+              "children": [
+                "main",
+                "_form_actions_submit",
+                "_form_actions_cancel"
+              ]
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "上传说明": "三张图已全部挂到反馈单的资产关联位；备注按你的要求填为「昨天也这样」，未经确认不会提交。",
+            "位置": "教学楼一层东侧",
+            "故障现象": "设备不出水",
+            "标题": "YSJ-07 不出水 · 反馈单草稿（含三图）",
+            "草稿字段": [
+              {
+                "字段": "设备编号",
+                "建议值": "YSJ-07"
+              },
+              {
+                "字段": "位置",
+                "建议值": "教学楼一层东侧"
+              },
+              {
+                "字段": "故障现象",
+                "建议值": "不出水"
+              },
+              {
+                "字段": "备注",
+                "建议值": "昨天也这样"
+              },
+              {
+                "字段": "联系人",
+                "建议值": "",
+                "提示": "材料未提供，需自行填写后才能提交"
+              }
+            ],
+            "草稿状态": "待你确认，未提交",
+            "提交说明": "尚未提交；经你确认后才会生成模拟结果，且不创建真实工单。",
+            "设备": "YSJ-07",
+            "资产关联": [
+              {
+                "alt": "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture",
+                "image": "/api/media/bench05-repair-front/content",
+                "关联项": "正面照片",
+                "尺寸": "960×540",
+                "序号": 1,
+                "状态": "已提供・已入单"
+              },
+              {
+                "alt": "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture",
+                "image": "/api/media/bench05-repair-near/content",
+                "关联项": "近景照片（出水口特写）",
+                "尺寸": "960×540",
+                "序号": 2,
+                "状态": "已提供・已入单"
+              },
+              {
+                "alt": "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture",
+                "image": "/api/media/bench05-repair-side/content",
+                "关联项": "侧面照片（另一侧）",
+                "尺寸": "960×540",
+                "序号": 3,
+                "状态": "已提供・已入单"
+              }
+            ],
+            "form": {
+              "deviceNo": "YSJ-07",
+              "location": "教学楼一层东侧",
+              "fault": "不出水",
+              "remark": "昨天也这样",
+              "contact": ""
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_z1oZnSSWHsFlQJSxtLA27773"
+      },
+      "toolCallId": "call_00_z1oZnSSWHsFlQJSxtLA27773",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "8f339b3a-fe34-4475-ae70-f5b3bcd1677c"
+    }
+  }
+]

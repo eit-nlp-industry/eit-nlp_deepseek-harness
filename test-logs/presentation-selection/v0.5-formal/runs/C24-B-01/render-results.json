@@ -1,0 +1,1033 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_ODEcLIwtuJ1lmU3dehhB8341",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"渲染一个 Workflow 编辑器页面。根节点用 Stack 纵向排列，只放两个兄弟节点：第一个是 Workflow 编辑器（mode=edit），通过 $bindState 绑定到 /_ui/workflow，并以其作为页面主标题下方的核心区域；第二个是独立的“保存草稿”Button，与 Workflow 平级，不嵌在 Workflow 内部。Workflow 初始内容使用 business_data.workflow_document 中的完整 workflow-v1 文档（包含 start → 到门口 → 敲门等待 → 条件「林老师在吗」→ 在/不在两条分支）。Button 的 onClick 触发 workflow.save，payload.workflow 用 $state 读取 /_ui/workflow 的最新文档，payload.parameters 为对象（见 business_data.save_payload_parameters 的键值）。页面上方显示标题 business_data.title 与说明 business_data.description；标题下方用一段提示条展示 business_data.branch_rule（老师不在必须通知并结束，老师在才继续拍照确认与送回，拍照送回不可共用）。页面底部以纯文本列表展示 business_data.fallback_text 作为文字兜底，保证编辑器不可用时也能读懂流程。不要 $ref，不要静态步骤列表或嵌套组件伪装编辑器。\", \"business_data\": {\"title\": \"到林老师处取材料的执行草稿\", \"description\": \"独立草稿，仅保存，不实际执行。可在下方编辑器中调整节点与分支后再保存。\", \"branch_rule\": \"在「敲门并等待材料」之后判断「林老师在吗」：老师不在 → 通知我并结束（不等待）；老师在 → 拍照确认材料 → 送回材料 → 结束。拍照与送回只属于「老师在」分支，不能作为无条件共用步骤。\", \"workflow_document\": {\"version\": \"workflow-v1\", \"id\": \"wf-c24-lin-teacher-draft\", \"name\": \"到林老师门口取材料并送回\", \"description\": \"老师不在就通知并结束，不需要一直等待；老师在才继续拍照确认与送回。\", \"variables\": [{\"name\": \"teacher.present\", \"type\": \"boolean\", \"label\": \"林老师是否在\"}, {\"name\": \"notify.target\", \"type\": \"string\", \"label\": \"通知对象\", \"value\": \"我\"}], \"nodes\": [{\"id\": \"start\", \"type\": \"start\", \"label\": \"开始\", \"next\": \"go_door\"}, {\"id\": \"go_door\", \"type\": \"action\", \"label\": \"走到林老师门口\", \"next\": \"knock_wait\"}, {\"id\": \"knock_wait\", \"type\": \"action\", \"label\": \"敲门并等待材料\", \"next\": \"branch_teacher\"}, {\"id\": \"branch_teacher\", \"type\": \"condition\", \"label\": \"林老师在吗？\", \"expression\": \"teacher.present === true\", \"branches\": [{\"when\": \"true\", \"label\": \"老师在\", \"next\": \"photo_confirm\"}, {\"when\": \"false\", \"label\": \"老师不在\", \"next\": \"notify_absent\"}]}, {\"id\": \"notify_absent\", \"type\": \"action\", \"label\": \"通知我：老师不在\", \"config\": {\"channel\": \"通知\", \"target\": \"我\", \"message\": \"林老师不在，已停止等待\"}, \"next\": \"end_absent\"}, {\"id\": \"end_absent\", \"type\": \"end\", \"label\": \"结束（老师不在）\"}, {\"id\": \"photo_confirm\", \"type\": \"action\", \"label\": \"拍照确认材料\", \"next\": \"send_back\"}, {\"id\": \"send_back\", \"type\": \"action\", \"label\": \"把材料送回\", \"next\": \"end_done\"}, {\"id\": \"end_done\", \"type\": \"end\", \"label\": \"结束（已送回）\"}], \"edges\": [{\"from\": \"start\", \"to\": \"go_door\"}, {\"from\": \"go_door\", \"to\": \"knock_wait\"}, {\"from\": \"knock_wait\", \"to\": \"branch_teacher\"}, {\"from\": \"branch_teacher\", \"to\": \"photo_confirm\", \"condition\": \"老师在\"}, {\"from\": \"branch_teacher\", \"to\": \"notify_absent\", \"condition\": \"老师不在\"}, {\"from\": \"notify_absent\", \"to\": \"end_absent\"}, {\"from\": \"photo_confirm\", \"to\": \"send_back\"}, {\"from\": \"send_back\", \"to\": \"end_done\"}], \"meta\": {\"status\": \"draft\", \"save_only\": true, \"simulated\": true}}, \"bind_state_path\": \"/_ui/workflow\", \"save_action\": \"workflow.save\", \"save_payload_workflow\": \"$state/_ui/workflow\", \"save_payload_parameters\": {\"workflow_id\": \"wf-c24-lin-teacher-draft\", \"mode\": \"draft\", \"save_only\": true}, \"fallback_text\": [\"1. 走到林老师门口\", \"2. 敲门并等待材料\", \"3. 判断：林老师在吗？\", \"4. 老师不在 → 通知我「林老师不在，已停止等待」→ 结束，不继续等待\", \"5. 老师在 → 拍照确认材料 → 把材料送回 → 结束\"]}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "content_stack",
+                "fallback_section"
+              ]
+            },
+            "content_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page_title",
+                "page_description",
+                "branch_callout",
+                "workflow_intro",
+                "workflow_editor",
+                "save_draft_button",
+                "overview_intro",
+                "overview_descriptions",
+                "nodes_intro",
+                "nodes_table",
+                "edges_intro",
+                "edges_table",
+                "variables_intro",
+                "variables_table"
+              ]
+            },
+            "page_title": {
+              "type": "Heading",
+              "props": {
+                "text": "到林老师处取材料的执行草稿",
+                "level": "h1"
+              }
+            },
+            "page_description": {
+              "type": "Text",
+              "props": {
+                "content": "独立草稿，仅保存，不实际执行。可在下方编辑器中调整节点与分支后再保存。",
+                "variant": "muted"
+              }
+            },
+            "branch_callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "分支规则（business_data.branch_rule）",
+                "description": "在「敲门并等待材料」之后判断「林老师在吗」：老师不在 → 通知我并结束（不等待）；老师在 → 拍照确认材料 → 送回材料 → 结束。拍照与送回只属于「老师在」分支，不能作为无条件共用步骤。",
+                "showIcon": true
+              }
+            },
+            "workflow_intro": {
+              "type": "Text",
+              "props": {
+                "content": "Workflow 编辑器（mode=edit，绑定 /_ui/workflow）。修改节点或分支后，点击下方「保存草稿」。",
+                "variant": "default"
+              }
+            },
+            "workflow_editor": {
+              "type": "Workflow",
+              "props": {
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                },
+                "mode": "edit",
+                "disabled": false
+              }
+            },
+            "save_draft_button": {
+              "type": "Button",
+              "props": {
+                "label": "保存草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.save",
+                    "payload": {
+                      "workflow": {
+                        "$state": "/_ui/workflow"
+                      },
+                      "parameters": {
+                        "workflow_id": "wf-c24-lin-teacher-draft",
+                        "mode": "draft",
+                        "save_only": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "overview_intro": {
+              "type": "Text",
+              "props": {
+                "content": "以下按 business_data 字段逐项展示，保留字段名、数值和出处，不合并为摘要。",
+                "variant": "muted"
+              }
+            },
+            "overview_descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "business_data 字段与 workflow_document 概览",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "business_data.title",
+                    "value": "到林老师处取材料的执行草稿"
+                  },
+                  {
+                    "label": "business_data.description",
+                    "value": "独立草稿，仅保存，不实际执行。可在下方编辑器中调整节点与分支后再保存。"
+                  },
+                  {
+                    "label": "business_data.branch_rule",
+                    "value": "在「敲门并等待材料」之后判断「林老师在吗」：老师不在 → 通知我并结束（不等待）；老师在 → 拍照确认材料 → 送回材料 → 结束。拍照与送回只属于「老师在」分支，不能作为无条件共用步骤。"
+                  },
+                  {
+                    "label": "business_data.bind_state_path",
+                    "value": "/_ui/workflow"
+                  },
+                  {
+                    "label": "business_data.save_action",
+                    "value": "workflow.save"
+                  },
+                  {
+                    "label": "business_data.save_payload_workflow",
+                    "value": "$state/_ui/workflow"
+                  },
+                  {
+                    "label": "business_data.save_payload_parameters.workflow_id",
+                    "value": "wf-c24-lin-teacher-draft"
+                  },
+                  {
+                    "label": "business_data.save_payload_parameters.mode",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "business_data.save_payload_parameters.save_only",
+                    "value": true
+                  },
+                  {
+                    "label": "workflow_document.version",
+                    "value": "workflow-v1"
+                  },
+                  {
+                    "label": "workflow_document.id",
+                    "value": "wf-c24-lin-teacher-draft"
+                  },
+                  {
+                    "label": "workflow_document.name",
+                    "value": "到林老师门口取材料并送回"
+                  },
+                  {
+                    "label": "workflow_document.description",
+                    "value": "老师不在就通知并结束，不需要一直等待；老师在才继续拍照确认与送回。"
+                  },
+                  {
+                    "label": "workflow_document.meta.status",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "workflow_document.meta.save_only",
+                    "value": true
+                  },
+                  {
+                    "label": "workflow_document.meta.simulated",
+                    "value": true
+                  },
+                  {
+                    "label": "workflow_document.nodes.length",
+                    "value": 9
+                  },
+                  {
+                    "label": "workflow_document.edges.length",
+                    "value": 8
+                  },
+                  {
+                    "label": "workflow_document.variables.length",
+                    "value": 2
+                  },
+                  {
+                    "label": "business_data.fallback_text.length",
+                    "value": 5
+                  }
+                ]
+              }
+            },
+            "nodes_intro": {
+              "type": "Text",
+              "props": {
+                "content": "流程节点（business_data.workflow_document.nodes）",
+                "variant": "default"
+              }
+            },
+            "nodes_table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "id",
+                  "type",
+                  "label",
+                  "next",
+                  "expression",
+                  "config",
+                  "branches"
+                ],
+                "rows": [
+                  [
+                    "start",
+                    "start",
+                    "开始",
+                    "go_door",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "go_door",
+                    "action",
+                    "走到林老师门口",
+                    "knock_wait",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "knock_wait",
+                    "action",
+                    "敲门并等待材料",
+                    "branch_teacher",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "branch_teacher",
+                    "condition",
+                    "林老师在吗？",
+                    "",
+                    "teacher.present === true",
+                    "",
+                    "true → photo_confirm（老师在）；false → notify_absent（老师不在）"
+                  ],
+                  [
+                    "notify_absent",
+                    "action",
+                    "通知我：老师不在",
+                    "end_absent",
+                    "",
+                    "channel=通知；target=我；message=林老师不在，已停止等待",
+                    ""
+                  ],
+                  [
+                    "end_absent",
+                    "end",
+                    "结束（老师不在）",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "photo_confirm",
+                    "action",
+                    "拍照确认材料",
+                    "send_back",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "send_back",
+                    "action",
+                    "把材料送回",
+                    "end_done",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "end_done",
+                    "end",
+                    "结束（已送回）",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ]
+              }
+            },
+            "edges_intro": {
+              "type": "Text",
+              "props": {
+                "content": "流程连线（business_data.workflow_document.edges）",
+                "variant": "default"
+              }
+            },
+            "edges_table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "from",
+                  "to",
+                  "condition"
+                ],
+                "rows": [
+                  [
+                    "start",
+                    "go_door",
+                    ""
+                  ],
+                  [
+                    "go_door",
+                    "knock_wait",
+                    ""
+                  ],
+                  [
+                    "knock_wait",
+                    "branch_teacher",
+                    ""
+                  ],
+                  [
+                    "branch_teacher",
+                    "photo_confirm",
+                    "老师在"
+                  ],
+                  [
+                    "branch_teacher",
+                    "notify_absent",
+                    "老师不在"
+                  ],
+                  [
+                    "notify_absent",
+                    "end_absent",
+                    ""
+                  ],
+                  [
+                    "photo_confirm",
+                    "send_back",
+                    ""
+                  ],
+                  [
+                    "send_back",
+                    "end_done",
+                    ""
+                  ]
+                ]
+              }
+            },
+            "variables_intro": {
+              "type": "Text",
+              "props": {
+                "content": "流程变量（business_data.workflow_document.variables）",
+                "variant": "default"
+              }
+            },
+            "variables_table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "name",
+                  "type",
+                  "label",
+                  "value"
+                ],
+                "rows": [
+                  [
+                    "teacher.present",
+                    "boolean",
+                    "林老师是否在",
+                    ""
+                  ],
+                  [
+                    "notify.target",
+                    "string",
+                    "通知对象",
+                    "我"
+                  ]
+                ]
+              }
+            },
+            "fallback_section": {
+              "type": "Section",
+              "props": {
+                "title": "文字兜底（business_data.fallback_text）",
+                "description": "编辑器不可用时，按以下原文阅读流程。",
+                "headingLevel": "h3",
+                "bordered": false
+              },
+              "children": [
+                "fallback_list"
+              ]
+            },
+            "fallback_list": {
+              "type": "List",
+              "props": {
+                "title": "business_data.fallback_text",
+                "items": [
+                  {
+                    "title": "1. 走到林老师门口"
+                  },
+                  {
+                    "title": "2. 敲门并等待材料"
+                  },
+                  {
+                    "title": "3. 判断：林老师在吗？"
+                  },
+                  {
+                    "title": "4. 老师不在 → 通知我「林老师不在，已停止等待」→ 结束，不继续等待"
+                  },
+                  {
+                    "title": "5. 老师在 → 拍照确认材料 → 把材料送回 → 结束"
+                  }
+                ],
+                "emptyText": "暂无兜底文本"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "到林老师处取材料的执行草稿",
+            "description": "独立草稿，仅保存，不实际执行。可在下方编辑器中调整节点与分支后再保存。",
+            "branch_rule": "在「敲门并等待材料」之后判断「林老师在吗」：老师不在 → 通知我并结束（不等待）；老师在 → 拍照确认材料 → 送回材料 → 结束。拍照与送回只属于「老师在」分支，不能作为无条件共用步骤。",
+            "workflow_document": {
+              "version": "workflow-v1",
+              "id": "wf-c24-lin-teacher-draft",
+              "name": "到林老师门口取材料并送回",
+              "description": "老师不在就通知并结束，不需要一直等待；老师在才继续拍照确认与送回。",
+              "variables": [
+                {
+                  "name": "teacher.present",
+                  "type": "boolean",
+                  "label": "林老师是否在"
+                },
+                {
+                  "name": "notify.target",
+                  "type": "string",
+                  "label": "通知对象",
+                  "value": "我"
+                }
+              ],
+              "nodes": [
+                {
+                  "id": "start",
+                  "type": "start",
+                  "label": "开始",
+                  "next": "go_door"
+                },
+                {
+                  "id": "go_door",
+                  "type": "action",
+                  "label": "走到林老师门口",
+                  "next": "knock_wait"
+                },
+                {
+                  "id": "knock_wait",
+                  "type": "action",
+                  "label": "敲门并等待材料",
+                  "next": "branch_teacher"
+                },
+                {
+                  "id": "branch_teacher",
+                  "type": "condition",
+                  "label": "林老师在吗？",
+                  "expression": "teacher.present === true",
+                  "branches": [
+                    {
+                      "when": "true",
+                      "label": "老师在",
+                      "next": "photo_confirm"
+                    },
+                    {
+                      "when": "false",
+                      "label": "老师不在",
+                      "next": "notify_absent"
+                    }
+                  ]
+                },
+                {
+                  "id": "notify_absent",
+                  "type": "action",
+                  "label": "通知我：老师不在",
+                  "config": {
+                    "channel": "通知",
+                    "target": "我",
+                    "message": "林老师不在，已停止等待"
+                  },
+                  "next": "end_absent"
+                },
+                {
+                  "id": "end_absent",
+                  "type": "end",
+                  "label": "结束（老师不在）"
+                },
+                {
+                  "id": "photo_confirm",
+                  "type": "action",
+                  "label": "拍照确认材料",
+                  "next": "send_back"
+                },
+                {
+                  "id": "send_back",
+                  "type": "action",
+                  "label": "把材料送回",
+                  "next": "end_done"
+                },
+                {
+                  "id": "end_done",
+                  "type": "end",
+                  "label": "结束（已送回）"
+                }
+              ],
+              "edges": [
+                {
+                  "from": "start",
+                  "to": "go_door"
+                },
+                {
+                  "from": "go_door",
+                  "to": "knock_wait"
+                },
+                {
+                  "from": "knock_wait",
+                  "to": "branch_teacher"
+                },
+                {
+                  "from": "branch_teacher",
+                  "to": "photo_confirm",
+                  "condition": "老师在"
+                },
+                {
+                  "from": "branch_teacher",
+                  "to": "notify_absent",
+                  "condition": "老师不在"
+                },
+                {
+                  "from": "notify_absent",
+                  "to": "end_absent"
+                },
+                {
+                  "from": "photo_confirm",
+                  "to": "send_back"
+                },
+                {
+                  "from": "send_back",
+                  "to": "end_done"
+                }
+              ],
+              "meta": {
+                "status": "draft",
+                "save_only": true,
+                "simulated": true
+              }
+            },
+            "bind_state_path": "/_ui/workflow",
+            "save_action": "workflow.save",
+            "save_payload_workflow": "$state/_ui/workflow",
+            "save_payload_parameters": {
+              "workflow_id": "wf-c24-lin-teacher-draft",
+              "mode": "draft",
+              "save_only": true
+            },
+            "fallback_text": [
+              "1. 走到林老师门口",
+              "2. 敲门并等待材料",
+              "3. 判断：林老师在吗？",
+              "4. 老师不在 → 通知我「林老师不在，已停止等待」→ 结束，不继续等待",
+              "5. 老师在 → 拍照确认材料 → 把材料送回 → 结束"
+            ],
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-c24-lin-teacher-draft",
+                "title": "到林老师门口取材料并送回",
+                "steps": [
+                  {
+                    "id": "start",
+                    "type": "step",
+                    "title": "开始",
+                    "description": "下一步：走到林老师门口"
+                  },
+                  {
+                    "id": "go_door",
+                    "type": "step",
+                    "title": "走到林老师门口",
+                    "description": "下一步：敲门并等待材料"
+                  },
+                  {
+                    "id": "knock_wait",
+                    "type": "step",
+                    "title": "敲门并等待材料",
+                    "description": "下一步：判断「林老师在吗？」"
+                  },
+                  {
+                    "id": "branch_teacher",
+                    "type": "condition",
+                    "title": "林老师在吗？",
+                    "description": "条件表达式：teacher.present === true；true → 老师在；false → 老师不在",
+                    "branches": [
+                      {
+                        "id": "branch_present",
+                        "label": "老师在",
+                        "steps": [
+                          {
+                            "id": "photo_confirm",
+                            "type": "step",
+                            "title": "拍照确认材料",
+                            "description": "下一步：把材料送回"
+                          },
+                          {
+                            "id": "send_back",
+                            "type": "step",
+                            "title": "把材料送回",
+                            "description": "下一步：结束（已送回）"
+                          },
+                          {
+                            "id": "end_done",
+                            "type": "step",
+                            "title": "结束（已送回）"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "branch_absent",
+                        "label": "老师不在",
+                        "steps": [
+                          {
+                            "id": "notify_absent",
+                            "type": "step",
+                            "title": "通知我：老师不在",
+                            "description": "通知渠道：通知；通知对象：我；消息：林老师不在，已停止等待"
+                          },
+                          {
+                            "id": "end_absent",
+                            "type": "step",
+                            "title": "结束（老师不在）"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ODEcLIwtuJ1lmU3dehhB8341"
+      },
+      "toolCallId": "call_00_ODEcLIwtuJ1lmU3dehhB8341",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "16e40449-5662-450d-8bd0-d3a7f7794e78"
+    }
+  },
+  {
+    "call_seq": 52,
+    "result_seq": 53,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_FKCLbgD1ixSmg848p4MJ2707",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"workflow\": {\"version\": \"workflow-v1\", \"id\": \"wf-c24-lin-teacher-draft\", \"name\": \"到林老师门口取材料并送回\", \"nodes\": [{\"id\": \"start\", \"type\": \"start\", \"label\": \"开始\", \"note\": \"下一步：走到林老师门口\", \"next\": \"go_door\"}, {\"id\": \"go_door\", \"type\": \"action\", \"label\": \"走到林老师门口\", \"note\": \"下一步：敲门并等待材料\", \"next\": \"knock_wait\"}, {\"id\": \"knock_wait\", \"type\": \"action\", \"label\": \"敲门并等待材料\", \"note\": \"下一步：判断「林老师在吗？」\", \"next\": \"branch_teacher\"}, {\"id\": \"branch_teacher\", \"type\": \"condition\", \"label\": \"林老师在吗？\", \"expression\": \"teacher.present === true\", \"note\": \"true → 老师在；false → 老师不在\", \"branches\": [{\"id\": \"branch_present\", \"label\": \"老师在\", \"when\": \"true\", \"next\": \"photo_confirm\", \"children\": [{\"id\": \"photo_confirm\", \"type\": \"action\", \"label\": \"拍照确认材料\", \"note\": \"下一步：把材料送回\", \"next\": \"send_back\"}, {\"id\": \"send_back\", \"type\": \"action\", \"label\": \"把材料送回\", \"note\": \"下一步：结束（已送回）\", \"next\": \"end_done\"}, {\"id\": \"end_done\", \"type\": \"end\", \"label\": \"结束（已送回）\"}]}, {\"id\": \"branch_absent\", \"label\": \"老师不在\", \"when\": \"false\", \"next\": \"notify_absent\", \"children\": [{\"id\": \"notify_absent\", \"type\": \"action\", \"label\": \"通知我：老师不在\", \"note\": \"通知渠道：通知；通知对象：我；消息：林老师不在，已停止等待\", \"config\": {\"channel\": \"通知\", \"target\": \"我\", \"message\": \"林老师不在，已停止等待\"}, \"next\": \"end_absent\"}, {\"id\": \"end_absent\", \"type\": \"end\", \"label\": \"结束（老师不在）\"}]}]}], \"edges\": [{\"from\": \"start\", \"to\": \"go_door\"}, {\"from\": \"go_door\", \"to\": \"knock_wait\"}, {\"from\": \"knock_wait\", \"to\": \"branch_teacher\"}, {\"from\": \"branch_teacher\", \"to\": \"photo_confirm\", \"condition\": \"老师在\", \"branch_id\": \"branch_present\"}, {\"from\": \"branch_teacher\", \"to\": \"notify_absent\", \"condition\": \"老师不在\", \"branch_id\": \"branch_absent\"}, {\"from\": \"photo_confirm\", \"to\": \"send_back\"}, {\"from\": \"send_back\", \"to\": \"end_done\"}, {\"from\": \"notify_absent\", \"to\": \"end_absent\"}], \"meta\": {\"status\": \"draft\", \"save_only\": true, \"simulated\": true}}, \"title\": \"到林老师门口取材料并送回\", \"name\": \"到林老师门口取材料并送回\", \"workflow_id\": \"wf-c24-lin-teacher-draft\", \"bind_state_path\": \"/_ui/workflow\", \"save_action\": \"workflow.save\", \"save_label\": \"保存流程\", \"save_payload_workflow\": \"$state 读取 /_ui/workflow 最新文档\", \"parameters\": {\"workflow_id\": \"wf-c24-lin-teacher-draft\", \"mode\": \"draft\", \"save_only\": true}, \"fallback_text\": \"流程：开始 → 走到林老师门口 → 敲门并等待材料 → 判断「林老师在吗」。老师在：拍照确认材料 → 把材料送回 → 结束（已送回）。老师不在：通知我「林老师不在，已停止等待」→ 结束（老师不在）。\"}, \"components\": [\"Workflow\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"渲染更新后的可编辑流程卡片。使用一个 Stack 纵向布局，里面只放两个节点：第一个是可编辑模式的 Workflow 编辑器，用 $bindState 绑定到 /_ui/workflow，初始值取 business_data.workflow 的完整 workflow-v1 文档（版本、ID wf-c24-lin-teacher-draft、名称「到林老师门口取材料并送回」、步骤顺序、条件分支 branch_present / branch_absent、每个节点说明、参数），流程名称显示在编辑器内而不是额外标题；第二个是独立的「保存流程」按钮，与 Workflow 平级，点击发出 workflow.save，payload.workflow 从 /_ui/workflow 读取最新值，payload.parameters 为对象 {workflow_id, mode, save_only}。卡片底部以纯文本一行展示 business_data.fallback_text 作为兜底。不要 $ref、不要静态步骤列表或嵌套组件伪装编辑器。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "layout",
+                "fallback"
+              ]
+            },
+            "layout": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "workflow-editor",
+                "save-button"
+              ]
+            },
+            "workflow-editor": {
+              "type": "Workflow",
+              "props": {
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                },
+                "mode": "edit",
+                "disabled": false
+              }
+            },
+            "save-button": {
+              "type": "Button",
+              "props": {
+                "label": "保存流程",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.save",
+                    "payload": {
+                      "workflow": {
+                        "$state": "/_ui/workflow"
+                      },
+                      "parameters": {
+                        "workflow_id": "wf-c24-lin-teacher-draft",
+                        "mode": "draft",
+                        "save_only": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "fallback": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "workflow": {
+              "version": "workflow-v1",
+              "id": "wf-c24-lin-teacher-draft",
+              "name": "到林老师门口取材料并送回",
+              "nodes": [
+                {
+                  "id": "start",
+                  "type": "start",
+                  "label": "开始",
+                  "note": "下一步：走到林老师门口",
+                  "next": "go_door"
+                },
+                {
+                  "id": "go_door",
+                  "type": "action",
+                  "label": "走到林老师门口",
+                  "note": "下一步：敲门并等待材料",
+                  "next": "knock_wait"
+                },
+                {
+                  "id": "knock_wait",
+                  "type": "action",
+                  "label": "敲门并等待材料",
+                  "note": "下一步：判断「林老师在吗？」",
+                  "next": "branch_teacher"
+                },
+                {
+                  "id": "branch_teacher",
+                  "type": "condition",
+                  "label": "林老师在吗？",
+                  "expression": "teacher.present === true",
+                  "note": "true → 老师在；false → 老师不在",
+                  "branches": [
+                    {
+                      "id": "branch_present",
+                      "label": "老师在",
+                      "when": "true",
+                      "next": "photo_confirm",
+                      "children": [
+                        {
+                          "id": "photo_confirm",
+                          "type": "action",
+                          "label": "拍照确认材料",
+                          "note": "下一步：把材料送回",
+                          "next": "send_back"
+                        },
+                        {
+                          "id": "send_back",
+                          "type": "action",
+                          "label": "把材料送回",
+                          "note": "下一步：结束（已送回）",
+                          "next": "end_done"
+                        },
+                        {
+                          "id": "end_done",
+                          "type": "end",
+                          "label": "结束（已送回）"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "branch_absent",
+                      "label": "老师不在",
+                      "when": "false",
+                      "next": "notify_absent",
+                      "children": [
+                        {
+                          "id": "notify_absent",
+                          "type": "action",
+                          "label": "通知我：老师不在",
+                          "note": "通知渠道：通知；通知对象：我；消息：林老师不在，已停止等待",
+                          "config": {
+                            "channel": "通知",
+                            "target": "我",
+                            "message": "林老师不在，已停止等待"
+                          },
+                          "next": "end_absent"
+                        },
+                        {
+                          "id": "end_absent",
+                          "type": "end",
+                          "label": "结束（老师不在）"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "edges": [
+                {
+                  "from": "start",
+                  "to": "go_door"
+                },
+                {
+                  "from": "go_door",
+                  "to": "knock_wait"
+                },
+                {
+                  "from": "knock_wait",
+                  "to": "branch_teacher"
+                },
+                {
+                  "from": "branch_teacher",
+                  "to": "photo_confirm",
+                  "condition": "老师在",
+                  "branch_id": "branch_present"
+                },
+                {
+                  "from": "branch_teacher",
+                  "to": "notify_absent",
+                  "condition": "老师不在",
+                  "branch_id": "branch_absent"
+                },
+                {
+                  "from": "photo_confirm",
+                  "to": "send_back"
+                },
+                {
+                  "from": "send_back",
+                  "to": "end_done"
+                },
+                {
+                  "from": "notify_absent",
+                  "to": "end_absent"
+                }
+              ],
+              "meta": {
+                "status": "draft",
+                "save_only": true,
+                "simulated": true
+              }
+            },
+            "title": "到林老师门口取材料并送回",
+            "name": "到林老师门口取材料并送回",
+            "workflow_id": "wf-c24-lin-teacher-draft",
+            "bind_state_path": "/_ui/workflow",
+            "save_action": "workflow.save",
+            "save_label": "保存流程",
+            "save_payload_workflow": "$state 读取 /_ui/workflow 最新文档",
+            "parameters": {
+              "workflow_id": "wf-c24-lin-teacher-draft",
+              "mode": "draft",
+              "save_only": true
+            },
+            "fallback_text": "流程：开始 → 走到林老师门口 → 敲门并等待材料 → 判断「林老师在吗」。老师在：拍照确认材料 → 把材料送回 → 结束（已送回）。老师不在：通知我「林老师不在，已停止等待」→ 结束（老师不在）。",
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-c24-lin-teacher-draft",
+                "title": "到林老师门口取材料并送回",
+                "steps": [
+                  {
+                    "id": "start",
+                    "type": "step",
+                    "title": "开始",
+                    "description": "下一步：走到林老师门口"
+                  },
+                  {
+                    "id": "go_door",
+                    "type": "step",
+                    "title": "走到林老师门口",
+                    "description": "下一步：敲门并等待材料"
+                  },
+                  {
+                    "id": "knock_wait",
+                    "type": "step",
+                    "title": "敲门并等待材料",
+                    "description": "下一步：判断「林老师在吗？」"
+                  },
+                  {
+                    "id": "branch_teacher",
+                    "type": "condition",
+                    "title": "林老师在吗？",
+                    "description": "判断依据：teacher.present === true。true → 老师在；false → 老师不在",
+                    "branches": [
+                      {
+                        "id": "branch_present",
+                        "label": "老师在",
+                        "steps": [
+                          {
+                            "id": "photo_confirm",
+                            "type": "step",
+                            "title": "拍照确认材料",
+                            "description": "下一步：把材料送回"
+                          },
+                          {
+                            "id": "send_back",
+                            "type": "step",
+                            "title": "把材料送回",
+                            "description": "下一步：结束（已送回）"
+                          },
+                          {
+                            "id": "end_done",
+                            "type": "step",
+                            "title": "结束（已送回）"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "branch_absent",
+                        "label": "老师不在",
+                        "steps": [
+                          {
+                            "id": "notify_absent",
+                            "type": "step",
+                            "title": "通知我：老师不在",
+                            "description": "通知渠道：通知；通知对象：我；消息：林老师不在，已停止等待"
+                          },
+                          {
+                            "id": "end_absent",
+                            "type": "step",
+                            "title": "结束（老师不在）"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_FKCLbgD1ixSmg848p4MJ2707"
+      },
+      "toolCallId": "call_00_FKCLbgD1ixSmg848p4MJ2707",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "43eaac1c-85b8-48b6-b0f2-fa4459ede8a0"
+    }
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 4,
+  "presentation": "partial",
+  "reason": "初始图片被原生提问阻塞；事件后真实切换正面/背面/细节且三个独立src正确，不提前判定退货资格，最后按要求不提交。大量business_data技术字段表格和未注册组件，旧未发布状态与新卡并存；草稿自行加入收到商品后发现的时间语义。"
+}

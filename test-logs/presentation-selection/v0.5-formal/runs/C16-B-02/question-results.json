@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 64,
+    "result_seq": 65,
+    "call": {
+      "turn": 2,
+      "step": 3,
+      "callId": "call_00_btfeXqBnNtpV5PLuFJ176853",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_handover\", \"header\": \"确认交接\", \"question\": \"张伟老师办公室门口的 doc-01 已放妥，待确认文件图也已发布（模拟文档图，960×540，sha256 0b03c85d…b04de）。请确认：这份就是你要取的文件吗？\", \"options\": [{\"label\": \"确认，就是 doc-01\", \"description\": \"按 doc-01 提交交接确认；提交后会返回模拟结果，成功与否以结果为准。\"}, {\"label\": \"先不确认，我要核对\", \"description\": \"暂不提交，交接状态保持“尚未完成”，我等你进一步说明。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_btfeXqBnNtpV5PLuFJ176853"
+      },
+      "toolCallId": "call_00_btfeXqBnNtpV5PLuFJ176853",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_handover\",\"selected\":[],\"custom\":\"就是这个文件。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "1a26a8c8-f2a0-4b3a-8902-92cb3abf398b"
+    }
+  }
+]

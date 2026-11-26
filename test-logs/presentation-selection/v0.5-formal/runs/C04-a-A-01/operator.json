@@ -1,0 +1,11 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C04-a",
+    "facts": "用途未知，需要用户说明。已知图书馆适合安静阅读，四明书院适合公共交流。推荐只作建议，不等于提交。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true,
+  "fixture_revision": "C04-scope-v2"
+}

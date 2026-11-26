@@ -1,0 +1,170 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_OMY8xvAL5RUF67VvEiZC4710",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"user_query\": \"生成一个“周六下午参观预约草稿”表单（DynamicForm），字段共4项：1) date 参观日期：日期输入，预填 2026-11-07（周六）；2) slot 下午时段：下拉或单选，当前无已知值，留空并提示用户必选，模糊选项为13:00–15:00、15:00–17:00；3) people 参观人数：数字输入，预填 3（本人+两位校外朋友）；4) note 备注：文本输入，预填“周六下午带两位校外朋友参观学校”。表单顶部用一段说明文字提示“以下为预约草稿，需你确认后再提交，草稿不会实际预约或审批”，并注明唯一未知项为下午具体时段，请用户补齐后提交。不要包含任何其他组件。\", \"business_data\": {\"title\": \"周六下午参观预约草稿\", \"description\": \"当前日期 2026-11-06，本周六为 11 月 7 日。仅生成预约草稿，不实际预约、不提交审批。\", \"notice\": \"下午具体时段未知，请补齐后再提交草稿。\", \"submit_label\": \"提交草稿\", \"fields\": [{\"name\": \"date\", \"label\": \"参观日期\", \"type\": \"date\", \"value\": \"2026-11-07\", \"required\": true}, {\"name\": \"slot\", \"label\": \"下午时段\", \"type\": \"select\", \"value\": \"\", \"required\": true, \"placeholder\": \"请选择下午时段\", \"options\": [\"13:00–15:00\", \"15:00–17:00\"], \"hint\": \"材料中该时段未知，待你选择\"}, {\"name\": \"people\", \"label\": \"参观人数\", \"type\": \"number\", \"value\": 3, \"required\": true, \"hint\": \"本人 + 两位校外朋友，共 3 人\"}, {\"name\": \"note\", \"label\": \"备注\", \"type\": \"text\", \"value\": \"周六下午带两位校外朋友参观学校\", \"required\": false}], \"unknown\": [\"下午具体时段\"], \"fallback_text\": \"预约草稿：日期 2026-11-07（周六），下午时段待定，人数 3 人，备注“周六下午带两位校外朋友参观学校”。补齐下午时段后即可提交草稿。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Section",
+              "props": {
+                "title": "周六下午参观预约草稿",
+                "description": "以下为预约草稿，需你确认后再提交，草稿不会实际预约或审批。唯一未知项为下午具体时段，请补齐后提交。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "appointment-form",
+                "submit-draft"
+              ]
+            },
+            "appointment-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "date",
+                    "key": "date",
+                    "label": "参观日期",
+                    "value": "2026-11-07"
+                  },
+                  {
+                    "type": "select",
+                    "key": "slot",
+                    "label": "下午时段（必选）",
+                    "placeholder": "请选择下午时段",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "13:00–15:00",
+                          "label": "13:00–15:00"
+                        },
+                        {
+                          "value": "15:00–17:00",
+                          "label": "15:00–17:00"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "inputNumber",
+                    "key": "people",
+                    "label": "参观人数",
+                    "value": 3
+                  },
+                  {
+                    "type": "input",
+                    "key": "note",
+                    "label": "备注",
+                    "value": "周六下午带两位校外朋友参观学校"
+                  }
+                ]
+              }
+            },
+            "submit-draft": {
+              "type": "Button",
+              "props": {
+                "label": "提交草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "周六下午参观预约草稿",
+            "description": "当前日期 2026-11-06，本周六为 11 月 7 日。仅生成预约草稿，不实际预约、不提交审批。",
+            "notice": "下午具体时段未知，请补齐后再提交草稿。",
+            "submit_label": "提交草稿",
+            "fields": [
+              {
+                "name": "date",
+                "label": "参观日期",
+                "type": "date",
+                "value": "2026-11-07",
+                "required": true
+              },
+              {
+                "name": "slot",
+                "label": "下午时段",
+                "type": "select",
+                "value": "",
+                "required": true,
+                "placeholder": "请选择下午时段",
+                "options": [
+                  "13:00–15:00",
+                  "15:00–17:00"
+                ],
+                "hint": "材料中该时段未知，待你选择"
+              },
+              {
+                "name": "people",
+                "label": "参观人数",
+                "type": "number",
+                "value": 3,
+                "required": true,
+                "hint": "本人 + 两位校外朋友，共 3 人"
+              },
+              {
+                "name": "note",
+                "label": "备注",
+                "type": "text",
+                "value": "周六下午带两位校外朋友参观学校",
+                "required": false
+              }
+            ],
+            "unknown": [
+              "下午具体时段"
+            ],
+            "fallback_text": "预约草稿：日期 2026-11-07（周六），下午时段待定，人数 3 人，备注“周六下午带两位校外朋友参观学校”。补齐下午时段后即可提交草稿。",
+            "form": {
+              "date": "2026-11-07",
+              "slot": "",
+              "people": 3,
+              "note": "周六下午带两位校外朋友参观学校"
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_OMY8xvAL5RUF67VvEiZC4710"
+      },
+      "toolCallId": "call_00_OMY8xvAL5RUF67VvEiZC4710",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "9a191981-2300-49a5-b1ad-212fc6c5fcaa"
+    }
+  }
+]

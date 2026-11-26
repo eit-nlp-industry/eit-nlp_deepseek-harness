@@ -1,0 +1,113 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_yZpcg6SosA01sHiSe6QB5970",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"user_query\": \"轻量表单：单选选择讲座参与形式。表单只含一个单选字段，标题为“讲座参与形式”，两个选项按顺序为“线下（推荐）”“线上”，线下放在第一项并默认预选（预选不等于已提交，用户可改成线上）。表单需有提交按钮，提交前不视为已确认。不要出现其他字段或富组件。\", \"business_data\": {\"title\": \"选择讲座参与形式\", \"description\": \"请选择你希望的参与方式：线上或线下。可以改选，确认后提交。\", \"form\": {\"submit_label\": \"确认提交\", \"fields\": [{\"name\": \"lecture_format\", \"label\": \"讲座参与形式\", \"type\": \"radio\", \"required\": true, \"default\": \"offline\", \"options\": [{\"label\": \"线下（推荐）\", \"value\": \"offline\", \"description\": \"放在第一项的推荐选项；仅为预选，可改选。\"}, {\"label\": \"线上\", \"value\": \"online\", \"description\": \"以线上方式参与讲座。\"}]}]}, \"facts\": {\"options\": [\"线下\", \"线上\"], \"status\": \"活动形式尚未确认\", \"note\": \"推荐与预选不等于用户提交，需用户确认提交后才生效。\"}}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "lecture-format-form",
+                "lecture-format-submit"
+              ]
+            },
+            "lecture-format-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "lecture_format",
+                    "label": "讲座参与形式",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "offline",
+                          "label": "线下（推荐）"
+                        },
+                        {
+                          "value": "online",
+                          "label": "线上"
+                        }
+                      ],
+                      "value": "offline"
+                    }
+                  }
+                ]
+              }
+            },
+            "lecture-format-submit": {
+              "type": "Button",
+              "props": {
+                "label": "确认提交",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "选择讲座参与形式",
+            "description": "请选择你希望的参与方式：线上或线下。可以改选，确认后提交。",
+            "form": {
+              "lecture_format": ""
+            },
+            "facts": {
+              "options": [
+                "线下",
+                "线上"
+              ],
+              "status": "活动形式尚未确认",
+              "note": "推荐与预选不等于用户提交，需用户确认提交后才生效。"
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_yZpcg6SosA01sHiSe6QB5970"
+      },
+      "toolCallId": "call_00_yZpcg6SosA01sHiSe6QB5970",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "de238e5d-f723-4ba1-9191-5de48a0c45ae"
+    }
+  }
+]

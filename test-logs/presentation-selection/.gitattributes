@@ -1,0 +1,7 @@
+# Frozen exports retain original line endings, trailing spaces and final newlines.
+# These paths are evidence, not maintained program source or authored indexes.
+v0.6-suitability/** -text -whitespace
+v0.5-formal/** -text -whitespace
+source-traces/** -text -whitespace
+source-analysis/** -text -whitespace
+evidence/*.zip binary

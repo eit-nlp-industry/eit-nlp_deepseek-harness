@@ -1,0 +1,433 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_oyd1iT0R2EQODvXGcnt44566",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"answer_presentation\": \"supplement\", \"user_query\": \"页面根节点是一个垂直 Stack，内部只有两个兄弟节点，互不嵌套：①第一个兄弟节点是 Workflow 组件，mode=edit，作为可真正编辑的流程图/步骤编辑器（步骤可改标题与说明、可增删步骤、可调整顺序），其值用 $bindState 绑定到状态路径 /_ui/workflow，并用 business_data.initialWorkflow 初始化一份完整的 workflow-v1 文档；②第二个兄弟节点是一个独立的 Button 组件，文案「保存流程草稿」，它是 Workflow 的兄弟而不是子节点，点击时发出 workflow.save 事件，事件 payload 为一个对象：workflow 字段用 $state 读取 /_ui/workflow 的最新文档，parameters 字段为对象。保存按钮下方再放一段 Text 作为文字兜底，用纯文字把流程四个步骤和注意点复述一遍，方便无法使用编辑器时阅读。页面顶部标题说明这是「林老师材料取送」流程草稿，并注明本页只保存模拟草稿、不执行任何真实取送。所有内容只能取自 business_data，不要虚构图片、链接、地址或额外的业务事实。\", \"business_data\": {\"title\": \"林老师材料取送 · 可编辑流程草稿\", \"notice\": \"本页只保存模拟草稿，不执行、无永久记忆。\", \"bindPath\": \"/_ui/workflow\", \"initialWorkflow\": {\"version\": \"workflow-v1\", \"id\": \"wf-material-v1\", \"name\": \"林老师材料取送流程\", \"description\": \"到林老师门口 → 敲门等待材料放好 → 拍图等待用户确认 → 确认后送回\", \"steps\": [{\"id\": \"step-1\", \"title\": \"到林老师门口\", \"description\": \"走到林老师门口，在门外停下。\"}, {\"id\": \"step-2\", \"title\": \"敲门等材料放好\", \"description\": \"敲门后等老师把材料放好，再上前取材料。\"}, {\"id\": \"step-3\", \"title\": \"拍图发我确认\", \"description\": \"取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。\"}, {\"id\": \"step-4\", \"title\": \"确认后送回\", \"description\": \"收到我的确认后，把材料送回。\"}], \"notes\": \"等待上限未指定，可通过编辑步骤说明补充。\"}, \"saveAction\": {\"event\": \"workflow.save\", \"label\": \"保存流程草稿\", \"payload\": {\"workflow\": \"$state:/_ui/workflow\", \"parameters\": {}}}, \"fallbackText\": \"流程 wf-material-v1：1) 到林老师门口；2) 敲门并等待老师把材料放好；3) 取到材料后拍照发我确认；4) 我确认后再送回。等待上限未指定，可在步骤说明中补充。保存的只是模拟草稿，不执行真实取送，也不做永久保存。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page-heading",
+                "notice-callout",
+                "workflow-editor",
+                "save-button",
+                "fallback-text",
+                "business-details"
+              ]
+            },
+            "page-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "林老师材料取送 · 可编辑流程草稿",
+                "level": "h1"
+              }
+            },
+            "notice-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "保存范围",
+                "description": "本页只保存模拟草稿，不执行、无永久记忆。",
+                "showIcon": true
+              }
+            },
+            "workflow-editor": {
+              "type": "Workflow",
+              "props": {
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                },
+                "mode": "edit",
+                "disabled": false
+              }
+            },
+            "save-button": {
+              "type": "Button",
+              "props": {
+                "label": "保存流程草稿",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.save",
+                    "payload": {
+                      "workflow": {
+                        "$state": "/_ui/workflow"
+                      },
+                      "parameters": {}
+                    }
+                  }
+                }
+              }
+            },
+            "fallback-text": {
+              "type": "Text",
+              "props": {
+                "content": "流程 wf-material-v1：1) 到林老师门口；2) 敲门并等待老师把材料放好；3) 取到材料后拍照发我确认；4) 我确认后再送回。等待上限未指定，可在步骤说明中补充。保存的只是模拟草稿，不执行真实取送，也不做永久保存。",
+                "variant": "default"
+              }
+            },
+            "business-details": {
+              "type": "Descriptions",
+              "props": {
+                "title": "business_data 明细",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "页面标题",
+                    "value": "林老师材料取送 · 可编辑流程草稿"
+                  },
+                  {
+                    "label": "提示",
+                    "value": "本页只保存模拟草稿，不执行、无永久记忆。"
+                  },
+                  {
+                    "label": "绑定路径",
+                    "value": "/_ui/workflow"
+                  },
+                  {
+                    "label": "流程版本",
+                    "value": "workflow-v1"
+                  },
+                  {
+                    "label": "流程 ID",
+                    "value": "wf-material-v1"
+                  },
+                  {
+                    "label": "流程名称",
+                    "value": "林老师材料取送流程"
+                  },
+                  {
+                    "label": "流程说明",
+                    "value": "到林老师门口 → 敲门等待材料放好 → 拍图等待用户确认 → 确认后送回"
+                  },
+                  {
+                    "label": "步骤 1",
+                    "value": "到林老师门口 — 走到林老师门口，在门外停下。"
+                  },
+                  {
+                    "label": "步骤 2",
+                    "value": "敲门等材料放好 — 敲门后等老师把材料放好，再上前取材料。"
+                  },
+                  {
+                    "label": "步骤 3",
+                    "value": "拍图发我确认 — 取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。"
+                  },
+                  {
+                    "label": "步骤 4",
+                    "value": "确认后送回 — 收到我的确认后，把材料送回。"
+                  },
+                  {
+                    "label": "注意",
+                    "value": "等待上限未指定，可通过编辑步骤说明补充。"
+                  },
+                  {
+                    "label": "保存事件",
+                    "value": "workflow.save"
+                  },
+                  {
+                    "label": "保存按钮",
+                    "value": "保存流程草稿"
+                  },
+                  {
+                    "label": "保存 payload.workflow",
+                    "value": "$state:/_ui/workflow"
+                  },
+                  {
+                    "label": "保存 payload.parameters",
+                    "value": "{}"
+                  },
+                  {
+                    "label": "兜底文本",
+                    "value": "流程 wf-material-v1：1) 到林老师门口；2) 敲门并等待老师把材料放好；3) 取到材料后拍照发我确认；4) 我确认后再送回。等待上限未指定，可在步骤说明中补充。保存的只是模拟草稿，不执行真实取送，也不做永久保存。"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "林老师材料取送 · 可编辑流程草稿",
+            "notice": "本页只保存模拟草稿，不执行、无永久记忆。",
+            "bindPath": "/_ui/workflow",
+            "initialWorkflow": {
+              "version": "workflow-v1",
+              "id": "wf-material-v1",
+              "name": "林老师材料取送流程",
+              "description": "到林老师门口 → 敲门等待材料放好 → 拍图等待用户确认 → 确认后送回",
+              "steps": [
+                {
+                  "id": "step-1",
+                  "title": "到林老师门口",
+                  "description": "走到林老师门口，在门外停下。"
+                },
+                {
+                  "id": "step-2",
+                  "title": "敲门等材料放好",
+                  "description": "敲门后等老师把材料放好，再上前取材料。"
+                },
+                {
+                  "id": "step-3",
+                  "title": "拍图发我确认",
+                  "description": "取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。"
+                },
+                {
+                  "id": "step-4",
+                  "title": "确认后送回",
+                  "description": "收到我的确认后，把材料送回。"
+                }
+              ],
+              "notes": "等待上限未指定，可通过编辑步骤说明补充。"
+            },
+            "saveAction": {
+              "event": "workflow.save",
+              "label": "保存流程草稿",
+              "payload": {
+                "workflow": "$state:/_ui/workflow",
+                "parameters": {}
+              }
+            },
+            "fallbackText": "流程 wf-material-v1：1) 到林老师门口；2) 敲门并等待老师把材料放好；3) 取到材料后拍照发我确认；4) 我确认后再送回。等待上限未指定，可在步骤说明中补充。保存的只是模拟草稿，不执行真实取送，也不做永久保存。",
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-material-v1",
+                "title": "林老师材料取送流程",
+                "steps": [
+                  {
+                    "id": "step-1",
+                    "type": "step",
+                    "title": "到林老师门口",
+                    "description": "走到林老师门口，在门外停下。"
+                  },
+                  {
+                    "id": "step-2",
+                    "type": "step",
+                    "title": "敲门等材料放好",
+                    "description": "敲门后等老师把材料放好，再上前取材料。"
+                  },
+                  {
+                    "id": "step-3",
+                    "type": "step",
+                    "title": "拍图发我确认",
+                    "description": "取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。"
+                  },
+                  {
+                    "id": "step-4",
+                    "type": "step",
+                    "title": "确认后送回",
+                    "description": "收到我的确认后，把材料送回。"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_oyd1iT0R2EQODvXGcnt44566"
+      },
+      "toolCallId": "call_00_oyd1iT0R2EQODvXGcnt44566",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "67638b52-f143-4052-999b-a2777a74291b"
+    }
+  },
+  {
+    "call_seq": 52,
+    "result_seq": 53,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_rj0YSXV6brNkBe18InSs6772",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"bindPath\": \"/_ui/workflow\", \"parameters\": {}, \"saveAction\": {\"event\": \"workflow.save\", \"label\": \"保存流程\", \"payload\": {\"parameters\": {}, \"workflow\": \"$state:/_ui/workflow\"}}, \"workflow\": {\"description\": \"到林老师门口 → 敲门等待材料放好 → 拍图等待用户确认 → 确认后送回\", \"id\": \"wf-material-v1\", \"name\": \"林老师材料取送流程\", \"parameters\": {}, \"steps\": [{\"description\": \"走到林老师门口，在门外停下。\", \"id\": \"step-1\", \"title\": \"到林老师门口\"}, {\"description\": \"敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。\", \"id\": \"step-2\", \"title\": \"敲门等材料放好\"}, {\"description\": \"取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。\", \"id\": \"step-3\", \"title\": \"拍图发我确认\"}, {\"description\": \"收到我的确认后，把材料送回。\", \"id\": \"step-4\", \"title\": \"确认后送回\"}], \"version\": \"workflow-v1\"}}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"用一个垂直 Stack 承载，Stack 内只放两个兄弟节点：①Workflow 组件（可编辑模式 mode=edit，流程名称「林老师材料取送流程」显示在编辑器内），初始化 business_data.workflow 这份完整的 workflow-v1 文档（ID 为 wf-material-v1，四个步骤按 step-1 到 step-4 的顺序及各自说明原样展示，并保留流程参数），其值通过 $bindState 绑定到 /_ui/workflow 状态路径，步骤可继续编辑标题、说明与顺序；②独立的「保存流程」按钮，是 Workflow 的兄弟节点，点击时发出 workflow.save，payload.workflow 用 $state 从 /_ui/workflow 读取最新文档，payload.parameters 使用 business_data.parameters（空对象）。不要臆造额外步骤、图片、链接或地址。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "workflow-editor",
+                "save-button"
+              ]
+            },
+            "workflow-editor": {
+              "type": "Workflow",
+              "props": {
+                "mode": "edit",
+                "disabled": false,
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                }
+              }
+            },
+            "save-button": {
+              "type": "Button",
+              "props": {
+                "label": "保存流程",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.save",
+                    "payload": {
+                      "workflow": {
+                        "$state": "/_ui/workflow"
+                      },
+                      "parameters": {
+                        "$state": "/parameters"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "bindPath": "/_ui/workflow",
+            "parameters": {},
+            "saveAction": {
+              "event": "workflow.save",
+              "label": "保存流程",
+              "payload": {
+                "parameters": {},
+                "workflow": "$state:/_ui/workflow"
+              }
+            },
+            "workflow": {
+              "description": "到林老师门口 → 敲门等待材料放好 → 拍图等待用户确认 → 确认后送回",
+              "id": "wf-material-v1",
+              "name": "林老师材料取送流程",
+              "parameters": {},
+              "steps": [
+                {
+                  "description": "走到林老师门口，在门外停下。",
+                  "id": "step-1",
+                  "title": "到林老师门口"
+                },
+                {
+                  "description": "敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。",
+                  "id": "step-2",
+                  "title": "敲门等材料放好"
+                },
+                {
+                  "description": "取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。",
+                  "id": "step-3",
+                  "title": "拍图发我确认"
+                },
+                {
+                  "description": "收到我的确认后，把材料送回。",
+                  "id": "step-4",
+                  "title": "确认后送回"
+                }
+              ],
+              "version": "workflow-v1"
+            },
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-material-v1",
+                "title": "林老师材料取送流程",
+                "steps": [
+                  {
+                    "id": "step-1",
+                    "type": "step",
+                    "title": "到林老师门口",
+                    "description": "走到林老师门口，在门外停下。"
+                  },
+                  {
+                    "id": "step-2",
+                    "type": "step",
+                    "title": "敲门等材料放好",
+                    "description": "敲门后等老师把材料放好，再上前取材料。等待上限为2分钟。"
+                  },
+                  {
+                    "id": "step-3",
+                    "type": "step",
+                    "title": "拍图发我确认",
+                    "description": "取到材料后拍照发给我，等我的确认再继续。等待上限未指定，可在此补充等待时长。"
+                  },
+                  {
+                    "id": "step-4",
+                    "type": "step",
+                    "title": "确认后送回",
+                    "description": "收到我的确认后，把材料送回。"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_rj0YSXV6brNkBe18InSs6772"
+      },
+      "toolCallId": "call_00_rj0YSXV6brNkBe18InSs6772",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "45224c4d-8793-4bd4-a495-87b58268bb88"
+    }
+  }
+]

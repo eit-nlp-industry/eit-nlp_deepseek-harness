@@ -1,0 +1,18 @@
+{
+  "simulated": true,
+  "case_id": "N06",
+  "facts": "虚构商品item-lamp-01，当前仅发布正面lamp-front；背面与细节尚未发布。商品政策、损伤成因和发生时间未知，不判断退货资格。",
+  "assets": [
+    {
+      "id": "bench05-lamp-front",
+      "file": "bench05-lamp-front.png",
+      "alt": "MOCK LAMP FRONT; item-lamp-01 | FRONT; synthetic fixture",
+      "source_id": "lamp-front",
+      "url": "http://127.0.0.1:3080/api/media/bench05-lamp-front/content",
+      "path": "/api/media/bench05-lamp-front/content",
+      "sha256": "167064caead65ba8f1e8643222acd82fe23af1ed9ca917c8cfbeb8bdb9c9f9c6",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C03",
+    "facts": "当前2026-11-06 12:00 Asia/Shanghai；明晚为11月7日。lib-room容6人、有投屏和白板、19:00–20:00空闲；college-room距离更近、容4人、有投屏、白板未知；canteen无讨论场地。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true
+}

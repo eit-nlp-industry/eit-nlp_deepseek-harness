@@ -1,0 +1,1360 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_da69jUMINlXiaWYak6B58023",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"generic_filters\", \"locale\": \"zh-CN\", \"prompt_mode\": \"full\", \"answer_presentation\": \"supplement\", \"user_query\": \"生成一张“冲突说明 + 替代时段选择”表单页，不要任何默认已接受的选项。页面从上到下依次是：1) 只读的当前草稿摘要区，逐条显示：场地=四明书院、日期=2026-11-07、原时段=19:00–20:00、人数=4人、原设备=白板+投屏；2) 一条醒目的冲突说明区，用要点列表逐条列出冲突说明数组中的每一条文字，完整保留原文，不得省略；3) 单选项 期望开始时段（20:00 之后才开始），选项为：20:00（整点，正好8点）、20:30、21:00、更晚（请在备注中写明），全部不预选；4) 单选项 使用时长，选项为 1 小时、1.5 小时、2 小时，全部不预选；5) 单选项 设备，选项为 仅投屏（取消白板）、保留白板+投屏，全部不预选，强调此项必须由用户自己选；6) 数字输入 参会人数，占位提示“原草稿为 4 人，请确认”，不预填；7) 多行文本 备注（可选）。底部提交按钮文案为“提交时段偏好并核对可订情况”。表单附近用一行小字说明：可订情况尚未确认，提交后才会返回结果，本页不会自动预约或改动草稿。所有文字使用中文。\", \"business_data\": {\"标题\": \"四明书院 2026-11-07 草稿调整\", \"副标题\": \"时间改到 8 点之后，并取消白板——需要您确认具体时段与设备\", \"当前草稿\": [\"场地：四明书院\", \"日期：2026-11-07\", \"原时段：19:00–20:00\", \"人数：4 人\", \"原设备：白板 + 投屏\"], \"冲突说明\": [\"原时段 19:00–20:00 与“8 点之后”的要求不符，不能沿用，需替换为 20:00 之后开始的时段。\", \"四明书院 20:00 之后是否还有可订时段，目前尚未确认；无法在未核对前替您认定某个时段可用，也不会自动改成任意时段。\", \"取消白板属于设备需求变更（投屏仍需保留），同样需要您明确选择，草稿不会自动变更。\", \"本次仅调整草稿，不产生真实预约；结果以您的提交与后续核对为准。\"], \"字段\": [{\"名称\": \"期望开始时段（20:00 之后）\", \"类型\": \"单选\", \"选项\": [\"20:00（整点，正好 8 点）\", \"20:30\", \"21:00\", \"更晚（请在备注中写明）\"], \"默认\": \"不预选\"}, {\"名称\": \"使用时长\", \"类型\": \"单选\", \"选项\": [\"1 小时\", \"1.5 小时\", \"2 小时\"], \"默认\": \"不预选\"}, {\"名称\": \"设备\", \"类型\": \"单选\", \"选项\": [\"仅投屏（取消白板）\", \"保留白板 + 投屏\"], \"默认\": \"不预选\"}, {\"名称\": \"参会人数\", \"类型\": \"数字\", \"占位提示\": \"原草稿为 4 人，请确认\", \"默认\": \"不预填\"}, {\"名称\": \"备注\", \"类型\": \"多行文本\", \"必填\": \"可选\"}], \"提交按钮\": \"提交时段偏好并核对可订情况\", \"页脚说明\": \"可订情况尚未确认，提交后才会返回结果；本页不会自动预约，也不会未经您确认就改动草稿。\", \"其他富组件\": \"本题未指定使用，故未生成；如需可按需提供 Collapsible（折叠冲突说明）、Tabs（按时段分组）等名称对应组件。\"}, \"components\": []}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "page-subtitle",
+                "draft-section",
+                "conflict-section",
+                "form-section"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "四明书院 2026-11-07 草稿调整",
+                "level": "h1"
+              }
+            },
+            "page-subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/副标题"
+                },
+                "variant": "muted"
+              }
+            },
+            "draft-section": {
+              "type": "Section",
+              "props": {
+                "title": "当前草稿（只读）",
+                "description": "以下内容来自当前草稿，本页不会自动改动。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "draft-stack"
+              ]
+            },
+            "draft-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "draft-line-0",
+                "draft-line-1",
+                "draft-line-2",
+                "draft-line-3",
+                "draft-line-4"
+              ]
+            },
+            "draft-line-0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/0"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-line-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/1"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-line-2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/2"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-line-3": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/3"
+                },
+                "variant": "default"
+              }
+            },
+            "draft-line-4": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/4"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict-section": {
+              "type": "Section",
+              "props": {
+                "title": "冲突说明",
+                "description": "以下冲突需由您明确选择后才能继续。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "conflict-callout",
+                "conflict-list"
+              ]
+            },
+            "conflict-callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "原时段不可沿用",
+                "description": "请完整阅读以下冲突说明；在您提交前，本页不会自动预约或改动草稿。",
+                "showIcon": true
+              }
+            },
+            "conflict-list": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "conflict-row-0",
+                "conflict-row-1",
+                "conflict-row-2",
+                "conflict-row-3"
+              ]
+            },
+            "conflict-row-0": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "conflict-badge-0",
+                "conflict-text-0"
+              ]
+            },
+            "conflict-badge-0": {
+              "type": "Badge",
+              "props": {
+                "label": "1",
+                "variant": "danger"
+              }
+            },
+            "conflict-text-0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/0"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict-row-1": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "conflict-badge-1",
+                "conflict-text-1"
+              ]
+            },
+            "conflict-badge-1": {
+              "type": "Badge",
+              "props": {
+                "label": "2",
+                "variant": "danger"
+              }
+            },
+            "conflict-text-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/1"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict-row-2": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "conflict-badge-2",
+                "conflict-text-2"
+              ]
+            },
+            "conflict-badge-2": {
+              "type": "Badge",
+              "props": {
+                "label": "3",
+                "variant": "danger"
+              }
+            },
+            "conflict-text-2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/2"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict-row-3": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "conflict-badge-3",
+                "conflict-text-3"
+              ]
+            },
+            "conflict-badge-3": {
+              "type": "Badge",
+              "props": {
+                "label": "4",
+                "variant": "danger"
+              }
+            },
+            "conflict-text-3": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/3"
+                },
+                "variant": "default"
+              }
+            },
+            "form-section": {
+              "type": "Section",
+              "props": {
+                "title": "提交新的时段与设备偏好",
+                "description": "请逐项选择；以下选项均未预选。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "equipment-note",
+                "dynamic-form",
+                "remark-field",
+                "form-footer-note",
+                "submit-button"
+              ]
+            },
+            "equipment-note": {
+              "type": "Text",
+              "props": {
+                "content": "设备必须由您本人选择，不会默认取消白板或保留白板。",
+                "variant": "warning"
+              }
+            },
+            "dynamic-form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "expected_start",
+                    "label": "期望开始时段（20:00 之后）",
+                    "placeholder": "请选择",
+                    "disabled": false,
+                    "value": {
+                      "options": [
+                        {
+                          "value": "20:00（整点，正好 8 点）",
+                          "label": "20:00（整点，正好 8 点）"
+                        },
+                        {
+                          "value": "20:30",
+                          "label": "20:30"
+                        },
+                        {
+                          "value": "21:00",
+                          "label": "21:00"
+                        },
+                        {
+                          "value": "更晚（请在备注中写明）",
+                          "label": "更晚（请在备注中写明）"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "select",
+                    "key": "duration",
+                    "label": "使用时长",
+                    "placeholder": "请选择",
+                    "disabled": false,
+                    "value": {
+                      "options": [
+                        {
+                          "value": "1 小时",
+                          "label": "1 小时"
+                        },
+                        {
+                          "value": "1.5 小时",
+                          "label": "1.5 小时"
+                        },
+                        {
+                          "value": "2 小时",
+                          "label": "2 小时"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "select",
+                    "key": "equipment",
+                    "label": "设备",
+                    "placeholder": "请选择",
+                    "disabled": false,
+                    "value": {
+                      "options": [
+                        {
+                          "value": "仅投屏（取消白板）",
+                          "label": "仅投屏（取消白板）"
+                        },
+                        {
+                          "value": "保留白板 + 投屏",
+                          "label": "保留白板 + 投屏"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "inputNumber",
+                    "key": "attendees",
+                    "label": "参会人数",
+                    "placeholder": "原草稿为 4 人，请确认",
+                    "disabled": false
+                  }
+                ]
+              }
+            },
+            "remark-field": {
+              "type": "FormField",
+              "props": {
+                "label": "备注（可选）",
+                "description": "如选择“更晚”，请在此写明具体时间；也可补充其他说明。"
+              },
+              "children": [
+                "remark-input"
+              ]
+            },
+            "remark-input": {
+              "type": "TextArea",
+              "props": {
+                "fieldKey": "remark",
+                "placeholder": "可填写备注（可选）",
+                "disabled": false,
+                "rows": 4,
+                "showCount": true
+              }
+            },
+            "form-footer-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/页脚说明"
+                },
+                "variant": "muted"
+              }
+            },
+            "submit-button": {
+              "type": "Button",
+              "props": {
+                "label": "提交时段偏好并核对可订情况",
+                "variant": "default",
+                "intent": "primary",
+                "size": "large",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "四明书院 2026-11-07 草稿调整",
+            "副标题": "时间改到 8 点之后，并取消白板——需要您确认具体时段与设备",
+            "当前草稿": [
+              "场地：四明书院",
+              "日期：2026-11-07",
+              "原时段：19:00–20:00",
+              "人数：4 人",
+              "原设备：白板 + 投屏"
+            ],
+            "冲突说明": [
+              "原时段 19:00–20:00 与“8 点之后”的要求不符，不能沿用，需替换为 20:00 之后开始的时段。",
+              "四明书院 20:00 之后是否还有可订时段，目前尚未确认；无法在未核对前替您认定某个时段可用，也不会自动改成任意时段。",
+              "取消白板属于设备需求变更（投屏仍需保留），同样需要您明确选择，草稿不会自动变更。",
+              "本次仅调整草稿，不产生真实预约；结果以您的提交与后续核对为准。"
+            ],
+            "字段": [
+              {
+                "名称": "期望开始时段（20:00 之后）",
+                "类型": "单选",
+                "选项": [
+                  "20:00（整点，正好 8 点）",
+                  "20:30",
+                  "21:00",
+                  "更晚（请在备注中写明）"
+                ],
+                "默认": "不预选"
+              },
+              {
+                "名称": "使用时长",
+                "类型": "单选",
+                "选项": [
+                  "1 小时",
+                  "1.5 小时",
+                  "2 小时"
+                ],
+                "默认": "不预选"
+              },
+              {
+                "名称": "设备",
+                "类型": "单选",
+                "选项": [
+                  "仅投屏（取消白板）",
+                  "保留白板 + 投屏"
+                ],
+                "默认": "不预选"
+              },
+              {
+                "名称": "参会人数",
+                "类型": "数字",
+                "占位提示": "原草稿为 4 人，请确认",
+                "默认": "不预填"
+              },
+              {
+                "名称": "备注",
+                "类型": "多行文本",
+                "必填": "可选"
+              }
+            ],
+            "提交按钮": "提交时段偏好并核对可订情况",
+            "页脚说明": "可订情况尚未确认，提交后才会返回结果；本页不会自动预约，也不会未经您确认就改动草稿。",
+            "其他富组件": "本题未指定使用，故未生成；如需可按需提供 Collapsible（折叠冲突说明）、Tabs（按时段分组）等名称对应组件。",
+            "form": {
+              "expected_start": "",
+              "duration": "",
+              "equipment": "",
+              "attendees": 0
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_da69jUMINlXiaWYak6B58023"
+      },
+      "toolCallId": "call_00_da69jUMINlXiaWYak6B58023",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "54926623-dc51-4dbd-9f06-cd3aadf36cdf"
+    }
+  },
+  {
+    "call_seq": 48,
+    "result_seq": 49,
+    "call": {
+      "turn": 2,
+      "step": 2,
+      "callId": "call_00_YocxBMai7vMD4WEuvMRg4407",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"其他富组件\": \"本题未指定使用，故未生成；如需可按需提供 Collapsible（折叠核对结果）、Tabs（按日期分组）等名称对应组件。\", \"冲突说明\": [\"您提交的是 2026-11-07、开始时间 20:00、1 小时、仅投屏（取消白板）、4 人。\", \"核对结果：四明书院在 2026-11-07 没有 20:00 之后开始的时段，因此“8 点之后”的时段本次无法满足。\", \"当天目前只有两个可订时段：14:00–15:00 和 16:00–17:00；两者都早于 20:00，与您的“8 点之后”要求不同，所以不能替您默认接受。\", \"白板已按您的选择改为“仅投屏”，但整个草稿尚未生效，需您先定下时段；本次不产生真实预约。\"], \"可选时段\": [\"14:00–15:00\", \"16:00–17:00\"], \"字段\": [{\"不预选\": true, \"名称\": \"如何调整\", \"类型\": \"单选\", \"选项\": [\"改成 14:00–15:00（当天，1 小时）\", \"改成 16:00–17:00（当天，1 小时）\", \"仍要 20:00 之后，改到其他日期（请在备注写日期与星期偏好）\", \"暂不修改草稿，保持原 19:00–20:00 不变\"]}], \"日期\": \"2026-11-07\", \"提交按钮\": \"提交调整选择并重新核对\", \"标题\": \"2026-11-07：20:00 之后无可订时段\", \"场地\": \"四明书院\", \"当前草稿\": [\"场地：四明书院\", \"日期：2026-11-07\", \"人数：4 人\", \"设备：仅投屏（白板已取消）\", \"时段：尚未确定\"], \"页脚说明\": \"两个可选时段均在 20:00 之前；若您不同意改到这两个时段，可以选“改到其他日期”或“暂不修改”，草稿会维持原样。\", \"预订状态\": \"未预约，仅为草稿\"}, \"components\": [], \"intent\": \"generic_pick_one\", \"locale\": \"zh-CN\", \"mode\": \"form\", \"prompt_mode\": \"full\", \"user_query\": \"生成一张“核对结果 + 合法替代时段”选择表单，不要把任何选项设为默认已接受。页面从上到下：1) 只读的冲突说明区，用要点列表逐条显示冲突说明数组中的每一条文字，完整保留原文；2) 只读信息区，显示预订状态、场地、日期、当前草稿各项；3) 醒目列出“当天仅有的两个可订时段”：14:00–15:00、16:00–17:00，并紧接一行提示“两个时段都早于 20:00，与您的要求不同”；4) 单选项“如何调整”，选项依次为：改成 14:00–15:00（当天，1 小时）、改成 16:00–17:00（当天，1 小时）、仍要 20:00 之后，改到其他日期（请在备注写日期与星期偏好）、暂不修改草稿，保持原 19:00–20:00 不变；全部不预选；5) 多行文本备注（可选）。底部提交按钮文案为“提交调整选择并重新核对”。表单下方用一行小字显示页脚说明。全部中文。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "header",
+                "conflict_card",
+                "info_card",
+                "slots_card",
+                "form_card",
+                "footer_text"
+              ]
+            },
+            "header": {
+              "type": "Heading",
+              "props": {
+                "text": "2026-11-07：20:00 之后无可订时段",
+                "level": "h1"
+              }
+            },
+            "conflict_card": {
+              "type": "Card",
+              "props": {
+                "title": "冲突说明",
+                "variant": "outlined"
+              },
+              "children": [
+                "conflict_stack"
+              ]
+            },
+            "conflict_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "conflict_item_0",
+                "conflict_item_1",
+                "conflict_item_2",
+                "conflict_item_3"
+              ]
+            },
+            "conflict_item_0": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "conflict_bullet_0",
+                "conflict_text_0"
+              ]
+            },
+            "conflict_bullet_0": {
+              "type": "Text",
+              "props": {
+                "content": "•",
+                "variant": "default"
+              }
+            },
+            "conflict_text_0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/0"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict_item_1": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "conflict_bullet_1",
+                "conflict_text_1"
+              ]
+            },
+            "conflict_bullet_1": {
+              "type": "Text",
+              "props": {
+                "content": "•",
+                "variant": "default"
+              }
+            },
+            "conflict_text_1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/1"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict_item_2": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "conflict_bullet_2",
+                "conflict_text_2"
+              ]
+            },
+            "conflict_bullet_2": {
+              "type": "Text",
+              "props": {
+                "content": "•",
+                "variant": "default"
+              }
+            },
+            "conflict_text_2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/2"
+                },
+                "variant": "default"
+              }
+            },
+            "conflict_item_3": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "conflict_bullet_3",
+                "conflict_text_3"
+              ]
+            },
+            "conflict_bullet_3": {
+              "type": "Text",
+              "props": {
+                "content": "•",
+                "variant": "default"
+              }
+            },
+            "conflict_text_3": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/冲突说明/3"
+                },
+                "variant": "default"
+              }
+            },
+            "info_card": {
+              "type": "Card",
+              "props": {
+                "title": "预订信息",
+                "variant": "default"
+              },
+              "children": [
+                "info_table"
+              ]
+            },
+            "info_table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "项目",
+                  "内容"
+                ],
+                "rows": [
+                  [
+                    "预订状态",
+                    "未预约，仅为草稿"
+                  ],
+                  [
+                    "场地",
+                    "四明书院"
+                  ],
+                  [
+                    "日期",
+                    "2026-11-07"
+                  ],
+                  [
+                    "当前草稿",
+                    "场地：四明书院"
+                  ],
+                  [
+                    "当前草稿",
+                    "日期：2026-11-07"
+                  ],
+                  [
+                    "当前草稿",
+                    "人数：4 人"
+                  ],
+                  [
+                    "当前草稿",
+                    "设备：仅投屏（白板已取消）"
+                  ],
+                  [
+                    "当前草稿",
+                    "时段：尚未确定"
+                  ]
+                ]
+              }
+            },
+            "slots_card": {
+              "type": "Card",
+              "props": {
+                "title": "当天仅有的两个可订时段",
+                "variant": "filled"
+              },
+              "children": [
+                "slots_stack"
+              ]
+            },
+            "slots_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "slots_row",
+                "slots_hint"
+              ]
+            },
+            "slots_row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "md",
+                "align": "center"
+              },
+              "children": [
+                "time_badge_0",
+                "time_badge_1"
+              ]
+            },
+            "time_badge_0": {
+              "type": "Badge",
+              "props": {
+                "label": "14:00–15:00",
+                "variant": "info"
+              }
+            },
+            "time_badge_1": {
+              "type": "Badge",
+              "props": {
+                "label": "16:00–17:00",
+                "variant": "info"
+              }
+            },
+            "slots_hint": {
+              "type": "Text",
+              "props": {
+                "content": "两个时段都早于 20:00，与您的要求不同",
+                "variant": "warning"
+              }
+            },
+            "form_card": {
+              "type": "Card",
+              "props": {
+                "title": "调整选择",
+                "variant": "outlined"
+              },
+              "children": [
+                "form_stack"
+              ]
+            },
+            "form_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "adjustment_form",
+                "remarks_field",
+                "submit_button"
+              ]
+            },
+            "adjustment_form": {
+              "type": "DynamicForm",
+              "props": {
+                "fields": [
+                  {
+                    "type": "select",
+                    "key": "selected_id",
+                    "label": "如何调整",
+                    "placeholder": "请选择一项",
+                    "value": {
+                      "options": [
+                        {
+                          "value": "改成 14:00–15:00（当天，1 小时）",
+                          "label": "改成 14:00–15:00（当天，1 小时）"
+                        },
+                        {
+                          "value": "改成 16:00–17:00（当天，1 小时）",
+                          "label": "改成 16:00–17:00（当天，1 小时）"
+                        },
+                        {
+                          "value": "仍要 20:00 之后，改到其他日期（请在备注写日期与星期偏好）",
+                          "label": "仍要 20:00 之后，改到其他日期（请在备注写日期与星期偏好）"
+                        },
+                        {
+                          "value": "暂不修改草稿，保持原 19:00–20:00 不变",
+                          "label": "暂不修改草稿，保持原 19:00–20:00 不变"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "remarks_field": {
+              "type": "FormField",
+              "props": {
+                "label": "备注（可选）",
+                "description": "如选择改到其他日期，请填写日期与星期偏好"
+              },
+              "children": [
+                "remarks_input"
+              ]
+            },
+            "remarks_input": {
+              "type": "TextArea",
+              "props": {
+                "fieldKey": "remarks",
+                "placeholder": "如选择改到其他日期，请填写日期与星期偏好",
+                "disabled": false,
+                "rows": 3,
+                "showCount": true
+              }
+            },
+            "submit_button": {
+              "type": "Button",
+              "props": {
+                "label": "提交调整选择并重新核对",
+                "variant": "default",
+                "intent": "primary",
+                "size": "large",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "form.submit",
+                  "params": {
+                    "eventName": "form.submit"
+                  }
+                }
+              }
+            },
+            "footer_text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/页脚说明"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "其他富组件": "本题未指定使用，故未生成；如需可按需提供 Collapsible（折叠核对结果）、Tabs（按日期分组）等名称对应组件。",
+            "冲突说明": [
+              "您提交的是 2026-11-07、开始时间 20:00、1 小时、仅投屏（取消白板）、4 人。",
+              "核对结果：四明书院在 2026-11-07 没有 20:00 之后开始的时段，因此“8 点之后”的时段本次无法满足。",
+              "当天目前只有两个可订时段：14:00–15:00 和 16:00–17:00；两者都早于 20:00，与您的“8 点之后”要求不同，所以不能替您默认接受。",
+              "白板已按您的选择改为“仅投屏”，但整个草稿尚未生效，需您先定下时段；本次不产生真实预约。"
+            ],
+            "可选时段": [
+              "14:00–15:00",
+              "16:00–17:00"
+            ],
+            "字段": [
+              {
+                "不预选": true,
+                "名称": "如何调整",
+                "类型": "单选",
+                "选项": [
+                  "改成 14:00–15:00（当天，1 小时）",
+                  "改成 16:00–17:00（当天，1 小时）",
+                  "仍要 20:00 之后，改到其他日期（请在备注写日期与星期偏好）",
+                  "暂不修改草稿，保持原 19:00–20:00 不变"
+                ]
+              }
+            ],
+            "日期": "2026-11-07",
+            "提交按钮": "提交调整选择并重新核对",
+            "标题": "2026-11-07：20:00 之后无可订时段",
+            "场地": "四明书院",
+            "当前草稿": [
+              "场地：四明书院",
+              "日期：2026-11-07",
+              "人数：4 人",
+              "设备：仅投屏（白板已取消）",
+              "时段：尚未确定"
+            ],
+            "页脚说明": "两个可选时段均在 20:00 之前；若您不同意改到这两个时段，可以选“改到其他日期”或“暂不修改”，草稿会维持原样。",
+            "预订状态": "未预约，仅为草稿",
+            "form": {
+              "selected_id": ""
+            }
+          }
+        }
+      },
+      "profile": "forms",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_YocxBMai7vMD4WEuvMRg4407"
+      },
+      "toolCallId": "call_00_YocxBMai7vMD4WEuvMRg4407",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "f22a31c7-d60b-4c7c-b78c-19c95fbb3c04"
+    }
+  },
+  {
+    "call_seq": 65,
+    "result_seq": 66,
+    "call": {
+      "turn": 3,
+      "step": 2,
+      "callId": "call_00_5NXSXvIjVgQD9nK62e9q3960",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"其他富组件\": \"本题未指定使用，故未生成。\", \"变更对比\": [\"时段：19:00–20:00 → 16:00–17:00（因 20:00 之后无可用时段，经您选择后改到当天 16:00）\", \"设备：白板 + 投屏 → 仅投屏（白板已取消）\", \"日期、人数不变\"], \"变更说明\": [\"您要的是 8 点之后，但 2026-11-07 没有 20:00 之后开始的时段，因此按您的选择改为当天 16:00–17:00。\", \"白板已按您的要求取消，只保留投屏。\", \"这是一份草稿记录，不是正式预约；本次未做真实占位或确认，如需正式预约需另行确认。\"], \"当前草稿\": [\"场地：四明书院\", \"日期：2026-11-07（周六）\", \"时段：16:00–17:00\", \"时长：1 小时\", \"人数：4 人\", \"设备：仅投屏（无白板）\"], \"状态\": \"草稿已记录（未预约）\", \"标题\": \"已更新草稿：四明书院 2026-11-07 16:00–17:00\", \"预订状态\": \"模拟草稿，未产生真实预约\"}, \"components\": [], \"locale\": \"zh-CN\", \"mode\": \"display\", \"prompt_mode\": \"full\", \"user_query\": \"生成一张“调整后的场地草稿”确认卡：顶部显示标题与状态（草稿已记录、未预约）；中间只读列出当前草稿的每一项（场地、日期、时段、时长、人数、设备）；下面一区用要点列表逐条显示变更对比；再下面用一行小字显示变更说明里的每一条文字，完整保留。不要出现预约成功字样，不要预演付款、确认码或提醒已发送。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "headerCard",
+                "draftSection",
+                "changesSection",
+                "notesSection"
+              ]
+            },
+            "headerCard": {
+              "type": "Card",
+              "props": {
+                "title": "调整后的场地草稿",
+                "variant": "outlined"
+              },
+              "children": [
+                "headerStack"
+              ]
+            },
+            "headerStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "headerTitle",
+                "statusRow",
+                "bookingStatus"
+              ]
+            },
+            "headerTitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/标题"
+                },
+                "variant": "default"
+              }
+            },
+            "statusRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "statusLabel",
+                "statusValue"
+              ]
+            },
+            "statusLabel": {
+              "type": "Text",
+              "props": {
+                "content": "状态：",
+                "variant": "muted"
+              }
+            },
+            "statusValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/状态"
+                },
+                "variant": "warning"
+              }
+            },
+            "bookingStatus": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/预订状态"
+                },
+                "variant": "muted"
+              }
+            },
+            "draftSection": {
+              "type": "Section",
+              "props": {
+                "title": "当前草稿",
+                "description": "只读列出当前草稿的每一项",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "draftList"
+              ]
+            },
+            "draftList": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "draftItem0",
+                "draftItem1",
+                "draftItem2",
+                "draftItem3",
+                "draftItem4",
+                "draftItem5"
+              ]
+            },
+            "draftItem0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/0"
+                },
+                "variant": "default"
+              }
+            },
+            "draftItem1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/1"
+                },
+                "variant": "default"
+              }
+            },
+            "draftItem2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/2"
+                },
+                "variant": "default"
+              }
+            },
+            "draftItem3": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/3"
+                },
+                "variant": "default"
+              }
+            },
+            "draftItem4": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/4"
+                },
+                "variant": "default"
+              }
+            },
+            "draftItem5": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/当前草稿/5"
+                },
+                "variant": "default"
+              }
+            },
+            "changesSection": {
+              "type": "Section",
+              "props": {
+                "title": "变更对比",
+                "description": "逐条显示变更对比",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "changesList"
+              ]
+            },
+            "changesList": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "changeRow0",
+                "changeRow1",
+                "changeRow2"
+              ]
+            },
+            "changeRow0": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "changeBullet0",
+                "changeText0"
+              ]
+            },
+            "changeBullet0": {
+              "type": "Text",
+              "props": {
+                "content": "•",
+                "variant": "muted"
+              }
+            },
+            "changeText0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/变更对比/0"
+                },
+                "variant": "default"
+              }
+            },
+            "changeRow1": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "changeBullet1",
+                "changeText1"
+              ]
+            },
+            "changeBullet1": {
+              "type": "Text",
+              "props": {
+                "content": "•",
+                "variant": "muted"
+              }
+            },
+            "changeText1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/变更对比/1"
+                },
+                "variant": "default"
+              }
+            },
+            "changeRow2": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "changeBullet2",
+                "changeText2"
+              ]
+            },
+            "changeBullet2": {
+              "type": "Text",
+              "props": {
+                "content": "•",
+                "variant": "muted"
+              }
+            },
+            "changeText2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/变更对比/2"
+                },
+                "variant": "default"
+              }
+            },
+            "notesSection": {
+              "type": "Section",
+              "props": {
+                "title": "变更说明",
+                "description": "完整保留变更说明中的每一条文字",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "notesList"
+              ]
+            },
+            "notesList": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "note0",
+                "note1",
+                "note2"
+              ]
+            },
+            "note0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/变更说明/0"
+                },
+                "variant": "muted"
+              }
+            },
+            "note1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/变更说明/1"
+                },
+                "variant": "muted"
+              }
+            },
+            "note2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/变更说明/2"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "其他富组件": "本题未指定使用，故未生成。",
+            "变更对比": [
+              "时段：19:00–20:00 → 16:00–17:00（因 20:00 之后无可用时段，经您选择后改到当天 16:00）",
+              "设备：白板 + 投屏 → 仅投屏（白板已取消）",
+              "日期、人数不变"
+            ],
+            "变更说明": [
+              "您要的是 8 点之后，但 2026-11-07 没有 20:00 之后开始的时段，因此按您的选择改为当天 16:00–17:00。",
+              "白板已按您的要求取消，只保留投屏。",
+              "这是一份草稿记录，不是正式预约；本次未做真实占位或确认，如需正式预约需另行确认。"
+            ],
+            "当前草稿": [
+              "场地：四明书院",
+              "日期：2026-11-07（周六）",
+              "时段：16:00–17:00",
+              "时长：1 小时",
+              "人数：4 人",
+              "设备：仅投屏（无白板）"
+            ],
+            "状态": "草稿已记录（未预约）",
+            "标题": "已更新草稿：四明书院 2026-11-07 16:00–17:00",
+            "预订状态": "模拟草稿，未产生真实预约"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_5NXSXvIjVgQD9nK62e9q3960"
+      },
+      "toolCallId": "call_00_5NXSXvIjVgQD9nK62e9q3960",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "be4a068a-111e-4460-888c-9d59a6283387"
+    }
+  }
+]

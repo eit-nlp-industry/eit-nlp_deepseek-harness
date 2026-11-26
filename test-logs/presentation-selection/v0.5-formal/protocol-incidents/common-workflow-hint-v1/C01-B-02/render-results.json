@@ -1,0 +1,853 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_4i5lTr2PTYkhVvOrmDJB5414",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Tabs\", \"Image\"], \"locale\": \"zh-CN\", \"answer_presentation\": \"replace\", \"user_query\": \"用 Tabs 按“图书馆 / 食堂 / 四明书院”三类分区展示，每个 Tab 内先放一张 Image（src 使用给定的同源 path 字符串，alt 使用给定描述），下面列出该处的已知情况；对未知信息明确标注“未知/以现场与馆方答复为准”，不要补写未给出的事实。顶部标题：东方理工初到指南。底部保留文字兜底：三处要点以文字复述一遍。\", \"business_data\": {\"title\": \"东方理工初到指南\", \"subtitle\": \"图书馆 · 食堂 · 四明书院\", \"tabs\": [{\"key\": \"lib\", \"label\": \"图书馆\", \"image\": \"/api/media/bench05-lib/content\", \"alt\": \"MOCK LIBRARY; READING / DISCUSSION; synthetic fixture\", \"points\": [\"安静阅读区：适合自习与安静看书\", \"讨论室：需要小组讨论时可用\", \"入馆需预约：请按馆方要求预约，具体规则以馆方答复为准\"]}, {\"key\": \"canteen\", \"label\": \"食堂\", \"image\": \"/api/media/bench05-canteen/content\", \"alt\": \"MOCK CANTEEN; LUNCH AREA; synthetic fixture\", \"points\": [\"提供午餐\", \"其余营业时间：目前未知，建议到现场或向食堂咨询确认\"]}, {\"key\": \"college\", \"label\": \"四明书院\", \"image\": \"/api/media/bench05-college/content\", \"alt\": \"MOCK COLLEGE; COMMON AREA; synthetic fixture\", \"points\": [\"公共交流空间：适合交流、休息与小型活动\", \"投屏设备：目前未知，如需要请提前向书院确认\"]}], \"fallback_text\": \"图书馆：有安静阅读区和讨论室，入馆需预约，具体以馆方答复为准。食堂：提供午餐，其余营业时间未知。四明书院：公共交流空间，投屏设备情况未知。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "headerBlock",
+                "guideSection",
+                "fallbackSection"
+              ]
+            },
+            "headerBlock": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "title",
+                "subtitle"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "东方理工初到指南",
+                "level": "h1"
+              }
+            },
+            "subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "guideSection": {
+              "type": "Section",
+              "props": {
+                "title": "分区指引",
+                "description": "以下仅展示已给出的信息；未给出的项目明确标注为未知，以现场与馆方答复为准。",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "tabs"
+              ]
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "lib",
+                    "label": "图书馆"
+                  },
+                  {
+                    "value": "canteen",
+                    "label": "食堂"
+                  },
+                  {
+                    "value": "college",
+                    "label": "四明书院"
+                  }
+                ],
+                "defaultValue": "lib",
+                "disabled": false
+              },
+              "children": [
+                "tab-lib",
+                "tab-canteen",
+                "tab-college"
+              ]
+            },
+            "tab-lib": {
+              "type": "TabContent",
+              "props": {
+                "value": "lib"
+              },
+              "children": [
+                "libStack"
+              ]
+            },
+            "libStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "libImage",
+                "libList",
+                "libCallout"
+              ]
+            },
+            "libImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lib/content",
+                "alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "libList": {
+              "type": "List",
+              "props": {
+                "title": "已知情况",
+                "items": [
+                  {
+                    "title": "安静阅读区",
+                    "description": "适合自习与安静看书",
+                    "status": "info"
+                  },
+                  {
+                    "title": "讨论室",
+                    "description": "需要小组讨论时可用",
+                    "status": "info"
+                  },
+                  {
+                    "title": "入馆需预约",
+                    "description": "请按馆方要求预约，具体规则以馆方答复为准",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无更多已知信息，未知/以现场与馆方答复为准"
+              }
+            },
+            "libCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "待确认",
+                "description": "预约的具体规则、开放时间等未提供，未知/以现场与馆方答复为准。",
+                "showIcon": true
+              }
+            },
+            "tab-canteen": {
+              "type": "TabContent",
+              "props": {
+                "value": "canteen"
+              },
+              "children": [
+                "canteenStack"
+              ]
+            },
+            "canteenStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "canteenImage",
+                "canteenList",
+                "canteenCallout"
+              ]
+            },
+            "canteenImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-canteen/content",
+                "alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "canteenList": {
+              "type": "List",
+              "props": {
+                "title": "已知情况",
+                "items": [
+                  {
+                    "title": "提供午餐",
+                    "status": "info"
+                  },
+                  {
+                    "title": "其余营业时间",
+                    "description": "目前未知，建议到现场或向食堂咨询确认",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无更多已知信息，未知/以现场与相关方答复为准"
+              }
+            },
+            "canteenCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "待确认",
+                "description": "除午餐外的营业时间未提供，未知/以现场与食堂答复为准。",
+                "showIcon": true
+              }
+            },
+            "tab-college": {
+              "type": "TabContent",
+              "props": {
+                "value": "college"
+              },
+              "children": [
+                "collegeStack"
+              ]
+            },
+            "collegeStack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "collegeImage",
+                "collegeList",
+                "collegeCallout"
+              ]
+            },
+            "collegeImage": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-college/content",
+                "alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "collegeList": {
+              "type": "List",
+              "props": {
+                "title": "已知情况",
+                "items": [
+                  {
+                    "title": "公共交流空间",
+                    "description": "适合交流、休息与小型活动",
+                    "status": "info"
+                  },
+                  {
+                    "title": "投屏设备",
+                    "description": "目前未知，如需要请提前向书院确认",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "暂无更多已知信息，未知/以现场与相关方答复为准"
+              }
+            },
+            "collegeCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "待确认",
+                "description": "投屏设备配置与使用方式未提供，未知/以现场与书院答复为准。",
+                "showIcon": true
+              }
+            },
+            "fallbackSection": {
+              "type": "Section",
+              "props": {
+                "title": "文字兜底",
+                "description": "三处要点以文字复述一遍。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "fallbackText"
+              ]
+            },
+            "fallbackText": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/fallback_text"
+                },
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "东方理工初到指南",
+            "subtitle": "图书馆 · 食堂 · 四明书院",
+            "tabs": [
+              {
+                "key": "lib",
+                "label": "图书馆",
+                "image": "/api/media/bench05-lib/content",
+                "alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture",
+                "points": [
+                  "安静阅读区：适合自习与安静看书",
+                  "讨论室：需要小组讨论时可用",
+                  "入馆需预约：请按馆方要求预约，具体规则以馆方答复为准"
+                ]
+              },
+              {
+                "key": "canteen",
+                "label": "食堂",
+                "image": "/api/media/bench05-canteen/content",
+                "alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture",
+                "points": [
+                  "提供午餐",
+                  "其余营业时间：目前未知，建议到现场或向食堂咨询确认"
+                ]
+              },
+              {
+                "key": "college",
+                "label": "四明书院",
+                "image": "/api/media/bench05-college/content",
+                "alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture",
+                "points": [
+                  "公共交流空间：适合交流、休息与小型活动",
+                  "投屏设备：目前未知，如需要请提前向书院确认"
+                ]
+              }
+            ],
+            "fallback_text": "图书馆：有安静阅读区和讨论室，入馆需预约，具体以馆方答复为准。食堂：提供午餐，其余营业时间未知。四明书院：公共交流空间，投屏设备情况未知。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_4i5lTr2PTYkhVvOrmDJB5414"
+      },
+      "toolCallId": "call_00_4i5lTr2PTYkhVvOrmDJB5414",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "b66b6d01-ab44-444d-9489-97aaf5bbb570"
+    }
+  },
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_s0XsjJfy0lA3SDh83xcw4679",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"初到三站踩点流程（可编辑草稿）\", \"editor_type\": \"Workflow 编辑器\", \"draft\": true, \"steps\": [{\"id\": \"s1\", \"label\": \"图书馆 · 了解安静阅读区与讨论室\", \"note\": \"入馆需预约；预约方式与规则以馆方答复为准\"}, {\"id\": \"s2\", \"label\": \"食堂 · 午餐时段\", \"note\": \"已知提供午餐；其余营业时间未知，需现场确认\"}, {\"id\": \"s3\", \"label\": \"四明书院 · 公共交流空间\", \"note\": \"投屏设备情况未知，如有需要提前向书院确认\"}], \"unknowns\": [\"图书馆预约的具体流程与名额\", \"食堂除午餐外的营业时间\", \"四明书院投屏设备是否可用\"], \"hint\": \"可在编辑器中调整顺序、增删节点；未知事项请以官方答复为准。\"}, \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"用 Workflow 编辑器呈现一个可编辑的“初到三站踩点流程”草稿：三个节点按图书馆→食堂→四明书院排列，每个节点带一句已知要点与不确定事项说明；不要编造具体预约方式、营业时间或设备情况，未知项统一标注为待确认。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "hero",
+                "meta_stack",
+                "workflow_section",
+                "unknowns_section",
+                "hint_section",
+                "fields_section",
+                "comparison_section",
+                "actions"
+              ]
+            },
+            "hero": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "md",
+                "align": "center"
+              },
+              "children": [
+                "title_heading",
+                "draft_badge"
+              ]
+            },
+            "title_heading": {
+              "type": "Heading",
+              "props": {
+                "text": "初到三站踩点流程（可编辑草稿）",
+                "level": "h1"
+              }
+            },
+            "draft_badge": {
+              "type": "Badge",
+              "props": {
+                "label": "草稿",
+                "variant": "warning"
+              }
+            },
+            "meta_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "editor_type_label",
+                "editor_type_value",
+                "draft_label",
+                "draft_value"
+              ]
+            },
+            "editor_type_label": {
+              "type": "Text",
+              "props": {
+                "content": "editor_type",
+                "variant": "muted"
+              }
+            },
+            "editor_type_value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/editor_type"
+                },
+                "variant": "default"
+              }
+            },
+            "draft_label": {
+              "type": "Text",
+              "props": {
+                "content": "draft",
+                "variant": "muted"
+              }
+            },
+            "draft_value": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/draft"
+                },
+                "variant": "default"
+              }
+            },
+            "workflow_section": {
+              "type": "Section",
+              "props": {
+                "title": "流程节点（按顺序）",
+                "description": "图书馆 → 食堂 → 四明书院；当前为草稿状态。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "workflow_steps"
+              ]
+            },
+            "workflow_steps": {
+              "type": "Steps",
+              "props": {
+                "current": 0,
+                "direction": "horizontal",
+                "items": [
+                  {
+                    "title": "图书馆 · 了解安静阅读区与讨论室",
+                    "description": "入馆需预约；预约方式与规则以馆方答复为准",
+                    "status": "wait"
+                  },
+                  {
+                    "title": "食堂 · 午餐时段",
+                    "description": "已知提供午餐；其余营业时间未知，需现场确认",
+                    "status": "wait"
+                  },
+                  {
+                    "title": "四明书院 · 公共交流空间",
+                    "description": "投屏设备情况未知，如有需要提前向书院确认",
+                    "status": "wait"
+                  }
+                ]
+              }
+            },
+            "unknowns_section": {
+              "type": "Section",
+              "props": {
+                "title": "不确定事项（统一标注：待确认）",
+                "description": "以下为 business_data 中的 unknowns 逐项展示。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "unknowns_stack"
+              ]
+            },
+            "unknowns_stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "unknown0_row",
+                "unknown1_row",
+                "unknown2_row"
+              ]
+            },
+            "unknown0_row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "unknown0_badge",
+                "unknown0_text"
+              ]
+            },
+            "unknown0_badge": {
+              "type": "Badge",
+              "props": {
+                "label": "待确认",
+                "variant": "warning"
+              }
+            },
+            "unknown0_text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknowns/0"
+                },
+                "variant": "default"
+              }
+            },
+            "unknown1_row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "unknown1_badge",
+                "unknown1_text"
+              ]
+            },
+            "unknown1_badge": {
+              "type": "Badge",
+              "props": {
+                "label": "待确认",
+                "variant": "warning"
+              }
+            },
+            "unknown1_text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknowns/1"
+                },
+                "variant": "default"
+              }
+            },
+            "unknown2_row": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "unknown2_badge",
+                "unknown2_text"
+              ]
+            },
+            "unknown2_badge": {
+              "type": "Badge",
+              "props": {
+                "label": "待确认",
+                "variant": "warning"
+              }
+            },
+            "unknown2_text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/unknowns/2"
+                },
+                "variant": "default"
+              }
+            },
+            "hint_section": {
+              "type": "Section",
+              "props": {
+                "title": "编辑提示",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "hint_text"
+              ]
+            },
+            "hint_text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/hint"
+                },
+                "variant": "muted"
+              }
+            },
+            "fields_section": {
+              "type": "Section",
+              "props": {
+                "title": "business_data 逐项字段与出处",
+                "description": "保留字段路径、原值与来源，不合并为摘要。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "fields_table"
+              ]
+            },
+            "fields_table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "字段",
+                  "值",
+                  "出处"
+                ],
+                "rows": [
+                  [
+                    "title",
+                    "初到三站踩点流程（可编辑草稿）",
+                    "business_data"
+                  ],
+                  [
+                    "editor_type",
+                    "Workflow 编辑器",
+                    "business_data"
+                  ],
+                  [
+                    "draft",
+                    "true",
+                    "business_data"
+                  ],
+                  [
+                    "steps[0].id",
+                    "s1",
+                    "business_data"
+                  ],
+                  [
+                    "steps[0].label",
+                    "图书馆 · 了解安静阅读区与讨论室",
+                    "business_data"
+                  ],
+                  [
+                    "steps[0].note",
+                    "入馆需预约；预约方式与规则以馆方答复为准",
+                    "business_data"
+                  ],
+                  [
+                    "steps[1].id",
+                    "s2",
+                    "business_data"
+                  ],
+                  [
+                    "steps[1].label",
+                    "食堂 · 午餐时段",
+                    "business_data"
+                  ],
+                  [
+                    "steps[1].note",
+                    "已知提供午餐；其余营业时间未知，需现场确认",
+                    "business_data"
+                  ],
+                  [
+                    "steps[2].id",
+                    "s3",
+                    "business_data"
+                  ],
+                  [
+                    "steps[2].label",
+                    "四明书院 · 公共交流空间",
+                    "business_data"
+                  ],
+                  [
+                    "steps[2].note",
+                    "投屏设备情况未知，如有需要提前向书院确认",
+                    "business_data"
+                  ],
+                  [
+                    "unknowns[0]",
+                    "图书馆预约的具体流程与名额",
+                    "business_data"
+                  ],
+                  [
+                    "unknowns[1]",
+                    "食堂除午餐外的营业时间",
+                    "business_data"
+                  ],
+                  [
+                    "unknowns[2]",
+                    "四明书院投屏设备是否可用",
+                    "business_data"
+                  ],
+                  [
+                    "hint",
+                    "可在编辑器中调整顺序、增删节点；未知事项请以官方答复为准。",
+                    "business_data"
+                  ]
+                ]
+              }
+            },
+            "comparison_section": {
+              "type": "Section",
+              "props": {
+                "title": "对比字段与数值",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "comparison_callout",
+                "source_text"
+              ]
+            },
+            "comparison_callout": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "待确认",
+                "description": "business_data 未提供独立对比字段或数值明细；未知事项请以官方答复为准。",
+                "showIcon": true
+              }
+            },
+            "source_text": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data",
+                "variant": "muted"
+              }
+            },
+            "actions": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "edit_button"
+              ]
+            },
+            "edit_button": {
+              "type": "Button",
+              "props": {
+                "label": "编辑流程草稿",
+                "variant": "outline",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.edit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "初到三站踩点流程（可编辑草稿）",
+            "editor_type": "Workflow 编辑器",
+            "draft": true,
+            "steps": [
+              {
+                "id": "s1",
+                "label": "图书馆 · 了解安静阅读区与讨论室",
+                "note": "入馆需预约；预约方式与规则以馆方答复为准"
+              },
+              {
+                "id": "s2",
+                "label": "食堂 · 午餐时段",
+                "note": "已知提供午餐；其余营业时间未知，需现场确认"
+              },
+              {
+                "id": "s3",
+                "label": "四明书院 · 公共交流空间",
+                "note": "投屏设备情况未知，如有需要提前向书院确认"
+              }
+            ],
+            "unknowns": [
+              "图书馆预约的具体流程与名额",
+              "食堂除午餐外的营业时间",
+              "四明书院投屏设备是否可用"
+            ],
+            "hint": "可在编辑器中调整顺序、增删节点；未知事项请以官方答复为准。"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_s0XsjJfy0lA3SDh83xcw4679"
+      },
+      "toolCallId": "call_00_s0XsjJfy0lA3SDh83xcw4679",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "5ad55d94-07a6-4f40-8b3e-36b4f2307e4e"
+    }
+  }
+]

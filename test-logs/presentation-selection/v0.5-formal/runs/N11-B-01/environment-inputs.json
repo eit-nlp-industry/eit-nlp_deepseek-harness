@@ -1,0 +1,67 @@
+[
+  {
+    "seq": 10,
+    "time": 1795155684419,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 70,
+    "time": 1795155911369,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "N11-B-01-paused",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"N11-B-01-paused\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"job-convert-01模拟暂停，10个文件中已完成3个。\",\"assets\":[],\"simulated\":true,\"job_id\":\"job-convert-01\",\"status\":\"paused\",\"completed_count\":3,\"total\":10}}"
+  },
+  {
+    "seq": 106,
+    "time": 1795156060904,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "N11-B-01-continued",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"N11-B-01-continued\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"job-convert-01模拟继续，目前完成4个。\",\"assets\":[],\"simulated\":true,\"job_id\":\"job-convert-01\",\"status\":\"running\",\"completed_count\":4,\"total\":10}}"
+  },
+  {
+    "seq": 121,
+    "time": 1795156119860,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "N11-B-01-failed",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"N11-B-01-failed\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"job-convert-01失败，已完成4/10；doc-05无效，错误INVALID_FILE。\",\"assets\":[],\"simulated\":true,\"event_id\":\"e-fail-01\",\"job_id\":\"job-convert-01\",\"status\":\"failed\",\"completed_count\":4,\"total\":10,\"failed_file\":\"doc-05\",\"error\":\"INVALID_FILE\"}}"
+  },
+  {
+    "seq": 157,
+    "time": 1795156252813,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "N11-B-01-ended",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"N11-B-01-ended\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"监测已结束，不等于文件处理成功。\",\"assets\":[],\"simulated\":true,\"job_id\":\"job-convert-01\",\"monitoring_status\":\"ended\",\"status\":\"failed\",\"completed_count\":4,\"total\":10}}"
+  },
+  {
+    "seq": 172,
+    "time": 1795156369982,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "N11-B-01-late",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"N11-B-01-late\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"晚到旧失败事件e-fail-01，与此前相同；产生于结束监测前。\",\"assets\":[],\"simulated\":true,\"event_id\":\"e-fail-01\",\"event_before_monitor_end\":true,\"job_id\":\"job-convert-01\",\"status\":\"failed\",\"completed_count\":4,\"total\":10,\"failed_file\":\"doc-05\",\"error\":\"INVALID_FILE\"}}"
+  }
+]

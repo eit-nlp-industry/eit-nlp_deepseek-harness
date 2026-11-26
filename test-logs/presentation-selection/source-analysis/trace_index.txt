@@ -1,0 +1,132 @@
+校园 trace 提取索引
+
+原始措辞保留；消息按 source.kind 分开；meta 按 callId 精确关联 render_ui。
+preceding_user 仅表示最近用户输入，不代表因果归属；主动识人、观察和任务状态还需读前置工具记录。
+
+案例1.jsonl
+  用户消息 3；render_ui 结果 3
+  U seq=11: 刚来东方理工，先给我介绍一下图书馆、吃饭的地方和四明书院。
+  U seq=56: 图书馆有可以讨论的地方吗？
+  U seq=77: 我想先去图书馆，叫一只狗来带我吧
+  R seq=45 ← call seq=44，display，rich，组件 Tabs,TabContent,Heading,Text,Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=66 ← call seq=65，display，rich，组件 Stack,Heading,Text,Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=101 ← call seq=100，display，rich，组件 Card,Text,MapPreview，user_accepted_candidate_not_independently_ui_validated
+
+案例2.jsonl
+  用户消息 4；render_ui 结果 4
+  U seq=9: 周六下午带两位校外朋友来参观学校，要提前办什么?
+  U seq=58: 进校后可以直接去图书馆吗？
+  U seq=79: 那就不去图书馆了，只逛一个消失左右，早上10但开始，然后吃午饭
+  U seq=96: 用户提交了 json-render 表单，请根据这些值继续，不要再次弹出同一张表：
+{"date":"2026-11-07","slot":"10:00-11:00","people":3,"note":"带两位校外朋友逛校园，之后吃午饭"}
+  R seq=51 ← call seq=50，form，forms，组件 Stack,Section,Card,DynamicForm,Button，user_accepted_candidate_not_independently_ui_validated
+  R seq=68 ← call seq=67，display，rich，组件 Section,Heading,Text,Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=83 ← call seq=82，form，None，组件 ，failed_or_no_payload_not_positive_reference
+  R seq=89 ← call seq=88，form，forms，组件 Section,DynamicForm,Button，user_accepted_candidate_not_independently_ui_validated
+
+案例3-1.jsonl
+  用户消息 2；render_ui 结果 1
+  U seq=77: 记住我，我叫小张
+  U seq=164: 确认
+  R seq=111 ← call seq=110，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例3-2.jsonl
+  用户消息 1；render_ui 结果 1
+  U seq=91: 握个手吧
+  R seq=38 ← call seq=37，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例4.jsonl
+  用户消息 3；render_ui 结果 2
+  U seq=24: 跟着这位带我们参观的同学
+  U seq=97: 停一下，我拿个东西
+  U seq=160: 继续吧
+  R seq=52 ← call seq=51，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=268 ← call seq=267，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例5.jsonl
+  用户消息 1；render_ui 结果 2
+  U seq=46: 帮我找个安静的地方，我想读会书
+  R seq=144 ← call seq=143，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=228 ← call seq=227，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例6.jsonl
+  用户消息 2；render_ui 结果 1
+  U seq=44: 我约的同学在图书馆入口，灰衣服、拉箱子，帮我找一下
+  U seq=195: 就是他，告诉他我马上就到
+  R seq=120 ← call seq=119，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例7.jsonl
+  用户消息 4；render_ui 结果 5
+  U seq=55: 我的外卖在学校大门，帮我取以下，尾号3726
+  U seq=162: 靠近一点看看
+  U seq=264: 我想再看看侧面
+  U seq=368: 对，就是找个外卖
+  R seq=142 ← call seq=141，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=233 ← call seq=232，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=326 ← call seq=325，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=387 ← call seq=386，display，rich，组件 Stack,Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=475 ← call seq=474，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例8.jsonl
+  用户消息 2；render_ui 结果 2
+  U seq=44: 张伟老师说文件准备好了，去他的办公室帮我拿一下
+  U seq=448: 就是找个文件
+  R seq=395 ← call seq=394，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=537 ← call seq=536，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例9.jsonl
+  用户消息 2；render_ui 结果 2
+  U seq=66: 留意五分钟，门开了告诉我。
+  U seq=300: 帮我补拍一下门口，我看看。然后结束观察，回来吧。
+  R seq=234 ← call seq=233，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=310 ← call seq=309，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例10.jsonl
+  用户消息 2；render_ui 结果 2
+  U seq=77: 去图书馆看看有没有作为
+  U seq=228: 去右边看一下
+  R seq=186 ← call seq=185，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=308 ← call seq=307，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+
+案例11&12.jsonl
+  用户消息 5；render_ui 结果 5
+  U seq=9: 明晚七点四个人试讲一小时，需要投屏和白板，哪里合适?
+  U seq=58: 书院离我更近啊，为什么不去那里
+  U seq=67: 那就不用白板了，时间也改到8点之后
+  U seq=84: 用户提交了 json-render 表单，请根据这些值继续，不要再次弹出同一张表：
+{"venue":"四明书院","date":"2026-11-07","slot":"20:00-21:00","people":4}
+  U seq=101: 用户提交了 json-render 表单，请根据这些值继续，不要再次弹出同一张表：
+{"date":"2026-11-07","slot":"16:00-17:00","people":4,"note":"试讲；不需要白板，需要投屏"}
+  R seq=45 ← call seq=44，display，rich，组件 Stack,Card,Heading,Text,Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=51 ← call seq=50，form，forms，组件 Stack,Heading,Text,DynamicForm,Button，user_accepted_candidate_not_independently_ui_validated
+  R seq=71 ← call seq=70，display，rich，组件 Card,Heading,Text,Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=77 ← call seq=76，form，forms，组件 Stack,Heading,Text,DynamicForm,Button，user_accepted_candidate_not_independently_ui_validated
+  R seq=94 ← call seq=93，form，forms，组件 Stack,Heading,Text,DynamicForm,Button，user_accepted_candidate_not_independently_ui_validated
+
+案例13.jsonl
+  用户消息 3；render_ui 结果 3
+  U seq=11: 图书馆、吃饭、回四明书院，帮我排一下。
+  U seq=50: 还是先吃饭吧
+  U seq=65: 可以，带我去食堂吧
+  R seq=39 ← call seq=38，display，rich，组件 Card,SortableSequence，user_accepted_candidate_not_independently_ui_validated
+  R seq=54 ← call seq=53，display，rich，组件 Card,SortableSequence，user_accepted_candidate_not_independently_ui_validated
+  R seq=134 ← call seq=133，display，rich，组件 Card,Text,Image，user_accepted_candidate_not_independently_ui_validated
+
+案例14.jsonl
+  用户消息 4；render_ui 结果 4
+  U seq=55: 饮水机不出水，先拍一张照片给我
+  U seq=241: 靠近一点
+  U seq=479: 那再看一下另一边吧
+  U seq=636: 把这几张放进反馈单，备注昨天也这样。
+  R seq=164 ← call seq=163，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=402 ← call seq=401，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=605 ← call seq=604，display，rich，组件 Image，user_accepted_candidate_not_independently_ui_validated
+  R seq=640 ← call seq=639，form，rich，组件 Card,Tabs,TabContent,Image,DynamicForm,Button，user_accepted_candidate_not_independently_ui_validated
+
+案例15.jsonl
+  用户消息 2；render_ui 结果 2
+  U seq=9: 以后找林老师拿材料，先到门口敲门，等老师放好，拍给我确认，再送回来。
+  U seq=39: 老师不在就告诉我，不需要一直在那等
+  R seq=27 ← call seq=26，display，rich，组件 Stack,Heading,Text,Card,Workflow,Button，user_accepted_candidate_not_independently_ui_validated
+  R seq=44 ← call seq=43，display，rich，组件 Stack,Section,Text,Card,Workflow,Button，user_accepted_candidate_not_independently_ui_validated
+

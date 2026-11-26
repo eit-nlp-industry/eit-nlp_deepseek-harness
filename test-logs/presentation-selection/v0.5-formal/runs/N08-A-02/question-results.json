@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_Nv1gsJjEMmEFgHq8rDgu0379",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"alt_slot\", \"header\": \"选择替代时段\", \"question\": \"R-01（2026年11月23日）16:00–17:00 已约满，请选择替代时段：\", \"options\": [{\"label\": \"17:00–18:00\", \"description\": \"紧接原目标时段，当天真实可用的时段之一。\"}, {\"label\": \"18:00–19:00\", \"description\": \"当天另一个真实可用的时段，开始时间更晚。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_Nv1gsJjEMmEFgHq8rDgu0379"
+      },
+      "toolCallId": "call_00_Nv1gsJjEMmEFgHq8rDgu0379",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"alt_slot\",\"selected\":[\"17:00–18:00\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "cee57b5c-78f6-481a-8074-7b50555d4e4e"
+    }
+  }
+]

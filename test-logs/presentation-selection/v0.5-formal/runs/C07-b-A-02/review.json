@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "用户拒绝替代时段后停止提交，保留晚间需求与设备条件，未报预约生效。"
+}

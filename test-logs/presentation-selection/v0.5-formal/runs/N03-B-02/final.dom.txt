@@ -1,0 +1,405 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 企业服务套餐固定材料呈现测评 刚刚":
+    - generic: 进行中
+    - generic: 企业服务套餐固定材料呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 测试笔记本挑选呈现 刚刚":
+    - generic: 已完成
+    - generic: 测试笔记本挑选呈现
+    - generic: 刚刚
+  - treeitem "6000元内出差笔记本推荐 刚刚" [selected]:
+    - generic: 6000元内出差笔记本推荐
+    - generic: 刚刚
+  - treeitem "已完成 企业服务套餐介绍测评 刚刚":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 刚刚
+  - treeitem "支付状态简洁卡片呈现 7分钟":
+    - generic: 支付状态简洁卡片呈现
+    - generic: 7分钟
+  - treeitem "已完成 支付状态卡片呈现测评 7分钟":
+    - generic: 已完成
+    - generic: 支付状态卡片呈现测评
+    - generic: 7分钟
+  - treeitem "图书馆预约必要吗（C26-B-02） 8分钟":
+    - generic: 图书馆预约必要吗（C26-B-02）
+    - generic: 8分钟
+  - treeitem "已完成 图书馆预约简短问答 8分钟":
+    - generic: 已完成
+    - generic: 图书馆预约简短问答
+    - generic: 8分钟
+  - treeitem "已完成 握手交互状态卡片呈现 9分钟":
+    - generic: 已完成
+    - generic: 握手交互状态卡片呈现
+    - generic: 9分钟
+  - treeitem "已完成 握手确认卡片呈现 9分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 9分钟
+  - treeitem "握手状态卡片渲染测评 9分钟":
+    - generic: 握手状态卡片渲染测评
+    - generic: 9分钟
+  - treeitem "已完成 握手交互卡片呈现 9分钟":
+    - generic: 已完成
+    - generic: 握手交互卡片呈现
+    - generic: 9分钟
+  - treeitem "已完成 Workflow 追加分支编辑器测评 10分钟":
+    - generic: 已完成
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 10分钟
+  - treeitem "饮水机维修照片呈现测评 11分钟":
+    - generic: 饮水机维修照片呈现测评
+    - generic: 11分钟
+  - treeitem "已完成 工作流条件分支测评呈现 11分钟":
+    - generic: 已完成
+    - generic: 工作流条件分支测评呈现
+    - generic: 11分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 11分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 11分钟
+  - treeitem "已完成 报销流程草稿编辑保存 14分钟":
+    - generic: 已完成
+    - generic: 报销流程草稿编辑保存
+    - generic: 14分钟
+  - treeitem "已完成 报销流程整理与草稿保存 14分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 14分钟
+  - treeitem "已完成 Workflow材料取送流程测评 14分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 14分钟
+  - treeitem "已完成 监测文件处理任务失败通知 16分钟":
+    - generic: 已完成
+    - generic: 监测文件处理任务失败通知
+    - generic: 16分钟
+  - treeitem "已完成 文件处理任务监测模拟 16分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 16分钟
+  - treeitem "已完成 饮水机不出水照片评测 17分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 17分钟
+  - treeitem "已完成 平面图快递路线静态示意 19分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 19分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 19分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 19分钟
+  - treeitem "已完成 三项工作排期草稿确认 20分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 20分钟
+  - treeitem "已完成 安排三项工作并确认草稿 20分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 20分钟
+  - treeitem "已完成 会议室预约改期草稿 22分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 22分钟
+  - treeitem "已完成 会议室预约改期草稿测评 22分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 22分钟
+  - treeitem "已完成 售后申请草稿填写与确认 23分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 23分钟
+  - treeitem "已完成 售后申请草稿填写测评 23分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 23分钟
+  - treeitem "已完成 商品退货多视角图片呈现 24分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 24分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "食堂路线状态卡片呈现 25分钟":
+    - generic: 食堂路线状态卡片呈现
+    - generic: 25分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 25分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 25分钟
+  - treeitem "已完成 包裹照片确认对象状态 27分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 27分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 28分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 28分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 30分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 30分钟
+  - treeitem "带用户去食堂的状态卡片测评 31分钟":
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 31分钟
+  - treeitem "已完成 活动需求确认与汇总 31分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 31分钟
+  - treeitem "已完成 活动需求确认测评 31分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 31分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 6000元内出差笔记本推荐
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 N03-B-02】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N03-B-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N03-B-02,values=实际提交值)获取模拟结果，不提前提交。 用户需求：从给定笔记本清单中选一款6000元以内、轻于1.5kg、适合出差的机型。先满足价格和重量，再优先续航，解释为什么没选其他款。 指定呈现方式：Table/比较卡片+推荐结论；不要求尚未确认的本地筛选引擎。。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 14:04
+- button "复制":
+- status: 已完成
+- button "已完成，用时 2分35秒":
+  - generic: 已完成，用时 2分35秒
+- paragraph: 我先载入这道题的固定材料。
+- heading "出差笔记本选购结论" [level=2]
+- paragraph:
+  - strong: 筛选规则
+  - text: ：先把价格不超过 6000 元、整机重量轻于 1.5 kg 作为必须满足的条件；都满足后，再比较标称续航，优先选续航更长的。
+- table:
+  - rowgroup:
+    - row "机型 价格 重量 标称续航 是否达标 结论":
+      - columnheader "机型"
+      - columnheader "价格"
+      - columnheader "重量"
+      - columnheader "标称续航"
+      - columnheader "是否达标"
+      - columnheader "结论"
+  - rowgroup:
+    - row "model-a 5899 元 1.30 kg 10 小时 满足 推荐":
+      - cell "model-a":
+        - strong: model-a
+      - cell "5899 元"
+      - cell "1.30 kg"
+      - cell "10 小时"
+      - cell "满足"
+      - cell "推荐":
+        - strong: 推荐
+    - row "model-d 5999 元 1.49 kg 8 小时 满足 备选":
+      - cell "model-d"
+      - cell "5999 元"
+      - cell "1.49 kg"
+      - cell "8 小时"
+      - cell "满足"
+      - cell "备选"
+    - row "model-b 5599 元 1.70 kg 14 小时 超重 不入选":
+      - cell "model-b"
+      - cell "5599 元"
+      - cell "1.70 kg"
+      - cell "14 小时"
+      - cell "超重"
+      - cell "不入选"
+    - row "model-c 6399 元 1.20 kg 12 小时 超预算 不入选":
+      - cell "model-c"
+      - cell "6399 元"
+      - cell "1.20 kg"
+      - cell "12 小时"
+      - cell "超预算"
+      - cell "不入选"
+- paragraph:
+  - strong: 推荐 model-a
+  - text: ：它是同时满足价格和重量的两款机型中续航更长的一款，10 小时对比 8 小时，差 2 小时，适合出差时长时间移动使用；5899 元没有超过 6000 元的预算；1.30 kg 也明显低于 1.5 kg，方便携带。
+- paragraph:
+  - strong: 为什么没选其他款
+  - text: ：
+- list:
+  - strong: model-b
+  - text: ：重量 1.70 kg，超过 1.5 kg 这个必须满足的条件。它的续航虽然最长，有 14 小时，但按需求不能作为候选机型。
+  - strong: model-c
+  - text: ：价格 6399 元，超出 6000 元预算。它最轻，为 1.20 kg，续航也有 12 小时，但同样出局。
+  - strong: model-d
+  - text: ：价格和重量都合格，但续航只有 8 小时，在合格机型里不如 model-a。
+- paragraph: 以上是这批固定材料中虚构机型的参数对照，并非实际购买建议。如果需要，可以告诉我最终定哪一款，我再根据你的确认继续后续步骤。
+- heading "出差笔记本选购对照（预算≤6000元、重量<1.5kg）" [level=1]
+- alert:
+  - img "info-circle":
+  - generic: 筛选标准
+  - generic: 先过滤：价格≤6000元 且 重量<1.5kg；合格机型中优先续航更长者
+- heading "步骤说明" [level=3]
+- img "check":
+- generic: 预算筛选
+- generic: 价格≤6000元
+- img "check":
+- generic: 重量筛选
+- generic: 重量<1.5kg
+- img "check":
+- generic: 续航优先
+- generic: 合格机型中优先续航更长者
+- heading "机型对照" [level=2]
+- generic: model-a
+- generic: 机型：
+- generic: model-a
+- generic: 价格：
+- generic: 5899元
+- generic: 重量：
+- generic: 1.30kg
+- generic: 标称续航：
+- generic: 标称10小时
+- generic: 是否满足（≤6000元且<1.5kg）：
+- generic: 满足价格与重量
+- generic: 结论：
+- generic: 推荐
+- generic: model-d
+- generic: 机型：
+- generic: model-d
+- generic: 价格：
+- generic: 5999元
+- generic: 重量：
+- generic: 1.49kg
+- generic: 标称续航：
+- generic: 标称8小时
+- generic: 是否满足（≤6000元且<1.5kg）：
+- generic: 满足价格与重量
+- generic: 结论：
+- generic: 备选（续航较短）
+- generic: model-b
+- generic: 机型：
+- generic: model-b
+- generic: 价格：
+- generic: 5599元
+- generic: 重量：
+- generic: 1.70kg
+- generic: 标称续航：
+- generic: 标称14小时
+- generic: 是否满足（≤6000元且<1.5kg）：
+- generic: 超出重量上限
+- generic: 结论：
+- generic: 不入选
+- generic: model-c
+- generic: 机型：
+- generic: model-c
+- generic: 价格：
+- generic: 6399元
+- generic: 重量：
+- generic: 1.20kg
+- generic: 标称续航：
+- generic: 标称12小时
+- generic: 是否满足（≤6000元且<1.5kg）：
+- generic: 超出预算
+- generic: 结论：
+- generic: 不入选
+- heading "推荐结论" [level=2]
+- generic: 推荐机型：
+- generic: model-a
+- alert:
+  - img "check-circle":
+  - generic: 推荐 model-a
+  - generic: 在价格≤6000元且重量<1.5kg的机型中续航最长（10小时，高于model-d的8小时）
+- heading "未入选原因" [level=2]
+- generic: model-b
+- generic: 1.70kg，超过1.5kg重量上限，先被淘汰（尽管续航14小时最长）
+- generic: model-c
+- generic: 6399元，超出6000元预算，先被淘汰（尽管1.20kg最轻、续航12小时）
+- heading "出处" [level=3]
+- generic: 以上为固定材料中的虚构机型参数对照，非实际购买建议。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 9.4K tok":
+  - generic: 用量 9.4K tok
+- generic: 14:07
+- generic: B的续航更好，为什么不选B？
+- generic: 14:10
+- button "复制":
+- status: 已完成
+- button "已完成，用时 3秒":
+  - generic: 已完成，用时 3秒
+- paragraph:
+  - text: 因为 B 不属于“合格候选”，而现在的优先级是
+  - strong: 先筛选、再排序
+  - text: 。
+- list:
+  - text: 你的需求里，“价格不超过 6000 元、整机轻于 1.5 kg”是
+  - strong: 必须满足的硬性条件
+  - text: ，不是加分项；续航只在通过这两项筛选的机型中比较。
+  - listitem: model-b：5599 元 ✅ 通过价格筛选，1.70 kg ❌ 比 1.5 kg 的整机重量上限多出 0.2 kg，因此直接出局。
+  - listitem: 真正进入续航比较的只有 model-a（1.30 kg / 10 小时）和 model-d（1.49 kg / 8 小时）两款。在这两款里，model-a 的续航更长，所以推荐 model-a。
+- paragraph: 也就是说，并没有把 B 的 14 小时当成不重要；只是按你定的顺序，它没能进入比较续航这一步。它和 model-c 的情况类似：model-c 是唯一在续航和重量上都可能压过 model-a 的机型，但 6399 元超出了 6000 元预算，因此也在前一轮被排除。
+- paragraph:
+  - text: 如果
+  - strong: 重量上限可以放宽到 1.7 kg 左右
+  - text: ，那结论就会变：model-b 会以 14 小时续航成为这个区间里续航最长的机型，而且它还比 model-a 便宜 300 元。要不要按“重量可放宽”重新比较？你也可以告诉我能把重量上限或预算放宽到多少，我会按新条件重新排序。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 4.3K tok":
+  - generic: 用量 4.3K tok
+- generic: 14:10
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 0%":
+  - generic: 0%

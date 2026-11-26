@@ -1,0 +1,179 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_uX5pdqHfz185E6uqwHQq4616",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"form\", \"intent\": \"rich_content\", \"components\": [\"SortableSequence\"], \"locale\": \"zh-CN\", \"business_data\": {\"title\": \"调整你的行程顺序\", \"subtitle\": \"拖动下面三个地点卡片排序，排好后点「应用顺序」。仅保存排序草稿，不导航。\", \"items\": [{\"id\": \"lib\", \"label\": \"图书馆\"}, {\"id\": \"canteen\", \"label\": \"食堂\"}, {\"id\": \"college\", \"label\": \"四明书院\"}], \"initialOrder\": [\"lib\", \"canteen\", \"college\"], \"applyLabel\": \"应用顺序\", \"applyRoute\": \"route.order.apply\", \"notes\": [\"四明书院的地图位置尚未确认。\", \"当前初始顺序：图书馆 → 食堂 → 四明书院。\"]}, \"user_query\": \"生成一个 json-render 页面：根节点用 Stack（纵向，gap 16）承载两个兄弟节点，顺序为 1) SortableSequence，2) 独立的 Button（应用按钮）。禁止把按钮放进 SortableSequence 的 children —— SortableSequence 是叶子组件。SortableSequence 绑定 business_data.items（id 用稳定 ID：lib、canteen、college；显示 label 分别对应 图书馆、食堂、四明书院），其 value 用 $bindState 绑定到 /_ui/order，初始值为完整 ID 数组 business_data.initialOrder = [\\\"lib\\\",\\\"canteen\\\",\\\"college\\\"]，支持实际拖动改变顺序，拖动后顺序必须按稳定 ID 回传且不丢失任何一项。Button 文本为 business_data.applyLabel（应用顺序），触发事件 route.order.apply，事件载荷字段 order 用 $state 读取 /_ui/order 的最新值，并把全部 items（含 id 与 label）一并保留回传。Stack 顶部放标题 business_data.title 与说明 business_data.subtitle，尾部用小号文字展示 notes 两条提示。页面只用 SortableSequence 这一个 rich 组件，不额外添加其他 rich 组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "subtitle",
+                "sortable",
+                "apply",
+                "note0",
+                "note1"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "调整你的行程顺序",
+                "level": "h2"
+              }
+            },
+            "subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "sortable": {
+              "type": "SortableSequence",
+              "props": {
+                "items": [
+                  {
+                    "id": "lib",
+                    "title": "图书馆"
+                  },
+                  {
+                    "id": "canteen",
+                    "title": "食堂"
+                  },
+                  {
+                    "id": "college",
+                    "title": "四明书院"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/order"
+                },
+                "disabled": false,
+                "showHandle": true
+              }
+            },
+            "apply": {
+              "type": "Button",
+              "props": {
+                "label": "应用顺序",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "route.order.apply",
+                    "payload": {
+                      "order": {
+                        "$state": "/_ui/order"
+                      },
+                      "items": {
+                        "$state": "/items"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "note0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notes/0"
+                },
+                "variant": "muted"
+              }
+            },
+            "note1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/notes/1"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "调整你的行程顺序",
+            "subtitle": "拖动下面三个地点卡片排序，排好后点「应用顺序」。仅保存排序草稿，不导航。",
+            "items": [
+              {
+                "id": "lib",
+                "label": "图书馆"
+              },
+              {
+                "id": "canteen",
+                "label": "食堂"
+              },
+              {
+                "id": "college",
+                "label": "四明书院"
+              }
+            ],
+            "initialOrder": [
+              "lib",
+              "canteen",
+              "college"
+            ],
+            "applyLabel": "应用顺序",
+            "applyRoute": "route.order.apply",
+            "notes": [
+              "四明书院的地图位置尚未确认。",
+              "当前初始顺序：图书馆 → 食堂 → 四明书院。"
+            ],
+            "_ui": {
+              "order": [
+                "lib",
+                "canteen",
+                "college"
+              ]
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_uX5pdqHfz185E6uqwHQq4616"
+      },
+      "toolCallId": "call_00_uX5pdqHfz185E6uqwHQq4616",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。本轮在此结束，等待用户提交。不要再调用工具，也不要复述界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "f19549f1-2008-4a1f-bc07-6e735687cc1e"
+    }
+  }
+]

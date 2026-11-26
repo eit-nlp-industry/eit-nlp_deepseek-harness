@@ -1,0 +1,58 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 33,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_msuARc60nzHhbg4GoBCC5695",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"next_step\", \"header\": \"下一步\", \"question\": \"背面和瑕疵细节图像尚未发布，你希望怎样继续？\", \"options\": [{\"label\": \"等背面和细节图像发布后再一起核对（推荐）\", \"description\": \"只有正面图时无法评估瑕疵，等三个视角齐全再决定是否申请退货。\"}, {\"label\": \"先只看正面图，暂不判断退货\", \"description\": \"我会保留当前呈现，不做任何退货资格判断。\"}, {\"label\": \"补充说明你想重点看的瑕疵位置\", \"description\": \"你可以描述关注部位，待细节图发布后优先核对那里。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_msuARc60nzHhbg4GoBCC5695"
+      },
+      "toolCallId": "call_00_msuARc60nzHhbg4GoBCC5695",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"next_step\",\"selected\":[\"等背面和细节图像发布后再一起核对（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "486c4b47-f19b-48c1-82fd-cdf2c5cab8a4"
+    }
+  },
+  {
+    "call_seq": 50,
+    "result_seq": 51,
+    "call": {
+      "turn": 1,
+      "step": 6,
+      "callId": "call_00_9SXbsaA9W6Y3dWAAooO89538",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"是否退货\", \"id\": \"return_decision\", \"multi_select\": false, \"options\": [{\"description\": \"我会把退货申请草稿（商品 item-lamp-01、退货原因：边角划痕）记录下来，交你确认后再提交。\", \"label\": \"核对完了，起草退货申请\"}, {\"description\": \"不做任何申请动作，当前三个视角保留供你继续比对。\", \"label\": \"先不申请，再看看\"}, {\"description\": \"例如需要更近距离的划痕图或更多角度，我会按你指定的位置继续核对。\", \"label\": \"想再看其他部位\"}], \"question\": \"三个视角已可核对，你决定怎么处理？\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_9SXbsaA9W6Y3dWAAooO89538"
+      },
+      "toolCallId": "call_00_9SXbsaA9W6Y3dWAAooO89538",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"return_decision\",\"selected\":[],\"custom\":\"我要申请退货，先不要提交。\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "7e75d3d3-0d66-424a-9646-9364fb34ff4f"
+    }
+  }
+]

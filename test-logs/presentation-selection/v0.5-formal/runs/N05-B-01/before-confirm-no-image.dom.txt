@@ -1,0 +1,268 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "进行中 包裹照片确认呈现测评 刚刚":
+    - generic: 进行中
+    - generic: 包裹照片确认呈现测评
+    - generic: 刚刚
+  - treeitem "等待回答 包裹照片确认组件测评" [selected]:
+    - generic: 等待回答
+    - generic: 包裹照片确认组件测评
+    - generic: 待回答
+  - treeitem "已完成 活动需求三字段表单确认 1分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 1分钟
+  - treeitem "已完成 活动需求三字段表单确认 1分钟":
+    - generic: 已完成
+    - generic: 活动需求三字段表单确认
+    - generic: 1分钟
+  - treeitem "已完成 企业服务套餐固定材料呈现测评 1分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐固定材料呈现测评
+    - generic: 1分钟
+  - treeitem "测试笔记本挑选呈现 1分钟":
+    - generic: 测试笔记本挑选呈现
+    - generic: 1分钟
+  - treeitem "已完成 6000元内出差笔记本推荐 1分钟":
+    - generic: 已完成
+    - generic: 6000元内出差笔记本推荐
+    - generic: 1分钟
+  - treeitem "已完成 企业服务套餐介绍测评 1分钟":
+    - generic: 已完成
+    - generic: 企业服务套餐介绍测评
+    - generic: 1分钟
+  - treeitem "已完成 支付状态简洁卡片呈现 8分钟":
+    - generic: 已完成
+    - generic: 支付状态简洁卡片呈现
+    - generic: 8分钟
+  - treeitem "已完成 支付状态卡片呈现测评 9分钟":
+    - generic: 已完成
+    - generic: 支付状态卡片呈现测评
+    - generic: 9分钟
+  - treeitem "已完成 图书馆预约必要吗（C26-B-02） 9分钟":
+    - generic: 已完成
+    - generic: 图书馆预约必要吗（C26-B-02）
+    - generic: 9分钟
+  - treeitem "已完成 图书馆预约简短问答 9分钟":
+    - generic: 已完成
+    - generic: 图书馆预约简短问答
+    - generic: 9分钟
+  - treeitem "握手交互状态卡片呈现 10分钟":
+    - generic: 握手交互状态卡片呈现
+    - generic: 10分钟
+  - treeitem "已完成 握手确认卡片呈现 11分钟":
+    - generic: 已完成
+    - generic: 握手确认卡片呈现
+    - generic: 11分钟
+  - treeitem "已完成 握手状态卡片渲染测评 11分钟":
+    - generic: 已完成
+    - generic: 握手状态卡片渲染测评
+    - generic: 11分钟
+  - treeitem "已完成 握手交互卡片呈现 11分钟":
+    - generic: 已完成
+    - generic: 握手交互卡片呈现
+    - generic: 11分钟
+  - treeitem "Workflow 追加分支编辑器测评 11分钟":
+    - generic: Workflow 追加分支编辑器测评
+    - generic: 11分钟
+  - treeitem "已完成 饮水机维修照片呈现测评 12分钟":
+    - generic: 已完成
+    - generic: 饮水机维修照片呈现测评
+    - generic: 12分钟
+  - treeitem "已完成 工作流条件分支测评呈现 12分钟":
+    - generic: 已完成
+    - generic: 工作流条件分支测评呈现
+    - generic: 12分钟
+  - treeitem "已完成 Workflow编辑器材料呈现测评 13分钟":
+    - generic: 已完成
+    - generic: Workflow编辑器材料呈现测评
+    - generic: 13分钟
+  - treeitem "报销流程草稿编辑保存 15分钟":
+    - generic: 报销流程草稿编辑保存
+    - generic: 15分钟
+  - treeitem "已完成 报销流程整理与草稿保存 15分钟":
+    - generic: 已完成
+    - generic: 报销流程整理与草稿保存
+    - generic: 15分钟
+  - treeitem "已完成 Workflow材料取送流程测评 16分钟":
+    - generic: 已完成
+    - generic: Workflow材料取送流程测评
+    - generic: 16分钟
+  - treeitem "监测文件处理任务失败通知 17分钟":
+    - generic: 监测文件处理任务失败通知
+    - generic: 17分钟
+  - treeitem "已完成 文件处理任务监测模拟 17分钟":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 17分钟
+  - treeitem "已完成 饮水机不出水照片评测 19分钟":
+    - generic: 已完成
+    - generic: 饮水机不出水照片评测
+    - generic: 19分钟
+  - treeitem "平面图快递路线静态示意 21分钟":
+    - generic: 平面图快递路线静态示意
+    - generic: 21分钟
+  - treeitem "已完成 平面图快递路线静态示意说明 21分钟":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 21分钟
+  - treeitem "三项工作排期草稿确认 22分钟":
+    - generic: 三项工作排期草稿确认
+    - generic: 22分钟
+  - treeitem "已完成 安排三项工作并确认草稿 22分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 22分钟
+  - treeitem "会议室预约改期草稿 24分钟":
+    - generic: 会议室预约改期草稿
+    - generic: 24分钟
+  - treeitem "已完成 会议室预约改期草稿测评 24分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 24分钟
+  - treeitem "售后申请草稿填写与确认 24分钟":
+    - generic: 售后申请草稿填写与确认
+    - generic: 24分钟
+  - treeitem "已完成 售后申请草稿填写测评 24分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 24分钟
+  - treeitem "商品退货多视角图片呈现 26分钟":
+    - generic: 商品退货多视角图片呈现
+    - generic: 26分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 26分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 26分钟
+  - treeitem "已完成 食堂导航状态卡片呈现 26分钟":
+    - generic: 已完成
+    - generic: 食堂导航状态卡片呈现
+    - generic: 26分钟
+  - treeitem "已完成 包裹照片确认对象状态 28分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 28分钟
+  - treeitem "确认包裹照片与订单尾号 29分钟":
+    - generic: 确认包裹照片与订单尾号
+    - generic: 29分钟
+  - treeitem "已完成 测评 C21-B-01 食堂导航 31分钟":
+    - generic: 已完成
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 31分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 32分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 32分钟
+  - treeitem "活动需求确认与汇总 32分钟":
+    - generic: 活动需求确认与汇总
+    - generic: 32分钟
+  - treeitem "已完成 活动需求确认测评 32分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 32分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 包裹照片确认组件测评
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- generic: 【全量正式呈现测评 N05-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=N05-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=N05-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：展示待寄出的包裹照片和订单尾号，让我确认是不是这一件；确认后只记录对象状态，不寄件。 指定呈现方式：Image+简短确认提示，完整显示同一图，固定src、准确alt。。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 14:11
+- button "复制":
+- paragraph: 我先加载本例的固定材料。
+- text: 等待你的操作 · 图中这件包裹，就是订单尾号 8241 待寄出的那一件吗？确认后我只记录对象状态，不会寄出。
+- button "工具调用 benchmark_fixture · initialize":
+  - generic: 工具调用
+  - generic: benchmark_fixture · initialize
+- 'button "思考 Now render UI with Image + short confirmation prompt. Facts: parcel-8241, tail 8241, pending confirmation. Image src must be the fixed URL string. The instruction: \"image need to use material given complete URL (native) or same-origin path string (json-render)\". For render_ui Image, business_data={\"image\": \"<URL>\", \"alt\": \"...\"}, request Image.props.src as that fixed string."':
+  - generic: 思考
+  - generic: "Now render UI with Image + short confirmation prompt. Facts: parcel-8241, tail 8241, pending confirmation. Image src must be the fixed URL string. The instruction: \"image need to use material given complete URL (native) or same-origin path string (json-render)\". For render_ui Image, business_data={\"image\": \"<URL>\", \"alt\": \"...\"}, request Image.props.src as that fixed string."
+- generic: 界面已附在回答末尾。
+- button "思考 Now ask the user for confirmation.":
+  - generic: 思考
+  - generic: Now ask the user for confirmation.
+- generic: 运行中
+- button "提问 等待回答":
+  - generic: 提问
+  - generic: 等待回答
+  - generic: 提问
+  - generic: 等待回答
+- status: 深度求索中
+- generic: ···
+- region "图中这件包裹，就是订单尾号 8241 待寄出的那一件吗？确认后我只记录对象状态，不会寄出。":
+  - generic: 确认包裹
+  - button "收起问题卡片" [expanded]:
+  - button "放弃整组问题":
+  - heading "图中这件包裹，就是订单尾号 8241 待寄出的那一件吗？确认后我只记录对象状态，不会寄出。" [level=2]
+  - radiogroup:
+    - radio "是，就是这一件":
+      - generic: "1"
+      - generic: 是，就是这一件
+      - generic: 仅把 parcel-8241 标记为已确认为待寄出对象，不执行寄件。
+    - radio "不是这一件":
+      - generic: "2"
+      - generic: 不是这一件
+      - generic: 保持未确认状态，不记录为待寄出对象。
+    - radio "图片没显示，我看不到":
+      - generic: "3"
+      - generic: 图片没显示，我看不到
+      - generic: 先不记录状态，稍后可重试展示图片。
+    - textbox "输入你的答案"
+  - button "上一题" [disabled]:
+  - generic: 1 / 1
+  - button "下一题" [disabled]:
+  - status
+  - button "跳过"
+  - button "提交" [disabled]

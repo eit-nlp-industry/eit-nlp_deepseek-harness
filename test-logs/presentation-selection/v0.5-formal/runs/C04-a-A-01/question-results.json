@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_NU6uukONRHDg0go5xeSd5166",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"purpose\", \"header\": \"使用场景\", \"question\": \"你主要想用这个场所做什么？\", \"options\": [{\"label\": \"安静阅读、自习\", \"description\": \"需要少干扰的环境，更适合图书馆这类场所。\"}, {\"label\": \"多人交流、讨论\", \"description\": \"需要能正常说话的空间，更适合书院这类公共交流场所。\"}, {\"label\": \"两者都有\", \"description\": \"我会按兼顾阅读与交流来考虑。\"}]}, {\"id\": \"company\", \"header\": \"同行情况\", \"question\": \"大概会和几个人一起去？\", \"options\": [{\"label\": \"一个人\"}, {\"label\": \"2–4 人\"}, {\"label\": \"5 人以上\"}], \"multi_select\": false}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_NU6uukONRHDg0go5xeSd5166"
+      },
+      "toolCallId": "call_00_NU6uukONRHDg0go5xeSd5166",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"purpose\",\"selected\":[],\"custom\":\"想安静读书\"},{\"id\":\"company\",\"selected\":[]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "660baaeb-81f6-4ce3-8be8-ca095b3796b7"
+    }
+  }
+]

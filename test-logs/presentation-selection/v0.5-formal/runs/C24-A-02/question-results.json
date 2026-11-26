@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_uOVbtjA8GRmRAk2netoC3782",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_save\", \"header\": \"确认保存\", \"question\": \"这份带“老师不在就通知并结束”分支的草稿，是否按当前文字保存？\", \"options\": [{\"label\": \"确认保存（推荐）\", \"description\": \"按上面的文字保存草稿，不执行任何实际动作。\"}, {\"label\": \"需要修改\", \"description\": \"先不改，您可以告诉我要调整哪一步。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_uOVbtjA8GRmRAk2netoC3782"
+      },
+      "toolCallId": "call_00_uOVbtjA8GRmRAk2netoC3782",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_save\",\"selected\":[\"确认保存（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "ce419951-9510-41a0-b8b6-e843512b72a6"
+    }
+  }
+]

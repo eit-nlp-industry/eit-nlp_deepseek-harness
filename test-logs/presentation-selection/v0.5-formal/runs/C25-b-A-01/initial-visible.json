@@ -1,0 +1,6 @@
+{
+  "simulated": true,
+  "case_id": "C25-b",
+  "facts": "本题不控制机器人；请求交由固定模拟结果回放。当前动作handshake-01状态pending，尚无成功或失败结果。",
+  "assets": []
+}

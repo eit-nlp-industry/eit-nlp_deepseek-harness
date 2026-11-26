@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_q2btTW4yoycprc42Gkdn1800",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_guide\", \"header\": \"确认向导\", \"question\": \"画面中这位就是要跟随的同学吗？\", \"options\": [{\"label\": \"是，就是这位同学（推荐）\", \"description\": \"确认 person-guide 为跟随对象，随后启动 follow-01。\"}, {\"label\": \"不是这位\", \"description\": \"当前材料中没有其他人选，需你说明目标同学特征。\"}, {\"label\": \"先不跟随\", \"description\": \"保持任务未启动，不进行任何跟随动作。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_q2btTW4yoycprc42Gkdn1800"
+      },
+      "toolCallId": "call_00_q2btTW4yoycprc42Gkdn1800",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_guide\",\"selected\":[\"是，就是这位同学（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "3eb7a8f0-3dc6-4c84-8126-0105614b5921"
+    }
+  }
+]

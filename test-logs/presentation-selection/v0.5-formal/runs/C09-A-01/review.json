@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "事件前无识别图片通知，真实环境事件后图片加载与已确认person-a小张一致；重复业务事件未重复发图，但仍发文字说明。"
+}

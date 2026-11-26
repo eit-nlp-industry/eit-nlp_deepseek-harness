@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 2,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "三套餐与团队详情文字正确，真实切换成功；首轮display被原生提问阻塞，回答后才出现Tabs。最终重绘团队详情两个组件未注册，已展开却没有详情；旧卡片与重复正文并存。"
+}

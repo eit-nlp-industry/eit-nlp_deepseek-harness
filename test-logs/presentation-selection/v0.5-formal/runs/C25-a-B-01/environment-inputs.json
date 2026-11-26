@@ -1,0 +1,27 @@
+[
+  {
+    "seq": 10,
+    "time": 1795154462675,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 37,
+    "time": 1795154517211,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C25-a-B-01-result",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C25-a-B-01-result\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"handshake-01模拟结果：成功。未控制真实机器人。\",\"assets\":[],\"simulated\":true,\"task_id\":\"handshake-01\",\"status\":\"succeeded\"}}"
+  }
+]

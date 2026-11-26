@@ -1,0 +1,286 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_oEj7WTShco777kK8kN3G9314",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"user_query\": \"渲染一张「安静读书地点推荐卡片」：卡片标题为推荐地点名称，突出安静、有座位两个条件，并把观察时间 14:00 作为必须保留的信息单列一行。卡片内放置一个 Image 组件，Image.props.src 使用材料给定的完整 URL 字符串 http://127.0.0.1:3080/api/media/bench05-lib-reading/content，alt 使用材料中的描述。卡片下方用一个简短说明列出同一观察时刻另一处地点（学院休息区 college-lounge）因正在举办活动而嘈杂，因此不推荐。整卡只使用 Image 这一个富组件，不添加其他富组件。\", \"business_data\": {\"title\": \"推荐：图书馆阅览区（lib-reading）\", \"recommended_place\": \"图书馆阅览区（lib-reading）\", \"observation_time\": \"14:00\", \"observation_label\": \"同一 14:00 观察\", \"conditions\": [\"安静\", \"有座位可用\"], \"quiet\": \"安静\", \"seats\": \"有座\", \"image\": \"http://127.0.0.1:3080/api/media/bench05-lib-reading/content\", \"alt\": \"MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture\", \"note\": \"同一观察时刻：学院休息区（college-lounge）正在举办活动，比较嘈杂，不适合读书。\", \"excluded_place\": {\"name\": \"学院休息区（college-lounge）\", \"observation_time\": \"14:00\", \"status\": \"正在活动、嘈杂\"}, \"image_disclaimer\": \"图像为材料给定的合成示意图（MOCK），仅作场景示意，不代表当前现场画面。\", \"fallback_text\": \"图书馆阅览区（lib-reading）：14:00 观察为安静、有座，适合读书；学院休息区（college-lounge）：同一时刻正在活动、嘈杂，不推荐。图为材料提供的合成示意图。\"}}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_oEj7WTShco777kK8kN3G9314"
+      },
+      "toolCallId": "call_00_oEj7WTShco777kK8kN3G9314",
+      "content": [
+        {
+          "type": "text",
+          "text": "Error: tool call timed out after 180000ms"
+        }
+      ],
+      "isError": true,
+      "id": "c3f4b1c3-d456-44f3-ae95-48581b12d1ad"
+    }
+  },
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_PSGICJGgg757djJyxDzg4968",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"alt\": \"MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture\", \"image\": \"/api/media/bench05-lib-reading/content\", \"observation_time\": \"14:00\", \"place\": \"图书馆阅览区（lib-reading）\", \"status\": \"安静、有座\", \"title\": \"安静读书推荐\", \"fallback_text\": \"14:00 观察：图书馆阅览区安静、有座。\"}, \"components\": [\"Image\"], \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"推荐卡片：标题、地点名、观察时间 14:00、安静有座状态，加一个 Image（Image.props.src 为 /api/media/bench05-lib-reading/content）。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Section",
+              "props": {
+                "title": "安静读书推荐",
+                "description": "逐项展示 business_data · 图书馆阅览区（lib-reading） · 14:00",
+                "headingLevel": "h2",
+                "bordered": false
+              },
+              "children": [
+                "main-stack"
+              ]
+            },
+            "main-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "notice",
+                "recommend-card",
+                "fields-card",
+                "source-card"
+              ]
+            },
+            "notice": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "展示说明",
+                "description": "当前 business_data 未包含步骤说明或对比字段；以下按已有字段逐项展示，未合并为摘要。",
+                "showIcon": true
+              }
+            },
+            "recommend-card": {
+              "type": "Card",
+              "props": {
+                "title": "推荐卡片",
+                "variant": "outlined"
+              },
+              "children": [
+                "recommend-stack"
+              ]
+            },
+            "recommend-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "recommend-image",
+                "recommend-heading",
+                "recommend-meta",
+                "recommend-text"
+              ]
+            },
+            "recommend-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lib-reading/content",
+                "alt": "MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture",
+                "caption": "图书馆阅览区（lib-reading）",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "recommend-heading": {
+              "type": "Heading",
+              "props": {
+                "text": "安静读书推荐",
+                "level": "h3"
+              }
+            },
+            "recommend-meta": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "center"
+              },
+              "children": [
+                "place-text",
+                "status-badge",
+                "time-badge"
+              ]
+            },
+            "place-text": {
+              "type": "Text",
+              "props": {
+                "content": "图书馆阅览区（lib-reading）",
+                "variant": "muted"
+              }
+            },
+            "status-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "安静、有座",
+                "variant": "success"
+              }
+            },
+            "time-badge": {
+              "type": "Badge",
+              "props": {
+                "label": "14:00",
+                "variant": "info"
+              }
+            },
+            "recommend-text": {
+              "type": "Text",
+              "props": {
+                "content": "14:00 观察：图书馆阅览区安静、有座。",
+                "variant": "default"
+              }
+            },
+            "fields-card": {
+              "type": "Card",
+              "props": {
+                "title": "business_data 逐项字段",
+                "variant": "default"
+              },
+              "children": [
+                "fields-descriptions"
+              ]
+            },
+            "fields-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "标题",
+                    "value": "安静读书推荐"
+                  },
+                  {
+                    "label": "地点名",
+                    "value": "图书馆阅览区（lib-reading）"
+                  },
+                  {
+                    "label": "观察时间",
+                    "value": "14:00"
+                  },
+                  {
+                    "label": "安静有座状态",
+                    "value": "安静、有座"
+                  },
+                  {
+                    "label": "图片地址",
+                    "value": "/api/media/bench05-lib-reading/content"
+                  },
+                  {
+                    "label": "替代文本",
+                    "value": "MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture"
+                  },
+                  {
+                    "label": "回退文案",
+                    "value": "14:00 观察：图书馆阅览区安静、有座。"
+                  },
+                  {
+                    "label": "数据出处",
+                    "value": "business_data"
+                  }
+                ]
+              }
+            },
+            "source-card": {
+              "type": "Card",
+              "props": {
+                "title": "出处与回退",
+                "variant": "filled"
+              },
+              "children": [
+                "source-stack"
+              ]
+            },
+            "source-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "source-origin",
+                "source-fallback"
+              ]
+            },
+            "source-origin": {
+              "type": "Text",
+              "props": {
+                "content": "数据出处：business_data 运行时状态。",
+                "variant": "muted"
+              }
+            },
+            "source-fallback": {
+              "type": "Text",
+              "props": {
+                "content": "回退文案：14:00 观察：图书馆阅览区安静、有座。",
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "alt": "MOCK LIBRARY READING; QUIET | SEATS AVAILABLE; synthetic fixture",
+            "image": "/api/media/bench05-lib-reading/content",
+            "observation_time": "14:00",
+            "place": "图书馆阅览区（lib-reading）",
+            "status": "安静、有座",
+            "title": "安静读书推荐",
+            "fallback_text": "14:00 观察：图书馆阅览区安静、有座。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_PSGICJGgg757djJyxDzg4968"
+      },
+      "toolCallId": "call_00_PSGICJGgg757djJyxDzg4968",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "6947a798-9a66-4d60-b8af-c81f30c201fc"
+    }
+  }
+]

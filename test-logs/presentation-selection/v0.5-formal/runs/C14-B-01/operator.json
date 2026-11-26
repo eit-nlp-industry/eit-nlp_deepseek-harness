@@ -1,0 +1,52 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C14",
+    "facts": "14:01右侧新观察，固定结论：有2个空位。只是当前观察，不等于预订。",
+    "assets": [
+      {
+        "id": "bench05-img-right",
+        "file": "bench05-img-right.png",
+        "alt": "MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture",
+        "source_id": "img-right",
+        "url": "http://127.0.0.1:3080/api/media/bench05-img-right/content",
+        "path": "/api/media/bench05-img-right/content",
+        "sha256": "5ceb1c86d80c273693963e51434a27852e315146bebaaf9a3684ee44576d87e3",
+        "width": 960,
+        "height": 540
+      }
+    ],
+    "asset_id": "img-right",
+    "view": "right",
+    "observed_at": "14:01",
+    "empty_seats": 2
+  },
+  "events": [
+    {
+      "id": "C14-B-01-right",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "14:01右侧新观察，固定结论：有2个空位。只是当前观察，不等于预订。",
+        "assets": [
+          {
+            "id": "bench05-img-right",
+            "file": "bench05-img-right.png",
+            "alt": "MOCK LIBRARY RIGHT; 14:01 | 2 EMPTY SEATS; synthetic fixture",
+            "source_id": "img-right",
+            "url": "http://127.0.0.1:3080/api/media/bench05-img-right/content",
+            "path": "/api/media/bench05-img-right/content",
+            "sha256": "5ceb1c86d80c273693963e51434a27852e315146bebaaf9a3684ee44576d87e3",
+            "width": 960,
+            "height": 540
+          }
+        ],
+        "simulated": true,
+        "asset_id": "img-right",
+        "view": "right",
+        "observed_at": "14:01",
+        "empty_seats": 2
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

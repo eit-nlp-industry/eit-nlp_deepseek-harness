@@ -42,6 +42,32 @@ function body(decision: JsonRenderSubmitDecision): { intro: string; data: Record
 }
 
 describe('json-render confirmation messages', () => {
+  it('keeps the content title when the host wraps a form with its action bar', () => {
+    const decision = decideJsonRenderSubmit(event('form.submit', {
+      form: { quantity: 30 }, form_action: { intent: 'reset', label: '恢复初始内容' },
+    }), { payload: payload({
+      main: { type: 'Stack', children: ['content', 'actions'] },
+      content: { type: 'Card', props: { title: '活动物资草稿' } },
+      actions: { type: 'Stack' },
+    }) })
+    expect(decision.action === 'send' && decision.text).toContain('当前活动物资草稿：\nquantity：30')
+  })
+  it.each([null, {}, { intent: 'reset' }, { intent: '', label: '恢复' }])('rejects incomplete action metadata without treating it as confirmation: %j', (form_action) => {
+    expect(decideJsonRenderSubmit(event('form.submit', { form: { quantity: 30 }, form_action }), { payload: payload({}) }))
+      .toMatchObject({ action: 'reject' })
+  })
+  it.each(['submit', 'save_draft', 'reset', 'skip', 'cancel', 'submit_and_add'])('forwards %s intent separately from the latest form values', (intent) => {
+    const decision = decideJsonRenderSubmit(event('form.submit', {
+      form: { quantity: 30, contact: '陈晨', note: '' },
+      form_action: { intent, label: '用户指定操作' },
+    }, 'submit'), { payload: payload({}) })
+    expect(decision.action).toBe('send')
+    if (decision.action !== 'send') throw new Error('expected form action')
+    expect(decision.text).toContain(`用户选择的表单操作：用户指定操作（${intent}）`)
+    expect(decision.text).toContain('quantity：30\ncontact：陈晨\nnote：未填写')
+    expect(decision.text).not.toContain('用户已提交表单')
+  })
+
   it('formats form values as readable user text and ignores the event type', () => {
     expect(formValues(event('form.submit'))).toEqual({})
     expect(formValues(event('form.submit', { city: '杭州' }))).toEqual({ city: '杭州' })

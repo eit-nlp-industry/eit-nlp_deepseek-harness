@@ -1,0 +1,63 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C08-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_nKUIf2JosBZUKi5wKCdD4544"
+      },
+      "toolCallId": "call_00_ET_nKUIf2JosBZUKi5wKCdD4544",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C08\",\"facts\":\"合成候选person-a和person-b，用户要求昵称小张关联person-a。初始未确认，确认后也只记录模拟状态，不做真实身份建档。\",\"assets\":[{\"id\":\"bench05-person-pair\",\"file\":\"bench05-person-pair.png\",\"alt\":\"MOCK CANDIDATES; A = GREY + CASE | B = BLUE + BAG; synthetic fixture\",\"source_id\":\"person-pair\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-person-pair/content\",\"path\":\"/api/media/bench05-person-pair/content\",\"sha256\":\"618f34452e8eb947b9d7c7a419c59782b42e321fb62d42e1bfaf16ffe4d2bf9e\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "3253c693-9914-4914-b009-e1726b68c442"
+    }
+  },
+  {
+    "call": {
+      "seq": 31,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C08-A-02",
+        "values": {
+          "nickname": "小张",
+          "person_id": "person-a",
+          "selected_label": "A",
+          "appearance": "灰色衣物 + 手提箱",
+          "confirmed": true
+        }
+      }
+    },
+    "result_seq": 32,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_VtkaAjfWKXGFA0L5srYz9706"
+      },
+      "toolCallId": "call_00_VtkaAjfWKXGFA0L5srYz9706",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "e79393f1-c2f8-445e-8069-2ccc20e5fa48"
+    }
+  }
+]

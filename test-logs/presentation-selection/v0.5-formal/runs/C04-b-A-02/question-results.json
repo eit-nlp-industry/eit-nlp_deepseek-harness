@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_S07ZTdpUyIR8pp1DJBMX8684",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"period\", \"header\": \"半日时段\", \"question\": \"校园半日游安排在上午还是下午？\", \"options\": [{\"label\": \"上午\", \"description\": \"上午半天游校园，之后自行安排其余行程。\"}, {\"label\": \"下午\", \"description\": \"下午半天游校园，上午可作其他安排。\"}]}, {\"id\": \"places\", \"header\": \"想去的地点\", \"question\": \"愿意去哪些地点？（可多选）\", \"multi_select\": true, \"options\": [{\"label\": \"图书馆\", \"description\": \"校园图书馆区域。\"}, {\"label\": \"食堂\", \"description\": \"校园食堂，用餐或体验餐饮。\"}, {\"label\": \"四明书院\", \"description\": \"四明书院。\"}]}, {\"id\": \"notes\", \"header\": \"补充想法\", \"question\": \"有其他想法或特别要求吗？（可直接填写，如同行人数、想看的重点、节奏偏好）\", \"options\": [{\"label\": \"暂无补充\", \"description\": \"先按所选时段和地点安排。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_S07ZTdpUyIR8pp1DJBMX8684"
+      },
+      "toolCallId": "call_00_S07ZTdpUyIR8pp1DJBMX8684",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"period\",\"selected\":[\"下午\"]},{\"id\":\"places\",\"selected\":[\"食堂\",\"四明书院\"]},{\"id\":\"notes\",\"selected\":[],\"custom\":\"少走路\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "dec5608a-6ed1-4768-a54a-fba20f17dc50"
+    }
+  }
+]

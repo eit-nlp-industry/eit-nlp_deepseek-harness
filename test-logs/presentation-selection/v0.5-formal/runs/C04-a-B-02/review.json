@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 4,
+  "presentation": "pass",
+  "reason": "用途真实表单提交后正确推荐；表单初始未知提示和等待继续回答仍保留，回复略重复。"
+}

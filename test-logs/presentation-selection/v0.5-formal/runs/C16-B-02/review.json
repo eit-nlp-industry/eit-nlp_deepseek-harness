@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 3,
+  "readability": 1,
+  "state": 3,
+  "presentation": "fail",
+  "reason": "文件Image生成失败，始终无图；模拟交接结果按事件更新，未假报真实取物，但无依据称此前图片已撤销发布；哈希、路径及business_data明细大量外露。"
+}

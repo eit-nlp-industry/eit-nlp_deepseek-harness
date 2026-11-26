@@ -1,0 +1,517 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_mVbEDuYYURz30gyWXNlI1137",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Tabs\", \"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"business_data\": {\"title\": \"东方理工校园导览：图书馆 · 食堂 · 四明书院\", \"subtitle\": \"按分类切换查看，图片为示意素材\", \"tabs\": [{\"key\": \"lib\", \"label\": \"图书馆\", \"name\": \"图书馆\", \"description\": \"安静阅读区，有讨论室；入馆需预约且以馆方答复为准。\", \"facts\": [\"安静阅读区\", \"设有讨论室\", \"入馆需要预约\", \"预约与入馆规则以馆方答复为准\"], \"unknown\": \"具体开放时段未给出\", \"image\": \"/api/media/bench05-lib/content\", \"image_alt\": \"MOCK LIBRARY; READING / DISCUSSION; synthetic fixture\"}, {\"key\": \"canteen\", \"label\": \"食堂\", \"name\": \"食堂\", \"description\": \"提供午餐，其余营业时间未知。\", \"facts\": [\"提供午餐\"], \"unknown\": \"早餐、晚餐等其他营业时间未知\", \"image\": \"/api/media/bench05-canteen/content\", \"image_alt\": \"MOCK CANTEEN; LUNCH AREA; synthetic fixture\"}, {\"key\": \"college\", \"label\": \"四明书院\", \"name\": \"四明书院\", \"description\": \"公共交流空间，投屏设备未知。\", \"facts\": [\"公共交流空间\"], \"unknown\": \"是否配备投屏设备未知\", \"image\": \"/api/media/bench05-college/content\", \"image_alt\": \"MOCK COLLEGE; COMMON AREA; synthetic fixture\"}]}, \"user_query\": \"用 Tabs 组件做三个分类标签页：图书馆、食堂、四明书院。每个标签页内先放对应 Image（图书馆用 /api/media/bench05-lib/content，食堂用 /api/media/bench05-canteen/content，四明书院用 /api/media/bench05-college/content），图片下方显示该场所的名称、一句话说明和已知要点列表，并单独标注「未知」项。数据全部来自 business_data，不要虚构任何时间、设备或预约结论。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "lg",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "subtitle",
+                "tabView",
+                "compareSection",
+                "note"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "东方理工校园导览：图书馆 · 食堂 · 四明书院",
+                "level": "h1"
+              }
+            },
+            "subtitle": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/subtitle"
+                },
+                "variant": "muted"
+              }
+            },
+            "tabView": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "lib",
+                    "label": "图书馆"
+                  },
+                  {
+                    "value": "canteen",
+                    "label": "食堂"
+                  },
+                  {
+                    "value": "college",
+                    "label": "四明书院"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/activeTab"
+                },
+                "defaultValue": "lib",
+                "disabled": false
+              },
+              "children": [
+                "tabLib",
+                "tabCanteen",
+                "tabCollege"
+              ]
+            },
+            "tabLib": {
+              "type": "TabContent",
+              "props": {
+                "value": "lib"
+              },
+              "children": [
+                "stackLib"
+              ]
+            },
+            "stackLib": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "imgLib",
+                "headLib",
+                "descLib",
+                "sectionLib",
+                "unknownLib"
+              ]
+            },
+            "imgLib": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lib/content",
+                "alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture",
+                "caption": "示意素材",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "headLib": {
+              "type": "Heading",
+              "props": {
+                "text": "图书馆",
+                "level": "h3"
+              }
+            },
+            "descLib": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/0/description"
+                },
+                "variant": "default"
+              }
+            },
+            "sectionLib": {
+              "type": "Section",
+              "props": {
+                "title": "已知要点",
+                "headingLevel": "h4",
+                "bordered": false
+              },
+              "children": [
+                "listLib"
+              ]
+            },
+            "listLib": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "安静阅读区"
+                  },
+                  {
+                    "title": "设有讨论室"
+                  },
+                  {
+                    "title": "入馆需要预约"
+                  },
+                  {
+                    "title": "预约与入馆规则以馆方答复为准"
+                  }
+                ],
+                "emptyText": "暂无已知要点"
+              }
+            },
+            "unknownLib": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "未知",
+                "description": "具体开放时段未给出",
+                "showIcon": true
+              }
+            },
+            "tabCanteen": {
+              "type": "TabContent",
+              "props": {
+                "value": "canteen"
+              },
+              "children": [
+                "stackCanteen"
+              ]
+            },
+            "stackCanteen": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "imgCanteen",
+                "headCanteen",
+                "descCanteen",
+                "sectionCanteen",
+                "unknownCanteen"
+              ]
+            },
+            "imgCanteen": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-canteen/content",
+                "alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture",
+                "caption": "示意素材",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "headCanteen": {
+              "type": "Heading",
+              "props": {
+                "text": "食堂",
+                "level": "h3"
+              }
+            },
+            "descCanteen": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/1/description"
+                },
+                "variant": "default"
+              }
+            },
+            "sectionCanteen": {
+              "type": "Section",
+              "props": {
+                "title": "已知要点",
+                "headingLevel": "h4",
+                "bordered": false
+              },
+              "children": [
+                "listCanteen"
+              ]
+            },
+            "listCanteen": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "提供午餐"
+                  }
+                ],
+                "emptyText": "暂无已知要点"
+              }
+            },
+            "unknownCanteen": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "未知",
+                "description": "早餐、晚餐等其他营业时间未知",
+                "showIcon": true
+              }
+            },
+            "tabCollege": {
+              "type": "TabContent",
+              "props": {
+                "value": "college"
+              },
+              "children": [
+                "stackCollege"
+              ]
+            },
+            "stackCollege": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "imgCollege",
+                "headCollege",
+                "descCollege",
+                "sectionCollege",
+                "unknownCollege"
+              ]
+            },
+            "imgCollege": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-college/content",
+                "alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture",
+                "caption": "示意素材",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "headCollege": {
+              "type": "Heading",
+              "props": {
+                "text": "四明书院",
+                "level": "h3"
+              }
+            },
+            "descCollege": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/tabs/2/description"
+                },
+                "variant": "default"
+              }
+            },
+            "sectionCollege": {
+              "type": "Section",
+              "props": {
+                "title": "已知要点",
+                "headingLevel": "h4",
+                "bordered": false
+              },
+              "children": [
+                "listCollege"
+              ]
+            },
+            "listCollege": {
+              "type": "List",
+              "props": {
+                "items": [
+                  {
+                    "title": "公共交流空间"
+                  }
+                ],
+                "emptyText": "暂无已知要点"
+              }
+            },
+            "unknownCollege": {
+              "type": "Callout",
+              "props": {
+                "intent": "warning",
+                "title": "未知",
+                "description": "是否配备投屏设备未知",
+                "showIcon": true
+              }
+            },
+            "compareSection": {
+              "type": "Section",
+              "props": {
+                "title": "business_data 逐项明细",
+                "description": "按字段逐项列出文字数据；图片路径与 alt 已在各标签页通过 Image 呈现。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "compareTable"
+              ]
+            },
+            "compareTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "场所",
+                  "字段",
+                  "内容"
+                ],
+                "rows": [
+                  [
+                    "图书馆",
+                    "名称",
+                    "图书馆"
+                  ],
+                  [
+                    "图书馆",
+                    "一句话说明",
+                    "安静阅读区，有讨论室；入馆需预约且以馆方答复为准。"
+                  ],
+                  [
+                    "图书馆",
+                    "已知要点 1",
+                    "安静阅读区"
+                  ],
+                  [
+                    "图书馆",
+                    "已知要点 2",
+                    "设有讨论室"
+                  ],
+                  [
+                    "图书馆",
+                    "已知要点 3",
+                    "入馆需要预约"
+                  ],
+                  [
+                    "图书馆",
+                    "已知要点 4",
+                    "预约与入馆规则以馆方答复为准"
+                  ],
+                  [
+                    "图书馆",
+                    "未知项",
+                    "具体开放时段未给出"
+                  ],
+                  [
+                    "食堂",
+                    "名称",
+                    "食堂"
+                  ],
+                  [
+                    "食堂",
+                    "一句话说明",
+                    "提供午餐，其余营业时间未知。"
+                  ],
+                  [
+                    "食堂",
+                    "已知要点 1",
+                    "提供午餐"
+                  ],
+                  [
+                    "食堂",
+                    "未知项",
+                    "早餐、晚餐等其他营业时间未知"
+                  ],
+                  [
+                    "四明书院",
+                    "名称",
+                    "四明书院"
+                  ],
+                  [
+                    "四明书院",
+                    "一句话说明",
+                    "公共交流空间，投屏设备未知。"
+                  ],
+                  [
+                    "四明书院",
+                    "已知要点 1",
+                    "公共交流空间"
+                  ],
+                  [
+                    "四明书院",
+                    "未知项",
+                    "是否配备投屏设备未知"
+                  ]
+                ]
+              }
+            },
+            "note": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "title": "出处说明",
+                "description": "以上内容均来自本次提供的 business_data；未给出的项目已在对应标签页标注为「未知」，页面不作推断。",
+                "showIcon": true
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "东方理工校园导览：图书馆 · 食堂 · 四明书院",
+            "subtitle": "按分类切换查看，图片为示意素材",
+            "tabs": [
+              {
+                "key": "lib",
+                "label": "图书馆",
+                "name": "图书馆",
+                "description": "安静阅读区，有讨论室；入馆需预约且以馆方答复为准。",
+                "facts": [
+                  "安静阅读区",
+                  "设有讨论室",
+                  "入馆需要预约",
+                  "预约与入馆规则以馆方答复为准"
+                ],
+                "unknown": "具体开放时段未给出",
+                "image": "/api/media/bench05-lib/content",
+                "image_alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture"
+              },
+              {
+                "key": "canteen",
+                "label": "食堂",
+                "name": "食堂",
+                "description": "提供午餐，其余营业时间未知。",
+                "facts": [
+                  "提供午餐"
+                ],
+                "unknown": "早餐、晚餐等其他营业时间未知",
+                "image": "/api/media/bench05-canteen/content",
+                "image_alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture"
+              },
+              {
+                "key": "college",
+                "label": "四明书院",
+                "name": "四明书院",
+                "description": "公共交流空间，投屏设备未知。",
+                "facts": [
+                  "公共交流空间"
+                ],
+                "unknown": "是否配备投屏设备未知",
+                "image": "/api/media/bench05-college/content",
+                "image_alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture"
+              }
+            ],
+            "_ui": {
+              "activeTab": "lib"
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_mVbEDuYYURz30gyWXNlI1137"
+      },
+      "toolCallId": "call_00_mVbEDuYYURz30gyWXNlI1137",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "7094870b-84ee-47a8-9919-f8a2db3a6e94"
+    }
+  }
+]

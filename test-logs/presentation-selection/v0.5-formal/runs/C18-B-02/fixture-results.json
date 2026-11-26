@@ -1,0 +1,213 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C18-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_oxyxohR3Zp9vX3EbeGJ83304"
+      },
+      "toolCallId": "call_00_ET_oxyxohR3Zp9vX3EbeGJ83304",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"模拟观察watch-01进行中，门此前关闭。补拍、停止、返回状态以随后回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "b2e20277-4b62-4b68-8392-56e7c76c888e"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-02"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_t75hKCa56sS9JXtl5tni5452"
+      },
+      "toolCallId": "call_00_t75hKCa56sS9JXtl5tni5452",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"模拟观察watch-01进行中，门此前关闭。补拍、停止、返回状态以随后回放为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "cb66e467-dbff-4755-938b-31e927ab86c6"
+    }
+  },
+  {
+    "call": {
+      "seq": 31,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C18-B-02",
+        "values": {
+          "request": "补拍门口",
+          "target": "门口",
+          "observe_id": "watch-01",
+          "sequence": [
+            "补拍门口",
+            "用户查看照片",
+            "结束观察",
+            "返回"
+          ],
+          "stop_after_view": true
+        }
+      }
+    },
+    "result_seq": 32,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_rFrqm6BYKYrE8GM232nL3115"
+      },
+      "toolCallId": "call_00_rFrqm6BYKYrE8GM232nL3115",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "0aed0e27-420e-43db-9a50-a9f8c41bacb6"
+    }
+  },
+  {
+    "call": {
+      "seq": 58,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-02"
+      }
+    },
+    "result_seq": 59,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_XrG5YzstqaEXfb3vrUQR9782"
+      },
+      "toolCallId": "call_00_XrG5YzstqaEXfb3vrUQR9782",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"按用户要求补拍门口，这是最新图像。\",\"assets\":[{\"id\":\"bench05-img-door-new\",\"file\":\"bench05-img-door-new.png\",\"alt\":\"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\",\"source_id\":\"img-door-new\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-door-new/content\",\"path\":\"/api/media/bench05-img-door-new/content\",\"sha256\":\"bbed56e912957f22af711cd42e87babdccc780cd1fa1cd14feaf5f3a2f48b37d\",\"width\":960,\"height\":540}],\"asset_id\":\"img-door-new\",\"status\":\"new_photo\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "f6314262-9629-4ea9-86c8-ea9c359aa079"
+    }
+  },
+  {
+    "call": {
+      "seq": 76,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C18-B-02",
+        "values": {
+          "observe_id": "watch-01",
+          "action": "结束观察并返回",
+          "confirmed_by_user": true,
+          "viewed_photo_asset_id": "img-door-new",
+          "steps": [
+            "end_observation",
+            "return"
+          ]
+        }
+      }
+    },
+    "result_seq": 77,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_qjZGI7RP518JpLW9Dvqa6413"
+      },
+      "toolCallId": "call_00_qjZGI7RP518JpLW9Dvqa6413",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":false,\"error\":\"No mock submission response has been released\"}"
+        }
+      ],
+      "isError": false,
+      "id": "23996ec3-a090-4654-a5de-278b16dab7b7"
+    }
+  },
+  {
+    "call": {
+      "seq": 82,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-02"
+      }
+    },
+    "result_seq": 83,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_QNXrTCED35XJr0ICnb184510"
+      },
+      "toolCallId": "call_00_QNXrTCED35XJr0ICnb184510",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"按用户要求补拍门口，这是最新图像。\",\"assets\":[{\"id\":\"bench05-img-door-new\",\"file\":\"bench05-img-door-new.png\",\"alt\":\"MOCK DOOR NEW VIEW; LATEST OBSERVATION; synthetic fixture\",\"source_id\":\"img-door-new\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-door-new/content\",\"path\":\"/api/media/bench05-img-door-new/content\",\"sha256\":\"bbed56e912957f22af711cd42e87babdccc780cd1fa1cd14feaf5f3a2f48b37d\",\"width\":960,\"height\":540}],\"asset_id\":\"img-door-new\",\"status\":\"new_photo\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "15dc1bcf-8cf9-47b0-87ec-a041c993a39e"
+    }
+  },
+  {
+    "call": {
+      "seq": 97,
+      "arguments": {
+        "action": "read",
+        "run_id": "C18-B-02"
+      }
+    },
+    "result_seq": 98,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_7zsoVMEonR3yn7Rs6os82490"
+      },
+      "toolCallId": "call_00_7zsoVMEonR3yn7Rs6os82490",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C18\",\"facts\":\"观察watch-01已模拟结束，正在返回。\",\"assets\":[],\"asset_id\":\"img-door-new\",\"status\":\"new_photo\",\"monitoring_status\":\"ended\",\"return_status\":\"returning\"}}"
+        }
+      ],
+      "isError": false,
+      "id": "30be3eba-6cd3-4240-89c1-79d8498c478e"
+    }
+  }
+]

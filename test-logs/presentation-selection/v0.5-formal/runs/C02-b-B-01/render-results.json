@@ -1,0 +1,196 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_9kX6AONTcBHeh91vih6K2710",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"scene\": \"kb\", \"user_query\": \"用简洁卡片呈现“进校后能否直接去图书馆”的结论：标题、直接结论（不能直接进，需先办来访预约）、关键说明（是否获准以馆方答复为准）、已知条件（图书馆有讨论室）、待确认项（白板、投屏、开放时间均未知）。不含表单，不使用其他富组件。\", \"business_data\": {\"标题\": \"进校后可以直接去图书馆吗？\", \"结论\": \"不建议直接前往：进馆需要先办理来访预约。\", \"关键说明\": \"能否获准进馆，以图书馆方面的答复为准。\", \"已知条件\": \"图书馆设有讨论室。\", \"待确认\": [\"是否配备白板：未知\", \"是否支持投屏：未知\", \"开放时间：未知\"], \"提示\": \"建议先完成来访预约并取得馆方确认，再安排前往。\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "card"
+              ]
+            },
+            "card": {
+              "type": "Card",
+              "props": {
+                "title": "进校后可以直接去图书馆吗？",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "heading-conclusion",
+                "text-conclusion",
+                "heading-note",
+                "text-note",
+                "heading-known",
+                "text-known",
+                "heading-pending",
+                "pending-0",
+                "pending-1",
+                "pending-2",
+                "heading-tip",
+                "text-tip"
+              ]
+            },
+            "heading-conclusion": {
+              "type": "Heading",
+              "props": {
+                "text": "结论",
+                "level": "h4"
+              }
+            },
+            "text-conclusion": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/结论"
+                },
+                "variant": "warning"
+              }
+            },
+            "heading-note": {
+              "type": "Heading",
+              "props": {
+                "text": "关键说明",
+                "level": "h4"
+              }
+            },
+            "text-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/关键说明"
+                },
+                "variant": "default"
+              }
+            },
+            "heading-known": {
+              "type": "Heading",
+              "props": {
+                "text": "已知条件",
+                "level": "h4"
+              }
+            },
+            "text-known": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/已知条件"
+                },
+                "variant": "default"
+              }
+            },
+            "heading-pending": {
+              "type": "Heading",
+              "props": {
+                "text": "待确认项",
+                "level": "h4"
+              }
+            },
+            "pending-0": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/待确认/0"
+                },
+                "variant": "muted"
+              }
+            },
+            "pending-1": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/待确认/1"
+                },
+                "variant": "muted"
+              }
+            },
+            "pending-2": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/待确认/2"
+                },
+                "variant": "muted"
+              }
+            },
+            "heading-tip": {
+              "type": "Heading",
+              "props": {
+                "text": "提示",
+                "level": "h4"
+              }
+            },
+            "text-tip": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/提示"
+                },
+                "variant": "default"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "标题": "进校后可以直接去图书馆吗？",
+            "结论": "不建议直接前往：进馆需要先办理来访预约。",
+            "关键说明": "能否获准进馆，以图书馆方面的答复为准。",
+            "已知条件": "图书馆设有讨论室。",
+            "待确认": [
+              "是否配备白板：未知",
+              "是否支持投屏：未知",
+              "开放时间：未知"
+            ],
+            "提示": "建议先完成来访预约并取得馆方确认，再安排前往。"
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_9kX6AONTcBHeh91vih6K2710"
+      },
+      "toolCallId": "call_00_9kX6AONTcBHeh91vih6K2710",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "c817ea32-0a07-444a-a4e5-65fa11123ea8"
+    }
+  }
+]

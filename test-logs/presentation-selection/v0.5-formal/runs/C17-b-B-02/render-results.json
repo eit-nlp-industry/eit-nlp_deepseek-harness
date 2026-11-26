@@ -1,0 +1,356 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_xqjpqlO0NQ2PwORWoq8E0266",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"用简洁的观察状态卡呈现：标题「门状态观察 watch-01」，状态行显示「观察中」，门状态「关闭」，观察期限「5 分钟」，并提示开门事件到达后会立即通知；当前材料未提供任何画面素材，因此不渲染图片，仅给出一行文字说明「暂无可用画面，先以文字状态通知」。整体只占一屏，不使用其他富组件。\", \"business_data\": {\"title\": \"门状态观察 watch-01\", \"观察状态\": \"观察中（模拟）\", \"门状态\": \"关闭\", \"观察期限\": \"5 分钟\", \"通知方式\": \"门一开即通知\", \"画面\": \"暂无可用画面素材，先以文字状态通知\", \"结论\": \"尚未发生开门，未完成观察\"}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "title",
+                "statusRow",
+                "divider",
+                "doorStatus",
+                "period",
+                "notify",
+                "visual",
+                "conclusion",
+                "hint"
+              ]
+            },
+            "title": {
+              "type": "Heading",
+              "props": {
+                "text": "门状态观察 watch-01",
+                "level": "h1"
+              }
+            },
+            "statusRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "center"
+              },
+              "children": [
+                "statusLabel",
+                "statusBadge"
+              ]
+            },
+            "statusLabel": {
+              "type": "Text",
+              "props": {
+                "content": "观察状态：",
+                "variant": "muted"
+              }
+            },
+            "statusBadge": {
+              "type": "Badge",
+              "props": {
+                "label": "观察中（模拟）",
+                "variant": "info"
+              }
+            },
+            "divider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "doorStatus": {
+              "type": "Text",
+              "props": {
+                "content": "门状态：关闭",
+                "variant": "default"
+              }
+            },
+            "period": {
+              "type": "Text",
+              "props": {
+                "content": "观察期限：5 分钟",
+                "variant": "default"
+              }
+            },
+            "notify": {
+              "type": "Text",
+              "props": {
+                "content": "通知方式：门一开即通知",
+                "variant": "default"
+              }
+            },
+            "visual": {
+              "type": "Text",
+              "props": {
+                "content": "画面：暂无可用画面素材，先以文字状态通知",
+                "variant": "default"
+              }
+            },
+            "conclusion": {
+              "type": "Text",
+              "props": {
+                "content": "结论：尚未发生开门，未完成观察",
+                "variant": "default"
+              }
+            },
+            "hint": {
+              "type": "Text",
+              "props": {
+                "content": "提示：开门事件到达后会立即通知",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "门状态观察 watch-01",
+            "观察状态": "观察中（模拟）",
+            "门状态": "关闭",
+            "观察期限": "5 分钟",
+            "通知方式": "门一开即通知",
+            "画面": "暂无可用画面素材，先以文字状态通知",
+            "结论": "尚未发生开门，未完成观察"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_xqjpqlO0NQ2PwORWoq8E0266"
+      },
+      "toolCallId": "call_00_xqjpqlO0NQ2PwORWoq8E0266",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "09f9d989-6fe8-4769-93e2-2d704b4579b0"
+    }
+  },
+  {
+    "call_seq": 49,
+    "result_seq": 50,
+    "call": {
+      "turn": 3,
+      "step": 1,
+      "callId": "call_00_oF4OmFokCzET1P3a2jy74918",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"supplement\", \"business_data\": {\"title\": \"门状态观察 watch-01\", \"screen\": \"暂无可用画面素材，以文字状态告知结果\", \"观察状态\": \"已结束（满 5 分钟）\", \"门状态\": \"关闭（期间未打开）\", \"建议\": \"如需继续盯着，可再开一轮 5 分钟观察\"}, \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"用简洁结果卡呈现观察结束：标题「门状态观察 watch-01」，状态「已结束（满 5 分钟）」，门状态「关闭（期间未打开）」，另加一行「暂无可用画面素材，以文字状态告知结果」。画面素材未提供，不渲染图片，不使用其他富组件。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Card",
+              "props": {
+                "title": "门状态观察 watch-01",
+                "variant": "outlined"
+              },
+              "children": [
+                "content"
+              ]
+            },
+            "content": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "statusRow",
+                "doorRow",
+                "screenRow",
+                "adviceRow",
+                "divider",
+                "sourceText"
+              ]
+            },
+            "statusRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "statusLabel",
+                "statusValue"
+              ]
+            },
+            "statusLabel": {
+              "type": "Text",
+              "props": {
+                "content": "观察状态",
+                "variant": "muted"
+              }
+            },
+            "statusValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/观察状态"
+                },
+                "variant": "success"
+              }
+            },
+            "doorRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "doorLabel",
+                "doorValue"
+              ]
+            },
+            "doorLabel": {
+              "type": "Text",
+              "props": {
+                "content": "门状态",
+                "variant": "muted"
+              }
+            },
+            "doorValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/门状态"
+                },
+                "variant": "default"
+              }
+            },
+            "screenRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "screenLabel",
+                "screenValue"
+              ]
+            },
+            "screenLabel": {
+              "type": "Text",
+              "props": {
+                "content": "screen",
+                "variant": "muted"
+              }
+            },
+            "screenValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/screen"
+                },
+                "variant": "default"
+              }
+            },
+            "adviceRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "sm",
+                "align": "start"
+              },
+              "children": [
+                "adviceLabel",
+                "adviceValue"
+              ]
+            },
+            "adviceLabel": {
+              "type": "Text",
+              "props": {
+                "content": "建议",
+                "variant": "muted"
+              }
+            },
+            "adviceValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/建议"
+                },
+                "variant": "default"
+              }
+            },
+            "divider": {
+              "type": "Divider",
+              "props": {}
+            },
+            "sourceText": {
+              "type": "Text",
+              "props": {
+                "content": "出处：business_data",
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "门状态观察 watch-01",
+            "screen": "暂无可用画面素材，以文字状态告知结果",
+            "观察状态": "已结束（满 5 分钟）",
+            "门状态": "关闭（期间未打开）",
+            "建议": "如需继续盯着，可再开一轮 5 分钟观察"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_oF4OmFokCzET1P3a2jy74918"
+      },
+      "toolCallId": "call_00_oF4OmFokCzET1P3a2jy74918",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "dc7a1576-6d03-4d48-8f29-a5db3855a366"
+    }
+  }
+]

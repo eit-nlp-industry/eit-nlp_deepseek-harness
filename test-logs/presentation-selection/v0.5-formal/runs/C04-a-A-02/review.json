@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 4,
+  "state": 5,
+  "presentation": "pass",
+  "reason": "正确推荐图书馆；额外询问位置，跳过后未阻塞。"
+}

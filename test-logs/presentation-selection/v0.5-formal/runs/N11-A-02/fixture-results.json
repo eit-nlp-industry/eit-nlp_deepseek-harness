@@ -1,0 +1,83 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "N11-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_HOscWhsokdCJ9HT5deuK3946"
+      },
+      "toolCallId": "call_00_ET_HOscWhsokdCJ9HT5deuK3946",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N11\",\"facts\":\"模拟job-convert-01，共10个文件，当前running，completed_count=3。后续暂停、继续、失败、结束监测均以模拟返回为准，不处理真实文件。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "6995ef8f-f15c-488d-b38d-3916e3ca7136"
+    }
+  },
+  {
+    "call": {
+      "seq": 31,
+      "arguments": {
+        "action": "read",
+        "run_id": "N11-A-02"
+      }
+    },
+    "result_seq": 32,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_is5oPILSDuuZythbm9uc7248"
+      },
+      "toolCallId": "call_00_is5oPILSDuuZythbm9uc7248",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N11\",\"facts\":\"模拟job-convert-01，共10个文件，当前running，completed_count=3。后续暂停、继续、失败、结束监测均以模拟返回为准，不处理真实文件。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "7dbb1e19-ef8b-4190-9a09-b2a461450ddd"
+    }
+  },
+  {
+    "call": {
+      "seq": 52,
+      "arguments": {
+        "action": "read",
+        "run_id": "N11-A-02"
+      }
+    },
+    "result_seq": 53,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_fyXXtlz6QyFvdmDcpphz1776"
+      },
+      "toolCallId": "call_00_fyXXtlz6QyFvdmDcpphz1776",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"N11\",\"facts\":\"job-convert-01模拟暂停，10个文件中已完成3个。\",\"assets\":[],\"job_id\":\"job-convert-01\",\"status\":\"paused\",\"completed_count\":3,\"total\":10}}"
+        }
+      ],
+      "isError": false,
+      "id": "da4af54d-36a0-45a7-bf87-ca514d1d422a"
+    }
+  }
+]

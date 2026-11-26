@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 31,
+    "result_seq": 33,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_aVxzqg11yNULMKk0pzwi3981",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"next_step\", \"header\": \"下一步\", \"question\": \"背面与瑕疵细节图目前不在材料中，你希望怎么继续？\", \"options\": [{\"label\": \"等背面和细节图补齐后再核对（推荐）\", \"description\": \"补齐后在同一追问里继续按三视角核对，再做退货决定。\"}, {\"label\": \"只看正面，现在就让我自己判断\", \"description\": \"我保持现有展示不动，不再补充视角说明。\"}, {\"label\": \"先告诉我核对时需要重点看哪些部位\", \"description\": \"我给出通用核对清单，不涉及退货资格判断。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_aVxzqg11yNULMKk0pzwi3981"
+      },
+      "toolCallId": "call_00_aVxzqg11yNULMKk0pzwi3981",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"next_step\",\"selected\":[\"等背面和细节图补齐后再核对（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "45c63af3-4cee-450a-86d1-00ae46dfd10c"
+    }
+  }
+]

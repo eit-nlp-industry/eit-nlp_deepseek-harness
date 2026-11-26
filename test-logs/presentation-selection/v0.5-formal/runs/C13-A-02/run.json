@@ -1,0 +1,20 @@
+{
+  "run_id": "C13-A-02",
+  "case_id": "C13",
+  "card_id": "C13",
+  "category_id": "G03",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C13-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C13-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C13-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：帮我找个安静的地方，我想读会书。\n指定呈现方式：Markdown推荐+两张原生证据图。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "461c3e629bdd095371e38e2aaf6883d01fe19c3d235ace2a065508cc09b96642",
+  "operator_actions": "回放两处现场结论后给推荐，说明不选college-lounge的原因。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T12:29:57.697Z",
+  "interactions": [],
+  "tab_id": "5",
+  "final_at": "2026-11-19T12:31:30.312Z",
+  "notes": "同一14:00观察比较两地点，推荐与排除理由完整，两张不同证据图加载，时效说明清楚。"
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_TLLJz6DTaRTSgwNdcFog7574",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"wait_limit\", \"header\": \"等待上限\", \"question\": \"流程里的等待上限材料中没有指定，你希望怎么处理？\", \"options\": [{\"label\": \"补充上限后再保存（推荐）\", \"description\": \"你给出敲门后和发图后各等多久，我写进草稿再确认保存。\"}, {\"label\": \"按现稿保存，标注“未指定”\", \"description\": \"草稿保持“等待上限：未指定”，不设具体时间。\"}]}, {\"id\": \"confirm_save\", \"header\": \"确认保存\", \"question\": \"以上 Markdown 步骤和条件是否按此保存为草稿？\", \"options\": [{\"label\": \"确认保存\", \"description\": \"按当前文字保存为模拟草稿。\"}, {\"label\": \"我要先改文字\", \"description\": \"你直接告诉我要改哪一步、改成什么。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_TLLJz6DTaRTSgwNdcFog7574"
+      },
+      "toolCallId": "call_00_TLLJz6DTaRTSgwNdcFog7574",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"wait_limit\",\"selected\":[],\"custom\":\"敲门后等待材料放好的上限设为2分钟，保存流程草稿，不执行。\"},{\"id\":\"confirm_save\",\"selected\":[\"确认保存\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "dd54c890-c5f5-476b-8329-c722a4a672f2"
+    }
+  }
+]

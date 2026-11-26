@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "三视角最终均加载且对象尾号保持，用户确认与无取件结果区分正确；各新图延到确认后才显示，额外两次等待确认，最终文字已确认而侧景卡仍尚未确认。"
+}

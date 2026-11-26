@@ -1,0 +1,36 @@
+{
+  "run_id": "C22-A-02",
+  "case_id": "C22",
+  "card_id": "C22",
+  "category_id": "G07",
+  "scenario_domain": "campus_trace_derived",
+  "arm": "A",
+  "repeat": 2,
+  "status": "pass",
+  "prompt": "【全量正式呈现测评 C22-A-02】\n这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C22-A-02)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C22-A-02,values=实际提交值)获取模拟结果，不提前提交。\n用户需求：饮水机不出水，先拍一张照片给我。\n指定呈现方式：三张原生图+Markdown草稿，文字修改提交。不要调用render_ui。\n等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。\n最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。",
+  "prompt_sha256": "e56e1a957dacf3d1eba37bfc78c04b4902768bd2b7668f7dc542bdc534fa8050",
+  "operator_actions": "正面→近景→另一侧；用户要求将三图放入反馈单并备注“昨天也这样”，补测试联系人A后确认提交。",
+  "protocol_revision": "0.5.1",
+  "preset_confirmed": "component-benchmark-full-v2",
+  "started_at": "2026-11-19T13:23:53.394Z",
+  "interactions": [
+    {
+      "at": "2026-11-19T13:24:42.727Z",
+      "type": "text",
+      "value": "靠近一点拍给我看看。"
+    },
+    {
+      "at": "2026-11-19T13:25:47.429Z",
+      "type": "text",
+      "value": "再拍一下另一侧。"
+    },
+    {
+      "at": "2026-11-19T13:27:10.771Z",
+      "type": "text",
+      "value": "把这三张图都放进反馈单，备注“昨天也这样”，联系人填“测试联系人A”，确认提交反馈草稿。"
+    }
+  ],
+  "tab_id": "7",
+  "final_at": "2026-11-19T13:28:01.971Z",
+  "notes": "三视角真实可见并关联提交，备注和联系人正确，区分模拟草稿与真实工单；多轮冗长解释和重复草稿。"
+}

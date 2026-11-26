@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 2,
+  "presentation": "partial",
+  "reason": "图片在确认后才显示，旧卡仍写尚未确认；person-a映射与传话事件结果正确且模拟范围明确，反复解释措辞及原始alt信息干扰。"
+}

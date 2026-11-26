@@ -1,0 +1,27 @@
+[
+  {
+    "seq": 10,
+    "time": 1795153532803,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 43,
+    "time": 1795153612825,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C21-B-02-blocked",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C21-B-02-blocked\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"模拟导航遇door-1关闭，已停止；没有返回可用替代路线。\",\"assets\":[{\"id\":\"bench05-img-door\",\"file\":\"bench05-img-door.png\",\"alt\":\"MOCK DOOR CLOSED; door-1 | CLOSED; synthetic fixture\",\"source_id\":\"img-door\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-img-door/content\",\"path\":\"/api/media/bench05-img-door/content\",\"sha256\":\"c369682198bea1e413f3b9cccdf6d581ad40466f1e6dba90a4ea11315fa036a2\",\"width\":960,\"height\":540}],\"simulated\":true,\"status\":\"stopped\",\"obstacle\":\"door-1_closed\",\"alternative_route\":null}}"
+  }
+]

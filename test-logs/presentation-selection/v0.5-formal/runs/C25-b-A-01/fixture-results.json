@@ -1,0 +1,56 @@
+[
+  {
+    "call": {
+      "seq": 18,
+      "arguments": {
+        "run_id": "C25-b-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_HYEhHkJRV4NVK7mnNHz13521"
+      },
+      "toolCallId": "call_00_HYEhHkJRV4NVK7mnNHz13521",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C25-b\",\"facts\":\"本题不控制机器人；请求交由固定模拟结果回放。当前动作handshake-01状态pending，尚无成功或失败结果。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "5b3701c5-d500-4664-9a8e-8a90d6b39884"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C25-b-A-01"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_FQK6xOrIQoOaIB3uCRgL8109"
+      },
+      "toolCallId": "call_00_FQK6xOrIQoOaIB3uCRgL8109",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C25-b\",\"facts\":\"本题不控制机器人；请求交由固定模拟结果回放。当前动作handshake-01状态pending，尚无成功或失败结果。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "23a427e3-44b7-49ff-90b9-ac00b38013fb"
+    }
+  }
+]

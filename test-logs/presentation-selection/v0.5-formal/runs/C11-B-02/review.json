@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 2,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "暂停及继续均待事件确认，任务目标一致；状态卡反复抄字段、business_data和无关未提供项，继续待生效卡含未注册组件。未测真实设备控制耗时。"
+}

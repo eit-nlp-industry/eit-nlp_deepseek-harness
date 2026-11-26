@@ -1,0 +1,56 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C20-B-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_rgZNUnBdqeQzfOQ1jQXh0967"
+      },
+      "toolCallId": "call_00_ET_rgZNUnBdqeQzfOQ1jQXh0967",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C20\",\"facts\":\"合成静态网格：robot=(0,2)，user=(2,2)，lib=(6,2)；路线robot→user→lib，单位示意格。MapPreview渲染坐标按x=10+10*x,y=70-10*y：robot=(10,50),user=(30,50),lib=(70,50)。没有实时定位。\",\"assets\":[{\"id\":\"bench05-campus-map\",\"file\":\"bench05-campus-map.png\",\"alt\":\"MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture\",\"source_id\":\"campus-map\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-campus-map/content\",\"path\":\"/api/media/bench05-campus-map/content\",\"sha256\":\"eb2a602fd1e9fc8dddb10e27d38092d1ee80945fe01f837c3faf34037fc13e25\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "24670d3e-ed9e-477a-b17a-ff46f7c28267"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C20-B-02"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_JDLFgMi6WZoNmylLfBob0994"
+      },
+      "toolCallId": "call_00_JDLFgMi6WZoNmylLfBob0994",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C20\",\"facts\":\"合成静态网格：robot=(0,2)，user=(2,2)，lib=(6,2)；路线robot→user→lib，单位示意格。MapPreview渲染坐标按x=10+10*x,y=70-10*y：robot=(10,50),user=(30,50),lib=(70,50)。没有实时定位。\",\"assets\":[{\"id\":\"bench05-campus-map\",\"file\":\"bench05-campus-map.png\",\"alt\":\"MOCK CAMPUS GRID; STATIC | UNITS ARE GRID CELLS; synthetic fixture\",\"source_id\":\"campus-map\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-campus-map/content\",\"path\":\"/api/media/bench05-campus-map/content\",\"sha256\":\"eb2a602fd1e9fc8dddb10e27d38092d1ee80945fe01f837c3faf34037fc13e25\",\"width\":960,\"height\":540}]}}"
+        }
+      ],
+      "isError": false,
+      "id": "cbbae52a-cf74-48ea-b677-e6be9965a019"
+    }
+  }
+]

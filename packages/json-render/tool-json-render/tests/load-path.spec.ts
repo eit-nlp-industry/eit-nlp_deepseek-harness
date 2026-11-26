@@ -22,13 +22,33 @@ function requestTarget(input: RequestInfo | URL | undefined): string {
 }
 
 describe('dsh-tool-json-render real-load-path guard', () => {
+  it('rejects an unsupported form action through the tool executor before fetching', async () => {
+    const ctx = new Context()
+    await ctx.plugin(SystemPrompt)
+    await ctx.plugin(ToolRuntime)
+    await ctx.plugin(NativeToolExecutor)
+    const fiber = await ctx.plugin(toolJsonRender)
+    const fetchImpl = vi.fn<typeof fetch>()
+    vi.stubGlobal('fetch', fetchImpl)
+    try {
+      const result = await executeRenderUi(ctx.tools, 'unsupported-action', {
+        mode: 'form', intent: 'generic_filters', user_query: '草稿', business_data: { quantity: 20 },
+        form_actions: [{ intent: 'execute_inventory', label: '执行库存' }],
+      })
+      expect(result.isError).toBe(true)
+      expect(fetchImpl).not.toHaveBeenCalled()
+    } finally {
+      vi.unstubAllGlobals()
+      await fiber.dispose()
+    }
+  })
   it('has no default export and keeps name and inject through unwrapExports', () => {
     expect('default' in toolJsonRender).toBe(false)
     const loader = Object.create(Loader.prototype) as Loader
     const unwrapped = loader.unwrapExports(toolJsonRender) as Record<string, unknown>
     expect(unwrapped).toBe(toolJsonRender)
     expect(unwrapped.name).toBe('tool-json-render')
-    expect(unwrapped.inject).toEqual(['tools'])
+    expect(unwrapped.inject).toEqual(['tools', 'systemPrompt'])
     expect(typeof unwrapped.apply).toBe('function')
   })
 

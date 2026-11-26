@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 2,
+  "state": 3,
+  "presentation": "partial",
+  "reason": "最终三图实际页签均可查看，文字兜底提交保留三资产ID、备注和联系人并取得回执；DynamicForm超时转原生追问，首图在跳过两题后才显示，路径及字段说明冗余。"
+}

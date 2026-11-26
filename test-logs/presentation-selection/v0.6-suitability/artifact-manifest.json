@@ -1,0 +1,59 @@
+{
+  "files": [
+    {
+      "path": "44案例_逐项评分.md",
+      "bytes": 33084,
+      "sha256": "e08198d3075367191890a1c54b8d75cc7e75cb2843da47433af85f51ade38f29"
+    },
+    {
+      "path": "reassess_suitability_v06.py",
+      "bytes": 39469,
+      "sha256": "4bb21f8c1ac2241d3f06ce41d4cf3d080e87c920c695116c38b0635f89a5b129"
+    },
+    {
+      "path": "v0.5运行质量参考.json",
+      "bytes": 141376,
+      "sha256": "2394379cf65a12c3a25dcd3999a9ca0572da39f524474dada80255035df63dfd"
+    },
+    {
+      "path": "v0.5运行质量参考.md",
+      "bytes": 33667,
+      "sha256": "6d309531595e0c5a24f2c1d40502ad189d307478e3ebbf94f710a7020c4997a2"
+    },
+    {
+      "path": "分类汇总.json",
+      "bytes": 2642,
+      "sha256": "24b64e9fbba085d32ce6e120a0e831f366c4c261d41889e577676277c1cb3ddb"
+    },
+    {
+      "path": "复评说明与审计.json",
+      "bytes": 1192,
+      "sha256": "3659d347e93d668168ce24dc66cb8825691338a5f269327a0af23186e29cdf77"
+    },
+    {
+      "path": "评分明细.csv",
+      "bytes": 23150,
+      "sha256": "58d00c14c49d83f38a4dfbb826243f6e60be9151a8f501fe7811af792ea85ca7"
+    },
+    {
+      "path": "评分明细.json",
+      "bytes": 81598,
+      "sha256": "7042b9eacf6d7a3f6160382399e0ec0b96a5d63532b7877c4fc9b43339760df8"
+    },
+    {
+      "path": "评分规则与边界.md",
+      "bytes": 5033,
+      "sha256": "2f94874c79b477667485c1c4530c77bc0fec186bfc4144215a23d37f7f38121e"
+    },
+    {
+      "path": "选型规则与阶段示例.md",
+      "bytes": 5534,
+      "sha256": "8f886e8f77c140467ffe95ae41e895191ec052885d3a1182eb1ae8b19db66fb5"
+    },
+    {
+      "path": "需求适配度重评报告_v0.6.md",
+      "bytes": 16409,
+      "sha256": "4ccc13fb7009a28e9eead2d18692d227c5e87faede4c4b0777500c6f9fcfbddd"
+    }
+  ]
+}

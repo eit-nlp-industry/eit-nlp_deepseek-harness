@@ -1,0 +1,267 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_6KJyrfFKZBjuc7WymPcy2374",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"SortableSequence\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"页面根节点为一个纵向 Stack，只包含两个同级兄弟节点：1）SortableSequence（可拖动排序列表，叶子组件，内部不放任何按钮或子内容），其 value 用 $bindState 绑定到 /_ui/order，初始值必须是完整的三项 ID 数组 [\\\"review\\\",\\\"report\\\",\\\"client\\\"]，每项显示对应标题：review→审阅需求、report→整理报告、client→客户沟通；2）一个独立的 Button，标签“保存排序草稿”，点击时发出 route.order.apply，携带的 order 用 $state 读取 /_ui/order 的最新完整值，且必须保留全部三个 ID，不新增、不丢弃。列表上方标题说明“先按此顺序排列，拖动可调整”，并提示该操作仅保存排序草稿，不会创建真实任务或联系客户。\", \"business_data\": {\"title\": \"工作事项排序（草稿）\", \"hint\": \"初始顺序：审阅需求 → 整理报告 → 客户沟通。拖动可调整，点击下方按钮保存排序草稿。\", \"note\": \"仅保存排序草稿，不会创建任务或联系客户。\", \"items\": [{\"id\": \"review\", \"label\": \"审阅需求\", \"title\": \"审阅需求\"}, {\"id\": \"report\", \"label\": \"整理报告\", \"title\": \"整理报告\"}, {\"id\": \"client\", \"label\": \"客户沟通\", \"title\": \"客户沟通\"}], \"initial_order\": [\"review\", \"report\", \"client\"], \"bind_state\": \"/_ui/order\", \"apply_action\": {\"route\": \"order.order.apply\", \"route_name\": \"order.apply\", \"payload_order_state\": \"/_ui/order\"}, \"button\": {\"label\": \"保存排序草稿\", \"route\": \"order.apply\", \"order\": {\"$state\": \"/_ui/order\"}}}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "listCard",
+                "saveBtn"
+              ]
+            },
+            "listCard": {
+              "type": "Card",
+              "props": {
+                "title": "工作事项排序（草稿）",
+                "variant": "outlined"
+              },
+              "children": [
+                "hintText",
+                "noteCallout",
+                "seq",
+                "details"
+              ]
+            },
+            "hintText": {
+              "type": "Text",
+              "props": {
+                "content": "初始顺序：审阅需求 → 整理报告 → 客户沟通。拖动可调整，点击下方按钮保存排序草稿。",
+                "variant": "default"
+              }
+            },
+            "noteCallout": {
+              "type": "Callout",
+              "props": {
+                "intent": "info",
+                "description": "仅保存排序草稿，不会创建任务或联系客户。",
+                "showIcon": true
+              }
+            },
+            "seq": {
+              "type": "SortableSequence",
+              "props": {
+                "items": [
+                  {
+                    "id": "review",
+                    "title": "审阅需求"
+                  },
+                  {
+                    "id": "report",
+                    "title": "整理报告"
+                  },
+                  {
+                    "id": "client",
+                    "title": "客户沟通"
+                  }
+                ],
+                "value": {
+                  "$bindState": "/_ui/order"
+                },
+                "disabled": false,
+                "showHandle": true
+              }
+            },
+            "details": {
+              "type": "Collapsible",
+              "props": {
+                "title": "数据明细",
+                "summary": "标题、提示、初始排序、绑定路径与路由字段（可选查看）",
+                "defaultOpen": false,
+                "disabled": false
+              },
+              "children": [
+                "detailsDesc",
+                "itemsTable"
+              ]
+            },
+            "detailsDesc": {
+              "type": "Descriptions",
+              "props": {
+                "title": "business_data 字段",
+                "columns": 1,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "title",
+                    "value": "工作事项排序（草稿）"
+                  },
+                  {
+                    "label": "hint",
+                    "value": "初始顺序：审阅需求 → 整理报告 → 客户沟通。拖动可调整，点击下方按钮保存排序草稿。"
+                  },
+                  {
+                    "label": "note",
+                    "value": "仅保存排序草稿，不会创建任务或联系客户。"
+                  },
+                  {
+                    "label": "initial_order",
+                    "value": "[\"review\",\"report\",\"client\"]"
+                  },
+                  {
+                    "label": "bind_state",
+                    "value": "/_ui/order"
+                  },
+                  {
+                    "label": "apply_action.route",
+                    "value": "order.order.apply"
+                  },
+                  {
+                    "label": "apply_action.route_name",
+                    "value": "order.apply"
+                  },
+                  {
+                    "label": "apply_action.payload_order_state",
+                    "value": "/_ui/order"
+                  },
+                  {
+                    "label": "button.label",
+                    "value": "保存排序草稿"
+                  },
+                  {
+                    "label": "button.route",
+                    "value": "order.apply"
+                  }
+                ]
+              }
+            },
+            "itemsTable": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "id",
+                  "label",
+                  "title"
+                ],
+                "rows": [
+                  [
+                    "review",
+                    "审阅需求",
+                    "审阅需求"
+                  ],
+                  [
+                    "report",
+                    "整理报告",
+                    "整理报告"
+                  ],
+                  [
+                    "client",
+                    "客户沟通",
+                    "客户沟通"
+                  ]
+                ]
+              }
+            },
+            "saveBtn": {
+              "type": "Button",
+              "props": {
+                "label": "保存排序草稿",
+                "intent": "primary",
+                "variant": "default",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "order.apply",
+                    "payload": {
+                      "order": {
+                        "$state": "/_ui/order"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "工作事项排序（草稿）",
+            "hint": "初始顺序：审阅需求 → 整理报告 → 客户沟通。拖动可调整，点击下方按钮保存排序草稿。",
+            "note": "仅保存排序草稿，不会创建任务或联系客户。",
+            "items": [
+              {
+                "id": "review",
+                "label": "审阅需求",
+                "title": "审阅需求"
+              },
+              {
+                "id": "report",
+                "label": "整理报告",
+                "title": "整理报告"
+              },
+              {
+                "id": "client",
+                "label": "客户沟通",
+                "title": "客户沟通"
+              }
+            ],
+            "initial_order": [
+              "review",
+              "report",
+              "client"
+            ],
+            "bind_state": "/_ui/order",
+            "apply_action": {
+              "route": "order.order.apply",
+              "route_name": "order.apply",
+              "payload_order_state": "/_ui/order"
+            },
+            "button": {
+              "label": "保存排序草稿",
+              "route": "order.apply",
+              "order": {
+                "$state": "/_ui/order"
+              }
+            },
+            "_ui": {
+              "order": [
+                "review",
+                "report",
+                "client"
+              ]
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_6KJyrfFKZBjuc7WymPcy2374"
+      },
+      "toolCallId": "call_00_6KJyrfFKZBjuc7WymPcy2374",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "b92b5ca0-a53a-4c1b-907b-5fc08e924d6a"
+    }
+  }
+]

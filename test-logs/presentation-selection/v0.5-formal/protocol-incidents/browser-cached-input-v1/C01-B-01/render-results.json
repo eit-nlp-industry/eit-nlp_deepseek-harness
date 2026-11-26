@@ -1,0 +1,350 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_XkncPE4adxTm6zkuKFrw0119",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"components\": [\"Tabs\", \"Image\"], \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"user_query\": \"用 Tabs 组件做三个分类页签：图书馆、食堂、四明书院。每个页签内容中先放一个 Image 组件展示该场所的示意图，Image.props.src 使用对应场所的同源 path 字符串，Image.props.alt 使用给定英文描述；图片下方用简短文字列出该场所已确认的信息，并把未确认项明确标注为“未知”。标签页标题下方加一句提示：以下为固定材料中的介绍信息，未知项不作推测。\", \"business_data\": {\"title\": \"东方理工校园三处介绍\", \"note\": \"以下为固定材料中的介绍信息，未知项不作推测。\", \"tabs\": [{\"id\": \"lib\", \"label\": \"图书馆\", \"image\": \"/api/media/bench05-lib/content\", \"alt\": \"MOCK LIBRARY; READING / DISCUSSION; synthetic fixture\", \"known\": [\"有安静阅读区\", \"设有讨论室\", \"入馆需预约，具体以馆方答复为准\"], \"unknown\": [\"开放时段、预约方式细节等未提供\"]}, {\"id\": \"canteen\", \"label\": \"食堂\", \"image\": \"/api/media/bench05-canteen/content\", \"alt\": \"MOCK CANTEEN; LUNCH AREA; synthetic fixture\", \"known\": [\"提供午餐\"], \"unknown\": [\"早餐、晚餐及具体营业时间未知\"]}, {\"id\": \"college\", \"label\": \"四明书院\", \"image\": \"/api/media/bench05-college/content\", \"alt\": \"MOCK COLLEGE; COMMON AREA; synthetic fixture\", \"known\": [\"设有公共交流空间\"], \"unknown\": [\"是否配备投屏设备未知\"]}]}}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "tabs"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "东方理工校园三处介绍",
+                "level": "h1"
+              }
+            },
+            "tabs": {
+              "type": "Tabs",
+              "props": {
+                "tabs": [
+                  {
+                    "value": "lib",
+                    "label": "图书馆"
+                  },
+                  {
+                    "value": "canteen",
+                    "label": "食堂"
+                  },
+                  {
+                    "value": "college",
+                    "label": "四明书院"
+                  }
+                ],
+                "defaultValue": "lib",
+                "disabled": false
+              },
+              "children": [
+                "tab-lib",
+                "tab-canteen",
+                "tab-college"
+              ]
+            },
+            "tab-lib": {
+              "type": "TabContent",
+              "props": {
+                "value": "lib"
+              },
+              "children": [
+                "lib-stack"
+              ]
+            },
+            "lib-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "lib-note",
+                "lib-image",
+                "lib-known",
+                "lib-unknown"
+              ]
+            },
+            "lib-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            },
+            "lib-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-lib/content",
+                "alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "lib-known": {
+              "type": "List",
+              "props": {
+                "title": "已确认信息",
+                "items": [
+                  {
+                    "title": "有安静阅读区",
+                    "status": "success"
+                  },
+                  {
+                    "title": "设有讨论室",
+                    "status": "success"
+                  },
+                  {
+                    "title": "入馆需预约，具体以馆方答复为准",
+                    "status": "success"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            },
+            "lib-unknown": {
+              "type": "List",
+              "props": {
+                "title": "未确认信息",
+                "items": [
+                  {
+                    "title": "未知",
+                    "description": "开放时段、预约方式细节等未提供",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            },
+            "tab-canteen": {
+              "type": "TabContent",
+              "props": {
+                "value": "canteen"
+              },
+              "children": [
+                "canteen-stack"
+              ]
+            },
+            "canteen-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "canteen-note",
+                "canteen-image",
+                "canteen-known",
+                "canteen-unknown"
+              ]
+            },
+            "canteen-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            },
+            "canteen-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-canteen/content",
+                "alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "canteen-known": {
+              "type": "List",
+              "props": {
+                "title": "已确认信息",
+                "items": [
+                  {
+                    "title": "提供午餐",
+                    "status": "success"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            },
+            "canteen-unknown": {
+              "type": "List",
+              "props": {
+                "title": "未确认信息",
+                "items": [
+                  {
+                    "title": "未知",
+                    "description": "早餐、晚餐及具体营业时间未知",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            },
+            "tab-college": {
+              "type": "TabContent",
+              "props": {
+                "value": "college"
+              },
+              "children": [
+                "college-stack"
+              ]
+            },
+            "college-stack": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "college-note",
+                "college-image",
+                "college-known",
+                "college-unknown"
+              ]
+            },
+            "college-note": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            },
+            "college-image": {
+              "type": "Image",
+              "props": {
+                "src": "/api/media/bench05-college/content",
+                "alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture",
+                "fit": "cover",
+                "aspectRatio": "16:9",
+                "preview": true,
+                "loading": "lazy"
+              }
+            },
+            "college-known": {
+              "type": "List",
+              "props": {
+                "title": "已确认信息",
+                "items": [
+                  {
+                    "title": "设有公共交流空间",
+                    "status": "success"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            },
+            "college-unknown": {
+              "type": "List",
+              "props": {
+                "title": "未确认信息",
+                "items": [
+                  {
+                    "title": "未知",
+                    "description": "是否配备投屏设备未知",
+                    "status": "warning"
+                  }
+                ],
+                "emptyText": "无"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "东方理工校园三处介绍",
+            "note": "以下为固定材料中的介绍信息，未知项不作推测。",
+            "tabs": [
+              {
+                "id": "lib",
+                "label": "图书馆",
+                "image": "/api/media/bench05-lib/content",
+                "alt": "MOCK LIBRARY; READING / DISCUSSION; synthetic fixture",
+                "known": [
+                  "有安静阅读区",
+                  "设有讨论室",
+                  "入馆需预约，具体以馆方答复为准"
+                ],
+                "unknown": [
+                  "开放时段、预约方式细节等未提供"
+                ]
+              },
+              {
+                "id": "canteen",
+                "label": "食堂",
+                "image": "/api/media/bench05-canteen/content",
+                "alt": "MOCK CANTEEN; LUNCH AREA; synthetic fixture",
+                "known": [
+                  "提供午餐"
+                ],
+                "unknown": [
+                  "早餐、晚餐及具体营业时间未知"
+                ]
+              },
+              {
+                "id": "college",
+                "label": "四明书院",
+                "image": "/api/media/bench05-college/content",
+                "alt": "MOCK COLLEGE; COMMON AREA; synthetic fixture",
+                "known": [
+                  "设有公共交流空间"
+                ],
+                "unknown": [
+                  "是否配备投屏设备未知"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_XkncPE4adxTm6zkuKFrw0119"
+      },
+      "toolCallId": "call_00_XkncPE4adxTm6zkuKFrw0119",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "d51c5774-2a34-44e2-b5c5-1079efc5f490"
+    }
+  }
+]

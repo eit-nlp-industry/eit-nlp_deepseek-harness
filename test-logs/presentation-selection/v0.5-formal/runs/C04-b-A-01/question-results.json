@@ -1,0 +1,58 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_PgC2620z20sDm6dAvYnN0690",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"timeslot\", \"header\": \"时段\", \"question\": \"校园半日游想安排在上午还是下午？\", \"options\": [{\"label\": \"上午\", \"description\": \"上午出发，半日行程在中午前后结束。\"}, {\"label\": \"下午\", \"description\": \"下午出发，半日行程在傍晚前后结束。\"}]}, {\"id\": \"places\", \"header\": \"地点\", \"question\": \"愿意去哪些地点？可多选。\", \"multi_select\": true, \"options\": [{\"label\": \"图书馆\", \"description\": \"安静的阅读与参观空间。\"}, {\"label\": \"食堂\", \"description\": \"校园餐饮，适合中途休息用餐。\"}, {\"label\": \"四明书院\", \"description\": \"校园内的书院文化参观点。\"}]}, {\"id\": \"notes\", \"header\": \"补充\", \"question\": \"还有其他想法要补充吗？（可直接填写，也可以跳过）\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_PgC2620z20sDm6dAvYnN0690"
+      },
+      "toolCallId": "call_00_PgC2620z20sDm6dAvYnN0690",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"timeslot\",\"selected\":[\"下午\"]},{\"id\":\"places\",\"selected\":[\"食堂\",\"四明书院\"]},{\"id\":\"notes\",\"selected\":[],\"custom\":\"少走路\"}]}"
+        }
+      ],
+      "isError": false,
+      "id": "a15c18e7-671a-4c5f-acbb-c0c427569b1c"
+    }
+  },
+  {
+    "call_seq": 31,
+    "result_seq": 32,
+    "call": {
+      "turn": 1,
+      "step": 3,
+      "callId": "call_00_LDLBVgdEUCnmdyWSAwx78090",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"header\": \"确认草稿\", \"id\": \"confirm\", \"options\": [{\"description\": \"下午 + 食堂 + 四明书院，并记下“少走路”。\", \"label\": \"确认，按此记录（推荐）\"}, {\"description\": \"重新选择时段或地点。\", \"label\": \"需要修改\"}], \"question\": \"确认这份草稿吗？下午出发；地点：食堂、四明书院；补充：少走路。\"}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_LDLBVgdEUCnmdyWSAwx78090"
+      },
+      "toolCallId": "call_00_LDLBVgdEUCnmdyWSAwx78090",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm\",\"selected\":[\"确认，按此记录（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "80e243d1-bb14-478d-b1d2-c139a3419e3a"
+    }
+  }
+]

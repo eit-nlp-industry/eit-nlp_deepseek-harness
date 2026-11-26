@@ -1,0 +1,737 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_rQ7xsI7dPOt9RYrSSoLT1865",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"intent\": \"rich_content\", \"answer_presentation\": \"supplement\", \"locale\": \"zh-CN\", \"business_data\": {\"workflow\": {\"schema\": \"workflow-v1\", \"id\": \"wf-lin-teacher-material-draft\", \"title\": \"林老师门口取材料（草稿）\", \"status\": \"draft\", \"trigger\": {\"type\": \"manual\", \"label\": \"到达林老师门口\"}, \"nodes\": [{\"id\": \"n1\", \"type\": \"task\", \"title\": \"到林老师门口\", \"order\": 1}, {\"id\": \"n2\", \"type\": \"task\", \"title\": \"敲门并等待老师给材料\", \"order\": 2}, {\"id\": \"n3\", \"type\": \"branch\", \"title\": \"老师在不在？\", \"order\": 3, \"branches\": [{\"key\": \"absent\", \"label\": \"老师不在\", \"nodes\": [{\"id\": \"n4a\", \"type\": \"task\", \"title\": \"通知我：老师不在，本次不再等待\"}, {\"id\": \"n4b\", \"type\": \"end\", \"title\": \"结束流程\", \"endReason\": \"老师不在，已通知用户，不再原地等待\"}]}, {\"key\": \"present\", \"label\": \"老师在\", \"nodes\": [{\"id\": \"n5a\", \"type\": \"task\", \"title\": \"拍照确认材料\"}, {\"id\": \"n5b\", \"type\": \"task\", \"title\": \"送回材料\"}, {\"id\": \"n5c\", \"type\": \"end\", \"title\": \"结束流程\", \"endReason\": \"材料已拍照确认并送回\"}]}]}], \"edges\": [{\"from\": \"n1\", \"to\": \"n2\"}, {\"from\": \"n2\", \"to\": \"n3\"}, {\"from\": \"n3\", \"to\": \"n4a\", \"when\": \"absent\"}, {\"from\": \"n4a\", \"to\": \"n4b\"}, {\"from\": \"n3\", \"to\": \"n5a\", \"when\": \"present\"}, {\"from\": \"n5a\", \"to\": \"n5b\"}, {\"from\": \"n5b\", \"to\": \"n5c\"}]}, \"bind_path\": \"/_ui/workflow\", \"save_event\": \"workflow.save\", \"save_parameters\": {\"mode\": \"draft\"}, \"facts\": [\"原草稿：到林老师门口→敲门等待材料→拍图确认→送回\", \"新增条件分支：老师不在→通知用户→结束；老师在→拍照确认→送回→结束\", \"拍照确认与送回只保留在“老师在”分支内，不再无条件共用\", \"本次仅保存草稿，不执行、不等待、不操作机器人\"]}, \"user_query\": \"页面为 Workflow 编辑器。根 Stack 内放两个兄弟节点：(1) Workflow 组件，mode=edit，用 $bindState 绑定 /_ui/workflow，并以上述 workflow 文档初始化（完整 workflow-v1：到林老师门口→敲门等待材料→条件分支“老师在不在”，absent 分支为通知→结束，present 分支为拍照确认→送回→结束，拍照与送回只在 present 分支内）；(2) 一个独立的 Button“保存草稿为 workflow”，点击发出 workflow.save 事件，payload.workflow 用 $state 读取 /_ui/workflow 的最新文档，parameters 为对象 {mode:\\\"draft\\\"}。不要使用 $ref，不要把静态步骤或组件嵌套伪装成编辑器。顶部标题“林老师门口取材料（草稿）”，下方一行提示：老师不在时会通知你并结束，不会原地等你。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "page-title",
+                "page-hint",
+                "workflow-editor",
+                "save-draft-button",
+                "data-section"
+              ]
+            },
+            "page-title": {
+              "type": "Heading",
+              "props": {
+                "text": "林老师门口取材料（草稿）",
+                "level": "h1"
+              }
+            },
+            "page-hint": {
+              "type": "Text",
+              "props": {
+                "content": "老师不在时会通知你并结束，不会原地等你。",
+                "variant": "muted"
+              }
+            },
+            "workflow-editor": {
+              "type": "Workflow",
+              "props": {
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                },
+                "mode": "edit",
+                "disabled": false
+              }
+            },
+            "save-draft-button": {
+              "type": "Button",
+              "props": {
+                "label": "保存草稿为 workflow",
+                "variant": "default",
+                "intent": "primary",
+                "size": "medium",
+                "disabled": false
+              },
+              "on": {
+                "press": {
+                  "action": "emit.event",
+                  "params": {
+                    "name": "workflow.save",
+                    "payload": {
+                      "workflow": {
+                        "$state": "/_ui/workflow"
+                      },
+                      "parameters": {
+                        "mode": "draft"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "data-section": {
+              "type": "Section",
+              "props": {
+                "title": "业务数据明细",
+                "description": "以下按 business_data 原字段逐项展示草稿元数据、节点、分支、边与事实出处。",
+                "headingLevel": "h2",
+                "bordered": true
+              },
+              "children": [
+                "meta-descriptions",
+                "nodes-table",
+                "branch-table",
+                "edges-table",
+                "facts-list"
+              ]
+            },
+            "meta-descriptions": {
+              "type": "Descriptions",
+              "props": {
+                "title": "workflow 元数据（出处：business_data）",
+                "columns": 2,
+                "bordered": true,
+                "items": [
+                  {
+                    "label": "schema",
+                    "value": "workflow-v1"
+                  },
+                  {
+                    "label": "id",
+                    "value": "wf-lin-teacher-material-draft"
+                  },
+                  {
+                    "label": "title",
+                    "value": "林老师门口取材料（草稿）"
+                  },
+                  {
+                    "label": "status",
+                    "value": "draft"
+                  },
+                  {
+                    "label": "trigger.type",
+                    "value": "manual"
+                  },
+                  {
+                    "label": "trigger.label",
+                    "value": "到达林老师门口"
+                  },
+                  {
+                    "label": "bind_path",
+                    "value": "/_ui/workflow"
+                  },
+                  {
+                    "label": "save_event",
+                    "value": "workflow.save"
+                  },
+                  {
+                    "label": "save_parameters.mode",
+                    "value": "draft"
+                  }
+                ]
+              }
+            },
+            "nodes-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "id",
+                  "type",
+                  "title",
+                  "order",
+                  "说明 / 结束原因"
+                ],
+                "rows": [
+                  [
+                    "n1",
+                    "task",
+                    "到林老师门口",
+                    "1",
+                    ""
+                  ],
+                  [
+                    "n2",
+                    "task",
+                    "敲门并等待老师给材料",
+                    "2",
+                    ""
+                  ],
+                  [
+                    "n3",
+                    "branch",
+                    "老师在不在？",
+                    "3",
+                    ""
+                  ],
+                  [
+                    "n4a",
+                    "task",
+                    "通知我：老师不在，本次不再等待",
+                    "",
+                    "absent 分支"
+                  ],
+                  [
+                    "n4b",
+                    "end",
+                    "结束流程",
+                    "",
+                    "老师不在，已通知用户，不再原地等待"
+                  ],
+                  [
+                    "n5a",
+                    "task",
+                    "拍照确认材料",
+                    "",
+                    "present 分支"
+                  ],
+                  [
+                    "n5b",
+                    "task",
+                    "送回材料",
+                    "",
+                    "present 分支"
+                  ],
+                  [
+                    "n5c",
+                    "end",
+                    "结束流程",
+                    "",
+                    "材料已拍照确认并送回"
+                  ]
+                ]
+              }
+            },
+            "branch-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "分支 key",
+                  "分支 label",
+                  "分支内步骤（按原顺序）",
+                  "结束原因"
+                ],
+                "rows": [
+                  [
+                    "absent",
+                    "老师不在",
+                    "通知我：老师不在，本次不再等待；结束流程",
+                    "老师不在，已通知用户，不再原地等待"
+                  ],
+                  [
+                    "present",
+                    "老师在",
+                    "拍照确认材料；送回材料；结束流程",
+                    "材料已拍照确认并送回"
+                  ]
+                ]
+              }
+            },
+            "edges-table": {
+              "type": "Table",
+              "props": {
+                "columns": [
+                  "from",
+                  "to",
+                  "when"
+                ],
+                "rows": [
+                  [
+                    "n1",
+                    "n2",
+                    ""
+                  ],
+                  [
+                    "n2",
+                    "n3",
+                    ""
+                  ],
+                  [
+                    "n3",
+                    "n4a",
+                    "absent"
+                  ],
+                  [
+                    "n4a",
+                    "n4b",
+                    ""
+                  ],
+                  [
+                    "n3",
+                    "n5a",
+                    "present"
+                  ],
+                  [
+                    "n5a",
+                    "n5b",
+                    ""
+                  ],
+                  [
+                    "n5b",
+                    "n5c",
+                    ""
+                  ]
+                ]
+              }
+            },
+            "facts-list": {
+              "type": "List",
+              "props": {
+                "title": "facts（出处：business_data.facts）",
+                "emptyText": "无事实记录",
+                "items": [
+                  {
+                    "title": "原草稿：到林老师门口→敲门等待材料→拍图确认→送回",
+                    "description": "出处：business_data.facts",
+                    "status": "info"
+                  },
+                  {
+                    "title": "新增条件分支：老师不在→通知用户→结束；老师在→拍照确认→送回→结束",
+                    "description": "出处：business_data.facts",
+                    "status": "info"
+                  },
+                  {
+                    "title": "拍照确认与送回只保留在“老师在”分支内，不再无条件共用",
+                    "description": "出处：business_data.facts",
+                    "status": "info"
+                  },
+                  {
+                    "title": "本次仅保存草稿，不执行、不等待、不操作机器人",
+                    "description": "出处：business_data.facts",
+                    "status": "info"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "workflow": {
+              "schema": "workflow-v1",
+              "id": "wf-lin-teacher-material-draft",
+              "title": "林老师门口取材料（草稿）",
+              "status": "draft",
+              "trigger": {
+                "type": "manual",
+                "label": "到达林老师门口"
+              },
+              "nodes": [
+                {
+                  "id": "n1",
+                  "type": "task",
+                  "title": "到林老师门口",
+                  "order": 1
+                },
+                {
+                  "id": "n2",
+                  "type": "task",
+                  "title": "敲门并等待老师给材料",
+                  "order": 2
+                },
+                {
+                  "id": "n3",
+                  "type": "branch",
+                  "title": "老师在不在？",
+                  "order": 3,
+                  "branches": [
+                    {
+                      "key": "absent",
+                      "label": "老师不在",
+                      "nodes": [
+                        {
+                          "id": "n4a",
+                          "type": "task",
+                          "title": "通知我：老师不在，本次不再等待"
+                        },
+                        {
+                          "id": "n4b",
+                          "type": "end",
+                          "title": "结束流程",
+                          "endReason": "老师不在，已通知用户，不再原地等待"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "present",
+                      "label": "老师在",
+                      "nodes": [
+                        {
+                          "id": "n5a",
+                          "type": "task",
+                          "title": "拍照确认材料"
+                        },
+                        {
+                          "id": "n5b",
+                          "type": "task",
+                          "title": "送回材料"
+                        },
+                        {
+                          "id": "n5c",
+                          "type": "end",
+                          "title": "结束流程",
+                          "endReason": "材料已拍照确认并送回"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "edges": [
+                {
+                  "from": "n1",
+                  "to": "n2"
+                },
+                {
+                  "from": "n2",
+                  "to": "n3"
+                },
+                {
+                  "from": "n3",
+                  "to": "n4a",
+                  "when": "absent"
+                },
+                {
+                  "from": "n4a",
+                  "to": "n4b"
+                },
+                {
+                  "from": "n3",
+                  "to": "n5a",
+                  "when": "present"
+                },
+                {
+                  "from": "n5a",
+                  "to": "n5b"
+                },
+                {
+                  "from": "n5b",
+                  "to": "n5c"
+                }
+              ]
+            },
+            "bind_path": "/_ui/workflow",
+            "save_event": "workflow.save",
+            "save_parameters": {
+              "mode": "draft"
+            },
+            "facts": [
+              "原草稿：到林老师门口→敲门等待材料→拍图确认→送回",
+              "新增条件分支：老师不在→通知用户→结束；老师在→拍照确认→送回→结束",
+              "拍照确认与送回只保留在“老师在”分支内，不再无条件共用",
+              "本次仅保存草稿，不执行、不等待、不操作机器人"
+            ],
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-lin-teacher-material-draft",
+                "title": "林老师门口取材料（草稿）",
+                "steps": [
+                  {
+                    "id": "n1",
+                    "type": "step",
+                    "title": "到林老师门口"
+                  },
+                  {
+                    "id": "n2",
+                    "type": "step",
+                    "title": "敲门并等待老师给材料"
+                  },
+                  {
+                    "id": "n3",
+                    "type": "condition",
+                    "title": "老师在不在？",
+                    "branches": [
+                      {
+                        "id": "b-absent",
+                        "label": "老师不在",
+                        "steps": [
+                          {
+                            "id": "n4a",
+                            "type": "step",
+                            "title": "通知我：老师不在，本次不再等待"
+                          },
+                          {
+                            "id": "n4b",
+                            "type": "step",
+                            "title": "结束流程",
+                            "description": "老师不在，已通知用户，不再原地等待"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "b-present",
+                        "label": "老师在",
+                        "steps": [
+                          {
+                            "id": "n5a",
+                            "type": "step",
+                            "title": "拍照确认材料"
+                          },
+                          {
+                            "id": "n5b",
+                            "type": "step",
+                            "title": "送回材料"
+                          },
+                          {
+                            "id": "n5c",
+                            "type": "step",
+                            "title": "结束流程",
+                            "description": "材料已拍照确认并送回"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_rQ7xsI7dPOt9RYrSSoLT1865"
+      },
+      "toolCallId": "call_00_rQ7xsI7dPOt9RYrSSoLT1865",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "b9c137c5-1ca2-4242-a40d-ddd2450efcb5"
+    }
+  },
+  {
+    "call_seq": 42,
+    "result_seq": 43,
+    "call": {
+      "turn": 2,
+      "step": 1,
+      "callId": "call_01_6mvFrhuylgamq4nqgQky4745",
+      "name": "render_ui",
+      "arguments": "{\"answer_presentation\": \"replace\", \"business_data\": {\"workflow\": {\"id\": \"wf-lin-teacher-material-draft\", \"nodes\": [{\"id\": \"n1\", \"order\": 1, \"title\": \"到林老师门口\", \"type\": \"task\"}, {\"id\": \"n2\", \"order\": 2, \"title\": \"敲门并等待老师给材料\", \"type\": \"task\"}, {\"branches\": [{\"id\": \"b-absent\", \"label\": \"老师不在\", \"nodes\": [{\"id\": \"n4a\", \"order\": 1, \"title\": \"通知我：老师不在，本次不再等待\", \"type\": \"task\"}, {\"id\": \"n4b\", \"note\": \"老师不在，已通知用户，不再原地等待\", \"order\": 2, \"title\": \"结束流程\", \"type\": \"end\"}]}, {\"id\": \"b-present\", \"label\": \"老师在\", \"nodes\": [{\"id\": \"n5a\", \"order\": 1, \"title\": \"拍照确认材料\", \"type\": \"task\"}, {\"id\": \"n5b\", \"order\": 2, \"title\": \"送回材料\", \"type\": \"task\"}, {\"id\": \"n5c\", \"note\": \"材料已拍照确认并送回\", \"order\": 3, \"title\": \"结束流程\", \"type\": \"end\"}]}], \"id\": \"n3\", \"order\": 3, \"title\": \"老师在不在？\", \"type\": \"branch\"}], \"parameters\": {\"mode\": \"draft\"}, \"schema\": \"workflow-v1\", \"status\": \"draft\", \"title\": \"林老师门口取材料（草稿）\"}, \"bind_path\": \"/_ui/workflow\", \"save_button\": {\"event\": \"workflow.save\", \"label\": \"保存流程\", \"payload\": {\"parameters\": {\"mode\": \"draft\"}, \"workflow\": \"$state:/_ui/workflow\"}}}, \"intent\": \"rich_content\", \"locale\": \"zh-CN\", \"mode\": \"display\", \"user_query\": \"页面只有一个根 Stack，Stack 内是并排的两个兄弟节点：(1) Workflow 编辑器，mode=edit，流程名称“林老师门口取材料（草稿）”显示在编辑器内，用 $bindState 绑定 /_ui/workflow，并以 business_data.workflow 中的完整 workflow-v1 文档初始化（保留流程 ID wf-lin-teacher-material-draft、步骤顺序、n1/n2/n3 及 b-absent、b-present 两个分支、各分支内的结束说明与参数 mode=draft）；(2) 独立按钮“保存流程”，点击发出 workflow.save，payload.workflow 用 $state 读取 /_ui/workflow 的最新值，payload.parameters 为对象 {mode:\\\"draft\\\"}。不使用 $ref，不用静态步骤或组件嵌套代替编辑器。\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "workflow-editor"
+              ]
+            },
+            "workflow-editor": {
+              "type": "Workflow",
+              "props": {
+                "value": {
+                  "$bindState": "/_ui/workflow"
+                },
+                "mode": "edit",
+                "disabled": false
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "workflow": {
+              "id": "wf-lin-teacher-material-draft",
+              "nodes": [
+                {
+                  "id": "n1",
+                  "order": 1,
+                  "title": "到林老师门口",
+                  "type": "task"
+                },
+                {
+                  "id": "n2",
+                  "order": 2,
+                  "title": "敲门并等待老师给材料",
+                  "type": "task"
+                },
+                {
+                  "branches": [
+                    {
+                      "id": "b-absent",
+                      "label": "老师不在",
+                      "nodes": [
+                        {
+                          "id": "n4a",
+                          "order": 1,
+                          "title": "通知我：老师不在，本次不再等待",
+                          "type": "task"
+                        },
+                        {
+                          "id": "n4b",
+                          "note": "老师不在，已通知用户，不再原地等待",
+                          "order": 2,
+                          "title": "结束流程",
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "b-present",
+                      "label": "老师在",
+                      "nodes": [
+                        {
+                          "id": "n5a",
+                          "order": 1,
+                          "title": "拍照确认材料",
+                          "type": "task"
+                        },
+                        {
+                          "id": "n5b",
+                          "order": 2,
+                          "title": "送回材料",
+                          "type": "task"
+                        },
+                        {
+                          "id": "n5c",
+                          "note": "材料已拍照确认并送回",
+                          "order": 3,
+                          "title": "结束流程",
+                          "type": "end"
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "n3",
+                  "order": 3,
+                  "title": "老师在不在？",
+                  "type": "branch"
+                }
+              ],
+              "parameters": {
+                "mode": "draft"
+              },
+              "schema": "workflow-v1",
+              "status": "draft",
+              "title": "林老师门口取材料（草稿）"
+            },
+            "bind_path": "/_ui/workflow",
+            "save_button": {
+              "event": "workflow.save",
+              "label": "保存流程",
+              "payload": {
+                "parameters": {
+                  "mode": "draft"
+                },
+                "workflow": "$state:/_ui/workflow"
+              }
+            },
+            "_ui": {
+              "workflow": {
+                "version": "workflow-v1",
+                "id": "wf-lin-teacher-material-draft",
+                "title": "林老师门口取材料（草稿）",
+                "steps": [
+                  {
+                    "id": "n1",
+                    "type": "step",
+                    "title": "到林老师门口"
+                  },
+                  {
+                    "id": "n2",
+                    "type": "step",
+                    "title": "敲门并等待老师给材料"
+                  },
+                  {
+                    "id": "n3",
+                    "type": "condition",
+                    "title": "老师在不在？",
+                    "branches": [
+                      {
+                        "id": "b-absent",
+                        "label": "老师不在",
+                        "steps": [
+                          {
+                            "id": "n4a",
+                            "type": "step",
+                            "title": "通知我：老师不在，本次不再等待"
+                          },
+                          {
+                            "id": "n4b",
+                            "type": "step",
+                            "title": "结束流程",
+                            "description": "老师不在，已通知用户，不再原地等待"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "b-present",
+                        "label": "老师在",
+                        "steps": [
+                          {
+                            "id": "n5a",
+                            "type": "step",
+                            "title": "拍照确认材料"
+                          },
+                          {
+                            "id": "n5b",
+                            "type": "step",
+                            "title": "送回材料"
+                          },
+                          {
+                            "id": "n5c",
+                            "type": "step",
+                            "title": "结束流程",
+                            "description": "材料已拍照确认并送回"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "profile": "rich",
+      "answerPresentation": "replace"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_01_6mvFrhuylgamq4nqgQky4745"
+      },
+      "toolCallId": "call_01_6mvFrhuylgamq4nqgQky4745",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "a1a94b66-4f6b-4c6c-bcf4-23c51b3361ff"
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 27,
+    "result_seq": 28,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_gLSA1GsI7SeTLxUH7gYP7489",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"purpose\", \"header\": \"用途\", \"question\": \"这次活动的用途是什么？（请用文字填写，例如团建、生日聚会、客户答谢等）\"}, {\"id\": \"people\", \"header\": \"人数\", \"question\": \"预计参加人数是多少？（请用文字填写具体数字）\"}, {\"id\": \"format\", \"header\": \"形式\", \"question\": \"活动采取哪种形式？\", \"options\": [{\"label\": \"线上\"}, {\"label\": \"线下\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_gLSA1GsI7SeTLxUH7gYP7489"
+      },
+      "toolCallId": "call_00_gLSA1GsI7SeTLxUH7gYP7489",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"purpose\",\"selected\":[],\"custom\":\"产品培训\"},{\"id\":\"people\",\"selected\":[],\"custom\":\"12\"},{\"id\":\"format\",\"selected\":[\"线上\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "e5c33d0b-dd82-4804-8267-502192fbb851"
+    }
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_IrlpRVmJSBoixMEJfziB5450",
+      "name": "render_ui",
+      "arguments": "{\"mode\": \"display\", \"answer_presentation\": \"supplement\", \"user_query\": \"用简洁卡片回答“图书馆是否需要预约”。卡片标题为“图书馆入馆：需要来访预约”，正文用两条带序号的必要条件呈现：1）进入图书馆需来访预约；2）是否获准以馆方答复为准。纯文字简洁排版，不使用图片、地图、表单或交互组件。\", \"business_data\": {\"title\": \"图书馆入馆：需要来访预约\", \"answer\": \"需要预约。\", \"conditions\": [{\"label\": \"必要条件一\", \"text\": \"进入图书馆需来访预约\"}, {\"label\": \"必要条件二\", \"text\": \"是否获准以馆方答复为准\"}], \"note\": \"以上为本例固定材料中的信息；未提及的馆别、时段或名额等细节未知。\"}, \"locale\": \"zh-CN\"}"
+    },
+    "meta": {
+      "payload": {
+        "format": "json-render-v1",
+        "spec": {
+          "root": "main",
+          "elements": {
+            "main": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "md",
+                "align": "stretch"
+              },
+              "children": [
+                "introCard"
+              ]
+            },
+            "introCard": {
+              "type": "Card",
+              "props": {
+                "title": "图书馆入馆：需要来访预约",
+                "variant": "outlined"
+              },
+              "children": [
+                "answerRow",
+                "conditionsBlock",
+                "noteBlock"
+              ]
+            },
+            "answerRow": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "answerLabel",
+                "answerValue"
+              ]
+            },
+            "answerLabel": {
+              "type": "Text",
+              "props": {
+                "content": "答案：",
+                "variant": "muted"
+              }
+            },
+            "answerValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/answer"
+                },
+                "variant": "default"
+              }
+            },
+            "conditionsBlock": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "sm",
+                "align": "stretch"
+              },
+              "children": [
+                "condition1",
+                "condition2"
+              ]
+            },
+            "condition1": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "condition1Number",
+                "condition1Body"
+              ]
+            },
+            "condition1Number": {
+              "type": "Text",
+              "props": {
+                "content": "1）",
+                "variant": "default"
+              }
+            },
+            "condition1Body": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "stretch"
+              },
+              "children": [
+                "condition1Label",
+                "condition1Text"
+              ]
+            },
+            "condition1Label": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conditions/0/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "condition1Text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conditions/0/text"
+                },
+                "variant": "default"
+              }
+            },
+            "condition2": {
+              "type": "Stack",
+              "props": {
+                "direction": "horizontal",
+                "gap": "xs",
+                "align": "start"
+              },
+              "children": [
+                "condition2Number",
+                "condition2Body"
+              ]
+            },
+            "condition2Number": {
+              "type": "Text",
+              "props": {
+                "content": "2）",
+                "variant": "default"
+              }
+            },
+            "condition2Body": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "none",
+                "align": "stretch"
+              },
+              "children": [
+                "condition2Label",
+                "condition2Text"
+              ]
+            },
+            "condition2Label": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conditions/1/label"
+                },
+                "variant": "muted"
+              }
+            },
+            "condition2Text": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/conditions/1/text"
+                },
+                "variant": "default"
+              }
+            },
+            "noteBlock": {
+              "type": "Stack",
+              "props": {
+                "direction": "vertical",
+                "gap": "xs",
+                "align": "stretch"
+              },
+              "children": [
+                "noteLabel",
+                "noteValue"
+              ]
+            },
+            "noteLabel": {
+              "type": "Text",
+              "props": {
+                "content": "出处说明：",
+                "variant": "muted"
+              }
+            },
+            "noteValue": {
+              "type": "Text",
+              "props": {
+                "content": {
+                  "$state": "/note"
+                },
+                "variant": "muted"
+              }
+            }
+          }
+        },
+        "state": {
+          "initial": {
+            "title": "图书馆入馆：需要来访预约",
+            "answer": "需要预约。",
+            "conditions": [
+              {
+                "label": "必要条件一",
+                "text": "进入图书馆需来访预约"
+              },
+              {
+                "label": "必要条件二",
+                "text": "是否获准以馆方答复为准"
+              }
+            ],
+            "note": "以上为本例固定材料中的信息；未提及的馆别、时段或名额等细节未知。"
+          }
+        }
+      },
+      "profile": "base",
+      "answerPresentation": "supplement"
+    },
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_IrlpRVmJSBoixMEJfziB5450"
+      },
+      "toolCallId": "call_00_IrlpRVmJSBoixMEJfziB5450",
+      "content": [
+        {
+          "type": "text",
+          "text": "界面已附上。请继续用文字回答，不要复述或改写界面 JSON。"
+        }
+      ],
+      "isError": false,
+      "id": "65d8fc83-0d5d-46fe-b809-0c860fb88dd5"
+    }
+  }
+]

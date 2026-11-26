@@ -1,0 +1,29 @@
+{
+  "simulated": true,
+  "case_id": "N07",
+  "facts": "草稿order_id=SO-2048,issue=无法开机,contact=测试联系人A,photos=[after-front,after-port]。两图MOCK，无电话地址；只提交售后草稿，不创建工单。",
+  "assets": [
+    {
+      "id": "bench05-after-front",
+      "file": "bench05-after-front.png",
+      "alt": "MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture",
+      "source_id": "after-front",
+      "url": "http://127.0.0.1:3080/api/media/bench05-after-front/content",
+      "path": "/api/media/bench05-after-front/content",
+      "sha256": "0dfc9f5cc46a0419df88e1887871ec020fe038a2c663fb2afe941b5bd17917c4",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "id": "bench05-after-port",
+      "file": "bench05-after-port.png",
+      "alt": "MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture",
+      "source_id": "after-port",
+      "url": "http://127.0.0.1:3080/api/media/bench05-after-port/content",
+      "path": "/api/media/bench05-after-port/content",
+      "sha256": "b7a18b6492b01782ff59b863d06be8aac7c62b8030a0c2d87a74c278f6f0945a",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

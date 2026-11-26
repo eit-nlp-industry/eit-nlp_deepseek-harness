@@ -1,0 +1,22 @@
+[
+  {
+    "seq": 17,
+    "turn": 1,
+    "text": "我先获取本用例的固定材料。"
+  },
+  {
+    "seq": 24,
+    "turn": 1,
+    "text": "## 售后申请草稿（待核对）\n\n**订单号**：SO-2048\n**故障描述**：无法开机\n**联系人**：测试联系人A\n**附件照片**：2 张，分别是正面与接口侧\n\n| 字段 | 草稿值 |\n| --- | --- |\n| 订单号 | SO-2048 |\n| 故障现象 | 无法开机 |\n| 联系人 | 测试联系人A |\n| 照片 1（正面） | bench05-after-front.png |\n| 照片 2（接口侧） | bench05-after-port.png |\n\n### 附件照片 1：正面\n![MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-after-front/content)\n\n### 附件照片 2：接口侧\n![MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-after-port/content)\n\n### 提交前的说明\n- 材料中只提供上面这些信息，**没有电话号码，也没有地址**。如果你需要补充，请直接说，我会加到草稿里。\n- 这一步只是填写并核对草稿，不会创建真实工单。\n\n---\n\n请核对这份草稿。你可以：\n1. **直接确认**（“确认提交”）→ 我只返回模拟接收回执；\n2. **指出需要改的地方**（例如更换联系人或补充故障细节），我会先改好，再交给你确认。"
+  },
+  {
+    "seq": 33,
+    "turn": 2,
+    "text": "已收到修改：联系人改为测试联系人B，两张照片保留，并确认提交。"
+  },
+  {
+    "seq": 39,
+    "turn": 2,
+    "text": "## 售后申请草稿回执（模拟）\n\n**状态**：草稿已接收，未创建真实。\n\n| 项目 | 内容 |\n| --- | --- |\n| 订单号 | SO-2048 |\n| 故障现象 | 无法开机 |\n| 联系人 | 测试联系人B |\n| 附件照片 | 2 张：分别是正面与接口侧 |\n| 处理结果 | 草稿已接收，不创建真实工单 |\n\n两张照片随草稿一起保留：\n\n![MOCK AFTER-SALES FRONT; SO-2048 | FRONT; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-after-front/content)\n\n![MOCK AFTER-SALES PORT; SO-2048 | PORT; synthetic fixture](http://127.0.0.1:3080/api/media/bench05-after-port/content)"
+  }
+]

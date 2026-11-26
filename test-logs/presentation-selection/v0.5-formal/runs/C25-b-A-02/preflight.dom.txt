@@ -1,0 +1,250 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "新会话" [selected]:
+    - generic: 新会话
+  - treeitem "进行中 握手请求简短回执 刚刚":
+    - generic: 进行中
+    - generic: 握手请求简短回执
+    - generic: 刚刚
+  - treeitem "已完成 图书馆路线排序测评 1分钟":
+    - generic: 已完成
+    - generic: 图书馆路线排序测评
+    - generic: 1分钟
+  - treeitem "测评场景握手回执 1分钟":
+    - generic: 测评场景握手回执
+    - generic: 1分钟
+  - treeitem "已完成 握手需求简短回执测评 1分钟":
+    - generic: 已完成
+    - generic: 握手需求简短回执测评
+    - generic: 1分钟
+  - treeitem "老师不在告知流程确认 3分钟":
+    - generic: 老师不在告知流程确认
+    - generic: 3分钟
+  - treeitem "已完成 条件分支文字修改确认 3分钟":
+    - generic: 已完成
+    - generic: 条件分支文字修改确认
+    - generic: 3分钟
+  - treeitem "林老师材料取送流程确认 5分钟":
+    - generic: 林老师材料取送流程确认
+    - generic: 5分钟
+  - treeitem "已完成 林老师材料取送流程 5分钟":
+    - generic: 已完成
+    - generic: 林老师材料取送流程
+    - generic: 5分钟
+  - treeitem "饮水机不出水照片草稿测评 6分钟":
+    - generic: 饮水机不出水照片草稿测评
+    - generic: 6分钟
+  - treeitem "已完成 C18-B-02 门口补拍呈现测评 9分钟":
+    - generic: 已完成
+    - generic: C18-B-02 门口补拍呈现测评
+    - generic: 9分钟
+  - treeitem "已完成 饮水机照片呈现测评 9分钟":
+    - generic: 已完成
+    - generic: 饮水机照片呈现测评
+    - generic: 9分钟
+  - treeitem "食堂导航门图测评 11分钟":
+    - generic: 食堂导航门图测评
+    - generic: 11分钟
+  - treeitem "已完成 食堂导航原生门图测评 12分钟":
+    - generic: 已完成
+    - generic: 食堂导航原生门图测评
+    - generic: 12分钟
+  - treeitem "图书馆导盲犬路线呈现测评 13分钟":
+    - generic: 图书馆导盲犬路线呈现测评
+    - generic: 13分钟
+  - treeitem "已完成 图书馆导盲犬路线测评 13分钟":
+    - generic: 已完成
+    - generic: 图书馆导盲犬路线测评
+    - generic: 13分钟
+  - treeitem "已完成 补拍门口并结束观察 14分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 14分钟
+  - treeitem "已完成 图书馆用餐回程排序 14分钟":
+    - generic: 已完成
+    - generic: 图书馆用餐回程排序
+    - generic: 14分钟
+  - treeitem "已完成 五分钟门开提醒测评 15分钟":
+    - generic: 已完成
+    - generic: 五分钟门开提醒测评
+    - generic: 15分钟
+  - treeitem "图书馆用餐与回程排序 15分钟":
+    - generic: 图书馆用餐与回程排序
+    - generic: 15分钟
+  - treeitem "已完成 门开提醒：图像通知呈现 24分钟":
+    - generic: 已完成
+    - generic: 门开提醒：图像通知呈现
+    - generic: 24分钟
+  - treeitem "已完成 监视门开提醒呈现 30分钟":
+    - generic: 已完成
+    - generic: 监视门开提醒呈现
+    - generic: 30分钟
+  - treeitem "门口补拍并结束观察 33分钟":
+    - generic: 门口补拍并结束观察
+    - generic: 33分钟
+  - treeitem "已完成 补拍门口并结束观察 33分钟":
+    - generic: 已完成
+    - generic: 补拍门口并结束观察
+    - generic: 33分钟
+  - treeitem "已完成 门开五分钟提醒呈现测评 36分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒呈现测评
+    - generic: 36分钟
+  - treeitem "五分钟门开提醒测评 38分钟":
+    - generic: 五分钟门开提醒测评
+    - generic: 38分钟
+  - treeitem "已完成 门开五分钟提醒文字通知 38分钟":
+    - generic: 已完成
+    - generic: 门开五分钟提醒文字通知
+    - generic: 38分钟
+  - treeitem "门开提醒固定材料测评 44分钟":
+    - generic: 门开提醒固定材料测评
+    - generic: 44分钟
+  - treeitem "已完成 门开提醒测试 44分钟":
+    - generic: 已完成
+    - generic: 门开提醒测试
+    - generic: 44分钟
+  - treeitem "已完成 文件交接呈现测评 C16-B-02 45分钟":
+    - generic: 已完成
+    - generic: 文件交接呈现测评 C16-B-02
+    - generic: 45分钟
+  - treeitem "已完成 全量正式呈现测评 C16-B-01 45分钟":
+    - generic: 已完成
+    - generic: 全量正式呈现测评 C16-B-01
+    - generic: 45分钟
+  - treeitem "全量正式呈现测评 C16-A-02 47分钟":
+    - generic: 全量正式呈现测评 C16-A-02
+    - generic: 47分钟
+  - treeitem "已完成 正式呈现测评 C16-A-01 47分钟":
+    - generic: 已完成
+    - generic: 正式呈现测评 C16-A-01
+    - generic: 47分钟
+  - treeitem "外卖取餐确认测评 51分钟":
+    - generic: 外卖取餐确认测评
+    - generic: 51分钟
+  - treeitem "已完成 外卖取件模拟呈现 56分钟":
+    - generic: 已完成
+    - generic: 外卖取件模拟呈现
+    - generic: 56分钟
+  - treeitem "已完成 外卖取件图像确认测评 56分钟":
+    - generic: 已完成
+    - generic: 外卖取件图像确认测评
+    - generic: 56分钟
+  - treeitem "已完成 外卖取件确认测评 C15-A-01 57分钟":
+    - generic: 已完成
+    - generic: 外卖取件确认测评 C15-A-01
+    - generic: 57分钟
+  - treeitem "已完成 图书馆座位图像呈现测评 59分钟":
+    - generic: 已完成
+    - generic: 图书馆座位图像呈现测评
+    - generic: 59分钟
+  - treeitem "图书馆座位查询测评 1小时":
+    - generic: 图书馆座位查询测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位图像化呈现 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位图像化呈现
+    - generic: 1小时
+  - treeitem "已完成 图书馆座位新视角图测评 1小时":
+    - generic: 已完成
+    - generic: 图书馆座位新视角图测评
+    - generic: 1小时
+  - treeitem "已完成 安静读书地点推荐测评 1小时":
+    - generic: 已完成
+    - generic: 安静读书地点推荐测评
+    - generic: 1小时
+  - treeitem "已完成 安静读书场所推荐测评 1小时":
+    - generic: 已完成
+    - generic: 安静读书场所推荐测评
+    - generic: 1小时
+  - treeitem "已完成 安静读书地点推荐卡片 1小时":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片
+    - generic: 1小时
+  - treeitem "已完成 安静读书地点推荐卡片测评 1小时":
+    - generic: 已完成
+    - generic: 安静读书地点推荐卡片测评
+    - generic: 1小时
+  - treeitem "图书馆找灰衣拉箱同学 1小时":
+    - generic: 图书馆找灰衣拉箱同学
+    - generic: 1小时
+  - treeitem "已完成 图书馆入口找同学 1小时":
+    - generic: 已完成
+    - generic: 图书馆入口找同学
+    - generic: 1小时
+  - treeitem "已完成 最小状态暂停展示 1小时":
+    - generic: 已完成
+    - generic: 最小状态暂停展示
+    - generic: 1小时
+  - treeitem "模拟暂停最小状态测试 1小时":
+    - generic: 模拟暂停最小状态测试
+    - generic: 1小时
+  - treeitem "已完成 C12-B-01图书馆寻人呈现测评 1小时":
+    - generic: 已完成
+    - generic: C12-B-01图书馆寻人呈现测评
+    - generic: 1小时
+  - treeitem "已完成 图书馆入口灰衣拉箱同学寻找 1小时":
+    - generic: 已完成
+    - generic: 图书馆入口灰衣拉箱同学寻找
+    - generic: 1小时
+  - button "展开其余 122 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - button "打开右侧边栏":
+- img "EIT-NLP"
+- generic: 我们开始吧
+- button "选择工作区":
+  - generic: 默认工作区
+- button "Component benchmark full v2":
+  - generic: Component benchmark full v2
+- textbox "请开始，描述你想要的任务"
+- generic: 请开始，描述你想要的任务
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:

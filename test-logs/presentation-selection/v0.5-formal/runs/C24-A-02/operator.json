@@ -1,0 +1,18 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C24",
+    "facts": "独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。",
+    "assets": []
+  },
+  "events": [],
+  "monitoringEnded": true,
+  "submission": {
+    "response": {
+      "status": "draft_received",
+      "simulated": true,
+      "real_operation": false,
+      "version": 3
+    }
+  }
+}

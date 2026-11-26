@@ -1,0 +1,294 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "等待回答 监测文件处理任务失败通知":
+    - generic: 等待回答
+    - generic: 监测文件处理任务失败通知
+    - generic: 待回答
+  - treeitem "已完成 文件处理任务监测模拟 刚刚":
+    - generic: 已完成
+    - generic: 文件处理任务监测模拟
+    - generic: 刚刚
+  - treeitem "已完成 平面图快递路线静态示意 刚刚":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意
+    - generic: 刚刚
+  - treeitem "已完成 平面图快递路线静态示意说明 刚刚":
+    - generic: 已完成
+    - generic: 平面图快递路线静态示意说明
+    - generic: 刚刚
+  - treeitem "饮水机不出水照片评测 1分钟" [selected]:
+    - generic: 饮水机不出水照片评测
+    - generic: 1分钟
+  - treeitem "已完成 三项工作排期草稿确认 1分钟":
+    - generic: 已完成
+    - generic: 三项工作排期草稿确认
+    - generic: 1分钟
+  - treeitem "已完成 安排三项工作并确认草稿 1分钟":
+    - generic: 已完成
+    - generic: 安排三项工作并确认草稿
+    - generic: 1分钟
+  - treeitem "已完成 会议室预约改期草稿 3分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿
+    - generic: 3分钟
+  - treeitem "已完成 会议室预约改期草稿测评 3分钟":
+    - generic: 已完成
+    - generic: 会议室预约改期草稿测评
+    - generic: 3分钟
+  - treeitem "等待回答 饮水机维修照片呈现测评":
+    - generic: 等待回答
+    - generic: 饮水机维修照片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 售后申请草稿填写与确认 4分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写与确认
+    - generic: 4分钟
+  - treeitem "已完成 售后申请草稿填写测评 4分钟":
+    - generic: 已完成
+    - generic: 售后申请草稿填写测评
+    - generic: 4分钟
+  - treeitem "已完成 商品退货多视角图片呈现 5分钟":
+    - generic: 已完成
+    - generic: 商品退货多视角图片呈现
+    - generic: 5分钟
+  - treeitem "等待回答 商品退货多视角图片呈现测评":
+    - generic: 等待回答
+    - generic: 商品退货多视角图片呈现测评
+    - generic: 待回答
+  - treeitem "已完成 食堂路线状态卡片呈现 6分钟":
+    - generic: 已完成
+    - generic: 食堂路线状态卡片呈现
+    - generic: 6分钟
+  - treeitem "食堂导航状态卡片呈现 6分钟":
+    - generic: 食堂导航状态卡片呈现
+    - generic: 6分钟
+  - treeitem "已完成 包裹照片确认对象状态 7分钟":
+    - generic: 已完成
+    - generic: 包裹照片确认对象状态
+    - generic: 7分钟
+  - treeitem "已完成 确认包裹照片与订单尾号 9分钟":
+    - generic: 已完成
+    - generic: 确认包裹照片与订单尾号
+    - generic: 9分钟
+  - treeitem "测评 C21-B-01 食堂导航 11分钟":
+    - generic: 测评 C21-B-01 食堂导航
+    - generic: 11分钟
+  - treeitem "已完成 带用户去食堂的状态卡片测评 11分钟":
+    - generic: 已完成
+    - generic: 带用户去食堂的状态卡片测评
+    - generic: 11分钟
+  - treeitem "已完成 活动需求确认与汇总 11分钟":
+    - generic: 已完成
+    - generic: 活动需求确认与汇总
+    - generic: 11分钟
+  - treeitem "已完成 活动需求确认测评 12分钟":
+    - generic: 已完成
+    - generic: 活动需求确认测评
+    - generic: 12分钟
+  - button "展开其余 184 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 21天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 21天
+  - treeitem "四组件组合测试页 21天":
+    - generic: 四组件组合测试页
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+  - treeitem "宁波三江口夜景 Image 组件 21天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 21天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 饮水机不出水照片评测
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+  - button "跳转到第 3 轮"
+  - button "跳转到第 4 轮"
+  - button "跳转到第 5 轮"
+- generic: 【全量正式呈现测评 C22-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C22-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C22-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：饮水机不出水，先拍一张照片给我。 指定呈现方式：Tabs/Image+DynamicForm，保留3个资产关联。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 13:47
+- button "复制":
+- status: 已完成
+- button "已完成，用时 24秒":
+  - generic: 已完成，用时 24秒
+- paragraph: I'll start by initializing the fixed materials for this case.
+- heading "饮水机不出水 · 现场照片与反馈草稿" [level=1]
+- tablist "内容页签":
+  - tab "照片"
+  - tab "反馈草稿" [selected]
+- tabpanel "反馈草稿":
+  - generic: 提交后仅生成模拟草稿结果，不创建真实工单
+  - generic "设备编号"
+  - textbox "设备编号": YSJ-07
+  - generic "位置"
+  - textbox "位置": 教学楼一层东侧
+  - generic "故障现象"
+  - textbox "故障现象": 不出水
+  - generic "备注"
+  - textbox "材料未提供，需用户自行填写"
+  - generic "联系人"
+  - textbox "材料未提供，需用户自行填写"
+- generic: 当前仅正面一张照片可用；其他视角尚未发布，等待补充，未发布视角不展示图像。
+- button "提 交":
+  - generic: 提 交
+- button "取 消":
+  - generic: 取 消
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支" [disabled]:
+- generic: 仅可从已完成轮次的最后一条消息分支
+- button "用量 5.9K tok":
+  - generic: 用量 5.9K tok
+- generic: 13:47
+- generic: 靠近一点拍给我看看，暂不提交。
+- generic: 13:48
+- button "复制":
+- status: 已完成
+- button "已完成，用时 4秒":
+  - generic: 已完成，用时 4秒
+- paragraph:
+  - text: 目前还提供不了“靠近一点”的照片：本例的固定材料里只有那 1 张
+  - strong: 正面照片
+  - text: （YSJ-07，文件 bench05-repair-front，960×540），没有近景/特写视角；其他两个视角仍在“尚未发布”状态。我这边也不能现场补拍或自行放大生成一张当作近景图——同源照片冒充其他视角会误导判断。
+- paragraph: 当前状态：
+- list:
+  - listitem: 三个资产关联位保留不变：①正面·已提供；②其他视角·尚未发布；③其他视角·尚未发布。
+  - text: 反馈草稿
+  - strong: 未提交
+  - text: ，字段仍为：设备 YSJ-07｜教学楼一层东侧｜不出水｜备注（待填）｜联系人（待填）。
+- paragraph: 如果你手上有近景照片，可以上传到第 2 个关联位；等它发布/上传后我再把图像和草稿一起呈现。你也可以先告诉我要不要先只按现有正面照片继续。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 4.4K tok":
+  - generic: 用量 4.4K tok
+- generic: 13:49
+- button "收到执行请求 13:49":
+  - generic: 收到执行请求
+  - time: 13:49
+- status: 已完成
+- button "已完成，用时 24秒":
+  - generic: 已完成，用时 24秒
+- tablist "内容页签":
+  - tab "照片" [selected]
+  - tab "反馈草稿"
+- tabpanel "照片":
+  - figure "近景（出水口特写，960×540）":
+    - button "预览 MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture":
+      - img "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture"
+    - generic: 近景（出水口特写，960×540）
+  - figure "正面（960×540）":
+    - button "预览 MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture":
+      - img "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture"
+    - generic: 正面（960×540）
+  - generic: 组件未注册
+  - generic: 近景照片已发布，已归入第 2 个资产关联位；第 3 位仍等待其他视角，不以现有照片充替。
+- button "提 交":
+  - generic: 提 交
+- button "取 消":
+  - generic: 取 消
+- generic: 再拍一下另一侧，暂不提交。
+- generic: 13:50
+- button "复制":
+- status: 已完成
+- button "已完成，用时 2秒":
+  - generic: 已完成，用时 2秒
+- paragraph:
+  - text: “另一侧”的照片目前还提供不了：本例固定材料只发布了两张——正面（bench05-repair-front）和近景出水口特写（bench05-repair-near）；第 3 个资产关联位（其他视角）仍是
+  - strong: 尚未发布
+  - text: ，我也不会拿已有这两张当另一侧充数。
+- paragraph: 当前状态：
+- list:
+  - listitem: 资产关联：①正面·已提供 ②近景·已提供 ③另一侧视角·尚未发布。
+  - text: 反馈草稿
+  - strong: 未提交
+  - text: ：设备 YSJ-07｜教学楼一层东侧｜不出水｜备注（空）｜联系人（空）。
+- paragraph: 等另一侧视角发布或你上传后，我会把它填入第 3 位再一并呈现；你也可以先让草稿只带现有两张照片继续。
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支":
+- button "用量 6.5K tok":
+  - generic: 用量 6.5K tok
+- generic: 13:50
+- button "收到执行请求 13:50":
+  - generic: 收到执行请求
+  - time: 13:50
+- status: 已完成
+- button "已完成，用时 21秒":
+  - generic: 已完成，用时 21秒
+- tablist "内容页签":
+  - tab "照片" [selected]
+  - tab "反馈草稿"
+- tabpanel "照片":
+  - figure "侧面（另一侧，960×540）":
+    - button "预览 MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture":
+      - img "MOCK YSJ-07 SIDE; SAME DEVICE | SIDE VIEW; synthetic fixture"
+    - generic: 侧面（另一侧，960×540）
+  - figure "近景（出水口特写，960×540）":
+    - button "预览 MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture":
+      - img "MOCK YSJ-07 CLOSE; DISPENSER OUTLET; synthetic fixture"
+    - generic: 近景（出水口特写，960×540）
+  - figure "正面（960×540）":
+    - button "预览 MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture":
+      - img "MOCK YSJ-07 FRONT; WATER DISPENSER | NO WATER; synthetic fixture"
+    - generic: 正面（960×540）
+  - generic: 组件未注册
+  - generic: 三张图均已发布且互不替代：正面看整机、近景看出水口、侧面看机身另一侧。
+- button "提 交":
+  - generic: 提 交
+- button "取 消":
+  - generic: 取 消
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话" [active]
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 1%":
+  - generic: 1%

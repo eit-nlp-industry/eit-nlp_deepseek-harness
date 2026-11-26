@@ -1,0 +1,95 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C24-A-02",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_IDX32t5ZfRB2o59cLZZA7466"
+      },
+      "toolCallId": "call_00_ET_IDX32t5ZfRB2o59cLZZA7466",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C24\",\"facts\":\"独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "989b9a2e-f267-4cad-8a46-3708416a9f94"
+    }
+  },
+  {
+    "call": {
+      "seq": 25,
+      "arguments": {
+        "action": "read",
+        "run_id": "C24-A-02"
+      }
+    },
+    "result_seq": 26,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_d9VhBGlhidJoyhdYn7Qb1126"
+      },
+      "toolCallId": "call_00_d9VhBGlhidJoyhdYn7Qb1126",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C24\",\"facts\":\"独立草稿：到林老师门口→敲门等待材料→拍图确认→送回；需要追加老师在/不在分支。老师不在路径必须通知并结束，老师在才继续其余步骤；不能放无条件共用的拍照送回。只保存草稿。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "a1d9ff6e-dc47-4f68-b11d-11f736d368eb"
+    }
+  },
+  {
+    "call": {
+      "seq": 37,
+      "arguments": {
+        "action": "submit",
+        "run_id": "C24-A-02",
+        "values": {
+          "draft_name": "到林老师门口取材料并送回（含老师在/不在分支）",
+          "flow": [
+            "第1步：到林老师门口",
+            "第2步：敲门等待材料",
+            "第3步：判断林老师在不在",
+            "分支A（不在）：通知我“林老师不在”→ 结束，不原地等待、不拍照、不送回",
+            "分支B（在）：拍图确认材料 → 送回材料 → 结束"
+          ],
+          "branch_rule": "拍照确认与送回材料仅挂在“老师在”分支下，不设为无条件共用步骤",
+          "save_mode": "仅保存草稿，不执行"
+        }
+      }
+    },
+    "result_seq": 38,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_adtluA2tj9CwCXO2jL659319"
+      },
+      "toolCallId": "call_00_adtluA2tj9CwCXO2jL659319",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"status\":\"draft_received\",\"simulated\":true,\"real_operation\":false,\"version\":3,\"submitted\":{\"draft_name\":\"到林老师门口取材料并送回（含老师在/不在分支）\",\"flow\":[\"第1步：到林老师门口\",\"第2步：敲门等待材料\",\"第3步：判断林老师在不在\",\"分支A（不在）：通知我“林老师不在”→ 结束，不原地等待、不拍照、不送回\",\"分支B（在）：拍图确认材料 → 送回材料 → 结束\"],\"branch_rule\":\"拍照确认与送回材料仅挂在“老师在”分支下，不设为无条件共用步骤\",\"save_mode\":\"仅保存草稿，不执行\"}}}"
+        }
+      ],
+      "isError": false,
+      "id": "88873a73-c698-4b91-9dc0-d1d85a617bad"
+    }
+  }
+]

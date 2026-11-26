@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 5,
+  "readability": 2,
+  "state": 4,
+  "presentation": "fail",
+  "reason": "环境触发render_ui连续失败，最终只有文字和图片链接，无实际Image；人物事实与通知范围正确，重复业务事件未重试组件但仍重复文字。保留失败兜底。"
+}

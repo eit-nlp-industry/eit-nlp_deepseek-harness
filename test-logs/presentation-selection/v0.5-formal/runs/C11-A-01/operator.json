@@ -1,0 +1,38 @@
+{
+  "visible": {
+    "simulated": true,
+    "case_id": "C11",
+    "facts": "follow-01已模拟继续跟随同一目标person-guide。",
+    "assets": [],
+    "status": "following",
+    "task_id": "follow-01",
+    "target": "person-guide"
+  },
+  "events": [
+    {
+      "id": "C11-A-01-paused",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "follow-01已模拟暂停，目标仍为person-guide。",
+        "assets": [],
+        "simulated": true,
+        "status": "paused",
+        "task_id": "follow-01",
+        "target": "person-guide"
+      }
+    },
+    {
+      "id": "C11-A-01-continued",
+      "kind": "fixed_business_event",
+      "data": {
+        "facts": "follow-01已模拟继续跟随同一目标person-guide。",
+        "assets": [],
+        "simulated": true,
+        "status": "following",
+        "task_id": "follow-01",
+        "target": "person-guide"
+      }
+    }
+  ],
+  "monitoringEnded": true
+}

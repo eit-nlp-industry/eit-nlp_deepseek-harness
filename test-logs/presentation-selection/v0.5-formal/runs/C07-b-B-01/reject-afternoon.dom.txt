@@ -1,0 +1,368 @@
+- button "新建会话":
+- button "收起侧边栏":
+- button "新建会话":
+  - generic: 新会话
+  - generic: Ctrl
+  - generic: +
+  - generic: Alt
+  - generic: +
+  - generic: "N"
+- navigation "全局面板":
+  - button "插件":
+    - generic: 插件
+  - button "自动化任务":
+    - generic: 自动化任务
+  - button "更多":
+    - generic: 更多
+- generic: 工作区
+- button "搜索会话":
+- textbox "搜索会话名称"
+- button "视图选项":
+- button "添加工作区":
+- tree "会话":
+  - treeitem "est_knowledge_base":
+    - generic: est_knowledge_base
+  - treeitem "默认工作区" [expanded]:
+    - generic: 默认工作区
+  - treeitem "已完成 C09-B-01 固定材料呈现测评 刚刚":
+    - generic: 已完成
+    - generic: C09-B-01 固定材料呈现测评
+    - generic: 刚刚
+  - treeitem "已完成 C09-A-02 benchmark fixture initialization 刚刚":
+    - generic: 已完成
+    - generic: C09-A-02 benchmark fixture initialization
+    - generic: 刚刚
+  - treeitem "已完成 C09-A-01固定材料初始化测评 刚刚":
+    - generic: 已完成
+    - generic: C09-A-01固定材料初始化测评
+    - generic: 刚刚
+  - treeitem "测评 C07-b 时间改约表单 1分钟" [selected]:
+    - generic: 测评 C07-b 时间改约表单
+    - generic: 1分钟
+  - treeitem "已完成 记住用户小张的图片确认测评 2分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的图片确认测评
+    - generic: 2分钟
+  - treeitem "已完成 小张记忆与图像确认提示测评 3分钟":
+    - generic: 已完成
+    - generic: 小张记忆与图像确认提示测评
+    - generic: 3分钟
+  - treeitem "已完成 调整冲突说明与替代时段表单 3分钟":
+    - generic: 已完成
+    - generic: 调整冲突说明与替代时段表单
+    - generic: 3分钟
+  - treeitem "已完成 小张身份记忆测评 4分钟":
+    - generic: 已完成
+    - generic: 小张身份记忆测评
+    - generic: 4分钟
+  - treeitem "已完成 记住用户小张的测评 5分钟":
+    - generic: 已完成
+    - generic: 记住用户小张的测评
+    - generic: 5分钟
+  - treeitem "评测呈现：冲突说明与替代时段表单 5分钟":
+    - generic: 评测呈现：冲突说明与替代时段表单
+    - generic: 5分钟
+  - treeitem "已完成 用户改约8点后时段冲突呈现 6分钟":
+    - generic: 已完成
+    - generic: 用户改约8点后时段冲突呈现
+    - generic: 6分钟
+  - treeitem "已完成 会议室预订时间调整确认 8分钟":
+    - generic: 已完成
+    - generic: 会议室预订时间调整确认
+    - generic: 8分钟
+  - treeitem "已完成 调整会议安排确认 8分钟":
+    - generic: 已完成
+    - generic: 调整会议安排确认
+    - generic: 8分钟
+  - treeitem "已完成 全量呈现测评 C07-a-A-02 12分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评 C07-a-A-02
+    - generic: 12分钟
+  - treeitem "已完成 时间改到8点后的需求确认 12分钟":
+    - generic: 已完成
+    - generic: 时间改到8点后的需求确认
+    - generic: 12分钟
+  - treeitem "已完成 更新草稿并提交 13分钟":
+    - generic: 已完成
+    - generic: 更新草稿并提交
+    - generic: 13分钟
+  - treeitem "已完成 调整图书馆行程安排 13分钟":
+    - generic: 已完成
+    - generic: 调整图书馆行程安排
+    - generic: 13分钟
+  - treeitem "已完成 图书馆一小时行程草稿 13分钟":
+    - generic: 已完成
+    - generic: 图书馆一小时行程草稿
+    - generic: 13分钟
+  - treeitem "图书馆行程改为一小时 13分钟":
+    - generic: 图书馆行程改为一小时
+    - generic: 13分钟
+  - treeitem "已完成 校外访客参观预约流程 15分钟":
+    - generic: 已完成
+    - generic: 校外访客参观预约流程
+    - generic: 15分钟
+  - treeitem "已完成 校外朋友参观预约咨询 15分钟":
+    - generic: 已完成
+    - generic: 校外朋友参观预约咨询
+    - generic: 15分钟
+  - treeitem "C05-B-01 访客参观预填表单测评 16分钟":
+    - generic: C05-B-01 访客参观预填表单测评
+    - generic: 16分钟
+  - treeitem "已完成 校外访客参观审批预填表单 16分钟":
+    - generic: 已完成
+    - generic: 校外访客参观审批预填表单
+    - generic: 16分钟
+  - treeitem "已完成 讲座线上线下选择呈现测评 17分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下选择呈现测评
+    - generic: 17分钟
+  - treeitem "已完成 讲座线上线下选择表单呈现 17分钟":
+    - generic: 已完成
+    - generic: 讲座线上线下选择表单呈现
+    - generic: 17分钟
+  - treeitem "已完成 选择线上或线下讲座 19分钟":
+    - generic: 已完成
+    - generic: 选择线上或线下讲座
+    - generic: 19分钟
+  - treeitem "讲座线上线下偏好选择测评 19分钟":
+    - generic: 讲座线上线下偏好选择测评
+    - generic: 19分钟
+  - treeitem "已完成 校园半日游轻量表单测评 19分钟":
+    - generic: 已完成
+    - generic: 校园半日游轻量表单测评
+    - generic: 19分钟
+  - treeitem "校园半日游轻量form测评 20分钟":
+    - generic: 校园半日游轻量form测评
+    - generic: 20分钟
+  - treeitem "已完成 校园半日游偏好确认测评 22分钟":
+    - generic: 已完成
+    - generic: 校园半日游偏好确认测评
+    - generic: 22分钟
+  - treeitem "已完成 校园半日游偏好收集 22分钟":
+    - generic: 已完成
+    - generic: 校园半日游偏好收集
+    - generic: 22分钟
+  - treeitem "已完成 全量呈现测评地点查找 22分钟":
+    - generic: 已完成
+    - generic: 全量呈现测评地点查找
+    - generic: 22分钟
+  - treeitem "已完成 测评C04-a-B-01：轻量form找地点 23分钟":
+    - generic: 已完成
+    - generic: 测评C04-a-B-01：轻量form找地点
+    - generic: 23分钟
+  - treeitem "已完成 协助用户寻找地点偏好 23分钟":
+    - generic: 已完成
+    - generic: 协助用户寻找地点偏好
+    - generic: 23分钟
+  - treeitem "模拟环境地点查找测评 24分钟":
+    - generic: 模拟环境地点查找测评
+    - generic: 24分钟
+  - treeitem "已完成 Benchmark fixture place-finding test 32分钟":
+    - generic: 已完成
+    - generic: Benchmark fixture place-finding test
+    - generic: 32分钟
+  - treeitem "已完成 轻量表单选择地点测评 32分钟":
+    - generic: 已完成
+    - generic: 轻量表单选择地点测评
+    - generic: 32分钟
+  - treeitem "已完成 轻量form找地点测评 C04-a-B-01 32分钟":
+    - generic: 已完成
+    - generic: 轻量form找地点测评 C04-a-B-01
+    - generic: 32分钟
+  - treeitem "寻找地点的偏好确认测试 32分钟":
+    - generic: 寻找地点的偏好确认测试
+    - generic: 32分钟
+  - treeitem "已完成 C03-B-02 场地推荐测评 36分钟":
+    - generic: 已完成
+    - generic: C03-B-02 场地推荐测评
+    - generic: 36分钟
+  - treeitem "已完成 会议室投屏白板试讲安排 36分钟":
+    - generic: 已完成
+    - generic: 会议室投屏白板试讲安排
+    - generic: 36分钟
+  - treeitem "已完成 明晚试讲场地推荐比较 36分钟":
+    - generic: 已完成
+    - generic: 明晚试讲场地推荐比较
+    - generic: 36分钟
+  - treeitem "试讲场地推荐测评 36分钟":
+    - generic: 试讲场地推荐测评
+    - generic: 36分钟
+  - treeitem "已完成 进校后能否直接去图书馆测评 42分钟":
+    - generic: 已完成
+    - generic: 进校后能否直接去图书馆测评
+    - generic: 42分钟
+  - treeitem "已完成 进校后图书馆访问测评 42分钟":
+    - generic: 已完成
+    - generic: 进校后图书馆访问测评
+    - generic: 42分钟
+  - treeitem "已完成 图书馆入校访问测评 42分钟":
+    - generic: 已完成
+    - generic: 图书馆入校访问测评
+    - generic: 42分钟
+  - treeitem "进校后能否直接去图书馆 42分钟":
+    - generic: 进校后能否直接去图书馆
+    - generic: 42分钟
+  - treeitem "已完成 图书馆讨论场所展示测评 45分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论场所展示测评
+    - generic: 45分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 45分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 45分钟
+  - treeitem "已完成 图书馆讨论空间咨询测评 45分钟":
+    - generic: 已完成
+    - generic: 图书馆讨论空间咨询测评
+    - generic: 45分钟
+  - button "展开其余 65 个会话"
+  - treeitem "未分组" [expanded]:
+    - generic: 未分组
+  - treeitem "宁波三江口夜景测试图 20天":
+    - generic: 宁波三江口夜景测试图
+    - generic: 20天
+  - treeitem "四组件组合测试页 20天":
+    - generic: 四组件组合测试页
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+  - treeitem "宁波三江口夜景 Image 组件 20天":
+    - generic: 宁波三江口夜景 Image 组件
+    - generic: 20天
+- button "账号菜单":
+  - generic: 更多
+- banner:
+  - navigation "会话层级":
+    - generic: 测评 C07-b 时间改约表单
+  - generic "176-run fixed-material benchmark, 2 repeats per arm; all operations simulated.":
+    - text: Component benchmark full v2
+  - button "用 文件资源管理器 打开"
+  - button "更多打开方式":
+  - button "更多操作":
+  - button "更多会话视图":
+  - button "打开右侧边栏":
+- navigation "轮次导航":
+  - button "跳转到第 1 轮"
+  - button "跳转到第 2 轮"
+- generic: 【全量正式呈现测评 C07-b-B-01】 这是固定材料呈现对照，不检索、不读业务文件、不连接真实系统，不操作机器人或创建真实业务。第一步调用benchmark_fixture(action=initialize,run_id=C07-b-B-01)取得本例当前固定材料；未释放的事实保持未知。后续benchmark-event是模拟环境事件，不是用户新指令。需要接收用户确认的草稿时，调用benchmark_fixture(action=submit,run_id=C07-b-B-01,values=实际提交值)获取模拟结果，不提前提交。 用户需求：那就不用白板了，时间也改到8点之后。 指定呈现方式：冲突说明+合法替代时段表单，不能默认替用户接受。必须实际调用render_ui；事实来自本例材料。仅生成本题指定的组件，其他rich组件列出所需名称。展示保留文字兜底。 等待实际用户选择或事件后再继续，未知结果不预报成功。图像需使用材料给定完整URL（原生）或同源path字符串（json-render）；不虚构地址，不用相同图冒充其他视角。 最终只呈现满足用户需求的信息，无需向最终用户解释JSON、工具参数或测评协议。
+- generic: 20:05
+- button "复制":
+- status: 已完成
+- button "已完成，用时 31秒":
+  - generic: 已完成，用时 31秒
+- paragraph: 我先读取本例的固定材料。
+- paragraph: 读到本例材料：原草稿是 2026-11-07 19:00–20:00、4 人、四明书院、白板 + 投屏；你现在的更新是取消白板、时间改到 20:00 之后。19:00–20:00 整段都落在 20:00 之前，与“8 点之后”直接冲突，所以不能默认沿用或替你改成某个具体时段；20:00 之后的可用时段目前也未确认。下面请你明确起止时间。
+- heading "时段冲突，请重新指定 20:00 之后的时间" [level=1]
+- generic: 你的新要求是时间改到 20:00 之后。原草稿时段为 2026-11-07 19:00–20:00，整段都在 20:00 之前，与新要求冲突，因此不能直接沿用；系统也不会替你默认选一个新的时段。
+- heading "不变条件" [level=2]
+- generic: 日期：2026-11-07
+- generic: 人数：4 人
+- generic: 场地：四明书院
+- generic: 设施：投屏
+- generic: 变更项：白板已取消，设施只保留投屏
+- generic: 白板已取消
+- generic: 仅投屏
+- heading "已作废的原时段" [level=2]
+- generic: 2026-11-07 19:00–20:00（已作废，不可沿用）
+- heading "请填写 20:00 之后的时间" [level=2]
+- paragraph: 20:00 之后的可用时段尚未确认，需在提交后核对
+- generic "开始时间"
+- textbox "2026-11-07 20:00 或更晚（HH:MM）": 20:00
+- generic "结束时间"
+- textbox "必须晚于开始时间（HH:MM）": 21:00
+- generic "备注（可选）"
+- textbox "可填写其他偏好，例如希望的具体时长"
+- button "提交并核对 20:00 之后可用性":
+  - generic: 提交并核对 20:00 之后可用性
+- alert:
+  - img "info-circle":
+  - generic: 提示
+  - generic: 提交只更新草稿并核对 20:00 之后的可用性；不会默认接受任何时段，也不会实际预约。
+- generic: 已提交，等待继续回答
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支" [disabled]:
+- generic: 仅可从已完成轮次的最后一条消息分支
+- button "用量 8.8K tok":
+  - generic: 用量 8.8K tok
+- generic: 20:05
+- generic: 用户已提交表单： 开始时间：20:00 结束时间：21:00 备注（可选）：未填写
+- generic: 20:07
+- button "复制":
+- status: 已完成
+- button "已完成，用时 1分42秒":
+  - generic: 已完成，用时 1分42秒
+- paragraph:
+  - text: 20:00–21:00 这个时段核对结果不通过：模拟返回的当日可用时段只有
+  - strong: 14:00–15:00
+  - text: 和
+  - strong: 16:00–17:00
+  - text: ，两者都在 20:00 之前，因此没有任何时段能满足你“8 点之后”的要求。原草稿仍未被替换成任何可用时段，我也不会替你放弃时间要求。
+- paragraph: 你可以选一个方向：接受其中某个较早的时段，或保留“20:00 之后”的要求另作安排。
+- heading "20:00 之后无可用时段，请选择下一步" [level=1]
+- generic: 模拟核对：冲突，无匹配时段
+- alert:
+  - img "exclamation-circle":
+  - generic: 冲突说明
+  - generic: 你提交的 2026-11-07 20:00–21:00 不可用。当日可用时段仅有 14:00–15:00 和 16:00–17:00，均早于 20:00，因此没有既在 20:00 之后又当天可用的时段。
+- heading "选择下一步" [level=2]
+- table:
+  - rowgroup:
+    - row "时段 备注":
+      - columnheader "时段"
+      - columnheader "备注"
+  - rowgroup:
+    - row "14:00–15:00 早于 20:00，不满足你的时间要求":
+      - cell "14:00–15:00"
+      - cell "早于 20:00，不满足你的时间要求"
+    - row "16:00–17:00 早于 20:00，不满足你的时间要求":
+      - cell "16:00–17:00"
+      - cell "早于 20:00，不满足你的时间要求"
+- generic "请选择"
+- generic: 保留 20:00 之后的要求，暂不选上述时段（另议方案，未核实任何新档期）
+- combobox [active]:
+  - listbox:
+    - option "16:00–17:00"
+    - option "保留 20:00 之后的要求，暂不选上述时段（另议方案，未核实任何新档期）" [selected]
+- generic "保留 20:00 之后的要求，暂不选上述时段（另议方案，未核实任何新档期）"
+- button "提交选择":
+  - generic: 提交选择
+- heading "未变条件" [level=2]
+- generic: • 日期：2026-11-07
+- generic: • 人数：4 人
+- generic: • 场地：四明书院
+- generic: • 设施：投屏（白板已取消）
+- alert:
+  - img "info-circle":
+  - generic: 提示
+  - generic: 只更新草稿，不实际预约。
+- generic "14:00–15:00":
+  - generic: 14:00–15:00
+- generic "16:00–17:00":
+  - generic: 16:00–17:00
+- generic "保留 20:00 之后的要求，暂不选上述时段（另议方案，未核实任何新档期）":
+  - generic: 保留 20:00 之后的要求，暂不选上述时段（另议方案，未核实任何新档期）
+- button "复制":
+- button "好的回答":
+- button "有问题的回答":
+- button "在新对话中分支" [disabled]:
+- generic: 仅可从已完成轮次的最后一条消息分支
+- button "用量 10.3K tok":
+  - generic: 用量 10.3K tok
+- generic: 20:07
+- button "回到底部":
+- textbox "发消息或创建任务, / 调用指令, @ 文件或对话"
+- generic: 发消息或创建任务, / 调用指令, @ 文件或对话
+- button "添加文件或调用指令":
+- button "访问模式，当前：完全权限":
+  - generic: 完全权限
+- button "选择模型，当前 DeepSeek-V4.1-Flash，推理等级 High":
+  - generic: DeepSeek-V4.1-Flash
+  - generic: High
+- button "发送消息" [disabled]:
+- button "上下文已用 1%":
+  - generic: 1%

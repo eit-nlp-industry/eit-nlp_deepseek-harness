@@ -1,0 +1,29 @@
+[
+  {
+    "call": {
+      "seq": 19,
+      "arguments": {
+        "run_id": "C26-A-01",
+        "action": "initialize"
+      }
+    },
+    "result_seq": 20,
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_ET_tgg8xOJNoNYeSMykgPx82098"
+      },
+      "toolCallId": "call_00_ET_tgg8xOJNoNYeSMykgPx82098",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ok\":true,\"data\":{\"simulated\":true,\"case_id\":\"C26\",\"facts\":\"进入图书馆需来访预约；是否获准以馆方答复为准。\",\"assets\":[]}}"
+        }
+      ],
+      "isError": false,
+      "id": "175207d6-ac3e-4561-8d64-696acb3c0fc2"
+    }
+  }
+]

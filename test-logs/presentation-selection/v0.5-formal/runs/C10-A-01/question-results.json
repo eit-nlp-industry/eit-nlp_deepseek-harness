@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 25,
+    "result_seq": 26,
+    "call": {
+      "turn": 1,
+      "step": 2,
+      "callId": "call_00_KPkCTBHLKCfAX1GsUMUS2930",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"confirm_guide\", \"header\": \"确认向导\", \"question\": \"材料中只有一位向导候选（person-guide）。是否就跟着这位？\", \"options\": [{\"label\": \"是，就跟这位同学（推荐）\", \"description\": \"确认后才会生成跟随草稿并等待你最终确认。\"}, {\"label\": \"不是这位\", \"description\": \"材料中没有其他向导候选，需要你补充新的线索。\"}, {\"label\": \"先不跟随\", \"description\": \"保持任务未启动状态。\"}]}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_KPkCTBHLKCfAX1GsUMUS2930"
+      },
+      "toolCallId": "call_00_KPkCTBHLKCfAX1GsUMUS2930",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"confirm_guide\",\"selected\":[\"是，就跟这位同学（推荐）\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "67cbbd9f-2f9a-4f52-8f56-9ca970f78b98"
+    }
+  }
+]

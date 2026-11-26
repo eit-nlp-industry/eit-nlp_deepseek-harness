@@ -1,0 +1,7 @@
+{
+  "factual_completeness": 4,
+  "readability": 3,
+  "state": 5,
+  "presentation": "fail",
+  "reason": "两次render_ui超时未显示底图或MapPreview；文字兜底完整说明三点与两段路线、静态且未执行，坐标换算式被Markdown强调截断。未虚报图形成功。"
+}

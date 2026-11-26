@@ -1,0 +1,30 @@
+[
+  {
+    "call_seq": 37,
+    "result_seq": 38,
+    "call": {
+      "turn": 1,
+      "step": 4,
+      "callId": "call_00_nc8BrFJuVykddBglbgSI8476",
+      "name": "ask_user_question",
+      "arguments": "{\"questions\": [{\"id\": \"alt_slot\", \"header\": \"选择替代时段\", \"question\": \"2026-11-23 的 16:00–17:00 已约满，R-01 当天可选的替代时段如下，请选择要用于草稿的时段：\", \"options\": [{\"label\": \"17:00–18:00\", \"description\": \"当天实际可选时段，确定后按此改写草稿。\"}, {\"label\": \"18:00–19:00\", \"description\": \"当天实际可选时段，确定后按此改写草稿。\"}, {\"label\": \"保留原草稿 14:00–15:00 不改\", \"description\": \"不做改动，草稿维持 14:00–15:00。\"}], \"multi_select\": false}]}"
+    },
+    "meta": null,
+    "message": {
+      "role": "tool",
+      "source": {
+        "kind": "tool",
+        "callId": "call_00_nc8BrFJuVykddBglbgSI8476"
+      },
+      "toolCallId": "call_00_nc8BrFJuVykddBglbgSI8476",
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"answers\":[{\"id\":\"alt_slot\",\"selected\":[\"17:00–18:00\"]}]}"
+        }
+      ],
+      "isError": false,
+      "id": "f1f2d60e-d869-46bc-9c44-adcd401b8a74"
+    }
+  }
+]

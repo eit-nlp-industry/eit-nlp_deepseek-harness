@@ -1,0 +1,37 @@
+[
+  {
+    "seq": 10,
+    "time": 1795090091671,
+    "source": {
+      "kind": "runtime-context",
+      "form": "snapshot",
+      "sections": [
+        {
+          "name": "working-directory:current",
+          "text": "Current working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+        }
+      ]
+    },
+    "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent working directory: \"D:\\\\HuaweiMoveData\\\\Users\\\\CJY\\\\Documents\\\\deepseek-harness\\\\default-workspace\"."
+  },
+  {
+    "seq": 31,
+    "time": 1795090257754,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C09-A-02-candidate",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C09-A-02-candidate\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"同一候选person-a再次出现，对应已确认昵称小张；固定识别结果，仅通知，不建新档。\",\"assets\":[{\"id\":\"bench05-person-a\",\"file\":\"bench05-person-a.png\",\"alt\":\"MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture\",\"source_id\":\"person-a\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-person-a/content\",\"path\":\"/api/media/bench05-person-a/content\",\"sha256\":\"8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f\",\"width\":960,\"height\":540}],\"simulated\":true,\"event_id\":\"e-rec-01\",\"candidate_id\":\"person-a\",\"name\":\"小张\"}}"
+  },
+  {
+    "seq": 40,
+    "time": 1795090334270,
+    "source": {
+      "kind": "benchmark-event",
+      "eventId": "C09-A-02-repeat",
+      "simulated": true
+    },
+    "text": "固定模拟环境事件（不是用户新指令）：\n{\"id\":\"C09-A-02-repeat\",\"kind\":\"fixed_business_event\",\"data\":{\"facts\":\"同一候选person-a仍在视野，重复相同业务事件，无新请求。\",\"assets\":[{\"id\":\"bench05-person-a\",\"file\":\"bench05-person-a.png\",\"alt\":\"MOCK PERSON A; GREY COAT / SUITCASE; synthetic fixture\",\"source_id\":\"person-a\",\"url\":\"http://127.0.0.1:3080/api/media/bench05-person-a/content\",\"path\":\"/api/media/bench05-person-a/content\",\"sha256\":\"8a203bfafe5c9554f4177e93399cf10bface4d221d0987b7c070f73a77dd519f\",\"width\":960,\"height\":540}],\"simulated\":true,\"event_id\":\"e-rec-01\",\"candidate_id\":\"person-a\",\"name\":\"小张\"}}"
+  }
+]
