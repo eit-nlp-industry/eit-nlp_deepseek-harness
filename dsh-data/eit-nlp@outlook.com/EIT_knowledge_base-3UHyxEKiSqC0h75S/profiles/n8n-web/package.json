@@ -5,7 +5,11 @@
     "@local/dsh-est-kb-preset": "link:/data/dsh/est_knowledge_base/autonomous_flows/configs/dsh/kb-agent-preset",
     "@local/dsh-est-render-endpoint": "link:/data/dsh/est_knowledge_base/autonomous_flows/configs/dsh/render-endpoint",
     "@wxg-prc-cpg/dsh-weknora": "0.1.0",
-    "@eit-nlp/dsh-skill2workflow": "link:/opt/skill2workflow/dsh-plugins/skill2workflow"
+    "@eit-nlp/dsh-skill2workflow": "link:/opt/skill2workflow/dsh-plugins/skill2workflow",
+    "@eit-nlp/dsh-weknora": "file:/opt/deepseek-harness/integrations/weknora/plugin",
+    "@eit-nlp/dsh-weknora-media": "file:/opt/deepseek-harness/integrations/weknora/media",
+    "@eit-nlp/dsh-weknora-media-tools": "file:/opt/deepseek-harness/integrations/weknora/media/tool",
+    "@eit-nlp/dsh-weknora-media-view": "file:/opt/deepseek-harness/integrations/weknora/media/view"
   },
   "dsh": {
     "profile": {

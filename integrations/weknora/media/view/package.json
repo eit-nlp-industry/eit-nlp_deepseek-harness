@@ -1,0 +1,37 @@
+{
+  "name": "@eit-nlp/dsh-weknora-media-view",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional image and video cards for WeKnora tools.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-tool"
+      ],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "src",
+    "lib/client.js",
+    "README.md",
+    "lib/client.js.map"
+  ],
+  "scripts": {
+    "build": "tsdown --config tsdown.config.ts"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*"
+  },
+  "devDependencies": {
+    "react": "^18.2.0"
+  }
+}

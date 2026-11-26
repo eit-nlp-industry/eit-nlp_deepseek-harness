@@ -1,0 +1,11 @@
+# Optional profile-wide provider and browser view. Add the tool only to selected presets.
+- insert:
+    - id: weknora-media-provider
+      name: '@eit-nlp/dsh-weknora-media'
+      config:
+        baseUrl: !!js process.env.WEKNORA_BASE_URL
+        apiKey: !!js process.env.WEKNORA_API_KEY
+        tenantId: !!js process.env.WEKNORA_TENANT_ID || undefined
+        knowledgeBaseIds: !!js (process.env.WEKNORA_KNOWLEDGE_BASE_IDS || '').split(',').map(x => x.trim()).filter(Boolean)
+    - id: weknora-media-view
+      name: '@eit-nlp/dsh-weknora-media-view'

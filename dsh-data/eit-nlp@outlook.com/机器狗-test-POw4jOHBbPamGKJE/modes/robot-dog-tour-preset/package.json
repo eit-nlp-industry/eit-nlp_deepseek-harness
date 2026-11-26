@@ -1,0 +1,28 @@
+{
+  "name": "@local/dsh-robot-dog-tour-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./observation-tools.js": "./observation-tools.js",
+    "./annotate-media.js": "./annotate-media.js",
+    "./booking-mock.js": "./booking-mock.js",
+    "./location-mock.js": "./location-mock.js",
+    "./person-media.js": "./person-media.js",
+    "./phone-location-mock.js": "./phone-location-mock.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "cordis.patch.yml",
+    "observation-tools.js",
+    "annotate-media.js",
+    "booking-mock.js",
+    "location-mock.js",
+    "person-media.js",
+    "phone-location-mock.js"
+  ]
+}

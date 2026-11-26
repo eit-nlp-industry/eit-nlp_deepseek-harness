@@ -17,6 +17,9 @@ importers:
       '@local/dsh-robot-dog-test-preset':
         specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-test-preset
         version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-test-preset
+      '@local/dsh-robot-dog-tour-preset':
+        specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-tour-preset
+        version: link:../../modes/robot-dog-tour-preset
       '@local/dsh-robot-dog-v03-preset':
         specifier: link:/data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v03-preset
         version: link:../../../../../../../../data/dsh/eit-nlp@outlook.com/机器狗-test-POw4jOHBbPamGKJE/modes/robot-dog-v03-preset

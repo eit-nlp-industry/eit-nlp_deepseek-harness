@@ -1,0 +1,3 @@
+# Copy this row into the chosen preset's plugins array.
+- id: weknora-media-tool
+  name: '@eit-nlp/dsh-weknora-media-tools'

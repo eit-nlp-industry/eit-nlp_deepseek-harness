@@ -1,0 +1,31 @@
+{
+  "name": "@eit-nlp/dsh-weknora-media",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Authenticated WeKnora media source for DSH profiles.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./source": "./src/source.mjs",
+    "./tool-definition": "./src/tool.mjs",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*"
+  },
+  "files": [
+    "src",
+    "tool",
+    "view",
+    "README.md",
+    "cordis.patch.yml",
+    "preset-tool.example.yml",
+    "instructions.zh.txt"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

@@ -13,7 +13,7 @@
           - id: persona
             name: '@deepseek-ai/dsh-persona'
             config:
-              prefix: You are a finance assistant powered by the {{model}} model. Keep project funds and reimbursements accurate; send coding work to standard mode.
+              prefix: You are a finance assistant powered by the {{model}} model. Keep project funds and reimbursements accurate; send coding work to standard mode. Expense and project records live only in the finance Feishu base. Do not search the filesystem or run shell commands to find them.
           - id: agent-instructions
             name: '@deepseek-ai/dsh-agent-instructions'
             config:
@@ -145,8 +145,8 @@
                 - "-l"
                 - zh
               env:
-                APP_ID: !!js process.env.FEISHU_FINANCE_APP_ID ?? ''
-                APP_SECRET: !!js process.env.FEISHU_FINANCE_APP_SECRET ?? ''
+                APP_ID: !!js process.env.FEISHU_APP_ID
+                APP_SECRET: !!js process.env.FEISHU_APP_SECRET
                 LARK_TOOLS: preset.base.default
                 LARK_TOKEN_MODE: tenant_access_token
               clientInstructions: |

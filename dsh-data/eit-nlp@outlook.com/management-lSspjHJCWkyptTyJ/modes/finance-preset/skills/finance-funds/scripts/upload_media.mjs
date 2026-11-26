@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 上传本地文件到飞书多维表格附件字段，输出 {"file_token": "..."}。
 // 用法：node upload_media.mjs <本地文件路径> [parent_node=base token] [file_name]
-// 凭据：优先 process.env，其次读 $DSH_HOME/.env 的 FEISHU_FINANCE_APP_ID / FEISHU_FINANCE_APP_SECRET。
+// 凭据：优先 process.env，其次读 $DSH_HOME/.env 的 FEISHU_APP_ID / FEISHU_APP_SECRET。人事和财务共用这一组。
 // 需要应用具备 drive:drive（或 bitable:app）权限；缺权限时返回 99991672 并列出所需 scope。
 
 import fs from 'node:fs'
@@ -30,10 +30,10 @@ function envFromDotEnv() {
 }
 
 const dotenv = envFromDotEnv()
-const appId = process.env.FEISHU_FINANCE_APP_ID || dotenv.FEISHU_FINANCE_APP_ID
-const appSecret = process.env.FEISHU_FINANCE_APP_SECRET || dotenv.FEISHU_FINANCE_APP_SECRET
+const appId = process.env.FEISHU_APP_ID || dotenv.FEISHU_APP_ID
+const appSecret = process.env.FEISHU_APP_SECRET || dotenv.FEISHU_APP_SECRET
 if (!appId || !appSecret) {
-  console.error(JSON.stringify({ error: 'missing FEISHU_FINANCE_APP_ID / FEISHU_FINANCE_APP_SECRET' }))
+  console.error(JSON.stringify({ error: 'missing FEISHU_APP_ID / FEISHU_APP_SECRET' }))
   process.exit(2)
 }
 

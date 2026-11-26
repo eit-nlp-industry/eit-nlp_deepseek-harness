@@ -7,13 +7,13 @@
       config:
         id: hr
         name: 人事管理
-        description: 标准模式的全部能力，外加飞书多维表格 MCP（人事数据）。编码类任务请用标准模式。
+        description: 标准模式的全部能力，外加飞书多维表格、飞书单聊和人事制度知识库。编码类任务请用标准模式。
         order: 5
         plugins:
           - id: persona
             name: '@deepseek-ai/dsh-persona'
             config:
-              prefix: You are a coding agent powered by the {{model}} model.
+              prefix: You are an HR assistant powered by the {{model}} model. Keep the employee master accurate; send coding work to standard mode. Employee records live only in the HR Feishu base. Do not search the filesystem or run shell commands to find them. Policy, rules, and process questions come from the WeKnora knowledge base; answer those only from tool results. Send a Feishu direct message only when the current user has explicitly authorized that send, or a scheduled prompt already records that authorization.
           - id: agent-instructions
             name: '@deepseek-ai/dsh-agent-instructions'
             config:
@@ -41,6 +41,9 @@
             name: '@deepseek-ai/dsh-tool-schedule'
           - id: skill-filesystem
             name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - /data/dsh/eit-nlp@outlook.com/management-lSspjHJCWkyptTyJ/modes/hr-preset/skills
           - id: tool-skill
             name: '@deepseek-ai/dsh-tool-skill'
           - id: command-goal
@@ -144,12 +147,34 @@
               env:
                 APP_ID: !!js process.env.FEISHU_APP_ID
                 APP_SECRET: !!js process.env.FEISHU_APP_SECRET
-                LARK_TOOLS: preset.base.default
+                LARK_TOOLS: preset.base.default,im.v1.message.create
                 LARK_TOKEN_MODE: tenant_access_token
               clientInstructions: |
                 默认数据库是这一份飞书多维表格，不是其中的某一张数据表。
-                链接 https://my.feishu.cn/base/Mq94brAS9azjrzsoh9kcU7p5nwc ，app_token 是 Mq94brAS9azjrzsoh9kcU7p5nwc。
-                用户没给链接、也没说另一份表时，就用这个 app_token。先列出里面的数据表和字段；用户没点名数据表时，先说明有哪些表，再查用户指的那张。不要编造 table_id 或 record_id。
+                链接 https://fcn901usir4q.feishu.cn/base/CE4Xbin7faAeUPsIepncBBGUnSf?table=tbl3LF4aRXl6MqE6&view=vewQyFJPA0 ，app_token 是 CE4Xbin7faAeUPsIepncBBGUnSf。
+                链接默认打开的数据表是「01 员工主档」，table_id 是 tbl3LF4aRXl6MqE6（视图 vewQyFJPA0）；用户没点名别的数据表时，先查这张。
+                用户没给链接、也没说另一份表时，就用这个 app_token。字段以本轮读到的线上结果为准；需要找其他表时再列出数据表清单并说明有哪些表。不要编造 table_id 或 record_id。
                 只能操作已经把本应用加为协作者的表格。单次写入是一条记录；需要批量时说明当前工具做不到。
+                给员工发飞书用 im.v1.message.create，应用身份，不要传 useUAT。params.receive_id_type 固定 open_id。data.receive_id 用员工主档「员工账号」里的用户 id，data.msg_type 用 text，data.content 是 {"text":"..."} 的 JSON 字符串。员工账号为空就不要发。同一条消息的 data.uuid 在一小时内不要复用到不同正文。权限报错 99991672 时说明缺少发消息权限，不要改用别的方式重试。
               toolCallTimeoutMs: 60000
               failOnStartupError: false
+          - id: mcp-weknora
+            name: '@deepseek-ai/dsh-mcp-client'
+            config:
+              serverName: weknora
+              transport: streamable-http
+              url: !!js process.env.HR_WEKNORA_MCP_URL
+              headers:
+                Authorization: !!js '`Bearer ${process.env.HR_WEKNORA_MCP_TOKEN}`'
+              clientInstructions: |
+                这是人事制度知识库，只读。制度、规章、流程类问题先查这里再回答，只采用工具返回的原文并带上文档名。
+                员工主档、周产出、月考勤的查询和写入走飞书多维表格，不要在这个知识库里找或改人员记录。
+                问答调用 ask，参数是 question，不是 query；同一话题追问保留返回的 session_id，新话题不要复用。
+                找原文用 search_knowledge；缺的片段再用 grep_chunks 或 read_document。没查到就说明没查到，不要用常识补。
+              toolCallTimeoutMs: 300000
+              failOnStartupError: false
+              reconnect:
+                enabled: true
+                initialDelayMs: 500
+                maxDelayMs: 30000
+                maxAttempts: 10

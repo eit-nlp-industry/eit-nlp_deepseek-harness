@@ -1,0 +1,14 @@
+{
+  "name": "@eit-nlp/dsh-weknora-media-tools",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "@eit-nlp/dsh-weknora-media": "*"
+  }
+}
