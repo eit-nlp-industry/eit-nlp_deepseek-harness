@@ -211,6 +211,7 @@ describe('client bundle purity gate', () => {
   })
 
   it('lets inline-safe libraries inline', () => {
+    expect(resolveId('@deepseek-ai/dsh-json-render-protocol')).toBeNull()
     expect(resolveId('@deepseek-ai/dsh-session/surface')).toBeNull()
     expect(resolveId('@deepseek-ai/dsh-brand')).toBeNull()
     expect(resolveId('@deepseek-ai/dsh-deque')).toBeNull()

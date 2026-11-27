@@ -8,20 +8,23 @@ import type {} from '@deepseek-ai/dsh-api-session-controller/client'
 import type {} from '@deepseek-ai/dsh-client-ui-chat/client'
 import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
 import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
+import type {} from '@deepseek-ai/dsh-client-locale/client'
 import 'antd/dist/reset.css'
 import '@eit/json-render-antd/styles.css'
 import { jsonRenderAnswerDefinition, selectJsonRenderAnswer } from './answer.ts'
 import { JsonRenderAnswer, JsonRenderReplacement, type JsonRenderAnswerInjected } from './JsonRenderAnswer.tsx'
 import { JsonRenderRow } from './JsonRenderRow.tsx'
 import { liveMaps } from './map-tracking.ts'
+import { en, zh } from './locales.ts'
 
-export const inject = ['sessions', 'slots', 'uiConversation']
+export const inject = ['sessions', 'slots', 'uiConversation', 'locale']
 
 /**
  * Register the answer card and the status row.
  * @param ctx - client root context.
  */
 export function apply(ctx: ClientContext): void {
+  ctx.effect(() => ctx.locale.register('jsonRender', { en, zh }), 'json-render: dictionaries')
   const injectAnswer = (): JsonRenderAnswerInjected => ({
     async submitForm(sessionId, text) {
       const binding = ctx.sessions.binding(sessionId as SessionId)
@@ -33,6 +36,7 @@ export function apply(ctx: ClientContext): void {
   ctx.uiConversation.events.register(jsonRenderAnswerDefinition)
   ctx.slots.inject('conversation.chat.answer', () => ctx.slots.register({
     name: 'conversation.chat.answer',
+    locale: 'jsonRender',
     select: (owner) => {
       const card = selectJsonRenderAnswer(owner)
       // Live panels stay in turnTail when prose finishes, retaining their store and subscription.
@@ -43,6 +47,7 @@ export function apply(ctx: ClientContext): void {
   }, JsonRenderReplacement))
   ctx.slots.inject('conversation.chat.turnTail', () => ctx.slots.register({
     name: 'conversation.chat.turnTail',
+    locale: 'jsonRender',
     id: 'json-render-answer',
     order: -10,
     inject: injectAnswer,

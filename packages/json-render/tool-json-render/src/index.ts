@@ -14,7 +14,7 @@ import { FORM_ACTION_INTENTS } from './form-actions.ts'
 import {
   mountMediaRoute, openMediaRoot, readMediaCatalog, referencesImage, visibleAssets, type MediaAssetRecord,
 } from './media.ts'
-import { requestJsonRender, resolvedRenderProfile, selectRenderRoute, type RenderUiResult } from './request.ts'
+import { RICH_COMPONENTS, requestJsonRender, resolvedRenderProfile, selectRenderRoute, type RenderUiResult } from './request.ts'
 
 export const name = 'tool-json-render'
 
@@ -34,6 +34,7 @@ export const DEFAULT_RENDER_UI_DESCRIPTION = [
   'answer_presentation defaults to "replace" for display: the interface must fully answer the request. Use "supplement" when the written answer contains necessary explanations or caveats absent from the interface.',
   'mode does not select the component catalog. Omit intent for an ordinary display so the server uses base. Use mode "form" with intent "generic_filters" or "generic_pick_one" only when business_data already contains the real candidates and their fields; a successful form ends the turn and waits for the user to submit.',
   'When the layout needs Image, ImageUpload, Tabs, MapPreview, SortableSequence, Collapsible, CodeBlock, Workflow, or Chart, list those names in components so the whole layout uses rich_content, including a mixed page. Do not choose the catalog from user_query wording. If the request is ambiguous or a choice is missing, call ask_user_question instead.',
+  'For MapPreview, put places [{id,label,x,y}] and optional route [placeId,...] at the business_data root. Coordinates are supplied facts in 0–100; route IDs must exist in places. Omit tracking for static maps. The host normalizes points/name and route.pointOrder aliases, rejects conflicting or incomplete facts before generation, and assembles the map data. Correct invalid map facts once from the diagnostic; never invent missing coordinates or repeat an unchanged failed request.',
   'For an image, set business_data.image.assetId to a catalog id. The host writes image.src, image.alt, and image.caption before the render call. Do not send a disk path, domain, credential, component, or type. ImageUpload only names uploadTarget; do not invent an endpoint or credential. Never invent options, ids, or facts that are not in business_data. The renderer can only show those facts.',
 ].join(' ')
 
@@ -152,7 +153,7 @@ export function apply(ctx: Context, config: Config): void {
         type: 'array',
         items: {
           type: 'string',
-          enum: ['Image', 'ImageUpload', 'Tabs', 'MapPreview', 'SortableSequence', 'Collapsible', 'CodeBlock', 'Workflow', 'Chart'],
+          enum: [...RICH_COMPONENTS],
         },
         description: 'Rich component names this layout needs. Any one selects rich_content for the whole page, including a mix with base or form components.',
       },

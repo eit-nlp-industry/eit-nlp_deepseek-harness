@@ -83,6 +83,14 @@ it('skips non-live maps and rejects foreign endpoints before connecting', () => 
   expect(Stream.instances).toHaveLength(0)
 })
 
+it('ignores unrelated progress fields in provider frames', () => {
+  const publish = vi.fn()
+  const dispose = subscribeMap('/api/location', window.location.origin, 'track', publish, url => new Stream(url))
+  Stream.instances[0]!.frame({ trackId: 'track', seq: 1, x: 20, y: 30, status: 'moving', progress: 999 })
+  expect(publish).toHaveBeenCalledWith({ path: '/tracking/position', value: { x: 20, y: 30, status: 'moving' } })
+  dispose()
+})
+
 it('owns independent connections for two messages and closes only the removed message', () => {
   vi.stubGlobal('EventSource', Stream)
   const first = <JsonRenderCard key="one" payload={payload} instanceId="one" submitForm={vi.fn()} />

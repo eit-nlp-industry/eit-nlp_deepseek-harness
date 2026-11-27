@@ -12,6 +12,10 @@ export interface Config {
   includeFailureDetails?: boolean
   /** Return a deterministic editable draft for the multi-action Session replay. */
   formDraft?: boolean
+  /** Return a layout without tracking, or a text substitution, for map assembly replay. */
+  mapDraft?: boolean
+  /** Return incorrect generated map data so the host must use the supplied facts. */
+  corruptMapData?: boolean
 }
 
 /**
@@ -21,6 +25,24 @@ export interface Config {
  */
 export async function apply(ctx: Context, config: Config = {}): Promise<void> {
   const server = createServer((request, response) => {
+    if (config.mapDraft) {
+      let text = ''
+      request.setEncoding('utf8')
+      request.on('data', (chunk: string) => { text += chunk })
+      request.on('end', () => {
+        const body = JSON.parse(text) as { business_data: { places: unknown; route: unknown; responseKind?: string } }
+        const data = body.business_data
+        response.writeHead(200, { 'content-type': 'application/json', 'x-request-id': 'req-map-assembly' })
+        response.end(JSON.stringify({ format: 'json-render-v1', spec: data.responseKind === 'text' || data.responseKind === 'degraded'
+          ? { root: 'notice', elements: { notice: { type: 'Text', props: { content: '地图暂不可用' } } } }
+          : { root: 'map', elements: { map: { type: 'MapPreview', props: config.corruptMapData
+            ? { places: [{ id: 'invented', label: '错误生成地点', x: 101, y: 0 }], route: ['invented'] }
+            : { places: data.places, route: data.route } } } },
+        ...data.responseKind === 'degraded' ? { meta: { extensions: { generation: { outcome: 'degraded' } } } } : {},
+        }))
+      })
+      return
+    }
     request.resume()
     if (config.formDraft) {
       response.writeHead(200, { 'content-type': 'application/json' })

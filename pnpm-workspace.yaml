@@ -19,11 +19,11 @@ packages:
 blockExoticSubdeps: false
 
 overrides:
-  '@eit/json-render-protocol': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.8&path:packages/protocol'
-  '@eit/json-render-runtime-core': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.8&path:packages/runtime-core'
-  '@eit/json-render-catalog': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.8&path:packages/catalog'
-  '@eit/json-render-react': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.8&path:packages/react'
-  '@eit/json-render-antd': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.8&path:packages/antd'
+  '@eit/json-render-protocol': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.9&path:packages/protocol'
+  '@eit/json-render-runtime-core': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.9&path:packages/runtime-core'
+  '@eit/json-render-catalog': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.9&path:packages/catalog'
+  '@eit/json-render-react': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.9&path:packages/react'
+  '@eit/json-render-antd': 'git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#v0.2.9&path:packages/antd'
   'extract-zip>yauzl': '3.4.0'
   '@deepseek-ai/cosmokit': 'link:vendor/cosmokit'
   '@deepseek-ai/schemastery': 'link:vendor/schemastery'
@@ -43,16 +43,16 @@ allowBuilds:
   # json-render packages build from the pinned Git tag during install.
   # pnpm matches allowBuilds against the tag resolved to its commit.
   # Upstream subdependencies also use HTTPS URLs for the same commit.
-  '@eit/json-render-protocol@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/protocol': true
-  '@eit/json-render-protocol@git+https://github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/protocol': true
-  '@eit/json-render-runtime-core@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/runtime-core': true
-  '@eit/json-render-runtime-core@git+https://github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/runtime-core': true
-  '@eit/json-render-catalog@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/catalog': true
-  '@eit/json-render-catalog@git+https://github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/catalog': true
-  '@eit/json-render-react@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/react': true
-  '@eit/json-render-react@git+https://github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/react': true
-  '@eit/json-render-antd@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/antd': true
-  '@eit/json-render-antd@git+https://github.com/eit-nlp-industry/eit-json-render.git#6eb29ac65efd6242a090d3da9b1c2a78ec1b63b0&path:packages/antd': true
+  '@eit/json-render-protocol@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/protocol': true
+  '@eit/json-render-protocol@git+https://github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/protocol': true
+  '@eit/json-render-runtime-core@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/runtime-core': true
+  '@eit/json-render-runtime-core@git+https://github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/runtime-core': true
+  '@eit/json-render-catalog@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/catalog': true
+  '@eit/json-render-catalog@git+https://github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/catalog': true
+  '@eit/json-render-react@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/react': true
+  '@eit/json-render-react@git+https://github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/react': true
+  '@eit/json-render-antd@git+ssh://git@github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/antd': true
+  '@eit/json-render-antd@git+https://github.com/eit-nlp-industry/eit-json-render.git#2d8d568e1ca7366a263d59dc43fc4f5d5aaa0367&path:packages/antd': true
   # Cross-platform boundary for the persistent PTY backend, including ConPTY on Windows.
   node-pty: true
   # Pulled in by @earendil-works/pi-ai (optional LLM API backend). pnpm lists

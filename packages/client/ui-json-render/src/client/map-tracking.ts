@@ -1,14 +1,16 @@
 /** Same-origin live map subscriptions, scoped to one message and map element. */
 import type { JsonRenderPayload } from '@eit/json-render-protocol'
+import { MAP_POSITION_PATH, LIVE_MAP_SOURCE, DEMO_MAP_SOURCE, CAMPUS_DEMO_TRACK_ID, parseMapPosition,
+  type LiveMapSource, type MapPosition, type MapStatus } from '@deepseek-ai/dsh-json-render-protocol'
 
 /** A single update for the existing panel's state store. */
 export interface MapPositionUpdate {
-  path: '/tracking/position'
-  value: { x: number; y: number; status: 'idle' | 'moving' | 'arrived'; heading?: number }
+  path: typeof MAP_POSITION_PATH
+  value: MapPosition & { status: MapStatus }
 }
 
 /** Where a live map's position frames come from. */
-export type LiveMapSource = 'robot-live' | 'robot-demo'
+export type { LiveMapSource } from '@deepseek-ai/dsh-json-render-protocol'
 
 /** One map element whose position can move without rewriting the payload. */
 export interface LiveMap {
@@ -22,7 +24,7 @@ export interface LiveMap {
 }
 
 /** Exact local demo track this host simulates in the browser. */
-export const CAMPUS_DEMO_TRACK_ID = 'campus-route'
+export { CAMPUS_DEMO_TRACK_ID } from '@deepseek-ai/dsh-json-render-protocol'
 
 /** Browser transport subset used by each live map subscription. */
 export interface LocationStream {
@@ -58,12 +60,12 @@ export function liveMaps(payload: JsonRenderPayload): LiveMap[] {
     if (element.type !== 'MapPreview' || !record(element.props)) return []
     const tracking = resolve(element.props.tracking, payload.state?.initial)
     const position = element.props.position
-    if (!record(position) || position.$state !== '/tracking/position') return []
+    if (!record(position) || position.$state !== MAP_POSITION_PATH) return []
     if (!record(tracking) || typeof tracking.trackId !== 'string' || tracking.trackId.trim() === '') return []
-    if (tracking.source === 'robot-live') {
-      return [{ elementId, trackId: tracking.trackId, source: 'robot-live' as const }]
+    if (tracking.source === LIVE_MAP_SOURCE) {
+      return [{ elementId, trackId: tracking.trackId, source: LIVE_MAP_SOURCE }]
     }
-    if (tracking.source !== 'robot-demo' || tracking.trackId !== CAMPUS_DEMO_TRACK_ID) return []
+    if (tracking.source !== DEMO_MAP_SOURCE || tracking.trackId !== CAMPUS_DEMO_TRACK_ID) return []
     const places = resolve(element.props.places, payload.state?.initial)
     const demoPlaces = Array.isArray(places)
       ? places.flatMap(place => record(place)
@@ -77,7 +79,7 @@ export function liveMaps(payload: JsonRenderPayload): LiveMap[] {
     return [{
       elementId,
       trackId: tracking.trackId,
-      source: 'robot-demo' as const,
+      source: DEMO_MAP_SOURCE,
       ...demoPlaces.length > 0 ? { places: demoPlaces } : {},
       ...targetPlaceId === undefined ? {} : { targetPlaceId },
     }]
@@ -115,14 +117,12 @@ export function subscribeMap(endpoint: string, origin: string, trackId: string, 
       return
     }
     if (!record(frame) || frame.trackId !== trackId || !Number.isSafeInteger(frame.seq) || typeof frame.seq !== 'number' || frame.seq <= lastSeq) return
-    if (typeof frame.x !== 'number' || !Number.isFinite(frame.x) || frame.x < 0 || frame.x > 100
-      || typeof frame.y !== 'number' || !Number.isFinite(frame.y) || frame.y < 0 || frame.y > 100) return
-    if (frame.status !== 'idle' && frame.status !== 'moving' && frame.status !== 'arrived') return
-    if (frame.heading !== undefined && (typeof frame.heading !== 'number' || !Number.isFinite(frame.heading) || frame.heading < 0 || frame.heading >= 360)) return
+    const position = parseMapPosition({ x: frame.x, y: frame.y, status: frame.status,
+      ...frame.heading === undefined ? {} : { heading: frame.heading } })
+    if (position === undefined || position.status === undefined) return
     lastSeq = frame.seq
-    publish({ path: '/tracking/position', value: { x: frame.x, y: frame.y, status: frame.status,
-      ...typeof frame.heading === 'number' ? { heading: frame.heading } : {} } })
-    if (frame.status === 'arrived') close()
+    publish({ path: MAP_POSITION_PATH, value: { ...position, status: position.status } })
+    if (position.status === 'arrived') close()
   })
   return close
 }

@@ -30,6 +30,10 @@ describe('shared presentation policy', () => {
       expect(policy?.text).toContain('# 按钮预设、回传与宿主支持')
       expect(policy?.text).toContain('payload.form')
       expect(policy?.text).toContain('跳过')
+      expect(policy?.text).toContain('关键意图尚未确定时，最多先用一道原生问题澄清')
+      expect(policy?.text).toContain('不得拆成同一份原生问卷中的多题，也不得分多次原生提问收集')
+      const recordedPrompt = readFileSync(new URL('../../../../snapshots/session/json-render-fallback/system-prompt.expected.md', import.meta.url), 'utf8')
+      expect(recordedPrompt.replaceAll('\r\n', '\n')).toContain(policy?.text.replaceAll('\r\n', '\n'))
       expect(assembly.tools.map(tool => tool.name)).toEqual(['render_ui'])
       const root = new URL('../skills/select-dsh-presentation/', import.meta.url)
       for (const path of ['references/button-actions.md', 'references/capabilities.md', 'references/examples.md']) {

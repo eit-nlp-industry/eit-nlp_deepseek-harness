@@ -9,7 +9,7 @@ kind: "package-reference"
 
 ## 概述
 
-通过运行中的 v0.2.8 服务，使用 `render_ui` 展示完整内容或可编辑表单。展示调用继续当前回合，成功表单等待用户操作。表单支持默认提交或声明的一组独立操作按钮。共享呈现 Skill 在普通 Agent 选择工具前提供指引。生成失败保留文字兜底，并提供纠错诊断。
+通过运行中的 v0.2.9 服务，使用 `render_ui` 展示完整内容或可编辑表单。展示调用继续当前回合，成功表单等待用户操作。表单支持默认提交或声明的一组独立操作按钮。共享呈现 Skill 在普通 Agent 选择工具前提供指引。生成失败保留文字兜底，并提供纠错诊断。
 
 ## 目录
 
@@ -25,11 +25,23 @@ kind: "package-reference"
 
 在 components 中列出 Chart，为柱状图、折线图或环形图选择 rich_content。Chart 需要 labels 和具名 series，各组 values 的数量须与 labels 一致。
 
+仅在 `components` 明确包含 `MapPreview` 时启用新增的地图准备、完整性检查与降级处理。`rich_content`、布局描述、`places` 和 `tracking` 不作为地图识别依据。其他组件保持原有生成与验收行为，组件名仍作为布局提示；混合请求也只强制检查 MapPreview。
+
+使用 MapPreview 时，在 `business_data` 中提供 `places` 和可选的 `route`。实时地图还需要在该根对象提供 `tracking: {source, trackId, position: {x, y, status?}}`。坐标须来自位置提供方且位于 0–100；`tracking.position` 不能包含指向自身的 `$state`。已提供的顶层 `position` 也可初始化追踪。缺少或无效的实时坐标会在 HTTP 前终止调用；无法获得真实位置时，移除 `tracking` 以请求静态地图。宿主接受 `robot-live`，或 `trackId: campus-route` 的 `robot-demo`，不会编造追踪标识或坐标。
+
+静态和实时地图都需要非空的 `places: [{id, label, x, y}]` 数组，ID 唯一，坐标位于 0–100；可选的 `route` 是这些 ID 的有序数组。宿主兼容 `points`/`name` 和 `route.pointOrder` 别名，但会在 HTTP 前拒绝别名冲突、不一致的路线分段、未知路线 ID 和不完整坐标。组件数量限制与校验复用已安装的目录。返回的可见地图使用已校验的地点和路线字面量属性，替换模型生成的数据和绑定；未提供路线时移除生成的路线。规范化改变原值时，原始 places/points 和 route 保存在 business_data.map_source 中，供其他组件使用地点说明与分段指引；同名字段冲突会被拒绝。其他布局属性和无关状态遵循原有规则。
+
+宿主要求生成阶段省略 MapPreview 的 `position` 和 `tracking`，再根据提供的事实装配。它将 `props.position` 固定为 `{$state: '/tracking/position'}`，将 `props.tracking` 设为 `{source, trackId}`，并初始化 `state.initial.tracking.position`。生成的标识和其他路径会被替换，无关状态保留。未请求追踪的地图会移除生成的追踪配置。地图属性和解析后的坐标绑定会在发布布局前校验。这些处理建立订阅配置；真实轨迹仍需要正常工作的宿主位置服务。
+
+地图字段与坐标解析通过 [json-render/protocol](../protocol/README.zh.md) 与浏览器共用。仅显式地图请求发送 `required_components: ["MapPreview"]` 和可选的 `map_binding`。更新后的服务在 full/progressive 中执行该地图要求，并将地图列表降级标记为 `degraded`；DSH 也只对显式地图请求应用这些检查。
+
+地图降级仍作为失败处理。响应在可用时保留有长度限制的服务端失败原因、问题代码、说明和路径，并过滤类似凭证的文字与网络地址。根据可操作诊断修正请求一次，不原样重复；响应侧组装不会把服务端声明的降级改判为成功。
+
 将插件挂载在宿主，而非某个 Agent 预设内。Agent 继承工具，预设可通过 `tools.restrict` 移除它。修改 `description` 可改变模型调用工具的时机。
 
 启用的宿主挂载还会在任何工具调用前提供共享呈现指引。普通预设即使替换人设也会继承，无需个人安装 Skill 或逐预设编写提示词。在本包内维护权威[呈现 Skill](skills/select-dsh-presentation/SKILL.md) 及其参考文档；这些资源随包发布并一同进入提示，因此 Agent 无需 `skill` 或文件工具即可读取。安装新包或修改资源后须重启宿主。可用能力仍以工具说明及 schema 为准。限制 `render_ui` 不会授予其他渲染通路；共享指引要求 Agent 只使用可用工具。禁用本插件会同时移除工具与指引。
 
-共享规则涵盖文字、原生提问、动态表单、浏览、排序、流程、阶段切换和表单按钮，但不实现按钮处理器。设为 `complete: true` 的预设会刻意替换其他全部系统提示段，包括这些规则；作者须将需要的规则纳入完整提示，或改用普通人设覆盖。
+共享规则涵盖文字、原生提问、动态表单、浏览、排序、流程、阶段切换和表单按钮。关键意图最多先用一道原生问题澄清；确定后，3项及以上相关字段集中使用一张json-render表单，不拆成原生问卷或多次提问。这些是模型指令，不是运行时工具分流校验，也不实现按钮处理器。设为 `complete: true` 的预设会刻意替换其他全部系统提示段，包括这些规则；作者须将需要的规则纳入完整提示，或改用普通人设覆盖。
 
 ```yaml
 - id: tool-json-render
@@ -45,7 +57,7 @@ kind: "package-reference"
 
 设置 `mediaRoot` 且存在 Web 服务时，插件在页面同源注册 `GET /api/media/<id>/content`。读取文件前，连接服务应用与其他 `/api` 路由相同的登录 Cookie 及 Host/Origin 校验。响应为图片字节和图片 `Content-Type`，或简短的文字状态。PNG、JPEG、GIF、WebP 只有在扩展名与开头字节一致时才被接受。处理器解析真实路径，拒绝目录穿越和离开目录的链接，且不接受查询字符串中的路径。`/api/file` 仍是独立的认证文件路由，不是 Image 的 `src`。已将 `/api` 代理到本宿主的部署覆盖此媒体路径；前后端异源部署须将 `GET /api/media/` 代理到同一宿主，使浏览器能发送登录 Cookie。不要将 bearer token 放入 URL。
 
-json-render 服务须已运行 v0.2.8，与安装的 `@eit/json-render-*` 包版本一致。本包调用 `POST /v1/render`，发送 `format` 为 `json-render-v1`、`user_query`、`business_data`、可选 `prompt_mode`（`full` 或 `progressive`），以及 `context.locale` / `context.intent`。不会发送 `mode`、`profile`、`catalog` 或 `framework`。普通展示省略 `intent` 以使用 base；`generic_filters` 和 `generic_pick_one` 选择表单目录。在 `components` 中列出 `Image`、`ImageUpload`、`Tabs`、`MapPreview`、`SortableSequence`、`Collapsible`、`CodeBlock` 或 `Workflow`，会为整页选择 `rich_content`，并将请求的组件名加入 `user_query`。直接调用 Generation SDK 时，使用 `baseRenderProfile`、`formsRenderProfile` 或 `richRenderProfile` 做同样选择，不复用 HTTP 字段。图片调用发送 `context.intent` 为 `rich_content`、`context.locale` 为 `zh-CN`。`image.src` 原样取自已存入 `business_data` 的目录路径，不加域名或编码。`ImageUpload` 只指定 `uploadTarget`。
+json-render 服务须已运行 v0.2.9，与安装的 `@eit/json-render-*` 包版本一致。本包调用 `POST /v1/render`，发送 `format` 为 `json-render-v1`、`user_query`、`business_data`、可选 `prompt_mode`（`full` 或 `progressive`），以及 `context.locale` / `context.intent`。不会发送 `mode`、`profile`、`catalog` 或 `framework`。普通展示省略 `intent` 以使用 base；`generic_filters` 和 `generic_pick_one` 选择表单目录。在 `components` 中列出 `Image`、`ImageUpload`、`Tabs`、`MapPreview`、`SortableSequence`、`Collapsible`、`CodeBlock` 或 `Workflow`，会为整页选择 `rich_content`，并将请求的组件名加入 `user_query`。直接调用 Generation SDK 时，使用 `baseRenderProfile`、`formsRenderProfile` 或 `richRenderProfile` 做同样选择，不复用 HTTP 字段。图片调用发送 `context.intent` 为 `rich_content`、`context.locale` 为 `zh-CN`。`image.src` 原样取自已存入 `business_data` 的目录路径，不加域名或编码。`ImageUpload` 只指定 `uploadTarget`。
 
 展示调用默认使用 `answer_presentation: replace`，界面须包含完整答案。必要解释留在文字中时使用 `supplement`。模型仍生成完整的文字兜底，浏览器依据持久化结果元数据选择可见答案。表单始终作为补充。失败调用不会声明替换。
 
@@ -74,7 +86,7 @@ json-render 服务须已运行 v0.2.8，与安装的 `@eit/json-render-*` 包版
 
 <a id="known-limitations-and-deferred-work"></a>
 
-- 服务须单独启动 v0.2.8，本工具不会启动它。旧服务没有 `rich_content` 目录，Image 及其他富组件会生成失败。
+- 服务须单独启动 v0.2.9，本工具不会启动它。旧服务没有 `rich_content` 目录，Image 及其他富组件会生成失败。
 - 只有 `mediaRoot` 或 `JSON_RENDER_MEDIA_ROOT` 指向绝对目录时才挂载图片路由。内置 Web profile 的页面和 API 同源；分离前端须携带登录 Cookie 代理 `GET /api/media/`。图片加载失败留在浏览器中。
 - 表单选项为 `generic_filters` 和 `generic_pick_one`。富布局使用 `rich_content`，已包含基础及表单组件。
 - 程序化工具调用接收包含成功 payload 或结构化失败的完整结果；原生函数调用接收短句和可用的失败诊断 JSON。
