@@ -509,6 +509,7 @@
     { "path": "./packages/web/web-deepseek-api" },
     { "path": "./packages/web/web-fetch-http" },
     { "path": "./packages/web/tool-web" },
+    { "path": "./packages/json-render/protocol" },
     { "path": "./packages/json-render/tool-json-render" },
     { "path": "./packages/spill/spill" },
     { "path": "./packages/spill/spill-local" },

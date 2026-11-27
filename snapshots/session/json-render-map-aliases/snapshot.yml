@@ -1,0 +1,7 @@
+version: 1
+scenario: json-render-map-aliases
+profile: headless
+composition: default
+recording: authored
+header:
+  class: json-render-validation

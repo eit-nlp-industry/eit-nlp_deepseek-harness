@@ -1,4 +1,4 @@
-import type { PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import { MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import { JsonRenderCard } from './JsonRenderCard.tsx'
 import { selectJsonRenderAnswer, selectJsonRenderAnswers } from './answer.ts'
@@ -13,7 +13,7 @@ export interface JsonRenderAnswerInjected {
  * @param props - turn identity, replacement eligibility, and form submission callback.
  * @returns retained cards, excluding a sole card rendered by the answer slot.
  */
-export function JsonRenderAnswer(props: PropsRuntime<'conversation.chat.turnTail'> & JsonRenderAnswerInjected) {
+export function JsonRenderAnswer(props: PropsRuntime<'conversation.chat.turnTail'> & JsonRenderAnswerInjected & Partial<PropsLocale<'jsonRender'>>) {
   const cards = selectJsonRenderAnswers(props)
   return <>{cards.map((card) => {
     if (cards.length === 1 && card.answerPresentation === 'replace' && props.canReplaceAnswer === true && liveMaps(card.payload).length === 0) return null
@@ -22,6 +22,7 @@ export function JsonRenderAnswer(props: PropsRuntime<'conversation.chat.turnTail
       instanceId={`${props.sessionId}:${card.callId}`}
       profile={card.profile}
       businessData={card.businessData}
+      eventFailureText={props.t?.('eventFailed')}
       submitForm={text => props.submitForm(props.sessionId, text)}
     />
   })}</>
@@ -32,12 +33,12 @@ export function JsonRenderAnswer(props: PropsRuntime<'conversation.chat.turnTail
  * @param props - closing prose, Markdown affordances, turn identity, and form callback.
  * @returns the interface, or original prose when the result cannot be rendered.
  */
-export function JsonRenderReplacement(props: PropsRuntime<'conversation.chat.answer'> & JsonRenderAnswerInjected) {
+export function JsonRenderReplacement(props: PropsRuntime<'conversation.chat.answer'> & JsonRenderAnswerInjected & Partial<PropsLocale<'jsonRender'>>) {
   const card = selectJsonRenderAnswer(props)
   const fallback = () => <MarkdownText text={props.text} labels={props.labels}
     fileMentions={props.fileMentions} pathImages={props.pathImages} />
   if (card === null) return fallback()
   return <JsonRenderCard key={card.callId} payload={card.payload} instanceId={`${props.sessionId}:${card.callId}`}
-    profile={card.profile} businessData={card.businessData}
+    profile={card.profile} businessData={card.businessData} eventFailureText={props.t?.('eventFailed')}
     submitForm={text => props.submitForm(props.sessionId, text)} fallbackRender={fallback} />
 }

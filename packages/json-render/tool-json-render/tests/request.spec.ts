@@ -95,7 +95,7 @@ describe('requestJsonRender', () => {
       diagnostics: { issues: [{ code: 'invalid_props', path: '/elements/map/props/places/2/x', message: 'Expected number' }] },
     } }))
     const result = await requestJsonRender({ baseUrl: 'http://localhost', timeoutMs: 1000,
-      args: { mode: 'display', user_query: '展示地图', components: ['MapPreview'], business_data: { places: [] } },
+      args: { mode: 'display', user_query: '展示地图', components: ['MapPreview'], business_data: { places: [{ id: 'gate', label: '大门', x: 0, y: 50 }] } },
       signal: new AbortController().signal, fetchImpl })
     expect(fetchImpl).toHaveBeenCalledOnce()
     expect(result.ok).toBe(false)

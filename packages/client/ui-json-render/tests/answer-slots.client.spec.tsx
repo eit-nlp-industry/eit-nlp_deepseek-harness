@@ -3,6 +3,7 @@ import { useState, type ReactNode } from 'react'
 import { act, cleanup, fireEvent, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, onTestFinished, vi } from 'vitest'
 import { SlotTestRuntime } from '@deepseek-ai/dsh-client-test-runtime'
+import { LocaleRuntime } from '@deepseek-ai/dsh-client-locale/client'
 import { RemoteError } from '@deepseek-ai/dsh-typert-protocol'
 import { MarkdownText } from '@deepseek-ai/dsh-client-ui-primitives'
 import { SessionId, type SessionEvent } from '@deepseek-ai/dsh-session/types'
@@ -27,6 +28,9 @@ function event(seq: number, type: string, data: unknown): SessionEventLikeEntry 
 
 async function fixture(meta: unknown, isError = false, laterError = false, laterMeta?: unknown) {
   const runtime = await SlotTestRuntime.create()
+  const locale = new LocaleRuntime(runtime.ctx)
+  runtime.ctx.provide('locale', locale)
+  runtime.slots.installLocale(locale)
   onTestFinished(() => runtime.dispose())
   const conversation = new UiConversation(runtime.ctx, runtime.ctx.sessions)
   type Seats = PropsRenderSlots<'conversation.chat.answer' | 'conversation.chat.turnTail'>

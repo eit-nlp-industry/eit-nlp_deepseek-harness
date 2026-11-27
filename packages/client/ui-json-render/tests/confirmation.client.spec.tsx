@@ -6,6 +6,33 @@ import { JsonRenderCard } from '../src/client/JsonRenderCard.tsx'
 
 afterEach(() => { cleanup(); vi.unstubAllGlobals() })
 
+it.each(['throw', 'reject'])('retains the draft and permits retry when submission fails by %s', async (failure) => {
+  vi.stubGlobal('matchMedia', (media: string) => ({
+    matches: false, media, onchange: null, addListener() {}, removeListener() {},
+    addEventListener() {}, removeEventListener() {}, dispatchEvent: () => false,
+  }))
+  const submitForm = vi.fn<(text: string) => Promise<void>>().mockImplementationOnce(() => {
+    if (failure === 'throw') throw new Error('发送失败，请重试')
+    return Promise.reject(new Error('发送失败，请重试'))
+  }).mockResolvedValue(undefined)
+  const payload: JsonRenderPayload = {
+    format: 'json-render-v1', spec: { root: 'main', elements: {
+      main: { type: 'Stack', children: ['fields', 'submit'] },
+      fields: { type: 'DynamicForm', props: { fields: [{ type: 'input', key: 'note', label: '说明', value: '费用' }] } },
+      submit: { type: 'Button', props: { label: '确认记账' }, on: { press: { action: 'form.submit' } } },
+    } },
+  }
+  render(<JsonRenderCard payload={payload} instanceId={failure} submitForm={submitForm} />)
+  fireEvent.change(screen.getByRole('textbox'), { target: { value: '编辑后的费用' } })
+  fireEvent.click(screen.getByRole('button', { name: '确认记账' }))
+  expect(await screen.findByRole('alert')).toHaveProperty('textContent', '发送失败，请重试')
+  expect(screen.getByRole<HTMLInputElement>('textbox').value).toBe('编辑后的费用')
+  fireEvent.click(screen.getByRole('button', { name: '确认记账' }))
+  expect(await screen.findByText('已提交，等待继续回答')).toBeTruthy()
+  expect(submitForm).toHaveBeenCalledTimes(2)
+  expect(submitForm.mock.calls[1]![0]).toContain('编辑后的费用')
+})
+
 it.each([
   ['reset', '恢复初始内容'], ['submit', '确认草稿'], ['skip', '跳过本条'],
   ['save_draft', '保存草稿'], ['cancel', '放弃草稿'], ['submit_and_add', '提交并新增'],

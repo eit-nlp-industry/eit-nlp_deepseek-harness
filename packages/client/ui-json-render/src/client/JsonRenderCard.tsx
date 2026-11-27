@@ -1,4 +1,4 @@
-import { Component, useEffect, useMemo, useRef, useState, type ComponentProps, type ReactNode } from 'react'
+import { Component, useCallback, useEffect, useMemo, useRef, useState, type ComponentProps, type ReactNode } from 'react'
 import { ConfigProvider } from 'antd'
 import { JsonRenderPanel } from '@eit/json-render-react'
 import type { ExperimentalRegistryOptions } from '@eit/json-render-antd/experimental'
@@ -8,6 +8,7 @@ import { inferRenderProfile, reactRegistryForProfile, registryRecognizes, type R
 import { decideJsonRenderSubmit, formValues } from './submit.ts'
 import { renderTheme } from './theme.ts'
 import { liveMaps, subscribeMap, type MapPositionUpdate } from './map-tracking.ts'
+import { zh } from './locales.ts'
 
 export interface JsonRenderCardProps {
   payload: JsonRenderPayload
@@ -15,6 +16,8 @@ export interface JsonRenderCardProps {
   /** Host-owned same-origin SSE endpoint. Defaults to DSH_CLIENT_MAP_LOCATION_URL or /api/location. */
   locationEndpoint?: string
   submitForm: (text: string) => Promise<void>
+  /** Localized feedback when an element event fails before host submission. */
+  eventFailureText?: string | undefined
   /** `business_data` from the render_ui call. Item records are read from here when the payload does not include them. */
   businessData?: unknown
   /** Server profile diagnostic. Element types are used only when this is omitted. */
@@ -75,6 +78,7 @@ function MapTracking({ endpoint, trackId, publish }: {
 
 function JsonRenderSurface({
   payload, instanceId, submitForm, businessData, profile, imageUploads, fallbackRender, locationEndpoint,
+  eventFailureText = zh.eventFailed,
 }: JsonRenderCardProps & { locationEndpoint: string }) {
   const [stateUpdate, setStateUpdate] = useState<MapPositionUpdate>()
   const [notice, setNotice] = useState<string | null>(null)
@@ -85,16 +89,29 @@ function JsonRenderSurface({
     () => reactRegistryForProfile(profileKind, imageUploads === undefined ? undefined : { imageUploads }),
     [profileKind, imageUploads],
   )
-  // The upstream renderer swallows element exceptions. Catch inside each element
-  // so a partially blank layout restores the complete written answer.
+  // Upstream event callbacks return promises despite their void declaration.
+  const dispatch = useCallback(async (emit: (event: string) => unknown, event: string): Promise<void> => {
+    try {
+      await emit(event)
+    } catch (_error) {
+      // Event failures retain the editable panel and never imply business success.
+      setNotice(eventFailureText)
+    }
+  }, [eventFailureText])
+  // Catch inside each element because the upstream renderer consumes render errors.
   const registry = useMemo(() => Object.fromEntries(Object.entries(selected).map(([name, Registered]) => [
     name,
     (props: ComponentProps<typeof Registered>) => (
       <AnswerRenderBoundary fallback={() => null} onFailure={setFailure}>
-        <Registered {...props} />
+        <Registered {...props}
+          emit={(event) => { void dispatch(props.emit, event) }}
+          on={(event) => {
+            const handle = props.on(event)
+            return { ...handle, emit: () => { void dispatch(handle.emit, event) } }
+          }} />
       </AnswerRenderBoundary>
     ),
-  ])), [selected])
+  ])), [selected, dispatch])
   const renderFallback = fallbackRender ?? (() => <div className={css.fallback}>界面无法显示，文字回答仍然有效。</div>)
   if (failure !== null) return renderFallback()
   if (fallbackRender !== undefined && (payload.spec.elements[payload.spec.root] === undefined
@@ -123,20 +140,20 @@ function JsonRenderSurface({
               if (pending.current) return
               pending.current = true
               if (decision.releaseOnSuccess) setNotice('正在提交')
-              void submitForm(decision.text).then(
-                () => {
+              void (async () => {
+                try {
+                  await submitForm(decision.text)
                   if (decision.releaseOnSuccess) pending.current = false
                   setNotice('已提交，等待继续回答')
-                },
-                (error: unknown) => {
+                } catch (error: unknown) {
                   pending.current = false
                   setNotice(error instanceof Error ? error.message : '提交失败')
-                },
-              )
+                }
+              })()
             }}
           />
         </ConfigProvider>
-        {notice !== null ? <div className={css.notice}>{notice}</div> : null}
+        {notice !== null ? <div className={css.notice} role="alert">{notice}</div> : null}
       </div>
     </AnswerRenderBoundary>
   )

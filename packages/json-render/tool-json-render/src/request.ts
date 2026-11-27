@@ -1,6 +1,6 @@
 /**
  * HTTP client for one json-render server call, with a fixed attempt budget.
- * The server is the v0.2.8 `POST /v1/render` contract: format, user_query,
+ * The server is the v0.2.9 `POST /v1/render` contract: format, user_query,
  * business_data, optional prompt_mode, and context.locale / context.intent.
  * Host mode is not a server field and does not select the catalog.
  */
@@ -8,13 +8,17 @@
 import { isJsonValue, type JsonValue } from '@deepseek-ai/dsh-util-values'
 import { formActionError, withFormActions, type FormAction } from './form-actions.ts'
 import { canonicalImageSrc, normalizeImageBusinessData, referencesImage, type MediaAssetRecord } from './media.ts'
+import { assembleMapPayload, prepareMapRequest } from './map-request.ts'
+import { safeDiagnosticText, validateRenderPayload } from './response-validation.ts'
+import { MAP_POSITION_PATH } from '@deepseek-ai/dsh-json-render-protocol'
+import type { MapRequest } from './map-request.ts'
 
 export const RENDER_UI_MAX_ATTEMPTS = 3
 
 export const RENDER_UI_FORMAT = 'json-render-v1'
 
 /** Release of the json-render server and Generation SDK this host calls. */
-export const JSON_RENDER_RELEASE = 'v0.2.8'
+export const JSON_RENDER_RELEASE = 'v0.2.9'
 
 export const FORM_INTENTS = ['generic_filters', 'generic_pick_one'] as const
 
@@ -113,6 +117,7 @@ export interface RenderDebugRecord {
   }
 }
 
+/** One cancellable generation operation with transport settings and optional media facts. */
 export interface RequestJsonRenderOptions {
   baseUrl: string
   timeoutMs: number
@@ -131,7 +136,11 @@ const FORM_MESSAGE = '界面已附上。本轮在此结束，等待用户提交�
 
 const RICH_COMPONENT_NAMES: ReadonlySet<string> = new Set(RICH_COMPONENTS)
 
-/** True when business_data is a value the render server will accept. */
+/**
+ * Check whether business data satisfies the server's non-empty input requirement.
+ * @param value - Model-supplied business facts.
+ * @returns Whether the value is non-empty; JSON decoding is owned by the caller.
+ */
 export function hasBusinessData(value: unknown): boolean {
   if (value === null || value === undefined) return false
   if (typeof value === 'string') return value.trim().length > 0
@@ -163,7 +172,11 @@ export function selectRenderRoute(args: RenderUiArgs): RenderRoute {
   return { profile: 'base', promptMode }
 }
 
-/** Reject calls that the server would refuse, before any HTTP attempt. */
+/**
+ * Validate form options, prompt mode, and required business facts before HTTP.
+ * @param args - Tool arguments supplied by the model.
+ * @returns An actionable rejection, or undefined when these options are usable.
+ */
 export function formRequestError(args: RenderUiArgs): string | undefined {
   if (args.form_actions !== undefined) {
     if (args.mode !== 'form') return 'form_actions 仅用于 form 模式。'
@@ -187,7 +200,11 @@ export function formRequestError(args: RenderUiArgs): string | undefined {
   return undefined
 }
 
-/** Layout text plus a display hint, kept inside the server's 2000-character limit. */
+/**
+ * Compose layout instructions and host presentation rules within the server limit.
+ * @param args - Requested layout and explicit components or form actions.
+ * @returns A generation prompt of at most 2000 characters; facts remain in business_data.
+ */
 export function renderUserQuery(args: RenderUiArgs): string {
   const query = args.user_query.trim()
   const contentHint = args.mode === 'display' ? DISPLAY_DETAIL_HINT : args.form_actions !== undefined
@@ -196,7 +213,10 @@ export function renderUserQuery(args: RenderUiArgs): string {
       ? '用户明确不需要默认提交按钮。请遵循用户指定的操作，不要额外添加提交按钮。'
       : `表单必须包含一个可见且可用的提交 Button，通过 on.press 绑定 form.submit。${args.submit_label ? `提交按钮名称：${args.submit_label}。` : '用户指定按钮名称时使用该名称，否则使用“提交”。'}其他操作按钮不能代替提交按钮，除非用户明确要求不提供提交。`
   const components = [...new Set(args.components?.filter(name => RICH_COMPONENT_NAMES.has(name)) ?? [])]
-  const hint = components.length === 0 ? contentHint : `请使用这些组件：${components.join('、')}。\n${contentHint}`
+  const mapHint = components.includes('MapPreview')
+    ? '地图数据由宿主校验并装配。使用 business_data.places 的 {id,label,x,y} 数组和 business_data.route 的地点 id 数组，不要改名、改坐标或猜测路线；可直接引用这两个根状态字段。附加说明可使用保留在 business_data.map_source 中的原始地图信息，但不要把它绑定到地图数据属性。MapPreview 不要生成 position 和 tracking，只生成地图布局。'
+    : ''
+  const hint = [components.length === 0 ? '' : `请使用这些组件：${components.join('、')}。`, mapHint, contentHint].filter(Boolean).join('\n')
   const room = USER_QUERY_MAX_CHARS - hint.length - 1
   const head = query.length > room ? query.slice(0, room) : query
   return `${head}\n${hint}`.slice(0, USER_QUERY_MAX_CHARS)
@@ -289,8 +309,7 @@ function safeIssue(value: unknown): string | undefined {
   if (typeof value !== 'string') return undefined
   const text = value.trim()
   if (text.length === 0 || text.length > 120) return undefined
-  if (/https?:|data:|bearer|api[_-]?key|\bsk-|password|secret|\/\//i.test(text)) return undefined
-  return text
+  return safeDiagnosticText(text)
 }
 
 function profileKind(value: unknown): RenderProfileKind | undefined {
@@ -444,7 +463,7 @@ async function readJson(response: Response): Promise<unknown> {
   return await response.json()
 }
 
-function requestBody(args: RenderUiArgs, route: RenderRoute): Record<string, unknown> {
+function requestBody(args: RenderUiArgs, route: RenderRoute, map?: MapRequest): Record<string, unknown> {
   const context: Record<string, string> = {}
   if (args.scene !== undefined && args.scene.trim() !== '') context.scene = args.scene.trim()
   if (args.locale !== undefined && args.locale.trim() !== '') context.locale = args.locale.trim()
@@ -456,14 +475,16 @@ function requestBody(args: RenderUiArgs, route: RenderRoute): Record<string, unk
   }
   if (Object.keys(context).length > 0) body.context = context
   body.business_data = args.business_data
+  if (map !== undefined) body.required_components = ['MapPreview']
+  if (map?.tracking !== undefined) body.map_binding = { positionPath: MAP_POSITION_PATH, tracking: map.tracking }
   return body
 }
 
 /**
- * Call POST /v1/render up to three times.
- * HTTP 400 and exhausted generation validation are not retried. Transport and other server failures are.
- * @param options - server origin, arguments, and the attempt signal.
- * @returns the payload, or a short failure the model can continue from.
+ * Resolve requested media against the host asset catalog before generation.
+ * @param args - Model-supplied layout and business facts.
+ * @param assets - Media visible to this call, absent when no catalog is configured.
+ * @returns Normalized image arguments, or a rejection for an unknown image asset.
  */
 function prepareRenderArgs(
   args: RenderUiArgs,
@@ -477,10 +498,18 @@ function prepareRenderArgs(
   return { ok: true, args: { ...args, business_data: businessData, intent: 'rich_content', locale: 'zh-CN' } }
 }
 
+/**
+ * Generate a layout and enforce only explicitly requested maps with host-owned tracking facts.
+ * @param options - Arguments, media facts, transport settings, and caller cancellation.
+ * @returns A payload or actionable failure. Map validation and map degradation stop
+ * without another HTTP request; transport failures use the fixed attempt budget.
+ */
 export async function requestJsonRender(options: RequestJsonRenderOptions): Promise<RenderUiResult> {
   const prepared = prepareRenderArgs(options.args, options.assets)
   if (!prepared.ok) return { ok: false, mode: options.args.mode, message: prepared.message }
-  const args = prepared.args
+  const mapRequest = prepareMapRequest(prepared.args)
+  if (!mapRequest.ok) return { ok: false, mode: prepared.args.mode, message: mapRequest.message }
+  const args = mapRequest.args
   const localError = formRequestError(args)
   if (localError !== undefined) return { ok: false, mode: args.mode, message: localError }
 
@@ -495,7 +524,7 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
       const response = await fetchImpl(url, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(requestBody(args, route)),
+        body: JSON.stringify(requestBody(args, route, mapRequest.map)),
         signal: AbortSignal.any([options.signal, AbortSignal.timeout(options.timeoutMs)]),
       })
       if (response.status === 400) {
@@ -558,7 +587,25 @@ export async function requestJsonRender(options: RequestJsonRenderOptions): Prom
         ...requestRecord(route),
         ...reported !== undefined ? { diagnostics: { profile: reported } } : {},
       })
-      return { ok: true, mode: args.mode, message: successMessage(args.mode), payload: ensureFormSubmit(json, args) }
+      if (mapRequest.map === undefined) {
+        return { ok: true, mode: args.mode, message: successMessage(args.mode), payload: ensureFormSubmit(json, args) }
+      }
+      const inspected = validateRenderPayload(json, ['MapPreview'])
+      const completed = !inspected.ok ? inspected : assembleMapPayload(inspected.layout, mapRequest.map)
+      if (!completed.ok) {
+        const requestId = safeToken(response.headers.get('x-request-id'))
+        emitDebug(options, { ...requestRecord(route), code: 'MODEL_OUTPUT_INVALID',
+          ...requestId === undefined ? {} : { requestId },
+          diagnostics: { issues: completed.issues.map(issue => issue.code) },
+        })
+        return { ok: false, mode: args.mode,
+          message: `界面未完成所要求的组件：${completed.issues.map(issue => issue.message).join('；')}。不要声称界面已生成，也不要原样重试。请修正请求，或明确说明暂不可用后用文字回答。`,
+          error: { code: 'MODEL_OUTPUT_INVALID', stage: 'validation', ...requestId === undefined ? {} : { requestId },
+            diagnostics: { issues: completed.issues },
+          },
+        }
+      }
+      return { ok: true, mode: args.mode, message: successMessage(args.mode), payload: ensureFormSubmit(completed.payload, args) }
     } catch (error) {
       if (callAborted(options.signal)) return { ok: false, mode: args.mode, message: '界面生成已取消。请用文字继续回答。' }
       last = error instanceof Error ? clip(error.message) : '界面生成失败'
