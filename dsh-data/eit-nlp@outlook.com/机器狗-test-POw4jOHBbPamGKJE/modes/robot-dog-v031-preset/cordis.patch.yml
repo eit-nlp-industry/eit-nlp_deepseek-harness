@@ -43,7 +43,7 @@
               prefix: |
                 你是校园机器狗 dog0001。说话像靠谱的同伴，简短、自然、好懂。
 
-                始终按照已加载的 adaptive-task-agent Skill 处理用户请求、环境事件和 Tool 返回。
+                处理用户请求、环境观察、工具回调和 Job 状态时，先加载并遵循 `adaptive-task-agent`。本会话已经出现过它的全文时，直接遵循，不要再次调用 skill。
 
                 【能力与事实】
 

@@ -31,6 +31,19 @@ function sessionIdentity(session) {
 }
 
 /**
+ * @param {object} session
+ */
+function sessionCreatedAt(session) {
+  const value = Number(
+    session?.header?.createdAt
+    ?? session?.createdAt
+    ?? session?.identity?.createdAt
+    ?? 0,
+  )
+  return Number.isFinite(value) ? value : 0
+}
+
+/**
  * Lab / bootstrap placeholders are not real UI sessions.
  * @param {unknown} sessionId
  */
@@ -50,6 +63,28 @@ async function resolveProjectRoot(cwd) {
   } catch {
     return path.resolve(cwd)
   }
+}
+
+/**
+ * When several live development sessions share one project root, prefer a peer
+ * that is not the previous bound id (user usually opened a new session for the
+ * new PRD), then the newest createdAt.
+ *
+ * @param {Array<{ sessionId: string, createdAt: number }>} peers
+ * @param {string | null | undefined} previousSessionId
+ */
+export function preferDevelopmentSession(peers, previousSessionId) {
+  if (!Array.isArray(peers) || peers.length === 0) return null
+  const ranked = [...peers].sort((a, b) => {
+    if (b.createdAt !== a.createdAt) return b.createdAt - a.createdAt
+    return String(a.sessionId).localeCompare(String(b.sessionId))
+  })
+  const previous = typeof previousSessionId === 'string' ? previousSessionId.trim() : ''
+  if (previous !== '') {
+    const newerPeer = ranked.find((peer) => peer.sessionId !== previous)
+    if (newerPeer) return newerPeer
+  }
+  return ranked[0]
 }
 
 /**
@@ -90,13 +125,14 @@ export function flowPrdRelpath(flow) {
 
 /**
  * Discover live development sessions and ensure `.flow` is bootstrapped.
- * No kickoff prompt — the user already started in that session.
  *
  * Rebinds only for placeholder ids, or when the bound session is gone and the
  * flow is not mid-coordination (see STICKY_DEVELOPMENT_FLOW_STATUSES).
  *
  * When `.active-prd` selects a different PRD than `flow.prd_relpath` and the
- * flow is not mid-coordination, archives `.flow/` and bootstraps a new cycle.
+ * flow is not mid-coordination, archives `.flow/` and bootstraps a new cycle
+ * onto the preferred live session (not the previous bound one when a newer
+ * peer exists), so kickoff is not re-delivered into a stale session.
  *
  * @param {object} input
  * @param {{ list?: Function }} [input.sessions]
@@ -120,7 +156,7 @@ export async function autoBindDevelopmentSessions(input = {}) {
     return { bound: [], skipped: [], reason: 'agent_presets_unavailable' }
   }
 
-  /** @type {Array<{ sessionId: string, cwd: string, root: string, session: object }>} */
+  /** @type {Array<{ sessionId: string, cwd: string, root: string, createdAt: number, session: object }>} */
   const liveDev = []
   for (const session of sessions.list()) {
     const preset = agentPresets.presetForSession(session)
@@ -128,15 +164,21 @@ export async function autoBindDevelopmentSessions(input = {}) {
     const { sessionId, cwd } = sessionIdentity(session)
     if (!sessionId || !cwd) continue
     const root = await resolveProjectRoot(cwd)
-    liveDev.push({ sessionId, cwd, root, session })
+    liveDev.push({
+      sessionId,
+      cwd,
+      root,
+      createdAt: sessionCreatedAt(session),
+      session,
+    })
   }
 
-  /** @type {Map<string, Set<string>>} */
-  const liveByRoot = new Map()
+  /** @type {Map<string, typeof liveDev>} */
+  const peersByRoot = new Map()
   for (const row of liveDev) {
-    const set = liveByRoot.get(row.root) ?? new Set()
-    set.add(row.sessionId)
-    liveByRoot.set(row.root, set)
+    const list = peersByRoot.get(row.root) ?? []
+    list.push(row)
+    peersByRoot.set(row.root, list)
   }
 
   /** @type {Array<Record<string, unknown>>} */
@@ -146,25 +188,27 @@ export async function autoBindDevelopmentSessions(input = {}) {
   /** @type {string[]} */
   const roots = []
 
-  for (const row of liveDev) {
-    const { sessionId, cwd, root } = row
-    roots.push(cwd, root)
+  for (const [root, peers] of peersByRoot) {
+    for (const peer of peers) roots.push(peer.cwd, root)
 
     try {
       await addManagedRoot(root, input.managedRootsFile)
-      if (cwd !== root) await addManagedRoot(cwd, input.managedRootsFile)
+      for (const peer of peers) {
+        if (peer.cwd !== root) await addManagedRoot(peer.cwd, input.managedRootsFile)
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
       log(`auto-bind: managed root failed for ${root}: ${message}`)
     }
 
+    const bindRoot = peers[0].cwd
     const paths = flowPaths(root)
     let existing = await readJsonIfExists(paths.flow, null)
 
     if (existing) {
       let selected = null
       try {
-        const selectedRaw = await readActivePrdFile(cwd)
+        const selectedRaw = await readActivePrdFile(bindRoot)
         selected = selectedRaw ? selectedRaw.replace(/\\/g, '/') : null
       } catch {
         // Selection read is best-effort; binding may still proceed.
@@ -173,18 +217,24 @@ export async function autoBindDevelopmentSessions(input = {}) {
       if (selected && selected !== currentPrd) {
         const status = String(existing.flow_status ?? '')
         if (PROTECTED_PRD_SWITCH_STATUSES.has(status)) {
-          skipped.push({
-            sessionId,
-            cwd,
-            reason: 'prd_mismatch',
-            flow_prd_relpath: currentPrd,
-            selected_prd_relpath: selected,
-            flow_status: status,
-          })
-          log(`auto-bind: prd mismatch (protected ${status}) at ${cwd}: flow=${currentPrd} selected=${selected}`)
+          for (const peer of peers) {
+            skipped.push({
+              sessionId: peer.sessionId,
+              cwd: peer.cwd,
+              reason: 'prd_mismatch',
+              flow_prd_relpath: currentPrd,
+              selected_prd_relpath: selected,
+              flow_status: status,
+            })
+          }
+          log(`auto-bind: prd mismatch (protected ${status}) at ${bindRoot}: flow=${currentPrd} selected=${selected}`)
           continue
         }
 
+        const previousDevId = typeof existing.development_session_id === 'string'
+          ? existing.development_session_id
+          : null
+        const preferred = preferDevelopmentSession(peers, previousDevId) ?? peers[0]
         const archiveRoot = path.resolve(String(existing.project_root ?? root))
         const archived = await archiveFlowRoot(archiveRoot)
         await appendJournalNoteAfterArchive(archiveRoot, archived, {
@@ -192,87 +242,144 @@ export async function autoBindDevelopmentSessions(input = {}) {
           selected_prd_relpath: selected,
           previous_flow_status: status,
           previous_project_id: existing.project_id,
-          development_session_id: sessionId,
+          previous_development_session_id: previousDevId,
+          development_session_id: preferred.sessionId,
         })
         log(
           `auto-bind: archived .flow for PRD switch at ${archiveRoot}`
-          + ` (${currentPrd} → ${selected}`
+          + ` (${currentPrd} → ${selected}; bind ${preferred.sessionId}`
           + (archived.archive_dir ? `; ${archived.archive_dir}` : '')
           + ')',
         )
-        existing = null
+
+        const created = await bootstrapLiveDevelopment({
+          bindRoot: preferred.cwd,
+          sessionId: preferred.sessionId,
+          log,
+        })
+        if (!created.ok) {
+          skipped.push({
+            sessionId: preferred.sessionId,
+            cwd: preferred.cwd,
+            reason: created.reason,
+            message: created.message,
+          })
+          continue
+        }
+        bound.push({
+          ...created.bound,
+          previous_development_session_id: previousDevId,
+          prd_switched: true,
+        })
+        for (const peer of peers) {
+          if (peer.sessionId === preferred.sessionId) continue
+          skipped.push({
+            sessionId: peer.sessionId,
+            cwd: peer.cwd,
+            reason: 'prd_switch_bound_to_peer',
+            development_session_id: preferred.sessionId,
+          })
+        }
+        continue
       }
     }
 
     if (!existing) {
+      const preferred = preferDevelopmentSession(peers, null) ?? peers[0]
       const created = await bootstrapLiveDevelopment({
-        bindRoot: cwd,
-        sessionId,
+        bindRoot: preferred.cwd,
+        sessionId: preferred.sessionId,
         log,
       })
       if (!created.ok) {
         skipped.push({
-          sessionId,
-          cwd,
+          sessionId: preferred.sessionId,
+          cwd: preferred.cwd,
           reason: created.reason,
           message: created.message,
         })
         continue
       }
       bound.push(created.bound)
+      for (const peer of peers) {
+        if (peer.sessionId === preferred.sessionId) continue
+        skipped.push({
+          sessionId: peer.sessionId,
+          cwd: peer.cwd,
+          reason: 'flow_bound_to_other_session',
+          development_session_id: preferred.sessionId,
+        })
+      }
       continue
     }
 
-    if (existing.development_session_id === sessionId) {
-      skipped.push({ sessionId, cwd, reason: 'already_bound' })
-      continue
-    }
-
-    const liveIds = liveByRoot.get(root) ?? new Set()
+    const liveIds = new Set(peers.map((peer) => peer.sessionId))
     const currentId = /** @type {string} */ (existing.development_session_id)
-    const sticky = STICKY_DEVELOPMENT_FLOW_STATUSES.has(String(existing.flow_status ?? ''))
-    const canRebind = isPlaceholderDevelopmentSessionId(currentId)
-      || (!liveIds.has(currentId) && !sticky)
-    if (!canRebind) {
-      skipped.push({
-        sessionId,
-        cwd,
-        reason: sticky && !liveIds.has(currentId)
-          ? 'sticky_development_session'
-          : 'flow_bound_to_other_session',
-        development_session_id: existing.development_session_id,
-        flow_status: existing.flow_status,
-      })
+
+    if (liveIds.has(currentId)) {
+      for (const peer of peers) {
+        skipped.push({
+          sessionId: peer.sessionId,
+          cwd: peer.cwd,
+          reason: peer.sessionId === currentId ? 'already_bound' : 'flow_bound_to_other_session',
+          development_session_id: currentId,
+        })
+      }
       continue
     }
 
+    const sticky = STICKY_DEVELOPMENT_FLOW_STATUSES.has(String(existing.flow_status ?? ''))
+    const canRebind = isPlaceholderDevelopmentSessionId(currentId) || !sticky
+    if (!canRebind) {
+      for (const peer of peers) {
+        skipped.push({
+          sessionId: peer.sessionId,
+          cwd: peer.cwd,
+          reason: 'sticky_development_session',
+          development_session_id: currentId,
+          flow_status: existing.flow_status,
+        })
+      }
+      continue
+    }
+
+    const preferred = preferDevelopmentSession(peers, currentId) ?? peers[0]
     const findings = await readJsonIfExists(
       paths.findings,
       { schemaVersion: 1, project_id: existing.project_id, items: [], updated_at: new Date().toISOString() },
     )
     const nextFlow = {
       ...existing,
-      development_session_id: sessionId,
+      development_session_id: preferred.sessionId,
       updated_at: new Date().toISOString(),
     }
     await saveFlowState(paths, nextFlow, findings)
-    await patchDevelopmentOutbox(paths, sessionId)
+    await patchDevelopmentOutbox(paths, preferred.sessionId)
     await appendJournal(paths, {
       at: nextFlow.updated_at,
       kind: 'auto_rebind_development',
       project_id: existing.project_id,
       previous_development_session_id: currentId,
-      development_session_id: sessionId,
+      development_session_id: preferred.sessionId,
       source: 'live_session',
     })
-    log(`auto-rebind: ${existing.project_id} ${currentId} → ${sessionId} @ ${root}`)
+    log(`auto-rebind: ${existing.project_id} ${currentId} → ${preferred.sessionId} @ ${root}`)
     bound.push({
       project_id: existing.project_id,
       project_root: root,
-      development_session_id: sessionId,
+      development_session_id: preferred.sessionId,
       rebound: true,
       previous_development_session_id: currentId,
     })
+    for (const peer of peers) {
+      if (peer.sessionId === preferred.sessionId) continue
+      skipped.push({
+        sessionId: peer.sessionId,
+        cwd: peer.cwd,
+        reason: 'flow_bound_to_other_session',
+        development_session_id: preferred.sessionId,
+      })
+    }
   }
 
   return { bound, skipped, roots: [...new Set(roots)] }

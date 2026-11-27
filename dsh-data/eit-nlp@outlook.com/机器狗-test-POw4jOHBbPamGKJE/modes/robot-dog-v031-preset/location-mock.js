@@ -84,6 +84,8 @@ const PLACES = Object.freeze([...STUDY_PLACES, LIBRARY_PLACE, GATE_PLACE])
 const MAP_USER_QUERY = [
   '只渲染一个 MapPreview；',
   '展示 places 与 route；',
+  'tracking 用 business_data.tracking（含 source、trackId、position）；',
+  'position 绑定 {"$state":"/tracking/position"}；',
   '不要表格、Steps、卡片、标题或任何明细。',
 ].join('')
 
@@ -147,10 +149,10 @@ function toResult(place) {
   }
 }
 
-function buildRenderUiArgs(start, studyPlaces) {
+function buildRenderUiArgs(start, destinations) {
   const places = [
     { id: start.id, label: start.label, x: start.x, y: start.y },
-    ...studyPlaces.map(place => ({
+    ...destinations.map(place => ({
       id: place.id,
       label: place.label,
       x: place.x,
@@ -159,6 +161,7 @@ function buildRenderUiArgs(start, studyPlaces) {
   ]
   return {
     mode: 'display',
+    answer_presentation: 'supplement',
     components: ['MapPreview'],
     intent: 'rich_content',
     locale: 'zh-CN',
@@ -201,9 +204,10 @@ const placeSchema = {
 const renderUiArgsSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ['mode', 'components', 'intent', 'locale', 'user_query', 'business_data'],
+  required: ['mode', 'answer_presentation', 'components', 'intent', 'locale', 'user_query', 'business_data'],
   properties: {
     mode: { type: 'string', enum: ['display'] },
+    answer_presentation: { type: 'string', enum: ['supplement'] },
     components: { type: 'array', items: { type: 'string', enum: ['MapPreview'] } },
     intent: { type: 'string', enum: ['rich_content'] },
     locale: { type: 'string', enum: ['zh-CN'] },
@@ -240,8 +244,9 @@ export function apply(ctx) {
     description: [
       '演示用地点查询：返回校园示意平面坐标（0–100），供 MapPreview 展示。',
       '按已定地点名查示意平面坐标；例如「图书馆」「学校大门」「自习室A/B」「自习室」「起点」。坐标以本工具返回为准。',
-      '同时返回自习室A与B时附带静态 MapPreview 的 render_ui_args，可原样传给 render_ui。',
-      '需要机器狗在图上移动时，另用 get_motion_track 取 track_id，再按 json-render 实时地图配方补 tracking。',
+      '查到地点时附带 MapPreview 的 render_ui_args：places 是演示起点加上查到的地点。这些点的坐标不要改、不要另编。',
+      '这一段的起点或终点如果不是这条 places（例如先去用户身边），用已返回的坐标改写 places 和 route，使地图只含这一段。',
+      '要让机器狗在图上移动时，先 get_motion_track，再把返回的 track_id 写入 business_data.tracking。',
       '真机行动的命名锚点用语义地图检索；用户身边用 get_phone_location 的 anchor_id 做 navigate。平面坐标仅供 MapPreview。',
     ].join(''),
     parameters: {
@@ -311,29 +316,23 @@ export function apply(ctx) {
         .map(place => `${place.label}（${place.corner}，x=${place.x}, y=${place.y}）`)
         .join('；')
 
-      const hasBoth = places.some(p => p.id === 'study-room-a')
-        && places.some(p => p.id === 'study-room-b')
       const onlyStudy = matched.every(place => place.id.startsWith('study-room-'))
       const building = onlyStudy ? STUDY_BUILDING : matched[0].building
-      const payload = {
+      const renderUiArgs = buildRenderUiArgs(start, places)
+      return {
         ok: true,
         query: raw,
         start,
         building,
         places,
+        render_ui_args: renderUiArgs,
         message: [
           `查询成功（演示）：起点（x=${start.x}, y=${start.y}）；${listed}。`,
-          hasBoth
-            ? '静态示意地图：把本结果 JSON 里的 render_ui_args 原样传给 render_ui。实时移动另用 get_motion_track。'
-            : '本结果供 MapPreview 示意；真机命名锚点另用语义地图。',
+          '静态示意地图：把本结果 JSON 里的 render_ui_args 原样传给 render_ui。',
+          '平面坐标只用于这张图；navigate 仍用语义地图或 get_phone_location 的 anchor_id。',
+          `places=${renderUiArgs.business_data.places.length}。`,
         ].join(''),
       }
-      if (hasBoth) {
-        const studyOnly = places.filter(p => p.id === 'study-room-a' || p.id === 'study-room-b')
-        payload.render_ui_args = buildRenderUiArgs(start, studyOnly)
-        payload.message += ` places=${payload.render_ui_args.business_data.places.length}。`
-      }
-      return payload
     },
   })
 }

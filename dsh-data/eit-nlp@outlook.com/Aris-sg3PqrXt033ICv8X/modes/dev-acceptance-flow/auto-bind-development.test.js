@@ -3,8 +3,19 @@ import { mkdtemp, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
-import { autoBindDevelopmentSessions } from './auto-bind-development.js'
+import {
+  autoBindDevelopmentSessions,
+  preferDevelopmentSession,
+} from './auto-bind-development.js'
 import { flowPaths, readJson } from './store.js'
+
+test('preferDevelopmentSession picks newer peer over previous bound id', () => {
+  const preferred = preferDevelopmentSession([
+    { sessionId: 'session-old', createdAt: 100 },
+    { sessionId: 'session-new', createdAt: 200 },
+  ], 'session-old')
+  assert.equal(preferred?.sessionId, 'session-new')
+})
 
 test('autoBindDevelopmentSessions inits flow for live development session', async () => {
   const root = await mkdtemp(path.join(tmpdir(), 'flow-autobind-'))
@@ -59,6 +70,47 @@ test('autoBindDevelopmentSessions uses .active-prd and kickoff that path', async
   const action = await readJson(outbox[0])
   assert.equal(action.type, 'prompt_development_start')
   assert.equal(action.prd_relpath, 'PRD-income.md')
+})
+
+test('autoBindDevelopmentSessions PRD switch binds newer session not the previous one', async () => {
+  const root = await mkdtemp(path.join(tmpdir(), 'flow-autobind-peer-'))
+  await writeFile(path.join(root, 'PRD.md'), '# default\n', 'utf8')
+  await writeFile(path.join(root, 'PRD-test.md'), '# test\n', 'utf8')
+  const managedRootsFile = path.join(root, 'managed.json')
+  const oldSession = {
+    id: 'session-old-travel',
+    header: { cwd: root, createdAt: 100 },
+  }
+  await autoBindDevelopmentSessions({
+    sessions: { list: () => [oldSession] },
+    agentPresets: { presetForSession: () => 'development' },
+    managedRootsFile,
+  })
+  assert.equal((await readJson(flowPaths(root).flow)).development_session_id, 'session-old-travel')
+
+  await writeFile(path.join(root, '.active-prd'), 'PRD-test.md\n', 'utf8')
+  const newSession = {
+    id: 'session-new-test',
+    header: { cwd: root, createdAt: 999 },
+  }
+  // Old session listed first (as in UI history) — must still bind the newer peer.
+  const result = await autoBindDevelopmentSessions({
+    sessions: { list: () => [oldSession, newSession] },
+    agentPresets: { presetForSession: () => 'development' },
+    managedRootsFile,
+  })
+  assert.equal(result.bound.length, 1)
+  assert.equal(result.bound[0].development_session_id, 'session-new-test')
+  assert.equal(result.bound[0].prd_relpath, 'PRD-test.md')
+  assert.equal(
+    result.skipped.some((item) => (
+      item.sessionId === 'session-old-travel' && item.reason === 'prd_switch_bound_to_peer'
+    )),
+    true,
+  )
+  const flow = await readJson(flowPaths(root).flow)
+  assert.equal(flow.development_session_id, 'session-new-test')
+  assert.equal(flow.prd_relpath, 'PRD-test.md')
 })
 
 test('autoBindDevelopmentSessions archives and rebinds when .active-prd mismatches idle flow', async () => {

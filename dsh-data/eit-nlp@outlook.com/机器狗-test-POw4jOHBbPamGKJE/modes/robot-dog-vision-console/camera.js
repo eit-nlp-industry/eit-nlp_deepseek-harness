@@ -13,6 +13,18 @@ const MAX_PENDING_BYTES = 32 * 1024 * 1024
 const MIN_RESTART_MS = 1_000
 const MAX_RESTART_MS = 30_000
 
+/**
+ * 根据视频源协议选择 ffmpeg 的输入模式。
+ *
+ * @param {string} videoPath 视频源地址；RTMP 源由 ffmpeg 监听，HTTP/MJPEG 源由 ffmpeg 主动拉取。
+ * @returns {string[]} 应插入 ffmpeg `-i` 前的输入参数。
+ */
+export function inputProtocolArgs(videoPath) {
+  return /^rtmps?:\/\//i.test(String(videoPath ?? '').trim())
+    ? ['-listen', '1']
+    : []
+}
+
 export function createCamera(config, logger) {
   let latest = null
   let child = null
@@ -36,7 +48,7 @@ export function createCamera(config, logger) {
   function args() {
     return [
       '-hide_banner', '-loglevel', 'error',
-      '-listen', '1',
+      ...inputProtocolArgs(config.videoPath),
       '-i', config.videoPath,
       '-an',
       '-vf', `fps=${config.captureFps},scale=${config.maxWidth}:-2`,

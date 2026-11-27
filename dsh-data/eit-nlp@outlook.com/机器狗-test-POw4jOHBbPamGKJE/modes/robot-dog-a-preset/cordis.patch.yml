@@ -539,7 +539,7 @@
 
               transport: streamable-http
 
-              url: http://10.37.0.21:8050/mcp
+              url: http://10.37.0.21:8040/mcp
 
               headers:
 
